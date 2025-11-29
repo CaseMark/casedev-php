@@ -1,0 +1,106 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Casedev\Search\V1;
+
+use Casedev\Core\Attributes\Api;
+use Casedev\Core\Concerns\SdkModel;
+use Casedev\Core\Concerns\SdkResponse;
+use Casedev\Core\Contracts\BaseModel;
+use Casedev\Core\Conversion\Contracts\ResponseConverter;
+use Casedev\Search\V1\V1SearchResponse\Result;
+
+/**
+ * @phpstan-type V1SearchResponseShape = array{
+ *   query?: string|null, results?: list<Result>|null, totalResults?: int|null
+ * }
+ */
+final class V1SearchResponse implements BaseModel, ResponseConverter
+{
+    /** @use SdkModel<V1SearchResponseShape> */
+    use SdkModel;
+
+    use SdkResponse;
+
+    /**
+     * Original search query.
+     */
+    #[Api(optional: true)]
+    public ?string $query;
+
+    /**
+     * Array of search results.
+     *
+     * @var list<Result>|null $results
+     */
+    #[Api(list: Result::class, optional: true)]
+    public ?array $results;
+
+    /**
+     * Total number of results found.
+     */
+    #[Api(optional: true)]
+    public ?int $totalResults;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<Result> $results
+     */
+    public static function with(
+        ?string $query = null,
+        ?array $results = null,
+        ?int $totalResults = null
+    ): self {
+        $obj = new self;
+
+        null !== $query && $obj->query = $query;
+        null !== $results && $obj->results = $results;
+        null !== $totalResults && $obj->totalResults = $totalResults;
+
+        return $obj;
+    }
+
+    /**
+     * Original search query.
+     */
+    public function withQuery(string $query): self
+    {
+        $obj = clone $this;
+        $obj->query = $query;
+
+        return $obj;
+    }
+
+    /**
+     * Array of search results.
+     *
+     * @param list<Result> $results
+     */
+    public function withResults(array $results): self
+    {
+        $obj = clone $this;
+        $obj->results = $results;
+
+        return $obj;
+    }
+
+    /**
+     * Total number of results found.
+     */
+    public function withTotalResults(int $totalResults): self
+    {
+        $obj = clone $this;
+        $obj->totalResults = $totalResults;
+
+        return $obj;
+    }
+}

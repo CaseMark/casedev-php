@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Casedev\Services;
+
+use Casedev\Client;
+use Casedev\ServiceContracts\WebhooksContract;
+use Casedev\Services\Webhooks\V1Service;
+
+final class WebhooksService implements WebhooksContract
+{
+    /**
+     * @api
+     */
+    public V1Service $v1;
+
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client)
+    {
+        $this->v1 = new V1Service($client);
+    }
+}
