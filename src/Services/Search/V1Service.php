@@ -1,0 +1,252 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Casedev\Services\Search;
+
+use Casedev\Client;
+use Casedev\Core\Exceptions\APIException;
+use Casedev\RequestOptions;
+use Casedev\Search\V1\V1AnswerParams;
+use Casedev\Search\V1\V1AnswerResponse;
+use Casedev\Search\V1\V1ContentsParams;
+use Casedev\Search\V1\V1ContentsResponse;
+use Casedev\Search\V1\V1ResearchParams;
+use Casedev\Search\V1\V1ResearchResponse;
+use Casedev\Search\V1\V1RetrieveResearchParams;
+use Casedev\Search\V1\V1SearchParams;
+use Casedev\Search\V1\V1SearchResponse;
+use Casedev\Search\V1\V1SimilarParams;
+use Casedev\Search\V1\V1SimilarResponse;
+use Casedev\ServiceContracts\Search\V1Contract;
+
+final class V1Service implements V1Contract
+{
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Generate comprehensive answers to questions using web search results. Supports two modes: native provider answers or custom LLM-powered answers using Case.dev's AI gateway. Perfect for legal research, fact-checking, and gathering supporting evidence for cases.
+     *
+     * @param array{
+     *   query: string,
+     *   excludeDomains?: list<string>,
+     *   includeDomains?: list<string>,
+     *   maxTokens?: int,
+     *   model?: string,
+     *   numResults?: int,
+     *   searchType?: 'auto'|'web'|'news'|'academic',
+     *   stream?: bool,
+     *   temperature?: float,
+     *   text?: bool,
+     *   useCustomLLM?: bool,
+     * }|V1AnswerParams $params
+     *
+     * @throws APIException
+     */
+    public function answer(
+        array|V1AnswerParams $params,
+        ?RequestOptions $requestOptions = null
+    ): V1AnswerResponse {
+        [$parsed, $options] = V1AnswerParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'search/v1/answer',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1AnswerResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Scrapes and extracts text content from web pages, PDFs, and documents. Useful for legal research, evidence collection, and document analysis. Supports live crawling, subpage extraction, and content summarization.
+     *
+     * @param array{
+     *   urls: list<string>,
+     *   context?: string,
+     *   extras?: mixed,
+     *   highlights?: bool,
+     *   livecrawl?: bool,
+     *   livecrawlTimeout?: int,
+     *   subpages?: bool,
+     *   subpageTarget?: int,
+     *   summary?: bool,
+     *   text?: bool,
+     * }|V1ContentsParams $params
+     *
+     * @throws APIException
+     */
+    public function contents(
+        array|V1ContentsParams $params,
+        ?RequestOptions $requestOptions = null
+    ): V1ContentsResponse {
+        [$parsed, $options] = V1ContentsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'search/v1/contents',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1ContentsResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Performs deep research by conducting multi-step analysis, gathering information from multiple sources, and providing comprehensive insights. Ideal for legal research, case analysis, and due diligence investigations.
+     *
+     * @param array{
+     *   instructions: string,
+     *   model?: 'fast'|'normal'|'pro',
+     *   outputSchema?: mixed,
+     *   query?: string,
+     * }|V1ResearchParams $params
+     *
+     * @throws APIException
+     */
+    public function research(
+        array|V1ResearchParams $params,
+        ?RequestOptions $requestOptions = null
+    ): V1ResearchResponse {
+        [$parsed, $options] = V1ResearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'search/v1/research',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1ResearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve the status and results of a deep research task by ID. Supports both standard JSON responses and streaming for real-time updates as the research progresses. Research tasks analyze topics comprehensively using web search and AI synthesis.
+     *
+     * @param array{events?: string, stream?: bool}|V1RetrieveResearchParams $params
+     *
+     * @throws APIException
+     */
+    public function retrieveResearch(
+        string $id,
+        array|V1RetrieveResearchParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed {
+        [$parsed, $options] = V1RetrieveResearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['search/v1/research/%1$s', $id],
+            query: $parsed,
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Executes intelligent web search queries with advanced filtering and customization options. Ideal for legal research, case law discovery, and gathering supporting documentation for litigation or compliance matters.
+     *
+     * @param array{
+     *   query: string,
+     *   additionalQueries?: list<string>,
+     *   category?: string,
+     *   contents?: string,
+     *   endCrawlDate?: string|\DateTimeInterface,
+     *   endPublishedDate?: string|\DateTimeInterface,
+     *   excludeDomains?: list<string>,
+     *   includeDomains?: list<string>,
+     *   includeText?: bool,
+     *   numResults?: int,
+     *   startCrawlDate?: string|\DateTimeInterface,
+     *   startPublishedDate?: string|\DateTimeInterface,
+     *   type?: 'auto'|'search'|'news',
+     *   userLocation?: string,
+     * }|V1SearchParams $params
+     *
+     * @throws APIException
+     */
+    public function search(
+        array|V1SearchParams $params,
+        ?RequestOptions $requestOptions = null
+    ): V1SearchResponse {
+        [$parsed, $options] = V1SearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'search/v1/search',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1SearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Find web pages and documents similar to a given URL. Useful for legal research to discover related case law, statutes, or legal commentary that shares similar themes or content structure.
+     *
+     * @param array{
+     *   url: string,
+     *   contents?: string,
+     *   endCrawlDate?: string|\DateTimeInterface,
+     *   endPublishedDate?: string|\DateTimeInterface,
+     *   excludeDomains?: list<string>,
+     *   includeDomains?: list<string>,
+     *   includeText?: bool,
+     *   numResults?: int,
+     *   startCrawlDate?: string|\DateTimeInterface,
+     *   startPublishedDate?: string|\DateTimeInterface,
+     * }|V1SimilarParams $params
+     *
+     * @throws APIException
+     */
+    public function similar(
+        array|V1SimilarParams $params,
+        ?RequestOptions $requestOptions = null
+    ): V1SimilarResponse {
+        [$parsed, $options] = V1SimilarParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'search/v1/similar',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1SimilarResponse::class,
+        );
+    }
+}
