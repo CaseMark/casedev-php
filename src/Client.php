@@ -12,6 +12,7 @@ use Casedev\Services\FormatService;
 use Casedev\Services\LlmService;
 use Casedev\Services\OcrService;
 use Casedev\Services\SearchService;
+use Casedev\Services\TemplatesService;
 use Casedev\Services\VaultService;
 use Casedev\Services\VoiceService;
 use Casedev\Services\WebhooksService;
@@ -76,6 +77,11 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public TemplatesService $templates;
+
+    /**
+     * @api
+     */
     public WorkflowsService $workflows;
 
     public function __construct(?string $apiKey = null, ?string $baseUrl = null)
@@ -119,6 +125,7 @@ class Client extends BaseClient
         $this->vault = new VaultService($this);
         $this->voice = new VoiceService($this);
         $this->webhooks = new WebhooksService($this);
+        $this->templates = new TemplatesService($this);
         $this->workflows = new WorkflowsService($this);
     }
 

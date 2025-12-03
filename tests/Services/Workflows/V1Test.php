@@ -96,32 +96,4 @@ final class V1Test extends TestCase
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
     }
-
-    #[Test]
-    public function testSearch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->workflows->v1->search(['query' => 'query']);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSearchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->workflows->v1->search([
-            'query' => 'query', 'category' => 'category', 'limit' => 1,
-        ]);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
 }

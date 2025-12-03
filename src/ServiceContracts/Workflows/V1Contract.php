@@ -9,7 +9,6 @@ use Casedev\RequestOptions;
 use Casedev\Workflows\V1\V1ExecuteParams;
 use Casedev\Workflows\V1\V1ExecuteResponse;
 use Casedev\Workflows\V1\V1ListParams;
-use Casedev\Workflows\V1\V1SearchParams;
 
 interface V1Contract
 {
@@ -55,18 +54,6 @@ interface V1Contract
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<mixed>|V1SearchParams $params
-     *
-     * @throws APIException
-     */
-    public function search(
-        array|V1SearchParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed;
 }

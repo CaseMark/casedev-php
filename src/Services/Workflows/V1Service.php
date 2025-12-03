@@ -11,7 +11,6 @@ use Casedev\ServiceContracts\Workflows\V1Contract;
 use Casedev\Workflows\V1\V1ExecuteParams;
 use Casedev\Workflows\V1\V1ExecuteResponse;
 use Casedev\Workflows\V1\V1ListParams;
-use Casedev\Workflows\V1\V1SearchParams;
 
 final class V1Service implements V1Contract
 {
@@ -129,36 +128,6 @@ final class V1Service implements V1Contract
             method: 'get',
             path: ['workflows/v1/executions/%1$s', $id],
             options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Perform semantic search across available workflows to find the most relevant pre-built document processing pipelines for your legal use case.
-     *
-     * @param array{
-     *   query: string, category?: string, limit?: int
-     * }|V1SearchParams $params
-     *
-     * @throws APIException
-     */
-    public function search(
-        array|V1SearchParams $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = V1SearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'workflows/v1/search',
-            body: (object) $parsed,
-            options: $options,
             convert: null,
         );
     }
