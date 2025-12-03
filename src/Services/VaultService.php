@@ -13,6 +13,7 @@ use Casedev\Services\Vault\ObjectsService;
 use Casedev\Vault\VaultCreateParams;
 use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
+use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchParams;
 use Casedev\Vault\VaultSearchResponse;
@@ -87,6 +88,25 @@ final class VaultService implements VaultContract
             path: ['vault/%1$s', $id],
             options: $requestOptions,
             convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * List all vaults for the authenticated organization. Returns vault metadata including storage configuration and usage statistics.
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?RequestOptions $requestOptions = null
+    ): VaultListResponse {
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: 'vault',
+            options: $requestOptions,
+            convert: VaultListResponse::class,
         );
     }
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Workflows\V1\V1ExecuteParams\Options;
+namespace Casedev\Templates\V1\V1ExecuteParams\Options;
 
 /**
  * Output format preference.

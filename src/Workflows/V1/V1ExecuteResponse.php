@@ -10,14 +10,14 @@ use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Workflows\V1\V1ExecuteResponse\Status;
-use Casedev\Workflows\V1\V1ExecuteResponse\Usage;
 
 /**
  * @phpstan-type V1ExecuteResponseShape = array{
- *   result?: mixed,
+ *   duration?: int|null,
+ *   error?: string|null,
+ *   executionId?: string|null,
+ *   outputs?: mixed,
  *   status?: value-of<Status>|null,
- *   usage?: Usage|null,
- *   workflow_name?: string|null,
  * }
  */
 final class V1ExecuteResponse implements BaseModel, ResponseConverter
@@ -27,24 +27,21 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    /**
-     * Workflow output (structure varies by workflow type).
-     */
     #[Api(optional: true)]
-    public mixed $result;
+    public ?int $duration;
+
+    #[Api(optional: true)]
+    public ?string $error;
+
+    #[Api(optional: true)]
+    public ?string $executionId;
+
+    #[Api(optional: true)]
+    public mixed $outputs;
 
     /** @var value-of<Status>|null $status */
     #[Api(enum: Status::class, optional: true)]
     public ?string $status;
-
-    #[Api(optional: true)]
-    public ?Usage $usage;
-
-    /**
-     * Name of the executed workflow.
-     */
-    #[Api(optional: true)]
-    public ?string $workflow_name;
 
     public function __construct()
     {
@@ -59,28 +56,51 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
      * @param Status|value-of<Status> $status
      */
     public static function with(
-        mixed $result = null,
+        ?int $duration = null,
+        ?string $error = null,
+        ?string $executionId = null,
+        mixed $outputs = null,
         Status|string|null $status = null,
-        ?Usage $usage = null,
-        ?string $workflow_name = null,
     ): self {
         $obj = new self;
 
-        null !== $result && $obj->result = $result;
+        null !== $duration && $obj->duration = $duration;
+        null !== $error && $obj->error = $error;
+        null !== $executionId && $obj->executionId = $executionId;
+        null !== $outputs && $obj->outputs = $outputs;
         null !== $status && $obj['status'] = $status;
-        null !== $usage && $obj->usage = $usage;
-        null !== $workflow_name && $obj->workflow_name = $workflow_name;
 
         return $obj;
     }
 
-    /**
-     * Workflow output (structure varies by workflow type).
-     */
-    public function withResult(mixed $result): self
+    public function withDuration(int $duration): self
     {
         $obj = clone $this;
-        $obj->result = $result;
+        $obj->duration = $duration;
+
+        return $obj;
+    }
+
+    public function withError(string $error): self
+    {
+        $obj = clone $this;
+        $obj->error = $error;
+
+        return $obj;
+    }
+
+    public function withExecutionID(string $executionID): self
+    {
+        $obj = clone $this;
+        $obj->executionId = $executionID;
+
+        return $obj;
+    }
+
+    public function withOutputs(mixed $outputs): self
+    {
+        $obj = clone $this;
+        $obj->outputs = $outputs;
 
         return $obj;
     }
@@ -92,25 +112,6 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj['status'] = $status;
-
-        return $obj;
-    }
-
-    public function withUsage(Usage $usage): self
-    {
-        $obj = clone $this;
-        $obj->usage = $usage;
-
-        return $obj;
-    }
-
-    /**
-     * Name of the executed workflow.
-     */
-    public function withWorkflowName(string $workflowName): self
-    {
-        $obj = clone $this;
-        $obj->workflow_name = $workflowName;
 
         return $obj;
     }

@@ -9,6 +9,7 @@ use Casedev\RequestOptions;
 use Casedev\Vault\VaultCreateParams;
 use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
+use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchParams;
 use Casedev\Vault\VaultSearchResponse;
@@ -38,6 +39,15 @@ interface VaultContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed;
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?RequestOptions $requestOptions = null
+    ): VaultListResponse;
 
     /**
      * @api
