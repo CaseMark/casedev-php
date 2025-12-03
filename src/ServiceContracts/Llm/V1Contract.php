@@ -27,7 +27,5 @@ interface V1Contract
      *
      * @throws APIException
      */
-    public function listModels(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    public function listModels(?RequestOptions $requestOptions = null): mixed;
 }

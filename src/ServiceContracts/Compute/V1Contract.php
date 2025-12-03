@@ -29,9 +29,7 @@ interface V1Contract
      *
      * @throws APIException
      */
-    public function getPricing(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    public function getPricing(?RequestOptions $requestOptions = null): mixed;
 
     /**
      * @api

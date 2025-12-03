@@ -21,7 +21,7 @@ interface TemplatesContract
      */
     public function create(
         array|TemplateCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): TemplateNewResponse;
 
     /**
