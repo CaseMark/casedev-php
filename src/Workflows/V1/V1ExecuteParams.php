@@ -8,21 +8,13 @@ use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Workflows\V1\V1ExecuteParams\Options;
 
 /**
- * Execute a pre-built workflow with custom input data. Workflows automate common legal document processing tasks like contract analysis, due diligence reviews, and document classification.
- *
- * **Available Workflows:**
- * - Contract analysis and risk assessment
- * - Document classification and tagging
- * - Legal research and case summarization
- * - Due diligence document review
- * - Compliance checking and reporting
+ * Execute a workflow for testing. This runs the workflow synchronously without deployment.
  *
  * @see Casedev\Services\Workflows\V1Service::execute()
  *
- * @phpstan-type V1ExecuteParamsShape = array{input: mixed, options?: Options}
+ * @phpstan-type V1ExecuteParamsShape = array{body?: mixed}
  */
 final class V1ExecuteParams implements BaseModel
 {
@@ -31,28 +23,11 @@ final class V1ExecuteParams implements BaseModel
     use SdkParams;
 
     /**
-     * Input data for the workflow (structure varies by workflow type).
+     * Input data to pass to the workflow trigger.
      */
-    #[Api]
-    public mixed $input;
-
     #[Api(optional: true)]
-    public ?Options $options;
+    public mixed $body;
 
-    /**
-     * `new V1ExecuteParams()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * V1ExecuteParams::with(input: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new V1ExecuteParams)->withInput(...)
-     * ```
-     */
     public function __construct()
     {
         $this->initialize();
@@ -63,32 +38,22 @@ final class V1ExecuteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(mixed $input, ?Options $options = null): self
+    public static function with(mixed $body = null): self
     {
         $obj = new self;
 
-        $obj->input = $input;
-
-        null !== $options && $obj->options = $options;
+        null !== $body && $obj->body = $body;
 
         return $obj;
     }
 
     /**
-     * Input data for the workflow (structure varies by workflow type).
+     * Input data to pass to the workflow trigger.
      */
-    public function withInput(mixed $input): self
+    public function withBody(mixed $body): self
     {
         $obj = clone $this;
-        $obj->input = $input;
-
-        return $obj;
-    }
-
-    public function withOptions(Options $options): self
-    {
-        $obj = clone $this;
-        $obj->options = $options;
+        $obj->body = $body;
 
         return $obj;
     }

@@ -4,6 +4,7 @@ namespace Tests\Services;
 
 use Casedev\Client;
 use Casedev\Vault\VaultIngestResponse;
+use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchResponse;
 use Casedev\Vault\VaultUploadResponse;
@@ -73,6 +74,19 @@ final class VaultTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testList(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->list();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VaultListResponse::class, $result);
     }
 
     #[Test]

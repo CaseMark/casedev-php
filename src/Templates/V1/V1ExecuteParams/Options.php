@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Workflows\V1\V1ExecuteParams;
+namespace Casedev\Templates\V1\V1ExecuteParams;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Workflows\V1\V1ExecuteParams\Options\Format;
+use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
 
 /**
  * @phpstan-type OptionsShape = array{

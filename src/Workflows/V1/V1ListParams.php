@@ -8,19 +8,15 @@ use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
+use Casedev\Workflows\V1\V1ListParams\Visibility;
 
 /**
- * Retrieve a paginated list of available workflows with optional filtering by category, subcategory, type, and publication status. Workflows are pre-built document processing pipelines optimized for legal use cases.
+ * List all workflows for the authenticated organization.
  *
  * @see Casedev\Services\Workflows\V1Service::list()
  *
  * @phpstan-type V1ListParamsShape = array{
- *   category?: string,
- *   limit?: int,
- *   offset?: int,
- *   published?: bool,
- *   sub_category?: string,
- *   type?: string,
+ *   limit?: int, offset?: int, visibility?: Visibility|value-of<Visibility>
  * }
  */
 final class V1ListParams implements BaseModel
@@ -30,40 +26,24 @@ final class V1ListParams implements BaseModel
     use SdkParams;
 
     /**
-     * Filter workflows by category (e.g., 'legal', 'compliance', 'contract').
-     */
-    #[Api(optional: true)]
-    public ?string $category;
-
-    /**
-     * Maximum number of workflows to return.
+     * Maximum number of results.
      */
     #[Api(optional: true)]
     public ?int $limit;
 
     /**
-     * Number of workflows to skip for pagination.
+     * Offset for pagination.
      */
     #[Api(optional: true)]
     public ?int $offset;
 
     /**
-     * Include only published workflows.
+     * Filter by visibility.
+     *
+     * @var value-of<Visibility>|null $visibility
      */
-    #[Api(optional: true)]
-    public ?bool $published;
-
-    /**
-     * Filter workflows by subcategory (e.g., 'due-diligence', 'litigation', 'mergers').
-     */
-    #[Api(optional: true)]
-    public ?string $sub_category;
-
-    /**
-     * Filter workflows by type (e.g., 'document-review', 'contract-analysis', 'compliance-check').
-     */
-    #[Api(optional: true)]
-    public ?string $type;
+    #[Api(enum: Visibility::class, optional: true)]
+    public ?string $visibility;
 
     public function __construct()
     {
@@ -74,40 +54,25 @@ final class V1ListParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Visibility|value-of<Visibility> $visibility
      */
     public static function with(
-        ?string $category = null,
         ?int $limit = null,
         ?int $offset = null,
-        ?bool $published = null,
-        ?string $sub_category = null,
-        ?string $type = null,
+        Visibility|string|null $visibility = null
     ): self {
         $obj = new self;
 
-        null !== $category && $obj->category = $category;
         null !== $limit && $obj->limit = $limit;
         null !== $offset && $obj->offset = $offset;
-        null !== $published && $obj->published = $published;
-        null !== $sub_category && $obj->sub_category = $sub_category;
-        null !== $type && $obj->type = $type;
+        null !== $visibility && $obj['visibility'] = $visibility;
 
         return $obj;
     }
 
     /**
-     * Filter workflows by category (e.g., 'legal', 'compliance', 'contract').
-     */
-    public function withCategory(string $category): self
-    {
-        $obj = clone $this;
-        $obj->category = $category;
-
-        return $obj;
-    }
-
-    /**
-     * Maximum number of workflows to return.
+     * Maximum number of results.
      */
     public function withLimit(int $limit): self
     {
@@ -118,7 +83,7 @@ final class V1ListParams implements BaseModel
     }
 
     /**
-     * Number of workflows to skip for pagination.
+     * Offset for pagination.
      */
     public function withOffset(int $offset): self
     {
@@ -129,34 +94,14 @@ final class V1ListParams implements BaseModel
     }
 
     /**
-     * Include only published workflows.
+     * Filter by visibility.
+     *
+     * @param Visibility|value-of<Visibility> $visibility
      */
-    public function withPublished(bool $published): self
+    public function withVisibility(Visibility|string $visibility): self
     {
         $obj = clone $this;
-        $obj->published = $published;
-
-        return $obj;
-    }
-
-    /**
-     * Filter workflows by subcategory (e.g., 'due-diligence', 'litigation', 'mergers').
-     */
-    public function withSubCategory(string $subCategory): self
-    {
-        $obj = clone $this;
-        $obj->sub_category = $subCategory;
-
-        return $obj;
-    }
-
-    /**
-     * Filter workflows by type (e.g., 'document-review', 'contract-analysis', 'compliance-check').
-     */
-    public function withType(string $type): self
-    {
-        $obj = clone $this;
-        $obj->type = $type;
+        $obj['visibility'] = $visibility;
 
         return $obj;
     }
