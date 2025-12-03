@@ -14,7 +14,5 @@ interface StreamingContract
      *
      * @throws APIException
      */
-    public function getURL(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    public function getURL(?RequestOptions $requestOptions = null): mixed;
 }

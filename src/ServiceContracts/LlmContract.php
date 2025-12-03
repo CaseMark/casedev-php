@@ -14,7 +14,5 @@ interface LlmContract
      *
      * @throws APIException
      */
-    public function getConfig(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    public function getConfig(?RequestOptions $requestOptions = null): mixed;
 }
