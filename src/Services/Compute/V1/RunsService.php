@@ -28,7 +28,7 @@ final class RunsService implements RunsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['compute/v1/runs/%1$s', $id],
@@ -55,7 +55,7 @@ final class RunsService implements RunsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'compute/v1/runs',

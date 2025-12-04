@@ -42,7 +42,7 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s', $id, $objectID],
@@ -62,7 +62,7 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects', $id],
@@ -97,7 +97,7 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/objects/%2$s/presigned-url', $id, $objectID],
@@ -128,7 +128,7 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
@@ -158,7 +158,7 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/text', $id, $objectID],

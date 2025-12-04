@@ -45,7 +45,7 @@ final class ChatService implements ChatContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'llm/v1/chat/completions',

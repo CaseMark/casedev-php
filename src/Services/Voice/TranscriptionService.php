@@ -45,7 +45,7 @@ final class TranscriptionService implements TranscriptionContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'voice/transcription',
@@ -66,7 +66,7 @@ final class TranscriptionService implements TranscriptionContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): TranscriptionGetResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['voice/transcription/%1$s', $id],

@@ -27,7 +27,7 @@ final class GraphragService implements GraphragContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/graphrag/stats', $id],
@@ -47,7 +47,7 @@ final class GraphragService implements GraphragContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/graphrag/init', $id],

@@ -32,7 +32,7 @@ final class StreamingService implements StreamingContract
      */
     public function getURL(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'voice/streaming/url',
