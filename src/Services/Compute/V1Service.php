@@ -107,7 +107,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'compute/v1/deploy',
@@ -126,7 +126,7 @@ final class V1Service implements V1Contract
      */
     public function getPricing(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'compute/v1/pricing',
@@ -153,7 +153,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'compute/v1/usage',

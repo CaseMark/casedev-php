@@ -56,7 +56,7 @@ final class SpeakService implements SpeakContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'voice/v1/speak',
@@ -103,7 +103,7 @@ final class SpeakService implements SpeakContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'voice/v1/speak/stream',

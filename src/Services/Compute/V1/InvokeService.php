@@ -43,7 +43,7 @@ final class InvokeService implements InvokeContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['compute/v1/invoke/%1$s', $functionID],

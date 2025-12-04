@@ -31,7 +31,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['ocr/v1/%1$s', $id],
@@ -62,7 +62,7 @@ final class V1Service implements V1Contract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['ocr/v1/%1$s/download/%2$s', $id, $type],
@@ -97,7 +97,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'ocr/v1/process',

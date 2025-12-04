@@ -48,7 +48,7 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'compute/v1/secrets',
@@ -76,7 +76,7 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'compute/v1/secrets',
@@ -105,7 +105,7 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['compute/v1/secrets/%1$s', $group],
@@ -134,7 +134,7 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['compute/v1/secrets/%1$s', $group],
@@ -165,7 +165,7 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['compute/v1/secrets/%1$s', $group],

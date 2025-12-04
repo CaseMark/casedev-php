@@ -40,7 +40,7 @@ final class LlmService implements LlmContract
      */
     public function getConfig(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'llm/config',

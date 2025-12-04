@@ -61,7 +61,7 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'vault',
@@ -82,7 +82,7 @@ final class VaultService implements VaultContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s', $id],
@@ -101,7 +101,7 @@ final class VaultService implements VaultContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): VaultListResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'vault',
@@ -131,7 +131,7 @@ final class VaultService implements VaultContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/ingest/%2$s', $id, $objectID],
@@ -164,7 +164,7 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/search', $id],
@@ -199,7 +199,7 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/upload', $id],

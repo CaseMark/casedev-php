@@ -27,7 +27,7 @@ final class JobsService implements JobsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['convert/v1/jobs/%1$s', $id],
@@ -47,7 +47,7 @@ final class JobsService implements JobsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['convert/v1/jobs/%1$s', $id],

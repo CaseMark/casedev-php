@@ -37,7 +37,7 @@ final class EnvironmentsService implements EnvironmentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'compute/v1/environments',
@@ -58,7 +58,7 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['compute/v1/environments/%1$s', $name],
@@ -76,7 +76,7 @@ final class EnvironmentsService implements EnvironmentsContract
      */
     public function list(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'compute/v1/environments',
@@ -96,7 +96,7 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): EnvironmentDeleteResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['compute/v1/environments/%1$s', $name],
@@ -116,7 +116,7 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['compute/v1/environments/%1$s/default', $name],

@@ -57,7 +57,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'workflows/v1',
@@ -78,7 +78,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1GetResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['workflows/v1/%1$s', $id],
@@ -114,7 +114,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['workflows/v1/%1$s', $id],
@@ -144,7 +144,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'workflows/v1',
@@ -165,7 +165,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1DeleteResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['workflows/v1/%1$s', $id],
@@ -185,7 +185,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1DeployResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['workflows/v1/%1$s/deploy', $id],
@@ -211,7 +211,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['workflows/v1/%1$s/execute', $id],
@@ -242,7 +242,7 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['workflows/v1/%1$s/executions', $id],
@@ -263,7 +263,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1GetExecutionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['workflows/v1/executions/%1$s', $id],
@@ -283,7 +283,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1UndeployResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['workflows/v1/%1$s/deploy', $id],
