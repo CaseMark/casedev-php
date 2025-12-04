@@ -144,7 +144,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->execute('id', (object) []);
+        $result = $this->client->workflows->v1->execute('id', []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ExecuteResponse::class, $result);
