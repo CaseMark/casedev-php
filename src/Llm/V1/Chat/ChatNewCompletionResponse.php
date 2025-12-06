@@ -10,6 +10,7 @@ use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
+use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
 
 /**
@@ -67,7 +68,15 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Choice> $choices
+     * @param list<Choice|array{
+     *   finish_reason?: string|null, index?: int|null, message?: Message|null
+     * }> $choices
+     * @param Usage|array{
+     *   completion_tokens?: int|null,
+     *   cost?: float|null,
+     *   prompt_tokens?: int|null,
+     *   total_tokens?: int|null,
+     * } $usage
      */
     public static function with(
         ?string $id = null,
@@ -75,16 +84,16 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
         ?int $created = null,
         ?string $model = null,
         ?string $object = null,
-        ?Usage $usage = null,
+        Usage|array|null $usage = null,
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $choices && $obj->choices = $choices;
-        null !== $created && $obj->created = $created;
-        null !== $model && $obj->model = $model;
-        null !== $object && $obj->object = $object;
-        null !== $usage && $obj->usage = $usage;
+        null !== $id && $obj['id'] = $id;
+        null !== $choices && $obj['choices'] = $choices;
+        null !== $created && $obj['created'] = $created;
+        null !== $model && $obj['model'] = $model;
+        null !== $object && $obj['object'] = $object;
+        null !== $usage && $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -95,18 +104,20 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
-     * @param list<Choice> $choices
+     * @param list<Choice|array{
+     *   finish_reason?: string|null, index?: int|null, message?: Message|null
+     * }> $choices
      */
     public function withChoices(array $choices): self
     {
         $obj = clone $this;
-        $obj->choices = $choices;
+        $obj['choices'] = $choices;
 
         return $obj;
     }
@@ -117,7 +128,7 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
     public function withCreated(int $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -128,7 +139,7 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -136,15 +147,23 @@ final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
     public function withObject(string $object): self
     {
         $obj = clone $this;
-        $obj->object = $object;
+        $obj['object'] = $object;
 
         return $obj;
     }
 
-    public function withUsage(Usage $usage): self
+    /**
+     * @param Usage|array{
+     *   completion_tokens?: int|null,
+     *   cost?: float|null,
+     *   prompt_tokens?: int|null,
+     *   total_tokens?: int|null,
+     * } $usage
+     */
+    public function withUsage(Usage|array $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }

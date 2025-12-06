@@ -88,11 +88,11 @@ final class V1CreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->definition = $definition;
-        $obj->name = $name;
+        $obj['definition'] = $definition;
+        $obj['name'] = $name;
 
-        null !== $description && $obj->description = $description;
-        null !== $webhook_id && $obj->webhook_id = $webhook_id;
+        null !== $description && $obj['description'] = $description;
+        null !== $webhook_id && $obj['webhook_id'] = $webhook_id;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class V1CreateParams implements BaseModel
     public function withDefinition(mixed $definition): self
     {
         $obj = clone $this;
-        $obj->definition = $definition;
+        $obj['definition'] = $definition;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class V1CreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class V1CreateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class V1CreateParams implements BaseModel
     public function withWebhookID(string $webhookID): self
     {
         $obj = clone $this;
-        $obj->webhook_id = $webhookID;
+        $obj['webhook_id'] = $webhookID;
 
         return $obj;
     }

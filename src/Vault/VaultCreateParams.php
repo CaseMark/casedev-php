@@ -73,10 +73,10 @@ final class VaultCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
+        $obj['name'] = $name;
 
-        null !== $description && $obj->description = $description;
-        null !== $enableGraph && $obj->enableGraph = $enableGraph;
+        null !== $description && $obj['description'] = $description;
+        null !== $enableGraph && $obj['enableGraph'] = $enableGraph;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class VaultCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class VaultCreateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class VaultCreateParams implements BaseModel
     public function withEnableGraph(bool $enableGraph): self
     {
         $obj = clone $this;
-        $obj->enableGraph = $enableGraph;
+        $obj['enableGraph'] = $enableGraph;
 
         return $obj;
     }

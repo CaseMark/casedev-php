@@ -73,10 +73,10 @@ final class V1SearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->query = $query;
+        $obj['query'] = $query;
 
-        null !== $category && $obj->category = $category;
-        null !== $limit && $obj->limit = $limit;
+        null !== $category && $obj['category'] = $category;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class V1SearchParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class V1SearchParams implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class V1SearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

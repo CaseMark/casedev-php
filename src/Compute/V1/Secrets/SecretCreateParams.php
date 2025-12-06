@@ -79,10 +79,10 @@ final class SecretCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
+        $obj['name'] = $name;
 
-        null !== $description && $obj->description = $description;
-        null !== $env && $obj->env = $env;
+        null !== $description && $obj['description'] = $description;
+        null !== $env && $obj['env'] = $env;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class SecretCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class SecretCreateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class SecretCreateParams implements BaseModel
     public function withEnv(string $env): self
     {
         $obj = clone $this;
-        $obj->env = $env;
+        $obj['env'] = $env;
 
         return $obj;
     }

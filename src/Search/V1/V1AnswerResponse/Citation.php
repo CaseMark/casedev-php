@@ -56,11 +56,11 @@ final class Citation implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $publishedDate && $obj->publishedDate = $publishedDate;
-        null !== $text && $obj->text = $text;
-        null !== $title && $obj->title = $title;
-        null !== $url && $obj->url = $url;
+        null !== $id && $obj['id'] = $id;
+        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
+        null !== $text && $obj['text'] = $text;
+        null !== $title && $obj['title'] = $title;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class Citation implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class Citation implements BaseModel
     public function withPublishedDate(string $publishedDate): self
     {
         $obj = clone $this;
-        $obj->publishedDate = $publishedDate;
+        $obj['publishedDate'] = $publishedDate;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class Citation implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class Citation implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class Citation implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

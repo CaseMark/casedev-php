@@ -96,12 +96,12 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $domain && $obj->domain = $domain;
-        null !== $isDefault && $obj->isDefault = $isDefault;
-        null !== $name && $obj->name = $name;
-        null !== $slug && $obj->slug = $slug;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $isDefault && $obj['isDefault'] = $isDefault;
+        null !== $name && $obj['name'] = $name;
+        null !== $slug && $obj['slug'] = $slug;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -113,7 +113,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withIsDefault(bool $isDefault): self
     {
         $obj = clone $this;
-        $obj->isDefault = $isDefault;
+        $obj['isDefault'] = $isDefault;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class EnvironmentNewResponse implements BaseModel, ResponseConverter
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }

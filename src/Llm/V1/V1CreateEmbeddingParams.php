@@ -100,12 +100,12 @@ final class V1CreateEmbeddingParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->input = $input;
-        $obj->model = $model;
+        $obj['input'] = $input;
+        $obj['model'] = $model;
 
-        null !== $dimensions && $obj->dimensions = $dimensions;
+        null !== $dimensions && $obj['dimensions'] = $dimensions;
         null !== $encoding_format && $obj['encoding_format'] = $encoding_format;
-        null !== $user && $obj->user = $user;
+        null !== $user && $obj['user'] = $user;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     public function withInput(string|array $input): self
     {
         $obj = clone $this;
-        $obj->input = $input;
+        $obj['input'] = $input;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     public function withDimensions(int $dimensions): self
     {
         $obj = clone $this;
-        $obj->dimensions = $dimensions;
+        $obj['dimensions'] = $dimensions;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     public function withUser(string $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

@@ -43,14 +43,22 @@ final class VaultListResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Vault> $vaults
+     * @param list<Vault|array{
+     *   id?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   enableGraph?: bool|null,
+     *   name?: string|null,
+     *   totalBytes?: int|null,
+     *   totalObjects?: int|null,
+     * }> $vaults
      */
     public static function with(?int $total = null, ?array $vaults = null): self
     {
         $obj = new self;
 
-        null !== $total && $obj->total = $total;
-        null !== $vaults && $obj->vaults = $vaults;
+        null !== $total && $obj['total'] = $total;
+        null !== $vaults && $obj['vaults'] = $vaults;
 
         return $obj;
     }
@@ -61,18 +69,26 @@ final class VaultListResponse implements BaseModel, ResponseConverter
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
     /**
-     * @param list<Vault> $vaults
+     * @param list<Vault|array{
+     *   id?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   enableGraph?: bool|null,
+     *   name?: string|null,
+     *   totalBytes?: int|null,
+     *   totalObjects?: int|null,
+     * }> $vaults
      */
     public function withVaults(array $vaults): self
     {
         $obj = clone $this;
-        $obj->vaults = $vaults;
+        $obj['vaults'] = $vaults;
 
         return $obj;
     }

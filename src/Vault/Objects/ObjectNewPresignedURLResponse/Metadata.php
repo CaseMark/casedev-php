@@ -51,10 +51,10 @@ final class Metadata implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $bucket && $obj->bucket = $bucket;
-        null !== $contentType && $obj->contentType = $contentType;
-        null !== $region && $obj->region = $region;
-        null !== $sizeBytes && $obj->sizeBytes = $sizeBytes;
+        null !== $bucket && $obj['bucket'] = $bucket;
+        null !== $contentType && $obj['contentType'] = $contentType;
+        null !== $region && $obj['region'] = $region;
+        null !== $sizeBytes && $obj['sizeBytes'] = $sizeBytes;
 
         return $obj;
     }
@@ -62,7 +62,7 @@ final class Metadata implements BaseModel
     public function withBucket(string $bucket): self
     {
         $obj = clone $this;
-        $obj->bucket = $bucket;
+        $obj['bucket'] = $bucket;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class Metadata implements BaseModel
     public function withContentType(string $contentType): self
     {
         $obj = clone $this;
-        $obj->contentType = $contentType;
+        $obj['contentType'] = $contentType;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class Metadata implements BaseModel
     public function withRegion(string $region): self
     {
         $obj = clone $this;
-        $obj->region = $region;
+        $obj['region'] = $region;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class Metadata implements BaseModel
     public function withSizeBytes(int $sizeBytes): self
     {
         $obj = clone $this;
-        $obj->sizeBytes = $sizeBytes;
+        $obj['sizeBytes'] = $sizeBytes;
 
         return $obj;
     }

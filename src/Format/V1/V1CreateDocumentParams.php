@@ -10,6 +10,7 @@ use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
 use Casedev\Format\V1\V1CreateDocumentParams\Options;
+use Casedev\Format\V1\V1CreateDocumentParams\Options\Component;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 
 /**
@@ -21,7 +22,7 @@ use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
  *   content: string,
  *   output_format: OutputFormat|value-of<OutputFormat>,
  *   input_format?: InputFormat|value-of<InputFormat>,
- *   options?: Options,
+ *   options?: Options|array{components?: list<Component>|null},
  * }
  */
 final class V1CreateDocumentParams implements BaseModel
@@ -81,20 +82,21 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * @param OutputFormat|value-of<OutputFormat> $output_format
      * @param InputFormat|value-of<InputFormat> $input_format
+     * @param Options|array{components?: list<Component>|null} $options
      */
     public static function with(
         string $content,
         OutputFormat|string $output_format,
         InputFormat|string|null $input_format = null,
-        ?Options $options = null,
+        Options|array|null $options = null,
     ): self {
         $obj = new self;
 
-        $obj->content = $content;
+        $obj['content'] = $content;
         $obj['output_format'] = $output_format;
 
         null !== $input_format && $obj['input_format'] = $input_format;
-        null !== $options && $obj->options = $options;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -105,7 +107,7 @@ final class V1CreateDocumentParams implements BaseModel
     public function withContent(string $content): self
     {
         $obj = clone $this;
-        $obj->content = $content;
+        $obj['content'] = $content;
 
         return $obj;
     }
@@ -136,10 +138,13 @@ final class V1CreateDocumentParams implements BaseModel
         return $obj;
     }
 
-    public function withOptions(Options $options): self
+    /**
+     * @param Options|array{components?: list<Component>|null} $options
+     */
+    public function withOptions(Options|array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

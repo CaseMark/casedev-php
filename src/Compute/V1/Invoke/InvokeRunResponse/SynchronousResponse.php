@@ -72,10 +72,10 @@ final class SynchronousResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $duration && $obj->duration = $duration;
-        null !== $error && $obj->error = $error;
-        null !== $output && $obj->output = $output;
-        null !== $runId && $obj->runId = $runId;
+        null !== $duration && $obj['duration'] = $duration;
+        null !== $error && $obj['error'] = $error;
+        null !== $output && $obj['output'] = $output;
+        null !== $runId && $obj['runId'] = $runId;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -87,7 +87,7 @@ final class SynchronousResponse implements BaseModel
     public function withDuration(float $duration): self
     {
         $obj = clone $this;
-        $obj->duration = $duration;
+        $obj['duration'] = $duration;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class SynchronousResponse implements BaseModel
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class SynchronousResponse implements BaseModel
     public function withOutput(mixed $output): self
     {
         $obj = clone $this;
-        $obj->output = $output;
+        $obj['output'] = $output;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class SynchronousResponse implements BaseModel
     public function withRunID(string $runID): self
     {
         $obj = clone $this;
-        $obj->runId = $runID;
+        $obj['runId'] = $runID;
 
         return $obj;
     }

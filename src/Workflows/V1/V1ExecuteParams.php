@@ -42,7 +42,7 @@ final class V1ExecuteParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $body && $obj->body = $body;
+        null !== $body && $obj['body'] = $body;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class V1ExecuteParams implements BaseModel
     public function withBody(mixed $body): self
     {
         $obj = clone $this;
-        $obj->body = $body;
+        $obj['body'] = $body;
 
         return $obj;
     }

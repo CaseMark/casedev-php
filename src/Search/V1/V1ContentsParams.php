@@ -135,17 +135,17 @@ final class V1ContentsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->urls = $urls;
+        $obj['urls'] = $urls;
 
-        null !== $context && $obj->context = $context;
-        null !== $extras && $obj->extras = $extras;
-        null !== $highlights && $obj->highlights = $highlights;
-        null !== $livecrawl && $obj->livecrawl = $livecrawl;
-        null !== $livecrawlTimeout && $obj->livecrawlTimeout = $livecrawlTimeout;
-        null !== $subpages && $obj->subpages = $subpages;
-        null !== $subpageTarget && $obj->subpageTarget = $subpageTarget;
-        null !== $summary && $obj->summary = $summary;
-        null !== $text && $obj->text = $text;
+        null !== $context && $obj['context'] = $context;
+        null !== $extras && $obj['extras'] = $extras;
+        null !== $highlights && $obj['highlights'] = $highlights;
+        null !== $livecrawl && $obj['livecrawl'] = $livecrawl;
+        null !== $livecrawlTimeout && $obj['livecrawlTimeout'] = $livecrawlTimeout;
+        null !== $subpages && $obj['subpages'] = $subpages;
+        null !== $subpageTarget && $obj['subpageTarget'] = $subpageTarget;
+        null !== $summary && $obj['summary'] = $summary;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class V1ContentsParams implements BaseModel
     public function withURLs(array $urls): self
     {
         $obj = clone $this;
-        $obj->urls = $urls;
+        $obj['urls'] = $urls;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class V1ContentsParams implements BaseModel
     public function withContext(string $context): self
     {
         $obj = clone $this;
-        $obj->context = $context;
+        $obj['context'] = $context;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class V1ContentsParams implements BaseModel
     public function withExtras(mixed $extras): self
     {
         $obj = clone $this;
-        $obj->extras = $extras;
+        $obj['extras'] = $extras;
 
         return $obj;
     }
@@ -191,7 +191,7 @@ final class V1ContentsParams implements BaseModel
     public function withHighlights(bool $highlights): self
     {
         $obj = clone $this;
-        $obj->highlights = $highlights;
+        $obj['highlights'] = $highlights;
 
         return $obj;
     }
@@ -202,7 +202,7 @@ final class V1ContentsParams implements BaseModel
     public function withLivecrawl(bool $livecrawl): self
     {
         $obj = clone $this;
-        $obj->livecrawl = $livecrawl;
+        $obj['livecrawl'] = $livecrawl;
 
         return $obj;
     }
@@ -213,7 +213,7 @@ final class V1ContentsParams implements BaseModel
     public function withLivecrawlTimeout(int $livecrawlTimeout): self
     {
         $obj = clone $this;
-        $obj->livecrawlTimeout = $livecrawlTimeout;
+        $obj['livecrawlTimeout'] = $livecrawlTimeout;
 
         return $obj;
     }
@@ -224,7 +224,7 @@ final class V1ContentsParams implements BaseModel
     public function withSubpages(bool $subpages): self
     {
         $obj = clone $this;
-        $obj->subpages = $subpages;
+        $obj['subpages'] = $subpages;
 
         return $obj;
     }
@@ -235,7 +235,7 @@ final class V1ContentsParams implements BaseModel
     public function withSubpageTarget(int $subpageTarget): self
     {
         $obj = clone $this;
-        $obj->subpageTarget = $subpageTarget;
+        $obj['subpageTarget'] = $subpageTarget;
 
         return $obj;
     }
@@ -246,7 +246,7 @@ final class V1ContentsParams implements BaseModel
     public function withSummary(bool $summary): self
     {
         $obj = clone $this;
-        $obj->summary = $summary;
+        $obj['summary'] = $summary;
 
         return $obj;
     }
@@ -257,7 +257,7 @@ final class V1ContentsParams implements BaseModel
     public function withText(bool $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

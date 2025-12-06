@@ -37,24 +37,38 @@ final class V1ListExecutionsResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Execution> $executions
+     * @param list<Execution|array{
+     *   id?: string|null,
+     *   completedAt?: string|null,
+     *   durationMs?: int|null,
+     *   startedAt?: string|null,
+     *   status?: string|null,
+     *   triggerType?: string|null,
+     * }> $executions
      */
     public static function with(?array $executions = null): self
     {
         $obj = new self;
 
-        null !== $executions && $obj->executions = $executions;
+        null !== $executions && $obj['executions'] = $executions;
 
         return $obj;
     }
 
     /**
-     * @param list<Execution> $executions
+     * @param list<Execution|array{
+     *   id?: string|null,
+     *   completedAt?: string|null,
+     *   durationMs?: int|null,
+     *   startedAt?: string|null,
+     *   status?: string|null,
+     *   triggerType?: string|null,
+     * }> $executions
      */
     public function withExecutions(array $executions): self
     {
         $obj = clone $this;
-        $obj->executions = $executions;
+        $obj['executions'] = $executions;
 
         return $obj;
     }

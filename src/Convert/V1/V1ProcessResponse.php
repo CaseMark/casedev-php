@@ -62,8 +62,8 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $job_id && $obj->job_id = $job_id;
-        null !== $message && $obj->message = $message;
+        null !== $job_id && $obj['job_id'] = $job_id;
+        null !== $message && $obj['message'] = $message;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -75,7 +75,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withJobID(string $jobID): self
     {
         $obj = clone $this;
-        $obj->job_id = $jobID;
+        $obj['job_id'] = $jobID;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }

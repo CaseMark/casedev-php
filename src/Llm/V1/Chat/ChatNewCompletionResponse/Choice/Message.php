@@ -38,8 +38,8 @@ final class Message implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $content && $obj->content = $content;
-        null !== $role && $obj->role = $role;
+        null !== $content && $obj['content'] = $content;
+        null !== $role && $obj['role'] = $role;
 
         return $obj;
     }
@@ -47,7 +47,7 @@ final class Message implements BaseModel
     public function withContent(string $content): self
     {
         $obj = clone $this;
-        $obj->content = $content;
+        $obj['content'] = $content;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class Message implements BaseModel
     public function withRole(string $role): self
     {
         $obj = clone $this;
-        $obj->role = $role;
+        $obj['role'] = $role;
 
         return $obj;
     }

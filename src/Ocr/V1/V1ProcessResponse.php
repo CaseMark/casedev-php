@@ -96,12 +96,12 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $created_at && $obj->created_at = $created_at;
-        null !== $document_id && $obj->document_id = $document_id;
-        null !== $engine && $obj->engine = $engine;
-        null !== $estimated_completion && $obj->estimated_completion = $estimated_completion;
-        null !== $page_count && $obj->page_count = $page_count;
+        null !== $id && $obj['id'] = $id;
+        null !== $created_at && $obj['created_at'] = $created_at;
+        null !== $document_id && $obj['document_id'] = $document_id;
+        null !== $engine && $obj['engine'] = $engine;
+        null !== $estimated_completion && $obj['estimated_completion'] = $estimated_completion;
+        null !== $page_count && $obj['page_count'] = $page_count;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -113,7 +113,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->created_at = $createdAt;
+        $obj['created_at'] = $createdAt;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withDocumentID(string $documentID): self
     {
         $obj = clone $this;
-        $obj->document_id = $documentID;
+        $obj['document_id'] = $documentID;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withEngine(string $engine): self
     {
         $obj = clone $this;
-        $obj->engine = $engine;
+        $obj['engine'] = $engine;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
         \DateTimeInterface $estimatedCompletion
     ): self {
         $obj = clone $this;
-        $obj->estimated_completion = $estimatedCompletion;
+        $obj['estimated_completion'] = $estimatedCompletion;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class V1ProcessResponse implements BaseModel, ResponseConverter
     public function withPageCount(int $pageCount): self
     {
         $obj = clone $this;
-        $obj->page_count = $pageCount;
+        $obj['page_count'] = $pageCount;
 
         return $obj;
     }

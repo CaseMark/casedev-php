@@ -83,12 +83,12 @@ final class Result implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $highlights && $obj->highlights = $highlights;
-        null !== $metadata && $obj->metadata = $metadata;
-        null !== $summary && $obj->summary = $summary;
-        null !== $text && $obj->text = $text;
-        null !== $title && $obj->title = $title;
-        null !== $url && $obj->url = $url;
+        null !== $highlights && $obj['highlights'] = $highlights;
+        null !== $metadata && $obj['metadata'] = $metadata;
+        null !== $summary && $obj['summary'] = $summary;
+        null !== $text && $obj['text'] = $text;
+        null !== $title && $obj['title'] = $title;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class Result implements BaseModel
     public function withHighlights(array $highlights): self
     {
         $obj = clone $this;
-        $obj->highlights = $highlights;
+        $obj['highlights'] = $highlights;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class Result implements BaseModel
     public function withMetadata(mixed $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class Result implements BaseModel
     public function withSummary(string $summary): self
     {
         $obj = clone $this;
-        $obj->summary = $summary;
+        $obj['summary'] = $summary;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class Result implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class Result implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class Result implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

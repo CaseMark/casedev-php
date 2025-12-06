@@ -35,13 +35,18 @@ final class Options implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Component> $components
+     * @param list<Component|array{
+     *   content?: string|null,
+     *   styles?: mixed,
+     *   templateId?: string|null,
+     *   variables?: mixed,
+     * }> $components
      */
     public static function with(?array $components = null): self
     {
         $obj = new self;
 
-        null !== $components && $obj->components = $components;
+        null !== $components && $obj['components'] = $components;
 
         return $obj;
     }
@@ -49,12 +54,17 @@ final class Options implements BaseModel
     /**
      * Template components with variables.
      *
-     * @param list<Component> $components
+     * @param list<Component|array{
+     *   content?: string|null,
+     *   styles?: mixed,
+     *   templateId?: string|null,
+     *   variables?: mixed,
+     * }> $components
      */
     public function withComponents(array $components): self
     {
         $obj = clone $this;
-        $obj->components = $components;
+        $obj['components'] = $components;
 
         return $obj;
     }

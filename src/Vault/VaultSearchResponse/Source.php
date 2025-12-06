@@ -66,13 +66,13 @@ final class Source implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $chunkCount && $obj->chunkCount = $chunkCount;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $filename && $obj->filename = $filename;
-        null !== $ingestionCompletedAt && $obj->ingestionCompletedAt = $ingestionCompletedAt;
-        null !== $pageCount && $obj->pageCount = $pageCount;
-        null !== $textLength && $obj->textLength = $textLength;
+        null !== $id && $obj['id'] = $id;
+        null !== $chunkCount && $obj['chunkCount'] = $chunkCount;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $filename && $obj['filename'] = $filename;
+        null !== $ingestionCompletedAt && $obj['ingestionCompletedAt'] = $ingestionCompletedAt;
+        null !== $pageCount && $obj['pageCount'] = $pageCount;
+        null !== $textLength && $obj['textLength'] = $textLength;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class Source implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class Source implements BaseModel
     public function withChunkCount(int $chunkCount): self
     {
         $obj = clone $this;
-        $obj->chunkCount = $chunkCount;
+        $obj['chunkCount'] = $chunkCount;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class Source implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class Source implements BaseModel
     public function withFilename(string $filename): self
     {
         $obj = clone $this;
-        $obj->filename = $filename;
+        $obj['filename'] = $filename;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class Source implements BaseModel
         \DateTimeInterface $ingestionCompletedAt
     ): self {
         $obj = clone $this;
-        $obj->ingestionCompletedAt = $ingestionCompletedAt;
+        $obj['ingestionCompletedAt'] = $ingestionCompletedAt;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class Source implements BaseModel
     public function withPageCount(int $pageCount): self
     {
         $obj = clone $this;
-        $obj->pageCount = $pageCount;
+        $obj['pageCount'] = $pageCount;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class Source implements BaseModel
     public function withTextLength(int $textLength): self
     {
         $obj = clone $this;
-        $obj->textLength = $textLength;
+        $obj['textLength'] = $textLength;
 
         return $obj;
     }

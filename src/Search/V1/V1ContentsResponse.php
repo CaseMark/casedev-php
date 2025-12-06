@@ -35,24 +35,38 @@ final class V1ContentsResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   highlights?: list<string>|null,
+     *   metadata?: mixed,
+     *   summary?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public static function with(?array $results = null): self
     {
         $obj = new self;
 
-        null !== $results && $obj->results = $results;
+        null !== $results && $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   highlights?: list<string>|null,
+     *   metadata?: mixed,
+     *   summary?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

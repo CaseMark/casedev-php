@@ -91,12 +91,12 @@ final class VaultUploadParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contentType = $contentType;
-        $obj->filename = $filename;
+        $obj['contentType'] = $contentType;
+        $obj['filename'] = $filename;
 
-        null !== $auto_index && $obj->auto_index = $auto_index;
-        null !== $metadata && $obj->metadata = $metadata;
-        null !== $sizeBytes && $obj->sizeBytes = $sizeBytes;
+        null !== $auto_index && $obj['auto_index'] = $auto_index;
+        null !== $metadata && $obj['metadata'] = $metadata;
+        null !== $sizeBytes && $obj['sizeBytes'] = $sizeBytes;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class VaultUploadParams implements BaseModel
     public function withContentType(string $contentType): self
     {
         $obj = clone $this;
-        $obj->contentType = $contentType;
+        $obj['contentType'] = $contentType;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class VaultUploadParams implements BaseModel
     public function withFilename(string $filename): self
     {
         $obj = clone $this;
-        $obj->filename = $filename;
+        $obj['filename'] = $filename;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class VaultUploadParams implements BaseModel
     public function withAutoIndex(bool $autoIndex): self
     {
         $obj = clone $this;
-        $obj->auto_index = $autoIndex;
+        $obj['auto_index'] = $autoIndex;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class VaultUploadParams implements BaseModel
     public function withMetadata(mixed $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class VaultUploadParams implements BaseModel
     public function withSizeBytes(float $sizeBytes): self
     {
         $obj = clone $this;
-        $obj->sizeBytes = $sizeBytes;
+        $obj['sizeBytes'] = $sizeBytes;
 
         return $obj;
     }

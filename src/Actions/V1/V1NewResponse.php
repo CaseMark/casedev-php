@@ -90,17 +90,17 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $definition && $obj->definition = $definition;
-        null !== $description && $obj->description = $description;
-        null !== $isActive && $obj->isActive = $isActive;
-        null !== $name && $obj->name = $name;
-        null !== $organizationId && $obj->organizationId = $organizationId;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $version && $obj->version = $version;
-        null !== $webhookEndpointId && $obj->webhookEndpointId = $webhookEndpointId;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdBy && $obj['createdBy'] = $createdBy;
+        null !== $definition && $obj['definition'] = $definition;
+        null !== $description && $obj['description'] = $description;
+        null !== $isActive && $obj['isActive'] = $isActive;
+        null !== $name && $obj['name'] = $name;
+        null !== $organizationId && $obj['organizationId'] = $organizationId;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $version && $obj['version'] = $version;
+        null !== $webhookEndpointId && $obj['webhookEndpointId'] = $webhookEndpointId;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(string $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withDefinition(mixed $definition): self
     {
         $obj = clone $this;
-        $obj->definition = $definition;
+        $obj['definition'] = $definition;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withIsActive(bool $isActive): self
     {
         $obj = clone $this;
-        $obj->isActive = $isActive;
+        $obj['isActive'] = $isActive;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -164,7 +164,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withOrganizationID(string $organizationID): self
     {
         $obj = clone $this;
-        $obj->organizationId = $organizationID;
+        $obj['organizationId'] = $organizationID;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withUpdatedAt(string $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withVersion(float $version): self
     {
         $obj = clone $this;
-        $obj->version = $version;
+        $obj['version'] = $version;
 
         return $obj;
     }
@@ -188,7 +188,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withWebhookEndpointID(string $webhookEndpointID): self
     {
         $obj = clone $this;
-        $obj->webhookEndpointId = $webhookEndpointID;
+        $obj['webhookEndpointId'] = $webhookEndpointID;
 
         return $obj;
     }

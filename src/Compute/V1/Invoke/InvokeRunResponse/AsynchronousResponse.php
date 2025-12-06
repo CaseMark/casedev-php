@@ -54,8 +54,8 @@ final class AsynchronousResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $logsUrl && $obj->logsUrl = $logsUrl;
-        null !== $runId && $obj->runId = $runId;
+        null !== $logsUrl && $obj['logsUrl'] = $logsUrl;
+        null !== $runId && $obj['runId'] = $runId;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -67,7 +67,7 @@ final class AsynchronousResponse implements BaseModel
     public function withLogsURL(string $logsURL): self
     {
         $obj = clone $this;
-        $obj->logsUrl = $logsURL;
+        $obj['logsUrl'] = $logsURL;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class AsynchronousResponse implements BaseModel
     public function withRunID(string $runID): self
     {
         $obj = clone $this;
-        $obj->runId = $runID;
+        $obj['runId'] = $runID;
 
         return $obj;
     }

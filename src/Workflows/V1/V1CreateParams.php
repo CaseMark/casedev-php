@@ -118,12 +118,12 @@ final class V1CreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
+        $obj['name'] = $name;
 
-        null !== $description && $obj->description = $description;
-        null !== $edges && $obj->edges = $edges;
-        null !== $nodes && $obj->nodes = $nodes;
-        null !== $triggerConfig && $obj->triggerConfig = $triggerConfig;
+        null !== $description && $obj['description'] = $description;
+        null !== $edges && $obj['edges'] = $edges;
+        null !== $nodes && $obj['nodes'] = $nodes;
+        null !== $triggerConfig && $obj['triggerConfig'] = $triggerConfig;
         null !== $triggerType && $obj['triggerType'] = $triggerType;
         null !== $visibility && $obj['visibility'] = $visibility;
 
@@ -136,7 +136,7 @@ final class V1CreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -147,7 +147,7 @@ final class V1CreateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class V1CreateParams implements BaseModel
     public function withEdges(array $edges): self
     {
         $obj = clone $this;
-        $obj->edges = $edges;
+        $obj['edges'] = $edges;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class V1CreateParams implements BaseModel
     public function withNodes(array $nodes): self
     {
         $obj = clone $this;
-        $obj->nodes = $nodes;
+        $obj['nodes'] = $nodes;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class V1CreateParams implements BaseModel
     public function withTriggerConfig(mixed $triggerConfig): self
     {
         $obj = clone $this;
-        $obj->triggerConfig = $triggerConfig;
+        $obj['triggerConfig'] = $triggerConfig;
 
         return $obj;
     }

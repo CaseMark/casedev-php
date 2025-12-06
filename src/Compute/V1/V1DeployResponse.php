@@ -83,12 +83,12 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $deploymentId && $obj->deploymentId = $deploymentId;
-        null !== $environment && $obj->environment = $environment;
-        null !== $runtime && $obj->runtime = $runtime;
-        null !== $status && $obj->status = $status;
-        null !== $url && $obj->url = $url;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $deploymentId && $obj['deploymentId'] = $deploymentId;
+        null !== $environment && $obj['environment'] = $environment;
+        null !== $runtime && $obj['runtime'] = $runtime;
+        null !== $status && $obj['status'] = $status;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withDeploymentID(string $deploymentID): self
     {
         $obj = clone $this;
-        $obj->deploymentId = $deploymentID;
+        $obj['deploymentId'] = $deploymentID;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withEnvironment(string $environment): self
     {
         $obj = clone $this;
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withRuntime(string $runtime): self
     {
         $obj = clone $this;
-        $obj->runtime = $runtime;
+        $obj['runtime'] = $runtime;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

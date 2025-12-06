@@ -150,18 +150,18 @@ final class V1AnswerParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->query = $query;
+        $obj['query'] = $query;
 
-        null !== $excludeDomains && $obj->excludeDomains = $excludeDomains;
-        null !== $includeDomains && $obj->includeDomains = $includeDomains;
-        null !== $maxTokens && $obj->maxTokens = $maxTokens;
-        null !== $model && $obj->model = $model;
-        null !== $numResults && $obj->numResults = $numResults;
+        null !== $excludeDomains && $obj['excludeDomains'] = $excludeDomains;
+        null !== $includeDomains && $obj['includeDomains'] = $includeDomains;
+        null !== $maxTokens && $obj['maxTokens'] = $maxTokens;
+        null !== $model && $obj['model'] = $model;
+        null !== $numResults && $obj['numResults'] = $numResults;
         null !== $searchType && $obj['searchType'] = $searchType;
-        null !== $stream && $obj->stream = $stream;
-        null !== $temperature && $obj->temperature = $temperature;
-        null !== $text && $obj->text = $text;
-        null !== $useCustomLLM && $obj->useCustomLLM = $useCustomLLM;
+        null !== $stream && $obj['stream'] = $stream;
+        null !== $temperature && $obj['temperature'] = $temperature;
+        null !== $text && $obj['text'] = $text;
+        null !== $useCustomLLM && $obj['useCustomLLM'] = $useCustomLLM;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class V1AnswerParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class V1AnswerParams implements BaseModel
     public function withExcludeDomains(array $excludeDomains): self
     {
         $obj = clone $this;
-        $obj->excludeDomains = $excludeDomains;
+        $obj['excludeDomains'] = $excludeDomains;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class V1AnswerParams implements BaseModel
     public function withIncludeDomains(array $includeDomains): self
     {
         $obj = clone $this;
-        $obj->includeDomains = $includeDomains;
+        $obj['includeDomains'] = $includeDomains;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class V1AnswerParams implements BaseModel
     public function withMaxTokens(int $maxTokens): self
     {
         $obj = clone $this;
-        $obj->maxTokens = $maxTokens;
+        $obj['maxTokens'] = $maxTokens;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class V1AnswerParams implements BaseModel
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -231,7 +231,7 @@ final class V1AnswerParams implements BaseModel
     public function withNumResults(int $numResults): self
     {
         $obj = clone $this;
-        $obj->numResults = $numResults;
+        $obj['numResults'] = $numResults;
 
         return $obj;
     }
@@ -255,7 +255,7 @@ final class V1AnswerParams implements BaseModel
     public function withStream(bool $stream): self
     {
         $obj = clone $this;
-        $obj->stream = $stream;
+        $obj['stream'] = $stream;
 
         return $obj;
     }
@@ -266,7 +266,7 @@ final class V1AnswerParams implements BaseModel
     public function withTemperature(float $temperature): self
     {
         $obj = clone $this;
-        $obj->temperature = $temperature;
+        $obj['temperature'] = $temperature;
 
         return $obj;
     }
@@ -277,7 +277,7 @@ final class V1AnswerParams implements BaseModel
     public function withText(bool $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -288,7 +288,7 @@ final class V1AnswerParams implements BaseModel
     public function withUseCustomLlm(bool $useCustomLlm): self
     {
         $obj = clone $this;
-        $obj->useCustomLLM = $useCustomLlm;
+        $obj['useCustomLLM'] = $useCustomLlm;
 
         return $obj;
     }

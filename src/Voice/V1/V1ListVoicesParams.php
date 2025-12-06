@@ -122,12 +122,12 @@ final class V1ListVoicesParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $category && $obj->category = $category;
-        null !== $collection_id && $obj->collection_id = $collection_id;
-        null !== $include_total_count && $obj->include_total_count = $include_total_count;
-        null !== $next_page_token && $obj->next_page_token = $next_page_token;
-        null !== $page_size && $obj->page_size = $page_size;
-        null !== $search && $obj->search = $search;
+        null !== $category && $obj['category'] = $category;
+        null !== $collection_id && $obj['collection_id'] = $collection_id;
+        null !== $include_total_count && $obj['include_total_count'] = $include_total_count;
+        null !== $next_page_token && $obj['next_page_token'] = $next_page_token;
+        null !== $page_size && $obj['page_size'] = $page_size;
+        null !== $search && $obj['search'] = $search;
         null !== $sort && $obj['sort'] = $sort;
         null !== $sort_direction && $obj['sort_direction'] = $sort_direction;
         null !== $voice_type && $obj['voice_type'] = $voice_type;
@@ -141,7 +141,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withCollectionID(string $collectionID): self
     {
         $obj = clone $this;
-        $obj->collection_id = $collectionID;
+        $obj['collection_id'] = $collectionID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withIncludeTotalCount(bool $includeTotalCount): self
     {
         $obj = clone $this;
-        $obj->include_total_count = $includeTotalCount;
+        $obj['include_total_count'] = $includeTotalCount;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withNextPageToken(string $nextPageToken): self
     {
         $obj = clone $this;
-        $obj->next_page_token = $nextPageToken;
+        $obj['next_page_token'] = $nextPageToken;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withPageSize(int $pageSize): self
     {
         $obj = clone $this;
-        $obj->page_size = $pageSize;
+        $obj['page_size'] = $pageSize;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withSearch(string $search): self
     {
         $obj = clone $this;
-        $obj->search = $search;
+        $obj['search'] = $search;
 
         return $obj;
     }

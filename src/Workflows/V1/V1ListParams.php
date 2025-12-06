@@ -64,8 +64,8 @@ final class V1ListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $offset && $obj->offset = $offset;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $offset && $obj['offset'] = $offset;
         null !== $visibility && $obj['visibility'] = $visibility;
 
         return $obj;
@@ -77,7 +77,7 @@ final class V1ListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class V1ListParams implements BaseModel
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }

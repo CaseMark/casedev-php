@@ -77,11 +77,15 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Instructions|array{
+     *   headers?: mixed, method?: string|null, note?: string|null
+     * } $instructions
      */
     public static function with(
         ?bool $auto_index = null,
         ?float $expiresIn = null,
-        ?Instructions $instructions = null,
+        Instructions|array|null $instructions = null,
         ?string $next_step = null,
         ?string $objectId = null,
         ?string $s3Key = null,
@@ -89,13 +93,13 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $auto_index && $obj->auto_index = $auto_index;
-        null !== $expiresIn && $obj->expiresIn = $expiresIn;
-        null !== $instructions && $obj->instructions = $instructions;
-        null !== $next_step && $obj->next_step = $next_step;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $s3Key && $obj->s3Key = $s3Key;
-        null !== $uploadUrl && $obj->uploadUrl = $uploadUrl;
+        null !== $auto_index && $obj['auto_index'] = $auto_index;
+        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
+        null !== $instructions && $obj['instructions'] = $instructions;
+        null !== $next_step && $obj['next_step'] = $next_step;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $s3Key && $obj['s3Key'] = $s3Key;
+        null !== $uploadUrl && $obj['uploadUrl'] = $uploadUrl;
 
         return $obj;
     }
@@ -106,7 +110,7 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withAutoIndex(bool $autoIndex): self
     {
         $obj = clone $this;
-        $obj->auto_index = $autoIndex;
+        $obj['auto_index'] = $autoIndex;
 
         return $obj;
     }
@@ -117,15 +121,20 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withExpiresIn(float $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj['expiresIn'] = $expiresIn;
 
         return $obj;
     }
 
-    public function withInstructions(Instructions $instructions): self
+    /**
+     * @param Instructions|array{
+     *   headers?: mixed, method?: string|null, note?: string|null
+     * } $instructions
+     */
+    public function withInstructions(Instructions|array $instructions): self
     {
         $obj = clone $this;
-        $obj->instructions = $instructions;
+        $obj['instructions'] = $instructions;
 
         return $obj;
     }
@@ -136,7 +145,7 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withNextStep(?string $nextStep): self
     {
         $obj = clone $this;
-        $obj->next_step = $nextStep;
+        $obj['next_step'] = $nextStep;
 
         return $obj;
     }
@@ -147,7 +156,7 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -158,7 +167,7 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withS3Key(string $s3Key): self
     {
         $obj = clone $this;
-        $obj->s3Key = $s3Key;
+        $obj['s3Key'] = $s3Key;
 
         return $obj;
     }
@@ -169,7 +178,7 @@ final class VaultUploadResponse implements BaseModel, ResponseConverter
     public function withUploadURL(string $uploadURL): self
     {
         $obj = clone $this;
-        $obj->uploadUrl = $uploadURL;
+        $obj['uploadUrl'] = $uploadURL;
 
         return $obj;
     }

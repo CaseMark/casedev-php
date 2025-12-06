@@ -45,7 +45,15 @@ final class V1SimilarResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   domain?: string|null,
+     *   publishedDate?: string|null,
+     *   similarityScore?: float|null,
+     *   snippet?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public static function with(
         ?float $processingTime = null,
@@ -54,9 +62,9 @@ final class V1SimilarResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $processingTime && $obj->processingTime = $processingTime;
-        null !== $results && $obj->results = $results;
-        null !== $totalResults && $obj->totalResults = $totalResults;
+        null !== $processingTime && $obj['processingTime'] = $processingTime;
+        null !== $results && $obj['results'] = $results;
+        null !== $totalResults && $obj['totalResults'] = $totalResults;
 
         return $obj;
     }
@@ -64,18 +72,26 @@ final class V1SimilarResponse implements BaseModel, ResponseConverter
     public function withProcessingTime(float $processingTime): self
     {
         $obj = clone $this;
-        $obj->processingTime = $processingTime;
+        $obj['processingTime'] = $processingTime;
 
         return $obj;
     }
 
     /**
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   domain?: string|null,
+     *   publishedDate?: string|null,
+     *   similarityScore?: float|null,
+     *   snippet?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -83,7 +99,7 @@ final class V1SimilarResponse implements BaseModel, ResponseConverter
     public function withTotalResults(int $totalResults): self
     {
         $obj = clone $this;
-        $obj->totalResults = $totalResults;
+        $obj['totalResults'] = $totalResults;
 
         return $obj;
     }

@@ -9,6 +9,7 @@ use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Templates\V1\V1ExecuteParams\Options;
+use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
 
 /**
  * Execute a pre-built workflow with custom input data. Workflows automate common legal document processing tasks like contract analysis, due diligence reviews, and document classification.
@@ -22,7 +23,10 @@ use Casedev\Templates\V1\V1ExecuteParams\Options;
  *
  * @see Casedev\Services\Templates\V1Service::execute()
  *
- * @phpstan-type V1ExecuteParamsShape = array{input: mixed, options?: Options}
+ * @phpstan-type V1ExecuteParamsShape = array{
+ *   input: mixed,
+ *   options?: Options|array{format?: value-of<Format>|null, model?: string|null},
+ * }
  */
 final class V1ExecuteParams implements BaseModel
 {
@@ -62,14 +66,20 @@ final class V1ExecuteParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Options|array{
+     *   format?: value-of<Format>|null, model?: string|null
+     * } $options
      */
-    public static function with(mixed $input, ?Options $options = null): self
-    {
+    public static function with(
+        mixed $input,
+        Options|array|null $options = null
+    ): self {
         $obj = new self;
 
-        $obj->input = $input;
+        $obj['input'] = $input;
 
-        null !== $options && $obj->options = $options;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -80,15 +90,20 @@ final class V1ExecuteParams implements BaseModel
     public function withInput(mixed $input): self
     {
         $obj = clone $this;
-        $obj->input = $input;
+        $obj['input'] = $input;
 
         return $obj;
     }
 
-    public function withOptions(Options $options): self
+    /**
+     * @param Options|array{
+     *   format?: value-of<Format>|null, model?: string|null
+     * } $options
+     */
+    public function withOptions(Options|array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

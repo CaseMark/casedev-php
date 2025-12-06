@@ -79,11 +79,11 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $name && $obj->name = $name;
-        null !== $type && $obj->type = $type;
-        null !== $variables && $obj->variables = $variables;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $name && $obj['name'] = $name;
+        null !== $type && $obj['type'] = $type;
+        null !== $variables && $obj['variables'] = $variables;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class TemplateNewResponse implements BaseModel, ResponseConverter
     public function withVariables(array $variables): self
     {
         $obj = clone $this;
-        $obj->variables = $variables;
+        $obj['variables'] = $variables;
 
         return $obj;
     }

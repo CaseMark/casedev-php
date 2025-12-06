@@ -87,13 +87,13 @@ final class Vault implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $description && $obj->description = $description;
-        null !== $enableGraph && $obj->enableGraph = $enableGraph;
-        null !== $name && $obj->name = $name;
-        null !== $totalBytes && $obj->totalBytes = $totalBytes;
-        null !== $totalObjects && $obj->totalObjects = $totalObjects;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $enableGraph && $obj['enableGraph'] = $enableGraph;
+        null !== $name && $obj['name'] = $name;
+        null !== $totalBytes && $obj['totalBytes'] = $totalBytes;
+        null !== $totalObjects && $obj['totalObjects'] = $totalObjects;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class Vault implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class Vault implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class Vault implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class Vault implements BaseModel
     public function withEnableGraph(bool $enableGraph): self
     {
         $obj = clone $this;
-        $obj->enableGraph = $enableGraph;
+        $obj['enableGraph'] = $enableGraph;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class Vault implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class Vault implements BaseModel
     public function withTotalBytes(int $totalBytes): self
     {
         $obj = clone $this;
-        $obj->totalBytes = $totalBytes;
+        $obj['totalBytes'] = $totalBytes;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class Vault implements BaseModel
     public function withTotalObjects(int $totalObjects): self
     {
         $obj = clone $this;
-        $obj->totalObjects = $totalObjects;
+        $obj['totalObjects'] = $totalObjects;
 
         return $obj;
     }

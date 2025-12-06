@@ -54,10 +54,10 @@ final class Usage implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $completion_tokens && $obj->completion_tokens = $completion_tokens;
-        null !== $cost && $obj->cost = $cost;
-        null !== $prompt_tokens && $obj->prompt_tokens = $prompt_tokens;
-        null !== $total_tokens && $obj->total_tokens = $total_tokens;
+        null !== $completion_tokens && $obj['completion_tokens'] = $completion_tokens;
+        null !== $cost && $obj['cost'] = $cost;
+        null !== $prompt_tokens && $obj['prompt_tokens'] = $prompt_tokens;
+        null !== $total_tokens && $obj['total_tokens'] = $total_tokens;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class Usage implements BaseModel
     public function withCompletionTokens(int $completionTokens): self
     {
         $obj = clone $this;
-        $obj->completion_tokens = $completionTokens;
+        $obj['completion_tokens'] = $completionTokens;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class Usage implements BaseModel
     public function withCost(float $cost): self
     {
         $obj = clone $this;
-        $obj->cost = $cost;
+        $obj['cost'] = $cost;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class Usage implements BaseModel
     public function withPromptTokens(int $promptTokens): self
     {
         $obj = clone $this;
-        $obj->prompt_tokens = $promptTokens;
+        $obj['prompt_tokens'] = $promptTokens;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class Usage implements BaseModel
     public function withTotalTokens(int $totalTokens): self
     {
         $obj = clone $this;
-        $obj->total_tokens = $totalTokens;
+        $obj['total_tokens'] = $totalTokens;
 
         return $obj;
     }

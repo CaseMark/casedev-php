@@ -57,19 +57,25 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
+     * @param Usage|array{
+     *   completion_tokens?: int|null,
+     *   cost?: float|null,
+     *   prompt_tokens?: int|null,
+     *   total_tokens?: int|null,
+     * } $usage
      */
     public static function with(
         mixed $result = null,
         Status|string|null $status = null,
-        ?Usage $usage = null,
+        Usage|array|null $usage = null,
         ?string $workflow_name = null,
     ): self {
         $obj = new self;
 
-        null !== $result && $obj->result = $result;
+        null !== $result && $obj['result'] = $result;
         null !== $status && $obj['status'] = $status;
-        null !== $usage && $obj->usage = $usage;
-        null !== $workflow_name && $obj->workflow_name = $workflow_name;
+        null !== $usage && $obj['usage'] = $usage;
+        null !== $workflow_name && $obj['workflow_name'] = $workflow_name;
 
         return $obj;
     }
@@ -80,7 +86,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withResult(mixed $result): self
     {
         $obj = clone $this;
-        $obj->result = $result;
+        $obj['result'] = $result;
 
         return $obj;
     }
@@ -96,10 +102,18 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    public function withUsage(Usage $usage): self
+    /**
+     * @param Usage|array{
+     *   completion_tokens?: int|null,
+     *   cost?: float|null,
+     *   prompt_tokens?: int|null,
+     *   total_tokens?: int|null,
+     * } $usage
+     */
+    public function withUsage(Usage|array $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -110,7 +124,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withWorkflowName(string $workflowName): self
     {
         $obj = clone $this;
-        $obj->workflow_name = $workflowName;
+        $obj['workflow_name'] = $workflowName;
 
         return $obj;
     }

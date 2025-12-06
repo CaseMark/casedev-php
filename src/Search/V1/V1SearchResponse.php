@@ -53,7 +53,13 @@ final class V1SearchResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   domain?: string|null,
+     *   publishedDate?: \DateTimeInterface|null,
+     *   snippet?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public static function with(
         ?string $query = null,
@@ -62,9 +68,9 @@ final class V1SearchResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $query && $obj->query = $query;
-        null !== $results && $obj->results = $results;
-        null !== $totalResults && $obj->totalResults = $totalResults;
+        null !== $query && $obj['query'] = $query;
+        null !== $results && $obj['results'] = $results;
+        null !== $totalResults && $obj['totalResults'] = $totalResults;
 
         return $obj;
     }
@@ -75,7 +81,7 @@ final class V1SearchResponse implements BaseModel, ResponseConverter
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }
@@ -83,12 +89,18 @@ final class V1SearchResponse implements BaseModel, ResponseConverter
     /**
      * Array of search results.
      *
-     * @param list<Result> $results
+     * @param list<Result|array{
+     *   domain?: string|null,
+     *   publishedDate?: \DateTimeInterface|null,
+     *   snippet?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -99,7 +111,7 @@ final class V1SearchResponse implements BaseModel, ResponseConverter
     public function withTotalResults(int $totalResults): self
     {
         $obj = clone $this;
-        $obj->totalResults = $totalResults;
+        $obj['totalResults'] = $totalResults;
 
         return $obj;
     }

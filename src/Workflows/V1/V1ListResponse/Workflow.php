@@ -71,14 +71,14 @@ final class Workflow implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $deployedAt && $obj->deployedAt = $deployedAt;
-        null !== $description && $obj->description = $description;
-        null !== $name && $obj->name = $name;
-        null !== $triggerType && $obj->triggerType = $triggerType;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $visibility && $obj->visibility = $visibility;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $deployedAt && $obj['deployedAt'] = $deployedAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $name && $obj['name'] = $name;
+        null !== $triggerType && $obj['triggerType'] = $triggerType;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $visibility && $obj['visibility'] = $visibility;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class Workflow implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class Workflow implements BaseModel
     public function withCreatedAt(string $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class Workflow implements BaseModel
     public function withDeployedAt(string $deployedAt): self
     {
         $obj = clone $this;
-        $obj->deployedAt = $deployedAt;
+        $obj['deployedAt'] = $deployedAt;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class Workflow implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class Workflow implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class Workflow implements BaseModel
     public function withTriggerType(string $triggerType): self
     {
         $obj = clone $this;
-        $obj->triggerType = $triggerType;
+        $obj['triggerType'] = $triggerType;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class Workflow implements BaseModel
     public function withUpdatedAt(string $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class Workflow implements BaseModel
     public function withVisibility(string $visibility): self
     {
         $obj = clone $this;
-        $obj->visibility = $visibility;
+        $obj['visibility'] = $visibility;
 
         return $obj;
     }

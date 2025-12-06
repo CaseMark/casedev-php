@@ -62,10 +62,10 @@ final class Features implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $forms && $obj->forms = $forms;
-        null !== $layout && $obj->layout = $layout;
-        null !== $tables && $obj->tables = $tables;
-        null !== $text && $obj->text = $text;
+        null !== $forms && $obj['forms'] = $forms;
+        null !== $layout && $obj['layout'] = $layout;
+        null !== $tables && $obj['tables'] = $tables;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class Features implements BaseModel
     public function withForms(bool $forms): self
     {
         $obj = clone $this;
-        $obj->forms = $forms;
+        $obj['forms'] = $forms;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class Features implements BaseModel
     public function withLayout(bool $layout): self
     {
         $obj = clone $this;
-        $obj->layout = $layout;
+        $obj['layout'] = $layout;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class Features implements BaseModel
     public function withTables(bool $tables): self
     {
         $obj = clone $this;
-        $obj->tables = $tables;
+        $obj['tables'] = $tables;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class Features implements BaseModel
     public function withText(bool $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

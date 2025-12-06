@@ -99,14 +99,14 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $description && $obj->description = $description;
-        null !== $filesBucket && $obj->filesBucket = $filesBucket;
-        null !== $indexName && $obj->indexName = $indexName;
-        null !== $name && $obj->name = $name;
-        null !== $region && $obj->region = $region;
-        null !== $vectorBucket && $obj->vectorBucket = $vectorBucket;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $filesBucket && $obj['filesBucket'] = $filesBucket;
+        null !== $indexName && $obj['indexName'] = $indexName;
+        null !== $name && $obj['name'] = $name;
+        null !== $region && $obj['region'] = $region;
+        null !== $vectorBucket && $obj['vectorBucket'] = $vectorBucket;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withFilesBucket(string $filesBucket): self
     {
         $obj = clone $this;
-        $obj->filesBucket = $filesBucket;
+        $obj['filesBucket'] = $filesBucket;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withIndexName(string $indexName): self
     {
         $obj = clone $this;
-        $obj->indexName = $indexName;
+        $obj['indexName'] = $indexName;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withRegion(string $region): self
     {
         $obj = clone $this;
-        $obj->region = $region;
+        $obj['region'] = $region;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class VaultNewResponse implements BaseModel, ResponseConverter
     public function withVectorBucket(string $vectorBucket): self
     {
         $obj = clone $this;
-        $obj->vectorBucket = $vectorBucket;
+        $obj['vectorBucket'] = $vectorBucket;
 
         return $obj;
     }

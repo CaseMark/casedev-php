@@ -51,10 +51,10 @@ final class Word implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $confidence && $obj->confidence = $confidence;
-        null !== $end && $obj->end = $end;
-        null !== $start && $obj->start = $start;
-        null !== $text && $obj->text = $text;
+        null !== $confidence && $obj['confidence'] = $confidence;
+        null !== $end && $obj['end'] = $end;
+        null !== $start && $obj['start'] = $start;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -62,7 +62,7 @@ final class Word implements BaseModel
     public function withConfidence(float $confidence): self
     {
         $obj = clone $this;
-        $obj->confidence = $confidence;
+        $obj['confidence'] = $confidence;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class Word implements BaseModel
     public function withEnd(float $end): self
     {
         $obj = clone $this;
-        $obj->end = $end;
+        $obj['end'] = $end;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class Word implements BaseModel
     public function withStart(float $start): self
     {
         $obj = clone $this;
-        $obj->start = $start;
+        $obj['start'] = $start;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class Word implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

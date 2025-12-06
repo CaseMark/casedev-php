@@ -85,10 +85,10 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
-        null !== $contentType && $obj->contentType = $contentType;
-        null !== $expiresIn && $obj->expiresIn = $expiresIn;
+        null !== $contentType && $obj['contentType'] = $contentType;
+        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
         null !== $operation && $obj['operation'] = $operation;
 
         return $obj;
@@ -97,7 +97,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     public function withContentType(string $contentType): self
     {
         $obj = clone $this;
-        $obj->contentType = $contentType;
+        $obj['contentType'] = $contentType;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj['expiresIn'] = $expiresIn;
 
         return $obj;
     }

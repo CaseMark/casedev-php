@@ -103,13 +103,13 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $duration_ms && $obj->duration_ms = $duration_ms;
-        null !== $execution_id && $obj->execution_id = $execution_id;
-        null !== $message && $obj->message = $message;
-        null !== $output && $obj->output = $output;
+        null !== $duration_ms && $obj['duration_ms'] = $duration_ms;
+        null !== $execution_id && $obj['execution_id'] = $execution_id;
+        null !== $message && $obj['message'] = $message;
+        null !== $output && $obj['output'] = $output;
         null !== $status && $obj['status'] = $status;
-        null !== $step_results && $obj->step_results = $step_results;
-        null !== $webhook_configured && $obj->webhook_configured = $webhook_configured;
+        null !== $step_results && $obj['step_results'] = $step_results;
+        null !== $webhook_configured && $obj['webhook_configured'] = $webhook_configured;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withDurationMs(float $durationMs): self
     {
         $obj = clone $this;
-        $obj->duration_ms = $durationMs;
+        $obj['duration_ms'] = $durationMs;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withExecutionID(string $executionID): self
     {
         $obj = clone $this;
-        $obj->execution_id = $executionID;
+        $obj['execution_id'] = $executionID;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withOutput(array $output): self
     {
         $obj = clone $this;
-        $obj->output = $output;
+        $obj['output'] = $output;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withStepResults(array $stepResults): self
     {
         $obj = clone $this;
-        $obj->step_results = $stepResults;
+        $obj['step_results'] = $stepResults;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withWebhookConfigured(bool $webhookConfigured): self
     {
         $obj = clone $this;
-        $obj->webhook_configured = $webhookConfigured;
+        $obj['webhook_configured'] = $webhookConfigured;
 
         return $obj;
     }

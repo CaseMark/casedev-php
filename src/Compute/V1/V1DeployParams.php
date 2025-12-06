@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1;
 
 use Casedev\Compute\V1\V1DeployParams\Config;
+use Casedev\Compute\V1\V1DeployParams\Config\GPUType;
 use Casedev\Compute\V1\V1DeployParams\Runtime;
 use Casedev\Compute\V1\V1DeployParams\Type;
 use Casedev\Core\Attributes\Api;
@@ -21,7 +22,30 @@ use Casedev\Core\Contracts\BaseModel;
  *   entrypointName: string,
  *   type: Type|value-of<Type>,
  *   code?: string,
- *   config?: Config,
+ *   config?: Config|array{
+ *     addPython?: string|null,
+ *     allowNetwork?: bool|null,
+ *     cmd?: list<string>|null,
+ *     concurrency?: int|null,
+ *     cpuCount?: int|null,
+ *     cronSchedule?: string|null,
+ *     dependencies?: list<string>|null,
+ *     entrypoint?: list<string>|null,
+ *     env?: array<string,string>|null,
+ *     gpuCount?: int|null,
+ *     gpuType?: value-of<GPUType>|null,
+ *     isWebService?: bool|null,
+ *     memoryMb?: int|null,
+ *     pipInstall?: list<string>|null,
+ *     port?: int|null,
+ *     pythonVersion?: string|null,
+ *     retries?: int|null,
+ *     secretGroups?: list<string>|null,
+ *     timeoutSeconds?: int|null,
+ *     useUv?: bool|null,
+ *     warmInstances?: int|null,
+ *     workdir?: string|null,
+ *   },
  *   dockerfile?: string,
  *   entrypointFile?: string,
  *   environment?: string,
@@ -118,13 +142,37 @@ final class V1DeployParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
+     * @param Config|array{
+     *   addPython?: string|null,
+     *   allowNetwork?: bool|null,
+     *   cmd?: list<string>|null,
+     *   concurrency?: int|null,
+     *   cpuCount?: int|null,
+     *   cronSchedule?: string|null,
+     *   dependencies?: list<string>|null,
+     *   entrypoint?: list<string>|null,
+     *   env?: array<string,string>|null,
+     *   gpuCount?: int|null,
+     *   gpuType?: value-of<GPUType>|null,
+     *   isWebService?: bool|null,
+     *   memoryMb?: int|null,
+     *   pipInstall?: list<string>|null,
+     *   port?: int|null,
+     *   pythonVersion?: string|null,
+     *   retries?: int|null,
+     *   secretGroups?: list<string>|null,
+     *   timeoutSeconds?: int|null,
+     *   useUv?: bool|null,
+     *   warmInstances?: int|null,
+     *   workdir?: string|null,
+     * } $config
      * @param Runtime|value-of<Runtime> $runtime
      */
     public static function with(
         string $entrypointName,
         Type|string $type,
         ?string $code = null,
-        ?Config $config = null,
+        Config|array|null $config = null,
         ?string $dockerfile = null,
         ?string $entrypointFile = null,
         ?string $environment = null,
@@ -133,15 +181,15 @@ final class V1DeployParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->entrypointName = $entrypointName;
+        $obj['entrypointName'] = $entrypointName;
         $obj['type'] = $type;
 
-        null !== $code && $obj->code = $code;
-        null !== $config && $obj->config = $config;
-        null !== $dockerfile && $obj->dockerfile = $dockerfile;
-        null !== $entrypointFile && $obj->entrypointFile = $entrypointFile;
-        null !== $environment && $obj->environment = $environment;
-        null !== $image && $obj->image = $image;
+        null !== $code && $obj['code'] = $code;
+        null !== $config && $obj['config'] = $config;
+        null !== $dockerfile && $obj['dockerfile'] = $dockerfile;
+        null !== $entrypointFile && $obj['entrypointFile'] = $entrypointFile;
+        null !== $environment && $obj['environment'] = $environment;
+        null !== $image && $obj['image'] = $image;
         null !== $runtime && $obj['runtime'] = $runtime;
 
         return $obj;
@@ -153,7 +201,7 @@ final class V1DeployParams implements BaseModel
     public function withEntrypointName(string $entrypointName): self
     {
         $obj = clone $this;
-        $obj->entrypointName = $entrypointName;
+        $obj['entrypointName'] = $entrypointName;
 
         return $obj;
     }
@@ -177,18 +225,43 @@ final class V1DeployParams implements BaseModel
     public function withCode(string $code): self
     {
         $obj = clone $this;
-        $obj->code = $code;
+        $obj['code'] = $code;
 
         return $obj;
     }
 
     /**
      * Runtime and resource configuration.
+     *
+     * @param Config|array{
+     *   addPython?: string|null,
+     *   allowNetwork?: bool|null,
+     *   cmd?: list<string>|null,
+     *   concurrency?: int|null,
+     *   cpuCount?: int|null,
+     *   cronSchedule?: string|null,
+     *   dependencies?: list<string>|null,
+     *   entrypoint?: list<string>|null,
+     *   env?: array<string,string>|null,
+     *   gpuCount?: int|null,
+     *   gpuType?: value-of<GPUType>|null,
+     *   isWebService?: bool|null,
+     *   memoryMb?: int|null,
+     *   pipInstall?: list<string>|null,
+     *   port?: int|null,
+     *   pythonVersion?: string|null,
+     *   retries?: int|null,
+     *   secretGroups?: list<string>|null,
+     *   timeoutSeconds?: int|null,
+     *   useUv?: bool|null,
+     *   warmInstances?: int|null,
+     *   workdir?: string|null,
+     * } $config
      */
-    public function withConfig(Config $config): self
+    public function withConfig(Config|array $config): self
     {
         $obj = clone $this;
-        $obj->config = $config;
+        $obj['config'] = $config;
 
         return $obj;
     }
@@ -199,7 +272,7 @@ final class V1DeployParams implements BaseModel
     public function withDockerfile(string $dockerfile): self
     {
         $obj = clone $this;
-        $obj->dockerfile = $dockerfile;
+        $obj['dockerfile'] = $dockerfile;
 
         return $obj;
     }
@@ -210,7 +283,7 @@ final class V1DeployParams implements BaseModel
     public function withEntrypointFile(string $entrypointFile): self
     {
         $obj = clone $this;
-        $obj->entrypointFile = $entrypointFile;
+        $obj['entrypointFile'] = $entrypointFile;
 
         return $obj;
     }
@@ -221,7 +294,7 @@ final class V1DeployParams implements BaseModel
     public function withEnvironment(string $environment): self
     {
         $obj = clone $this;
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
         return $obj;
     }
@@ -232,7 +305,7 @@ final class V1DeployParams implements BaseModel
     public function withImage(string $image): self
     {
         $obj = clone $this;
-        $obj->image = $image;
+        $obj['image'] = $image;
 
         return $obj;
     }
