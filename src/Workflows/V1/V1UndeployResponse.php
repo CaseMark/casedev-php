@@ -44,8 +44,8 @@ final class V1UndeployResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $message && $obj->message = $message;
-        null !== $success && $obj->success = $success;
+        null !== $message && $obj['message'] = $message;
+        null !== $success && $obj['success'] = $success;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class V1UndeployResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class V1UndeployResponse implements BaseModel, ResponseConverter
     public function withSuccess(bool $success): self
     {
         $obj = clone $this;
-        $obj->success = $success;
+        $obj['success'] = $success;
 
         return $obj;
     }

@@ -57,9 +57,9 @@ final class V1ResearchResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $model && $obj->model = $model;
-        null !== $researchId && $obj->researchId = $researchId;
-        null !== $results && $obj->results = $results;
+        null !== $model && $obj['model'] = $model;
+        null !== $researchId && $obj['researchId'] = $researchId;
+        null !== $results && $obj['results'] = $results;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class V1ResearchResponse implements BaseModel, ResponseConverter
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class V1ResearchResponse implements BaseModel, ResponseConverter
     public function withResearchID(string $researchID): self
     {
         $obj = clone $this;
-        $obj->researchId = $researchID;
+        $obj['researchId'] = $researchID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class V1ResearchResponse implements BaseModel, ResponseConverter
     public function withResults(mixed $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

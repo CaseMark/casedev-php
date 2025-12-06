@@ -101,11 +101,11 @@ final class VaultIngestResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->enableGraphRAG = $enableGraphRAG;
-        $obj->message = $message;
-        $obj->objectId = $objectId;
+        $obj['enableGraphRAG'] = $enableGraphRAG;
+        $obj['message'] = $message;
+        $obj['objectId'] = $objectId;
         $obj['status'] = $status;
-        $obj->workflowId = $workflowId;
+        $obj['workflowId'] = $workflowId;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class VaultIngestResponse implements BaseModel, ResponseConverter
     public function withEnableGraphRag(bool $enableGraphRag): self
     {
         $obj = clone $this;
-        $obj->enableGraphRAG = $enableGraphRag;
+        $obj['enableGraphRAG'] = $enableGraphRag;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class VaultIngestResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class VaultIngestResponse implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class VaultIngestResponse implements BaseModel, ResponseConverter
     public function withWorkflowID(string $workflowID): self
     {
         $obj = clone $this;
-        $obj->workflowId = $workflowID;
+        $obj['workflowId'] = $workflowID;
 
         return $obj;
     }

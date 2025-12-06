@@ -68,9 +68,9 @@ final class V1ExecuteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->input = $input;
+        $obj['input'] = $input;
 
-        null !== $webhook_id && $obj->webhook_id = $webhook_id;
+        null !== $webhook_id && $obj['webhook_id'] = $webhook_id;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class V1ExecuteParams implements BaseModel
     public function withInput(array $input): self
     {
         $obj = clone $this;
-        $obj->input = $input;
+        $obj['input'] = $input;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class V1ExecuteParams implements BaseModel
     public function withWebhookID(string $webhookID): self
     {
         $obj = clone $this;
-        $obj->webhook_id = $webhookID;
+        $obj['webhook_id'] = $webhookID;
 
         return $obj;
     }

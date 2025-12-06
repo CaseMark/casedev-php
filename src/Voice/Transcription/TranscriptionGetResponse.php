@@ -101,7 +101,12 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<Word> $words
+     * @param list<Word|array{
+     *   confidence?: float|null,
+     *   end?: float|null,
+     *   start?: float|null,
+     *   text?: string|null,
+     * }> $words
      */
     public static function with(
         string $id,
@@ -114,14 +119,14 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
         $obj['status'] = $status;
 
-        null !== $audio_duration && $obj->audio_duration = $audio_duration;
-        null !== $confidence && $obj->confidence = $confidence;
-        null !== $error && $obj->error = $error;
-        null !== $text && $obj->text = $text;
-        null !== $words && $obj->words = $words;
+        null !== $audio_duration && $obj['audio_duration'] = $audio_duration;
+        null !== $confidence && $obj['confidence'] = $confidence;
+        null !== $error && $obj['error'] = $error;
+        null !== $text && $obj['text'] = $text;
+        null !== $words && $obj['words'] = $words;
 
         return $obj;
     }
@@ -132,7 +137,7 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -156,7 +161,7 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     public function withAudioDuration(float $audioDuration): self
     {
         $obj = clone $this;
-        $obj->audio_duration = $audioDuration;
+        $obj['audio_duration'] = $audioDuration;
 
         return $obj;
     }
@@ -167,7 +172,7 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     public function withConfidence(float $confidence): self
     {
         $obj = clone $this;
-        $obj->confidence = $confidence;
+        $obj['confidence'] = $confidence;
 
         return $obj;
     }
@@ -178,7 +183,7 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
@@ -189,7 +194,7 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -197,12 +202,17 @@ final class TranscriptionGetResponse implements BaseModel, ResponseConverter
     /**
      * Word-level timestamps and confidence scores.
      *
-     * @param list<Word> $words
+     * @param list<Word|array{
+     *   confidence?: float|null,
+     *   end?: float|null,
+     *   start?: float|null,
+     *   text?: string|null,
+     * }> $words
      */
     public function withWords(array $words): self
     {
         $obj = clone $this;
-        $obj->words = $words;
+        $obj['words'] = $words;
 
         return $obj;
     }

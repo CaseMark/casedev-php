@@ -177,21 +177,21 @@ final class V1SearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->query = $query;
+        $obj['query'] = $query;
 
-        null !== $additionalQueries && $obj->additionalQueries = $additionalQueries;
-        null !== $category && $obj->category = $category;
-        null !== $contents && $obj->contents = $contents;
-        null !== $endCrawlDate && $obj->endCrawlDate = $endCrawlDate;
-        null !== $endPublishedDate && $obj->endPublishedDate = $endPublishedDate;
-        null !== $excludeDomains && $obj->excludeDomains = $excludeDomains;
-        null !== $includeDomains && $obj->includeDomains = $includeDomains;
-        null !== $includeText && $obj->includeText = $includeText;
-        null !== $numResults && $obj->numResults = $numResults;
-        null !== $startCrawlDate && $obj->startCrawlDate = $startCrawlDate;
-        null !== $startPublishedDate && $obj->startPublishedDate = $startPublishedDate;
+        null !== $additionalQueries && $obj['additionalQueries'] = $additionalQueries;
+        null !== $category && $obj['category'] = $category;
+        null !== $contents && $obj['contents'] = $contents;
+        null !== $endCrawlDate && $obj['endCrawlDate'] = $endCrawlDate;
+        null !== $endPublishedDate && $obj['endPublishedDate'] = $endPublishedDate;
+        null !== $excludeDomains && $obj['excludeDomains'] = $excludeDomains;
+        null !== $includeDomains && $obj['includeDomains'] = $includeDomains;
+        null !== $includeText && $obj['includeText'] = $includeText;
+        null !== $numResults && $obj['numResults'] = $numResults;
+        null !== $startCrawlDate && $obj['startCrawlDate'] = $startCrawlDate;
+        null !== $startPublishedDate && $obj['startPublishedDate'] = $startPublishedDate;
         null !== $type && $obj['type'] = $type;
-        null !== $userLocation && $obj->userLocation = $userLocation;
+        null !== $userLocation && $obj['userLocation'] = $userLocation;
 
         return $obj;
     }
@@ -202,7 +202,7 @@ final class V1SearchParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class V1SearchParams implements BaseModel
     public function withAdditionalQueries(array $additionalQueries): self
     {
         $obj = clone $this;
-        $obj->additionalQueries = $additionalQueries;
+        $obj['additionalQueries'] = $additionalQueries;
 
         return $obj;
     }
@@ -226,7 +226,7 @@ final class V1SearchParams implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -237,7 +237,7 @@ final class V1SearchParams implements BaseModel
     public function withContents(string $contents): self
     {
         $obj = clone $this;
-        $obj->contents = $contents;
+        $obj['contents'] = $contents;
 
         return $obj;
     }
@@ -248,7 +248,7 @@ final class V1SearchParams implements BaseModel
     public function withEndCrawlDate(\DateTimeInterface $endCrawlDate): self
     {
         $obj = clone $this;
-        $obj->endCrawlDate = $endCrawlDate;
+        $obj['endCrawlDate'] = $endCrawlDate;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class V1SearchParams implements BaseModel
         \DateTimeInterface $endPublishedDate
     ): self {
         $obj = clone $this;
-        $obj->endPublishedDate = $endPublishedDate;
+        $obj['endPublishedDate'] = $endPublishedDate;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class V1SearchParams implements BaseModel
     public function withExcludeDomains(array $excludeDomains): self
     {
         $obj = clone $this;
-        $obj->excludeDomains = $excludeDomains;
+        $obj['excludeDomains'] = $excludeDomains;
 
         return $obj;
     }
@@ -286,7 +286,7 @@ final class V1SearchParams implements BaseModel
     public function withIncludeDomains(array $includeDomains): self
     {
         $obj = clone $this;
-        $obj->includeDomains = $includeDomains;
+        $obj['includeDomains'] = $includeDomains;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class V1SearchParams implements BaseModel
     public function withIncludeText(bool $includeText): self
     {
         $obj = clone $this;
-        $obj->includeText = $includeText;
+        $obj['includeText'] = $includeText;
 
         return $obj;
     }
@@ -308,7 +308,7 @@ final class V1SearchParams implements BaseModel
     public function withNumResults(int $numResults): self
     {
         $obj = clone $this;
-        $obj->numResults = $numResults;
+        $obj['numResults'] = $numResults;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class V1SearchParams implements BaseModel
     public function withStartCrawlDate(\DateTimeInterface $startCrawlDate): self
     {
         $obj = clone $this;
-        $obj->startCrawlDate = $startCrawlDate;
+        $obj['startCrawlDate'] = $startCrawlDate;
 
         return $obj;
     }
@@ -331,7 +331,7 @@ final class V1SearchParams implements BaseModel
         \DateTimeInterface $startPublishedDate
     ): self {
         $obj = clone $this;
-        $obj->startPublishedDate = $startPublishedDate;
+        $obj['startPublishedDate'] = $startPublishedDate;
 
         return $obj;
     }
@@ -355,7 +355,7 @@ final class V1SearchParams implements BaseModel
     public function withUserLocation(string $userLocation): self
     {
         $obj = clone $this;
-        $obj->userLocation = $userLocation;
+        $obj['userLocation'] = $userLocation;
 
         return $obj;
     }

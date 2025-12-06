@@ -58,10 +58,10 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $message && $obj->message = $message;
-        null !== $success && $obj->success = $success;
-        null !== $webhookSecret && $obj->webhookSecret = $webhookSecret;
-        null !== $webhookUrl && $obj->webhookUrl = $webhookUrl;
+        null !== $message && $obj['message'] = $message;
+        null !== $success && $obj['success'] = $success;
+        null !== $webhookSecret && $obj['webhookSecret'] = $webhookSecret;
+        null !== $webhookUrl && $obj['webhookUrl'] = $webhookUrl;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withSuccess(bool $success): self
     {
         $obj = clone $this;
-        $obj->success = $success;
+        $obj['success'] = $success;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withWebhookSecret(string $webhookSecret): self
     {
         $obj = clone $this;
-        $obj->webhookSecret = $webhookSecret;
+        $obj['webhookSecret'] = $webhookSecret;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class V1DeployResponse implements BaseModel, ResponseConverter
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj->webhookUrl = $webhookURL;
+        $obj['webhookUrl'] = $webhookURL;
 
         return $obj;
     }

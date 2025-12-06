@@ -85,16 +85,16 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $completedAt && $obj->completedAt = $completedAt;
-        null !== $durationMs && $obj->durationMs = $durationMs;
-        null !== $error && $obj->error = $error;
-        null !== $input && $obj->input = $input;
-        null !== $output && $obj->output = $output;
-        null !== $startedAt && $obj->startedAt = $startedAt;
-        null !== $status && $obj->status = $status;
-        null !== $triggerType && $obj->triggerType = $triggerType;
-        null !== $workflowId && $obj->workflowId = $workflowId;
+        null !== $id && $obj['id'] = $id;
+        null !== $completedAt && $obj['completedAt'] = $completedAt;
+        null !== $durationMs && $obj['durationMs'] = $durationMs;
+        null !== $error && $obj['error'] = $error;
+        null !== $input && $obj['input'] = $input;
+        null !== $output && $obj['output'] = $output;
+        null !== $startedAt && $obj['startedAt'] = $startedAt;
+        null !== $status && $obj['status'] = $status;
+        null !== $triggerType && $obj['triggerType'] = $triggerType;
+        null !== $workflowId && $obj['workflowId'] = $workflowId;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withCompletedAt(string $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withDurationMs(int $durationMs): self
     {
         $obj = clone $this;
-        $obj->durationMs = $durationMs;
+        $obj['durationMs'] = $durationMs;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withInput(mixed $input): self
     {
         $obj = clone $this;
-        $obj->input = $input;
+        $obj['input'] = $input;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withOutput(mixed $output): self
     {
         $obj = clone $this;
-        $obj->output = $output;
+        $obj['output'] = $output;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withStartedAt(string $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withTriggerType(string $triggerType): self
     {
         $obj = clone $this;
-        $obj->triggerType = $triggerType;
+        $obj['triggerType'] = $triggerType;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class V1GetExecutionResponse implements BaseModel, ResponseConverter
     public function withWorkflowID(string $workflowID): self
     {
         $obj = clone $this;
-        $obj->workflowId = $workflowID;
+        $obj['workflowId'] = $workflowID;
 
         return $obj;
     }

@@ -42,7 +42,7 @@ final class FunctionGetLogsParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $tail && $obj->tail = $tail;
+        null !== $tail && $obj['tail'] = $tail;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class FunctionGetLogsParams implements BaseModel
     public function withTail(int $tail): self
     {
         $obj = clone $this;
-        $obj->tail = $tail;
+        $obj['tail'] = $tail;
 
         return $obj;
     }

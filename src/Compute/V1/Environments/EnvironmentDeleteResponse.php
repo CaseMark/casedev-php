@@ -56,8 +56,8 @@ final class EnvironmentDeleteResponse implements BaseModel, ResponseConverter
     {
         $obj = new self;
 
-        $obj->message = $message;
-        $obj->success = $success;
+        $obj['message'] = $message;
+        $obj['success'] = $success;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class EnvironmentDeleteResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class EnvironmentDeleteResponse implements BaseModel, ResponseConverter
     public function withSuccess(bool $success): self
     {
         $obj = clone $this;
-        $obj->success = $success;
+        $obj['success'] = $success;
 
         return $obj;
     }

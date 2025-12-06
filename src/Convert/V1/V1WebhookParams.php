@@ -20,7 +20,11 @@ use Casedev\Core\Contracts\BaseModel;
  *   job_id: string,
  *   status: Status|value-of<Status>,
  *   error?: string,
- *   result?: Result,
+ *   result?: Result|array{
+ *     duration_seconds?: float|null,
+ *     file_size_bytes?: int|null,
+ *     stored_filename?: string|null,
+ *   },
  * }
  */
 final class V1WebhookParams implements BaseModel
@@ -80,20 +84,25 @@ final class V1WebhookParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
+     * @param Result|array{
+     *   duration_seconds?: float|null,
+     *   file_size_bytes?: int|null,
+     *   stored_filename?: string|null,
+     * } $result
      */
     public static function with(
         string $job_id,
         Status|string $status,
         ?string $error = null,
-        ?Result $result = null,
+        Result|array|null $result = null,
     ): self {
         $obj = new self;
 
-        $obj->job_id = $job_id;
+        $obj['job_id'] = $job_id;
         $obj['status'] = $status;
 
-        null !== $error && $obj->error = $error;
-        null !== $result && $obj->result = $result;
+        null !== $error && $obj['error'] = $error;
+        null !== $result && $obj['result'] = $result;
 
         return $obj;
     }
@@ -104,7 +113,7 @@ final class V1WebhookParams implements BaseModel
     public function withJobID(string $jobID): self
     {
         $obj = clone $this;
-        $obj->job_id = $jobID;
+        $obj['job_id'] = $jobID;
 
         return $obj;
     }
@@ -128,18 +137,24 @@ final class V1WebhookParams implements BaseModel
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
 
     /**
      * Result data for completed jobs.
+     *
+     * @param Result|array{
+     *   duration_seconds?: float|null,
+     *   file_size_bytes?: int|null,
+     *   stored_filename?: string|null,
+     * } $result
      */
-    public function withResult(Result $result): self
+    public function withResult(Result|array $result): self
     {
         $obj = clone $this;
-        $obj->result = $result;
+        $obj['result'] = $result;
 
         return $obj;
     }

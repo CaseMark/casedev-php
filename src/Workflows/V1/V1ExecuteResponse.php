@@ -64,10 +64,10 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $duration && $obj->duration = $duration;
-        null !== $error && $obj->error = $error;
-        null !== $executionId && $obj->executionId = $executionId;
-        null !== $outputs && $obj->outputs = $outputs;
+        null !== $duration && $obj['duration'] = $duration;
+        null !== $error && $obj['error'] = $error;
+        null !== $executionId && $obj['executionId'] = $executionId;
+        null !== $outputs && $obj['outputs'] = $outputs;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -76,7 +76,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withDuration(int $duration): self
     {
         $obj = clone $this;
-        $obj->duration = $duration;
+        $obj['duration'] = $duration;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withExecutionID(string $executionID): self
     {
         $obj = clone $this;
-        $obj->executionId = $executionID;
+        $obj['executionId'] = $executionID;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class V1ExecuteResponse implements BaseModel, ResponseConverter
     public function withOutputs(mixed $outputs): self
     {
         $obj = clone $this;
-        $obj->outputs = $outputs;
+        $obj['outputs'] = $outputs;
 
         return $obj;
     }

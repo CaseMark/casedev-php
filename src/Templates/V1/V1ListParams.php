@@ -85,12 +85,12 @@ final class V1ListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $category && $obj->category = $category;
-        null !== $limit && $obj->limit = $limit;
-        null !== $offset && $obj->offset = $offset;
-        null !== $published && $obj->published = $published;
-        null !== $sub_category && $obj->sub_category = $sub_category;
-        null !== $type && $obj->type = $type;
+        null !== $category && $obj['category'] = $category;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $offset && $obj['offset'] = $offset;
+        null !== $published && $obj['published'] = $published;
+        null !== $sub_category && $obj['sub_category'] = $sub_category;
+        null !== $type && $obj['type'] = $type;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class V1ListParams implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class V1ListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class V1ListParams implements BaseModel
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class V1ListParams implements BaseModel
     public function withPublished(bool $published): self
     {
         $obj = clone $this;
-        $obj->published = $published;
+        $obj['published'] = $published;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class V1ListParams implements BaseModel
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;
-        $obj->sub_category = $subCategory;
+        $obj['sub_category'] = $subCategory;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class V1ListParams implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

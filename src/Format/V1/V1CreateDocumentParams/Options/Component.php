@@ -63,10 +63,10 @@ final class Component implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $content && $obj->content = $content;
-        null !== $styles && $obj->styles = $styles;
-        null !== $templateId && $obj->templateId = $templateId;
-        null !== $variables && $obj->variables = $variables;
+        null !== $content && $obj['content'] = $content;
+        null !== $styles && $obj['styles'] = $styles;
+        null !== $templateId && $obj['templateId'] = $templateId;
+        null !== $variables && $obj['variables'] = $variables;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class Component implements BaseModel
     public function withContent(string $content): self
     {
         $obj = clone $this;
-        $obj->content = $content;
+        $obj['content'] = $content;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class Component implements BaseModel
     public function withStyles(mixed $styles): self
     {
         $obj = clone $this;
-        $obj->styles = $styles;
+        $obj['styles'] = $styles;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class Component implements BaseModel
     public function withTemplateID(string $templateID): self
     {
         $obj = clone $this;
-        $obj->templateId = $templateID;
+        $obj['templateId'] = $templateID;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class Component implements BaseModel
     public function withVariables(mixed $variables): self
     {
         $obj = clone $this;
-        $obj->variables = $variables;
+        $obj['variables'] = $variables;
 
         return $obj;
     }

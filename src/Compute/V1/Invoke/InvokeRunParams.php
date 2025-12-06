@@ -83,9 +83,9 @@ final class InvokeRunParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->input = $input;
+        $obj['input'] = $input;
 
-        null !== $async && $obj->async = $async;
+        null !== $async && $obj['async'] = $async;
         null !== $functionSuffix && $obj['functionSuffix'] = $functionSuffix;
 
         return $obj;
@@ -99,7 +99,7 @@ final class InvokeRunParams implements BaseModel
     public function withInput(array $input): self
     {
         $obj = clone $this;
-        $obj->input = $input;
+        $obj['input'] = $input;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class InvokeRunParams implements BaseModel
     public function withAsync(bool $async): self
     {
         $obj = clone $this;
-        $obj->async = $async;
+        $obj['async'] = $async;
 
         return $obj;
     }

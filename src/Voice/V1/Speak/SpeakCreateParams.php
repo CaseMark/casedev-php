@@ -29,7 +29,12 @@ use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
  *   previous_text?: string,
  *   seed?: int,
  *   voice_id?: string,
- *   voice_settings?: VoiceSettings,
+ *   voice_settings?: VoiceSettings|array{
+ *     similarity_boost?: float|null,
+ *     stability?: float|null,
+ *     style?: float|null,
+ *     use_speaker_boost?: bool|null,
+ *   },
  * }
  */
 final class SpeakCreateParams implements BaseModel
@@ -140,6 +145,12 @@ final class SpeakCreateParams implements BaseModel
      *
      * @param ModelID|value-of<ModelID> $model_id
      * @param OutputFormat|value-of<OutputFormat> $output_format
+     * @param VoiceSettings|array{
+     *   similarity_boost?: float|null,
+     *   stability?: float|null,
+     *   style?: float|null,
+     *   use_speaker_boost?: bool|null,
+     * } $voice_settings
      */
     public static function with(
         string $text,
@@ -153,23 +164,23 @@ final class SpeakCreateParams implements BaseModel
         ?string $previous_text = null,
         ?int $seed = null,
         ?string $voice_id = null,
-        ?VoiceSettings $voice_settings = null,
+        VoiceSettings|array|null $voice_settings = null,
     ): self {
         $obj = new self;
 
-        $obj->text = $text;
+        $obj['text'] = $text;
 
-        null !== $apply_text_normalization && $obj->apply_text_normalization = $apply_text_normalization;
-        null !== $enable_logging && $obj->enable_logging = $enable_logging;
-        null !== $language_code && $obj->language_code = $language_code;
+        null !== $apply_text_normalization && $obj['apply_text_normalization'] = $apply_text_normalization;
+        null !== $enable_logging && $obj['enable_logging'] = $enable_logging;
+        null !== $language_code && $obj['language_code'] = $language_code;
         null !== $model_id && $obj['model_id'] = $model_id;
-        null !== $next_text && $obj->next_text = $next_text;
-        null !== $optimize_streaming_latency && $obj->optimize_streaming_latency = $optimize_streaming_latency;
+        null !== $next_text && $obj['next_text'] = $next_text;
+        null !== $optimize_streaming_latency && $obj['optimize_streaming_latency'] = $optimize_streaming_latency;
         null !== $output_format && $obj['output_format'] = $output_format;
-        null !== $previous_text && $obj->previous_text = $previous_text;
-        null !== $seed && $obj->seed = $seed;
-        null !== $voice_id && $obj->voice_id = $voice_id;
-        null !== $voice_settings && $obj->voice_settings = $voice_settings;
+        null !== $previous_text && $obj['previous_text'] = $previous_text;
+        null !== $seed && $obj['seed'] = $seed;
+        null !== $voice_id && $obj['voice_id'] = $voice_id;
+        null !== $voice_settings && $obj['voice_settings'] = $voice_settings;
 
         return $obj;
     }
@@ -180,7 +191,7 @@ final class SpeakCreateParams implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -192,7 +203,7 @@ final class SpeakCreateParams implements BaseModel
         bool $applyTextNormalization
     ): self {
         $obj = clone $this;
-        $obj->apply_text_normalization = $applyTextNormalization;
+        $obj['apply_text_normalization'] = $applyTextNormalization;
 
         return $obj;
     }
@@ -203,7 +214,7 @@ final class SpeakCreateParams implements BaseModel
     public function withEnableLogging(bool $enableLogging): self
     {
         $obj = clone $this;
-        $obj->enable_logging = $enableLogging;
+        $obj['enable_logging'] = $enableLogging;
 
         return $obj;
     }
@@ -214,7 +225,7 @@ final class SpeakCreateParams implements BaseModel
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
-        $obj->language_code = $languageCode;
+        $obj['language_code'] = $languageCode;
 
         return $obj;
     }
@@ -238,7 +249,7 @@ final class SpeakCreateParams implements BaseModel
     public function withNextText(string $nextText): self
     {
         $obj = clone $this;
-        $obj->next_text = $nextText;
+        $obj['next_text'] = $nextText;
 
         return $obj;
     }
@@ -250,7 +261,7 @@ final class SpeakCreateParams implements BaseModel
         int $optimizeStreamingLatency
     ): self {
         $obj = clone $this;
-        $obj->optimize_streaming_latency = $optimizeStreamingLatency;
+        $obj['optimize_streaming_latency'] = $optimizeStreamingLatency;
 
         return $obj;
     }
@@ -274,7 +285,7 @@ final class SpeakCreateParams implements BaseModel
     public function withPreviousText(string $previousText): self
     {
         $obj = clone $this;
-        $obj->previous_text = $previousText;
+        $obj['previous_text'] = $previousText;
 
         return $obj;
     }
@@ -285,7 +296,7 @@ final class SpeakCreateParams implements BaseModel
     public function withSeed(int $seed): self
     {
         $obj = clone $this;
-        $obj->seed = $seed;
+        $obj['seed'] = $seed;
 
         return $obj;
     }
@@ -296,18 +307,25 @@ final class SpeakCreateParams implements BaseModel
     public function withVoiceID(string $voiceID): self
     {
         $obj = clone $this;
-        $obj->voice_id = $voiceID;
+        $obj['voice_id'] = $voiceID;
 
         return $obj;
     }
 
     /**
      * Voice customization settings.
+     *
+     * @param VoiceSettings|array{
+     *   similarity_boost?: float|null,
+     *   stability?: float|null,
+     *   style?: float|null,
+     *   use_speaker_boost?: bool|null,
+     * } $voiceSettings
      */
-    public function withVoiceSettings(VoiceSettings $voiceSettings): self
+    public function withVoiceSettings(VoiceSettings|array $voiceSettings): self
     {
         $obj = clone $this;
-        $obj->voice_settings = $voiceSettings;
+        $obj['voice_settings'] = $voiceSettings;
 
         return $obj;
     }

@@ -37,17 +37,19 @@ final class Choice implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Message|array{content?: string|null, role?: string|null} $message
      */
     public static function with(
         ?string $finish_reason = null,
         ?int $index = null,
-        ?Message $message = null
+        Message|array|null $message = null,
     ): self {
         $obj = new self;
 
-        null !== $finish_reason && $obj->finish_reason = $finish_reason;
-        null !== $index && $obj->index = $index;
-        null !== $message && $obj->message = $message;
+        null !== $finish_reason && $obj['finish_reason'] = $finish_reason;
+        null !== $index && $obj['index'] = $index;
+        null !== $message && $obj['message'] = $message;
 
         return $obj;
     }
@@ -55,7 +57,7 @@ final class Choice implements BaseModel
     public function withFinishReason(string $finishReason): self
     {
         $obj = clone $this;
-        $obj->finish_reason = $finishReason;
+        $obj['finish_reason'] = $finishReason;
 
         return $obj;
     }
@@ -63,15 +65,18 @@ final class Choice implements BaseModel
     public function withIndex(int $index): self
     {
         $obj = clone $this;
-        $obj->index = $index;
+        $obj['index'] = $index;
 
         return $obj;
     }
 
-    public function withMessage(Message $message): self
+    /**
+     * @param Message|array{content?: string|null, role?: string|null} $message
+     */
+    public function withMessage(Message|array $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }

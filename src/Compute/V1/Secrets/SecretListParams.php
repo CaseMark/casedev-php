@@ -42,7 +42,7 @@ final class SecretListParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $env && $obj->env = $env;
+        null !== $env && $obj['env'] = $env;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class SecretListParams implements BaseModel
     public function withEnv(string $env): self
     {
         $obj = clone $this;
-        $obj->env = $env;
+        $obj['env'] = $env;
 
         return $obj;
     }

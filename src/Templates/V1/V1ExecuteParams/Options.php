@@ -52,7 +52,7 @@ final class Options implements BaseModel
         $obj = new self;
 
         null !== $format && $obj['format'] = $format;
-        null !== $model && $obj->model = $model;
+        null !== $model && $obj['model'] = $model;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class Options implements BaseModel
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }

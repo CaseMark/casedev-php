@@ -48,8 +48,8 @@ final class V1GetUsageParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $month && $obj->month = $month;
-        null !== $year && $obj->year = $year;
+        null !== $month && $obj['month'] = $month;
+        null !== $year && $obj['year'] = $year;
 
         return $obj;
     }
@@ -60,7 +60,7 @@ final class V1GetUsageParams implements BaseModel
     public function withMonth(int $month): self
     {
         $obj = clone $this;
-        $obj->month = $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class V1GetUsageParams implements BaseModel
     public function withYear(int $year): self
     {
         $obj = clone $this;
-        $obj->year = $year;
+        $obj['year'] = $year;
 
         return $obj;
     }

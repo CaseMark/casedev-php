@@ -65,10 +65,10 @@ final class VoiceSettings implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $similarity_boost && $obj->similarity_boost = $similarity_boost;
-        null !== $stability && $obj->stability = $stability;
-        null !== $style && $obj->style = $style;
-        null !== $use_speaker_boost && $obj->use_speaker_boost = $use_speaker_boost;
+        null !== $similarity_boost && $obj['similarity_boost'] = $similarity_boost;
+        null !== $stability && $obj['stability'] = $stability;
+        null !== $style && $obj['style'] = $style;
+        null !== $use_speaker_boost && $obj['use_speaker_boost'] = $use_speaker_boost;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class VoiceSettings implements BaseModel
     public function withSimilarityBoost(float $similarityBoost): self
     {
         $obj = clone $this;
-        $obj->similarity_boost = $similarityBoost;
+        $obj['similarity_boost'] = $similarityBoost;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class VoiceSettings implements BaseModel
     public function withStability(float $stability): self
     {
         $obj = clone $this;
-        $obj->stability = $stability;
+        $obj['stability'] = $stability;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class VoiceSettings implements BaseModel
     public function withStyle(float $style): self
     {
         $obj = clone $this;
-        $obj->style = $style;
+        $obj['style'] = $style;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class VoiceSettings implements BaseModel
     public function withUseSpeakerBoost(bool $useSpeakerBoost): self
     {
         $obj = clone $this;
-        $obj->use_speaker_boost = $useSpeakerBoost;
+        $obj['use_speaker_boost'] = $useSpeakerBoost;
 
         return $obj;
     }

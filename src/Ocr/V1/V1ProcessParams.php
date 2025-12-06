@@ -21,7 +21,9 @@ use Casedev\Ocr\V1\V1ProcessParams\Features;
  *   callback_url?: string,
  *   document_id?: string,
  *   engine?: Engine|value-of<Engine>,
- *   features?: Features,
+ *   features?: Features|array{
+ *     forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
+ *   },
  *   result_bucket?: string,
  *   result_prefix?: string,
  * }
@@ -101,26 +103,29 @@ final class V1ProcessParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Engine|value-of<Engine> $engine
+     * @param Features|array{
+     *   forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
+     * } $features
      */
     public static function with(
         string $document_url,
         ?string $callback_url = null,
         ?string $document_id = null,
         Engine|string|null $engine = null,
-        ?Features $features = null,
+        Features|array|null $features = null,
         ?string $result_bucket = null,
         ?string $result_prefix = null,
     ): self {
         $obj = new self;
 
-        $obj->document_url = $document_url;
+        $obj['document_url'] = $document_url;
 
-        null !== $callback_url && $obj->callback_url = $callback_url;
-        null !== $document_id && $obj->document_id = $document_id;
+        null !== $callback_url && $obj['callback_url'] = $callback_url;
+        null !== $document_id && $obj['document_id'] = $document_id;
         null !== $engine && $obj['engine'] = $engine;
-        null !== $features && $obj->features = $features;
-        null !== $result_bucket && $obj->result_bucket = $result_bucket;
-        null !== $result_prefix && $obj->result_prefix = $result_prefix;
+        null !== $features && $obj['features'] = $features;
+        null !== $result_bucket && $obj['result_bucket'] = $result_bucket;
+        null !== $result_prefix && $obj['result_prefix'] = $result_prefix;
 
         return $obj;
     }
@@ -131,7 +136,7 @@ final class V1ProcessParams implements BaseModel
     public function withDocumentURL(string $documentURL): self
     {
         $obj = clone $this;
-        $obj->document_url = $documentURL;
+        $obj['document_url'] = $documentURL;
 
         return $obj;
     }
@@ -142,7 +147,7 @@ final class V1ProcessParams implements BaseModel
     public function withCallbackURL(string $callbackURL): self
     {
         $obj = clone $this;
-        $obj->callback_url = $callbackURL;
+        $obj['callback_url'] = $callbackURL;
 
         return $obj;
     }
@@ -153,7 +158,7 @@ final class V1ProcessParams implements BaseModel
     public function withDocumentID(string $documentID): self
     {
         $obj = clone $this;
-        $obj->document_id = $documentID;
+        $obj['document_id'] = $documentID;
 
         return $obj;
     }
@@ -173,11 +178,15 @@ final class V1ProcessParams implements BaseModel
 
     /**
      * OCR features to extract.
+     *
+     * @param Features|array{
+     *   forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
+     * } $features
      */
-    public function withFeatures(Features $features): self
+    public function withFeatures(Features|array $features): self
     {
         $obj = clone $this;
-        $obj->features = $features;
+        $obj['features'] = $features;
 
         return $obj;
     }
@@ -188,7 +197,7 @@ final class V1ProcessParams implements BaseModel
     public function withResultBucket(string $resultBucket): self
     {
         $obj = clone $this;
-        $obj->result_bucket = $resultBucket;
+        $obj['result_bucket'] = $resultBucket;
 
         return $obj;
     }
@@ -199,7 +208,7 @@ final class V1ProcessParams implements BaseModel
     public function withResultPrefix(string $resultPrefix): self
     {
         $obj = clone $this;
-        $obj->result_prefix = $resultPrefix;
+        $obj['result_prefix'] = $resultPrefix;
 
         return $obj;
     }

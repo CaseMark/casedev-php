@@ -9,6 +9,7 @@ use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
 
 /**
  * Create a completion for the provided prompt and parameters. Compatible with OpenAI's chat completions API. Supports 40+ models including GPT-4, Claude, Gemini, and CaseMark legal AI models. Includes streaming support, token counting, and usage tracking.
@@ -16,7 +17,9 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
  * @see Casedev\Services\Llm\V1\ChatService::createCompletion()
  *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
- *   messages: list<Message>,
+ *   messages: list<Message|array{
+ *     content?: string|null, role?: value-of<Role>|null
+ *   }>,
  *   frequency_penalty?: float,
  *   max_tokens?: int,
  *   model?: string,
@@ -106,7 +109,9 @@ final class ChatCreateCompletionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Message> $messages
+     * @param list<Message|array{
+     *   content?: string|null, role?: value-of<Role>|null
+     * }> $messages
      */
     public static function with(
         array $messages,
@@ -120,15 +125,15 @@ final class ChatCreateCompletionParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->messages = $messages;
+        $obj['messages'] = $messages;
 
-        null !== $frequency_penalty && $obj->frequency_penalty = $frequency_penalty;
-        null !== $max_tokens && $obj->max_tokens = $max_tokens;
-        null !== $model && $obj->model = $model;
-        null !== $presence_penalty && $obj->presence_penalty = $presence_penalty;
-        null !== $stream && $obj->stream = $stream;
-        null !== $temperature && $obj->temperature = $temperature;
-        null !== $top_p && $obj->top_p = $top_p;
+        null !== $frequency_penalty && $obj['frequency_penalty'] = $frequency_penalty;
+        null !== $max_tokens && $obj['max_tokens'] = $max_tokens;
+        null !== $model && $obj['model'] = $model;
+        null !== $presence_penalty && $obj['presence_penalty'] = $presence_penalty;
+        null !== $stream && $obj['stream'] = $stream;
+        null !== $temperature && $obj['temperature'] = $temperature;
+        null !== $top_p && $obj['top_p'] = $top_p;
 
         return $obj;
     }
@@ -136,12 +141,14 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * List of messages comprising the conversation.
      *
-     * @param list<Message> $messages
+     * @param list<Message|array{
+     *   content?: string|null, role?: value-of<Role>|null
+     * }> $messages
      */
     public function withMessages(array $messages): self
     {
         $obj = clone $this;
-        $obj->messages = $messages;
+        $obj['messages'] = $messages;
 
         return $obj;
     }
@@ -152,7 +159,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withFrequencyPenalty(float $frequencyPenalty): self
     {
         $obj = clone $this;
-        $obj->frequency_penalty = $frequencyPenalty;
+        $obj['frequency_penalty'] = $frequencyPenalty;
 
         return $obj;
     }
@@ -163,7 +170,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withMaxTokens(int $maxTokens): self
     {
         $obj = clone $this;
-        $obj->max_tokens = $maxTokens;
+        $obj['max_tokens'] = $maxTokens;
 
         return $obj;
     }
@@ -174,7 +181,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -185,7 +192,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withPresencePenalty(float $presencePenalty): self
     {
         $obj = clone $this;
-        $obj->presence_penalty = $presencePenalty;
+        $obj['presence_penalty'] = $presencePenalty;
 
         return $obj;
     }
@@ -196,7 +203,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withStream(bool $stream): self
     {
         $obj = clone $this;
-        $obj->stream = $stream;
+        $obj['stream'] = $stream;
 
         return $obj;
     }
@@ -207,7 +214,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withTemperature(float $temperature): self
     {
         $obj = clone $this;
-        $obj->temperature = $temperature;
+        $obj['temperature'] = $temperature;
 
         return $obj;
     }
@@ -218,7 +225,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withTopP(float $topP): self
     {
         $obj = clone $this;
-        $obj->top_p = $topP;
+        $obj['top_p'] = $topP;
 
         return $obj;
     }

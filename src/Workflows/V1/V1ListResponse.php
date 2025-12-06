@@ -49,7 +49,16 @@ final class V1ListResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Workflow> $workflows
+     * @param list<Workflow|array{
+     *   id?: string|null,
+     *   createdAt?: string|null,
+     *   deployedAt?: string|null,
+     *   description?: string|null,
+     *   name?: string|null,
+     *   triggerType?: string|null,
+     *   updatedAt?: string|null,
+     *   visibility?: string|null,
+     * }> $workflows
      */
     public static function with(
         ?int $limit = null,
@@ -59,10 +68,10 @@ final class V1ListResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $offset && $obj->offset = $offset;
-        null !== $total && $obj->total = $total;
-        null !== $workflows && $obj->workflows = $workflows;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $offset && $obj['offset'] = $offset;
+        null !== $total && $obj['total'] = $total;
+        null !== $workflows && $obj['workflows'] = $workflows;
 
         return $obj;
     }
@@ -70,7 +79,7 @@ final class V1ListResponse implements BaseModel, ResponseConverter
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -78,7 +87,7 @@ final class V1ListResponse implements BaseModel, ResponseConverter
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -86,18 +95,27 @@ final class V1ListResponse implements BaseModel, ResponseConverter
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
     /**
-     * @param list<Workflow> $workflows
+     * @param list<Workflow|array{
+     *   id?: string|null,
+     *   createdAt?: string|null,
+     *   deployedAt?: string|null,
+     *   description?: string|null,
+     *   name?: string|null,
+     *   triggerType?: string|null,
+     *   updatedAt?: string|null,
+     *   visibility?: string|null,
+     * }> $workflows
      */
     public function withWorkflows(array $workflows): self
     {
         $obj = clone $this;
-        $obj->workflows = $workflows;
+        $obj['workflows'] = $workflows;
 
         return $obj;
     }

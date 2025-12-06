@@ -44,9 +44,9 @@ final class Chunk implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $score && $obj->score = $score;
-        null !== $source && $obj->source = $source;
-        null !== $text && $obj->text = $text;
+        null !== $score && $obj['score'] = $score;
+        null !== $source && $obj['source'] = $source;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -54,7 +54,7 @@ final class Chunk implements BaseModel
     public function withScore(float $score): self
     {
         $obj = clone $this;
-        $obj->score = $score;
+        $obj['score'] = $score;
 
         return $obj;
     }
@@ -62,7 +62,7 @@ final class Chunk implements BaseModel
     public function withSource(string $source): self
     {
         $obj = clone $this;
-        $obj->source = $source;
+        $obj['source'] = $source;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class Chunk implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

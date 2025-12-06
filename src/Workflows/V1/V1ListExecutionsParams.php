@@ -50,7 +50,7 @@ final class V1ListExecutionsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $limit && $obj->limit = $limit;
+        null !== $limit && $obj['limit'] = $limit;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -59,7 +59,7 @@ final class V1ListExecutionsParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

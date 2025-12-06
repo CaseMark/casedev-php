@@ -71,11 +71,11 @@ final class Result implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $domain && $obj->domain = $domain;
-        null !== $publishedDate && $obj->publishedDate = $publishedDate;
-        null !== $snippet && $obj->snippet = $snippet;
-        null !== $title && $obj->title = $title;
-        null !== $url && $obj->url = $url;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
+        null !== $snippet && $obj['snippet'] = $snippet;
+        null !== $title && $obj['title'] = $title;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class Result implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class Result implements BaseModel
     public function withPublishedDate(\DateTimeInterface $publishedDate): self
     {
         $obj = clone $this;
-        $obj->publishedDate = $publishedDate;
+        $obj['publishedDate'] = $publishedDate;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class Result implements BaseModel
     public function withSnippet(string $snippet): self
     {
         $obj = clone $this;
-        $obj->snippet = $snippet;
+        $obj['snippet'] = $snippet;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class Result implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class Result implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

@@ -62,7 +62,13 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Citation> $citations
+     * @param list<Citation|array{
+     *   id?: string|null,
+     *   publishedDate?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $citations
      */
     public static function with(
         ?string $answer = null,
@@ -72,10 +78,10 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $answer && $obj->answer = $answer;
-        null !== $citations && $obj->citations = $citations;
-        null !== $model && $obj->model = $model;
-        null !== $searchType && $obj->searchType = $searchType;
+        null !== $answer && $obj['answer'] = $answer;
+        null !== $citations && $obj['citations'] = $citations;
+        null !== $model && $obj['model'] = $model;
+        null !== $searchType && $obj['searchType'] = $searchType;
 
         return $obj;
     }
@@ -86,7 +92,7 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
     public function withAnswer(string $answer): self
     {
         $obj = clone $this;
-        $obj->answer = $answer;
+        $obj['answer'] = $answer;
 
         return $obj;
     }
@@ -94,12 +100,18 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
     /**
      * Sources used to generate the answer.
      *
-     * @param list<Citation> $citations
+     * @param list<Citation|array{
+     *   id?: string|null,
+     *   publishedDate?: string|null,
+     *   text?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * }> $citations
      */
     public function withCitations(array $citations): self
     {
         $obj = clone $this;
-        $obj->citations = $citations;
+        $obj['citations'] = $citations;
 
         return $obj;
     }
@@ -110,7 +122,7 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
     public function withModel(string $model): self
     {
         $obj = clone $this;
-        $obj->model = $model;
+        $obj['model'] = $model;
 
         return $obj;
     }
@@ -121,7 +133,7 @@ final class V1AnswerResponse implements BaseModel, ResponseConverter
     public function withSearchType(string $searchType): self
     {
         $obj = clone $this;
-        $obj->searchType = $searchType;
+        $obj['searchType'] = $searchType;
 
         return $obj;
     }

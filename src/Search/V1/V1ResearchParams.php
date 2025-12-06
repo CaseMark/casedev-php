@@ -88,11 +88,11 @@ final class V1ResearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->instructions = $instructions;
+        $obj['instructions'] = $instructions;
 
         null !== $model && $obj['model'] = $model;
-        null !== $outputSchema && $obj->outputSchema = $outputSchema;
-        null !== $query && $obj->query = $query;
+        null !== $outputSchema && $obj['outputSchema'] = $outputSchema;
+        null !== $query && $obj['query'] = $query;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class V1ResearchParams implements BaseModel
     public function withInstructions(string $instructions): self
     {
         $obj = clone $this;
-        $obj->instructions = $instructions;
+        $obj['instructions'] = $instructions;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class V1ResearchParams implements BaseModel
     public function withOutputSchema(mixed $outputSchema): self
     {
         $obj = clone $this;
-        $obj->outputSchema = $outputSchema;
+        $obj['outputSchema'] = $outputSchema;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class V1ResearchParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }

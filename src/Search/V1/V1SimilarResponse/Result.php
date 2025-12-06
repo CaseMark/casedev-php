@@ -66,13 +66,13 @@ final class Result implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $domain && $obj->domain = $domain;
-        null !== $publishedDate && $obj->publishedDate = $publishedDate;
-        null !== $similarityScore && $obj->similarityScore = $similarityScore;
-        null !== $snippet && $obj->snippet = $snippet;
-        null !== $text && $obj->text = $text;
-        null !== $title && $obj->title = $title;
-        null !== $url && $obj->url = $url;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
+        null !== $similarityScore && $obj['similarityScore'] = $similarityScore;
+        null !== $snippet && $obj['snippet'] = $snippet;
+        null !== $text && $obj['text'] = $text;
+        null !== $title && $obj['title'] = $title;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class Result implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class Result implements BaseModel
     public function withPublishedDate(string $publishedDate): self
     {
         $obj = clone $this;
-        $obj->publishedDate = $publishedDate;
+        $obj['publishedDate'] = $publishedDate;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class Result implements BaseModel
     public function withSimilarityScore(float $similarityScore): self
     {
         $obj = clone $this;
-        $obj->similarityScore = $similarityScore;
+        $obj['similarityScore'] = $similarityScore;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class Result implements BaseModel
     public function withSnippet(string $snippet): self
     {
         $obj = clone $this;
-        $obj->snippet = $snippet;
+        $obj['snippet'] = $snippet;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class Result implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class Result implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class Result implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

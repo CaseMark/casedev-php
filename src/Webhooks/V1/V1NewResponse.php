@@ -95,13 +95,13 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $description && $obj->description = $description;
-        null !== $events && $obj->events = $events;
-        null !== $isActive && $obj->isActive = $isActive;
-        null !== $secret && $obj->secret = $secret;
-        null !== $url && $obj->url = $url;
+        null !== $id && $obj['id'] = $id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $events && $obj['events'] = $events;
+        null !== $isActive && $obj['isActive'] = $isActive;
+        null !== $secret && $obj['secret'] = $secret;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withDescription(?string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -147,7 +147,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withEvents(array $events): self
     {
         $obj = clone $this;
-        $obj->events = $events;
+        $obj['events'] = $events;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withIsActive(bool $isActive): self
     {
         $obj = clone $this;
-        $obj->isActive = $isActive;
+        $obj['isActive'] = $isActive;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withSecret(string $secret): self
     {
         $obj = clone $this;
-        $obj->secret = $secret;
+        $obj['secret'] = $secret;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class V1NewResponse implements BaseModel, ResponseConverter
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

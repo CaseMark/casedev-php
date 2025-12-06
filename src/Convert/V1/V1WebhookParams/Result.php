@@ -57,9 +57,9 @@ final class Result implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $duration_seconds && $obj->duration_seconds = $duration_seconds;
-        null !== $file_size_bytes && $obj->file_size_bytes = $file_size_bytes;
-        null !== $stored_filename && $obj->stored_filename = $stored_filename;
+        null !== $duration_seconds && $obj['duration_seconds'] = $duration_seconds;
+        null !== $file_size_bytes && $obj['file_size_bytes'] = $file_size_bytes;
+        null !== $stored_filename && $obj['stored_filename'] = $stored_filename;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class Result implements BaseModel
     public function withDurationSeconds(float $durationSeconds): self
     {
         $obj = clone $this;
-        $obj->duration_seconds = $durationSeconds;
+        $obj['duration_seconds'] = $durationSeconds;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class Result implements BaseModel
     public function withFileSizeBytes(int $fileSizeBytes): self
     {
         $obj = clone $this;
-        $obj->file_size_bytes = $fileSizeBytes;
+        $obj['file_size_bytes'] = $fileSizeBytes;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class Result implements BaseModel
     public function withStoredFilename(string $storedFilename): self
     {
         $obj = clone $this;
-        $obj->stored_filename = $storedFilename;
+        $obj['stored_filename'] = $storedFilename;
 
         return $obj;
     }

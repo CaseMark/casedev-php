@@ -61,12 +61,12 @@ final class Execution implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $completedAt && $obj->completedAt = $completedAt;
-        null !== $durationMs && $obj->durationMs = $durationMs;
-        null !== $startedAt && $obj->startedAt = $startedAt;
-        null !== $status && $obj->status = $status;
-        null !== $triggerType && $obj->triggerType = $triggerType;
+        null !== $id && $obj['id'] = $id;
+        null !== $completedAt && $obj['completedAt'] = $completedAt;
+        null !== $durationMs && $obj['durationMs'] = $durationMs;
+        null !== $startedAt && $obj['startedAt'] = $startedAt;
+        null !== $status && $obj['status'] = $status;
+        null !== $triggerType && $obj['triggerType'] = $triggerType;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class Execution implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class Execution implements BaseModel
     public function withCompletedAt(string $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class Execution implements BaseModel
     public function withDurationMs(int $durationMs): self
     {
         $obj = clone $this;
-        $obj->durationMs = $durationMs;
+        $obj['durationMs'] = $durationMs;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class Execution implements BaseModel
     public function withStartedAt(string $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class Execution implements BaseModel
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class Execution implements BaseModel
     public function withTriggerType(string $triggerType): self
     {
         $obj = clone $this;
-        $obj->triggerType = $triggerType;
+        $obj['triggerType'] = $triggerType;
 
         return $obj;
     }

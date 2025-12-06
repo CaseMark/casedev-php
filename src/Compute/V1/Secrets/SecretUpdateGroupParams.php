@@ -68,9 +68,9 @@ final class SecretUpdateGroupParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->secrets = $secrets;
+        $obj['secrets'] = $secrets;
 
-        null !== $env && $obj->env = $env;
+        null !== $env && $obj['env'] = $env;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class SecretUpdateGroupParams implements BaseModel
     public function withSecrets(array $secrets): self
     {
         $obj = clone $this;
-        $obj->secrets = $secrets;
+        $obj['secrets'] = $secrets;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class SecretUpdateGroupParams implements BaseModel
     public function withEnv(string $env): self
     {
         $obj = clone $this;
-        $obj->env = $env;
+        $obj['env'] = $env;
 
         return $obj;
     }

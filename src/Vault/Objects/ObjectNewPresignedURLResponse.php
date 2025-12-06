@@ -98,13 +98,20 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Metadata|array{
+     *   bucket?: string|null,
+     *   contentType?: string|null,
+     *   region?: string|null,
+     *   sizeBytes?: int|null,
+     * } $metadata
      */
     public static function with(
         ?\DateTimeInterface $expiresAt = null,
         ?int $expiresIn = null,
         ?string $filename = null,
         mixed $instructions = null,
-        ?Metadata $metadata = null,
+        Metadata|array|null $metadata = null,
         ?string $objectId = null,
         ?string $operation = null,
         ?string $presignedUrl = null,
@@ -113,16 +120,16 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     ): self {
         $obj = new self;
 
-        null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $expiresIn && $obj->expiresIn = $expiresIn;
-        null !== $filename && $obj->filename = $filename;
-        null !== $instructions && $obj->instructions = $instructions;
-        null !== $metadata && $obj->metadata = $metadata;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $operation && $obj->operation = $operation;
-        null !== $presignedUrl && $obj->presignedUrl = $presignedUrl;
-        null !== $s3Key && $obj->s3Key = $s3Key;
-        null !== $vaultId && $obj->vaultId = $vaultId;
+        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
+        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
+        null !== $filename && $obj['filename'] = $filename;
+        null !== $instructions && $obj['instructions'] = $instructions;
+        null !== $metadata && $obj['metadata'] = $metadata;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $operation && $obj['operation'] = $operation;
+        null !== $presignedUrl && $obj['presignedUrl'] = $presignedUrl;
+        null !== $s3Key && $obj['s3Key'] = $s3Key;
+        null !== $vaultId && $obj['vaultId'] = $vaultId;
 
         return $obj;
     }
@@ -133,7 +140,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -144,7 +151,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj['expiresIn'] = $expiresIn;
 
         return $obj;
     }
@@ -155,7 +162,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withFilename(string $filename): self
     {
         $obj = clone $this;
-        $obj->filename = $filename;
+        $obj['filename'] = $filename;
 
         return $obj;
     }
@@ -166,15 +173,23 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withInstructions(mixed $instructions): self
     {
         $obj = clone $this;
-        $obj->instructions = $instructions;
+        $obj['instructions'] = $instructions;
 
         return $obj;
     }
 
-    public function withMetadata(Metadata $metadata): self
+    /**
+     * @param Metadata|array{
+     *   bucket?: string|null,
+     *   contentType?: string|null,
+     *   region?: string|null,
+     *   sizeBytes?: int|null,
+     * } $metadata
+     */
+    public function withMetadata(Metadata|array $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -185,7 +200,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -196,7 +211,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withOperation(string $operation): self
     {
         $obj = clone $this;
-        $obj->operation = $operation;
+        $obj['operation'] = $operation;
 
         return $obj;
     }
@@ -207,7 +222,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withPresignedURL(string $presignedURL): self
     {
         $obj = clone $this;
-        $obj->presignedUrl = $presignedURL;
+        $obj['presignedUrl'] = $presignedURL;
 
         return $obj;
     }
@@ -218,7 +233,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withS3Key(string $s3Key): self
     {
         $obj = clone $this;
-        $obj->s3Key = $s3Key;
+        $obj['s3Key'] = $s3Key;
 
         return $obj;
     }
@@ -229,7 +244,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverte
     public function withVaultID(string $vaultID): self
     {
         $obj = clone $this;
-        $obj->vaultId = $vaultID;
+        $obj['vaultId'] = $vaultID;
 
         return $obj;
     }
