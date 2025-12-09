@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Workflows\V1\V1ListExecutionsResponse\Execution;
@@ -20,7 +20,7 @@ final class V1ListExecutionsResponse implements BaseModel
     use SdkModel;
 
     /** @var list<Execution>|null $executions */
-    #[Api(list: Execution::class, optional: true)]
+    #[Optional(list: Execution::class)]
     public ?array $executions;
 
     public function __construct()

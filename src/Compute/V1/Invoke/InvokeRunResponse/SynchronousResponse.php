@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1\Invoke\InvokeRunResponse;
 
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\SynchronousResponse\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -26,29 +26,29 @@ final class SynchronousResponse implements BaseModel
     /**
      * Execution duration in milliseconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $duration;
 
     /**
      * Error message if status is failed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
     /**
      * Function return value.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $output;
 
     /**
      * Unique run identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $runId;
 
     /** @var value-of<Status>|null $status */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

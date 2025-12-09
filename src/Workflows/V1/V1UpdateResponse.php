@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class V1UpdateResponse implements BaseModel
     /** @use SdkModel<V1UpdateResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedAt;
 
     public function __construct()

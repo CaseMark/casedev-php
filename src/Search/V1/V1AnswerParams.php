@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -38,7 +39,7 @@ final class V1AnswerParams implements BaseModel
     /**
      * The question or topic to research and answer.
      */
-    #[Api]
+    #[Required]
     public string $query;
 
     /**
@@ -46,7 +47,7 @@ final class V1AnswerParams implements BaseModel
      *
      * @var list<string>|null $excludeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $excludeDomains;
 
     /**
@@ -54,25 +55,25 @@ final class V1AnswerParams implements BaseModel
      *
      * @var list<string>|null $includeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includeDomains;
 
     /**
      * Maximum tokens for LLM response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $maxTokens;
 
     /**
      * LLM model to use when useCustomLLM is true.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
     /**
      * Number of search results to consider.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numResults;
 
     /**
@@ -80,31 +81,31 @@ final class V1AnswerParams implements BaseModel
      *
      * @var value-of<SearchType>|null $searchType
      */
-    #[Api(enum: SearchType::class, optional: true)]
+    #[Optional(enum: SearchType::class)]
     public ?string $searchType;
 
     /**
      * Stream the response (only for native provider answers).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $stream;
 
     /**
      * LLM temperature for answer generation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $temperature;
 
     /**
      * Include text content in response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $text;
 
     /**
      * Use Case.dev LLM for answer generation instead of provider's native answer.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $useCustomLLM;
 
     /**

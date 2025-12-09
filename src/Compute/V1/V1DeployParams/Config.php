@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1\V1DeployParams;
 
 use Casedev\Compute\V1\V1DeployParams\Config\GPUType;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -45,13 +45,13 @@ final class Config implements BaseModel
     /**
      * Add Python to image (e.g., '3.12', for image runtime).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $addPython;
 
     /**
      * Allow network access (default: false for Python, true for Docker).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $allowNetwork;
 
     /**
@@ -59,25 +59,25 @@ final class Config implements BaseModel
      *
      * @var list<string>|null $cmd
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $cmd;
 
     /**
      * Concurrent execution limit.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $concurrency;
 
     /**
      * CPU core count.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $cpuCount;
 
     /**
      * Cron schedule for periodic execution.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $cronSchedule;
 
     /**
@@ -85,7 +85,7 @@ final class Config implements BaseModel
      *
      * @var list<string>|null $dependencies
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $dependencies;
 
     /**
@@ -93,7 +93,7 @@ final class Config implements BaseModel
      *
      * @var list<string>|null $entrypoint
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $entrypoint;
 
     /**
@@ -101,13 +101,13 @@ final class Config implements BaseModel
      *
      * @var array<string,string>|null $env
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $env;
 
     /**
      * Number of GPUs (for multi-GPU setups).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $gpuCount;
 
     /**
@@ -115,19 +115,19 @@ final class Config implements BaseModel
      *
      * @var value-of<GPUType>|null $gpuType
      */
-    #[Api(enum: GPUType::class, optional: true)]
+    #[Optional(enum: GPUType::class)]
     public ?string $gpuType;
 
     /**
      * Deploy as web service (auto-set for service type).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isWebService;
 
     /**
      * Memory allocation in MB.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $memoryMb;
 
     /**
@@ -135,25 +135,25 @@ final class Config implements BaseModel
      *
      * @var list<string>|null $pipInstall
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $pipInstall;
 
     /**
      * Port for web services.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $port;
 
     /**
      * Python version (e.g., '3.11').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pythonVersion;
 
     /**
      * Retry attempts on failure (Python only).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $retries;
 
     /**
@@ -161,31 +161,31 @@ final class Config implements BaseModel
      *
      * @var list<string>|null $secretGroups
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secretGroups;
 
     /**
      * Maximum execution time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $timeoutSeconds;
 
     /**
      * Use uv for faster package installs.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $useUv;
 
     /**
      * Number of warm instances to maintain.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $warmInstances;
 
     /**
      * Working directory in container.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $workdir;
 
     public function __construct()

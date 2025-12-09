@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -26,37 +26,37 @@ final class V1DeployResponse implements BaseModel
     /**
      * Deployment timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Unique deployment identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $deploymentId;
 
     /**
      * Environment name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $environment;
 
     /**
      * Runtime used.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $runtime;
 
     /**
      * Deployment status.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
     /**
      * Service endpoint URL (for web services).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

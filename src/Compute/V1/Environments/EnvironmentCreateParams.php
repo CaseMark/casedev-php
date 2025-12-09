@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Environments;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class EnvironmentCreateParams implements BaseModel
     /**
      * Environment name (alphanumeric, hyphens, and underscores only).
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**

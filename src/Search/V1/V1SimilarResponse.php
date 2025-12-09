@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1SimilarResponse\Result;
@@ -21,14 +21,14 @@ final class V1SimilarResponse implements BaseModel
     /** @use SdkModel<V1SimilarResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $processingTime;
 
     /** @var list<Result>|null $results */
-    #[Api(list: Result::class, optional: true)]
+    #[Optional(list: Result::class)]
     public ?array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalResults;
 
     public function __construct()

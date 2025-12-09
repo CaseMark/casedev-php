@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -28,19 +29,19 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Content type for PUT operations (optional, defaults to object's content type).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contentType;
 
     /**
      * URL expiration time in seconds (1 minute to 7 days).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $expiresIn;
 
     /**
@@ -48,7 +49,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
      *
      * @var value-of<Operation>|null $operation
      */
-    #[Api(enum: Operation::class, optional: true)]
+    #[Optional(enum: Operation::class)]
     public ?string $operation;
 
     /**

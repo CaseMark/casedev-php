@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -31,7 +32,7 @@ final class V1ResearchParams implements BaseModel
     /**
      * Research instructions or query.
      */
-    #[Api]
+    #[Required]
     public string $instructions;
 
     /**
@@ -39,19 +40,19 @@ final class V1ResearchParams implements BaseModel
      *
      * @var value-of<Model>|null $model
      */
-    #[Api(enum: Model::class, optional: true)]
+    #[Optional(enum: Model::class)]
     public ?string $model;
 
     /**
      * Optional JSON schema to structure the research output.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $outputSchema;
 
     /**
      * Alias for instructions (for convenience).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
     /**

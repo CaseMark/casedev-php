@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Ocr\V1\V1ProcessParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -23,25 +23,25 @@ final class Features implements BaseModel
     /**
      * Detect form fields.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $forms;
 
     /**
      * Preserve document layout.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $layout;
 
     /**
      * Detect and extract tables.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $tables;
 
     /**
      * Extract text content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $text;
 
     public function __construct()

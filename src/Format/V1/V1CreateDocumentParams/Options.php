@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1\V1CreateDocumentParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Format\V1\V1CreateDocumentParams\Options\Component;
@@ -22,7 +22,7 @@ final class Options implements BaseModel
      *
      * @var list<Component>|null $components
      */
-    #[Api(list: Component::class, optional: true)]
+    #[Optional(list: Component::class)]
     public ?array $components;
 
     public function __construct()

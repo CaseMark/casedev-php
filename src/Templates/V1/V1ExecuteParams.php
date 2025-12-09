@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Templates\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -37,10 +38,10 @@ final class V1ExecuteParams implements BaseModel
     /**
      * Input data for the workflow (structure varies by workflow type).
      */
-    #[Api]
+    #[Required]
     public mixed $input;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Options $options;
 
     /**

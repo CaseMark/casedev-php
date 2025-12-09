@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class Usage implements BaseModel
     /** @use SdkModel<UsageShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $completion_tokens;
 
     /**
      * Cost in USD.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $cost;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $prompt_tokens;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total_tokens;
 
     public function __construct()

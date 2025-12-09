@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\VaultUploadResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class Instructions implements BaseModel
     /** @use SdkModel<InstructionsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $headers;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $method;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $note;
 
     public function __construct()

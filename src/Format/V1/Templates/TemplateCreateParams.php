@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -34,13 +35,13 @@ final class TemplateCreateParams implements BaseModel
     /**
      * Template content with {{variable}} placeholders.
      */
-    #[Api]
+    #[Required]
     public string $content;
 
     /**
      * Template name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -48,19 +49,19 @@ final class TemplateCreateParams implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * Template description.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * CSS styles for the template.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $styles;
 
     /**
@@ -68,7 +69,7 @@ final class TemplateCreateParams implements BaseModel
      *
      * @var list<string>|null $tags
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $tags;
 
     /**
@@ -76,7 +77,7 @@ final class TemplateCreateParams implements BaseModel
      *
      * @var list<string>|null $variables
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $variables;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class V1DeployResponse implements BaseModel
     /** @use SdkModel<V1DeployResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $success;
 
     /**
      * Only returned once - save this!
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webhookSecret;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webhookUrl;
 
     public function __construct()

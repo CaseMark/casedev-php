@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultListResponse\Vault;
@@ -22,11 +22,11 @@ final class VaultListResponse implements BaseModel
     /**
      * Total number of vaults.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total;
 
     /** @var list<Vault>|null $vaults */
-    #[Api(list: Vault::class, optional: true)]
+    #[Optional(list: Vault::class)]
     public ?array $vaults;
 
     public function __construct()

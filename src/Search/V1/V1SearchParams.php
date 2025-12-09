@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -41,7 +42,7 @@ final class V1SearchParams implements BaseModel
     /**
      * Primary search query.
      */
-    #[Api]
+    #[Required]
     public string $query;
 
     /**
@@ -49,31 +50,31 @@ final class V1SearchParams implements BaseModel
      *
      * @var list<string>|null $additionalQueries
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $additionalQueries;
 
     /**
      * Category filter for search results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $category;
 
     /**
      * Specific content type to search for.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contents;
 
     /**
      * End date for crawl date filtering.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endCrawlDate;
 
     /**
      * End date for published date filtering.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endPublishedDate;
 
     /**
@@ -81,7 +82,7 @@ final class V1SearchParams implements BaseModel
      *
      * @var list<string>|null $excludeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $excludeDomains;
 
     /**
@@ -89,31 +90,31 @@ final class V1SearchParams implements BaseModel
      *
      * @var list<string>|null $includeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includeDomains;
 
     /**
      * Whether to include full text content in results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeText;
 
     /**
      * Number of search results to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numResults;
 
     /**
      * Start date for crawl date filtering.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startCrawlDate;
 
     /**
      * Start date for published date filtering.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startPublishedDate;
 
     /**
@@ -121,13 +122,13 @@ final class V1SearchParams implements BaseModel
      *
      * @var value-of<Type>|null $type
      */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
     /**
      * Geographic location for localized results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $userLocation;
 
     /**

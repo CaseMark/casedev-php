@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,13 +25,13 @@ final class V1GetUsageParams implements BaseModel
     /**
      * Month to filter usage data (1-12, defaults to current month).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $month;
 
     /**
      * Year to filter usage data (defaults to current year).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $year;
 
     public function __construct()

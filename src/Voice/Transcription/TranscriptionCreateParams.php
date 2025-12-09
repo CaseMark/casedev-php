@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\Transcription;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -34,49 +35,49 @@ final class TranscriptionCreateParams implements BaseModel
     /**
      * URL of the audio file to transcribe.
      */
-    #[Api]
+    #[Required]
     public string $audio_url;
 
     /**
      * Automatically extract key phrases and topics.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $auto_highlights;
 
     /**
      * Enable content moderation and safety labeling.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $content_safety_labels;
 
     /**
      * Format text with proper capitalization.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $format_text;
 
     /**
      * Language code (e.g., 'en_us', 'es', 'fr'). If not specified, language will be auto-detected.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language_code;
 
     /**
      * Enable automatic language detection.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $language_detection;
 
     /**
      * Add punctuation to the transcript.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $punctuate;
 
     /**
      * Enable speaker identification and labeling.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $speaker_labels;
 
     /**

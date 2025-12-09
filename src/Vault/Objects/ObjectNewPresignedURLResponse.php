@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
@@ -31,58 +31,58 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     /**
      * URL expiration timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAt;
 
     /**
      * URL expiration time in seconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $expiresIn;
 
     /**
      * Original filename.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $filename;
 
     /**
      * Usage instructions and examples.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $instructions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Metadata $metadata;
 
     /**
      * The object identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * The operation type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $operation;
 
     /**
      * The presigned URL for direct S3 access.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $presignedUrl;
 
     /**
      * S3 object key.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $s3Key;
 
     /**
      * The vault identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $vaultId;
 
     public function __construct()

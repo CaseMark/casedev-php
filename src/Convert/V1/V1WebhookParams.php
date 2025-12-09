@@ -6,7 +6,8 @@ namespace Casedev\Convert\V1;
 
 use Casedev\Convert\V1\V1WebhookParams\Result;
 use Casedev\Convert\V1\V1WebhookParams\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -36,7 +37,7 @@ final class V1WebhookParams implements BaseModel
     /**
      * Unique identifier for the conversion job.
      */
-    #[Api]
+    #[Required]
     public string $job_id;
 
     /**
@@ -44,19 +45,19 @@ final class V1WebhookParams implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * Error message for failed jobs.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
     /**
      * Result data for completed jobs.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?Result $result;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultIngestResponse\Status;
@@ -26,19 +26,19 @@ final class VaultIngestResponse implements BaseModel
     /**
      * Whether GraphRAG is enabled for this vault.
      */
-    #[Api]
+    #[Required]
     public bool $enableGraphRAG;
 
     /**
      * Human-readable status message.
      */
-    #[Api]
+    #[Required]
     public string $message;
 
     /**
      * ID of the vault object being processed.
      */
-    #[Api]
+    #[Required]
     public string $objectId;
 
     /**
@@ -46,13 +46,13 @@ final class VaultIngestResponse implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * Workflow run ID for tracking progress.
      */
-    #[Api]
+    #[Required]
     public string $workflowId;
 
     /**

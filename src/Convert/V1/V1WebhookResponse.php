@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Convert\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class V1WebhookResponse implements BaseModel
     /** @use SdkModel<V1WebhookResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $success;
 
     public function __construct()

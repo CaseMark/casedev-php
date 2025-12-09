@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1\V1SearchResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -25,31 +25,31 @@ final class Result implements BaseModel
     /**
      * Domain of the source.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $domain;
 
     /**
      * Publication date of the content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishedDate;
 
     /**
      * Brief excerpt from the content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $snippet;
 
     /**
      * Title of the search result.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
     /**
      * URL of the search result.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

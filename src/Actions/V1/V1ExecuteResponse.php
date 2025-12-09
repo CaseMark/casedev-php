@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Actions\V1;
 
 use Casedev\Actions\V1\V1ExecuteResponse\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Core\Conversion\MapOf;
@@ -29,19 +29,19 @@ final class V1ExecuteResponse implements BaseModel
     /**
      * Execution duration in milliseconds (only for completed executions).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $duration_ms;
 
     /**
      * Unique identifier for this execution.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $execution_id;
 
     /**
      * Human-readable status message.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
     /**
@@ -49,7 +49,7 @@ final class V1ExecuteResponse implements BaseModel
      *
      * @var array<string,mixed>|null $output
      */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $output;
 
     /**
@@ -57,7 +57,7 @@ final class V1ExecuteResponse implements BaseModel
      *
      * @var value-of<Status>|null $status
      */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     /**
@@ -65,13 +65,13 @@ final class V1ExecuteResponse implements BaseModel
      *
      * @var list<array<string,mixed>>|null $step_results
      */
-    #[Api(list: new MapOf('mixed'), optional: true)]
+    #[Optional(list: new MapOf('mixed'))]
     public ?array $step_results;
 
     /**
      * Whether webhook notifications are configured.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $webhook_configured;
 
     public function __construct()

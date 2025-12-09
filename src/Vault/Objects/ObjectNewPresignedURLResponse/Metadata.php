@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class Metadata implements BaseModel
     /** @use SdkModel<MetadataShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $bucket;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contentType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $region;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $sizeBytes;
 
     public function __construct()

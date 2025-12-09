@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -27,7 +27,7 @@ final class TemplateListParams implements BaseModel
     /**
      * Filter templates by type (e.g., contract, pleading, letter).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     public function __construct()

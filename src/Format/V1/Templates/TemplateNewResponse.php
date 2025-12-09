@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -25,25 +25,25 @@ final class TemplateNewResponse implements BaseModel
     /**
      * Template ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Template name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * Template type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     /**
@@ -51,7 +51,7 @@ final class TemplateNewResponse implements BaseModel
      *
      * @var list<string>|null $variables
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $variables;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1ContentsResponse\Result;
@@ -18,7 +18,7 @@ final class V1ContentsResponse implements BaseModel
     use SdkModel;
 
     /** @var list<Result>|null $results */
-    #[Api(list: Result::class, optional: true)]
+    #[Optional(list: Result::class)]
     public ?array $results;
 
     public function __construct()

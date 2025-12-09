@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\Transcription;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Voice\Transcription\TranscriptionGetResponse\Status;
@@ -29,7 +30,7 @@ final class TranscriptionGetResponse implements BaseModel
     /**
      * Unique transcription job ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -37,31 +38,31 @@ final class TranscriptionGetResponse implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * Duration of the audio file in seconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $audio_duration;
 
     /**
      * Overall confidence score for the transcription.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $confidence;
 
     /**
      * Error message (only present when status is error).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
     /**
      * Full transcription text (only present when status is completed).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
     /**
@@ -69,7 +70,7 @@ final class TranscriptionGetResponse implements BaseModel
      *
      * @var list<Word>|null $words
      */
-    #[Api(list: Word::class, optional: true)]
+    #[Optional(list: Word::class)]
     public ?array $words;
 
     /**

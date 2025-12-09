@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Environments;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class EnvironmentDeleteResponse implements BaseModel
     /** @use SdkModel<EnvironmentDeleteResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $message;
 
-    #[Api]
+    #[Required]
     public bool $success;
 
     /**

@@ -8,7 +8,8 @@ use Casedev\Compute\V1\V1DeployParams\Config;
 use Casedev\Compute\V1\V1DeployParams\Config\GPUType;
 use Casedev\Compute\V1\V1DeployParams\Runtime;
 use Casedev\Compute\V1\V1DeployParams\Type;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -62,7 +63,7 @@ final class V1DeployParams implements BaseModel
     /**
      * Function/app name (used for domain: hello → hello.org.case.systems).
      */
-    #[Api]
+    #[Required]
     public string $entrypointName;
 
     /**
@@ -70,43 +71,43 @@ final class V1DeployParams implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * Python code (required for python runtime).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $code;
 
     /**
      * Runtime and resource configuration.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?Config $config;
 
     /**
      * Dockerfile content (required for dockerfile runtime).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $dockerfile;
 
     /**
      * Python entrypoint file name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $entrypointFile;
 
     /**
      * Environment name (uses default if not specified).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $environment;
 
     /**
      * Container image name (required for image runtime, e.g., 'nvidia/cuda:12.8.1-devel-ubuntu22.04').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $image;
 
     /**
@@ -114,7 +115,7 @@ final class V1DeployParams implements BaseModel
      *
      * @var value-of<Runtime>|null $runtime
      */
-    #[Api(enum: Runtime::class, optional: true)]
+    #[Optional(enum: Runtime::class)]
     public ?string $runtime;
 
     /**

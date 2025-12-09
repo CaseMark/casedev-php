@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\Transcription\TranscriptionGetResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class Word implements BaseModel
     /** @use SdkModel<WordShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $confidence;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $end;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $start;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
     public function __construct()

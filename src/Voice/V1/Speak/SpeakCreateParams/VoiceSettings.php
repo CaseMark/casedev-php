@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\V1\Speak\SpeakCreateParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -26,25 +26,25 @@ final class VoiceSettings implements BaseModel
     /**
      * Similarity boost (0-1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $similarity_boost;
 
     /**
      * Voice stability (0-1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $stability;
 
     /**
      * Style exaggeration (0-1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $style;
 
     /**
      * Enable speaker boost.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $use_speaker_boost;
 
     public function __construct()

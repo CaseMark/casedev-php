@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1\Chat;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -40,49 +41,49 @@ final class ChatCreateCompletionParams implements BaseModel
      *
      * @var list<Message> $messages
      */
-    #[Api(list: Message::class)]
+    #[Required(list: Message::class)]
     public array $messages;
 
     /**
      * Frequency penalty parameter.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $frequency_penalty;
 
     /**
      * Maximum number of tokens to generate.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $max_tokens;
 
     /**
      * Model to use for completion. Defaults to casemark-core-1 if not specified.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
     /**
      * Presence penalty parameter.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $presence_penalty;
 
     /**
      * Whether to stream back partial progress.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $stream;
 
     /**
      * Sampling temperature between 0 and 2.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $temperature;
 
     /**
      * Nucleus sampling parameter.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $top_p;
 
     /**

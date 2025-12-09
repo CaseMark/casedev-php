@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Actions\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -28,37 +28,37 @@ final class V1NewResponse implements BaseModel
     /** @use SdkModel<V1NewResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdBy;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $definition;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isActive;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $organizationId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $version;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webhookEndpointId;
 
     public function __construct()

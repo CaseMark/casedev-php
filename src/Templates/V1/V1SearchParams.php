@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Templates\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -27,19 +28,19 @@ final class V1SearchParams implements BaseModel
     /**
      * Search query to find relevant workflows.
      */
-    #[Api]
+    #[Required]
     public string $query;
 
     /**
      * Optional category filter to narrow results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $category;
 
     /**
      * Maximum number of results to return (default: 10, max: 50).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**

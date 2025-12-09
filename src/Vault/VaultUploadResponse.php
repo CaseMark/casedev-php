@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultUploadResponse\Instructions;
@@ -28,40 +28,40 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Whether the file will be automatically indexed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $auto_index;
 
     /**
      * URL expiration time in seconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $expiresIn;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Instructions $instructions;
 
     /**
      * Next API endpoint to call for processing.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $next_step;
 
     /**
      * Unique identifier for the uploaded object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * S3 object key for the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $s3Key;
 
     /**
      * Presigned URL for uploading the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $uploadUrl;
 
     public function __construct()

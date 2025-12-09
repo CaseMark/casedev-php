@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -28,13 +28,13 @@ final class V1ListParams implements BaseModel
     /**
      * Maximum number of results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Offset for pagination.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $offset;
 
     /**
@@ -42,7 +42,7 @@ final class V1ListParams implements BaseModel
      *
      * @var value-of<Visibility>|null $visibility
      */
-    #[Api(enum: Visibility::class, optional: true)]
+    #[Optional(enum: Visibility::class)]
     public ?string $visibility;
 
     public function __construct()

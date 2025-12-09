@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1\V1AnswerResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -22,19 +22,19 @@ final class Citation implements BaseModel
     /** @use SdkModel<CitationShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publishedDate;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

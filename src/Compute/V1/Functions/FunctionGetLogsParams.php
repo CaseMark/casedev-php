@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Functions;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class FunctionGetLogsParams implements BaseModel
     /**
      * Number of log lines to retrieve (default 200, max 1000).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $tail;
 
     public function __construct()

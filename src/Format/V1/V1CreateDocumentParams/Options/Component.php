@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1\V1CreateDocumentParams\Options;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class Component implements BaseModel
     /**
      * Inline template content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $content;
 
     /**
      * Custom styling options.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $styles;
 
     /**
      * ID of saved template component.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $templateId;
 
     /**
      * Variables for template interpolation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $variables;
 
     public function __construct()

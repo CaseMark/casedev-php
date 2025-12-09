@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -33,19 +34,19 @@ final class SecretCreateParams implements BaseModel
     /**
      * Unique name for the secret group. Must contain only letters, numbers, hyphens, and underscores.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Optional description of the secret group's purpose.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Environment name where the secret group will be created. Uses default environment if not specified.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $env;
 
     /**

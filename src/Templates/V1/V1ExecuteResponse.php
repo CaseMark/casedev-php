@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Templates\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Templates\V1\V1ExecuteResponse\Status;
@@ -26,20 +26,20 @@ final class V1ExecuteResponse implements BaseModel
     /**
      * Workflow output (structure varies by workflow type).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $result;
 
     /** @var value-of<Status>|null $status */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Usage $usage;
 
     /**
      * Name of the executed workflow.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $workflow_name;
 
     public function __construct()

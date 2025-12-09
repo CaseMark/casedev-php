@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1\V1ListResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -25,28 +25,28 @@ final class Workflow implements BaseModel
     /** @use SdkModel<WorkflowShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $deployedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $triggerType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $visibility;
 
     public function __construct()

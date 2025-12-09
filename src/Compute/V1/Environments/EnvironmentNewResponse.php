@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1\Environments;
 
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -28,37 +28,37 @@ final class EnvironmentNewResponse implements BaseModel
     /**
      * Unique environment identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Environment creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Unique domain for this environment.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $domain;
 
     /**
      * Whether this is the default environment.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isDefault;
 
     /**
      * Environment name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * URL-friendly slug derived from name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $slug;
 
     /**
@@ -66,7 +66,7 @@ final class EnvironmentNewResponse implements BaseModel
      *
      * @var value-of<Status>|null $status
      */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

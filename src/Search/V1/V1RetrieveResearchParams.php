@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class V1RetrieveResearchParams implements BaseModel
     /**
      * Filter specific event types for streaming.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $events;
 
     /**
      * Enable streaming for real-time updates.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $stream;
 
     public function __construct()
