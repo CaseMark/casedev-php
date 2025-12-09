@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\EnvironmentsContract;
@@ -37,14 +38,16 @@ final class EnvironmentsService implements EnvironmentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EnvironmentNewResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'compute/v1/environments',
             body: (object) $parsed,
             options: $options,
             convert: EnvironmentNewResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -58,13 +61,15 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['compute/v1/environments/%1$s', $name],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -76,13 +81,15 @@ final class EnvironmentsService implements EnvironmentsContract
      */
     public function list(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'compute/v1/environments',
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -96,13 +103,15 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): EnvironmentDeleteResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EnvironmentDeleteResponse> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['compute/v1/environments/%1$s', $name],
             options: $requestOptions,
             convert: EnvironmentDeleteResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -116,12 +125,14 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['compute/v1/environments/%1$s/default', $name],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

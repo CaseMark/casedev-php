@@ -6,9 +6,7 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1GetExecutionResponseShape = array{
@@ -24,12 +22,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   workflowId?: string|null,
  * }
  */
-final class V1GetExecutionResponse implements BaseModel, ResponseConverter
+final class V1GetExecutionResponse implements BaseModel
 {
     /** @use SdkModel<V1GetExecutionResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $id;

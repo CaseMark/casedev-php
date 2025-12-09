@@ -6,9 +6,7 @@ namespace Casedev\Webhooks\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1NewResponseShape = array{
@@ -21,12 +19,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   url?: string|null,
  * }
  */
-final class V1NewResponse implements BaseModel, ResponseConverter
+final class V1NewResponse implements BaseModel
 {
     /** @use SdkModel<V1NewResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique webhook endpoint ID.

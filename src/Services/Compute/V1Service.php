@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Compute\V1\V1DeployParams;
 use Casedev\Compute\V1\V1DeployResponse;
 use Casedev\Compute\V1\V1GetUsageParams;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1Contract;
@@ -107,14 +108,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1DeployResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'compute/v1/deploy',
             body: (object) $parsed,
             options: $options,
             convert: V1DeployResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -126,13 +129,15 @@ final class V1Service implements V1Contract
      */
     public function getPricing(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'compute/v1/pricing',
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -153,13 +158,15 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'compute/v1/usage',
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

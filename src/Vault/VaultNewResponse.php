@@ -6,9 +6,7 @@ namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type VaultNewResponseShape = array{
@@ -22,12 +20,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   vectorBucket?: string|null,
  * }
  */
-final class VaultNewResponse implements BaseModel, ResponseConverter
+final class VaultNewResponse implements BaseModel
 {
     /** @use SdkModel<VaultNewResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique vault identifier.

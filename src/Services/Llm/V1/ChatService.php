@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Llm\V1;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\Chat\ChatCreateCompletionParams;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
@@ -45,13 +46,15 @@ final class ChatService implements ChatContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ChatNewCompletionResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'llm/v1/chat/completions',
             body: (object) $parsed,
             options: $options,
             convert: ChatNewCompletionResponse::class,
         );
+
+        return $response->parse();
     }
 }

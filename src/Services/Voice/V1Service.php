@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Voice;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1Contract;
@@ -54,13 +55,15 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'voice/v1/voices',
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

@@ -6,9 +6,7 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Workflows\V1\V1ExecuteResponse\Status;
 
 /**
@@ -20,12 +18,10 @@ use Casedev\Workflows\V1\V1ExecuteResponse\Status;
  *   status?: value-of<Status>|null,
  * }
  */
-final class V1ExecuteResponse implements BaseModel, ResponseConverter
+final class V1ExecuteResponse implements BaseModel
 {
     /** @use SdkModel<V1ExecuteResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?int $duration;

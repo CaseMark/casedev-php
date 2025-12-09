@@ -6,9 +6,7 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Workflows\V1\V1ListExecutionsResponse\Execution;
 
 /**
@@ -16,12 +14,10 @@ use Casedev\Workflows\V1\V1ListExecutionsResponse\Execution;
  *   executions?: list<Execution>|null
  * }
  */
-final class V1ListExecutionsResponse implements BaseModel, ResponseConverter
+final class V1ListExecutionsResponse implements BaseModel
 {
     /** @use SdkModel<V1ListExecutionsResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<Execution>|null $executions */
     #[Api(list: Execution::class, optional: true)]

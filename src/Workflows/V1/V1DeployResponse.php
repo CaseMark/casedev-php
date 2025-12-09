@@ -6,9 +6,7 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1DeployResponseShape = array{
@@ -18,12 +16,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   webhookUrl?: string|null,
  * }
  */
-final class V1DeployResponse implements BaseModel, ResponseConverter
+final class V1DeployResponse implements BaseModel
 {
     /** @use SdkModel<V1DeployResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $message;

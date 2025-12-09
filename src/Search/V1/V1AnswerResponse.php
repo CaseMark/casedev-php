@@ -6,9 +6,7 @@ namespace Casedev\Search\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Search\V1\V1AnswerResponse\Citation;
 
 /**
@@ -19,12 +17,10 @@ use Casedev\Search\V1\V1AnswerResponse\Citation;
  *   searchType?: string|null,
  * }
  */
-final class V1AnswerResponse implements BaseModel, ResponseConverter
+final class V1AnswerResponse implements BaseModel
 {
     /** @use SdkModel<V1AnswerResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The generated answer with citations.

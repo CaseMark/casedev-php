@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Voice;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\TranscriptionContract;
@@ -45,14 +46,16 @@ final class TranscriptionService implements TranscriptionContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'voice/transcription',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -66,12 +69,14 @@ final class TranscriptionService implements TranscriptionContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): TranscriptionGetResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TranscriptionGetResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['voice/transcription/%1$s', $id],
             options: $requestOptions,
             convert: TranscriptionGetResponse::class,
         );
+
+        return $response->parse();
     }
 }

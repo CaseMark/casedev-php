@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Vault;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\GraphragContract;
@@ -27,13 +28,15 @@ final class GraphragService implements GraphragContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s/graphrag/stats', $id],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -47,12 +50,14 @@ final class GraphragService implements GraphragContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['vault/%1$s/graphrag/init', $id],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

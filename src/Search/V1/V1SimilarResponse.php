@@ -6,9 +6,7 @@ namespace Casedev\Search\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Search\V1\V1SimilarResponse\Result;
 
 /**
@@ -18,12 +16,10 @@ use Casedev\Search\V1\V1SimilarResponse\Result;
  *   totalResults?: int|null,
  * }
  */
-final class V1SimilarResponse implements BaseModel, ResponseConverter
+final class V1SimilarResponse implements BaseModel
 {
     /** @use SdkModel<V1SimilarResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?float $processingTime;

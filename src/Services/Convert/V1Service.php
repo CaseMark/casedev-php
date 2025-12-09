@@ -9,6 +9,7 @@ use Casedev\Convert\V1\V1ProcessParams;
 use Casedev\Convert\V1\V1ProcessResponse;
 use Casedev\Convert\V1\V1WebhookParams;
 use Casedev\Convert\V1\V1WebhookResponse;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1Contract;
@@ -40,14 +41,16 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): string {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'get',
             path: ['convert/v1/download/%1$s', $id],
             headers: ['Accept' => 'audio/mp4'],
             options: $requestOptions,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,14 +75,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ProcessResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'convert/v1/process',
             body: (object) $parsed,
             options: $options,
             convert: V1ProcessResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -107,13 +112,15 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1WebhookResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'convert/v1/webhook',
             body: (object) $parsed,
             options: $options,
             convert: V1WebhookResponse::class,
         );
+
+        return $response->parse();
     }
 }

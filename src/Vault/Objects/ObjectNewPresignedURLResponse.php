@@ -6,9 +6,7 @@ namespace Casedev\Vault\Objects;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
 
 /**
@@ -25,12 +23,10 @@ use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
  *   vaultId?: string|null,
  * }
  */
-final class ObjectNewPresignedURLResponse implements BaseModel, ResponseConverter
+final class ObjectNewPresignedURLResponse implements BaseModel
 {
     /** @use SdkModel<ObjectNewPresignedURLResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * URL expiration timestamp.

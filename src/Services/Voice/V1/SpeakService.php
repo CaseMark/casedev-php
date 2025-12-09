@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Voice\V1;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1\SpeakContract;
@@ -56,8 +57,8 @@ final class SpeakService implements SpeakContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: 'voice/v1/speak',
             headers: ['Accept' => 'audio/mpeg'],
@@ -65,6 +66,8 @@ final class SpeakService implements SpeakContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -103,8 +106,8 @@ final class SpeakService implements SpeakContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: 'voice/v1/speak/stream',
             headers: ['Accept' => 'audio/mpeg'],
@@ -112,5 +115,7 @@ final class SpeakService implements SpeakContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 }

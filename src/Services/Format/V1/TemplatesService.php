@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Format\V1;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\Templates\TemplateCreateParams;
 use Casedev\Format\V1\Templates\TemplateListParams;
@@ -45,14 +46,16 @@ final class TemplatesService implements TemplatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TemplateNewResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'format/v1/templates',
             body: (object) $parsed,
             options: $options,
             convert: TemplateNewResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -66,13 +69,15 @@ final class TemplatesService implements TemplatesContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['format/v1/templates/%1$s', $id],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -95,13 +100,15 @@ final class TemplatesService implements TemplatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'format/v1/templates',
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

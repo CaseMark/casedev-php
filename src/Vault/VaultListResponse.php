@@ -6,9 +6,7 @@ namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Vault\VaultListResponse\Vault;
 
 /**
@@ -16,12 +14,10 @@ use Casedev\Vault\VaultListResponse\Vault;
  *   total?: int|null, vaults?: list<Vault>|null
  * }
  */
-final class VaultListResponse implements BaseModel, ResponseConverter
+final class VaultListResponse implements BaseModel
 {
     /** @use SdkModel<VaultListResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Total number of vaults.

@@ -6,9 +6,7 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Workflows\V1\V1ListResponse\Workflow;
 
 /**
@@ -19,12 +17,10 @@ use Casedev\Workflows\V1\V1ListResponse\Workflow;
  *   workflows?: list<Workflow>|null,
  * }
  */
-final class V1ListResponse implements BaseModel, ResponseConverter
+final class V1ListResponse implements BaseModel
 {
     /** @use SdkModel<V1ListResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?int $limit;

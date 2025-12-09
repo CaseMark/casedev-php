@@ -6,21 +6,17 @@ namespace Casedev\Search\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1ResearchResponseShape = array{
  *   model?: string|null, researchId?: string|null, results?: mixed
  * }
  */
-final class V1ResearchResponse implements BaseModel, ResponseConverter
+final class V1ResearchResponse implements BaseModel
 {
     /** @use SdkModel<V1ResearchResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Model used for research.

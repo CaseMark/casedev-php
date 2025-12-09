@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Llm;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\V1CreateEmbeddingParams;
 use Casedev\RequestOptions;
@@ -50,14 +51,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'llm/v1/embeddings',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -71,12 +74,14 @@ final class V1Service implements V1Contract
      */
     public function listModels(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'llm/v1/models',
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

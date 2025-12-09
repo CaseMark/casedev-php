@@ -11,6 +11,7 @@ use Casedev\Compute\V1\Secrets\SecretListParams;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
 use Casedev\Compute\V1\Secrets\SecretRetrieveGroupParams;
 use Casedev\Compute\V1\Secrets\SecretUpdateGroupParams;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\SecretsContract;
@@ -48,14 +49,16 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SecretNewResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'compute/v1/secrets',
             body: (object) $parsed,
             options: $options,
             convert: SecretNewResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -76,14 +79,16 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'compute/v1/secrets',
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -105,14 +110,16 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['compute/v1/secrets/%1$s', $group],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -134,14 +141,16 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['compute/v1/secrets/%1$s', $group],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -165,13 +174,15 @@ final class SecretsService implements SecretsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: ['compute/v1/secrets/%1$s', $group],
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

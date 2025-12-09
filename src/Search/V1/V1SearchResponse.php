@@ -6,9 +6,7 @@ namespace Casedev\Search\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Search\V1\V1SearchResponse\Result;
 
 /**
@@ -16,12 +14,10 @@ use Casedev\Search\V1\V1SearchResponse\Result;
  *   query?: string|null, results?: list<Result>|null, totalResults?: int|null
  * }
  */
-final class V1SearchResponse implements BaseModel, ResponseConverter
+final class V1SearchResponse implements BaseModel
 {
     /** @use SdkModel<V1SearchResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Original search query.

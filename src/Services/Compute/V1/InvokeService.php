@@ -9,6 +9,7 @@ use Casedev\Compute\V1\Invoke\InvokeRunParams;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\AsynchronousResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\SynchronousResponse;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\InvokeContract;
@@ -43,13 +44,15 @@ final class InvokeService implements InvokeContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SynchronousResponse|AsynchronousResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['compute/v1/invoke/%1$s', $functionID],
             body: (object) $parsed,
             options: $options,
             convert: InvokeRunResponse::class,
         );
+
+        return $response->parse();
     }
 }

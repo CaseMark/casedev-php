@@ -6,9 +6,7 @@ namespace Casedev\Ocr\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Ocr\V1\V1ProcessResponse\Status;
 
 /**
@@ -22,12 +20,10 @@ use Casedev\Ocr\V1\V1ProcessResponse\Status;
  *   status?: value-of<Status>|null,
  * }
  */
-final class V1ProcessResponse implements BaseModel, ResponseConverter
+final class V1ProcessResponse implements BaseModel
 {
     /** @use SdkModel<V1ProcessResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique job identifier.
