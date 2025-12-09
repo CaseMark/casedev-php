@@ -7,9 +7,7 @@ namespace Casedev\Actions\V1;
 use Casedev\Actions\V1\V1ExecuteResponse\Status;
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Core\Conversion\MapOf;
 
 /**
@@ -23,12 +21,10 @@ use Casedev\Core\Conversion\MapOf;
  *   webhook_configured?: bool|null,
  * }
  */
-final class V1ExecuteResponse implements BaseModel, ResponseConverter
+final class V1ExecuteResponse implements BaseModel
 {
     /** @use SdkModel<V1ExecuteResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Execution duration in milliseconds (only for completed executions).

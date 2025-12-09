@@ -7,9 +7,7 @@ namespace Casedev\Compute\V1\Environments;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse\Status;
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type EnvironmentNewResponseShape = array{
@@ -22,12 +20,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   status?: value-of<Status>|null,
  * }
  */
-final class EnvironmentNewResponse implements BaseModel, ResponseConverter
+final class EnvironmentNewResponse implements BaseModel
 {
     /** @use SdkModel<EnvironmentNewResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique environment identifier.

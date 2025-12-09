@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\LlmContract;
@@ -40,12 +41,14 @@ final class LlmService implements LlmContract
      */
     public function getConfig(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'llm/config',
             options: $requestOptions,
             convert: null
         );
+
+        return $response->parse();
     }
 }

@@ -6,9 +6,7 @@ namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Vault\VaultUploadResponse\Instructions;
 
 /**
@@ -22,12 +20,10 @@ use Casedev\Vault\VaultUploadResponse\Instructions;
  *   uploadUrl?: string|null,
  * }
  */
-final class VaultUploadResponse implements BaseModel, ResponseConverter
+final class VaultUploadResponse implements BaseModel
 {
     /** @use SdkModel<VaultUploadResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Whether the file will be automatically indexed.

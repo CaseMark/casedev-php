@@ -6,9 +6,7 @@ namespace Casedev\Voice\Transcription;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Voice\Transcription\TranscriptionGetResponse\Status;
 use Casedev\Voice\Transcription\TranscriptionGetResponse\Word;
 
@@ -23,12 +21,10 @@ use Casedev\Voice\Transcription\TranscriptionGetResponse\Word;
  *   words?: list<Word>|null,
  * }
  */
-final class TranscriptionGetResponse implements BaseModel, ResponseConverter
+final class TranscriptionGetResponse implements BaseModel
 {
     /** @use SdkModel<TranscriptionGetResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique transcription job ID.

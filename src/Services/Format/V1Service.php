@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Format;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\V1CreateDocumentParams;
 use Casedev\RequestOptions;
@@ -53,8 +54,8 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: 'format/v1/document',
             headers: ['Accept' => 'application/pdf'],
@@ -62,5 +63,7 @@ final class V1Service implements V1Contract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 }

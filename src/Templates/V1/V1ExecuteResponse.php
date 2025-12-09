@@ -6,9 +6,7 @@ namespace Casedev\Templates\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Templates\V1\V1ExecuteResponse\Status;
 use Casedev\Templates\V1\V1ExecuteResponse\Usage;
 
@@ -20,12 +18,10 @@ use Casedev\Templates\V1\V1ExecuteResponse\Usage;
  *   workflow_name?: string|null,
  * }
  */
-final class V1ExecuteResponse implements BaseModel, ResponseConverter
+final class V1ExecuteResponse implements BaseModel
 {
     /** @use SdkModel<V1ExecuteResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Workflow output (structure varies by workflow type).

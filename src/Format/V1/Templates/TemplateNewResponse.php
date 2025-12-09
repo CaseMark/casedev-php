@@ -6,9 +6,7 @@ namespace Casedev\Format\V1\Templates;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TemplateNewResponseShape = array{
@@ -19,12 +17,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   variables?: list<string>|null,
  * }
  */
-final class TemplateNewResponse implements BaseModel, ResponseConverter
+final class TemplateNewResponse implements BaseModel
 {
     /** @use SdkModel<TemplateNewResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Template ID.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Search;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Search\V1\V1AnswerParams;
@@ -57,14 +58,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1AnswerResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'search/v1/answer',
             body: (object) $parsed,
             options: $options,
             convert: V1AnswerResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -96,14 +99,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ContentsResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'search/v1/contents',
             body: (object) $parsed,
             options: $options,
             convert: V1ContentsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -129,14 +134,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ResearchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'search/v1/research',
             body: (object) $parsed,
             options: $options,
             convert: V1ResearchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -158,14 +165,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['search/v1/research/%1$s', $id],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -201,14 +210,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1SearchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'search/v1/search',
             body: (object) $parsed,
             options: $options,
             convert: V1SearchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -240,13 +251,15 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1SimilarResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'search/v1/similar',
             body: (object) $parsed,
             options: $options,
             convert: V1SimilarResponse::class,
         );
+
+        return $response->parse();
     }
 }

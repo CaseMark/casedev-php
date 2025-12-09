@@ -6,20 +6,16 @@ namespace Casedev\Search\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Search\V1\V1ContentsResponse\Result;
 
 /**
  * @phpstan-type V1ContentsResponseShape = array{results?: list<Result>|null}
  */
-final class V1ContentsResponse implements BaseModel, ResponseConverter
+final class V1ContentsResponse implements BaseModel
 {
     /** @use SdkModel<V1ContentsResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<Result>|null $results */
     #[Api(list: Result::class, optional: true)]

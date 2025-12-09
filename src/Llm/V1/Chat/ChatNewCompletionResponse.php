@@ -6,9 +6,7 @@ namespace Casedev\Llm\V1\Chat;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
@@ -23,12 +21,10 @@ use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
  *   usage?: Usage|null,
  * }
  */
-final class ChatNewCompletionResponse implements BaseModel, ResponseConverter
+final class ChatNewCompletionResponse implements BaseModel
 {
     /** @use SdkModel<ChatNewCompletionResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique identifier for the completion.

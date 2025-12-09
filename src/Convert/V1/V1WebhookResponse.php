@@ -6,21 +6,17 @@ namespace Casedev\Convert\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1WebhookResponseShape = array{
  *   message?: string|null, success?: bool|null
  * }
  */
-final class V1WebhookResponse implements BaseModel, ResponseConverter
+final class V1WebhookResponse implements BaseModel
 {
     /** @use SdkModel<V1WebhookResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $message;

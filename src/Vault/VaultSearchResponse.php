@@ -6,9 +6,7 @@ namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Vault\VaultSearchResponse\Chunk;
 use Casedev\Vault\VaultSearchResponse\Source;
 
@@ -22,12 +20,10 @@ use Casedev\Vault\VaultSearchResponse\Source;
  *   vault_id?: string|null,
  * }
  */
-final class VaultSearchResponse implements BaseModel, ResponseConverter
+final class VaultSearchResponse implements BaseModel
 {
     /** @use SdkModel<VaultSearchResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Relevant text chunks with similarity scores.

@@ -6,9 +6,7 @@ namespace Casedev\Compute\V1\Secrets;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SecretNewResponseShape = array{
@@ -18,12 +16,10 @@ use Casedev\Core\Conversion\Contracts\ResponseConverter;
  *   name?: string|null,
  * }
  */
-final class SecretNewResponse implements BaseModel, ResponseConverter
+final class SecretNewResponse implements BaseModel
 {
     /** @use SdkModel<SecretNewResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique identifier for the secret group.

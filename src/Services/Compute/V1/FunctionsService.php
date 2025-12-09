@@ -7,6 +7,7 @@ namespace Casedev\Services\Compute\V1;
 use Casedev\Client;
 use Casedev\Compute\V1\Functions\FunctionGetLogsParams;
 use Casedev\Compute\V1\Functions\FunctionListParams;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\FunctionsContract;
@@ -36,14 +37,16 @@ final class FunctionsService implements FunctionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: 'compute/v1/functions',
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -65,13 +68,15 @@ final class FunctionsService implements FunctionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['compute/v1/functions/%1$s/logs', $id],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

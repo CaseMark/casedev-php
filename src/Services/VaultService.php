@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
@@ -61,14 +62,16 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VaultNewResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'vault',
             body: (object) $parsed,
             options: $options,
             convert: VaultNewResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,13 +85,15 @@ final class VaultService implements VaultContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s', $id],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,13 +106,15 @@ final class VaultService implements VaultContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): VaultListResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VaultListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'vault',
             options: $requestOptions,
             convert: VaultListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -131,13 +138,15 @@ final class VaultService implements VaultContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VaultIngestResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['vault/%1$s/ingest/%2$s', $id, $objectID],
             options: $options,
             convert: VaultIngestResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -164,14 +173,16 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VaultSearchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['vault/%1$s/search', $id],
             body: (object) $parsed,
             options: $options,
             convert: VaultSearchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -199,13 +210,15 @@ final class VaultService implements VaultContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VaultUploadResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['vault/%1$s/upload', $id],
             body: (object) $parsed,
             options: $options,
             convert: VaultUploadResponse::class,
         );
+
+        return $response->parse();
     }
 }

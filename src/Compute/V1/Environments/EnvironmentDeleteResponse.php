@@ -6,21 +6,17 @@ namespace Casedev\Compute\V1\Environments;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type EnvironmentDeleteResponseShape = array{
  *   message: string, success: bool
  * }
  */
-final class EnvironmentDeleteResponse implements BaseModel, ResponseConverter
+final class EnvironmentDeleteResponse implements BaseModel
 {
     /** @use SdkModel<EnvironmentDeleteResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $message;

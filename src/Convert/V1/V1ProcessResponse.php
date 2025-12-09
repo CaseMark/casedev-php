@@ -7,21 +7,17 @@ namespace Casedev\Convert\V1;
 use Casedev\Convert\V1\V1ProcessResponse\Status;
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1ProcessResponseShape = array{
  *   job_id?: string|null, message?: string|null, status?: value-of<Status>|null
  * }
  */
-final class V1ProcessResponse implements BaseModel, ResponseConverter
+final class V1ProcessResponse implements BaseModel
 {
     /** @use SdkModel<V1ProcessResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Unique identifier for the conversion job.

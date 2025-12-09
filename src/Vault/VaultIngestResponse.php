@@ -6,9 +6,7 @@ namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 use Casedev\Vault\VaultIngestResponse\Status;
 
 /**
@@ -20,12 +18,10 @@ use Casedev\Vault\VaultIngestResponse\Status;
  *   workflowId: string,
  * }
  */
-final class VaultIngestResponse implements BaseModel, ResponseConverter
+final class VaultIngestResponse implements BaseModel
 {
     /** @use SdkModel<VaultIngestResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Whether GraphRAG is enabled for this vault.

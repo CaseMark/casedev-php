@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Vault;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
@@ -42,13 +43,15 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s', $id, $objectID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -62,13 +65,15 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects', $id],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -97,14 +102,16 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectNewPresignedURLResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['vault/%1$s/objects/%2$s/presigned-url', $id, $objectID],
             body: (object) array_diff_key($parsed, ['id']),
             options: $options,
             convert: ObjectNewPresignedURLResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -128,13 +135,15 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -158,12 +167,14 @@ final class ObjectsService implements ObjectsContract
         $id = $parsed['id'];
         unset($parsed['id']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/text', $id, $objectID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

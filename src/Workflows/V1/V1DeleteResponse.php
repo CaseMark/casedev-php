@@ -6,21 +6,17 @@ namespace Casedev\Workflows\V1;
 
 use Casedev\Core\Attributes\Api;
 use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkResponse;
 use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type V1DeleteResponseShape = array{
  *   message?: string|null, success?: bool|null
  * }
  */
-final class V1DeleteResponse implements BaseModel, ResponseConverter
+final class V1DeleteResponse implements BaseModel
 {
     /** @use SdkModel<V1DeleteResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $message;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Workflows;
 
 use Casedev\Client;
+use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Workflows\V1Contract;
@@ -57,14 +58,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1NewResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'workflows/v1',
             body: (object) $parsed,
             options: $options,
             convert: V1NewResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -78,13 +81,15 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1GetResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1GetResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['workflows/v1/%1$s', $id],
             options: $requestOptions,
             convert: V1GetResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -114,14 +119,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1UpdateResponse> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['workflows/v1/%1$s', $id],
             body: (object) $parsed,
             options: $options,
             convert: V1UpdateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -144,14 +151,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'workflows/v1',
             query: $parsed,
             options: $options,
             convert: V1ListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -165,13 +174,15 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1DeleteResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1DeleteResponse> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['workflows/v1/%1$s', $id],
             options: $requestOptions,
             convert: V1DeleteResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -185,13 +196,15 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1DeployResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1DeployResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['workflows/v1/%1$s/deploy', $id],
             options: $requestOptions,
             convert: V1DeployResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -211,14 +224,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ExecuteResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['workflows/v1/%1$s/execute', $id],
             body: $parsed['body'],
             options: $options,
             convert: V1ExecuteResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -242,14 +257,16 @@ final class V1Service implements V1Contract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1ListExecutionsResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['workflows/v1/%1$s/executions', $id],
             query: $parsed,
             options: $options,
             convert: V1ListExecutionsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -263,13 +280,15 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1GetExecutionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1GetExecutionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['workflows/v1/executions/%1$s', $id],
             options: $requestOptions,
             convert: V1GetExecutionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -283,12 +302,14 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): V1UndeployResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<V1UndeployResponse> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['workflows/v1/%1$s/deploy', $id],
             options: $requestOptions,
             convert: V1UndeployResponse::class,
         );
+
+        return $response->parse();
     }
 }
