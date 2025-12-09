@@ -6,6 +6,7 @@ namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
 use Casedev\Compute\V1\Invoke\InvokeRunParams;
+use Casedev\Compute\V1\Invoke\InvokeRunParams\FunctionSuffix;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\AsynchronousResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\SynchronousResponse;
@@ -29,7 +30,7 @@ final class InvokeService implements InvokeContract
      * @param array{
      *   input: array<string,mixed>,
      *   async?: bool,
-     *   functionSuffix?: '_modal'|'_task'|'_web'|'_server',
+     *   functionSuffix?: '_modal'|'_task'|'_web'|'_server'|FunctionSuffix,
      * }|InvokeRunParams $params
      *
      * @throws APIException

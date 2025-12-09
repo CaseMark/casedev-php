@@ -8,6 +8,8 @@ use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\V1CreateDocumentParams;
+use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
+use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1Contract;
 use Casedev\Services\Format\V1\TemplatesService;
@@ -34,8 +36,8 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   content: string,
-     *   output_format: 'pdf'|'docx'|'html_preview',
-     *   input_format?: 'md'|'json'|'text',
+     *   output_format: 'pdf'|'docx'|'html_preview'|OutputFormat,
+     *   input_format?: 'md'|'json'|'text'|InputFormat,
      *   options?: array{
      *     components?: list<array{
      *       content?: string, styles?: mixed, templateId?: string, variables?: mixed

@@ -6,6 +6,9 @@ namespace Casedev\Services\Compute;
 
 use Casedev\Client;
 use Casedev\Compute\V1\V1DeployParams;
+use Casedev\Compute\V1\V1DeployParams\Config\GPUType;
+use Casedev\Compute\V1\V1DeployParams\Runtime;
+use Casedev\Compute\V1\V1DeployParams\Type;
 use Casedev\Compute\V1\V1DeployResponse;
 use Casedev\Compute\V1\V1GetUsageParams;
 use Casedev\Core\Contracts\BaseResponse;
@@ -64,7 +67,7 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   entrypointName: string,
-     *   type: 'task'|'service',
+     *   type: 'task'|'service'|Type,
      *   code?: string,
      *   config?: array{
      *     addPython?: string,
@@ -77,7 +80,7 @@ final class V1Service implements V1Contract
      *     entrypoint?: list<string>,
      *     env?: array<string,string>,
      *     gpuCount?: int,
-     *     gpuType?: 'cpu'|'T4'|'L4'|'A10G'|'L40S'|'A100'|'A100-40GB'|'A100-80GB'|'H100'|'H200'|'B200',
+     *     gpuType?: 'cpu'|'T4'|'L4'|'A10G'|'L40S'|'A100'|'A100-40GB'|'A100-80GB'|'H100'|'H200'|'B200'|GPUType,
      *     isWebService?: bool,
      *     memoryMb?: int,
      *     pipInstall?: list<string>,
@@ -94,7 +97,7 @@ final class V1Service implements V1Contract
      *   entrypointFile?: string,
      *   environment?: string,
      *   image?: string,
-     *   runtime?: 'python'|'dockerfile'|'image',
+     *   runtime?: 'python'|'dockerfile'|'image'|Runtime,
      * }|V1DeployParams $params
      *
      * @throws APIException

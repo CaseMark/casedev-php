@@ -10,6 +10,8 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Workflows\V1Contract;
 use Casedev\Workflows\V1\V1CreateParams;
+use Casedev\Workflows\V1\V1CreateParams\TriggerType;
+use Casedev\Workflows\V1\V1CreateParams\Visibility;
 use Casedev\Workflows\V1\V1DeleteResponse;
 use Casedev\Workflows\V1\V1DeployResponse;
 use Casedev\Workflows\V1\V1ExecuteParams;
@@ -17,6 +19,7 @@ use Casedev\Workflows\V1\V1ExecuteResponse;
 use Casedev\Workflows\V1\V1GetExecutionResponse;
 use Casedev\Workflows\V1\V1GetResponse;
 use Casedev\Workflows\V1\V1ListExecutionsParams;
+use Casedev\Workflows\V1\V1ListExecutionsParams\Status;
 use Casedev\Workflows\V1\V1ListExecutionsResponse;
 use Casedev\Workflows\V1\V1ListParams;
 use Casedev\Workflows\V1\V1ListResponse;
@@ -43,8 +46,8 @@ final class V1Service implements V1Contract
      *   edges?: list<mixed>,
      *   nodes?: list<mixed>,
      *   triggerConfig?: mixed,
-     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload',
-     *   visibility?: 'private'|'org'|'public',
+     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload'|TriggerType,
+     *   visibility?: 'private'|'org'|'public'|Visibility,
      * }|V1CreateParams $params
      *
      * @throws APIException
@@ -103,8 +106,8 @@ final class V1Service implements V1Contract
      *   name?: string,
      *   nodes?: list<mixed>,
      *   triggerConfig?: mixed,
-     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload',
-     *   visibility?: 'private'|'org'|'public',
+     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload'|V1UpdateParams\TriggerType,
+     *   visibility?: 'private'|'org'|'public'|V1UpdateParams\Visibility,
      * }|V1UpdateParams $params
      *
      * @throws APIException
@@ -137,7 +140,9 @@ final class V1Service implements V1Contract
      * List all workflows for the authenticated organization.
      *
      * @param array{
-     *   limit?: int, offset?: int, visibility?: 'private'|'org'|'public'
+     *   limit?: int,
+     *   offset?: int,
+     *   visibility?: 'private'|'org'|'public'|V1ListParams\Visibility,
      * }|V1ListParams $params
      *
      * @throws APIException
@@ -242,7 +247,8 @@ final class V1Service implements V1Contract
      * List all executions for a specific workflow.
      *
      * @param array{
-     *   limit?: int, status?: 'pending'|'running'|'completed'|'failed'|'cancelled'
+     *   limit?: int,
+     *   status?: 'pending'|'running'|'completed'|'failed'|'cancelled'|Status,
      * }|V1ListExecutionsParams $params
      *
      * @throws APIException

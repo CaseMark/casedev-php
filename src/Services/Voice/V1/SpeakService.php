@@ -10,9 +10,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1\SpeakContract;
 use Casedev\Voice\V1\Speak\SpeakCreateParams;
+use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
 use Casedev\Voice\V1\Speak\SpeakStreamParams;
-use Casedev\Voice\V1\Speak\SpeakStreamParams\ModelID;
 
 final class SpeakService implements SpeakContract
 {
@@ -31,7 +31,7 @@ final class SpeakService implements SpeakContract
      *   apply_text_normalization?: bool,
      *   enable_logging?: bool,
      *   language_code?: string,
-     *   model_id?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1',
+     *   model_id?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID,
      *   next_text?: string,
      *   optimize_streaming_latency?: int,
      *   output_format?: value-of<OutputFormat>,
@@ -80,10 +80,10 @@ final class SpeakService implements SpeakContract
      *   apply_text_normalization?: bool,
      *   enable_logging?: bool,
      *   language_code?: string,
-     *   model_id?: value-of<ModelID>,
+     *   model_id?: value-of<SpeakStreamParams\ModelID>,
      *   next_text?: string,
      *   optimize_streaming_latency?: int,
-     *   output_format?: 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100',
+     *   output_format?: 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|SpeakStreamParams\OutputFormat,
      *   previous_text?: string,
      *   seed?: int,
      *   voice_id?: string,

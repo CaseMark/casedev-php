@@ -17,6 +17,7 @@ use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchParams;
+use Casedev\Vault\VaultSearchParams\Method;
 use Casedev\Vault\VaultSearchResponse;
 use Casedev\Vault\VaultUploadParams;
 use Casedev\Vault\VaultUploadResponse;
@@ -157,7 +158,7 @@ final class VaultService implements VaultContract
      * @param array{
      *   query: string,
      *   filters?: array<string,mixed>,
-     *   method?: 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity',
+     *   method?: 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method,
      *   topK?: int,
      * }|VaultSearchParams $params
      *

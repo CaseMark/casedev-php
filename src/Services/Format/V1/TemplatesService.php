@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\Templates\TemplateCreateParams;
+use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
 use Casedev\Format\V1\Templates\TemplateListParams;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
@@ -28,7 +29,7 @@ final class TemplatesService implements TemplatesContract
      * @param array{
      *   content: string,
      *   name: string,
-     *   type: 'caption'|'signature'|'letterhead'|'certificate'|'footer'|'custom',
+     *   type: 'caption'|'signature'|'letterhead'|'certificate'|'footer'|'custom'|Type,
      *   description?: string,
      *   styles?: mixed,
      *   tags?: list<string>,
