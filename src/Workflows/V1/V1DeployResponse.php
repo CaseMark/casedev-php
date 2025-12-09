@@ -13,7 +13,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   message?: string|null,
  *   success?: bool|null,
  *   webhookSecret?: string|null,
- *   webhookUrl?: string|null,
+ *   webhookURL?: string|null,
  * }
  */
 final class V1DeployResponse implements BaseModel
@@ -33,8 +33,8 @@ final class V1DeployResponse implements BaseModel
     #[Optional]
     public ?string $webhookSecret;
 
-    #[Optional]
-    public ?string $webhookUrl;
+    #[Optional('webhookUrl')]
+    public ?string $webhookURL;
 
     public function __construct()
     {
@@ -50,14 +50,14 @@ final class V1DeployResponse implements BaseModel
         ?string $message = null,
         ?bool $success = null,
         ?string $webhookSecret = null,
-        ?string $webhookUrl = null,
+        ?string $webhookURL = null,
     ): self {
         $obj = new self;
 
         null !== $message && $obj['message'] = $message;
         null !== $success && $obj['success'] = $success;
         null !== $webhookSecret && $obj['webhookSecret'] = $webhookSecret;
-        null !== $webhookUrl && $obj['webhookUrl'] = $webhookUrl;
+        null !== $webhookURL && $obj['webhookURL'] = $webhookURL;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class V1DeployResponse implements BaseModel
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj['webhookUrl'] = $webhookURL;
+        $obj['webhookURL'] = $webhookURL;
 
         return $obj;
     }

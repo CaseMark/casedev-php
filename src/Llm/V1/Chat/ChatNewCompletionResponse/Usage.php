@@ -10,10 +10,10 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type UsageShape = array{
- *   completion_tokens?: int|null,
+ *   completionTokens?: int|null,
  *   cost?: float|null,
- *   prompt_tokens?: int|null,
- *   total_tokens?: int|null,
+ *   promptTokens?: int|null,
+ *   totalTokens?: int|null,
  * }
  */
 final class Usage implements BaseModel
@@ -21,8 +21,8 @@ final class Usage implements BaseModel
     /** @use SdkModel<UsageShape> */
     use SdkModel;
 
-    #[Optional]
-    public ?int $completion_tokens;
+    #[Optional('completion_tokens')]
+    public ?int $completionTokens;
 
     /**
      * Cost in USD.
@@ -30,11 +30,11 @@ final class Usage implements BaseModel
     #[Optional]
     public ?float $cost;
 
-    #[Optional]
-    public ?int $prompt_tokens;
+    #[Optional('prompt_tokens')]
+    public ?int $promptTokens;
 
-    #[Optional]
-    public ?int $total_tokens;
+    #[Optional('total_tokens')]
+    public ?int $totalTokens;
 
     public function __construct()
     {
@@ -47,17 +47,17 @@ final class Usage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?int $completion_tokens = null,
+        ?int $completionTokens = null,
         ?float $cost = null,
-        ?int $prompt_tokens = null,
-        ?int $total_tokens = null,
+        ?int $promptTokens = null,
+        ?int $totalTokens = null,
     ): self {
         $obj = new self;
 
-        null !== $completion_tokens && $obj['completion_tokens'] = $completion_tokens;
+        null !== $completionTokens && $obj['completionTokens'] = $completionTokens;
         null !== $cost && $obj['cost'] = $cost;
-        null !== $prompt_tokens && $obj['prompt_tokens'] = $prompt_tokens;
-        null !== $total_tokens && $obj['total_tokens'] = $total_tokens;
+        null !== $promptTokens && $obj['promptTokens'] = $promptTokens;
+        null !== $totalTokens && $obj['totalTokens'] = $totalTokens;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class Usage implements BaseModel
     public function withCompletionTokens(int $completionTokens): self
     {
         $obj = clone $this;
-        $obj['completion_tokens'] = $completionTokens;
+        $obj['completionTokens'] = $completionTokens;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class Usage implements BaseModel
     public function withPromptTokens(int $promptTokens): self
     {
         $obj = clone $this;
-        $obj['prompt_tokens'] = $promptTokens;
+        $obj['promptTokens'] = $promptTokens;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class Usage implements BaseModel
     public function withTotalTokens(int $totalTokens): self
     {
         $obj = clone $this;
-        $obj['total_tokens'] = $totalTokens;
+        $obj['totalTokens'] = $totalTokens;
 
         return $obj;
     }

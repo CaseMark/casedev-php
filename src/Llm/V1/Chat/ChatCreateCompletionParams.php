@@ -21,13 +21,13 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
  *   messages: list<Message|array{
  *     content?: string|null, role?: value-of<Role>|null
  *   }>,
- *   frequency_penalty?: float,
- *   max_tokens?: int,
+ *   frequencyPenalty?: float,
+ *   maxTokens?: int,
  *   model?: string,
- *   presence_penalty?: float,
+ *   presencePenalty?: float,
  *   stream?: bool,
  *   temperature?: float,
- *   top_p?: float,
+ *   topP?: float,
  * }
  */
 final class ChatCreateCompletionParams implements BaseModel
@@ -47,14 +47,14 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * Frequency penalty parameter.
      */
-    #[Optional]
-    public ?float $frequency_penalty;
+    #[Optional('frequency_penalty')]
+    public ?float $frequencyPenalty;
 
     /**
      * Maximum number of tokens to generate.
      */
-    #[Optional]
-    public ?int $max_tokens;
+    #[Optional('max_tokens')]
+    public ?int $maxTokens;
 
     /**
      * Model to use for completion. Defaults to casemark-core-1 if not specified.
@@ -65,8 +65,8 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * Presence penalty parameter.
      */
-    #[Optional]
-    public ?float $presence_penalty;
+    #[Optional('presence_penalty')]
+    public ?float $presencePenalty;
 
     /**
      * Whether to stream back partial progress.
@@ -83,8 +83,8 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * Nucleus sampling parameter.
      */
-    #[Optional]
-    public ?float $top_p;
+    #[Optional('top_p')]
+    public ?float $topP;
 
     /**
      * `new ChatCreateCompletionParams()` is missing required properties by the API.
@@ -116,25 +116,25 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public static function with(
         array $messages,
-        ?float $frequency_penalty = null,
-        ?int $max_tokens = null,
+        ?float $frequencyPenalty = null,
+        ?int $maxTokens = null,
         ?string $model = null,
-        ?float $presence_penalty = null,
+        ?float $presencePenalty = null,
         ?bool $stream = null,
         ?float $temperature = null,
-        ?float $top_p = null,
+        ?float $topP = null,
     ): self {
         $obj = new self;
 
         $obj['messages'] = $messages;
 
-        null !== $frequency_penalty && $obj['frequency_penalty'] = $frequency_penalty;
-        null !== $max_tokens && $obj['max_tokens'] = $max_tokens;
+        null !== $frequencyPenalty && $obj['frequencyPenalty'] = $frequencyPenalty;
+        null !== $maxTokens && $obj['maxTokens'] = $maxTokens;
         null !== $model && $obj['model'] = $model;
-        null !== $presence_penalty && $obj['presence_penalty'] = $presence_penalty;
+        null !== $presencePenalty && $obj['presencePenalty'] = $presencePenalty;
         null !== $stream && $obj['stream'] = $stream;
         null !== $temperature && $obj['temperature'] = $temperature;
-        null !== $top_p && $obj['top_p'] = $top_p;
+        null !== $topP && $obj['topP'] = $topP;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withFrequencyPenalty(float $frequencyPenalty): self
     {
         $obj = clone $this;
-        $obj['frequency_penalty'] = $frequencyPenalty;
+        $obj['frequencyPenalty'] = $frequencyPenalty;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withMaxTokens(int $maxTokens): self
     {
         $obj = clone $this;
-        $obj['max_tokens'] = $maxTokens;
+        $obj['maxTokens'] = $maxTokens;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withPresencePenalty(float $presencePenalty): self
     {
         $obj = clone $this;
-        $obj['presence_penalty'] = $presencePenalty;
+        $obj['presencePenalty'] = $presencePenalty;
 
         return $obj;
     }
@@ -226,7 +226,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public function withTopP(float $topP): self
     {
         $obj = clone $this;
-        $obj['top_p'] = $topP;
+        $obj['topP'] = $topP;
 
         return $obj;
     }

@@ -83,13 +83,13 @@ final class V1Service implements V1Contract
      * Submit a document for OCR processing to extract text, detect tables, forms, and other features. Supports PDFs, images, and scanned documents. Returns a job ID that can be used to track processing status.
      *
      * @param array{
-     *   document_url: string,
-     *   callback_url?: string,
-     *   document_id?: string,
+     *   documentURL: string,
+     *   callbackURL?: string,
+     *   documentID?: string,
      *   engine?: 'doctr'|'paddleocr'|Engine,
      *   features?: array{forms?: bool, layout?: bool, tables?: bool, text?: bool},
-     *   result_bucket?: string,
-     *   result_prefix?: string,
+     *   resultBucket?: string,
+     *   resultPrefix?: string,
      * }|V1ProcessParams $params
      *
      * @throws APIException

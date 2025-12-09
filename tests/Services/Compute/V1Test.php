@@ -66,7 +66,7 @@ final class V1Test extends TestCase
                 'gpuCount' => 0,
                 'gpuType' => 'cpu',
                 'isWebService' => true,
-                'memoryMb' => 0,
+                'memoryMB' => 0,
                 'pipInstall' => ['string'],
                 'port' => 0,
                 'pythonVersion' => 'pythonVersion',

@@ -12,13 +12,13 @@ use Casedev\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type V1ExecuteResponseShape = array{
- *   duration_ms?: float|null,
- *   execution_id?: string|null,
+ *   durationMs?: float|null,
+ *   executionID?: string|null,
  *   message?: string|null,
  *   output?: array<string,mixed>|null,
  *   status?: value-of<Status>|null,
- *   step_results?: list<array<string,mixed>>|null,
- *   webhook_configured?: bool|null,
+ *   stepResults?: list<array<string,mixed>>|null,
+ *   webhookConfigured?: bool|null,
  * }
  */
 final class V1ExecuteResponse implements BaseModel
@@ -29,14 +29,14 @@ final class V1ExecuteResponse implements BaseModel
     /**
      * Execution duration in milliseconds (only for completed executions).
      */
-    #[Optional]
-    public ?float $duration_ms;
+    #[Optional('duration_ms')]
+    public ?float $durationMs;
 
     /**
      * Unique identifier for this execution.
      */
-    #[Optional]
-    public ?string $execution_id;
+    #[Optional('execution_id')]
+    public ?string $executionID;
 
     /**
      * Human-readable status message.
@@ -63,16 +63,16 @@ final class V1ExecuteResponse implements BaseModel
     /**
      * Results from each step (only for synchronous/completed executions).
      *
-     * @var list<array<string,mixed>>|null $step_results
+     * @var list<array<string,mixed>>|null $stepResults
      */
-    #[Optional(list: new MapOf('mixed'))]
-    public ?array $step_results;
+    #[Optional('step_results', list: new MapOf('mixed'))]
+    public ?array $stepResults;
 
     /**
      * Whether webhook notifications are configured.
      */
-    #[Optional]
-    public ?bool $webhook_configured;
+    #[Optional('webhook_configured')]
+    public ?bool $webhookConfigured;
 
     public function __construct()
     {
@@ -86,26 +86,26 @@ final class V1ExecuteResponse implements BaseModel
      *
      * @param array<string,mixed> $output
      * @param Status|value-of<Status> $status
-     * @param list<array<string,mixed>> $step_results
+     * @param list<array<string,mixed>> $stepResults
      */
     public static function with(
-        ?float $duration_ms = null,
-        ?string $execution_id = null,
+        ?float $durationMs = null,
+        ?string $executionID = null,
         ?string $message = null,
         ?array $output = null,
         Status|string|null $status = null,
-        ?array $step_results = null,
-        ?bool $webhook_configured = null,
+        ?array $stepResults = null,
+        ?bool $webhookConfigured = null,
     ): self {
         $obj = new self;
 
-        null !== $duration_ms && $obj['duration_ms'] = $duration_ms;
-        null !== $execution_id && $obj['execution_id'] = $execution_id;
+        null !== $durationMs && $obj['durationMs'] = $durationMs;
+        null !== $executionID && $obj['executionID'] = $executionID;
         null !== $message && $obj['message'] = $message;
         null !== $output && $obj['output'] = $output;
         null !== $status && $obj['status'] = $status;
-        null !== $step_results && $obj['step_results'] = $step_results;
-        null !== $webhook_configured && $obj['webhook_configured'] = $webhook_configured;
+        null !== $stepResults && $obj['stepResults'] = $stepResults;
+        null !== $webhookConfigured && $obj['webhookConfigured'] = $webhookConfigured;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withDurationMs(float $durationMs): self
     {
         $obj = clone $this;
-        $obj['duration_ms'] = $durationMs;
+        $obj['durationMs'] = $durationMs;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withExecutionID(string $executionID): self
     {
         $obj = clone $this;
-        $obj['execution_id'] = $executionID;
+        $obj['executionID'] = $executionID;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withStepResults(array $stepResults): self
     {
         $obj = clone $this;
-        $obj['step_results'] = $stepResults;
+        $obj['stepResults'] = $stepResults;
 
         return $obj;
     }
@@ -188,7 +188,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withWebhookConfigured(bool $webhookConfigured): self
     {
         $obj = clone $this;
-        $obj['webhook_configured'] = $webhookConfigured;
+        $obj['webhookConfigured'] = $webhookConfigured;
 
         return $obj;
     }

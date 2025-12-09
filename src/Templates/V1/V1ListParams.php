@@ -19,7 +19,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   limit?: int,
  *   offset?: int,
  *   published?: bool,
- *   sub_category?: string,
+ *   subCategory?: string,
  *   type?: string,
  * }
  */
@@ -57,7 +57,7 @@ final class V1ListParams implements BaseModel
      * Filter workflows by subcategory (e.g., 'due-diligence', 'litigation', 'mergers').
      */
     #[Optional]
-    public ?string $sub_category;
+    public ?string $subCategory;
 
     /**
      * Filter workflows by type (e.g., 'document-review', 'contract-analysis', 'compliance-check').
@@ -80,7 +80,7 @@ final class V1ListParams implements BaseModel
         ?int $limit = null,
         ?int $offset = null,
         ?bool $published = null,
-        ?string $sub_category = null,
+        ?string $subCategory = null,
         ?string $type = null,
     ): self {
         $obj = new self;
@@ -89,7 +89,7 @@ final class V1ListParams implements BaseModel
         null !== $limit && $obj['limit'] = $limit;
         null !== $offset && $obj['offset'] = $offset;
         null !== $published && $obj['published'] = $published;
-        null !== $sub_category && $obj['sub_category'] = $sub_category;
+        null !== $subCategory && $obj['subCategory'] = $subCategory;
         null !== $type && $obj['type'] = $type;
 
         return $obj;
@@ -145,7 +145,7 @@ final class V1ListParams implements BaseModel
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;
-        $obj['sub_category'] = $subCategory;
+        $obj['subCategory'] = $subCategory;
 
         return $obj;
     }

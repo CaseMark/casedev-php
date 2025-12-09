@@ -11,11 +11,11 @@ use Casedev\Vault\VaultIngestResponse\Status;
 
 /**
  * @phpstan-type VaultIngestResponseShape = array{
- *   enableGraphRAG: bool,
+ *   enableGraphRag: bool,
  *   message: string,
- *   objectId: string,
+ *   objectID: string,
  *   status: value-of<Status>,
- *   workflowId: string,
+ *   workflowID: string,
  * }
  */
 final class VaultIngestResponse implements BaseModel
@@ -26,8 +26,8 @@ final class VaultIngestResponse implements BaseModel
     /**
      * Whether GraphRAG is enabled for this vault.
      */
-    #[Required]
-    public bool $enableGraphRAG;
+    #[Required('enableGraphRAG')]
+    public bool $enableGraphRag;
 
     /**
      * Human-readable status message.
@@ -38,8 +38,8 @@ final class VaultIngestResponse implements BaseModel
     /**
      * ID of the vault object being processed.
      */
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     /**
      * Current ingestion status.
@@ -52,8 +52,8 @@ final class VaultIngestResponse implements BaseModel
     /**
      * Workflow run ID for tracking progress.
      */
-    #[Required]
-    public string $workflowId;
+    #[Required('workflowId')]
+    public string $workflowID;
 
     /**
      * `new VaultIngestResponse()` is missing required properties by the API.
@@ -61,7 +61,7 @@ final class VaultIngestResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * VaultIngestResponse::with(
-     *   enableGraphRAG: ..., message: ..., objectId: ..., status: ..., workflowId: ...
+     *   enableGraphRag: ..., message: ..., objectID: ..., status: ..., workflowID: ...
      * )
      * ```
      *
@@ -89,19 +89,19 @@ final class VaultIngestResponse implements BaseModel
      * @param Status|value-of<Status> $status
      */
     public static function with(
-        bool $enableGraphRAG,
+        bool $enableGraphRag,
         string $message,
-        string $objectId,
+        string $objectID,
         Status|string $status,
-        string $workflowId,
+        string $workflowID,
     ): self {
         $obj = new self;
 
-        $obj['enableGraphRAG'] = $enableGraphRAG;
+        $obj['enableGraphRag'] = $enableGraphRag;
         $obj['message'] = $message;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['status'] = $status;
-        $obj['workflowId'] = $workflowId;
+        $obj['workflowID'] = $workflowID;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class VaultIngestResponse implements BaseModel
     public function withEnableGraphRag(bool $enableGraphRag): self
     {
         $obj = clone $this;
-        $obj['enableGraphRAG'] = $enableGraphRag;
+        $obj['enableGraphRag'] = $enableGraphRag;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class VaultIngestResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class VaultIngestResponse implements BaseModel
     public function withWorkflowID(string $workflowID): self
     {
         $obj = clone $this;
-        $obj['workflowId'] = $workflowID;
+        $obj['workflowID'] = $workflowID;
 
         return $obj;
     }

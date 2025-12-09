@@ -18,15 +18,15 @@ use Casedev\Ocr\V1\V1ProcessParams\Features;
  * @see Casedev\Services\Ocr\V1Service::process()
  *
  * @phpstan-type V1ProcessParamsShape = array{
- *   document_url: string,
- *   callback_url?: string,
- *   document_id?: string,
+ *   documentURL: string,
+ *   callbackURL?: string,
+ *   documentID?: string,
  *   engine?: Engine|value-of<Engine>,
  *   features?: Features|array{
  *     forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
  *   },
- *   result_bucket?: string,
- *   result_prefix?: string,
+ *   resultBucket?: string,
+ *   resultPrefix?: string,
  * }
  */
 final class V1ProcessParams implements BaseModel
@@ -38,20 +38,20 @@ final class V1ProcessParams implements BaseModel
     /**
      * URL or S3 path to the document to process.
      */
-    #[Required]
-    public string $document_url;
+    #[Required('document_url')]
+    public string $documentURL;
 
     /**
      * URL to receive completion webhook.
      */
-    #[Optional]
-    public ?string $callback_url;
+    #[Optional('callback_url')]
+    public ?string $callbackURL;
 
     /**
      * Optional custom document identifier.
      */
-    #[Optional]
-    public ?string $document_id;
+    #[Optional('document_id')]
+    public ?string $documentID;
 
     /**
      * OCR engine to use.
@@ -70,21 +70,21 @@ final class V1ProcessParams implements BaseModel
     /**
      * S3 bucket to store results.
      */
-    #[Optional]
-    public ?string $result_bucket;
+    #[Optional('result_bucket')]
+    public ?string $resultBucket;
 
     /**
      * S3 key prefix for results.
      */
-    #[Optional]
-    public ?string $result_prefix;
+    #[Optional('result_prefix')]
+    public ?string $resultPrefix;
 
     /**
      * `new V1ProcessParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * V1ProcessParams::with(document_url: ...)
+     * V1ProcessParams::with(documentURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -109,24 +109,24 @@ final class V1ProcessParams implements BaseModel
      * } $features
      */
     public static function with(
-        string $document_url,
-        ?string $callback_url = null,
-        ?string $document_id = null,
+        string $documentURL,
+        ?string $callbackURL = null,
+        ?string $documentID = null,
         Engine|string|null $engine = null,
         Features|array|null $features = null,
-        ?string $result_bucket = null,
-        ?string $result_prefix = null,
+        ?string $resultBucket = null,
+        ?string $resultPrefix = null,
     ): self {
         $obj = new self;
 
-        $obj['document_url'] = $document_url;
+        $obj['documentURL'] = $documentURL;
 
-        null !== $callback_url && $obj['callback_url'] = $callback_url;
-        null !== $document_id && $obj['document_id'] = $document_id;
+        null !== $callbackURL && $obj['callbackURL'] = $callbackURL;
+        null !== $documentID && $obj['documentID'] = $documentID;
         null !== $engine && $obj['engine'] = $engine;
         null !== $features && $obj['features'] = $features;
-        null !== $result_bucket && $obj['result_bucket'] = $result_bucket;
-        null !== $result_prefix && $obj['result_prefix'] = $result_prefix;
+        null !== $resultBucket && $obj['resultBucket'] = $resultBucket;
+        null !== $resultPrefix && $obj['resultPrefix'] = $resultPrefix;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class V1ProcessParams implements BaseModel
     public function withDocumentURL(string $documentURL): self
     {
         $obj = clone $this;
-        $obj['document_url'] = $documentURL;
+        $obj['documentURL'] = $documentURL;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class V1ProcessParams implements BaseModel
     public function withCallbackURL(string $callbackURL): self
     {
         $obj = clone $this;
-        $obj['callback_url'] = $callbackURL;
+        $obj['callbackURL'] = $callbackURL;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class V1ProcessParams implements BaseModel
     public function withDocumentID(string $documentID): self
     {
         $obj = clone $this;
-        $obj['document_id'] = $documentID;
+        $obj['documentID'] = $documentID;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class V1ProcessParams implements BaseModel
     public function withResultBucket(string $resultBucket): self
     {
         $obj = clone $this;
-        $obj['result_bucket'] = $resultBucket;
+        $obj['resultBucket'] = $resultBucket;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class V1ProcessParams implements BaseModel
     public function withResultPrefix(string $resultPrefix): self
     {
         $obj = clone $this;
-        $obj['result_prefix'] = $resultPrefix;
+        $obj['resultPrefix'] = $resultPrefix;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type V1ProcessResponseShape = array{
- *   job_id?: string|null, message?: string|null, status?: value-of<Status>|null
+ *   jobID?: string|null, message?: string|null, status?: value-of<Status>|null
  * }
  */
 final class V1ProcessResponse implements BaseModel
@@ -22,8 +22,8 @@ final class V1ProcessResponse implements BaseModel
     /**
      * Unique identifier for the conversion job.
      */
-    #[Optional]
-    public ?string $job_id;
+    #[Optional('job_id')]
+    public ?string $jobID;
 
     /**
      * Instructions for checking job status.
@@ -52,13 +52,13 @@ final class V1ProcessResponse implements BaseModel
      * @param Status|value-of<Status> $status
      */
     public static function with(
-        ?string $job_id = null,
+        ?string $jobID = null,
         ?string $message = null,
         Status|string|null $status = null
     ): self {
         $obj = new self;
 
-        null !== $job_id && $obj['job_id'] = $job_id;
+        null !== $jobID && $obj['jobID'] = $jobID;
         null !== $message && $obj['message'] = $message;
         null !== $status && $obj['status'] = $status;
 
@@ -71,7 +71,7 @@ final class V1ProcessResponse implements BaseModel
     public function withJobID(string $jobID): self
     {
         $obj = clone $this;
-        $obj['job_id'] = $jobID;
+        $obj['jobID'] = $jobID;
 
         return $obj;
     }

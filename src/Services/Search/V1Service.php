@@ -47,7 +47,7 @@ final class V1Service implements V1Contract
      *   stream?: bool,
      *   temperature?: float,
      *   text?: bool,
-     *   useCustomLLM?: bool,
+     *   useCustomLlm?: bool,
      * }|V1AnswerParams $params
      *
      * @throws APIException

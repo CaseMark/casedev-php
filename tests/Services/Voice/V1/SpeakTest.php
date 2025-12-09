@@ -48,21 +48,21 @@ final class SpeakTest extends TestCase
 
         $result = $this->client->voice->v1->speak->create([
             'text' => 'text',
-            'apply_text_normalization' => true,
-            'enable_logging' => true,
-            'language_code' => 'en',
-            'model_id' => 'eleven_multilingual_v2',
-            'next_text' => 'next_text',
-            'optimize_streaming_latency' => 0,
-            'output_format' => 'mp3_44100_128',
-            'previous_text' => 'previous_text',
+            'applyTextNormalization' => true,
+            'enableLogging' => true,
+            'languageCode' => 'en',
+            'modelID' => 'eleven_multilingual_v2',
+            'nextText' => 'next_text',
+            'optimizeStreamingLatency' => 0,
+            'outputFormat' => 'mp3_44100_128',
+            'previousText' => 'previous_text',
             'seed' => 0,
-            'voice_id' => 'voice_id',
-            'voice_settings' => [
-                'similarity_boost' => 0,
+            'voiceID' => 'voice_id',
+            'voiceSettings' => [
+                'similarityBoost' => 0,
                 'stability' => 0,
                 'style' => 0,
-                'use_speaker_boost' => true,
+                'useSpeakerBoost' => true,
             ],
         ]);
 
@@ -92,21 +92,21 @@ final class SpeakTest extends TestCase
 
         $result = $this->client->voice->v1->speak->stream([
             'text' => 'text',
-            'apply_text_normalization' => true,
-            'enable_logging' => true,
-            'language_code' => 'language_code',
-            'model_id' => 'eleven_monolingual_v1',
-            'next_text' => 'next_text',
-            'optimize_streaming_latency' => 0,
-            'output_format' => 'mp3_44100_128',
-            'previous_text' => 'previous_text',
+            'applyTextNormalization' => true,
+            'enableLogging' => true,
+            'languageCode' => 'language_code',
+            'modelID' => 'eleven_monolingual_v1',
+            'nextText' => 'next_text',
+            'optimizeStreamingLatency' => 0,
+            'outputFormat' => 'mp3_44100_128',
+            'previousText' => 'previous_text',
             'seed' => 0,
-            'voice_id' => 'voice_id',
-            'voice_settings' => [
-                'similarity_boost' => 0,
+            'voiceID' => 'voice_id',
+            'voiceSettings' => [
+                'similarityBoost' => 0,
                 'stability' => 0,
                 'style' => 0,
-                'use_speaker_boost' => true,
+                'useSpeakerBoost' => true,
             ],
         ]);
 

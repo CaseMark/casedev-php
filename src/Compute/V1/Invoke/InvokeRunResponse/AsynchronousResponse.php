@@ -11,7 +11,7 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type AsynchronousResponseShape = array{
- *   logsUrl?: string|null, runId?: string|null, status?: value-of<Status>|null
+ *   logsURL?: string|null, runID?: string|null, status?: value-of<Status>|null
  * }
  */
 final class AsynchronousResponse implements BaseModel
@@ -22,14 +22,14 @@ final class AsynchronousResponse implements BaseModel
     /**
      * URL to check run status and logs.
      */
-    #[Optional]
-    public ?string $logsUrl;
+    #[Optional('logsUrl')]
+    public ?string $logsURL;
 
     /**
      * Unique run identifier.
      */
-    #[Optional]
-    public ?string $runId;
+    #[Optional('runId')]
+    public ?string $runID;
 
     /** @var value-of<Status>|null $status */
     #[Optional(enum: Status::class)]
@@ -48,14 +48,14 @@ final class AsynchronousResponse implements BaseModel
      * @param Status|value-of<Status> $status
      */
     public static function with(
-        ?string $logsUrl = null,
-        ?string $runId = null,
+        ?string $logsURL = null,
+        ?string $runID = null,
         Status|string|null $status = null
     ): self {
         $obj = new self;
 
-        null !== $logsUrl && $obj['logsUrl'] = $logsUrl;
-        null !== $runId && $obj['runId'] = $runId;
+        null !== $logsURL && $obj['logsURL'] = $logsURL;
+        null !== $runID && $obj['runID'] = $runID;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -67,7 +67,7 @@ final class AsynchronousResponse implements BaseModel
     public function withLogsURL(string $logsURL): self
     {
         $obj = clone $this;
-        $obj['logsUrl'] = $logsURL;
+        $obj['logsURL'] = $logsURL;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class AsynchronousResponse implements BaseModel
     public function withRunID(string $runID): self
     {
         $obj = clone $this;
-        $obj['runId'] = $runID;
+        $obj['runID'] = $runID;
 
         return $obj;
     }

@@ -21,8 +21,8 @@ use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
  *
  * @phpstan-type V1CreateDocumentParamsShape = array{
  *   content: string,
- *   output_format: OutputFormat|value-of<OutputFormat>,
- *   input_format?: InputFormat|value-of<InputFormat>,
+ *   outputFormat: OutputFormat|value-of<OutputFormat>,
+ *   inputFormat?: InputFormat|value-of<InputFormat>,
  *   options?: Options|array{components?: list<Component>|null},
  * }
  */
@@ -41,18 +41,18 @@ final class V1CreateDocumentParams implements BaseModel
     /**
      * Desired output format.
      *
-     * @var value-of<OutputFormat> $output_format
+     * @var value-of<OutputFormat> $outputFormat
      */
-    #[Required(enum: OutputFormat::class)]
-    public string $output_format;
+    #[Required('output_format', enum: OutputFormat::class)]
+    public string $outputFormat;
 
     /**
      * Format of the input content.
      *
-     * @var value-of<InputFormat>|null $input_format
+     * @var value-of<InputFormat>|null $inputFormat
      */
-    #[Optional(enum: InputFormat::class)]
-    public ?string $input_format;
+    #[Optional('input_format', enum: InputFormat::class)]
+    public ?string $inputFormat;
 
     #[Optional]
     public ?Options $options;
@@ -62,7 +62,7 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * V1CreateDocumentParams::with(content: ..., output_format: ...)
+     * V1CreateDocumentParams::with(content: ..., outputFormat: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -81,22 +81,22 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param OutputFormat|value-of<OutputFormat> $output_format
-     * @param InputFormat|value-of<InputFormat> $input_format
+     * @param OutputFormat|value-of<OutputFormat> $outputFormat
+     * @param InputFormat|value-of<InputFormat> $inputFormat
      * @param Options|array{components?: list<Component>|null} $options
      */
     public static function with(
         string $content,
-        OutputFormat|string $output_format,
-        InputFormat|string|null $input_format = null,
+        OutputFormat|string $outputFormat,
+        InputFormat|string|null $inputFormat = null,
         Options|array|null $options = null,
     ): self {
         $obj = new self;
 
         $obj['content'] = $content;
-        $obj['output_format'] = $output_format;
+        $obj['outputFormat'] = $outputFormat;
 
-        null !== $input_format && $obj['input_format'] = $input_format;
+        null !== $inputFormat && $obj['inputFormat'] = $inputFormat;
         null !== $options && $obj['options'] = $options;
 
         return $obj;
@@ -121,7 +121,7 @@ final class V1CreateDocumentParams implements BaseModel
     public function withOutputFormat(OutputFormat|string $outputFormat): self
     {
         $obj = clone $this;
-        $obj['output_format'] = $outputFormat;
+        $obj['outputFormat'] = $outputFormat;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class V1CreateDocumentParams implements BaseModel
     public function withInputFormat(InputFormat|string $inputFormat): self
     {
         $obj = clone $this;
-        $obj['input_format'] = $inputFormat;
+        $obj['inputFormat'] = $inputFormat;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   duration?: float|null,
  *   error?: string|null,
  *   output?: mixed,
- *   runId?: string|null,
+ *   runID?: string|null,
  *   status?: value-of<Status>|null,
  * }
  */
@@ -44,8 +44,8 @@ final class SynchronousResponse implements BaseModel
     /**
      * Unique run identifier.
      */
-    #[Optional]
-    public ?string $runId;
+    #[Optional('runId')]
+    public ?string $runID;
 
     /** @var value-of<Status>|null $status */
     #[Optional(enum: Status::class)]
@@ -67,7 +67,7 @@ final class SynchronousResponse implements BaseModel
         ?float $duration = null,
         ?string $error = null,
         mixed $output = null,
-        ?string $runId = null,
+        ?string $runID = null,
         Status|string|null $status = null,
     ): self {
         $obj = new self;
@@ -75,7 +75,7 @@ final class SynchronousResponse implements BaseModel
         null !== $duration && $obj['duration'] = $duration;
         null !== $error && $obj['error'] = $error;
         null !== $output && $obj['output'] = $output;
-        null !== $runId && $obj['runId'] = $runId;
+        null !== $runID && $obj['runID'] = $runID;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -120,7 +120,7 @@ final class SynchronousResponse implements BaseModel
     public function withRunID(string $runID): self
     {
         $obj = clone $this;
-        $obj['runId'] = $runID;
+        $obj['runID'] = $runID;
 
         return $obj;
     }

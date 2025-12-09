@@ -37,7 +37,7 @@ final class V1Service implements V1Contract
      *   input: string|list<string>,
      *   model: string,
      *   dimensions?: int,
-     *   encoding_format?: 'float'|'base64'|EncodingFormat,
+     *   encodingFormat?: 'float'|'base64'|EncodingFormat,
      *   user?: string,
      * }|V1CreateEmbeddingParams $params
      *

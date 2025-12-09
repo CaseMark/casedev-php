@@ -7,6 +7,7 @@ namespace Casedev\Services\Voice;
 use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1Contract;
 use Casedev\Services\Voice\V1\SpeakService;
@@ -37,14 +38,14 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   category?: string,
-     *   collection_id?: string,
-     *   include_total_count?: bool,
-     *   next_page_token?: string,
-     *   page_size?: int,
+     *   collectionID?: string,
+     *   includeTotalCount?: bool,
+     *   nextPageToken?: string,
+     *   pageSize?: int,
      *   search?: string,
      *   sort?: 'name'|'created_at'|'updated_at'|Sort,
-     *   sort_direction?: 'asc'|'desc'|SortDirection,
-     *   voice_type?: 'premade'|'cloned'|'professional'|VoiceType,
+     *   sortDirection?: 'asc'|'desc'|SortDirection,
+     *   voiceType?: 'premade'|'cloned'|'professional'|VoiceType,
      * }|V1ListVoicesParams $params
      *
      * @throws APIException
@@ -62,7 +63,17 @@ final class V1Service implements V1Contract
         $response = $this->client->request(
             method: 'get',
             path: 'voice/v1/voices',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                [
+                    'collectionID' => 'collection_id',
+                    'includeTotalCount' => 'include_total_count',
+                    'nextPageToken' => 'next_page_token',
+                    'pageSize' => 'page_size',
+                    'sortDirection' => 'sort_direction',
+                    'voiceType' => 'voice_type',
+                ],
+            ),
             options: $options,
             convert: null,
         );

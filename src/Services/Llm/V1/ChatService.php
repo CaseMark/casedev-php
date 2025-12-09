@@ -29,13 +29,13 @@ final class ChatService implements ChatContract
      *   messages: list<array{
      *     content?: string, role?: 'system'|'user'|'assistant'|Role
      *   }>,
-     *   frequency_penalty?: float,
-     *   max_tokens?: int,
+     *   frequencyPenalty?: float,
+     *   maxTokens?: int,
      *   model?: string,
-     *   presence_penalty?: float,
+     *   presencePenalty?: float,
      *   stream?: bool,
      *   temperature?: float,
-     *   top_p?: float,
+     *   topP?: float,
      * }|ChatCreateCompletionParams $params
      *
      * @throws APIException

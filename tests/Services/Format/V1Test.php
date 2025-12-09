@@ -34,7 +34,7 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->format->v1->createDocument([
-            'content' => 'content', 'output_format' => 'pdf',
+            'content' => 'content', 'outputFormat' => 'pdf',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -50,14 +50,14 @@ final class V1Test extends TestCase
 
         $result = $this->client->format->v1->createDocument([
             'content' => 'content',
-            'output_format' => 'pdf',
-            'input_format' => 'md',
+            'outputFormat' => 'pdf',
+            'inputFormat' => 'md',
             'options' => [
                 'components' => [
                     [
                         'content' => 'content',
                         'styles' => [],
-                        'templateId' => 'templateId',
+                        'templateID' => 'templateId',
                         'variables' => [],
                     ],
                 ],

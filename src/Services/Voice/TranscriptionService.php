@@ -25,14 +25,14 @@ final class TranscriptionService implements TranscriptionContract
      * Creates an asynchronous transcription job for audio files. Supports various audio formats and advanced features like speaker identification, content moderation, and automatic highlights. Returns a job ID for checking transcription status and retrieving results.
      *
      * @param array{
-     *   audio_url: string,
-     *   auto_highlights?: bool,
-     *   content_safety_labels?: bool,
-     *   format_text?: bool,
-     *   language_code?: string,
-     *   language_detection?: bool,
+     *   audioURL: string,
+     *   autoHighlights?: bool,
+     *   contentSafetyLabels?: bool,
+     *   formatText?: bool,
+     *   languageCode?: string,
+     *   languageDetection?: bool,
      *   punctuate?: bool,
-     *   speaker_labels?: bool,
+     *   speakerLabels?: bool,
      * }|TranscriptionCreateParams $params
      *
      * @throws APIException

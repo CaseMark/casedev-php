@@ -35,7 +35,7 @@ final class TranscriptionTest extends TestCase
         }
 
         $result = $this->client->voice->transcription->create([
-            'audio_url' => 'audio_url',
+            'audioURL' => 'audio_url',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -50,14 +50,14 @@ final class TranscriptionTest extends TestCase
         }
 
         $result = $this->client->voice->transcription->create([
-            'audio_url' => 'audio_url',
-            'auto_highlights' => true,
-            'content_safety_labels' => true,
-            'format_text' => true,
-            'language_code' => 'language_code',
-            'language_detection' => true,
+            'audioURL' => 'audio_url',
+            'autoHighlights' => true,
+            'contentSafetyLabels' => true,
+            'formatText' => true,
+            'languageCode' => 'language_code',
+            'languageDetection' => true,
             'punctuate' => true,
-            'speaker_labels' => true,
+            'speakerLabels' => true,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -217,12 +217,14 @@ final class V1Service implements V1Contract
      *
      * Execute a workflow for testing. This runs the workflow synchronously without deployment.
      *
+     * @param array{body?: mixed}|V1ExecuteParams $params
+     *
      * @throws APIException
      */
     public function execute(
         string $id,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
+        array|V1ExecuteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse {
         [$parsed, $options] = V1ExecuteParams::parseRequest(
             $params,

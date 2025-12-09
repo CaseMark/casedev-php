@@ -17,10 +17,10 @@ use Casedev\Core\Contracts\BaseModel;
  *   description?: string|null,
  *   isActive?: bool|null,
  *   name?: string|null,
- *   organizationId?: string|null,
+ *   organizationID?: string|null,
  *   updatedAt?: string|null,
  *   version?: float|null,
- *   webhookEndpointId?: string|null,
+ *   webhookEndpointID?: string|null,
  * }
  */
 final class V1NewResponse implements BaseModel
@@ -49,8 +49,8 @@ final class V1NewResponse implements BaseModel
     #[Optional]
     public ?string $name;
 
-    #[Optional]
-    public ?string $organizationId;
+    #[Optional('organizationId')]
+    public ?string $organizationID;
 
     #[Optional]
     public ?string $updatedAt;
@@ -58,8 +58,8 @@ final class V1NewResponse implements BaseModel
     #[Optional]
     public ?float $version;
 
-    #[Optional]
-    public ?string $webhookEndpointId;
+    #[Optional('webhookEndpointId')]
+    public ?string $webhookEndpointID;
 
     public function __construct()
     {
@@ -79,10 +79,10 @@ final class V1NewResponse implements BaseModel
         ?string $description = null,
         ?bool $isActive = null,
         ?string $name = null,
-        ?string $organizationId = null,
+        ?string $organizationID = null,
         ?string $updatedAt = null,
         ?float $version = null,
-        ?string $webhookEndpointId = null,
+        ?string $webhookEndpointID = null,
     ): self {
         $obj = new self;
 
@@ -93,10 +93,10 @@ final class V1NewResponse implements BaseModel
         null !== $description && $obj['description'] = $description;
         null !== $isActive && $obj['isActive'] = $isActive;
         null !== $name && $obj['name'] = $name;
-        null !== $organizationId && $obj['organizationId'] = $organizationId;
+        null !== $organizationID && $obj['organizationID'] = $organizationID;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
         null !== $version && $obj['version'] = $version;
-        null !== $webhookEndpointId && $obj['webhookEndpointId'] = $webhookEndpointId;
+        null !== $webhookEndpointID && $obj['webhookEndpointID'] = $webhookEndpointID;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class V1NewResponse implements BaseModel
     public function withOrganizationID(string $organizationID): self
     {
         $obj = clone $this;
-        $obj['organizationId'] = $organizationID;
+        $obj['organizationID'] = $organizationID;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class V1NewResponse implements BaseModel
     public function withWebhookEndpointID(string $webhookEndpointID): self
     {
         $obj = clone $this;
-        $obj['webhookEndpointId'] = $webhookEndpointID;
+        $obj['webhookEndpointID'] = $webhookEndpointID;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use Casedev\Core\Contracts\BaseModel;
 /**
  * @phpstan-type V1DeployResponseShape = array{
  *   createdAt?: \DateTimeInterface|null,
- *   deploymentId?: string|null,
+ *   deploymentID?: string|null,
  *   environment?: string|null,
  *   runtime?: string|null,
  *   status?: string|null,
@@ -32,8 +32,8 @@ final class V1DeployResponse implements BaseModel
     /**
      * Unique deployment identifier.
      */
-    #[Optional]
-    public ?string $deploymentId;
+    #[Optional('deploymentId')]
+    public ?string $deploymentID;
 
     /**
      * Environment name.
@@ -71,7 +71,7 @@ final class V1DeployResponse implements BaseModel
      */
     public static function with(
         ?\DateTimeInterface $createdAt = null,
-        ?string $deploymentId = null,
+        ?string $deploymentID = null,
         ?string $environment = null,
         ?string $runtime = null,
         ?string $status = null,
@@ -80,7 +80,7 @@ final class V1DeployResponse implements BaseModel
         $obj = new self;
 
         null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $deploymentId && $obj['deploymentId'] = $deploymentId;
+        null !== $deploymentID && $obj['deploymentID'] = $deploymentID;
         null !== $environment && $obj['environment'] = $environment;
         null !== $runtime && $obj['runtime'] = $runtime;
         null !== $status && $obj['status'] = $status;
@@ -106,7 +106,7 @@ final class V1DeployResponse implements BaseModel
     public function withDeploymentID(string $deploymentID): self
     {
         $obj = clone $this;
-        $obj['deploymentId'] = $deploymentID;
+        $obj['deploymentID'] = $deploymentID;
 
         return $obj;
     }

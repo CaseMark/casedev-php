@@ -28,21 +28,21 @@ final class SpeakService implements SpeakContract
      *
      * @param array{
      *   text: string,
-     *   apply_text_normalization?: bool,
-     *   enable_logging?: bool,
-     *   language_code?: string,
-     *   model_id?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID,
-     *   next_text?: string,
-     *   optimize_streaming_latency?: int,
-     *   output_format?: value-of<OutputFormat>,
-     *   previous_text?: string,
+     *   applyTextNormalization?: bool,
+     *   enableLogging?: bool,
+     *   languageCode?: string,
+     *   modelID?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID,
+     *   nextText?: string,
+     *   optimizeStreamingLatency?: int,
+     *   outputFormat?: value-of<OutputFormat>,
+     *   previousText?: string,
      *   seed?: int,
-     *   voice_id?: string,
-     *   voice_settings?: array{
-     *     similarity_boost?: float,
+     *   voiceID?: string,
+     *   voiceSettings?: array{
+     *     similarityBoost?: float,
      *     stability?: float,
      *     style?: float,
-     *     use_speaker_boost?: bool,
+     *     useSpeakerBoost?: bool,
      *   },
      * }|SpeakCreateParams $params
      *
@@ -77,21 +77,21 @@ final class SpeakService implements SpeakContract
      *
      * @param array{
      *   text: string,
-     *   apply_text_normalization?: bool,
-     *   enable_logging?: bool,
-     *   language_code?: string,
-     *   model_id?: value-of<SpeakStreamParams\ModelID>,
-     *   next_text?: string,
-     *   optimize_streaming_latency?: int,
-     *   output_format?: 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|SpeakStreamParams\OutputFormat,
-     *   previous_text?: string,
+     *   applyTextNormalization?: bool,
+     *   enableLogging?: bool,
+     *   languageCode?: string,
+     *   modelID?: value-of<SpeakStreamParams\ModelID>,
+     *   nextText?: string,
+     *   optimizeStreamingLatency?: int,
+     *   outputFormat?: 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|SpeakStreamParams\OutputFormat,
+     *   previousText?: string,
      *   seed?: int,
-     *   voice_id?: string,
-     *   voice_settings?: array{
-     *     similarity_boost?: float,
+     *   voiceID?: string,
+     *   voiceSettings?: array{
+     *     similarityBoost?: float,
      *     stability?: float,
      *     style?: float,
-     *     use_speaker_boost?: bool,
+     *     useSpeakerBoost?: bool,
      *   },
      * }|SpeakStreamParams $params
      *

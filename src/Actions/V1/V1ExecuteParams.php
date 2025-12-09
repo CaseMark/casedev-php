@@ -16,7 +16,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Actions\V1Service::execute()
  *
  * @phpstan-type V1ExecuteParamsShape = array{
- *   input: array<string,mixed>, webhook_id?: string
+ *   input: array<string,mixed>, webhookID?: string
  * }
  */
 final class V1ExecuteParams implements BaseModel
@@ -36,8 +36,8 @@ final class V1ExecuteParams implements BaseModel
     /**
      * Optional webhook endpoint ID to override the action's default webhook.
      */
-    #[Optional]
-    public ?string $webhook_id;
+    #[Optional('webhook_id')]
+    public ?string $webhookID;
 
     /**
      * `new V1ExecuteParams()` is missing required properties by the API.
@@ -65,13 +65,13 @@ final class V1ExecuteParams implements BaseModel
      *
      * @param array<string,mixed> $input
      */
-    public static function with(array $input, ?string $webhook_id = null): self
+    public static function with(array $input, ?string $webhookID = null): self
     {
         $obj = new self;
 
         $obj['input'] = $input;
 
-        null !== $webhook_id && $obj['webhook_id'] = $webhook_id;
+        null !== $webhookID && $obj['webhookID'] = $webhookID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class V1ExecuteParams implements BaseModel
     public function withWebhookID(string $webhookID): self
     {
         $obj = clone $this;
-        $obj['webhook_id'] = $webhookID;
+        $obj['webhookID'] = $webhookID;
 
         return $obj;
     }

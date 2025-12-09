@@ -11,7 +11,7 @@ use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
 
 /**
  * @phpstan-type ChoiceShape = array{
- *   finish_reason?: string|null, index?: int|null, message?: Message|null
+ *   finishReason?: string|null, index?: int|null, message?: Message|null
  * }
  */
 final class Choice implements BaseModel
@@ -19,8 +19,8 @@ final class Choice implements BaseModel
     /** @use SdkModel<ChoiceShape> */
     use SdkModel;
 
-    #[Optional]
-    public ?string $finish_reason;
+    #[Optional('finish_reason')]
+    public ?string $finishReason;
 
     #[Optional]
     public ?int $index;
@@ -41,13 +41,13 @@ final class Choice implements BaseModel
      * @param Message|array{content?: string|null, role?: string|null} $message
      */
     public static function with(
-        ?string $finish_reason = null,
+        ?string $finishReason = null,
         ?int $index = null,
         Message|array|null $message = null,
     ): self {
         $obj = new self;
 
-        null !== $finish_reason && $obj['finish_reason'] = $finish_reason;
+        null !== $finishReason && $obj['finishReason'] = $finishReason;
         null !== $index && $obj['index'] = $index;
         null !== $message && $obj['message'] = $message;
 
@@ -57,7 +57,7 @@ final class Choice implements BaseModel
     public function withFinishReason(string $finishReason): self
     {
         $obj = clone $this;
-        $obj['finish_reason'] = $finishReason;
+        $obj['finishReason'] = $finishReason;
 
         return $obj;
     }

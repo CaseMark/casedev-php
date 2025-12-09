@@ -19,7 +19,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   startedAt?: string|null,
  *   status?: string|null,
  *   triggerType?: string|null,
- *   workflowId?: string|null,
+ *   workflowID?: string|null,
  * }
  */
 final class V1GetExecutionResponse implements BaseModel
@@ -54,8 +54,8 @@ final class V1GetExecutionResponse implements BaseModel
     #[Optional]
     public ?string $triggerType;
 
-    #[Optional]
-    public ?string $workflowId;
+    #[Optional('workflowId')]
+    public ?string $workflowID;
 
     public function __construct()
     {
@@ -77,7 +77,7 @@ final class V1GetExecutionResponse implements BaseModel
         ?string $startedAt = null,
         ?string $status = null,
         ?string $triggerType = null,
-        ?string $workflowId = null,
+        ?string $workflowID = null,
     ): self {
         $obj = new self;
 
@@ -90,7 +90,7 @@ final class V1GetExecutionResponse implements BaseModel
         null !== $startedAt && $obj['startedAt'] = $startedAt;
         null !== $status && $obj['status'] = $status;
         null !== $triggerType && $obj['triggerType'] = $triggerType;
-        null !== $workflowId && $obj['workflowId'] = $workflowId;
+        null !== $workflowID && $obj['workflowID'] = $workflowID;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class V1GetExecutionResponse implements BaseModel
     public function withWorkflowID(string $workflowID): self
     {
         $obj = clone $this;
-        $obj['workflowId'] = $workflowID;
+        $obj['workflowID'] = $workflowID;
 
         return $obj;
     }

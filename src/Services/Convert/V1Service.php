@@ -63,7 +63,7 @@ final class V1Service implements V1Contract
      * **Output Format**: M4A audio
      * **Processing**: Asynchronous with webhook callbacks
      *
-     * @param array{input_url: string, callback_url?: string}|V1ProcessParams $params
+     * @param array{inputURL: string, callbackURL?: string}|V1ProcessParams $params
      *
      * @throws APIException
      */
@@ -94,11 +94,11 @@ final class V1Service implements V1Contract
      * Internal webhook endpoint that receives completion notifications from the Modal FTR converter service. This endpoint handles status updates for file conversion jobs, including success and failure notifications. Requires valid Bearer token authentication.
      *
      * @param array{
-     *   job_id: string,
+     *   jobID: string,
      *   status: 'completed'|'failed'|Status,
      *   error?: string,
      *   result?: array{
-     *     duration_seconds?: float, file_size_bytes?: int, stored_filename?: string
+     *     durationSeconds?: float, fileSizeBytes?: int, storedFilename?: string
      *   },
      * }|V1WebhookParams $params
      *

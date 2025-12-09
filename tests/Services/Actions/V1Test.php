@@ -54,7 +54,7 @@ final class V1Test extends TestCase
             'definition' => 'string',
             'name' => 'name',
             'description' => 'description',
-            'webhook_id' => 'webhook_id',
+            'webhookID' => 'webhook_id',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +125,7 @@ final class V1Test extends TestCase
 
         $result = $this->client->actions->v1->execute(
             'id',
-            ['input' => ['foo' => 'bar'], 'webhook_id' => 'webhook_id']
+            ['input' => ['foo' => 'bar'], 'webhookID' => 'webhook_id']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

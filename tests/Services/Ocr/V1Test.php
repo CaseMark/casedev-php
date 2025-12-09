@@ -74,7 +74,7 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->ocr->v1->process([
-            'document_url' => 'https://example.com/contract.pdf',
+            'documentURL' => 'https://example.com/contract.pdf',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,15 +89,15 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->ocr->v1->process([
-            'document_url' => 'https://example.com/contract.pdf',
-            'callback_url' => 'https://your-app.com/webhooks/ocr-complete',
-            'document_id' => 'contract-2024-001',
+            'documentURL' => 'https://example.com/contract.pdf',
+            'callbackURL' => 'https://your-app.com/webhooks/ocr-complete',
+            'documentID' => 'contract-2024-001',
             'engine' => 'doctr',
             'features' => [
                 'forms' => false, 'layout' => true, 'tables' => true, 'text' => true,
             ],
-            'result_bucket' => 'my-ocr-results',
-            'result_prefix' => 'ocr/2024/',
+            'resultBucket' => 'my-ocr-results',
+            'resultPrefix' => 'ocr/2024/',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

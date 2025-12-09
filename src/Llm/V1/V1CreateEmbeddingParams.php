@@ -21,7 +21,7 @@ use Casedev\Llm\V1\V1CreateEmbeddingParams\Input;
  *   input: string|list<string>,
  *   model: string,
  *   dimensions?: int,
- *   encoding_format?: EncodingFormat|value-of<EncodingFormat>,
+ *   encodingFormat?: EncodingFormat|value-of<EncodingFormat>,
  *   user?: string,
  * }
  */
@@ -54,10 +54,10 @@ final class V1CreateEmbeddingParams implements BaseModel
     /**
      * Format for returned embeddings.
      *
-     * @var value-of<EncodingFormat>|null $encoding_format
+     * @var value-of<EncodingFormat>|null $encodingFormat
      */
-    #[Optional(enum: EncodingFormat::class)]
-    public ?string $encoding_format;
+    #[Optional('encoding_format', enum: EncodingFormat::class)]
+    public ?string $encodingFormat;
 
     /**
      * Unique identifier for the end-user.
@@ -90,13 +90,13 @@ final class V1CreateEmbeddingParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param string|list<string> $input
-     * @param EncodingFormat|value-of<EncodingFormat> $encoding_format
+     * @param EncodingFormat|value-of<EncodingFormat> $encodingFormat
      */
     public static function with(
         string|array $input,
         string $model,
         ?int $dimensions = null,
-        EncodingFormat|string|null $encoding_format = null,
+        EncodingFormat|string|null $encodingFormat = null,
         ?string $user = null,
     ): self {
         $obj = new self;
@@ -105,7 +105,7 @@ final class V1CreateEmbeddingParams implements BaseModel
         $obj['model'] = $model;
 
         null !== $dimensions && $obj['dimensions'] = $dimensions;
-        null !== $encoding_format && $obj['encoding_format'] = $encoding_format;
+        null !== $encodingFormat && $obj['encodingFormat'] = $encodingFormat;
         null !== $user && $obj['user'] = $user;
 
         return $obj;
@@ -155,7 +155,7 @@ final class V1CreateEmbeddingParams implements BaseModel
         EncodingFormat|string $encodingFormat
     ): self {
         $obj = clone $this;
-        $obj['encoding_format'] = $encodingFormat;
+        $obj['encodingFormat'] = $encodingFormat;
 
         return $obj;
     }
