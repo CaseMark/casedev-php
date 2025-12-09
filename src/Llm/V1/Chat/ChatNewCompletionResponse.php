@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1\Chat;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
@@ -29,29 +29,29 @@ final class ChatNewCompletionResponse implements BaseModel
     /**
      * Unique identifier for the completion.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /** @var list<Choice>|null $choices */
-    #[Api(list: Choice::class, optional: true)]
+    #[Optional(list: Choice::class)]
     public ?array $choices;
 
     /**
      * Unix timestamp of completion creation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $created;
 
     /**
      * Model used for completion.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $object;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Usage $usage;
 
     public function __construct()

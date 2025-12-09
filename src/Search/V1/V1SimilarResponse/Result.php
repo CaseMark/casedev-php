@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1\V1SimilarResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class Result implements BaseModel
     /** @use SdkModel<ResultShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $domain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publishedDate;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $similarityScore;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $snippet;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

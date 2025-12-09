@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -31,31 +32,31 @@ final class VaultUploadParams implements BaseModel
     /**
      * MIME type of the file (e.g., application/pdf, image/jpeg).
      */
-    #[Api]
+    #[Required]
     public string $contentType;
 
     /**
      * Name of the file to upload.
      */
-    #[Api]
+    #[Required]
     public string $filename;
 
     /**
      * Whether to automatically process and index the file for search.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $auto_index;
 
     /**
      * Additional metadata to associate with the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $metadata;
 
     /**
      * Estimated file size in bytes for cost calculation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $sizeBytes;
 
     /**

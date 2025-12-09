@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -26,33 +26,33 @@ final class V1NewResponse implements BaseModel
     /** @use SdkModel<V1NewResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /** @var list<mixed>|null $edges */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $edges;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /** @var list<mixed>|null $nodes */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $nodes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $triggerType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $visibility;
 
     public function __construct()

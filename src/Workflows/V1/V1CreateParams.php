@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -35,13 +36,13 @@ final class V1CreateParams implements BaseModel
     /**
      * Workflow name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Workflow description.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
@@ -49,7 +50,7 @@ final class V1CreateParams implements BaseModel
      *
      * @var list<mixed>|null $edges
      */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $edges;
 
     /**
@@ -57,17 +58,17 @@ final class V1CreateParams implements BaseModel
      *
      * @var list<mixed>|null $nodes
      */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $nodes;
 
     /**
      * Trigger configuration.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $triggerConfig;
 
     /** @var value-of<TriggerType>|null $triggerType */
-    #[Api(enum: TriggerType::class, optional: true)]
+    #[Optional(enum: TriggerType::class)]
     public ?string $triggerType;
 
     /**
@@ -75,7 +76,7 @@ final class V1CreateParams implements BaseModel
      *
      * @var value-of<Visibility>|null $visibility
      */
-    #[Api(enum: Visibility::class, optional: true)]
+    #[Optional(enum: Visibility::class)]
     public ?string $visibility;
 
     /**

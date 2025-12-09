@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Webhooks\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -27,19 +27,19 @@ final class V1NewResponse implements BaseModel
     /**
      * Unique webhook endpoint ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Webhook description.
      */
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?string $description;
 
     /**
@@ -47,25 +47,25 @@ final class V1NewResponse implements BaseModel
      *
      * @var list<string>|null $events
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $events;
 
     /**
      * Whether webhook is active.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isActive;
 
     /**
      * Webhook signing secret (only shown on creation).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secret;
 
     /**
      * Webhook destination URL.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

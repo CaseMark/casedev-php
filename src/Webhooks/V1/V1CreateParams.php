@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Webhooks\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -37,19 +38,19 @@ final class V1CreateParams implements BaseModel
      *
      * @var list<string> $events
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $events;
 
     /**
      * HTTPS URL where webhook events will be sent.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * Optional description for the webhook.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**

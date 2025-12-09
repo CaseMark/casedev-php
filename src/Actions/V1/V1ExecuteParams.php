@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Actions\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -29,13 +30,13 @@ final class V1ExecuteParams implements BaseModel
      *
      * @var array<string,mixed> $input
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $input;
 
     /**
      * Optional webhook endpoint ID to override the action's default webhook.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webhook_id;
 
     /**

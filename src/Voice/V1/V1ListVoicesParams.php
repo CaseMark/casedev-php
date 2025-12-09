@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -38,37 +38,37 @@ final class V1ListVoicesParams implements BaseModel
     /**
      * Filter by voice category.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $category;
 
     /**
      * Filter by voice collection ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $collection_id;
 
     /**
      * Whether to include total count in response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $include_total_count;
 
     /**
      * Token for retrieving the next page of results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $next_page_token;
 
     /**
      * Number of voices to return per page (max 100).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page_size;
 
     /**
      * Search term to filter voices by name or description.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $search;
 
     /**
@@ -76,7 +76,7 @@ final class V1ListVoicesParams implements BaseModel
      *
      * @var value-of<Sort>|null $sort
      */
-    #[Api(enum: Sort::class, optional: true)]
+    #[Optional(enum: Sort::class)]
     public ?string $sort;
 
     /**
@@ -84,7 +84,7 @@ final class V1ListVoicesParams implements BaseModel
      *
      * @var value-of<SortDirection>|null $sort_direction
      */
-    #[Api(enum: SortDirection::class, optional: true)]
+    #[Optional(enum: SortDirection::class)]
     public ?string $sort_direction;
 
     /**
@@ -92,7 +92,7 @@ final class V1ListVoicesParams implements BaseModel
      *
      * @var value-of<VoiceType>|null $voice_type
      */
-    #[Api(enum: VoiceType::class, optional: true)]
+    #[Optional(enum: VoiceType::class)]
     public ?string $voice_type;
 
     public function __construct()

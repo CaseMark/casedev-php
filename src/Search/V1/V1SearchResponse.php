@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1SearchResponse\Result;
@@ -22,7 +22,7 @@ final class V1SearchResponse implements BaseModel
     /**
      * Original search query.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
     /**
@@ -30,13 +30,13 @@ final class V1SearchResponse implements BaseModel
      *
      * @var list<Result>|null $results
      */
-    #[Api(list: Result::class, optional: true)]
+    #[Optional(list: Result::class)]
     public ?array $results;
 
     /**
      * Total number of results found.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalResults;
 
     public function __construct()

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -36,25 +37,25 @@ final class V1SimilarParams implements BaseModel
     /**
      * The URL to find similar content for.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * Additional content to consider for similarity matching.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contents;
 
     /**
      * Only include pages crawled before this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endCrawlDate;
 
     /**
      * Only include pages published before this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endPublishedDate;
 
     /**
@@ -62,7 +63,7 @@ final class V1SimilarParams implements BaseModel
      *
      * @var list<string>|null $excludeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $excludeDomains;
 
     /**
@@ -70,31 +71,31 @@ final class V1SimilarParams implements BaseModel
      *
      * @var list<string>|null $includeDomains
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includeDomains;
 
     /**
      * Whether to include extracted text content in results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeText;
 
     /**
      * Number of similar results to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numResults;
 
     /**
      * Only include pages crawled after this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startCrawlDate;
 
     /**
      * Only include pages published after this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startPublishedDate;
 
     /**

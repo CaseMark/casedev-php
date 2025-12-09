@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\VaultSearchResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class Source implements BaseModel
     /** @use SdkModel<SourceShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $chunkCount;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $filename;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $ingestionCompletedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageCount;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $textLength;
 
     public function __construct()

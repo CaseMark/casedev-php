@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Convert\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -31,13 +32,13 @@ final class V1ProcessParams implements BaseModel
     /**
      * HTTPS URL to the FTR file (must be a valid S3 presigned URL).
      */
-    #[Api]
+    #[Required]
     public string $input_url;
 
     /**
      * Optional webhook URL to receive conversion completion notification.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $callback_url;
 
     /**

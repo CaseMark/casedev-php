@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultSearchResponse\Chunk;
@@ -30,35 +30,35 @@ final class VaultSearchResponse implements BaseModel
      *
      * @var list<Chunk>|null $chunks
      */
-    #[Api(list: Chunk::class, optional: true)]
+    #[Optional(list: Chunk::class)]
     public ?array $chunks;
 
     /**
      * Search method used.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $method;
 
     /**
      * Original search query.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
     /**
      * AI-generated answer based on search results (for global/entity methods).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $response;
 
     /** @var list<Source>|null $sources */
-    #[Api(list: Source::class, optional: true)]
+    #[Optional(list: Source::class)]
     public ?array $sources;
 
     /**
      * ID of the searched vault.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $vault_id;
 
     public function __construct()

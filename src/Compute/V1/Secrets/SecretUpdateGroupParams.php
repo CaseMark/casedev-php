@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -29,13 +30,13 @@ final class SecretUpdateGroupParams implements BaseModel
      *
      * @var array<string,string> $secrets
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $secrets;
 
     /**
      * Environment name (optional, uses default if not specified).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $env;
 
     /**

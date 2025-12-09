@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1\V1ListExecutionsResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -23,22 +23,22 @@ final class Execution implements BaseModel
     /** @use SdkModel<ExecutionShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $completedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $durationMs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $triggerType;
 
     public function __construct()

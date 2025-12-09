@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -38,61 +39,61 @@ final class V1ContentsParams implements BaseModel
      *
      * @var list<string> $urls
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $urls;
 
     /**
      * Context to guide content extraction and summarization.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $context;
 
     /**
      * Additional extraction options.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $extras;
 
     /**
      * Whether to include content highlights.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $highlights;
 
     /**
      * Whether to perform live crawling for dynamic content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $livecrawl;
 
     /**
      * Timeout in seconds for live crawling.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $livecrawlTimeout;
 
     /**
      * Whether to extract content from linked subpages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $subpages;
 
     /**
      * Maximum number of subpages to crawl.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $subpageTarget;
 
     /**
      * Whether to generate content summaries.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $summary;
 
     /**
      * Whether to extract text content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $text;
 
     /**

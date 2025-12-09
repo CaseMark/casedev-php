@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class SecretNewResponse implements BaseModel
     /**
      * Unique identifier for the secret group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Description of the secret group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Name of the secret group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     public function __construct()

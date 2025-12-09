@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Voice\V1\Speak;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -46,25 +47,25 @@ final class SpeakStreamParams implements BaseModel
     /**
      * Text to convert to speech.
      */
-    #[Api]
+    #[Required]
     public string $text;
 
     /**
      * Apply text normalization.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $apply_text_normalization;
 
     /**
      * Enable request logging.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $enable_logging;
 
     /**
      * Language code (e.g., 'en', 'es', 'fr').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language_code;
 
     /**
@@ -72,19 +73,19 @@ final class SpeakStreamParams implements BaseModel
      *
      * @var value-of<ModelID>|null $model_id
      */
-    #[Api(enum: ModelID::class, optional: true)]
+    #[Optional(enum: ModelID::class)]
     public ?string $model_id;
 
     /**
      * Next text for context.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $next_text;
 
     /**
      * Optimize for streaming latency (0-4).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $optimize_streaming_latency;
 
     /**
@@ -92,28 +93,28 @@ final class SpeakStreamParams implements BaseModel
      *
      * @var value-of<OutputFormat>|null $output_format
      */
-    #[Api(enum: OutputFormat::class, optional: true)]
+    #[Optional(enum: OutputFormat::class)]
     public ?string $output_format;
 
     /**
      * Previous text for context.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $previous_text;
 
     /**
      * Random seed for reproducible generation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $seed;
 
     /**
      * ElevenLabs voice ID (defaults to Rachel for professional clarity).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $voice_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?VoiceSettings $voice_settings;
 
     /**

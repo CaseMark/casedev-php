@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Templates\V1\V1ExecuteParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
@@ -24,13 +24,13 @@ final class Options implements BaseModel
      *
      * @var value-of<Format>|null $format
      */
-    #[Api(enum: Format::class, optional: true)]
+    #[Optional(enum: Format::class)]
     public ?string $format;
 
     /**
      * LLM model to use for processing.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
     public function __construct()

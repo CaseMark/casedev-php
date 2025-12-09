@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -31,7 +32,7 @@ final class VaultSearchParams implements BaseModel
     /**
      * Search query or question to find relevant documents.
      */
-    #[Api]
+    #[Required]
     public string $query;
 
     /**
@@ -39,7 +40,7 @@ final class VaultSearchParams implements BaseModel
      *
      * @var array<string,mixed>|null $filters
      */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $filters;
 
     /**
@@ -47,13 +48,13 @@ final class VaultSearchParams implements BaseModel
      *
      * @var value-of<Method>|null $method
      */
-    #[Api(enum: Method::class, optional: true)]
+    #[Optional(enum: Method::class)]
     public ?string $method;
 
     /**
      * Maximum number of results to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $topK;
 
     /**

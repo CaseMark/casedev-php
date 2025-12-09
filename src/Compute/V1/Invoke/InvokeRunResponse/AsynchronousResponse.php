@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1\Invoke\InvokeRunResponse;
 
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\AsynchronousResponse\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -22,17 +22,17 @@ final class AsynchronousResponse implements BaseModel
     /**
      * URL to check run status and logs.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $logsUrl;
 
     /**
      * Unique run identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $runId;
 
     /** @var value-of<Status>|null $status */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

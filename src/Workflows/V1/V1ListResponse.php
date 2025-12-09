@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Workflows\V1\V1ListResponse\Workflow;
@@ -22,17 +22,17 @@ final class V1ListResponse implements BaseModel
     /** @use SdkModel<V1ListResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $offset;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total;
 
     /** @var list<Workflow>|null $workflows */
-    #[Api(list: Workflow::class, optional: true)]
+    #[Optional(list: Workflow::class)]
     public ?array $workflows;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1\Chat\ChatCreateCompletionParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
@@ -22,7 +22,7 @@ final class Message implements BaseModel
     /**
      * The contents of the message.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $content;
 
     /**
@@ -30,7 +30,7 @@ final class Message implements BaseModel
      *
      * @var value-of<Role>|null $role
      */
-    #[Api(enum: Role::class, optional: true)]
+    #[Optional(enum: Role::class)]
     public ?string $role;
 
     public function __construct()

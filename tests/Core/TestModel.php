@@ -2,7 +2,8 @@
 
 namespace Tests\Core;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -14,17 +15,17 @@ class TestModel implements BaseModel
     /** @use SdkModel<array<string, mixed>> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api('age_years')]
+    #[Required('age_years')]
     public int $ageYears;
 
     /** @var list<string>|null */
-    #[Api(optional: true)]
+    #[Optional]
     public ?array $friends;
 
-    #[Api]
+    #[Required]
     public ?string $owner;
 
     /**

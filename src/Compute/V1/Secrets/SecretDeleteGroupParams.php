@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,13 +25,13 @@ final class SecretDeleteGroupParams implements BaseModel
     /**
      * Environment name. If not provided, uses the default environment.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $env;
 
     /**
      * Specific key to delete within the group. If not provided, the entire group is deleted.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $key;
 
     public function __construct()

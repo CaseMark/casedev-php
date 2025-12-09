@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Compute\V1\Runs;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -27,19 +27,19 @@ final class RunListParams implements BaseModel
     /**
      * Environment name to filter runs by.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $env;
 
     /**
      * Function name to filter runs by.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $function;
 
     /**
      * Maximum number of runs to return (1-100, default: 50).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1\V1ContentsResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -28,37 +28,37 @@ final class Result implements BaseModel
      *
      * @var list<string>|null $highlights
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $highlights;
 
     /**
      * Additional metadata about the content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $metadata;
 
     /**
      * Content summary if requested.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $summary;
 
     /**
      * Extracted text content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
     /**
      * Page title.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
     /**
      * Source URL.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Convert\V1\V1WebhookParams;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -25,19 +25,19 @@ final class Result implements BaseModel
     /**
      * Processing duration in seconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $duration_seconds;
 
     /**
      * Size of processed file in bytes.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $file_size_bytes;
 
     /**
      * Filename where converted file is stored.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $stored_filename;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class V1ResearchResponse implements BaseModel
     /**
      * Model used for research.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
     /**
      * Unique identifier for this research.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $researchId;
 
     /**
      * Research findings and analysis.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $results;
 
     public function __construct()

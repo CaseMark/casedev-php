@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Format\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -34,7 +35,7 @@ final class V1CreateDocumentParams implements BaseModel
     /**
      * The source content to format.
      */
-    #[Api]
+    #[Required]
     public string $content;
 
     /**
@@ -42,7 +43,7 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * @var value-of<OutputFormat> $output_format
      */
-    #[Api(enum: OutputFormat::class)]
+    #[Required(enum: OutputFormat::class)]
     public string $output_format;
 
     /**
@@ -50,10 +51,10 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * @var value-of<InputFormat>|null $input_format
      */
-    #[Api(enum: InputFormat::class, optional: true)]
+    #[Optional(enum: InputFormat::class)]
     public ?string $input_format;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Options $options;
 
     /**

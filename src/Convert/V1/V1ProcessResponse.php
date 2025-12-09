@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Convert\V1;
 
 use Casedev\Convert\V1\V1ProcessResponse\Status;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -22,13 +22,13 @@ final class V1ProcessResponse implements BaseModel
     /**
      * Unique identifier for the conversion job.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $job_id;
 
     /**
      * Instructions for checking job status.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
     /**
@@ -36,7 +36,7 @@ final class V1ProcessResponse implements BaseModel
      *
      * @var value-of<Status>|null $status
      */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

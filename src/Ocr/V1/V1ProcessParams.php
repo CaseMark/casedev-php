@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Ocr\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -37,19 +38,19 @@ final class V1ProcessParams implements BaseModel
     /**
      * URL or S3 path to the document to process.
      */
-    #[Api]
+    #[Required]
     public string $document_url;
 
     /**
      * URL to receive completion webhook.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $callback_url;
 
     /**
      * Optional custom document identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $document_id;
 
     /**
@@ -57,25 +58,25 @@ final class V1ProcessParams implements BaseModel
      *
      * @var value-of<Engine>|null $engine
      */
-    #[Api(enum: Engine::class, optional: true)]
+    #[Optional(enum: Engine::class)]
     public ?string $engine;
 
     /**
      * OCR features to extract.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?Features $features;
 
     /**
      * S3 bucket to store results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $result_bucket;
 
     /**
      * S3 key prefix for results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $result_prefix;
 
     /**

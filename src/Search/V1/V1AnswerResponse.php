@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Search\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1AnswerResponse\Citation;
@@ -25,7 +25,7 @@ final class V1AnswerResponse implements BaseModel
     /**
      * The generated answer with citations.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $answer;
 
     /**
@@ -33,19 +33,19 @@ final class V1AnswerResponse implements BaseModel
      *
      * @var list<Citation>|null $citations
      */
-    #[Api(list: Citation::class, optional: true)]
+    #[Optional(list: Citation::class)]
     public ?array $citations;
 
     /**
      * Model used for answer generation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $model;
 
     /**
      * Type of search performed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $searchType;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Ocr\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Ocr\V1\V1ProcessResponse\Status;
@@ -28,37 +28,37 @@ final class V1ProcessResponse implements BaseModel
     /**
      * Unique job identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Job creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $created_at;
 
     /**
      * Document identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $document_id;
 
     /**
      * OCR engine used.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $engine;
 
     /**
      * Estimated completion time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $estimated_completion;
 
     /**
      * Number of pages detected.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page_count;
 
     /**
@@ -66,7 +66,7 @@ final class V1ProcessResponse implements BaseModel
      *
      * @var value-of<Status>|null $status
      */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

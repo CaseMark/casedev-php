@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -27,34 +27,34 @@ final class V1GetExecutionResponse implements BaseModel
     /** @use SdkModel<V1GetExecutionResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $completedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $durationMs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $input;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $output;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $triggerType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $workflowId;
 
     public function __construct()

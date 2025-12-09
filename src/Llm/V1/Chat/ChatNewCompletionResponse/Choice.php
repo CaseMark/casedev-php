@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
@@ -19,13 +19,13 @@ final class Choice implements BaseModel
     /** @use SdkModel<ChoiceShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $finish_reason;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $index;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Message $message;
 
     public function __construct()

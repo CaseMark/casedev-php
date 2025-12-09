@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\VaultListResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -27,43 +27,43 @@ final class Vault implements BaseModel
     /**
      * Vault identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Vault creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Vault description.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Whether GraphRAG is enabled.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $enableGraph;
 
     /**
      * Vault name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * Total storage size in bytes.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalBytes;
 
     /**
      * Number of stored documents.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalObjects;
 
     public function __construct()

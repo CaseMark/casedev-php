@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Llm\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -35,19 +36,19 @@ final class V1CreateEmbeddingParams implements BaseModel
      *
      * @var string|list<string> $input
      */
-    #[Api(union: Input::class)]
+    #[Required(union: Input::class)]
     public string|array $input;
 
     /**
      * Embedding model to use (e.g., text-embedding-ada-002, text-embedding-3-small).
      */
-    #[Api]
+    #[Required]
     public string $model;
 
     /**
      * Number of dimensions for the embeddings (model-specific).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $dimensions;
 
     /**
@@ -55,13 +56,13 @@ final class V1CreateEmbeddingParams implements BaseModel
      *
      * @var value-of<EncodingFormat>|null $encoding_format
      */
-    #[Api(enum: EncodingFormat::class, optional: true)]
+    #[Optional(enum: EncodingFormat::class)]
     public ?string $encoding_format;
 
     /**
      * Unique identifier for the end-user.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $user;
 
     /**

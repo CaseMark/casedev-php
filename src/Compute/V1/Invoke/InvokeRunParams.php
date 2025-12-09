@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Casedev\Compute\V1\Invoke;
 
 use Casedev\Compute\V1\Invoke\InvokeRunParams\FunctionSuffix;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -32,13 +33,13 @@ final class InvokeRunParams implements BaseModel
      *
      * @var array<string,mixed> $input
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $input;
 
     /**
      * If true, returns immediately with run ID for background execution.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $async;
 
     /**
@@ -46,7 +47,7 @@ final class InvokeRunParams implements BaseModel
      *
      * @var value-of<FunctionSuffix>|null $functionSuffix
      */
-    #[Api(enum: FunctionSuffix::class, optional: true)]
+    #[Optional(enum: FunctionSuffix::class)]
     public ?string $functionSuffix;
 
     /**

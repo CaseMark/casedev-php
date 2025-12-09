@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class V1ExecuteParams implements BaseModel
     /**
      * Input data to pass to the workflow trigger.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $body;
 
     public function __construct()

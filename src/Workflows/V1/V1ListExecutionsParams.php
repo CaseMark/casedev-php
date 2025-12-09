@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -25,11 +25,11 @@ final class V1ListExecutionsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /** @var value-of<Status>|null $status */
-    #[Api(enum: Status::class, optional: true)]
+    #[Optional(enum: Status::class)]
     public ?string $status;
 
     public function __construct()

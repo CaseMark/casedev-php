@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Casedev\Actions\V1;
 
 use Casedev\Actions\V1\V1CreateParams\Definition;
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -33,25 +34,25 @@ final class V1CreateParams implements BaseModel
      *
      * @var mixed|string $definition
      */
-    #[Api(union: Definition::class)]
+    #[Required(union: Definition::class)]
     public mixed $definition;
 
     /**
      * Unique name for the action.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Optional description of the action's purpose.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Optional webhook endpoint ID for action completion notifications.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webhook_id;
 
     /**

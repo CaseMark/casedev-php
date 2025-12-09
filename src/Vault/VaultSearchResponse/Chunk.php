@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\VaultSearchResponse;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class Chunk implements BaseModel
     /** @use SdkModel<ChunkShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $score;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $source;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $text;
 
     public function __construct()

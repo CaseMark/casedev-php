@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Workflows\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class V1UndeployResponse implements BaseModel
     /** @use SdkModel<V1UndeployResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $success;
 
     public function __construct()

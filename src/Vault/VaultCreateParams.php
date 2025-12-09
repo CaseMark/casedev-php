@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -27,19 +28,19 @@ final class VaultCreateParams implements BaseModel
     /**
      * Display name for the vault.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Optional description of the vault's purpose.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Enable knowledge graph for entity relationship mapping.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $enableGraph;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -22,7 +22,7 @@ final class ObjectRetrieveParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /**

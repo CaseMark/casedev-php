@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
@@ -28,49 +28,49 @@ final class VaultNewResponse implements BaseModel
     /**
      * Unique vault identifier.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * Vault creation timestamp.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Vault description.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * S3 bucket name for document storage.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $filesBucket;
 
     /**
      * Vector search index name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $indexName;
 
     /**
      * Vault display name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * AWS region for storage.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $region;
 
     /**
      * S3 bucket name for vector embeddings.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $vectorBucket;
 
     public function __construct()

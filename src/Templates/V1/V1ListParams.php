@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Templates\V1;
 
-use Casedev\Core\Attributes\Api;
+use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
@@ -32,37 +32,37 @@ final class V1ListParams implements BaseModel
     /**
      * Filter workflows by category (e.g., 'legal', 'compliance', 'contract').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $category;
 
     /**
      * Maximum number of workflows to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Number of workflows to skip for pagination.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $offset;
 
     /**
      * Include only published workflows.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $published;
 
     /**
      * Filter workflows by subcategory (e.g., 'due-diligence', 'litigation', 'mergers').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sub_category;
 
     /**
      * Filter workflows by type (e.g., 'document-review', 'contract-analysis', 'compliance-check').
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     public function __construct()
