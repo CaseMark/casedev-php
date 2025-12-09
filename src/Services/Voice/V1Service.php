@@ -11,6 +11,9 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1Contract;
 use Casedev\Services\Voice\V1\SpeakService;
 use Casedev\Voice\V1\V1ListVoicesParams;
+use Casedev\Voice\V1\V1ListVoicesParams\Sort;
+use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
+use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
 
 final class V1Service implements V1Contract
 {
@@ -39,9 +42,9 @@ final class V1Service implements V1Contract
      *   next_page_token?: string,
      *   page_size?: int,
      *   search?: string,
-     *   sort?: 'name'|'created_at'|'updated_at',
-     *   sort_direction?: 'asc'|'desc',
-     *   voice_type?: 'premade'|'cloned'|'professional',
+     *   sort?: 'name'|'created_at'|'updated_at'|Sort,
+     *   sort_direction?: 'asc'|'desc'|SortDirection,
+     *   voice_type?: 'premade'|'cloned'|'professional'|VoiceType,
      * }|V1ListVoicesParams $params
      *
      * @throws APIException

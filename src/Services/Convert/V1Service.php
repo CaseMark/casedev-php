@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Convert\V1\V1ProcessParams;
 use Casedev\Convert\V1\V1ProcessResponse;
 use Casedev\Convert\V1\V1WebhookParams;
+use Casedev\Convert\V1\V1WebhookParams\Status;
 use Casedev\Convert\V1\V1WebhookResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
@@ -94,7 +95,7 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   job_id: string,
-     *   status: 'completed'|'failed',
+     *   status: 'completed'|'failed'|Status,
      *   error?: string,
      *   result?: array{
      *     duration_seconds?: float, file_size_bytes?: int, stored_filename?: string

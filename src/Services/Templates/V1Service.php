@@ -10,6 +10,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Templates\V1Contract;
 use Casedev\Templates\V1\V1ExecuteParams;
+use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
 use Casedev\Templates\V1\V1ExecuteResponse;
 use Casedev\Templates\V1\V1ListParams;
 use Casedev\Templates\V1\V1SearchParams;
@@ -93,7 +94,7 @@ final class V1Service implements V1Contract
      * - Compliance checking and reporting
      *
      * @param array{
-     *   input: mixed, options?: array{format?: 'json'|'text', model?: string}
+     *   input: mixed, options?: array{format?: 'json'|'text'|Format, model?: string}
      * }|V1ExecuteParams $params
      *
      * @throws APIException

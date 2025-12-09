@@ -10,6 +10,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
+use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use Casedev\Vault\Objects\ObjectDownloadParams;
 use Casedev\Vault\Objects\ObjectGetTextParams;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
@@ -85,7 +86,7 @@ final class ObjectsService implements ObjectsContract
      *   id: string,
      *   contentType?: string,
      *   expiresIn?: int,
-     *   operation?: 'GET'|'PUT'|'DELETE'|'HEAD',
+     *   operation?: 'GET'|'PUT'|'DELETE'|'HEAD'|Operation,
      * }|ObjectCreatePresignedURLParams $params
      *
      * @throws APIException

@@ -10,6 +10,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\Ocr\V1\V1DownloadParams;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
 use Casedev\Ocr\V1\V1ProcessParams;
+use Casedev\Ocr\V1\V1ProcessParams\Engine;
 use Casedev\Ocr\V1\V1ProcessResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Ocr\V1Contract;
@@ -85,7 +86,7 @@ final class V1Service implements V1Contract
      *   document_url: string,
      *   callback_url?: string,
      *   document_id?: string,
-     *   engine?: 'doctr'|'paddleocr',
+     *   engine?: 'doctr'|'paddleocr'|Engine,
      *   features?: array{forms?: bool, layout?: bool, tables?: bool, text?: bool},
      *   result_bucket?: string,
      *   result_prefix?: string,

@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\V1CreateEmbeddingParams;
+use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1Contract;
 use Casedev\Services\Llm\V1\ChatService;
@@ -36,7 +37,7 @@ final class V1Service implements V1Contract
      *   input: string|list<string>,
      *   model: string,
      *   dimensions?: int,
-     *   encoding_format?: 'float'|'base64',
+     *   encoding_format?: 'float'|'base64'|EncodingFormat,
      *   user?: string,
      * }|V1CreateEmbeddingParams $params
      *

@@ -9,13 +9,16 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Search\V1\V1AnswerParams;
+use Casedev\Search\V1\V1AnswerParams\SearchType;
 use Casedev\Search\V1\V1AnswerResponse;
 use Casedev\Search\V1\V1ContentsParams;
 use Casedev\Search\V1\V1ContentsResponse;
 use Casedev\Search\V1\V1ResearchParams;
+use Casedev\Search\V1\V1ResearchParams\Model;
 use Casedev\Search\V1\V1ResearchResponse;
 use Casedev\Search\V1\V1RetrieveResearchParams;
 use Casedev\Search\V1\V1SearchParams;
+use Casedev\Search\V1\V1SearchParams\Type;
 use Casedev\Search\V1\V1SearchResponse;
 use Casedev\Search\V1\V1SimilarParams;
 use Casedev\Search\V1\V1SimilarResponse;
@@ -40,7 +43,7 @@ final class V1Service implements V1Contract
      *   maxTokens?: int,
      *   model?: string,
      *   numResults?: int,
-     *   searchType?: 'auto'|'web'|'news'|'academic',
+     *   searchType?: 'auto'|'web'|'news'|'academic'|SearchType,
      *   stream?: bool,
      *   temperature?: float,
      *   text?: bool,
@@ -118,7 +121,7 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   instructions: string,
-     *   model?: 'fast'|'normal'|'pro',
+     *   model?: 'fast'|'normal'|'pro'|Model,
      *   outputSchema?: mixed,
      *   query?: string,
      * }|V1ResearchParams $params
@@ -195,7 +198,7 @@ final class V1Service implements V1Contract
      *   numResults?: int,
      *   startCrawlDate?: string|\DateTimeInterface,
      *   startPublishedDate?: string|\DateTimeInterface,
-     *   type?: 'auto'|'search'|'news',
+     *   type?: 'auto'|'search'|'news'|Type,
      *   userLocation?: string,
      * }|V1SearchParams $params
      *
