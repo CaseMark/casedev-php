@@ -65,13 +65,13 @@ final class ChatNewCompletionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<Choice|array{
-     *   finish_reason?: string|null, index?: int|null, message?: Message|null
+     *   finishReason?: string|null, index?: int|null, message?: Message|null
      * }> $choices
      * @param Usage|array{
-     *   completion_tokens?: int|null,
+     *   completionTokens?: int|null,
      *   cost?: float|null,
-     *   prompt_tokens?: int|null,
-     *   total_tokens?: int|null,
+     *   promptTokens?: int|null,
+     *   totalTokens?: int|null,
      * } $usage
      */
     public static function with(
@@ -107,7 +107,7 @@ final class ChatNewCompletionResponse implements BaseModel
 
     /**
      * @param list<Choice|array{
-     *   finish_reason?: string|null, index?: int|null, message?: Message|null
+     *   finishReason?: string|null, index?: int|null, message?: Message|null
      * }> $choices
      */
     public function withChoices(array $choices): self
@@ -150,10 +150,10 @@ final class ChatNewCompletionResponse implements BaseModel
 
     /**
      * @param Usage|array{
-     *   completion_tokens?: int|null,
+     *   completionTokens?: int|null,
      *   cost?: float|null,
-     *   prompt_tokens?: int|null,
-     *   total_tokens?: int|null,
+     *   promptTokens?: int|null,
+     *   totalTokens?: int|null,
      * } $usage
      */
     public function withUsage(Usage|array $usage): self

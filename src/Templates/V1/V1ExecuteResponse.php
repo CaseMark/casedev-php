@@ -15,7 +15,7 @@ use Casedev\Templates\V1\V1ExecuteResponse\Usage;
  *   result?: mixed,
  *   status?: value-of<Status>|null,
  *   usage?: Usage|null,
- *   workflow_name?: string|null,
+ *   workflowName?: string|null,
  * }
  */
 final class V1ExecuteResponse implements BaseModel
@@ -39,8 +39,8 @@ final class V1ExecuteResponse implements BaseModel
     /**
      * Name of the executed workflow.
      */
-    #[Optional]
-    public ?string $workflow_name;
+    #[Optional('workflow_name')]
+    public ?string $workflowName;
 
     public function __construct()
     {
@@ -54,24 +54,24 @@ final class V1ExecuteResponse implements BaseModel
      *
      * @param Status|value-of<Status> $status
      * @param Usage|array{
-     *   completion_tokens?: int|null,
+     *   completionTokens?: int|null,
      *   cost?: float|null,
-     *   prompt_tokens?: int|null,
-     *   total_tokens?: int|null,
+     *   promptTokens?: int|null,
+     *   totalTokens?: int|null,
      * } $usage
      */
     public static function with(
         mixed $result = null,
         Status|string|null $status = null,
         Usage|array|null $usage = null,
-        ?string $workflow_name = null,
+        ?string $workflowName = null,
     ): self {
         $obj = new self;
 
         null !== $result && $obj['result'] = $result;
         null !== $status && $obj['status'] = $status;
         null !== $usage && $obj['usage'] = $usage;
-        null !== $workflow_name && $obj['workflow_name'] = $workflow_name;
+        null !== $workflowName && $obj['workflowName'] = $workflowName;
 
         return $obj;
     }
@@ -100,10 +100,10 @@ final class V1ExecuteResponse implements BaseModel
 
     /**
      * @param Usage|array{
-     *   completion_tokens?: int|null,
+     *   completionTokens?: int|null,
      *   cost?: float|null,
-     *   prompt_tokens?: int|null,
-     *   total_tokens?: int|null,
+     *   promptTokens?: int|null,
+     *   totalTokens?: int|null,
      * } $usage
      */
     public function withUsage(Usage|array $usage): self
@@ -120,7 +120,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withWorkflowName(string $workflowName): self
     {
         $obj = clone $this;
-        $obj['workflow_name'] = $workflowName;
+        $obj['workflowName'] = $workflowName;
 
         return $obj;
     }

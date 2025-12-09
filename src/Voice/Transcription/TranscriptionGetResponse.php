@@ -15,7 +15,7 @@ use Casedev\Voice\Transcription\TranscriptionGetResponse\Word;
  * @phpstan-type TranscriptionGetResponseShape = array{
  *   id: string,
  *   status: value-of<Status>,
- *   audio_duration?: float|null,
+ *   audioDuration?: float|null,
  *   confidence?: float|null,
  *   error?: string|null,
  *   text?: string|null,
@@ -44,8 +44,8 @@ final class TranscriptionGetResponse implements BaseModel
     /**
      * Duration of the audio file in seconds.
      */
-    #[Optional]
-    public ?float $audio_duration;
+    #[Optional('audio_duration')]
+    public ?float $audioDuration;
 
     /**
      * Overall confidence score for the transcription.
@@ -108,7 +108,7 @@ final class TranscriptionGetResponse implements BaseModel
     public static function with(
         string $id,
         Status|string $status,
-        ?float $audio_duration = null,
+        ?float $audioDuration = null,
         ?float $confidence = null,
         ?string $error = null,
         ?string $text = null,
@@ -119,7 +119,7 @@ final class TranscriptionGetResponse implements BaseModel
         $obj['id'] = $id;
         $obj['status'] = $status;
 
-        null !== $audio_duration && $obj['audio_duration'] = $audio_duration;
+        null !== $audioDuration && $obj['audioDuration'] = $audioDuration;
         null !== $confidence && $obj['confidence'] = $confidence;
         null !== $error && $obj['error'] = $error;
         null !== $text && $obj['text'] = $text;
@@ -158,7 +158,7 @@ final class TranscriptionGetResponse implements BaseModel
     public function withAudioDuration(float $audioDuration): self
     {
         $obj = clone $this;
-        $obj['audio_duration'] = $audioDuration;
+        $obj['audioDuration'] = $audioDuration;
 
         return $obj;
     }

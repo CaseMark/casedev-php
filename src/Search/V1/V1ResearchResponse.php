@@ -10,7 +10,7 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type V1ResearchResponseShape = array{
- *   model?: string|null, researchId?: string|null, results?: mixed
+ *   model?: string|null, researchID?: string|null, results?: mixed
  * }
  */
 final class V1ResearchResponse implements BaseModel
@@ -27,8 +27,8 @@ final class V1ResearchResponse implements BaseModel
     /**
      * Unique identifier for this research.
      */
-    #[Optional]
-    public ?string $researchId;
+    #[Optional('researchId')]
+    public ?string $researchID;
 
     /**
      * Research findings and analysis.
@@ -48,13 +48,13 @@ final class V1ResearchResponse implements BaseModel
      */
     public static function with(
         ?string $model = null,
-        ?string $researchId = null,
+        ?string $researchID = null,
         mixed $results = null
     ): self {
         $obj = new self;
 
         null !== $model && $obj['model'] = $model;
-        null !== $researchId && $obj['researchId'] = $researchId;
+        null !== $researchID && $obj['researchID'] = $researchID;
         null !== $results && $obj['results'] = $results;
 
         return $obj;
@@ -77,7 +77,7 @@ final class V1ResearchResponse implements BaseModel
     public function withResearchID(string $researchID): self
     {
         $obj = clone $this;
-        $obj['researchId'] = $researchID;
+        $obj['researchID'] = $researchID;
 
         return $obj;
     }

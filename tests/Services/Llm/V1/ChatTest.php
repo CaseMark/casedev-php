@@ -51,13 +51,13 @@ final class ChatTest extends TestCase
 
         $result = $this->client->llm->v1->chat->createCompletion([
             'messages' => [['content' => 'content', 'role' => 'system']],
-            'frequency_penalty' => 0,
-            'max_tokens' => 1000,
+            'frequencyPenalty' => 0,
+            'maxTokens' => 1000,
             'model' => 'gpt-4o',
-            'presence_penalty' => 0,
+            'presencePenalty' => 0,
             'stream' => false,
             'temperature' => 0.7,
-            'top_p' => 0,
+            'topP' => 0,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

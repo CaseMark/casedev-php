@@ -12,9 +12,9 @@ use Casedev\Core\Contracts\BaseModel;
  * Result data for completed jobs.
  *
  * @phpstan-type ResultShape = array{
- *   duration_seconds?: float|null,
- *   file_size_bytes?: int|null,
- *   stored_filename?: string|null,
+ *   durationSeconds?: float|null,
+ *   fileSizeBytes?: int|null,
+ *   storedFilename?: string|null,
  * }
  */
 final class Result implements BaseModel
@@ -25,20 +25,20 @@ final class Result implements BaseModel
     /**
      * Processing duration in seconds.
      */
-    #[Optional]
-    public ?float $duration_seconds;
+    #[Optional('duration_seconds')]
+    public ?float $durationSeconds;
 
     /**
      * Size of processed file in bytes.
      */
-    #[Optional]
-    public ?int $file_size_bytes;
+    #[Optional('file_size_bytes')]
+    public ?int $fileSizeBytes;
 
     /**
      * Filename where converted file is stored.
      */
-    #[Optional]
-    public ?string $stored_filename;
+    #[Optional('stored_filename')]
+    public ?string $storedFilename;
 
     public function __construct()
     {
@@ -51,15 +51,15 @@ final class Result implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?float $duration_seconds = null,
-        ?int $file_size_bytes = null,
-        ?string $stored_filename = null,
+        ?float $durationSeconds = null,
+        ?int $fileSizeBytes = null,
+        ?string $storedFilename = null,
     ): self {
         $obj = new self;
 
-        null !== $duration_seconds && $obj['duration_seconds'] = $duration_seconds;
-        null !== $file_size_bytes && $obj['file_size_bytes'] = $file_size_bytes;
-        null !== $stored_filename && $obj['stored_filename'] = $stored_filename;
+        null !== $durationSeconds && $obj['durationSeconds'] = $durationSeconds;
+        null !== $fileSizeBytes && $obj['fileSizeBytes'] = $fileSizeBytes;
+        null !== $storedFilename && $obj['storedFilename'] = $storedFilename;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class Result implements BaseModel
     public function withDurationSeconds(float $durationSeconds): self
     {
         $obj = clone $this;
-        $obj['duration_seconds'] = $durationSeconds;
+        $obj['durationSeconds'] = $durationSeconds;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class Result implements BaseModel
     public function withFileSizeBytes(int $fileSizeBytes): self
     {
         $obj = clone $this;
-        $obj['file_size_bytes'] = $fileSizeBytes;
+        $obj['fileSizeBytes'] = $fileSizeBytes;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class Result implements BaseModel
     public function withStoredFilename(string $storedFilename): self
     {
         $obj = clone $this;
-        $obj['stored_filename'] = $storedFilename;
+        $obj['storedFilename'] = $storedFilename;
 
         return $obj;
     }

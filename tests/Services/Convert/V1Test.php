@@ -49,7 +49,7 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->convert->v1->process([
-            'input_url' => 'https://example.com',
+            'inputURL' => 'https://example.com',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -64,8 +64,8 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->convert->v1->process([
-            'input_url' => 'https://example.com',
-            'callback_url' => 'https://example.com',
+            'inputURL' => 'https://example.com',
+            'callbackURL' => 'https://example.com',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -80,7 +80,7 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->convert->v1->webhook([
-            'job_id' => 'job_id', 'status' => 'completed',
+            'jobID' => 'job_id', 'status' => 'completed',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -95,13 +95,13 @@ final class V1Test extends TestCase
         }
 
         $result = $this->client->convert->v1->webhook([
-            'job_id' => 'job_id',
+            'jobID' => 'job_id',
             'status' => 'completed',
             'error' => 'error',
             'result' => [
-                'duration_seconds' => 0,
-                'file_size_bytes' => 0,
-                'stored_filename' => 'stored_filename',
+                'durationSeconds' => 0,
+                'fileSizeBytes' => 0,
+                'storedFilename' => 'stored_filename',
             ],
         ]);
 

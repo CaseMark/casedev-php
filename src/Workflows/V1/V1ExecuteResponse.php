@@ -13,7 +13,7 @@ use Casedev\Workflows\V1\V1ExecuteResponse\Status;
  * @phpstan-type V1ExecuteResponseShape = array{
  *   duration?: int|null,
  *   error?: string|null,
- *   executionId?: string|null,
+ *   executionID?: string|null,
  *   outputs?: mixed,
  *   status?: value-of<Status>|null,
  * }
@@ -29,8 +29,8 @@ final class V1ExecuteResponse implements BaseModel
     #[Optional]
     public ?string $error;
 
-    #[Optional]
-    public ?string $executionId;
+    #[Optional('executionId')]
+    public ?string $executionID;
 
     #[Optional]
     public mixed $outputs;
@@ -54,7 +54,7 @@ final class V1ExecuteResponse implements BaseModel
     public static function with(
         ?int $duration = null,
         ?string $error = null,
-        ?string $executionId = null,
+        ?string $executionID = null,
         mixed $outputs = null,
         Status|string|null $status = null,
     ): self {
@@ -62,7 +62,7 @@ final class V1ExecuteResponse implements BaseModel
 
         null !== $duration && $obj['duration'] = $duration;
         null !== $error && $obj['error'] = $error;
-        null !== $executionId && $obj['executionId'] = $executionId;
+        null !== $executionID && $obj['executionID'] = $executionID;
         null !== $outputs && $obj['outputs'] = $outputs;
         null !== $status && $obj['status'] = $status;
 
@@ -88,7 +88,7 @@ final class V1ExecuteResponse implements BaseModel
     public function withExecutionID(string $executionID): self
     {
         $obj = clone $this;
-        $obj['executionId'] = $executionID;
+        $obj['executionID'] = $executionID;
 
         return $obj;
     }

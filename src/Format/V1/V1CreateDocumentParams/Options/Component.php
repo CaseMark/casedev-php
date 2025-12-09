@@ -12,7 +12,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @phpstan-type ComponentShape = array{
  *   content?: string|null,
  *   styles?: mixed,
- *   templateId?: string|null,
+ *   templateID?: string|null,
  *   variables?: mixed,
  * }
  */
@@ -36,8 +36,8 @@ final class Component implements BaseModel
     /**
      * ID of saved template component.
      */
-    #[Optional]
-    public ?string $templateId;
+    #[Optional('templateId')]
+    public ?string $templateID;
 
     /**
      * Variables for template interpolation.
@@ -58,14 +58,14 @@ final class Component implements BaseModel
     public static function with(
         ?string $content = null,
         mixed $styles = null,
-        ?string $templateId = null,
+        ?string $templateID = null,
         mixed $variables = null,
     ): self {
         $obj = new self;
 
         null !== $content && $obj['content'] = $content;
         null !== $styles && $obj['styles'] = $styles;
-        null !== $templateId && $obj['templateId'] = $templateId;
+        null !== $templateID && $obj['templateID'] = $templateID;
         null !== $variables && $obj['variables'] = $variables;
 
         return $obj;
@@ -99,7 +99,7 @@ final class Component implements BaseModel
     public function withTemplateID(string $templateID): self
     {
         $obj = clone $this;
-        $obj['templateId'] = $templateID;
+        $obj['templateID'] = $templateID;
 
         return $obj;
     }

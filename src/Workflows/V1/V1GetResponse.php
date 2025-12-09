@@ -13,7 +13,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   id?: string|null,
  *   createdAt?: string|null,
  *   deployedAt?: string|null,
- *   deploymentUrl?: string|null,
+ *   deploymentURL?: string|null,
  *   description?: string|null,
  *   edges?: list<mixed>|null,
  *   name?: string|null,
@@ -38,8 +38,8 @@ final class V1GetResponse implements BaseModel
     #[Optional]
     public ?string $deployedAt;
 
-    #[Optional]
-    public ?string $deploymentUrl;
+    #[Optional('deploymentUrl')]
+    public ?string $deploymentURL;
 
     #[Optional]
     public ?string $description;
@@ -84,7 +84,7 @@ final class V1GetResponse implements BaseModel
         ?string $id = null,
         ?string $createdAt = null,
         ?string $deployedAt = null,
-        ?string $deploymentUrl = null,
+        ?string $deploymentURL = null,
         ?string $description = null,
         ?array $edges = null,
         ?string $name = null,
@@ -99,7 +99,7 @@ final class V1GetResponse implements BaseModel
         null !== $id && $obj['id'] = $id;
         null !== $createdAt && $obj['createdAt'] = $createdAt;
         null !== $deployedAt && $obj['deployedAt'] = $deployedAt;
-        null !== $deploymentUrl && $obj['deploymentUrl'] = $deploymentUrl;
+        null !== $deploymentURL && $obj['deploymentURL'] = $deploymentURL;
         null !== $description && $obj['description'] = $description;
         null !== $edges && $obj['edges'] = $edges;
         null !== $name && $obj['name'] = $name;
@@ -139,7 +139,7 @@ final class V1GetResponse implements BaseModel
     public function withDeploymentURL(string $deploymentURL): self
     {
         $obj = clone $this;
-        $obj['deploymentUrl'] = $deploymentURL;
+        $obj['deploymentURL'] = $deploymentURL;
 
         return $obj;
     }

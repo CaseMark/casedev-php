@@ -18,7 +18,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @phpstan-type VaultUploadParamsShape = array{
  *   contentType: string,
  *   filename: string,
- *   auto_index?: bool,
+ *   autoIndex?: bool,
  *   metadata?: mixed,
  *   sizeBytes?: float,
  * }
@@ -44,8 +44,8 @@ final class VaultUploadParams implements BaseModel
     /**
      * Whether to automatically process and index the file for search.
      */
-    #[Optional]
-    public ?bool $auto_index;
+    #[Optional('auto_index')]
+    public ?bool $autoIndex;
 
     /**
      * Additional metadata to associate with the file.
@@ -86,7 +86,7 @@ final class VaultUploadParams implements BaseModel
     public static function with(
         string $contentType,
         string $filename,
-        ?bool $auto_index = null,
+        ?bool $autoIndex = null,
         mixed $metadata = null,
         ?float $sizeBytes = null,
     ): self {
@@ -95,7 +95,7 @@ final class VaultUploadParams implements BaseModel
         $obj['contentType'] = $contentType;
         $obj['filename'] = $filename;
 
-        null !== $auto_index && $obj['auto_index'] = $auto_index;
+        null !== $autoIndex && $obj['autoIndex'] = $autoIndex;
         null !== $metadata && $obj['metadata'] = $metadata;
         null !== $sizeBytes && $obj['sizeBytes'] = $sizeBytes;
 
@@ -130,7 +130,7 @@ final class VaultUploadParams implements BaseModel
     public function withAutoIndex(bool $autoIndex): self
     {
         $obj = clone $this;
-        $obj['auto_index'] = $autoIndex;
+        $obj['autoIndex'] = $autoIndex;
 
         return $obj;
     }

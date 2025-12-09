@@ -36,11 +36,11 @@ final class V1Service implements V1Contract
      *
      * @param array{
      *   content: string,
-     *   output_format: 'pdf'|'docx'|'html_preview'|OutputFormat,
-     *   input_format?: 'md'|'json'|'text'|InputFormat,
+     *   outputFormat: 'pdf'|'docx'|'html_preview'|OutputFormat,
+     *   inputFormat?: 'md'|'json'|'text'|InputFormat,
      *   options?: array{
      *     components?: list<array{
-     *       content?: string, styles?: mixed, templateId?: string, variables?: mixed
+     *       content?: string, styles?: mixed, templateID?: string, variables?: mixed
      *     }>,
      *   },
      * }|V1CreateDocumentParams $params

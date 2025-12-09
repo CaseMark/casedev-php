@@ -52,7 +52,7 @@ final class V1Test extends TestCase
             'input' => 'string',
             'model' => 'model',
             'dimensions' => 0,
-            'encoding_format' => 'float',
+            'encodingFormat' => 'float',
             'user' => 'user',
         ]);
 

@@ -12,11 +12,11 @@ use Casedev\Ocr\V1\V1ProcessResponse\Status;
 /**
  * @phpstan-type V1ProcessResponseShape = array{
  *   id?: string|null,
- *   created_at?: \DateTimeInterface|null,
- *   document_id?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   documentID?: string|null,
  *   engine?: string|null,
- *   estimated_completion?: \DateTimeInterface|null,
- *   page_count?: int|null,
+ *   estimatedCompletion?: \DateTimeInterface|null,
+ *   pageCount?: int|null,
  *   status?: value-of<Status>|null,
  * }
  */
@@ -34,14 +34,14 @@ final class V1ProcessResponse implements BaseModel
     /**
      * Job creation timestamp.
      */
-    #[Optional]
-    public ?\DateTimeInterface $created_at;
+    #[Optional('created_at')]
+    public ?\DateTimeInterface $createdAt;
 
     /**
      * Document identifier.
      */
-    #[Optional]
-    public ?string $document_id;
+    #[Optional('document_id')]
+    public ?string $documentID;
 
     /**
      * OCR engine used.
@@ -52,14 +52,14 @@ final class V1ProcessResponse implements BaseModel
     /**
      * Estimated completion time.
      */
-    #[Optional]
-    public ?\DateTimeInterface $estimated_completion;
+    #[Optional('estimated_completion')]
+    public ?\DateTimeInterface $estimatedCompletion;
 
     /**
      * Number of pages detected.
      */
-    #[Optional]
-    public ?int $page_count;
+    #[Optional('page_count')]
+    public ?int $pageCount;
 
     /**
      * Current job status.
@@ -83,21 +83,21 @@ final class V1ProcessResponse implements BaseModel
      */
     public static function with(
         ?string $id = null,
-        ?\DateTimeInterface $created_at = null,
-        ?string $document_id = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?string $documentID = null,
         ?string $engine = null,
-        ?\DateTimeInterface $estimated_completion = null,
-        ?int $page_count = null,
+        ?\DateTimeInterface $estimatedCompletion = null,
+        ?int $pageCount = null,
         Status|string|null $status = null,
     ): self {
         $obj = new self;
 
         null !== $id && $obj['id'] = $id;
-        null !== $created_at && $obj['created_at'] = $created_at;
-        null !== $document_id && $obj['document_id'] = $document_id;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $documentID && $obj['documentID'] = $documentID;
         null !== $engine && $obj['engine'] = $engine;
-        null !== $estimated_completion && $obj['estimated_completion'] = $estimated_completion;
-        null !== $page_count && $obj['page_count'] = $page_count;
+        null !== $estimatedCompletion && $obj['estimatedCompletion'] = $estimatedCompletion;
+        null !== $pageCount && $obj['pageCount'] = $pageCount;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -120,7 +120,7 @@ final class V1ProcessResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj['created_at'] = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class V1ProcessResponse implements BaseModel
     public function withDocumentID(string $documentID): self
     {
         $obj = clone $this;
-        $obj['document_id'] = $documentID;
+        $obj['documentID'] = $documentID;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class V1ProcessResponse implements BaseModel
         \DateTimeInterface $estimatedCompletion
     ): self {
         $obj = clone $this;
-        $obj['estimated_completion'] = $estimatedCompletion;
+        $obj['estimatedCompletion'] = $estimatedCompletion;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class V1ProcessResponse implements BaseModel
     public function withPageCount(int $pageCount): self
     {
         $obj = clone $this;
-        $obj['page_count'] = $pageCount;
+        $obj['pageCount'] = $pageCount;
 
         return $obj;
     }

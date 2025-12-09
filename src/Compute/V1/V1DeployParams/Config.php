@@ -25,7 +25,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   gpuCount?: int|null,
  *   gpuType?: value-of<GPUType>|null,
  *   isWebService?: bool|null,
- *   memoryMb?: int|null,
+ *   memoryMB?: int|null,
  *   pipInstall?: list<string>|null,
  *   port?: int|null,
  *   pythonVersion?: string|null,
@@ -127,8 +127,8 @@ final class Config implements BaseModel
     /**
      * Memory allocation in MB.
      */
-    #[Optional]
-    public ?int $memoryMb;
+    #[Optional('memoryMb')]
+    public ?int $memoryMB;
 
     /**
      * Packages to pip install (image runtime).
@@ -219,7 +219,7 @@ final class Config implements BaseModel
         ?int $gpuCount = null,
         GPUType|string|null $gpuType = null,
         ?bool $isWebService = null,
-        ?int $memoryMb = null,
+        ?int $memoryMB = null,
         ?array $pipInstall = null,
         ?int $port = null,
         ?string $pythonVersion = null,
@@ -244,7 +244,7 @@ final class Config implements BaseModel
         null !== $gpuCount && $obj['gpuCount'] = $gpuCount;
         null !== $gpuType && $obj['gpuType'] = $gpuType;
         null !== $isWebService && $obj['isWebService'] = $isWebService;
-        null !== $memoryMb && $obj['memoryMb'] = $memoryMb;
+        null !== $memoryMB && $obj['memoryMB'] = $memoryMB;
         null !== $pipInstall && $obj['pipInstall'] = $pipInstall;
         null !== $port && $obj['port'] = $port;
         null !== $pythonVersion && $obj['pythonVersion'] = $pythonVersion;
@@ -406,7 +406,7 @@ final class Config implements BaseModel
     public function withMemoryMB(int $memoryMB): self
     {
         $obj = clone $this;
-        $obj['memoryMb'] = $memoryMB;
+        $obj['memoryMB'] = $memoryMB;
 
         return $obj;
     }

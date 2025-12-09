@@ -82,7 +82,7 @@ final class V1Service implements V1Contract
      *     gpuCount?: int,
      *     gpuType?: 'cpu'|'T4'|'L4'|'A10G'|'L40S'|'A100'|'A100-40GB'|'A100-80GB'|'H100'|'H200'|'B200'|GPUType,
      *     isWebService?: bool,
-     *     memoryMb?: int,
+     *     memoryMB?: int,
      *     pipInstall?: list<string>,
      *     port?: int,
      *     pythonVersion?: string,

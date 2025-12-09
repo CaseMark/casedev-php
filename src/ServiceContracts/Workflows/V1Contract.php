@@ -9,6 +9,7 @@ use Casedev\RequestOptions;
 use Casedev\Workflows\V1\V1CreateParams;
 use Casedev\Workflows\V1\V1DeleteResponse;
 use Casedev\Workflows\V1\V1DeployResponse;
+use Casedev\Workflows\V1\V1ExecuteParams;
 use Casedev\Workflows\V1\V1ExecuteResponse;
 use Casedev\Workflows\V1\V1GetExecutionResponse;
 use Casedev\Workflows\V1\V1GetResponse;
@@ -93,12 +94,14 @@ interface V1Contract
     /**
      * @api
      *
+     * @param array<mixed>|V1ExecuteParams $params
+     *
      * @throws APIException
      */
     public function execute(
         string $id,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
+        array|V1ExecuteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse;
 
     /**

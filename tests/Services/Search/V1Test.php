@@ -62,7 +62,7 @@ final class V1Test extends TestCase
             'stream' => true,
             'temperature' => 0,
             'text' => true,
-            'useCustomLLM' => true,
+            'useCustomLlm' => true,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -7,6 +7,7 @@ namespace Casedev\Services\Templates;
 use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Templates\V1Contract;
 use Casedev\Templates\V1\V1ExecuteParams;
@@ -54,7 +55,7 @@ final class V1Service implements V1Contract
      *   limit?: int,
      *   offset?: int,
      *   published?: bool,
-     *   sub_category?: string,
+     *   subCategory?: string,
      *   type?: string,
      * }|V1ListParams $params
      *
@@ -73,7 +74,10 @@ final class V1Service implements V1Contract
         $response = $this->client->request(
             method: 'get',
             path: 'templates/v1',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['subCategory' => 'sub_category']
+            ),
             options: $options,
             convert: null,
         );

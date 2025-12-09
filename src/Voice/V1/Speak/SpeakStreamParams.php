@@ -20,21 +20,21 @@ use Casedev\Voice\V1\Speak\SpeakStreamParams\VoiceSettings;
  *
  * @phpstan-type SpeakStreamParamsShape = array{
  *   text: string,
- *   apply_text_normalization?: bool,
- *   enable_logging?: bool,
- *   language_code?: string,
- *   model_id?: ModelID|value-of<ModelID>,
- *   next_text?: string,
- *   optimize_streaming_latency?: int,
- *   output_format?: OutputFormat|value-of<OutputFormat>,
- *   previous_text?: string,
+ *   applyTextNormalization?: bool,
+ *   enableLogging?: bool,
+ *   languageCode?: string,
+ *   modelID?: ModelID|value-of<ModelID>,
+ *   nextText?: string,
+ *   optimizeStreamingLatency?: int,
+ *   outputFormat?: OutputFormat|value-of<OutputFormat>,
+ *   previousText?: string,
  *   seed?: int,
- *   voice_id?: string,
- *   voice_settings?: VoiceSettings|array{
- *     similarity_boost?: float|null,
+ *   voiceID?: string,
+ *   voiceSettings?: VoiceSettings|array{
+ *     similarityBoost?: float|null,
  *     stability?: float|null,
  *     style?: float|null,
- *     use_speaker_boost?: bool|null,
+ *     useSpeakerBoost?: bool|null,
  *   },
  * }
  */
@@ -53,54 +53,54 @@ final class SpeakStreamParams implements BaseModel
     /**
      * Apply text normalization.
      */
-    #[Optional]
-    public ?bool $apply_text_normalization;
+    #[Optional('apply_text_normalization')]
+    public ?bool $applyTextNormalization;
 
     /**
      * Enable request logging.
      */
-    #[Optional]
-    public ?bool $enable_logging;
+    #[Optional('enable_logging')]
+    public ?bool $enableLogging;
 
     /**
      * Language code (e.g., 'en', 'es', 'fr').
      */
-    #[Optional]
-    public ?string $language_code;
+    #[Optional('language_code')]
+    public ?string $languageCode;
 
     /**
      * TTS model to use.
      *
-     * @var value-of<ModelID>|null $model_id
+     * @var value-of<ModelID>|null $modelID
      */
-    #[Optional(enum: ModelID::class)]
-    public ?string $model_id;
+    #[Optional('model_id', enum: ModelID::class)]
+    public ?string $modelID;
 
     /**
      * Next text for context.
      */
-    #[Optional]
-    public ?string $next_text;
+    #[Optional('next_text')]
+    public ?string $nextText;
 
     /**
      * Optimize for streaming latency (0-4).
      */
-    #[Optional]
-    public ?int $optimize_streaming_latency;
+    #[Optional('optimize_streaming_latency')]
+    public ?int $optimizeStreamingLatency;
 
     /**
      * Audio output format.
      *
-     * @var value-of<OutputFormat>|null $output_format
+     * @var value-of<OutputFormat>|null $outputFormat
      */
-    #[Optional(enum: OutputFormat::class)]
-    public ?string $output_format;
+    #[Optional('output_format', enum: OutputFormat::class)]
+    public ?string $outputFormat;
 
     /**
      * Previous text for context.
      */
-    #[Optional]
-    public ?string $previous_text;
+    #[Optional('previous_text')]
+    public ?string $previousText;
 
     /**
      * Random seed for reproducible generation.
@@ -111,11 +111,11 @@ final class SpeakStreamParams implements BaseModel
     /**
      * ElevenLabs voice ID (defaults to Rachel for professional clarity).
      */
-    #[Optional]
-    public ?string $voice_id;
+    #[Optional('voice_id')]
+    public ?string $voiceID;
 
-    #[Optional]
-    public ?VoiceSettings $voice_settings;
+    #[Optional('voice_settings')]
+    public ?VoiceSettings $voiceSettings;
 
     /**
      * `new SpeakStreamParams()` is missing required properties by the API.
@@ -141,44 +141,44 @@ final class SpeakStreamParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ModelID|value-of<ModelID> $model_id
-     * @param OutputFormat|value-of<OutputFormat> $output_format
+     * @param ModelID|value-of<ModelID> $modelID
+     * @param OutputFormat|value-of<OutputFormat> $outputFormat
      * @param VoiceSettings|array{
-     *   similarity_boost?: float|null,
+     *   similarityBoost?: float|null,
      *   stability?: float|null,
      *   style?: float|null,
-     *   use_speaker_boost?: bool|null,
-     * } $voice_settings
+     *   useSpeakerBoost?: bool|null,
+     * } $voiceSettings
      */
     public static function with(
         string $text,
-        ?bool $apply_text_normalization = null,
-        ?bool $enable_logging = null,
-        ?string $language_code = null,
-        ModelID|string|null $model_id = null,
-        ?string $next_text = null,
-        ?int $optimize_streaming_latency = null,
-        OutputFormat|string|null $output_format = null,
-        ?string $previous_text = null,
+        ?bool $applyTextNormalization = null,
+        ?bool $enableLogging = null,
+        ?string $languageCode = null,
+        ModelID|string|null $modelID = null,
+        ?string $nextText = null,
+        ?int $optimizeStreamingLatency = null,
+        OutputFormat|string|null $outputFormat = null,
+        ?string $previousText = null,
         ?int $seed = null,
-        ?string $voice_id = null,
-        VoiceSettings|array|null $voice_settings = null,
+        ?string $voiceID = null,
+        VoiceSettings|array|null $voiceSettings = null,
     ): self {
         $obj = new self;
 
         $obj['text'] = $text;
 
-        null !== $apply_text_normalization && $obj['apply_text_normalization'] = $apply_text_normalization;
-        null !== $enable_logging && $obj['enable_logging'] = $enable_logging;
-        null !== $language_code && $obj['language_code'] = $language_code;
-        null !== $model_id && $obj['model_id'] = $model_id;
-        null !== $next_text && $obj['next_text'] = $next_text;
-        null !== $optimize_streaming_latency && $obj['optimize_streaming_latency'] = $optimize_streaming_latency;
-        null !== $output_format && $obj['output_format'] = $output_format;
-        null !== $previous_text && $obj['previous_text'] = $previous_text;
+        null !== $applyTextNormalization && $obj['applyTextNormalization'] = $applyTextNormalization;
+        null !== $enableLogging && $obj['enableLogging'] = $enableLogging;
+        null !== $languageCode && $obj['languageCode'] = $languageCode;
+        null !== $modelID && $obj['modelID'] = $modelID;
+        null !== $nextText && $obj['nextText'] = $nextText;
+        null !== $optimizeStreamingLatency && $obj['optimizeStreamingLatency'] = $optimizeStreamingLatency;
+        null !== $outputFormat && $obj['outputFormat'] = $outputFormat;
+        null !== $previousText && $obj['previousText'] = $previousText;
         null !== $seed && $obj['seed'] = $seed;
-        null !== $voice_id && $obj['voice_id'] = $voice_id;
-        null !== $voice_settings && $obj['voice_settings'] = $voice_settings;
+        null !== $voiceID && $obj['voiceID'] = $voiceID;
+        null !== $voiceSettings && $obj['voiceSettings'] = $voiceSettings;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class SpeakStreamParams implements BaseModel
         bool $applyTextNormalization
     ): self {
         $obj = clone $this;
-        $obj['apply_text_normalization'] = $applyTextNormalization;
+        $obj['applyTextNormalization'] = $applyTextNormalization;
 
         return $obj;
     }
@@ -212,7 +212,7 @@ final class SpeakStreamParams implements BaseModel
     public function withEnableLogging(bool $enableLogging): self
     {
         $obj = clone $this;
-        $obj['enable_logging'] = $enableLogging;
+        $obj['enableLogging'] = $enableLogging;
 
         return $obj;
     }
@@ -223,7 +223,7 @@ final class SpeakStreamParams implements BaseModel
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
-        $obj['language_code'] = $languageCode;
+        $obj['languageCode'] = $languageCode;
 
         return $obj;
     }
@@ -236,7 +236,7 @@ final class SpeakStreamParams implements BaseModel
     public function withModelID(ModelID|string $modelID): self
     {
         $obj = clone $this;
-        $obj['model_id'] = $modelID;
+        $obj['modelID'] = $modelID;
 
         return $obj;
     }
@@ -247,7 +247,7 @@ final class SpeakStreamParams implements BaseModel
     public function withNextText(string $nextText): self
     {
         $obj = clone $this;
-        $obj['next_text'] = $nextText;
+        $obj['nextText'] = $nextText;
 
         return $obj;
     }
@@ -259,7 +259,7 @@ final class SpeakStreamParams implements BaseModel
         int $optimizeStreamingLatency
     ): self {
         $obj = clone $this;
-        $obj['optimize_streaming_latency'] = $optimizeStreamingLatency;
+        $obj['optimizeStreamingLatency'] = $optimizeStreamingLatency;
 
         return $obj;
     }
@@ -272,7 +272,7 @@ final class SpeakStreamParams implements BaseModel
     public function withOutputFormat(OutputFormat|string $outputFormat): self
     {
         $obj = clone $this;
-        $obj['output_format'] = $outputFormat;
+        $obj['outputFormat'] = $outputFormat;
 
         return $obj;
     }
@@ -283,7 +283,7 @@ final class SpeakStreamParams implements BaseModel
     public function withPreviousText(string $previousText): self
     {
         $obj = clone $this;
-        $obj['previous_text'] = $previousText;
+        $obj['previousText'] = $previousText;
 
         return $obj;
     }
@@ -305,23 +305,23 @@ final class SpeakStreamParams implements BaseModel
     public function withVoiceID(string $voiceID): self
     {
         $obj = clone $this;
-        $obj['voice_id'] = $voiceID;
+        $obj['voiceID'] = $voiceID;
 
         return $obj;
     }
 
     /**
      * @param VoiceSettings|array{
-     *   similarity_boost?: float|null,
+     *   similarityBoost?: float|null,
      *   stability?: float|null,
      *   style?: float|null,
-     *   use_speaker_boost?: bool|null,
+     *   useSpeakerBoost?: bool|null,
      * } $voiceSettings
      */
     public function withVoiceSettings(VoiceSettings|array $voiceSettings): self
     {
         $obj = clone $this;
-        $obj['voice_settings'] = $voiceSettings;
+        $obj['voiceSettings'] = $voiceSettings;
 
         return $obj;
     }

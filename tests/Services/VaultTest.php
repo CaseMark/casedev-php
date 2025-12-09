@@ -177,7 +177,7 @@ final class VaultTest extends TestCase
             [
                 'contentType' => 'contentType',
                 'filename' => 'filename',
-                'auto_index' => true,
+                'autoIndex' => true,
                 'metadata' => [],
                 'sizeBytes' => 0,
             ],

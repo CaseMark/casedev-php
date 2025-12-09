@@ -16,11 +16,11 @@ use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
  *   filename?: string|null,
  *   instructions?: mixed,
  *   metadata?: Metadata|null,
- *   objectId?: string|null,
+ *   objectID?: string|null,
  *   operation?: string|null,
- *   presignedUrl?: string|null,
+ *   presignedURL?: string|null,
  *   s3Key?: string|null,
- *   vaultId?: string|null,
+ *   vaultID?: string|null,
  * }
  */
 final class ObjectNewPresignedURLResponse implements BaseModel
@@ -58,8 +58,8 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     /**
      * The object identifier.
      */
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * The operation type.
@@ -70,8 +70,8 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     /**
      * The presigned URL for direct S3 access.
      */
-    #[Optional]
-    public ?string $presignedUrl;
+    #[Optional('presignedUrl')]
+    public ?string $presignedURL;
 
     /**
      * S3 object key.
@@ -82,8 +82,8 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     /**
      * The vault identifier.
      */
-    #[Optional]
-    public ?string $vaultId;
+    #[Optional('vaultId')]
+    public ?string $vaultID;
 
     public function __construct()
     {
@@ -108,11 +108,11 @@ final class ObjectNewPresignedURLResponse implements BaseModel
         ?string $filename = null,
         mixed $instructions = null,
         Metadata|array|null $metadata = null,
-        ?string $objectId = null,
+        ?string $objectID = null,
         ?string $operation = null,
-        ?string $presignedUrl = null,
+        ?string $presignedURL = null,
         ?string $s3Key = null,
-        ?string $vaultId = null,
+        ?string $vaultID = null,
     ): self {
         $obj = new self;
 
@@ -121,11 +121,11 @@ final class ObjectNewPresignedURLResponse implements BaseModel
         null !== $filename && $obj['filename'] = $filename;
         null !== $instructions && $obj['instructions'] = $instructions;
         null !== $metadata && $obj['metadata'] = $metadata;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $operation && $obj['operation'] = $operation;
-        null !== $presignedUrl && $obj['presignedUrl'] = $presignedUrl;
+        null !== $presignedURL && $obj['presignedURL'] = $presignedURL;
         null !== $s3Key && $obj['s3Key'] = $s3Key;
-        null !== $vaultId && $obj['vaultId'] = $vaultId;
+        null !== $vaultID && $obj['vaultID'] = $vaultID;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -218,7 +218,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     public function withPresignedURL(string $presignedURL): self
     {
         $obj = clone $this;
-        $obj['presignedUrl'] = $presignedURL;
+        $obj['presignedURL'] = $presignedURL;
 
         return $obj;
     }
@@ -240,7 +240,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     public function withVaultID(string $vaultID): self
     {
         $obj = clone $this;
-        $obj['vaultId'] = $vaultID;
+        $obj['vaultID'] = $vaultID;
 
         return $obj;
     }

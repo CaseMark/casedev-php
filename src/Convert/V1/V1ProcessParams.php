@@ -20,7 +20,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Convert\V1Service::process()
  *
  * @phpstan-type V1ProcessParamsShape = array{
- *   input_url: string, callback_url?: string
+ *   inputURL: string, callbackURL?: string
  * }
  */
 final class V1ProcessParams implements BaseModel
@@ -32,21 +32,21 @@ final class V1ProcessParams implements BaseModel
     /**
      * HTTPS URL to the FTR file (must be a valid S3 presigned URL).
      */
-    #[Required]
-    public string $input_url;
+    #[Required('input_url')]
+    public string $inputURL;
 
     /**
      * Optional webhook URL to receive conversion completion notification.
      */
-    #[Optional]
-    public ?string $callback_url;
+    #[Optional('callback_url')]
+    public ?string $callbackURL;
 
     /**
      * `new V1ProcessParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * V1ProcessParams::with(input_url: ...)
+     * V1ProcessParams::with(inputURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -66,14 +66,14 @@ final class V1ProcessParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $input_url,
-        ?string $callback_url = null
+        string $inputURL,
+        ?string $callbackURL = null
     ): self {
         $obj = new self;
 
-        $obj['input_url'] = $input_url;
+        $obj['inputURL'] = $inputURL;
 
-        null !== $callback_url && $obj['callback_url'] = $callback_url;
+        null !== $callbackURL && $obj['callbackURL'] = $callbackURL;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class V1ProcessParams implements BaseModel
     public function withInputURL(string $inputURL): self
     {
         $obj = clone $this;
-        $obj['input_url'] = $inputURL;
+        $obj['inputURL'] = $inputURL;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class V1ProcessParams implements BaseModel
     public function withCallbackURL(string $callbackURL): self
     {
         $obj = clone $this;
-        $obj['callback_url'] = $callbackURL;
+        $obj['callbackURL'] = $callbackURL;
 
         return $obj;
     }

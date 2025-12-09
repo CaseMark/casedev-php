@@ -16,14 +16,14 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Voice\TranscriptionService::create()
  *
  * @phpstan-type TranscriptionCreateParamsShape = array{
- *   audio_url: string,
- *   auto_highlights?: bool,
- *   content_safety_labels?: bool,
- *   format_text?: bool,
- *   language_code?: string,
- *   language_detection?: bool,
+ *   audioURL: string,
+ *   autoHighlights?: bool,
+ *   contentSafetyLabels?: bool,
+ *   formatText?: bool,
+ *   languageCode?: string,
+ *   languageDetection?: bool,
  *   punctuate?: bool,
- *   speaker_labels?: bool,
+ *   speakerLabels?: bool,
  * }
  */
 final class TranscriptionCreateParams implements BaseModel
@@ -35,38 +35,38 @@ final class TranscriptionCreateParams implements BaseModel
     /**
      * URL of the audio file to transcribe.
      */
-    #[Required]
-    public string $audio_url;
+    #[Required('audio_url')]
+    public string $audioURL;
 
     /**
      * Automatically extract key phrases and topics.
      */
-    #[Optional]
-    public ?bool $auto_highlights;
+    #[Optional('auto_highlights')]
+    public ?bool $autoHighlights;
 
     /**
      * Enable content moderation and safety labeling.
      */
-    #[Optional]
-    public ?bool $content_safety_labels;
+    #[Optional('content_safety_labels')]
+    public ?bool $contentSafetyLabels;
 
     /**
      * Format text with proper capitalization.
      */
-    #[Optional]
-    public ?bool $format_text;
+    #[Optional('format_text')]
+    public ?bool $formatText;
 
     /**
      * Language code (e.g., 'en_us', 'es', 'fr'). If not specified, language will be auto-detected.
      */
-    #[Optional]
-    public ?string $language_code;
+    #[Optional('language_code')]
+    public ?string $languageCode;
 
     /**
      * Enable automatic language detection.
      */
-    #[Optional]
-    public ?bool $language_detection;
+    #[Optional('language_detection')]
+    public ?bool $languageDetection;
 
     /**
      * Add punctuation to the transcript.
@@ -77,15 +77,15 @@ final class TranscriptionCreateParams implements BaseModel
     /**
      * Enable speaker identification and labeling.
      */
-    #[Optional]
-    public ?bool $speaker_labels;
+    #[Optional('speaker_labels')]
+    public ?bool $speakerLabels;
 
     /**
      * `new TranscriptionCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TranscriptionCreateParams::with(audio_url: ...)
+     * TranscriptionCreateParams::with(audioURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -105,26 +105,26 @@ final class TranscriptionCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $audio_url,
-        ?bool $auto_highlights = null,
-        ?bool $content_safety_labels = null,
-        ?bool $format_text = null,
-        ?string $language_code = null,
-        ?bool $language_detection = null,
+        string $audioURL,
+        ?bool $autoHighlights = null,
+        ?bool $contentSafetyLabels = null,
+        ?bool $formatText = null,
+        ?string $languageCode = null,
+        ?bool $languageDetection = null,
         ?bool $punctuate = null,
-        ?bool $speaker_labels = null,
+        ?bool $speakerLabels = null,
     ): self {
         $obj = new self;
 
-        $obj['audio_url'] = $audio_url;
+        $obj['audioURL'] = $audioURL;
 
-        null !== $auto_highlights && $obj['auto_highlights'] = $auto_highlights;
-        null !== $content_safety_labels && $obj['content_safety_labels'] = $content_safety_labels;
-        null !== $format_text && $obj['format_text'] = $format_text;
-        null !== $language_code && $obj['language_code'] = $language_code;
-        null !== $language_detection && $obj['language_detection'] = $language_detection;
+        null !== $autoHighlights && $obj['autoHighlights'] = $autoHighlights;
+        null !== $contentSafetyLabels && $obj['contentSafetyLabels'] = $contentSafetyLabels;
+        null !== $formatText && $obj['formatText'] = $formatText;
+        null !== $languageCode && $obj['languageCode'] = $languageCode;
+        null !== $languageDetection && $obj['languageDetection'] = $languageDetection;
         null !== $punctuate && $obj['punctuate'] = $punctuate;
-        null !== $speaker_labels && $obj['speaker_labels'] = $speaker_labels;
+        null !== $speakerLabels && $obj['speakerLabels'] = $speakerLabels;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withAudioURL(string $audioURL): self
     {
         $obj = clone $this;
-        $obj['audio_url'] = $audioURL;
+        $obj['audioURL'] = $audioURL;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withAutoHighlights(bool $autoHighlights): self
     {
         $obj = clone $this;
-        $obj['auto_highlights'] = $autoHighlights;
+        $obj['autoHighlights'] = $autoHighlights;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withContentSafetyLabels(bool $contentSafetyLabels): self
     {
         $obj = clone $this;
-        $obj['content_safety_labels'] = $contentSafetyLabels;
+        $obj['contentSafetyLabels'] = $contentSafetyLabels;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withFormatText(bool $formatText): self
     {
         $obj = clone $this;
-        $obj['format_text'] = $formatText;
+        $obj['formatText'] = $formatText;
 
         return $obj;
     }
@@ -179,7 +179,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
-        $obj['language_code'] = $languageCode;
+        $obj['languageCode'] = $languageCode;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withLanguageDetection(bool $languageDetection): self
     {
         $obj = clone $this;
-        $obj['language_detection'] = $languageDetection;
+        $obj['languageDetection'] = $languageDetection;
 
         return $obj;
     }
@@ -212,7 +212,7 @@ final class TranscriptionCreateParams implements BaseModel
     public function withSpeakerLabels(bool $speakerLabels): self
     {
         $obj = clone $this;
-        $obj['speaker_labels'] = $speakerLabels;
+        $obj['speakerLabels'] = $speakerLabels;
 
         return $obj;
     }

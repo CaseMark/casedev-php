@@ -12,10 +12,10 @@ use Casedev\Core\Contracts\BaseModel;
  * Voice customization settings.
  *
  * @phpstan-type VoiceSettingsShape = array{
- *   similarity_boost?: float|null,
+ *   similarityBoost?: float|null,
  *   stability?: float|null,
  *   style?: float|null,
- *   use_speaker_boost?: bool|null,
+ *   useSpeakerBoost?: bool|null,
  * }
  */
 final class VoiceSettings implements BaseModel
@@ -26,8 +26,8 @@ final class VoiceSettings implements BaseModel
     /**
      * Similarity boost (0-1).
      */
-    #[Optional]
-    public ?float $similarity_boost;
+    #[Optional('similarity_boost')]
+    public ?float $similarityBoost;
 
     /**
      * Voice stability (0-1).
@@ -44,8 +44,8 @@ final class VoiceSettings implements BaseModel
     /**
      * Enable speaker boost.
      */
-    #[Optional]
-    public ?bool $use_speaker_boost;
+    #[Optional('use_speaker_boost')]
+    public ?bool $useSpeakerBoost;
 
     public function __construct()
     {
@@ -58,17 +58,17 @@ final class VoiceSettings implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?float $similarity_boost = null,
+        ?float $similarityBoost = null,
         ?float $stability = null,
         ?float $style = null,
-        ?bool $use_speaker_boost = null,
+        ?bool $useSpeakerBoost = null,
     ): self {
         $obj = new self;
 
-        null !== $similarity_boost && $obj['similarity_boost'] = $similarity_boost;
+        null !== $similarityBoost && $obj['similarityBoost'] = $similarityBoost;
         null !== $stability && $obj['stability'] = $stability;
         null !== $style && $obj['style'] = $style;
-        null !== $use_speaker_boost && $obj['use_speaker_boost'] = $use_speaker_boost;
+        null !== $useSpeakerBoost && $obj['useSpeakerBoost'] = $useSpeakerBoost;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class VoiceSettings implements BaseModel
     public function withSimilarityBoost(float $similarityBoost): self
     {
         $obj = clone $this;
-        $obj['similarity_boost'] = $similarityBoost;
+        $obj['similarityBoost'] = $similarityBoost;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class VoiceSettings implements BaseModel
     public function withUseSpeakerBoost(bool $useSpeakerBoost): self
     {
         $obj = clone $this;
-        $obj['use_speaker_boost'] = $useSpeakerBoost;
+        $obj['useSpeakerBoost'] = $useSpeakerBoost;
 
         return $obj;
     }

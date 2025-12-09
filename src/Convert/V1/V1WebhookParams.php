@@ -18,13 +18,13 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Convert\V1Service::webhook()
  *
  * @phpstan-type V1WebhookParamsShape = array{
- *   job_id: string,
+ *   jobID: string,
  *   status: Status|value-of<Status>,
  *   error?: string,
  *   result?: Result|array{
- *     duration_seconds?: float|null,
- *     file_size_bytes?: int|null,
- *     stored_filename?: string|null,
+ *     durationSeconds?: float|null,
+ *     fileSizeBytes?: int|null,
+ *     storedFilename?: string|null,
  *   },
  * }
  */
@@ -37,8 +37,8 @@ final class V1WebhookParams implements BaseModel
     /**
      * Unique identifier for the conversion job.
      */
-    #[Required]
-    public string $job_id;
+    #[Required('job_id')]
+    public string $jobID;
 
     /**
      * Status of the conversion job.
@@ -65,7 +65,7 @@ final class V1WebhookParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * V1WebhookParams::with(job_id: ..., status: ...)
+     * V1WebhookParams::with(jobID: ..., status: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -86,20 +86,20 @@ final class V1WebhookParams implements BaseModel
      *
      * @param Status|value-of<Status> $status
      * @param Result|array{
-     *   duration_seconds?: float|null,
-     *   file_size_bytes?: int|null,
-     *   stored_filename?: string|null,
+     *   durationSeconds?: float|null,
+     *   fileSizeBytes?: int|null,
+     *   storedFilename?: string|null,
      * } $result
      */
     public static function with(
-        string $job_id,
+        string $jobID,
         Status|string $status,
         ?string $error = null,
         Result|array|null $result = null,
     ): self {
         $obj = new self;
 
-        $obj['job_id'] = $job_id;
+        $obj['jobID'] = $jobID;
         $obj['status'] = $status;
 
         null !== $error && $obj['error'] = $error;
@@ -114,7 +114,7 @@ final class V1WebhookParams implements BaseModel
     public function withJobID(string $jobID): self
     {
         $obj = clone $this;
-        $obj['job_id'] = $jobID;
+        $obj['jobID'] = $jobID;
 
         return $obj;
     }
@@ -147,9 +147,9 @@ final class V1WebhookParams implements BaseModel
      * Result data for completed jobs.
      *
      * @param Result|array{
-     *   duration_seconds?: float|null,
-     *   file_size_bytes?: int|null,
-     *   stored_filename?: string|null,
+     *   durationSeconds?: float|null,
+     *   fileSizeBytes?: int|null,
+     *   storedFilename?: string|null,
      * } $result
      */
     public function withResult(Result|array $result): self

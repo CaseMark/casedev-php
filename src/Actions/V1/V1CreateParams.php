@@ -20,7 +20,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   definition: mixed|string,
  *   name: string,
  *   description?: string,
- *   webhook_id?: string,
+ *   webhookID?: string,
  * }
  */
 final class V1CreateParams implements BaseModel
@@ -52,8 +52,8 @@ final class V1CreateParams implements BaseModel
     /**
      * Optional webhook endpoint ID for action completion notifications.
      */
-    #[Optional]
-    public ?string $webhook_id;
+    #[Optional('webhook_id')]
+    public ?string $webhookID;
 
     /**
      * `new V1CreateParams()` is missing required properties by the API.
@@ -85,7 +85,7 @@ final class V1CreateParams implements BaseModel
         mixed $definition,
         string $name,
         ?string $description = null,
-        ?string $webhook_id = null,
+        ?string $webhookID = null,
     ): self {
         $obj = new self;
 
@@ -93,7 +93,7 @@ final class V1CreateParams implements BaseModel
         $obj['name'] = $name;
 
         null !== $description && $obj['description'] = $description;
-        null !== $webhook_id && $obj['webhook_id'] = $webhook_id;
+        null !== $webhookID && $obj['webhookID'] = $webhookID;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class V1CreateParams implements BaseModel
     public function withWebhookID(string $webhookID): self
     {
         $obj = clone $this;
-        $obj['webhook_id'] = $webhookID;
+        $obj['webhookID'] = $webhookID;
 
         return $obj;
     }

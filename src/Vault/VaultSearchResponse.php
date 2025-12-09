@@ -17,7 +17,7 @@ use Casedev\Vault\VaultSearchResponse\Source;
  *   query?: string|null,
  *   response?: string|null,
  *   sources?: list<Source>|null,
- *   vault_id?: string|null,
+ *   vaultID?: string|null,
  * }
  */
 final class VaultSearchResponse implements BaseModel
@@ -58,8 +58,8 @@ final class VaultSearchResponse implements BaseModel
     /**
      * ID of the searched vault.
      */
-    #[Optional]
-    public ?string $vault_id;
+    #[Optional('vault_id')]
+    public ?string $vaultID;
 
     public function __construct()
     {
@@ -90,7 +90,7 @@ final class VaultSearchResponse implements BaseModel
         ?string $query = null,
         ?string $response = null,
         ?array $sources = null,
-        ?string $vault_id = null,
+        ?string $vaultID = null,
     ): self {
         $obj = new self;
 
@@ -99,7 +99,7 @@ final class VaultSearchResponse implements BaseModel
         null !== $query && $obj['query'] = $query;
         null !== $response && $obj['response'] = $response;
         null !== $sources && $obj['sources'] = $sources;
-        null !== $vault_id && $obj['vault_id'] = $vault_id;
+        null !== $vaultID && $obj['vaultID'] = $vaultID;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class VaultSearchResponse implements BaseModel
     public function withVaultID(string $vaultID): self
     {
         $obj = clone $this;
-        $obj['vault_id'] = $vaultID;
+        $obj['vaultID'] = $vaultID;
 
         return $obj;
     }

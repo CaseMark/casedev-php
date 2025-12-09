@@ -19,14 +19,14 @@ use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
  *
  * @phpstan-type V1ListVoicesParamsShape = array{
  *   category?: string,
- *   collection_id?: string,
- *   include_total_count?: bool,
- *   next_page_token?: string,
- *   page_size?: int,
+ *   collectionID?: string,
+ *   includeTotalCount?: bool,
+ *   nextPageToken?: string,
+ *   pageSize?: int,
  *   search?: string,
  *   sort?: Sort|value-of<Sort>,
- *   sort_direction?: SortDirection|value-of<SortDirection>,
- *   voice_type?: VoiceType|value-of<VoiceType>,
+ *   sortDirection?: SortDirection|value-of<SortDirection>,
+ *   voiceType?: VoiceType|value-of<VoiceType>,
  * }
  */
 final class V1ListVoicesParams implements BaseModel
@@ -45,25 +45,25 @@ final class V1ListVoicesParams implements BaseModel
      * Filter by voice collection ID.
      */
     #[Optional]
-    public ?string $collection_id;
+    public ?string $collectionID;
 
     /**
      * Whether to include total count in response.
      */
     #[Optional]
-    public ?bool $include_total_count;
+    public ?bool $includeTotalCount;
 
     /**
      * Token for retrieving the next page of results.
      */
     #[Optional]
-    public ?string $next_page_token;
+    public ?string $nextPageToken;
 
     /**
      * Number of voices to return per page (max 100).
      */
     #[Optional]
-    public ?int $page_size;
+    public ?int $pageSize;
 
     /**
      * Search term to filter voices by name or description.
@@ -82,18 +82,18 @@ final class V1ListVoicesParams implements BaseModel
     /**
      * Sort direction.
      *
-     * @var value-of<SortDirection>|null $sort_direction
+     * @var value-of<SortDirection>|null $sortDirection
      */
     #[Optional(enum: SortDirection::class)]
-    public ?string $sort_direction;
+    public ?string $sortDirection;
 
     /**
      * Filter by voice type.
      *
-     * @var value-of<VoiceType>|null $voice_type
+     * @var value-of<VoiceType>|null $voiceType
      */
     #[Optional(enum: VoiceType::class)]
-    public ?string $voice_type;
+    public ?string $voiceType;
 
     public function __construct()
     {
@@ -106,31 +106,31 @@ final class V1ListVoicesParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Sort|value-of<Sort> $sort
-     * @param SortDirection|value-of<SortDirection> $sort_direction
-     * @param VoiceType|value-of<VoiceType> $voice_type
+     * @param SortDirection|value-of<SortDirection> $sortDirection
+     * @param VoiceType|value-of<VoiceType> $voiceType
      */
     public static function with(
         ?string $category = null,
-        ?string $collection_id = null,
-        ?bool $include_total_count = null,
-        ?string $next_page_token = null,
-        ?int $page_size = null,
+        ?string $collectionID = null,
+        ?bool $includeTotalCount = null,
+        ?string $nextPageToken = null,
+        ?int $pageSize = null,
         ?string $search = null,
         Sort|string|null $sort = null,
-        SortDirection|string|null $sort_direction = null,
-        VoiceType|string|null $voice_type = null,
+        SortDirection|string|null $sortDirection = null,
+        VoiceType|string|null $voiceType = null,
     ): self {
         $obj = new self;
 
         null !== $category && $obj['category'] = $category;
-        null !== $collection_id && $obj['collection_id'] = $collection_id;
-        null !== $include_total_count && $obj['include_total_count'] = $include_total_count;
-        null !== $next_page_token && $obj['next_page_token'] = $next_page_token;
-        null !== $page_size && $obj['page_size'] = $page_size;
+        null !== $collectionID && $obj['collectionID'] = $collectionID;
+        null !== $includeTotalCount && $obj['includeTotalCount'] = $includeTotalCount;
+        null !== $nextPageToken && $obj['nextPageToken'] = $nextPageToken;
+        null !== $pageSize && $obj['pageSize'] = $pageSize;
         null !== $search && $obj['search'] = $search;
         null !== $sort && $obj['sort'] = $sort;
-        null !== $sort_direction && $obj['sort_direction'] = $sort_direction;
-        null !== $voice_type && $obj['voice_type'] = $voice_type;
+        null !== $sortDirection && $obj['sortDirection'] = $sortDirection;
+        null !== $voiceType && $obj['voiceType'] = $voiceType;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withCollectionID(string $collectionID): self
     {
         $obj = clone $this;
-        $obj['collection_id'] = $collectionID;
+        $obj['collectionID'] = $collectionID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withIncludeTotalCount(bool $includeTotalCount): self
     {
         $obj = clone $this;
-        $obj['include_total_count'] = $includeTotalCount;
+        $obj['includeTotalCount'] = $includeTotalCount;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withNextPageToken(string $nextPageToken): self
     {
         $obj = clone $this;
-        $obj['next_page_token'] = $nextPageToken;
+        $obj['nextPageToken'] = $nextPageToken;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withPageSize(int $pageSize): self
     {
         $obj = clone $this;
-        $obj['page_size'] = $pageSize;
+        $obj['pageSize'] = $pageSize;
 
         return $obj;
     }
@@ -222,7 +222,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withSortDirection(SortDirection|string $sortDirection): self
     {
         $obj = clone $this;
-        $obj['sort_direction'] = $sortDirection;
+        $obj['sortDirection'] = $sortDirection;
 
         return $obj;
     }
@@ -235,7 +235,7 @@ final class V1ListVoicesParams implements BaseModel
     public function withVoiceType(VoiceType|string $voiceType): self
     {
         $obj = clone $this;
-        $obj['voice_type'] = $voiceType;
+        $obj['voiceType'] = $voiceType;
 
         return $obj;
     }

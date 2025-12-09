@@ -194,7 +194,7 @@ final class VaultService implements VaultContract
      * @param array{
      *   contentType: string,
      *   filename: string,
-     *   auto_index?: bool,
+     *   autoIndex?: bool,
      *   metadata?: mixed,
      *   sizeBytes?: float,
      * }|VaultUploadParams $params

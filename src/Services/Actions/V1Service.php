@@ -30,7 +30,7 @@ final class V1Service implements V1Contract
      *   definition: mixed|string,
      *   name: string,
      *   description?: string,
-     *   webhook_id?: string,
+     *   webhookID?: string,
      * }|V1CreateParams $params
      *
      * @throws APIException
@@ -126,7 +126,7 @@ final class V1Service implements V1Contract
      * Execute a multi-step action workflow with the provided input data. Actions can run synchronously (returning results immediately) or asynchronously (with webhook notifications when complete).
      *
      * @param array{
-     *   input: array<string,mixed>, webhook_id?: string
+     *   input: array<string,mixed>, webhookID?: string
      * }|V1ExecuteParams $params
      *
      * @throws APIException

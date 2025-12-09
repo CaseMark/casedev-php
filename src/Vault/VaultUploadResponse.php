@@ -11,13 +11,13 @@ use Casedev\Vault\VaultUploadResponse\Instructions;
 
 /**
  * @phpstan-type VaultUploadResponseShape = array{
- *   auto_index?: bool|null,
+ *   autoIndex?: bool|null,
  *   expiresIn?: float|null,
  *   instructions?: Instructions|null,
- *   next_step?: string|null,
- *   objectId?: string|null,
+ *   nextStep?: string|null,
+ *   objectID?: string|null,
  *   s3Key?: string|null,
- *   uploadUrl?: string|null,
+ *   uploadURL?: string|null,
  * }
  */
 final class VaultUploadResponse implements BaseModel
@@ -28,8 +28,8 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Whether the file will be automatically indexed.
      */
-    #[Optional]
-    public ?bool $auto_index;
+    #[Optional('auto_index')]
+    public ?bool $autoIndex;
 
     /**
      * URL expiration time in seconds.
@@ -43,14 +43,14 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Next API endpoint to call for processing.
      */
-    #[Optional(nullable: true)]
-    public ?string $next_step;
+    #[Optional('next_step', nullable: true)]
+    public ?string $nextStep;
 
     /**
      * Unique identifier for the uploaded object.
      */
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * S3 object key for the file.
@@ -61,8 +61,8 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Presigned URL for uploading the file.
      */
-    #[Optional]
-    public ?string $uploadUrl;
+    #[Optional('uploadUrl')]
+    public ?string $uploadURL;
 
     public function __construct()
     {
@@ -79,23 +79,23 @@ final class VaultUploadResponse implements BaseModel
      * } $instructions
      */
     public static function with(
-        ?bool $auto_index = null,
+        ?bool $autoIndex = null,
         ?float $expiresIn = null,
         Instructions|array|null $instructions = null,
-        ?string $next_step = null,
-        ?string $objectId = null,
+        ?string $nextStep = null,
+        ?string $objectID = null,
         ?string $s3Key = null,
-        ?string $uploadUrl = null,
+        ?string $uploadURL = null,
     ): self {
         $obj = new self;
 
-        null !== $auto_index && $obj['auto_index'] = $auto_index;
+        null !== $autoIndex && $obj['autoIndex'] = $autoIndex;
         null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
         null !== $instructions && $obj['instructions'] = $instructions;
-        null !== $next_step && $obj['next_step'] = $next_step;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $nextStep && $obj['nextStep'] = $nextStep;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $s3Key && $obj['s3Key'] = $s3Key;
-        null !== $uploadUrl && $obj['uploadUrl'] = $uploadUrl;
+        null !== $uploadURL && $obj['uploadURL'] = $uploadURL;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class VaultUploadResponse implements BaseModel
     public function withAutoIndex(bool $autoIndex): self
     {
         $obj = clone $this;
-        $obj['auto_index'] = $autoIndex;
+        $obj['autoIndex'] = $autoIndex;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class VaultUploadResponse implements BaseModel
     public function withNextStep(?string $nextStep): self
     {
         $obj = clone $this;
-        $obj['next_step'] = $nextStep;
+        $obj['nextStep'] = $nextStep;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class VaultUploadResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class VaultUploadResponse implements BaseModel
     public function withUploadURL(string $uploadURL): self
     {
         $obj = clone $this;
-        $obj['uploadUrl'] = $uploadURL;
+        $obj['uploadURL'] = $uploadURL;
 
         return $obj;
     }

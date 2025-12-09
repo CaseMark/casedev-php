@@ -38,7 +38,7 @@ final class Options implements BaseModel
      * @param list<Component|array{
      *   content?: string|null,
      *   styles?: mixed,
-     *   templateId?: string|null,
+     *   templateID?: string|null,
      *   variables?: mixed,
      * }> $components
      */
@@ -57,7 +57,7 @@ final class Options implements BaseModel
      * @param list<Component|array{
      *   content?: string|null,
      *   styles?: mixed,
-     *   templateId?: string|null,
+     *   templateID?: string|null,
      *   variables?: mixed,
      * }> $components
      */

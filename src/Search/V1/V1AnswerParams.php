@@ -27,7 +27,7 @@ use Casedev\Search\V1\V1AnswerParams\SearchType;
  *   stream?: bool,
  *   temperature?: float,
  *   text?: bool,
- *   useCustomLLM?: bool,
+ *   useCustomLlm?: bool,
  * }
  */
 final class V1AnswerParams implements BaseModel
@@ -105,8 +105,8 @@ final class V1AnswerParams implements BaseModel
     /**
      * Use Case.dev LLM for answer generation instead of provider's native answer.
      */
-    #[Optional]
-    public ?bool $useCustomLLM;
+    #[Optional('useCustomLLM')]
+    public ?bool $useCustomLlm;
 
     /**
      * `new V1AnswerParams()` is missing required properties by the API.
@@ -147,7 +147,7 @@ final class V1AnswerParams implements BaseModel
         ?bool $stream = null,
         ?float $temperature = null,
         ?bool $text = null,
-        ?bool $useCustomLLM = null,
+        ?bool $useCustomLlm = null,
     ): self {
         $obj = new self;
 
@@ -162,7 +162,7 @@ final class V1AnswerParams implements BaseModel
         null !== $stream && $obj['stream'] = $stream;
         null !== $temperature && $obj['temperature'] = $temperature;
         null !== $text && $obj['text'] = $text;
-        null !== $useCustomLLM && $obj['useCustomLLM'] = $useCustomLLM;
+        null !== $useCustomLlm && $obj['useCustomLlm'] = $useCustomLlm;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class V1AnswerParams implements BaseModel
     public function withUseCustomLlm(bool $useCustomLlm): self
     {
         $obj = clone $this;
-        $obj['useCustomLLM'] = $useCustomLlm;
+        $obj['useCustomLlm'] = $useCustomLlm;
 
         return $obj;
     }
