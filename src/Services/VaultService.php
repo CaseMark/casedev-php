@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace Casedev\Services;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
 use Casedev\Services\Vault\ObjectsService;
-use Casedev\Vault\VaultCreateParams;
-use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams;
 use Casedev\Vault\VaultSearchParams\Method;
 use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUploadParams;
 use Casedev\Vault\VaultUploadResponse;
 
 final class VaultService implements VaultContract
 {
+    /**
+     * @api
+     */
+    public VaultRawService $raw;
+
     /**
      * @api
      */
@@ -39,6 +39,7 @@ final class VaultService implements VaultContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new VaultRawService($client);
         $this->graphrag = new GraphragService($client);
         $this->objects = new ObjectsService($client);
     }
@@ -48,29 +49,28 @@ final class VaultService implements VaultContract
      *
      * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional knowledge graph features for legal document analysis and discovery.
      *
-     * @param array{
-     *   name: string, description?: string, enableGraph?: bool
-     * }|VaultCreateParams $params
+     * @param string $name Display name for the vault
+     * @param string $description Optional description of the vault's purpose
+     * @param bool $enableGraph Enable knowledge graph for entity relationship mapping
      *
      * @throws APIException
      */
     public function create(
-        array|VaultCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $name,
+        ?string $description = null,
+        bool $enableGraph = true,
+        ?RequestOptions $requestOptions = null,
     ): VaultNewResponse {
-        [$parsed, $options] = VaultCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'name' => $name,
+            'description' => $description,
+            'enableGraph' => $enableGraph,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<VaultNewResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'vault',
-            body: (object) $parsed,
-            options: $options,
-            convert: VaultNewResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -80,19 +80,16 @@ final class VaultService implements VaultContract
      *
      * Retrieve detailed information about a specific vault, including storage configuration, chunking strategy, and usage statistics. Returns vault metadata, bucket information, and vector storage details.
      *
+     * @param string $id Unique identifier of the vault
+     *
      * @throws APIException
      */
     public function retrieve(
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['vault/%1$s', $id],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -107,13 +104,8 @@ final class VaultService implements VaultContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): VaultListResponse {
-        /** @var BaseResponse<VaultListResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'vault',
-            options: $requestOptions,
-            convert: VaultListResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -123,29 +115,20 @@ final class VaultService implements VaultContract
      *
      * Triggers OCR ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. Processing happens asynchronously with GraphRAG support if enabled on the vault. Returns immediately with workflow tracking information.
      *
-     * @param array{id: string}|VaultIngestParams $params
+     * @param string $objectID Vault object ID
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function ingest(
         string $objectID,
-        array|VaultIngestParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): VaultIngestResponse {
-        [$parsed, $options] = VaultIngestParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $id = $parsed['id'];
-        unset($parsed['id']);
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<VaultIngestResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['vault/%1$s/ingest/%2$s', $id, $objectID],
-            options: $options,
-            convert: VaultIngestResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->ingest($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -155,33 +138,33 @@ final class VaultService implements VaultContract
      *
      * Search across vault documents using multiple methods including hybrid vector + graph search, GraphRAG global search, entity-based search, and fast similarity search. Returns relevant documents and contextual answers based on the search method.
      *
-     * @param array{
-     *   query: string,
-     *   filters?: array<string,mixed>,
-     *   method?: 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method,
-     *   topK?: int,
-     * }|VaultSearchParams $params
+     * @param string $id Unique identifier of the vault to search
+     * @param string $query Search query or question to find relevant documents
+     * @param array<string,mixed> $filters Additional filters to apply to search results
+     * @param 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method $method Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach
+     * @param int $topK Maximum number of results to return
      *
      * @throws APIException
      */
     public function search(
         string $id,
-        array|VaultSearchParams $params,
+        string $query,
+        ?array $filters = null,
+        string|Method $method = 'hybrid',
+        int $topK = 10,
         ?RequestOptions $requestOptions = null,
     ): VaultSearchResponse {
-        [$parsed, $options] = VaultSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'query' => $query,
+            'filters' => $filters,
+            'method' => $method,
+            'topK' => $topK,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<VaultSearchResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['vault/%1$s/search', $id],
-            body: (object) $parsed,
-            options: $options,
-            convert: VaultSearchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -191,34 +174,36 @@ final class VaultService implements VaultContract
      *
      * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
      *
-     * @param array{
-     *   contentType: string,
-     *   filename: string,
-     *   autoIndex?: bool,
-     *   metadata?: mixed,
-     *   sizeBytes?: float,
-     * }|VaultUploadParams $params
+     * @param string $id Vault ID to upload the file to
+     * @param string $contentType MIME type of the file (e.g., application/pdf, image/jpeg)
+     * @param string $filename Name of the file to upload
+     * @param bool $autoIndex Whether to automatically process and index the file for search
+     * @param mixed $metadata Additional metadata to associate with the file
+     * @param float $sizeBytes Estimated file size in bytes for cost calculation
      *
      * @throws APIException
      */
     public function upload(
         string $id,
-        array|VaultUploadParams $params,
+        string $contentType,
+        string $filename,
+        bool $autoIndex = true,
+        mixed $metadata = null,
+        ?float $sizeBytes = null,
         ?RequestOptions $requestOptions = null,
     ): VaultUploadResponse {
-        [$parsed, $options] = VaultUploadParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'contentType' => $contentType,
+            'filename' => $filename,
+            'autoIndex' => $autoIndex,
+            'metadata' => $metadata,
+            'sizeBytes' => $sizeBytes,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<VaultUploadResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['vault/%1$s/upload', $id],
-            body: (object) $parsed,
-            options: $options,
-            convert: VaultUploadResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->upload($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

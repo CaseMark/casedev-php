@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Casedev\ServiceContracts\Actions;
 
-use Casedev\Actions\V1\V1CreateParams;
-use Casedev\Actions\V1\V1ExecuteParams;
 use Casedev\Actions\V1\V1ExecuteResponse;
 use Casedev\Actions\V1\V1NewResponse;
 use Casedev\Core\Exceptions\APIException;
@@ -16,17 +14,25 @@ interface V1Contract
     /**
      * @api
      *
-     * @param array<mixed>|V1CreateParams $params
+     * @param mixed|string $definition Action definition in YAML string, JSON string, or JSON object format
+     * @param string $name Unique name for the action
+     * @param string $description Optional description of the action's purpose
+     * @param string $webhookID Optional webhook endpoint ID for action completion notifications
      *
      * @throws APIException
      */
     public function create(
-        array|V1CreateParams $params,
-        ?RequestOptions $requestOptions = null
+        mixed $definition,
+        string $name,
+        ?string $description = null,
+        ?string $webhookID = null,
+        ?RequestOptions $requestOptions = null,
     ): V1NewResponse;
 
     /**
      * @api
+     *
+     * @param string $id Unique identifier of the action definition
      *
      * @throws APIException
      */
@@ -45,6 +51,8 @@ interface V1Contract
     /**
      * @api
      *
+     * @param string $id Unique identifier of the action to delete
+     *
      * @throws APIException
      */
     public function delete(
@@ -55,18 +63,23 @@ interface V1Contract
     /**
      * @api
      *
-     * @param array<mixed>|V1ExecuteParams $params
+     * @param string $id The unique identifier of the action to execute
+     * @param array<string,mixed> $input Input data for the action execution
+     * @param string $webhookID Optional webhook endpoint ID to override the action's default webhook
      *
      * @throws APIException
      */
     public function execute(
         string $id,
-        array|V1ExecuteParams $params,
+        array $input,
+        ?string $webhookID = null,
         ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse;
 
     /**
      * @api
+     *
+     * @param string $id The unique identifier of the action execution
      *
      * @throws APIException
      */

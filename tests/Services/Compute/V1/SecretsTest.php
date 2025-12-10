@@ -34,7 +34,7 @@ final class SecretsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->secrets->create(['name' => 'name']);
+        $result = $this->client->compute->v1->secrets->create(name: 'name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SecretNewResponse::class, $result);
@@ -47,9 +47,11 @@ final class SecretsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->secrets->create([
-            'name' => 'name', 'description' => 'description', 'env' => 'env',
-        ]);
+        $result = $this->client->compute->v1->secrets->create(
+            name: 'name',
+            description: 'description',
+            env: 'env'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SecretNewResponse::class, $result);
@@ -62,7 +64,7 @@ final class SecretsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->secrets->list([]);
+        $result = $this->client->compute->v1->secrets->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -75,7 +77,7 @@ final class SecretsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->secrets->deleteGroup('group', []);
+        $result = $this->client->compute->v1->secrets->deleteGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -88,7 +90,7 @@ final class SecretsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->secrets->retrieveGroup('group', []);
+        $result = $this->client->compute->v1->secrets->retrieveGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -103,7 +105,7 @@ final class SecretsTest extends TestCase
 
         $result = $this->client->compute->v1->secrets->updateGroup(
             'litigation-apis',
-            ['secrets' => ['foo' => 'string']]
+            secrets: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -119,7 +121,8 @@ final class SecretsTest extends TestCase
 
         $result = $this->client->compute->v1->secrets->updateGroup(
             'litigation-apis',
-            ['secrets' => ['foo' => 'string'], 'env' => 'env']
+            secrets: ['foo' => 'string'],
+            env: 'env'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

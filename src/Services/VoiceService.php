@@ -15,6 +15,11 @@ final class VoiceService implements VoiceContract
     /**
      * @api
      */
+    public VoiceRawService $raw;
+
+    /**
+     * @api
+     */
     public StreamingService $streaming;
 
     /**
@@ -32,6 +37,7 @@ final class VoiceService implements VoiceContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new VoiceRawService($client);
         $this->streaming = new StreamingService($client);
         $this->transcription = new TranscriptionService($client);
         $this->v1 = new V1Service($client);

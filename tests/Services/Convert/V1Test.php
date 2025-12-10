@@ -48,9 +48,9 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->convert->v1->process([
-            'inputURL' => 'https://example.com',
-        ]);
+        $result = $this->client->convert->v1->process(
+            inputURL: 'https://example.com'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ProcessResponse::class, $result);
@@ -63,10 +63,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->convert->v1->process([
-            'inputURL' => 'https://example.com',
-            'callbackURL' => 'https://example.com',
-        ]);
+        $result = $this->client->convert->v1->process(
+            inputURL: 'https://example.com',
+            callbackURL: 'https://example.com'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ProcessResponse::class, $result);
@@ -79,9 +79,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->convert->v1->webhook([
-            'jobID' => 'job_id', 'status' => 'completed',
-        ]);
+        $result = $this->client->convert->v1->webhook(
+            jobID: 'job_id',
+            status: 'completed'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1WebhookResponse::class, $result);
@@ -94,16 +95,16 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->convert->v1->webhook([
-            'jobID' => 'job_id',
-            'status' => 'completed',
-            'error' => 'error',
-            'result' => [
+        $result = $this->client->convert->v1->webhook(
+            jobID: 'job_id',
+            status: 'completed',
+            error: 'error',
+            result: [
                 'durationSeconds' => 0,
                 'fileSizeBytes' => 0,
                 'storedFilename' => 'stored_filename',
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1WebhookResponse::class, $result);

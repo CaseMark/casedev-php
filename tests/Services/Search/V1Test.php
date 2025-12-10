@@ -38,7 +38,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->answer(['query' => 'query']);
+        $result = $this->client->search->v1->answer(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1AnswerResponse::class, $result);
@@ -51,19 +51,19 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->answer([
-            'query' => 'query',
-            'excludeDomains' => ['string'],
-            'includeDomains' => ['string'],
-            'maxTokens' => 0,
-            'model' => 'model',
-            'numResults' => 1,
-            'searchType' => 'auto',
-            'stream' => true,
-            'temperature' => 0,
-            'text' => true,
-            'useCustomLlm' => true,
-        ]);
+        $result = $this->client->search->v1->answer(
+            query: 'query',
+            excludeDomains: ['string'],
+            includeDomains: ['string'],
+            maxTokens: 0,
+            model: 'model',
+            numResults: 1,
+            searchType: 'auto',
+            stream: true,
+            temperature: 0,
+            text: true,
+            useCustomLlm: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1AnswerResponse::class, $result);
@@ -76,9 +76,9 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->contents([
-            'urls' => ['https://example.com'],
-        ]);
+        $result = $this->client->search->v1->contents(
+            urls: ['https://example.com']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ContentsResponse::class, $result);
@@ -91,18 +91,18 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->contents([
-            'urls' => ['https://example.com'],
-            'context' => 'context',
-            'extras' => [],
-            'highlights' => true,
-            'livecrawl' => true,
-            'livecrawlTimeout' => 0,
-            'subpages' => true,
-            'subpageTarget' => 0,
-            'summary' => true,
-            'text' => true,
-        ]);
+        $result = $this->client->search->v1->contents(
+            urls: ['https://example.com'],
+            context: 'context',
+            extras: [],
+            highlights: true,
+            livecrawl: true,
+            livecrawlTimeout: 0,
+            subpages: true,
+            subpageTarget: 0,
+            summary: true,
+            text: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ContentsResponse::class, $result);
@@ -115,9 +115,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->research([
-            'instructions' => 'instructions',
-        ]);
+        $result = $this->client->search->v1->research(instructions: 'instructions');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ResearchResponse::class, $result);
@@ -130,12 +128,12 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->research([
-            'instructions' => 'instructions',
-            'model' => 'fast',
-            'outputSchema' => [],
-            'query' => 'query',
-        ]);
+        $result = $this->client->search->v1->research(
+            instructions: 'instructions',
+            model: 'fast',
+            outputSchema: [],
+            query: 'query',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ResearchResponse::class, $result);
@@ -148,7 +146,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->retrieveResearch('id', []);
+        $result = $this->client->search->v1->retrieveResearch('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -161,7 +159,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->search(['query' => 'query']);
+        $result = $this->client->search->v1->search(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1SearchResponse::class, $result);
@@ -174,22 +172,22 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->search([
-            'query' => 'query',
-            'additionalQueries' => ['string'],
-            'category' => 'category',
-            'contents' => 'contents',
-            'endCrawlDate' => new \DateTimeImmutable('2019-12-27'),
-            'endPublishedDate' => new \DateTimeImmutable('2019-12-27'),
-            'excludeDomains' => ['string'],
-            'includeDomains' => ['string'],
-            'includeText' => true,
-            'numResults' => 1,
-            'startCrawlDate' => new \DateTimeImmutable('2019-12-27'),
-            'startPublishedDate' => new \DateTimeImmutable('2019-12-27'),
-            'type' => 'auto',
-            'userLocation' => 'userLocation',
-        ]);
+        $result = $this->client->search->v1->search(
+            query: 'query',
+            additionalQueries: ['string'],
+            category: 'category',
+            contents: 'contents',
+            endCrawlDate: new \DateTimeImmutable('2019-12-27'),
+            endPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            excludeDomains: ['string'],
+            includeDomains: ['string'],
+            includeText: true,
+            numResults: 1,
+            startCrawlDate: new \DateTimeImmutable('2019-12-27'),
+            startPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            type: 'auto',
+            userLocation: 'userLocation',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1SearchResponse::class, $result);
@@ -202,9 +200,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->similar([
-            'url' => 'https://example.com',
-        ]);
+        $result = $this->client->search->v1->similar(url: 'https://example.com');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1SimilarResponse::class, $result);
@@ -217,18 +213,18 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->search->v1->similar([
-            'url' => 'https://example.com',
-            'contents' => 'contents',
-            'endCrawlDate' => new \DateTimeImmutable('2019-12-27'),
-            'endPublishedDate' => new \DateTimeImmutable('2019-12-27'),
-            'excludeDomains' => ['string'],
-            'includeDomains' => ['string'],
-            'includeText' => true,
-            'numResults' => 1,
-            'startCrawlDate' => new \DateTimeImmutable('2019-12-27'),
-            'startPublishedDate' => new \DateTimeImmutable('2019-12-27'),
-        ]);
+        $result = $this->client->search->v1->similar(
+            url: 'https://example.com',
+            contents: 'contents',
+            endCrawlDate: new \DateTimeImmutable('2019-12-27'),
+            endPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            excludeDomains: ['string'],
+            includeDomains: ['string'],
+            includeText: true,
+            numResults: 1,
+            startCrawlDate: new \DateTimeImmutable('2019-12-27'),
+            startPublishedDate: new \DateTimeImmutable('2019-12-27'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1SimilarResponse::class, $result);

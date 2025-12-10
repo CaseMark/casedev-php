@@ -33,7 +33,7 @@ final class FunctionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->functions->list([]);
+        $result = $this->client->compute->v1->functions->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -46,7 +46,7 @@ final class FunctionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->functions->getLogs('id', []);
+        $result = $this->client->compute->v1->functions->getLogs('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

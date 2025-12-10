@@ -34,10 +34,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->retrieve(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -50,10 +47,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->retrieve(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -81,7 +75,7 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->vault->objects->createPresignedURL(
             'objectId',
-            ['id' => 'id']
+            id: 'id'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -97,12 +91,10 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->vault->objects->createPresignedURL(
             'objectId',
-            [
-                'id' => 'id',
-                'contentType' => 'contentType',
-                'expiresIn' => 60,
-                'operation' => 'GET',
-            ],
+            id: 'id',
+            contentType: 'contentType',
+            expiresIn: 60,
+            operation: 'GET',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -116,10 +108,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->download(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -132,10 +121,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->download(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -148,10 +134,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->getText(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -164,10 +147,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->objects->getText(
-            'objectId',
-            ['id' => 'id']
-        );
+        $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

@@ -47,7 +47,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->templates->v1->list([]);
+        $result = $this->client->templates->v1->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -60,7 +60,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->templates->v1->execute('id', ['input' => []]);
+        $result = $this->client->templates->v1->execute('id', input: []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ExecuteResponse::class, $result);
@@ -75,7 +75,8 @@ final class V1Test extends TestCase
 
         $result = $this->client->templates->v1->execute(
             'id',
-            ['input' => [], 'options' => ['format' => 'json', 'model' => 'model']],
+            input: [],
+            options: ['format' => 'json', 'model' => 'model']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -104,7 +105,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->templates->v1->search(['query' => 'query']);
+        $result = $this->client->templates->v1->search(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -117,9 +118,11 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->templates->v1->search([
-            'query' => 'query', 'category' => 'category', 'limit' => 1,
-        ]);
+        $result = $this->client->templates->v1->search(
+            query: 'query',
+            category: 'category',
+            limit: 1
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

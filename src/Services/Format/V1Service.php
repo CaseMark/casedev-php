@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Format;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
-use Casedev\Format\V1\V1CreateDocumentParams;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 use Casedev\RequestOptions;
@@ -19,6 +17,11 @@ final class V1Service implements V1Contract
     /**
      * @api
      */
+    public V1RawService $raw;
+
+    /**
+     * @api
+     */
     public TemplatesService $templates;
 
     /**
@@ -26,6 +29,7 @@ final class V1Service implements V1Contract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new V1RawService($client);
         $this->templates = new TemplatesService($client);
     }
 
@@ -34,37 +38,35 @@ final class V1Service implements V1Contract
      *
      * Convert Markdown, JSON, or text content to professionally formatted PDF, DOCX, or HTML documents. Supports template components with variable interpolation for creating consistent legal documents like contracts, briefs, and reports.
      *
+     * @param string $content The source content to format
+     * @param 'pdf'|'docx'|'html_preview'|OutputFormat $outputFormat Desired output format
+     * @param 'md'|'json'|'text'|InputFormat $inputFormat Format of the input content
      * @param array{
-     *   content: string,
-     *   outputFormat: 'pdf'|'docx'|'html_preview'|OutputFormat,
-     *   inputFormat?: 'md'|'json'|'text'|InputFormat,
-     *   options?: array{
-     *     components?: list<array{
-     *       content?: string, styles?: mixed, templateID?: string, variables?: mixed
-     *     }>,
-     *   },
-     * }|V1CreateDocumentParams $params
+     *   components?: list<array{
+     *     content?: string, styles?: mixed, templateID?: string, variables?: mixed
+     *   }>,
+     * } $options
      *
      * @throws APIException
      */
     public function createDocument(
-        array|V1CreateDocumentParams $params,
-        ?RequestOptions $requestOptions = null
+        string $content,
+        string|OutputFormat $outputFormat,
+        string|InputFormat $inputFormat = 'md',
+        ?array $options = null,
+        ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = V1CreateDocumentParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'content' => $content,
+            'outputFormat' => $outputFormat,
+            'inputFormat' => $inputFormat,
+            'options' => $options,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'format/v1/document',
-            headers: ['Accept' => 'application/pdf'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createDocument(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

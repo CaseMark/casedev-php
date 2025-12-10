@@ -34,9 +34,7 @@ final class ChatTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->llm->v1->chat->createCompletion([
-            'messages' => [[]],
-        ]);
+        $result = $this->client->llm->v1->chat->createCompletion(messages: [[]]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ChatNewCompletionResponse::class, $result);
@@ -49,16 +47,16 @@ final class ChatTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->llm->v1->chat->createCompletion([
-            'messages' => [['content' => 'content', 'role' => 'system']],
-            'frequencyPenalty' => 0,
-            'maxTokens' => 1000,
-            'model' => 'gpt-4o',
-            'presencePenalty' => 0,
-            'stream' => false,
-            'temperature' => 0.7,
-            'topP' => 0,
-        ]);
+        $result = $this->client->llm->v1->chat->createCompletion(
+            messages: [['content' => 'content', 'role' => 'system']],
+            frequencyPenalty: 0,
+            maxTokens: 1000,
+            model: 'gpt-4o',
+            presencePenalty: 0,
+            stream: false,
+            temperature: 0.7,
+            topP: 0,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ChatNewCompletionResponse::class, $result);

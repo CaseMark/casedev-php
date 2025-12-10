@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Casedev\Services\Voice;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\StreamingContract;
@@ -13,9 +12,17 @@ use Casedev\ServiceContracts\Voice\StreamingContract;
 final class StreamingService implements StreamingContract
 {
     /**
+     * @api
+     */
+    public StreamingRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new StreamingRawService($client);
+    }
 
     /**
      * @api
@@ -33,13 +40,8 @@ final class StreamingService implements StreamingContract
      */
     public function getURL(?RequestOptions $requestOptions = null): mixed
     {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'voice/streaming/url',
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getURL(requestOptions: $requestOptions);
 
         return $response->parse();
     }

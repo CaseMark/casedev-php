@@ -34,9 +34,9 @@ final class TranscriptionTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->voice->transcription->create([
-            'audioURL' => 'audio_url',
-        ]);
+        $result = $this->client->voice->transcription->create(
+            audioURL: 'audio_url'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -49,16 +49,16 @@ final class TranscriptionTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->voice->transcription->create([
-            'audioURL' => 'audio_url',
-            'autoHighlights' => true,
-            'contentSafetyLabels' => true,
-            'formatText' => true,
-            'languageCode' => 'language_code',
-            'languageDetection' => true,
-            'punctuate' => true,
-            'speakerLabels' => true,
-        ]);
+        $result = $this->client->voice->transcription->create(
+            audioURL: 'audio_url',
+            autoHighlights: true,
+            contentSafetyLabels: true,
+            formatText: true,
+            languageCode: 'language_code',
+            languageDetection: true,
+            punctuate: true,
+            speakerLabels: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

@@ -34,10 +34,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->v1->create([
-            'events' => ['document.processed', 'vault.updated'],
-            'url' => 'https://api.lawfirm.com/webhooks/case-dev',
-        ]);
+        $result = $this->client->webhooks->v1->create(
+            events: ['document.processed', 'vault.updated'],
+            url: 'https://api.lawfirm.com/webhooks/case-dev',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);
@@ -50,11 +50,11 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->v1->create([
-            'events' => ['document.processed', 'vault.updated'],
-            'url' => 'https://api.lawfirm.com/webhooks/case-dev',
-            'description' => 'Document processing notifications for client portal',
-        ]);
+        $result = $this->client->webhooks->v1->create(
+            events: ['document.processed', 'vault.updated'],
+            url: 'https://api.lawfirm.com/webhooks/case-dev',
+            description: 'Document processing notifications for client portal',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);

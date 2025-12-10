@@ -46,7 +46,7 @@ final class RunsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->runs->list([]);
+        $result = $this->client->compute->v1->runs->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

@@ -13,6 +13,11 @@ final class ConvertService implements ConvertContract
     /**
      * @api
      */
+    public ConvertRawService $raw;
+
+    /**
+     * @api
+     */
     public V1Service $v1;
 
     /**
@@ -20,6 +25,7 @@ final class ConvertService implements ConvertContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ConvertRawService($client);
         $this->v1 = new V1Service($client);
     }
 }

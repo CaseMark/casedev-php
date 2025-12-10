@@ -6,29 +6,29 @@ namespace Casedev\ServiceContracts\Vault;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
-use Casedev\Vault\Objects\ObjectDownloadParams;
-use Casedev\Vault\Objects\ObjectGetTextParams;
+use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectRetrieveParams;
 
 interface ObjectsContract
 {
     /**
      * @api
      *
-     * @param array<mixed>|ObjectRetrieveParams $params
+     * @param string $objectID Object ID within the vault
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function retrieve(
         string $objectID,
-        array|ObjectRetrieveParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
      * @api
+     *
+     * @param string $id The unique identifier of the vault
      *
      * @throws APIException
      */
@@ -40,39 +40,48 @@ interface ObjectsContract
     /**
      * @api
      *
-     * @param array<mixed>|ObjectCreatePresignedURLParams $params
+     * @param string $objectID Path param: The unique identifier of the object
+     * @param string $id Path param: The unique identifier of the vault
+     * @param string $contentType Body param: Content type for PUT operations (optional, defaults to object's content type)
+     * @param int $expiresIn Body param: URL expiration time in seconds (1 minute to 7 days)
+     * @param 'GET'|'PUT'|'DELETE'|'HEAD'|Operation $operation Body param: The S3 operation to generate URL for
      *
      * @throws APIException
      */
     public function createPresignedURL(
         string $objectID,
-        array|ObjectCreatePresignedURLParams $params,
+        string $id,
+        ?string $contentType = null,
+        int $expiresIn = 3600,
+        string|Operation $operation = 'GET',
         ?RequestOptions $requestOptions = null,
     ): ObjectNewPresignedURLResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|ObjectDownloadParams $params
+     * @param string $objectID Object ID within the vault
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function download(
         string $objectID,
-        array|ObjectDownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|ObjectGetTextParams $params
+     * @param string $objectID The object ID
+     * @param string $id The vault ID
      *
      * @throws APIException
      */
     public function getText(
         string $objectID,
-        array|ObjectGetTextParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 }

@@ -33,9 +33,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->llm->v1->createEmbedding([
-            'input' => 'string', 'model' => 'model',
-        ]);
+        $result = $this->client->llm->v1->createEmbedding(
+            input: 'string',
+            model: 'model'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -48,13 +49,13 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->llm->v1->createEmbedding([
-            'input' => 'string',
-            'model' => 'model',
-            'dimensions' => 0,
-            'encodingFormat' => 'float',
-            'user' => 'user',
-        ]);
+        $result = $this->client->llm->v1->createEmbedding(
+            input: 'string',
+            model: 'model',
+            dimensions: 0,
+            encodingFormat: 'float',
+            user: 'user',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

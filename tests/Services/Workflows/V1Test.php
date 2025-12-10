@@ -43,9 +43,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->create([
-            'name' => 'Document Processor',
-        ]);
+        $result = $this->client->workflows->v1->create(name: 'Document Processor');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);
@@ -58,15 +56,15 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->create([
-            'name' => 'Document Processor',
-            'description' => 'description',
-            'edges' => [[]],
-            'nodes' => [[]],
-            'triggerConfig' => [],
-            'triggerType' => 'manual',
-            'visibility' => 'private',
-        ]);
+        $result = $this->client->workflows->v1->create(
+            name: 'Document Processor',
+            description: 'description',
+            edges: [[]],
+            nodes: [[]],
+            triggerConfig: [],
+            triggerType: 'manual',
+            visibility: 'private',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);
@@ -92,7 +90,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->update('id', []);
+        $result = $this->client->workflows->v1->update('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1UpdateResponse::class, $result);
@@ -105,7 +103,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->list([]);
+        $result = $this->client->workflows->v1->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ListResponse::class, $result);
@@ -144,7 +142,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->execute('id', []);
+        $result = $this->client->workflows->v1->execute('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ExecuteResponse::class, $result);
@@ -157,7 +155,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->workflows->v1->listExecutions('id', []);
+        $result = $this->client->workflows->v1->listExecutions('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ListExecutionsResponse::class, $result);

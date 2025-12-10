@@ -47,7 +47,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->ocr->v1->download('text', ['id' => 'id']);
+        $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -60,7 +60,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->ocr->v1->download('text', ['id' => 'id']);
+        $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -73,9 +73,9 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->ocr->v1->process([
-            'documentURL' => 'https://example.com/contract.pdf',
-        ]);
+        $result = $this->client->ocr->v1->process(
+            documentURL: 'https://example.com/contract.pdf'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ProcessResponse::class, $result);
@@ -88,17 +88,17 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->ocr->v1->process([
-            'documentURL' => 'https://example.com/contract.pdf',
-            'callbackURL' => 'https://your-app.com/webhooks/ocr-complete',
-            'documentID' => 'contract-2024-001',
-            'engine' => 'doctr',
-            'features' => [
+        $result = $this->client->ocr->v1->process(
+            documentURL: 'https://example.com/contract.pdf',
+            callbackURL: 'https://your-app.com/webhooks/ocr-complete',
+            documentID: 'contract-2024-001',
+            engine: 'doctr',
+            features: [
                 'forms' => false, 'layout' => true, 'tables' => true, 'text' => true,
             ],
-            'resultBucket' => 'my-ocr-results',
-            'resultPrefix' => 'ocr/2024/',
-        ]);
+            resultBucket: 'my-ocr-results',
+            resultPrefix: 'ocr/2024/',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ProcessResponse::class, $result);

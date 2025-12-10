@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Llm;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\V1\V1CreateEmbeddingParams;
 use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1Contract;
@@ -18,6 +16,11 @@ final class V1Service implements V1Contract
     /**
      * @api
      */
+    public V1RawService $raw;
+
+    /**
+     * @api
+     */
     public ChatService $chat;
 
     /**
@@ -25,6 +28,7 @@ final class V1Service implements V1Contract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new V1RawService($client);
         $this->chat = new ChatService($client);
     }
 
@@ -33,33 +37,34 @@ final class V1Service implements V1Contract
      *
      * Create vector embeddings from text using OpenAI-compatible models. Perfect for semantic search, document similarity, and building RAG systems for legal documents.
      *
-     * @param array{
-     *   input: string|list<string>,
-     *   model: string,
-     *   dimensions?: int,
-     *   encodingFormat?: 'float'|'base64'|EncodingFormat,
-     *   user?: string,
-     * }|V1CreateEmbeddingParams $params
+     * @param string|list<string> $input Text or array of texts to create embeddings for
+     * @param string $model Embedding model to use (e.g., text-embedding-ada-002, text-embedding-3-small)
+     * @param int $dimensions Number of dimensions for the embeddings (model-specific)
+     * @param 'float'|'base64'|EncodingFormat $encodingFormat Format for returned embeddings
+     * @param string $user Unique identifier for the end-user
      *
      * @throws APIException
      */
     public function createEmbedding(
-        array|V1CreateEmbeddingParams $params,
+        string|array $input,
+        string $model,
+        ?int $dimensions = null,
+        string|EncodingFormat $encodingFormat = 'float',
+        ?string $user = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = V1CreateEmbeddingParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'input' => $input,
+            'model' => $model,
+            'dimensions' => $dimensions,
+            'encodingFormat' => $encodingFormat,
+            'user' => $user,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'llm/v1/embeddings',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createEmbedding(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -75,13 +80,8 @@ final class V1Service implements V1Contract
      */
     public function listModels(?RequestOptions $requestOptions = null): mixed
     {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'llm/v1/models',
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listModels(requestOptions: $requestOptions);
 
         return $response->parse();
     }

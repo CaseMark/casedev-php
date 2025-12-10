@@ -33,7 +33,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->voice->v1->listVoices([]);
+        $result = $this->client->voice->v1->listVoices();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
