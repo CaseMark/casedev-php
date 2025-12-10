@@ -90,17 +90,17 @@ final class V1ProcessResponse implements BaseModel
         ?int $pageCount = null,
         Status|string|null $status = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $documentID && $obj['documentID'] = $documentID;
-        null !== $engine && $obj['engine'] = $engine;
-        null !== $estimatedCompletion && $obj['estimatedCompletion'] = $estimatedCompletion;
-        null !== $pageCount && $obj['pageCount'] = $pageCount;
-        null !== $status && $obj['status'] = $status;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $documentID && $self['documentID'] = $documentID;
+        null !== $engine && $self['engine'] = $engine;
+        null !== $estimatedCompletion && $self['estimatedCompletion'] = $estimatedCompletion;
+        null !== $pageCount && $self['pageCount'] = $pageCount;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withDocumentID(string $documentID): self
     {
-        $obj = clone $this;
-        $obj['documentID'] = $documentID;
+        $self = clone $this;
+        $self['documentID'] = $documentID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withEngine(string $engine): self
     {
-        $obj = clone $this;
-        $obj['engine'] = $engine;
+        $self = clone $this;
+        $self['engine'] = $engine;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,10 +153,10 @@ final class V1ProcessResponse implements BaseModel
     public function withEstimatedCompletion(
         \DateTimeInterface $estimatedCompletion
     ): self {
-        $obj = clone $this;
-        $obj['estimatedCompletion'] = $estimatedCompletion;
+        $self = clone $this;
+        $self['estimatedCompletion'] = $estimatedCompletion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,10 +164,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withPageCount(int $pageCount): self
     {
-        $obj = clone $this;
-        $obj['pageCount'] = $pageCount;
+        $self = clone $this;
+        $self['pageCount'] = $pageCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -177,9 +177,9 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

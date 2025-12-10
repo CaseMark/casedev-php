@@ -90,16 +90,16 @@ final class VaultUploadParams implements BaseModel
         mixed $metadata = null,
         ?float $sizeBytes = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contentType'] = $contentType;
-        $obj['filename'] = $filename;
+        $self['contentType'] = $contentType;
+        $self['filename'] = $filename;
 
-        null !== $autoIndex && $obj['autoIndex'] = $autoIndex;
-        null !== $metadata && $obj['metadata'] = $metadata;
-        null !== $sizeBytes && $obj['sizeBytes'] = $sizeBytes;
+        null !== $autoIndex && $self['autoIndex'] = $autoIndex;
+        null !== $metadata && $self['metadata'] = $metadata;
+        null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class VaultUploadParams implements BaseModel
      */
     public function withContentType(string $contentType): self
     {
-        $obj = clone $this;
-        $obj['contentType'] = $contentType;
+        $self = clone $this;
+        $self['contentType'] = $contentType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class VaultUploadParams implements BaseModel
      */
     public function withFilename(string $filename): self
     {
-        $obj = clone $this;
-        $obj['filename'] = $filename;
+        $self = clone $this;
+        $self['filename'] = $filename;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class VaultUploadParams implements BaseModel
      */
     public function withAutoIndex(bool $autoIndex): self
     {
-        $obj = clone $this;
-        $obj['autoIndex'] = $autoIndex;
+        $self = clone $this;
+        $self['autoIndex'] = $autoIndex;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class VaultUploadParams implements BaseModel
      */
     public function withMetadata(mixed $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,9 +151,9 @@ final class VaultUploadParams implements BaseModel
      */
     public function withSizeBytes(float $sizeBytes): self
     {
-        $obj = clone $this;
-        $obj['sizeBytes'] = $sizeBytes;
+        $self = clone $this;
+        $self['sizeBytes'] = $sizeBytes;
 
-        return $obj;
+        return $self;
     }
 }

@@ -114,20 +114,20 @@ final class ObjectNewPresignedURLResponse implements BaseModel
         ?string $s3Key = null,
         ?string $vaultID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
-        null !== $filename && $obj['filename'] = $filename;
-        null !== $instructions && $obj['instructions'] = $instructions;
-        null !== $metadata && $obj['metadata'] = $metadata;
-        null !== $objectID && $obj['objectID'] = $objectID;
-        null !== $operation && $obj['operation'] = $operation;
-        null !== $presignedURL && $obj['presignedURL'] = $presignedURL;
-        null !== $s3Key && $obj['s3Key'] = $s3Key;
-        null !== $vaultID && $obj['vaultID'] = $vaultID;
+        null !== $expiresAt && $self['expiresAt'] = $expiresAt;
+        null !== $expiresIn && $self['expiresIn'] = $expiresIn;
+        null !== $filename && $self['filename'] = $filename;
+        null !== $instructions && $self['instructions'] = $instructions;
+        null !== $metadata && $self['metadata'] = $metadata;
+        null !== $objectID && $self['objectID'] = $objectID;
+        null !== $operation && $self['operation'] = $operation;
+        null !== $presignedURL && $self['presignedURL'] = $presignedURL;
+        null !== $s3Key && $self['s3Key'] = $s3Key;
+        null !== $vaultID && $self['vaultID'] = $vaultID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withExpiresIn(int $expiresIn): self
     {
-        $obj = clone $this;
-        $obj['expiresIn'] = $expiresIn;
+        $self = clone $this;
+        $self['expiresIn'] = $expiresIn;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,10 +157,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withFilename(string $filename): self
     {
-        $obj = clone $this;
-        $obj['filename'] = $filename;
+        $self = clone $this;
+        $self['filename'] = $filename;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withInstructions(mixed $instructions): self
     {
-        $obj = clone $this;
-        $obj['instructions'] = $instructions;
+        $self = clone $this;
+        $self['instructions'] = $instructions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withMetadata(Metadata|array $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withOperation(string $operation): self
     {
-        $obj = clone $this;
-        $obj['operation'] = $operation;
+        $self = clone $this;
+        $self['operation'] = $operation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -217,10 +217,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withPresignedURL(string $presignedURL): self
     {
-        $obj = clone $this;
-        $obj['presignedURL'] = $presignedURL;
+        $self = clone $this;
+        $self['presignedURL'] = $presignedURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -228,10 +228,10 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withS3Key(string $s3Key): self
     {
-        $obj = clone $this;
-        $obj['s3Key'] = $s3Key;
+        $self = clone $this;
+        $self['s3Key'] = $s3Key;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -239,9 +239,9 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      */
     public function withVaultID(string $vaultID): self
     {
-        $obj = clone $this;
-        $obj['vaultID'] = $vaultID;
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
 
-        return $obj;
+        return $self;
     }
 }

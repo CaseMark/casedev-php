@@ -76,13 +76,13 @@ final class V1ExecuteParams implements BaseModel
         mixed $input,
         Options|array|null $options = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['input'] = $input;
+        $self['input'] = $input;
 
-        null !== $options && $obj['options'] = $options;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class V1ExecuteParams implements BaseModel
      */
     public function withInput(mixed $input): self
     {
-        $obj = clone $this;
-        $obj['input'] = $input;
+        $self = clone $this;
+        $self['input'] = $input;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,9 +103,9 @@ final class V1ExecuteParams implements BaseModel
      */
     public function withOptions(Options|array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

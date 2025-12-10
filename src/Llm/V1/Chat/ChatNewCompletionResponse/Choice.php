@@ -45,29 +45,29 @@ final class Choice implements BaseModel
         ?int $index = null,
         Message|array|null $message = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $finishReason && $obj['finishReason'] = $finishReason;
-        null !== $index && $obj['index'] = $index;
-        null !== $message && $obj['message'] = $message;
+        null !== $finishReason && $self['finishReason'] = $finishReason;
+        null !== $index && $self['index'] = $index;
+        null !== $message && $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     public function withFinishReason(string $finishReason): self
     {
-        $obj = clone $this;
-        $obj['finishReason'] = $finishReason;
+        $self = clone $this;
+        $self['finishReason'] = $finishReason;
 
-        return $obj;
+        return $self;
     }
 
     public function withIndex(int $index): self
     {
-        $obj = clone $this;
-        $obj['index'] = $index;
+        $self = clone $this;
+        $self['index'] = $index;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class Choice implements BaseModel
      */
     public function withMessage(Message|array $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 }

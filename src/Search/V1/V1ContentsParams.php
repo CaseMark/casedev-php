@@ -134,21 +134,21 @@ final class V1ContentsParams implements BaseModel
         ?bool $summary = null,
         ?bool $text = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['urls'] = $urls;
+        $self['urls'] = $urls;
 
-        null !== $context && $obj['context'] = $context;
-        null !== $extras && $obj['extras'] = $extras;
-        null !== $highlights && $obj['highlights'] = $highlights;
-        null !== $livecrawl && $obj['livecrawl'] = $livecrawl;
-        null !== $livecrawlTimeout && $obj['livecrawlTimeout'] = $livecrawlTimeout;
-        null !== $subpages && $obj['subpages'] = $subpages;
-        null !== $subpageTarget && $obj['subpageTarget'] = $subpageTarget;
-        null !== $summary && $obj['summary'] = $summary;
-        null !== $text && $obj['text'] = $text;
+        null !== $context && $self['context'] = $context;
+        null !== $extras && $self['extras'] = $extras;
+        null !== $highlights && $self['highlights'] = $highlights;
+        null !== $livecrawl && $self['livecrawl'] = $livecrawl;
+        null !== $livecrawlTimeout && $self['livecrawlTimeout'] = $livecrawlTimeout;
+        null !== $subpages && $self['subpages'] = $subpages;
+        null !== $subpageTarget && $self['subpageTarget'] = $subpageTarget;
+        null !== $summary && $self['summary'] = $summary;
+        null !== $text && $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withURLs(array $urls): self
     {
-        $obj = clone $this;
-        $obj['urls'] = $urls;
+        $self = clone $this;
+        $self['urls'] = $urls;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withContext(string $context): self
     {
-        $obj = clone $this;
-        $obj['context'] = $context;
+        $self = clone $this;
+        $self['context'] = $context;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,10 +180,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withExtras(mixed $extras): self
     {
-        $obj = clone $this;
-        $obj['extras'] = $extras;
+        $self = clone $this;
+        $self['extras'] = $extras;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withHighlights(bool $highlights): self
     {
-        $obj = clone $this;
-        $obj['highlights'] = $highlights;
+        $self = clone $this;
+        $self['highlights'] = $highlights;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -202,10 +202,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withLivecrawl(bool $livecrawl): self
     {
-        $obj = clone $this;
-        $obj['livecrawl'] = $livecrawl;
+        $self = clone $this;
+        $self['livecrawl'] = $livecrawl;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,10 +213,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withLivecrawlTimeout(int $livecrawlTimeout): self
     {
-        $obj = clone $this;
-        $obj['livecrawlTimeout'] = $livecrawlTimeout;
+        $self = clone $this;
+        $self['livecrawlTimeout'] = $livecrawlTimeout;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -224,10 +224,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withSubpages(bool $subpages): self
     {
-        $obj = clone $this;
-        $obj['subpages'] = $subpages;
+        $self = clone $this;
+        $self['subpages'] = $subpages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,10 +235,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withSubpageTarget(int $subpageTarget): self
     {
-        $obj = clone $this;
-        $obj['subpageTarget'] = $subpageTarget;
+        $self = clone $this;
+        $self['subpageTarget'] = $subpageTarget;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -246,10 +246,10 @@ final class V1ContentsParams implements BaseModel
      */
     public function withSummary(bool $summary): self
     {
-        $obj = clone $this;
-        $obj['summary'] = $summary;
+        $self = clone $this;
+        $self['summary'] = $summary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -257,9 +257,9 @@ final class V1ContentsParams implements BaseModel
      */
     public function withText(bool $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 }

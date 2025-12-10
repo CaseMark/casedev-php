@@ -54,54 +54,54 @@ final class Citation implements BaseModel
         ?string $title = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
-        null !== $text && $obj['text'] = $text;
-        null !== $title && $obj['title'] = $title;
-        null !== $url && $obj['url'] = $url;
+        null !== $id && $self['id'] = $id;
+        null !== $publishedDate && $self['publishedDate'] = $publishedDate;
+        null !== $text && $self['text'] = $text;
+        null !== $title && $self['title'] = $title;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishedDate(string $publishedDate): self
     {
-        $obj = clone $this;
-        $obj['publishedDate'] = $publishedDate;
+        $self = clone $this;
+        $self['publishedDate'] = $publishedDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

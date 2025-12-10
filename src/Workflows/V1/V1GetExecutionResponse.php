@@ -79,99 +79,99 @@ final class V1GetExecutionResponse implements BaseModel
         ?string $triggerType = null,
         ?string $workflowID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $completedAt && $obj['completedAt'] = $completedAt;
-        null !== $durationMs && $obj['durationMs'] = $durationMs;
-        null !== $error && $obj['error'] = $error;
-        null !== $input && $obj['input'] = $input;
-        null !== $output && $obj['output'] = $output;
-        null !== $startedAt && $obj['startedAt'] = $startedAt;
-        null !== $status && $obj['status'] = $status;
-        null !== $triggerType && $obj['triggerType'] = $triggerType;
-        null !== $workflowID && $obj['workflowID'] = $workflowID;
+        null !== $id && $self['id'] = $id;
+        null !== $completedAt && $self['completedAt'] = $completedAt;
+        null !== $durationMs && $self['durationMs'] = $durationMs;
+        null !== $error && $self['error'] = $error;
+        null !== $input && $self['input'] = $input;
+        null !== $output && $self['output'] = $output;
+        null !== $startedAt && $self['startedAt'] = $startedAt;
+        null !== $status && $self['status'] = $status;
+        null !== $triggerType && $self['triggerType'] = $triggerType;
+        null !== $workflowID && $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompletedAt(string $completedAt): self
     {
-        $obj = clone $this;
-        $obj['completedAt'] = $completedAt;
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDurationMs(int $durationMs): self
     {
-        $obj = clone $this;
-        $obj['durationMs'] = $durationMs;
+        $self = clone $this;
+        $self['durationMs'] = $durationMs;
 
-        return $obj;
+        return $self;
     }
 
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     public function withInput(mixed $input): self
     {
-        $obj = clone $this;
-        $obj['input'] = $input;
+        $self = clone $this;
+        $self['input'] = $input;
 
-        return $obj;
+        return $self;
     }
 
     public function withOutput(mixed $output): self
     {
-        $obj = clone $this;
-        $obj['output'] = $output;
+        $self = clone $this;
+        $self['output'] = $output;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartedAt(string $startedAt): self
     {
-        $obj = clone $this;
-        $obj['startedAt'] = $startedAt;
+        $self = clone $this;
+        $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withTriggerType(string $triggerType): self
     {
-        $obj = clone $this;
-        $obj['triggerType'] = $triggerType;
+        $self = clone $this;
+        $self['triggerType'] = $triggerType;
 
-        return $obj;
+        return $self;
     }
 
     public function withWorkflowID(string $workflowID): self
     {
-        $obj = clone $this;
-        $obj['workflowID'] = $workflowID;
+        $self = clone $this;
+        $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 }

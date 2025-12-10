@@ -117,18 +117,18 @@ final class TemplateCreateParams implements BaseModel
         ?array $tags = null,
         ?array $variables = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['content'] = $content;
-        $obj['name'] = $name;
-        $obj['type'] = $type;
+        $self['content'] = $content;
+        $self['name'] = $name;
+        $self['type'] = $type;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $styles && $obj['styles'] = $styles;
-        null !== $tags && $obj['tags'] = $tags;
-        null !== $variables && $obj['variables'] = $variables;
+        null !== $description && $self['description'] = $description;
+        null !== $styles && $self['styles'] = $styles;
+        null !== $tags && $self['tags'] = $tags;
+        null !== $variables && $self['variables'] = $variables;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withContent(string $content): self
     {
-        $obj = clone $this;
-        $obj['content'] = $content;
+        $self = clone $this;
+        $self['content'] = $content;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,10 +171,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,10 +182,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withStyles(mixed $styles): self
     {
-        $obj = clone $this;
-        $obj['styles'] = $styles;
+        $self = clone $this;
+        $self['styles'] = $styles;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withTags(array $tags): self
     {
-        $obj = clone $this;
-        $obj['tags'] = $tags;
+        $self = clone $this;
+        $self['tags'] = $tags;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,9 +208,9 @@ final class TemplateCreateParams implements BaseModel
      */
     public function withVariables(array $variables): self
     {
-        $obj = clone $this;
-        $obj['variables'] = $variables;
+        $self = clone $this;
+        $self['variables'] = $variables;
 
-        return $obj;
+        return $self;
     }
 }

@@ -70,15 +70,15 @@ final class SynchronousResponse implements BaseModel
         ?string $runID = null,
         Status|string|null $status = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $duration && $obj['duration'] = $duration;
-        null !== $error && $obj['error'] = $error;
-        null !== $output && $obj['output'] = $output;
-        null !== $runID && $obj['runID'] = $runID;
-        null !== $status && $obj['status'] = $status;
+        null !== $duration && $self['duration'] = $duration;
+        null !== $error && $self['error'] = $error;
+        null !== $output && $self['output'] = $output;
+        null !== $runID && $self['runID'] = $runID;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,10 +86,10 @@ final class SynchronousResponse implements BaseModel
      */
     public function withDuration(float $duration): self
     {
-        $obj = clone $this;
-        $obj['duration'] = $duration;
+        $self = clone $this;
+        $self['duration'] = $duration;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,10 +97,10 @@ final class SynchronousResponse implements BaseModel
      */
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class SynchronousResponse implements BaseModel
      */
     public function withOutput(mixed $output): self
     {
-        $obj = clone $this;
-        $obj['output'] = $output;
+        $self = clone $this;
+        $self['output'] = $output;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class SynchronousResponse implements BaseModel
      */
     public function withRunID(string $runID): self
     {
-        $obj = clone $this;
-        $obj['runID'] = $runID;
+        $self = clone $this;
+        $self['runID'] = $runID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,9 +130,9 @@ final class SynchronousResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

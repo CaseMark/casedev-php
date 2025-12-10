@@ -46,12 +46,12 @@ final class SecretDeleteGroupParams implements BaseModel
      */
     public static function with(?string $env = null, ?string $key = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $env && $obj['env'] = $env;
-        null !== $key && $obj['key'] = $key;
+        null !== $env && $self['env'] = $env;
+        null !== $key && $self['key'] = $key;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -59,10 +59,10 @@ final class SecretDeleteGroupParams implements BaseModel
      */
     public function withEnv(string $env): self
     {
-        $obj = clone $this;
-        $obj['env'] = $env;
+        $self = clone $this;
+        $self['env'] = $env;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,9 +70,9 @@ final class SecretDeleteGroupParams implements BaseModel
      */
     public function withKey(string $key): self
     {
-        $obj = clone $this;
-        $obj['key'] = $key;
+        $self = clone $this;
+        $self['key'] = $key;
 
-        return $obj;
+        return $self;
     }
 }

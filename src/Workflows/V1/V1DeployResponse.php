@@ -52,30 +52,30 @@ final class V1DeployResponse implements BaseModel
         ?string $webhookSecret = null,
         ?string $webhookURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $message && $obj['message'] = $message;
-        null !== $success && $obj['success'] = $success;
-        null !== $webhookSecret && $obj['webhookSecret'] = $webhookSecret;
-        null !== $webhookURL && $obj['webhookURL'] = $webhookURL;
+        null !== $message && $self['message'] = $message;
+        null !== $success && $self['success'] = $success;
+        null !== $webhookSecret && $self['webhookSecret'] = $webhookSecret;
+        null !== $webhookURL && $self['webhookURL'] = $webhookURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     public function withSuccess(bool $success): self
     {
-        $obj = clone $this;
-        $obj['success'] = $success;
+        $self = clone $this;
+        $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,17 +83,17 @@ final class V1DeployResponse implements BaseModel
      */
     public function withWebhookSecret(string $webhookSecret): self
     {
-        $obj = clone $this;
-        $obj['webhookSecret'] = $webhookSecret;
+        $self = clone $this;
+        $self['webhookSecret'] = $webhookSecret;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebhookURL(string $webhookURL): self
     {
-        $obj = clone $this;
-        $obj['webhookURL'] = $webhookURL;
+        $self = clone $this;
+        $self['webhookURL'] = $webhookURL;
 
-        return $obj;
+        return $self;
     }
 }

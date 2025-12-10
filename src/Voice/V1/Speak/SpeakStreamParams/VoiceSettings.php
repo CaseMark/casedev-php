@@ -61,14 +61,14 @@ final class VoiceSettings implements BaseModel
         ?float $style = null,
         ?bool $useSpeakerBoost = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $similarityBoost && $obj['similarityBoost'] = $similarityBoost;
-        null !== $stability && $obj['stability'] = $stability;
-        null !== $style && $obj['style'] = $style;
-        null !== $useSpeakerBoost && $obj['useSpeakerBoost'] = $useSpeakerBoost;
+        null !== $similarityBoost && $self['similarityBoost'] = $similarityBoost;
+        null !== $stability && $self['stability'] = $stability;
+        null !== $style && $self['style'] = $style;
+        null !== $useSpeakerBoost && $self['useSpeakerBoost'] = $useSpeakerBoost;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class VoiceSettings implements BaseModel
      */
     public function withSimilarityBoost(float $similarityBoost): self
     {
-        $obj = clone $this;
-        $obj['similarityBoost'] = $similarityBoost;
+        $self = clone $this;
+        $self['similarityBoost'] = $similarityBoost;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class VoiceSettings implements BaseModel
      */
     public function withStability(float $stability): self
     {
-        $obj = clone $this;
-        $obj['stability'] = $stability;
+        $self = clone $this;
+        $self['stability'] = $stability;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class VoiceSettings implements BaseModel
      */
     public function withStyle(float $style): self
     {
-        $obj = clone $this;
-        $obj['style'] = $style;
+        $self = clone $this;
+        $self['style'] = $style;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class VoiceSettings implements BaseModel
      */
     public function withUseSpeakerBoost(bool $useSpeakerBoost): self
     {
-        $obj = clone $this;
-        $obj['useSpeakerBoost'] = $useSpeakerBoost;
+        $self = clone $this;
+        $self['useSpeakerBoost'] = $useSpeakerBoost;
 
-        return $obj;
+        return $self;
     }
 }

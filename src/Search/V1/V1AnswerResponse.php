@@ -72,14 +72,14 @@ final class V1AnswerResponse implements BaseModel
         ?string $model = null,
         ?string $searchType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $answer && $obj['answer'] = $answer;
-        null !== $citations && $obj['citations'] = $citations;
-        null !== $model && $obj['model'] = $model;
-        null !== $searchType && $obj['searchType'] = $searchType;
+        null !== $answer && $self['answer'] = $answer;
+        null !== $citations && $self['citations'] = $citations;
+        null !== $model && $self['model'] = $model;
+        null !== $searchType && $self['searchType'] = $searchType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class V1AnswerResponse implements BaseModel
      */
     public function withAnswer(string $answer): self
     {
-        $obj = clone $this;
-        $obj['answer'] = $answer;
+        $self = clone $this;
+        $self['answer'] = $answer;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class V1AnswerResponse implements BaseModel
      */
     public function withCitations(array $citations): self
     {
-        $obj = clone $this;
-        $obj['citations'] = $citations;
+        $self = clone $this;
+        $self['citations'] = $citations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class V1AnswerResponse implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -128,9 +128,9 @@ final class V1AnswerResponse implements BaseModel
      */
     public function withSearchType(string $searchType): self
     {
-        $obj = clone $this;
-        $obj['searchType'] = $searchType;
+        $self = clone $this;
+        $self['searchType'] = $searchType;
 
-        return $obj;
+        return $self;
     }
 }

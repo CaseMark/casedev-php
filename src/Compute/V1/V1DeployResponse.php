@@ -77,16 +77,16 @@ final class V1DeployResponse implements BaseModel
         ?string $status = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $deploymentID && $obj['deploymentID'] = $deploymentID;
-        null !== $environment && $obj['environment'] = $environment;
-        null !== $runtime && $obj['runtime'] = $runtime;
-        null !== $status && $obj['status'] = $status;
-        null !== $url && $obj['url'] = $url;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $deploymentID && $self['deploymentID'] = $deploymentID;
+        null !== $environment && $self['environment'] = $environment;
+        null !== $runtime && $self['runtime'] = $runtime;
+        null !== $status && $self['status'] = $status;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class V1DeployResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class V1DeployResponse implements BaseModel
      */
     public function withDeploymentID(string $deploymentID): self
     {
-        $obj = clone $this;
-        $obj['deploymentID'] = $deploymentID;
+        $self = clone $this;
+        $self['deploymentID'] = $deploymentID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class V1DeployResponse implements BaseModel
      */
     public function withEnvironment(string $environment): self
     {
-        $obj = clone $this;
-        $obj['environment'] = $environment;
+        $self = clone $this;
+        $self['environment'] = $environment;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class V1DeployResponse implements BaseModel
      */
     public function withRuntime(string $runtime): self
     {
-        $obj = clone $this;
-        $obj['runtime'] = $runtime;
+        $self = clone $this;
+        $self['runtime'] = $runtime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,10 +138,10 @@ final class V1DeployResponse implements BaseModel
      */
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -149,9 +149,9 @@ final class V1DeployResponse implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

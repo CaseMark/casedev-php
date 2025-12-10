@@ -44,11 +44,11 @@ final class Options implements BaseModel
      */
     public static function with(?array $components = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $components && $obj['components'] = $components;
+        null !== $components && $self['components'] = $components;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,9 +63,9 @@ final class Options implements BaseModel
      */
     public function withComponents(array $components): self
     {
-        $obj = clone $this;
-        $obj['components'] = $components;
+        $self = clone $this;
+        $self['components'] = $components;
 
-        return $obj;
+        return $self;
     }
 }

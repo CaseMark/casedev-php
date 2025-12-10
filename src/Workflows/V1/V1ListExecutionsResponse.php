@@ -44,11 +44,11 @@ final class V1ListExecutionsResponse implements BaseModel
      */
     public static function with(?array $executions = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $executions && $obj['executions'] = $executions;
+        null !== $executions && $self['executions'] = $executions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,9 +63,9 @@ final class V1ListExecutionsResponse implements BaseModel
      */
     public function withExecutions(array $executions): self
     {
-        $obj = clone $this;
-        $obj['executions'] = $executions;
+        $self = clone $this;
+        $self['executions'] = $executions;
 
-        return $obj;
+        return $self;
     }
 }

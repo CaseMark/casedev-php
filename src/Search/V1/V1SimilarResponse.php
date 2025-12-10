@@ -56,21 +56,21 @@ final class V1SimilarResponse implements BaseModel
         ?array $results = null,
         ?int $totalResults = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $processingTime && $obj['processingTime'] = $processingTime;
-        null !== $results && $obj['results'] = $results;
-        null !== $totalResults && $obj['totalResults'] = $totalResults;
+        null !== $processingTime && $self['processingTime'] = $processingTime;
+        null !== $results && $self['results'] = $results;
+        null !== $totalResults && $self['totalResults'] = $totalResults;
 
-        return $obj;
+        return $self;
     }
 
     public function withProcessingTime(float $processingTime): self
     {
-        $obj = clone $this;
-        $obj['processingTime'] = $processingTime;
+        $self = clone $this;
+        $self['processingTime'] = $processingTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,17 +86,17 @@ final class V1SimilarResponse implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotalResults(int $totalResults): self
     {
-        $obj = clone $this;
-        $obj['totalResults'] = $totalResults;
+        $self = clone $this;
+        $self['totalResults'] = $totalResults;
 
-        return $obj;
+        return $self;
     }
 }

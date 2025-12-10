@@ -114,18 +114,18 @@ final class TranscriptionGetResponse implements BaseModel
         ?string $text = null,
         ?array $words = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['status'] = $status;
+        $self['id'] = $id;
+        $self['status'] = $status;
 
-        null !== $audioDuration && $obj['audioDuration'] = $audioDuration;
-        null !== $confidence && $obj['confidence'] = $confidence;
-        null !== $error && $obj['error'] = $error;
-        null !== $text && $obj['text'] = $text;
-        null !== $words && $obj['words'] = $words;
+        null !== $audioDuration && $self['audioDuration'] = $audioDuration;
+        null !== $confidence && $self['confidence'] = $confidence;
+        null !== $error && $self['error'] = $error;
+        null !== $text && $self['text'] = $text;
+        null !== $words && $self['words'] = $words;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,10 +157,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withAudioDuration(float $audioDuration): self
     {
-        $obj = clone $this;
-        $obj['audioDuration'] = $audioDuration;
+        $self = clone $this;
+        $self['audioDuration'] = $audioDuration;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withConfidence(float $confidence): self
     {
-        $obj = clone $this;
-        $obj['confidence'] = $confidence;
+        $self = clone $this;
+        $self['confidence'] = $confidence;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -179,10 +179,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,9 +208,9 @@ final class TranscriptionGetResponse implements BaseModel
      */
     public function withWords(array $words): self
     {
-        $obj = clone $this;
-        $obj['words'] = $words;
+        $self = clone $this;
+        $self['words'] = $words;
 
-        return $obj;
+        return $self;
     }
 }

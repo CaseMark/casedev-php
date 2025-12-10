@@ -62,13 +62,13 @@ final class V1SearchResponse implements BaseModel
         ?array $results = null,
         ?int $totalResults = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $query && $obj['query'] = $query;
-        null !== $results && $obj['results'] = $results;
-        null !== $totalResults && $obj['totalResults'] = $totalResults;
+        null !== $query && $self['query'] = $query;
+        null !== $results && $self['results'] = $results;
+        null !== $totalResults && $self['totalResults'] = $totalResults;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class V1SearchResponse implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class V1SearchResponse implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,9 +106,9 @@ final class V1SearchResponse implements BaseModel
      */
     public function withTotalResults(int $totalResults): self
     {
-        $obj = clone $this;
-        $obj['totalResults'] = $totalResults;
+        $self = clone $this;
+        $self['totalResults'] = $totalResults;
 
-        return $obj;
+        return $self;
     }
 }

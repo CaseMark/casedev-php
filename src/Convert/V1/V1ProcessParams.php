@@ -69,13 +69,13 @@ final class V1ProcessParams implements BaseModel
         string $inputURL,
         ?string $callbackURL = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputURL'] = $inputURL;
+        $self['inputURL'] = $inputURL;
 
-        null !== $callbackURL && $obj['callbackURL'] = $callbackURL;
+        null !== $callbackURL && $self['callbackURL'] = $callbackURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withInputURL(string $inputURL): self
     {
-        $obj = clone $this;
-        $obj['inputURL'] = $inputURL;
+        $self = clone $this;
+        $self['inputURL'] = $inputURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class V1ProcessParams implements BaseModel
      */
     public function withCallbackURL(string $callbackURL): self
     {
-        $obj = clone $this;
-        $obj['callbackURL'] = $callbackURL;
+        $self = clone $this;
+        $self['callbackURL'] = $callbackURL;
 
-        return $obj;
+        return $self;
     }
 }

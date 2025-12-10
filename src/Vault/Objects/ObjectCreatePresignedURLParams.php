@@ -84,23 +84,23 @@ final class ObjectCreatePresignedURLParams implements BaseModel
         ?int $expiresIn = null,
         Operation|string|null $operation = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $contentType && $obj['contentType'] = $contentType;
-        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
-        null !== $operation && $obj['operation'] = $operation;
+        null !== $contentType && $self['contentType'] = $contentType;
+        null !== $expiresIn && $self['expiresIn'] = $expiresIn;
+        null !== $operation && $self['operation'] = $operation;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class ObjectCreatePresignedURLParams implements BaseModel
      */
     public function withContentType(string $contentType): self
     {
-        $obj = clone $this;
-        $obj['contentType'] = $contentType;
+        $self = clone $this;
+        $self['contentType'] = $contentType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class ObjectCreatePresignedURLParams implements BaseModel
      */
     public function withExpiresIn(int $expiresIn): self
     {
-        $obj = clone $this;
-        $obj['expiresIn'] = $expiresIn;
+        $self = clone $this;
+        $self['expiresIn'] = $expiresIn;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,9 +132,9 @@ final class ObjectCreatePresignedURLParams implements BaseModel
      */
     public function withOperation(Operation|string $operation): self
     {
-        $obj = clone $this;
-        $obj['operation'] = $operation;
+        $self = clone $this;
+        $self['operation'] = $operation;
 
-        return $obj;
+        return $self;
     }
 }

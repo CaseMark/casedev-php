@@ -57,13 +57,13 @@ final class RunListParams implements BaseModel
         ?string $function = null,
         ?int $limit = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $env && $obj['env'] = $env;
-        null !== $function && $obj['function'] = $function;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $env && $self['env'] = $env;
+        null !== $function && $self['function'] = $function;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class RunListParams implements BaseModel
      */
     public function withEnv(string $env): self
     {
-        $obj = clone $this;
-        $obj['env'] = $env;
+        $self = clone $this;
+        $self['env'] = $env;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,10 +82,10 @@ final class RunListParams implements BaseModel
      */
     public function withFunction(string $function): self
     {
-        $obj = clone $this;
-        $obj['function'] = $function;
+        $self = clone $this;
+        $self['function'] = $function;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,9 +93,9 @@ final class RunListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

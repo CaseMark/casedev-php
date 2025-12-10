@@ -49,45 +49,45 @@ final class Metadata implements BaseModel
         ?string $region = null,
         ?int $sizeBytes = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $bucket && $obj['bucket'] = $bucket;
-        null !== $contentType && $obj['contentType'] = $contentType;
-        null !== $region && $obj['region'] = $region;
-        null !== $sizeBytes && $obj['sizeBytes'] = $sizeBytes;
+        null !== $bucket && $self['bucket'] = $bucket;
+        null !== $contentType && $self['contentType'] = $contentType;
+        null !== $region && $self['region'] = $region;
+        null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
 
-        return $obj;
+        return $self;
     }
 
     public function withBucket(string $bucket): self
     {
-        $obj = clone $this;
-        $obj['bucket'] = $bucket;
+        $self = clone $this;
+        $self['bucket'] = $bucket;
 
-        return $obj;
+        return $self;
     }
 
     public function withContentType(string $contentType): self
     {
-        $obj = clone $this;
-        $obj['contentType'] = $contentType;
+        $self = clone $this;
+        $self['contentType'] = $contentType;
 
-        return $obj;
+        return $self;
     }
 
     public function withRegion(string $region): self
     {
-        $obj = clone $this;
-        $obj['region'] = $region;
+        $self = clone $this;
+        $self['region'] = $region;
 
-        return $obj;
+        return $self;
     }
 
     public function withSizeBytes(int $sizeBytes): self
     {
-        $obj = clone $this;
-        $obj['sizeBytes'] = $sizeBytes;
+        $self = clone $this;
+        $self['sizeBytes'] = $sizeBytes;
 
-        return $obj;
+        return $self;
     }
 }

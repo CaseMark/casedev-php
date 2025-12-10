@@ -51,13 +51,13 @@ final class V1ResearchResponse implements BaseModel
         ?string $researchID = null,
         mixed $results = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $model && $obj['model'] = $model;
-        null !== $researchID && $obj['researchID'] = $researchID;
-        null !== $results && $obj['results'] = $results;
+        null !== $model && $self['model'] = $model;
+        null !== $researchID && $self['researchID'] = $researchID;
+        null !== $results && $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -65,10 +65,10 @@ final class V1ResearchResponse implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class V1ResearchResponse implements BaseModel
      */
     public function withResearchID(string $researchID): self
     {
-        $obj = clone $this;
-        $obj['researchID'] = $researchID;
+        $self = clone $this;
+        $self['researchID'] = $researchID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,9 +87,9 @@ final class V1ResearchResponse implements BaseModel
      */
     public function withResults(mixed $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 }

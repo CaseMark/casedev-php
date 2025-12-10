@@ -64,73 +64,73 @@ final class Source implements BaseModel
         ?int $pageCount = null,
         ?int $textLength = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $chunkCount && $obj['chunkCount'] = $chunkCount;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $filename && $obj['filename'] = $filename;
-        null !== $ingestionCompletedAt && $obj['ingestionCompletedAt'] = $ingestionCompletedAt;
-        null !== $pageCount && $obj['pageCount'] = $pageCount;
-        null !== $textLength && $obj['textLength'] = $textLength;
+        null !== $id && $self['id'] = $id;
+        null !== $chunkCount && $self['chunkCount'] = $chunkCount;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $filename && $self['filename'] = $filename;
+        null !== $ingestionCompletedAt && $self['ingestionCompletedAt'] = $ingestionCompletedAt;
+        null !== $pageCount && $self['pageCount'] = $pageCount;
+        null !== $textLength && $self['textLength'] = $textLength;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withChunkCount(int $chunkCount): self
     {
-        $obj = clone $this;
-        $obj['chunkCount'] = $chunkCount;
+        $self = clone $this;
+        $self['chunkCount'] = $chunkCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withFilename(string $filename): self
     {
-        $obj = clone $this;
-        $obj['filename'] = $filename;
+        $self = clone $this;
+        $self['filename'] = $filename;
 
-        return $obj;
+        return $self;
     }
 
     public function withIngestionCompletedAt(
         \DateTimeInterface $ingestionCompletedAt
     ): self {
-        $obj = clone $this;
-        $obj['ingestionCompletedAt'] = $ingestionCompletedAt;
+        $self = clone $this;
+        $self['ingestionCompletedAt'] = $ingestionCompletedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageCount(int $pageCount): self
     {
-        $obj = clone $this;
-        $obj['pageCount'] = $pageCount;
+        $self = clone $this;
+        $self['pageCount'] = $pageCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withTextLength(int $textLength): self
     {
-        $obj = clone $this;
-        $obj['textLength'] = $textLength;
+        $self = clone $this;
+        $self['textLength'] = $textLength;
 
-        return $obj;
+        return $self;
     }
 }

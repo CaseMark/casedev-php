@@ -85,17 +85,17 @@ final class Vault implements BaseModel
         ?int $totalBytes = null,
         ?int $totalObjects = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $description && $obj['description'] = $description;
-        null !== $enableGraph && $obj['enableGraph'] = $enableGraph;
-        null !== $name && $obj['name'] = $name;
-        null !== $totalBytes && $obj['totalBytes'] = $totalBytes;
-        null !== $totalObjects && $obj['totalObjects'] = $totalObjects;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $description && $self['description'] = $description;
+        null !== $enableGraph && $self['enableGraph'] = $enableGraph;
+        null !== $name && $self['name'] = $name;
+        null !== $totalBytes && $self['totalBytes'] = $totalBytes;
+        null !== $totalObjects && $self['totalObjects'] = $totalObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,10 +103,10 @@ final class Vault implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class Vault implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class Vault implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class Vault implements BaseModel
      */
     public function withEnableGraph(bool $enableGraph): self
     {
-        $obj = clone $this;
-        $obj['enableGraph'] = $enableGraph;
+        $self = clone $this;
+        $self['enableGraph'] = $enableGraph;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class Vault implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class Vault implements BaseModel
      */
     public function withTotalBytes(int $totalBytes): self
     {
-        $obj = clone $this;
-        $obj['totalBytes'] = $totalBytes;
+        $self = clone $this;
+        $self['totalBytes'] = $totalBytes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,9 +169,9 @@ final class Vault implements BaseModel
      */
     public function withTotalObjects(int $totalObjects): self
     {
-        $obj = clone $this;
-        $obj['totalObjects'] = $totalObjects;
+        $self = clone $this;
+        $self['totalObjects'] = $totalObjects;
 
-        return $obj;
+        return $self;
     }
 }

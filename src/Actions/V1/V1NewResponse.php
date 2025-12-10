@@ -84,108 +84,108 @@ final class V1NewResponse implements BaseModel
         ?float $version = null,
         ?string $webhookEndpointID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdBy && $obj['createdBy'] = $createdBy;
-        null !== $definition && $obj['definition'] = $definition;
-        null !== $description && $obj['description'] = $description;
-        null !== $isActive && $obj['isActive'] = $isActive;
-        null !== $name && $obj['name'] = $name;
-        null !== $organizationID && $obj['organizationID'] = $organizationID;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $version && $obj['version'] = $version;
-        null !== $webhookEndpointID && $obj['webhookEndpointID'] = $webhookEndpointID;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdBy && $self['createdBy'] = $createdBy;
+        null !== $definition && $self['definition'] = $definition;
+        null !== $description && $self['description'] = $description;
+        null !== $isActive && $self['isActive'] = $isActive;
+        null !== $name && $self['name'] = $name;
+        null !== $organizationID && $self['organizationID'] = $organizationID;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $version && $self['version'] = $version;
+        null !== $webhookEndpointID && $self['webhookEndpointID'] = $webhookEndpointID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(string $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedBy(string $createdBy): self
     {
-        $obj = clone $this;
-        $obj['createdBy'] = $createdBy;
+        $self = clone $this;
+        $self['createdBy'] = $createdBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefinition(mixed $definition): self
     {
-        $obj = clone $this;
-        $obj['definition'] = $definition;
+        $self = clone $this;
+        $self['definition'] = $definition;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsActive(bool $isActive): self
     {
-        $obj = clone $this;
-        $obj['isActive'] = $isActive;
+        $self = clone $this;
+        $self['isActive'] = $isActive;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withOrganizationID(string $organizationID): self
     {
-        $obj = clone $this;
-        $obj['organizationID'] = $organizationID;
+        $self = clone $this;
+        $self['organizationID'] = $organizationID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(string $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withVersion(float $version): self
     {
-        $obj = clone $this;
-        $obj['version'] = $version;
+        $self = clone $this;
+        $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebhookEndpointID(string $webhookEndpointID): self
     {
-        $obj = clone $this;
-        $obj['webhookEndpointID'] = $webhookEndpointID;
+        $self = clone $this;
+        $self['webhookEndpointID'] = $webhookEndpointID;
 
-        return $obj;
+        return $self;
     }
 }

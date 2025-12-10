@@ -81,16 +81,16 @@ final class Result implements BaseModel
         ?string $title = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $highlights && $obj['highlights'] = $highlights;
-        null !== $metadata && $obj['metadata'] = $metadata;
-        null !== $summary && $obj['summary'] = $summary;
-        null !== $text && $obj['text'] = $text;
-        null !== $title && $obj['title'] = $title;
-        null !== $url && $obj['url'] = $url;
+        null !== $highlights && $self['highlights'] = $highlights;
+        null !== $metadata && $self['metadata'] = $metadata;
+        null !== $summary && $self['summary'] = $summary;
+        null !== $text && $self['text'] = $text;
+        null !== $title && $self['title'] = $title;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,10 +100,10 @@ final class Result implements BaseModel
      */
     public function withHighlights(array $highlights): self
     {
-        $obj = clone $this;
-        $obj['highlights'] = $highlights;
+        $self = clone $this;
+        $self['highlights'] = $highlights;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class Result implements BaseModel
      */
     public function withMetadata(mixed $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class Result implements BaseModel
      */
     public function withSummary(string $summary): self
     {
-        $obj = clone $this;
-        $obj['summary'] = $summary;
+        $self = clone $this;
+        $self['summary'] = $summary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class Result implements BaseModel
      */
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,10 +144,10 @@ final class Result implements BaseModel
      */
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,9 +155,9 @@ final class Result implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

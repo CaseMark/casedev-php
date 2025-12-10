@@ -87,15 +87,15 @@ final class V1CreateParams implements BaseModel
         ?string $description = null,
         ?string $webhookID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['definition'] = $definition;
-        $obj['name'] = $name;
+        $self['definition'] = $definition;
+        $self['name'] = $name;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $webhookID && $obj['webhookID'] = $webhookID;
+        null !== $description && $self['description'] = $description;
+        null !== $webhookID && $self['webhookID'] = $webhookID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withDefinition(mixed $definition): self
     {
-        $obj = clone $this;
-        $obj['definition'] = $definition;
+        $self = clone $this;
+        $self['definition'] = $definition;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,9 +138,9 @@ final class V1CreateParams implements BaseModel
      */
     public function withWebhookID(string $webhookID): self
     {
-        $obj = clone $this;
-        $obj['webhookID'] = $webhookID;
+        $self = clone $this;
+        $self['webhookID'] = $webhookID;
 
-        return $obj;
+        return $self;
     }
 }

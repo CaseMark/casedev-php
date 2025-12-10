@@ -50,27 +50,27 @@ final class EnvironmentDeleteResponse implements BaseModel
      */
     public static function with(string $message, bool $success): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['message'] = $message;
-        $obj['success'] = $success;
+        $self['message'] = $message;
+        $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     public function withSuccess(bool $success): self
     {
-        $obj = clone $this;
-        $obj['success'] = $success;
+        $self = clone $this;
+        $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 }

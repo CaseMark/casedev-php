@@ -58,47 +58,47 @@ final class V1ExecuteResponse implements BaseModel
         mixed $outputs = null,
         Status|string|null $status = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $duration && $obj['duration'] = $duration;
-        null !== $error && $obj['error'] = $error;
-        null !== $executionID && $obj['executionID'] = $executionID;
-        null !== $outputs && $obj['outputs'] = $outputs;
-        null !== $status && $obj['status'] = $status;
+        null !== $duration && $self['duration'] = $duration;
+        null !== $error && $self['error'] = $error;
+        null !== $executionID && $self['executionID'] = $executionID;
+        null !== $outputs && $self['outputs'] = $outputs;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withDuration(int $duration): self
     {
-        $obj = clone $this;
-        $obj['duration'] = $duration;
+        $self = clone $this;
+        $self['duration'] = $duration;
 
-        return $obj;
+        return $self;
     }
 
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     public function withExecutionID(string $executionID): self
     {
-        $obj = clone $this;
-        $obj['executionID'] = $executionID;
+        $self = clone $this;
+        $self['executionID'] = $executionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withOutputs(mixed $outputs): self
     {
-        $obj = clone $this;
-        $obj['outputs'] = $outputs;
+        $self = clone $this;
+        $self['outputs'] = $outputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,9 +106,9 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

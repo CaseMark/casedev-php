@@ -59,63 +59,63 @@ final class Execution implements BaseModel
         ?string $status = null,
         ?string $triggerType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $completedAt && $obj['completedAt'] = $completedAt;
-        null !== $durationMs && $obj['durationMs'] = $durationMs;
-        null !== $startedAt && $obj['startedAt'] = $startedAt;
-        null !== $status && $obj['status'] = $status;
-        null !== $triggerType && $obj['triggerType'] = $triggerType;
+        null !== $id && $self['id'] = $id;
+        null !== $completedAt && $self['completedAt'] = $completedAt;
+        null !== $durationMs && $self['durationMs'] = $durationMs;
+        null !== $startedAt && $self['startedAt'] = $startedAt;
+        null !== $status && $self['status'] = $status;
+        null !== $triggerType && $self['triggerType'] = $triggerType;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompletedAt(string $completedAt): self
     {
-        $obj = clone $this;
-        $obj['completedAt'] = $completedAt;
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDurationMs(int $durationMs): self
     {
-        $obj = clone $this;
-        $obj['durationMs'] = $durationMs;
+        $self = clone $this;
+        $self['durationMs'] = $durationMs;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartedAt(string $startedAt): self
     {
-        $obj = clone $this;
-        $obj['startedAt'] = $startedAt;
+        $self = clone $this;
+        $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withTriggerType(string $triggerType): self
     {
-        $obj = clone $this;
-        $obj['triggerType'] = $triggerType;
+        $self = clone $this;
+        $self['triggerType'] = $triggerType;
 
-        return $obj;
+        return $self;
     }
 }

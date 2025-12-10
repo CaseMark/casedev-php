@@ -90,15 +90,15 @@ final class VaultSearchParams implements BaseModel
         Method|string|null $method = null,
         ?int $topK = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['query'] = $query;
+        $self['query'] = $query;
 
-        null !== $filters && $obj['filters'] = $filters;
-        null !== $method && $obj['method'] = $method;
-        null !== $topK && $obj['topK'] = $topK;
+        null !== $filters && $self['filters'] = $filters;
+        null !== $method && $self['method'] = $method;
+        null !== $topK && $self['topK'] = $topK;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class VaultSearchParams implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class VaultSearchParams implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class VaultSearchParams implements BaseModel
      */
     public function withMethod(Method|string $method): self
     {
-        $obj = clone $this;
-        $obj['method'] = $method;
+        $self = clone $this;
+        $self['method'] = $method;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,9 +143,9 @@ final class VaultSearchParams implements BaseModel
      */
     public function withTopK(int $topK): self
     {
-        $obj = clone $this;
-        $obj['topK'] = $topK;
+        $self = clone $this;
+        $self['topK'] = $topK;
 
-        return $obj;
+        return $self;
     }
 }

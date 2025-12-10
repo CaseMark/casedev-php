@@ -56,13 +56,13 @@ final class V1ProcessResponse implements BaseModel
         ?string $message = null,
         Status|string|null $status = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $jobID && $obj['jobID'] = $jobID;
-        null !== $message && $obj['message'] = $message;
-        null !== $status && $obj['status'] = $status;
+        null !== $jobID && $self['jobID'] = $jobID;
+        null !== $message && $self['message'] = $message;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,10 +70,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withJobID(string $jobID): self
     {
-        $obj = clone $this;
-        $obj['jobID'] = $jobID;
+        $self = clone $this;
+        $self['jobID'] = $jobID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class V1ProcessResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

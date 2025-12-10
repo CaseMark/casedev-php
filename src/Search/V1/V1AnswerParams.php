@@ -149,22 +149,22 @@ final class V1AnswerParams implements BaseModel
         ?bool $text = null,
         ?bool $useCustomLlm = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['query'] = $query;
+        $self['query'] = $query;
 
-        null !== $excludeDomains && $obj['excludeDomains'] = $excludeDomains;
-        null !== $includeDomains && $obj['includeDomains'] = $includeDomains;
-        null !== $maxTokens && $obj['maxTokens'] = $maxTokens;
-        null !== $model && $obj['model'] = $model;
-        null !== $numResults && $obj['numResults'] = $numResults;
-        null !== $searchType && $obj['searchType'] = $searchType;
-        null !== $stream && $obj['stream'] = $stream;
-        null !== $temperature && $obj['temperature'] = $temperature;
-        null !== $text && $obj['text'] = $text;
-        null !== $useCustomLlm && $obj['useCustomLlm'] = $useCustomLlm;
+        null !== $excludeDomains && $self['excludeDomains'] = $excludeDomains;
+        null !== $includeDomains && $self['includeDomains'] = $includeDomains;
+        null !== $maxTokens && $self['maxTokens'] = $maxTokens;
+        null !== $model && $self['model'] = $model;
+        null !== $numResults && $self['numResults'] = $numResults;
+        null !== $searchType && $self['searchType'] = $searchType;
+        null !== $stream && $self['stream'] = $stream;
+        null !== $temperature && $self['temperature'] = $temperature;
+        null !== $text && $self['text'] = $text;
+        null !== $useCustomLlm && $self['useCustomLlm'] = $useCustomLlm;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,10 +185,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withExcludeDomains(array $excludeDomains): self
     {
-        $obj = clone $this;
-        $obj['excludeDomains'] = $excludeDomains;
+        $self = clone $this;
+        $self['excludeDomains'] = $excludeDomains;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -198,10 +198,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withIncludeDomains(array $includeDomains): self
     {
-        $obj = clone $this;
-        $obj['includeDomains'] = $includeDomains;
+        $self = clone $this;
+        $self['includeDomains'] = $includeDomains;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -209,10 +209,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withMaxTokens(int $maxTokens): self
     {
-        $obj = clone $this;
-        $obj['maxTokens'] = $maxTokens;
+        $self = clone $this;
+        $self['maxTokens'] = $maxTokens;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -220,10 +220,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -231,10 +231,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withNumResults(int $numResults): self
     {
-        $obj = clone $this;
-        $obj['numResults'] = $numResults;
+        $self = clone $this;
+        $self['numResults'] = $numResults;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,10 +244,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withSearchType(SearchType|string $searchType): self
     {
-        $obj = clone $this;
-        $obj['searchType'] = $searchType;
+        $self = clone $this;
+        $self['searchType'] = $searchType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -255,10 +255,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withStream(bool $stream): self
     {
-        $obj = clone $this;
-        $obj['stream'] = $stream;
+        $self = clone $this;
+        $self['stream'] = $stream;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -266,10 +266,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withTemperature(float $temperature): self
     {
-        $obj = clone $this;
-        $obj['temperature'] = $temperature;
+        $self = clone $this;
+        $self['temperature'] = $temperature;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -277,10 +277,10 @@ final class V1AnswerParams implements BaseModel
      */
     public function withText(bool $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -288,9 +288,9 @@ final class V1AnswerParams implements BaseModel
      */
     public function withUseCustomLlm(bool $useCustomLlm): self
     {
-        $obj = clone $this;
-        $obj['useCustomLlm'] = $useCustomLlm;
+        $self = clone $this;
+        $self['useCustomLlm'] = $useCustomLlm;
 
-        return $obj;
+        return $self;
     }
 }
