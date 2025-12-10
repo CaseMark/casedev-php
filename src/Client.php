@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev;
 
 use Casedev\Core\BaseClient;
+use Casedev\Core\Util;
 use Casedev\Services\ActionsService;
 use Casedev\Services\ComputeService;
 use Casedev\Services\ConvertService;
@@ -105,9 +106,9 @@ class Client extends BaseClient
                 'User-Agent' => sprintf('casedev/PHP %s', '0.0.1'),
                 'X-Stainless-Lang' => 'php',
                 'X-Stainless-Package-Version' => '0.0.1',
-                'X-Stainless-OS' => $this->getNormalizedOS(),
-                'X-Stainless-Arch' => $this->getNormalizedArchitecture(),
-                'X-Stainless-Runtime' => 'php',
+                'X-Stainless-Arch' => Util::machtype(),
+                'X-Stainless-OS' => Util::ostype(),
+                'X-Stainless-Runtime' => php_sapi_name(),
                 'X-Stainless-Runtime-Version' => phpversion(),
             ],
             // x-release-please-end
