@@ -55,13 +55,13 @@ final class Result implements BaseModel
         ?int $fileSizeBytes = null,
         ?string $storedFilename = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $durationSeconds && $obj['durationSeconds'] = $durationSeconds;
-        null !== $fileSizeBytes && $obj['fileSizeBytes'] = $fileSizeBytes;
-        null !== $storedFilename && $obj['storedFilename'] = $storedFilename;
+        null !== $durationSeconds && $self['durationSeconds'] = $durationSeconds;
+        null !== $fileSizeBytes && $self['fileSizeBytes'] = $fileSizeBytes;
+        null !== $storedFilename && $self['storedFilename'] = $storedFilename;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class Result implements BaseModel
      */
     public function withDurationSeconds(float $durationSeconds): self
     {
-        $obj = clone $this;
-        $obj['durationSeconds'] = $durationSeconds;
+        $self = clone $this;
+        $self['durationSeconds'] = $durationSeconds;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,10 +80,10 @@ final class Result implements BaseModel
      */
     public function withFileSizeBytes(int $fileSizeBytes): self
     {
-        $obj = clone $this;
-        $obj['fileSizeBytes'] = $fileSizeBytes;
+        $self = clone $this;
+        $self['fileSizeBytes'] = $fileSizeBytes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,9 +91,9 @@ final class Result implements BaseModel
      */
     public function withStoredFilename(string $storedFilename): self
     {
-        $obj = clone $this;
-        $obj['storedFilename'] = $storedFilename;
+        $self = clone $this;
+        $self['storedFilename'] = $storedFilename;
 
-        return $obj;
+        return $self;
     }
 }

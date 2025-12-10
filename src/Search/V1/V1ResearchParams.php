@@ -87,15 +87,15 @@ final class V1ResearchParams implements BaseModel
         mixed $outputSchema = null,
         ?string $query = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['instructions'] = $instructions;
+        $self['instructions'] = $instructions;
 
-        null !== $model && $obj['model'] = $model;
-        null !== $outputSchema && $obj['outputSchema'] = $outputSchema;
-        null !== $query && $obj['query'] = $query;
+        null !== $model && $self['model'] = $model;
+        null !== $outputSchema && $self['outputSchema'] = $outputSchema;
+        null !== $query && $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,10 +103,10 @@ final class V1ResearchParams implements BaseModel
      */
     public function withInstructions(string $instructions): self
     {
-        $obj = clone $this;
-        $obj['instructions'] = $instructions;
+        $self = clone $this;
+        $self['instructions'] = $instructions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class V1ResearchParams implements BaseModel
      */
     public function withModel(Model|string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class V1ResearchParams implements BaseModel
      */
     public function withOutputSchema(mixed $outputSchema): self
     {
-        $obj = clone $this;
-        $obj['outputSchema'] = $outputSchema;
+        $self = clone $this;
+        $self['outputSchema'] = $outputSchema;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,9 +138,9 @@ final class V1ResearchParams implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 }

@@ -52,13 +52,13 @@ final class AsynchronousResponse implements BaseModel
         ?string $runID = null,
         Status|string|null $status = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $logsURL && $obj['logsURL'] = $logsURL;
-        null !== $runID && $obj['runID'] = $runID;
-        null !== $status && $obj['status'] = $status;
+        null !== $logsURL && $self['logsURL'] = $logsURL;
+        null !== $runID && $self['runID'] = $runID;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -66,10 +66,10 @@ final class AsynchronousResponse implements BaseModel
      */
     public function withLogsURL(string $logsURL): self
     {
-        $obj = clone $this;
-        $obj['logsURL'] = $logsURL;
+        $self = clone $this;
+        $self['logsURL'] = $logsURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class AsynchronousResponse implements BaseModel
      */
     public function withRunID(string $runID): self
     {
-        $obj = clone $this;
-        $obj['runID'] = $runID;
+        $self = clone $this;
+        $self['runID'] = $runID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class AsynchronousResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

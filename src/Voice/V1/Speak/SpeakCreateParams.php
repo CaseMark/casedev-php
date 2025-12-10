@@ -167,23 +167,23 @@ final class SpeakCreateParams implements BaseModel
         ?string $voiceID = null,
         VoiceSettings|array|null $voiceSettings = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['text'] = $text;
+        $self['text'] = $text;
 
-        null !== $applyTextNormalization && $obj['applyTextNormalization'] = $applyTextNormalization;
-        null !== $enableLogging && $obj['enableLogging'] = $enableLogging;
-        null !== $languageCode && $obj['languageCode'] = $languageCode;
-        null !== $modelID && $obj['modelID'] = $modelID;
-        null !== $nextText && $obj['nextText'] = $nextText;
-        null !== $optimizeStreamingLatency && $obj['optimizeStreamingLatency'] = $optimizeStreamingLatency;
-        null !== $outputFormat && $obj['outputFormat'] = $outputFormat;
-        null !== $previousText && $obj['previousText'] = $previousText;
-        null !== $seed && $obj['seed'] = $seed;
-        null !== $voiceID && $obj['voiceID'] = $voiceID;
-        null !== $voiceSettings && $obj['voiceSettings'] = $voiceSettings;
+        null !== $applyTextNormalization && $self['applyTextNormalization'] = $applyTextNormalization;
+        null !== $enableLogging && $self['enableLogging'] = $enableLogging;
+        null !== $languageCode && $self['languageCode'] = $languageCode;
+        null !== $modelID && $self['modelID'] = $modelID;
+        null !== $nextText && $self['nextText'] = $nextText;
+        null !== $optimizeStreamingLatency && $self['optimizeStreamingLatency'] = $optimizeStreamingLatency;
+        null !== $outputFormat && $self['outputFormat'] = $outputFormat;
+        null !== $previousText && $self['previousText'] = $previousText;
+        null !== $seed && $self['seed'] = $seed;
+        null !== $voiceID && $self['voiceID'] = $voiceID;
+        null !== $voiceSettings && $self['voiceSettings'] = $voiceSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,10 +203,10 @@ final class SpeakCreateParams implements BaseModel
     public function withApplyTextNormalization(
         bool $applyTextNormalization
     ): self {
-        $obj = clone $this;
-        $obj['applyTextNormalization'] = $applyTextNormalization;
+        $self = clone $this;
+        $self['applyTextNormalization'] = $applyTextNormalization;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withEnableLogging(bool $enableLogging): self
     {
-        $obj = clone $this;
-        $obj['enableLogging'] = $enableLogging;
+        $self = clone $this;
+        $self['enableLogging'] = $enableLogging;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withLanguageCode(string $languageCode): self
     {
-        $obj = clone $this;
-        $obj['languageCode'] = $languageCode;
+        $self = clone $this;
+        $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,10 +238,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withModelID(ModelID|string $modelID): self
     {
-        $obj = clone $this;
-        $obj['modelID'] = $modelID;
+        $self = clone $this;
+        $self['modelID'] = $modelID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,10 +249,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withNextText(string $nextText): self
     {
-        $obj = clone $this;
-        $obj['nextText'] = $nextText;
+        $self = clone $this;
+        $self['nextText'] = $nextText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -261,10 +261,10 @@ final class SpeakCreateParams implements BaseModel
     public function withOptimizeStreamingLatency(
         int $optimizeStreamingLatency
     ): self {
-        $obj = clone $this;
-        $obj['optimizeStreamingLatency'] = $optimizeStreamingLatency;
+        $self = clone $this;
+        $self['optimizeStreamingLatency'] = $optimizeStreamingLatency;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -274,10 +274,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withOutputFormat(OutputFormat|string $outputFormat): self
     {
-        $obj = clone $this;
-        $obj['outputFormat'] = $outputFormat;
+        $self = clone $this;
+        $self['outputFormat'] = $outputFormat;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -285,10 +285,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withPreviousText(string $previousText): self
     {
-        $obj = clone $this;
-        $obj['previousText'] = $previousText;
+        $self = clone $this;
+        $self['previousText'] = $previousText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,10 +296,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withSeed(int $seed): self
     {
-        $obj = clone $this;
-        $obj['seed'] = $seed;
+        $self = clone $this;
+        $self['seed'] = $seed;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -307,10 +307,10 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withVoiceID(string $voiceID): self
     {
-        $obj = clone $this;
-        $obj['voiceID'] = $voiceID;
+        $self = clone $this;
+        $self['voiceID'] = $voiceID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -325,9 +325,9 @@ final class SpeakCreateParams implements BaseModel
      */
     public function withVoiceSettings(VoiceSettings|array $voiceSettings): self
     {
-        $obj = clone $this;
-        $obj['voiceSettings'] = $voiceSettings;
+        $self = clone $this;
+        $self['voiceSettings'] = $voiceSettings;
 
-        return $obj;
+        return $self;
     }
 }

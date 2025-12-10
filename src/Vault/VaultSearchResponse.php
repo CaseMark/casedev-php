@@ -92,16 +92,16 @@ final class VaultSearchResponse implements BaseModel
         ?array $sources = null,
         ?string $vaultID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $chunks && $obj['chunks'] = $chunks;
-        null !== $method && $obj['method'] = $method;
-        null !== $query && $obj['query'] = $query;
-        null !== $response && $obj['response'] = $response;
-        null !== $sources && $obj['sources'] = $sources;
-        null !== $vaultID && $obj['vaultID'] = $vaultID;
+        null !== $chunks && $self['chunks'] = $chunks;
+        null !== $method && $self['method'] = $method;
+        null !== $query && $self['query'] = $query;
+        null !== $response && $self['response'] = $response;
+        null !== $sources && $self['sources'] = $sources;
+        null !== $vaultID && $self['vaultID'] = $vaultID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withChunks(array $chunks): self
     {
-        $obj = clone $this;
-        $obj['chunks'] = $chunks;
+        $self = clone $this;
+        $self['chunks'] = $chunks;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withMethod(string $method): self
     {
-        $obj = clone $this;
-        $obj['method'] = $method;
+        $self = clone $this;
+        $self['method'] = $method;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withResponse(string $response): self
     {
-        $obj = clone $this;
-        $obj['response'] = $response;
+        $self = clone $this;
+        $self['response'] = $response;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withSources(array $sources): self
     {
-        $obj = clone $this;
-        $obj['sources'] = $sources;
+        $self = clone $this;
+        $self['sources'] = $sources;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,9 +176,9 @@ final class VaultSearchResponse implements BaseModel
      */
     public function withVaultID(string $vaultID): self
     {
-        $obj = clone $this;
-        $obj['vaultID'] = $vaultID;
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
 
-        return $obj;
+        return $self;
     }
 }

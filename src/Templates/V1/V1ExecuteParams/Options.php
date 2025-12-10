@@ -49,12 +49,12 @@ final class Options implements BaseModel
         Format|string|null $format = null,
         ?string $model = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $format && $obj['format'] = $format;
-        null !== $model && $obj['model'] = $model;
+        null !== $format && $self['format'] = $format;
+        null !== $model && $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -64,10 +64,10 @@ final class Options implements BaseModel
      */
     public function withFormat(Format|string $format): self
     {
-        $obj = clone $this;
-        $obj['format'] = $format;
+        $self = clone $this;
+        $self['format'] = $format;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class Options implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 }

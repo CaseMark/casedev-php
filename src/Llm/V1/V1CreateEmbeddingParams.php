@@ -99,16 +99,16 @@ final class V1CreateEmbeddingParams implements BaseModel
         EncodingFormat|string|null $encodingFormat = null,
         ?string $user = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['input'] = $input;
-        $obj['model'] = $model;
+        $self['input'] = $input;
+        $self['model'] = $model;
 
-        null !== $dimensions && $obj['dimensions'] = $dimensions;
-        null !== $encodingFormat && $obj['encodingFormat'] = $encodingFormat;
-        null !== $user && $obj['user'] = $user;
+        null !== $dimensions && $self['dimensions'] = $dimensions;
+        null !== $encodingFormat && $self['encodingFormat'] = $encodingFormat;
+        null !== $user && $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class V1CreateEmbeddingParams implements BaseModel
      */
     public function withInput(string|array $input): self
     {
-        $obj = clone $this;
-        $obj['input'] = $input;
+        $self = clone $this;
+        $self['input'] = $input;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class V1CreateEmbeddingParams implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class V1CreateEmbeddingParams implements BaseModel
      */
     public function withDimensions(int $dimensions): self
     {
-        $obj = clone $this;
-        $obj['dimensions'] = $dimensions;
+        $self = clone $this;
+        $self['dimensions'] = $dimensions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class V1CreateEmbeddingParams implements BaseModel
     public function withEncodingFormat(
         EncodingFormat|string $encodingFormat
     ): self {
-        $obj = clone $this;
-        $obj['encodingFormat'] = $encodingFormat;
+        $self = clone $this;
+        $self['encodingFormat'] = $encodingFormat;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,9 +165,9 @@ final class V1CreateEmbeddingParams implements BaseModel
      */
     public function withUser(string $user): self
     {
-        $obj = clone $this;
-        $obj['user'] = $user;
+        $self = clone $this;
+        $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 }

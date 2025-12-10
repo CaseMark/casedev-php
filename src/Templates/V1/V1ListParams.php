@@ -83,16 +83,16 @@ final class V1ListParams implements BaseModel
         ?string $subCategory = null,
         ?string $type = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $category && $obj['category'] = $category;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $offset && $obj['offset'] = $offset;
-        null !== $published && $obj['published'] = $published;
-        null !== $subCategory && $obj['subCategory'] = $subCategory;
-        null !== $type && $obj['type'] = $type;
+        null !== $category && $self['category'] = $category;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $offset && $self['offset'] = $offset;
+        null !== $published && $self['published'] = $published;
+        null !== $subCategory && $self['subCategory'] = $subCategory;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,10 +100,10 @@ final class V1ListParams implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class V1ListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class V1ListParams implements BaseModel
      */
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class V1ListParams implements BaseModel
      */
     public function withPublished(bool $published): self
     {
-        $obj = clone $this;
-        $obj['published'] = $published;
+        $self = clone $this;
+        $self['published'] = $published;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,10 +144,10 @@ final class V1ListParams implements BaseModel
      */
     public function withSubCategory(string $subCategory): self
     {
-        $obj = clone $this;
-        $obj['subCategory'] = $subCategory;
+        $self = clone $this;
+        $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,9 +155,9 @@ final class V1ListParams implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

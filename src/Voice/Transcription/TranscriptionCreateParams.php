@@ -114,19 +114,19 @@ final class TranscriptionCreateParams implements BaseModel
         ?bool $punctuate = null,
         ?bool $speakerLabels = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['audioURL'] = $audioURL;
+        $self['audioURL'] = $audioURL;
 
-        null !== $autoHighlights && $obj['autoHighlights'] = $autoHighlights;
-        null !== $contentSafetyLabels && $obj['contentSafetyLabels'] = $contentSafetyLabels;
-        null !== $formatText && $obj['formatText'] = $formatText;
-        null !== $languageCode && $obj['languageCode'] = $languageCode;
-        null !== $languageDetection && $obj['languageDetection'] = $languageDetection;
-        null !== $punctuate && $obj['punctuate'] = $punctuate;
-        null !== $speakerLabels && $obj['speakerLabels'] = $speakerLabels;
+        null !== $autoHighlights && $self['autoHighlights'] = $autoHighlights;
+        null !== $contentSafetyLabels && $self['contentSafetyLabels'] = $contentSafetyLabels;
+        null !== $formatText && $self['formatText'] = $formatText;
+        null !== $languageCode && $self['languageCode'] = $languageCode;
+        null !== $languageDetection && $self['languageDetection'] = $languageDetection;
+        null !== $punctuate && $self['punctuate'] = $punctuate;
+        null !== $speakerLabels && $self['speakerLabels'] = $speakerLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,10 +134,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withAudioURL(string $audioURL): self
     {
-        $obj = clone $this;
-        $obj['audioURL'] = $audioURL;
+        $self = clone $this;
+        $self['audioURL'] = $audioURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withAutoHighlights(bool $autoHighlights): self
     {
-        $obj = clone $this;
-        $obj['autoHighlights'] = $autoHighlights;
+        $self = clone $this;
+        $self['autoHighlights'] = $autoHighlights;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -156,10 +156,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withContentSafetyLabels(bool $contentSafetyLabels): self
     {
-        $obj = clone $this;
-        $obj['contentSafetyLabels'] = $contentSafetyLabels;
+        $self = clone $this;
+        $self['contentSafetyLabels'] = $contentSafetyLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -167,10 +167,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withFormatText(bool $formatText): self
     {
-        $obj = clone $this;
-        $obj['formatText'] = $formatText;
+        $self = clone $this;
+        $self['formatText'] = $formatText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -178,10 +178,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withLanguageCode(string $languageCode): self
     {
-        $obj = clone $this;
-        $obj['languageCode'] = $languageCode;
+        $self = clone $this;
+        $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withLanguageDetection(bool $languageDetection): self
     {
-        $obj = clone $this;
-        $obj['languageDetection'] = $languageDetection;
+        $self = clone $this;
+        $self['languageDetection'] = $languageDetection;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,10 +200,10 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withPunctuate(bool $punctuate): self
     {
-        $obj = clone $this;
-        $obj['punctuate'] = $punctuate;
+        $self = clone $this;
+        $self['punctuate'] = $punctuate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,9 +211,9 @@ final class TranscriptionCreateParams implements BaseModel
      */
     public function withSpeakerLabels(bool $speakerLabels): self
     {
-        $obj = clone $this;
-        $obj['speakerLabels'] = $speakerLabels;
+        $self = clone $this;
+        $self['speakerLabels'] = $speakerLabels;
 
-        return $obj;
+        return $self;
     }
 }

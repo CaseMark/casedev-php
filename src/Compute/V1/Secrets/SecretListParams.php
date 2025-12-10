@@ -40,11 +40,11 @@ final class SecretListParams implements BaseModel
      */
     public static function with(?string $env = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $env && $obj['env'] = $env;
+        null !== $env && $self['env'] = $env;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class SecretListParams implements BaseModel
      */
     public function withEnv(string $env): self
     {
-        $obj = clone $this;
-        $obj['env'] = $env;
+        $self = clone $this;
+        $self['env'] = $env;
 
-        return $obj;
+        return $self;
     }
 }

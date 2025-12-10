@@ -51,12 +51,12 @@ final class VaultListResponse implements BaseModel
      */
     public static function with(?int $total = null, ?array $vaults = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $total && $obj['total'] = $total;
-        null !== $vaults && $obj['vaults'] = $vaults;
+        null !== $total && $self['total'] = $total;
+        null !== $vaults && $self['vaults'] = $vaults;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -64,10 +64,10 @@ final class VaultListResponse implements BaseModel
      */
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,9 +83,9 @@ final class VaultListResponse implements BaseModel
      */
     public function withVaults(array $vaults): self
     {
-        $obj = clone $this;
-        $obj['vaults'] = $vaults;
+        $self = clone $this;
+        $self['vaults'] = $vaults;
 
-        return $obj;
+        return $self;
     }
 }

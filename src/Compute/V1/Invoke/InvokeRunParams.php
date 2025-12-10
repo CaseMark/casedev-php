@@ -82,14 +82,14 @@ final class InvokeRunParams implements BaseModel
         ?bool $async = null,
         FunctionSuffix|string|null $functionSuffix = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['input'] = $input;
+        $self['input'] = $input;
 
-        null !== $async && $obj['async'] = $async;
-        null !== $functionSuffix && $obj['functionSuffix'] = $functionSuffix;
+        null !== $async && $self['async'] = $async;
+        null !== $functionSuffix && $self['functionSuffix'] = $functionSuffix;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class InvokeRunParams implements BaseModel
      */
     public function withInput(array $input): self
     {
-        $obj = clone $this;
-        $obj['input'] = $input;
+        $self = clone $this;
+        $self['input'] = $input;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class InvokeRunParams implements BaseModel
      */
     public function withAsync(bool $async): self
     {
-        $obj = clone $this;
-        $obj['async'] = $async;
+        $self = clone $this;
+        $self['async'] = $async;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,9 +124,9 @@ final class InvokeRunParams implements BaseModel
     public function withFunctionSuffix(
         FunctionSuffix|string $functionSuffix
     ): self {
-        $obj = clone $this;
-        $obj['functionSuffix'] = $functionSuffix;
+        $self = clone $this;
+        $self['functionSuffix'] = $functionSuffix;
 
-        return $obj;
+        return $self;
     }
 }

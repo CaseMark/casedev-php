@@ -91,15 +91,15 @@ final class V1CreateDocumentParams implements BaseModel
         InputFormat|string|null $inputFormat = null,
         Options|array|null $options = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['content'] = $content;
-        $obj['outputFormat'] = $outputFormat;
+        $self['content'] = $content;
+        $self['outputFormat'] = $outputFormat;
 
-        null !== $inputFormat && $obj['inputFormat'] = $inputFormat;
-        null !== $options && $obj['options'] = $options;
+        null !== $inputFormat && $self['inputFormat'] = $inputFormat;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class V1CreateDocumentParams implements BaseModel
      */
     public function withContent(string $content): self
     {
-        $obj = clone $this;
-        $obj['content'] = $content;
+        $self = clone $this;
+        $self['content'] = $content;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,10 +120,10 @@ final class V1CreateDocumentParams implements BaseModel
      */
     public function withOutputFormat(OutputFormat|string $outputFormat): self
     {
-        $obj = clone $this;
-        $obj['outputFormat'] = $outputFormat;
+        $self = clone $this;
+        $self['outputFormat'] = $outputFormat;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class V1CreateDocumentParams implements BaseModel
      */
     public function withInputFormat(InputFormat|string $inputFormat): self
     {
-        $obj = clone $this;
-        $obj['inputFormat'] = $inputFormat;
+        $self = clone $this;
+        $self['inputFormat'] = $inputFormat;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,9 +144,9 @@ final class V1CreateDocumentParams implements BaseModel
      */
     public function withOptions(Options|array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

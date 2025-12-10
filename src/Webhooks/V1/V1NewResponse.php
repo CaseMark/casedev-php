@@ -89,17 +89,17 @@ final class V1NewResponse implements BaseModel
         ?string $secret = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $description && $obj['description'] = $description;
-        null !== $events && $obj['events'] = $events;
-        null !== $isActive && $obj['isActive'] = $isActive;
-        null !== $secret && $obj['secret'] = $secret;
-        null !== $url && $obj['url'] = $url;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $description && $self['description'] = $description;
+        null !== $events && $self['events'] = $events;
+        null !== $isActive && $self['isActive'] = $isActive;
+        null !== $secret && $self['secret'] = $secret;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withDescription(?string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,10 +142,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withEvents(array $events): self
     {
-        $obj = clone $this;
-        $obj['events'] = $events;
+        $self = clone $this;
+        $self['events'] = $events;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,10 +153,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withIsActive(bool $isActive): self
     {
-        $obj = clone $this;
-        $obj['isActive'] = $isActive;
+        $self = clone $this;
+        $self['isActive'] = $isActive;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,10 +164,10 @@ final class V1NewResponse implements BaseModel
      */
     public function withSecret(string $secret): self
     {
-        $obj = clone $this;
-        $obj['secret'] = $secret;
+        $self = clone $this;
+        $self['secret'] = $secret;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -175,9 +175,9 @@ final class V1NewResponse implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

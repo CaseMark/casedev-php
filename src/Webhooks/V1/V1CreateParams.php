@@ -84,14 +84,14 @@ final class V1CreateParams implements BaseModel
         string $url,
         ?string $description = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['events'] = $events;
-        $obj['url'] = $url;
+        $self['events'] = $events;
+        $self['url'] = $url;
 
-        null !== $description && $obj['description'] = $description;
+        null !== $description && $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withEvents(array $events): self
     {
-        $obj = clone $this;
-        $obj['events'] = $events;
+        $self = clone $this;
+        $self['events'] = $events;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,9 +123,9 @@ final class V1CreateParams implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 }

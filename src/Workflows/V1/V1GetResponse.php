@@ -94,62 +94,62 @@ final class V1GetResponse implements BaseModel
         ?string $updatedAt = null,
         ?string $visibility = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $deployedAt && $obj['deployedAt'] = $deployedAt;
-        null !== $deploymentURL && $obj['deploymentURL'] = $deploymentURL;
-        null !== $description && $obj['description'] = $description;
-        null !== $edges && $obj['edges'] = $edges;
-        null !== $name && $obj['name'] = $name;
-        null !== $nodes && $obj['nodes'] = $nodes;
-        null !== $triggerConfig && $obj['triggerConfig'] = $triggerConfig;
-        null !== $triggerType && $obj['triggerType'] = $triggerType;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $visibility && $obj['visibility'] = $visibility;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $deployedAt && $self['deployedAt'] = $deployedAt;
+        null !== $deploymentURL && $self['deploymentURL'] = $deploymentURL;
+        null !== $description && $self['description'] = $description;
+        null !== $edges && $self['edges'] = $edges;
+        null !== $name && $self['name'] = $name;
+        null !== $nodes && $self['nodes'] = $nodes;
+        null !== $triggerConfig && $self['triggerConfig'] = $triggerConfig;
+        null !== $triggerType && $self['triggerType'] = $triggerType;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $visibility && $self['visibility'] = $visibility;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(string $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeployedAt(string $deployedAt): self
     {
-        $obj = clone $this;
-        $obj['deployedAt'] = $deployedAt;
+        $self = clone $this;
+        $self['deployedAt'] = $deployedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeploymentURL(string $deploymentURL): self
     {
-        $obj = clone $this;
-        $obj['deploymentURL'] = $deploymentURL;
+        $self = clone $this;
+        $self['deploymentURL'] = $deploymentURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,18 +157,18 @@ final class V1GetResponse implements BaseModel
      */
     public function withEdges(array $edges): self
     {
-        $obj = clone $this;
-        $obj['edges'] = $edges;
+        $self = clone $this;
+        $self['edges'] = $edges;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,41 +176,41 @@ final class V1GetResponse implements BaseModel
      */
     public function withNodes(array $nodes): self
     {
-        $obj = clone $this;
-        $obj['nodes'] = $nodes;
+        $self = clone $this;
+        $self['nodes'] = $nodes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTriggerConfig(mixed $triggerConfig): self
     {
-        $obj = clone $this;
-        $obj['triggerConfig'] = $triggerConfig;
+        $self = clone $this;
+        $self['triggerConfig'] = $triggerConfig;
 
-        return $obj;
+        return $self;
     }
 
     public function withTriggerType(string $triggerType): self
     {
-        $obj = clone $this;
-        $obj['triggerType'] = $triggerType;
+        $self = clone $this;
+        $self['triggerType'] = $triggerType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(string $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withVisibility(string $visibility): self
     {
-        $obj = clone $this;
-        $obj['visibility'] = $visibility;
+        $self = clone $this;
+        $self['visibility'] = $visibility;
 
-        return $obj;
+        return $self;
     }
 }

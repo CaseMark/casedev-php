@@ -61,14 +61,14 @@ final class Component implements BaseModel
         ?string $templateID = null,
         mixed $variables = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $content && $obj['content'] = $content;
-        null !== $styles && $obj['styles'] = $styles;
-        null !== $templateID && $obj['templateID'] = $templateID;
-        null !== $variables && $obj['variables'] = $variables;
+        null !== $content && $self['content'] = $content;
+        null !== $styles && $self['styles'] = $styles;
+        null !== $templateID && $self['templateID'] = $templateID;
+        null !== $variables && $self['variables'] = $variables;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class Component implements BaseModel
      */
     public function withContent(string $content): self
     {
-        $obj = clone $this;
-        $obj['content'] = $content;
+        $self = clone $this;
+        $self['content'] = $content;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class Component implements BaseModel
      */
     public function withStyles(mixed $styles): self
     {
-        $obj = clone $this;
-        $obj['styles'] = $styles;
+        $self = clone $this;
+        $self['styles'] = $styles;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class Component implements BaseModel
      */
     public function withTemplateID(string $templateID): self
     {
-        $obj = clone $this;
-        $obj['templateID'] = $templateID;
+        $self = clone $this;
+        $self['templateID'] = $templateID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class Component implements BaseModel
      */
     public function withVariables(mixed $variables): self
     {
-        $obj = clone $this;
-        $obj['variables'] = $variables;
+        $self = clone $this;
+        $self['variables'] = $variables;
 
-        return $obj;
+        return $self;
     }
 }

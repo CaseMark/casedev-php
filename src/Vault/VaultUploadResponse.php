@@ -87,17 +87,17 @@ final class VaultUploadResponse implements BaseModel
         ?string $s3Key = null,
         ?string $uploadURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $autoIndex && $obj['autoIndex'] = $autoIndex;
-        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
-        null !== $instructions && $obj['instructions'] = $instructions;
-        null !== $nextStep && $obj['nextStep'] = $nextStep;
-        null !== $objectID && $obj['objectID'] = $objectID;
-        null !== $s3Key && $obj['s3Key'] = $s3Key;
-        null !== $uploadURL && $obj['uploadURL'] = $uploadURL;
+        null !== $autoIndex && $self['autoIndex'] = $autoIndex;
+        null !== $expiresIn && $self['expiresIn'] = $expiresIn;
+        null !== $instructions && $self['instructions'] = $instructions;
+        null !== $nextStep && $self['nextStep'] = $nextStep;
+        null !== $objectID && $self['objectID'] = $objectID;
+        null !== $s3Key && $self['s3Key'] = $s3Key;
+        null !== $uploadURL && $self['uploadURL'] = $uploadURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withAutoIndex(bool $autoIndex): self
     {
-        $obj = clone $this;
-        $obj['autoIndex'] = $autoIndex;
+        $self = clone $this;
+        $self['autoIndex'] = $autoIndex;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withExpiresIn(float $expiresIn): self
     {
-        $obj = clone $this;
-        $obj['expiresIn'] = $expiresIn;
+        $self = clone $this;
+        $self['expiresIn'] = $expiresIn;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withInstructions(Instructions|array $instructions): self
     {
-        $obj = clone $this;
-        $obj['instructions'] = $instructions;
+        $self = clone $this;
+        $self['instructions'] = $instructions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withNextStep(?string $nextStep): self
     {
-        $obj = clone $this;
-        $obj['nextStep'] = $nextStep;
+        $self = clone $this;
+        $self['nextStep'] = $nextStep;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,10 +151,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,10 +162,10 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withS3Key(string $s3Key): self
     {
-        $obj = clone $this;
-        $obj['s3Key'] = $s3Key;
+        $self = clone $this;
+        $self['s3Key'] = $s3Key;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,9 +173,9 @@ final class VaultUploadResponse implements BaseModel
      */
     public function withUploadURL(string $uploadURL): self
     {
-        $obj = clone $this;
-        $obj['uploadURL'] = $uploadURL;
+        $self = clone $this;
+        $self['uploadURL'] = $uploadURL;
 
-        return $obj;
+        return $self;
     }
 }

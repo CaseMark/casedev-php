@@ -50,12 +50,12 @@ final class V1RetrieveResearchParams implements BaseModel
         ?string $events = null,
         ?bool $stream = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $events && $obj['events'] = $events;
-        null !== $stream && $obj['stream'] = $stream;
+        null !== $events && $self['events'] = $events;
+        null !== $stream && $self['stream'] = $stream;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,10 +63,10 @@ final class V1RetrieveResearchParams implements BaseModel
      */
     public function withEvents(string $events): self
     {
-        $obj = clone $this;
-        $obj['events'] = $events;
+        $self = clone $this;
+        $self['events'] = $events;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -74,9 +74,9 @@ final class V1RetrieveResearchParams implements BaseModel
      */
     public function withStream(bool $stream): self
     {
-        $obj = clone $this;
-        $obj['stream'] = $stream;
+        $self = clone $this;
+        $self['stream'] = $stream;
 
-        return $obj;
+        return $self;
     }
 }

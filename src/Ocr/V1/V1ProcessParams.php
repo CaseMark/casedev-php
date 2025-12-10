@@ -117,18 +117,18 @@ final class V1ProcessParams implements BaseModel
         ?string $resultBucket = null,
         ?string $resultPrefix = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['documentURL'] = $documentURL;
+        $self['documentURL'] = $documentURL;
 
-        null !== $callbackURL && $obj['callbackURL'] = $callbackURL;
-        null !== $documentID && $obj['documentID'] = $documentID;
-        null !== $engine && $obj['engine'] = $engine;
-        null !== $features && $obj['features'] = $features;
-        null !== $resultBucket && $obj['resultBucket'] = $resultBucket;
-        null !== $resultPrefix && $obj['resultPrefix'] = $resultPrefix;
+        null !== $callbackURL && $self['callbackURL'] = $callbackURL;
+        null !== $documentID && $self['documentID'] = $documentID;
+        null !== $engine && $self['engine'] = $engine;
+        null !== $features && $self['features'] = $features;
+        null !== $resultBucket && $self['resultBucket'] = $resultBucket;
+        null !== $resultPrefix && $self['resultPrefix'] = $resultPrefix;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withDocumentURL(string $documentURL): self
     {
-        $obj = clone $this;
-        $obj['documentURL'] = $documentURL;
+        $self = clone $this;
+        $self['documentURL'] = $documentURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withCallbackURL(string $callbackURL): self
     {
-        $obj = clone $this;
-        $obj['callbackURL'] = $callbackURL;
+        $self = clone $this;
+        $self['callbackURL'] = $callbackURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withDocumentID(string $documentID): self
     {
-        $obj = clone $this;
-        $obj['documentID'] = $documentID;
+        $self = clone $this;
+        $self['documentID'] = $documentID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,10 +171,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withEngine(Engine|string $engine): self
     {
-        $obj = clone $this;
-        $obj['engine'] = $engine;
+        $self = clone $this;
+        $self['engine'] = $engine;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -186,10 +186,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withFeatures(Features|array $features): self
     {
-        $obj = clone $this;
-        $obj['features'] = $features;
+        $self = clone $this;
+        $self['features'] = $features;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -197,10 +197,10 @@ final class V1ProcessParams implements BaseModel
      */
     public function withResultBucket(string $resultBucket): self
     {
-        $obj = clone $this;
-        $obj['resultBucket'] = $resultBucket;
+        $self = clone $this;
+        $self['resultBucket'] = $resultBucket;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,9 +208,9 @@ final class V1ProcessParams implements BaseModel
      */
     public function withResultPrefix(string $resultPrefix): self
     {
-        $obj = clone $this;
-        $obj['resultPrefix'] = $resultPrefix;
+        $self = clone $this;
+        $self['resultPrefix'] = $resultPrefix;
 
-        return $obj;
+        return $self;
     }
 }

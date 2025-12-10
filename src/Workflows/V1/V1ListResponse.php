@@ -62,38 +62,38 @@ final class V1ListResponse implements BaseModel
         ?int $total = null,
         ?array $workflows = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $offset && $obj['offset'] = $offset;
-        null !== $total && $obj['total'] = $total;
-        null !== $workflows && $obj['workflows'] = $workflows;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $offset && $self['offset'] = $offset;
+        null !== $total && $self['total'] = $total;
+        null !== $workflows && $self['workflows'] = $workflows;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,9 +110,9 @@ final class V1ListResponse implements BaseModel
      */
     public function withWorkflows(array $workflows): self
     {
-        $obj = clone $this;
-        $obj['workflows'] = $workflows;
+        $self = clone $this;
+        $self['workflows'] = $workflows;
 
-        return $obj;
+        return $self;
     }
 }

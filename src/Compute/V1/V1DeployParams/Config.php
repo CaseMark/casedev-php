@@ -230,32 +230,32 @@ final class Config implements BaseModel
         ?int $warmInstances = null,
         ?string $workdir = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $addPython && $obj['addPython'] = $addPython;
-        null !== $allowNetwork && $obj['allowNetwork'] = $allowNetwork;
-        null !== $cmd && $obj['cmd'] = $cmd;
-        null !== $concurrency && $obj['concurrency'] = $concurrency;
-        null !== $cpuCount && $obj['cpuCount'] = $cpuCount;
-        null !== $cronSchedule && $obj['cronSchedule'] = $cronSchedule;
-        null !== $dependencies && $obj['dependencies'] = $dependencies;
-        null !== $entrypoint && $obj['entrypoint'] = $entrypoint;
-        null !== $env && $obj['env'] = $env;
-        null !== $gpuCount && $obj['gpuCount'] = $gpuCount;
-        null !== $gpuType && $obj['gpuType'] = $gpuType;
-        null !== $isWebService && $obj['isWebService'] = $isWebService;
-        null !== $memoryMB && $obj['memoryMB'] = $memoryMB;
-        null !== $pipInstall && $obj['pipInstall'] = $pipInstall;
-        null !== $port && $obj['port'] = $port;
-        null !== $pythonVersion && $obj['pythonVersion'] = $pythonVersion;
-        null !== $retries && $obj['retries'] = $retries;
-        null !== $secretGroups && $obj['secretGroups'] = $secretGroups;
-        null !== $timeoutSeconds && $obj['timeoutSeconds'] = $timeoutSeconds;
-        null !== $useUv && $obj['useUv'] = $useUv;
-        null !== $warmInstances && $obj['warmInstances'] = $warmInstances;
-        null !== $workdir && $obj['workdir'] = $workdir;
+        null !== $addPython && $self['addPython'] = $addPython;
+        null !== $allowNetwork && $self['allowNetwork'] = $allowNetwork;
+        null !== $cmd && $self['cmd'] = $cmd;
+        null !== $concurrency && $self['concurrency'] = $concurrency;
+        null !== $cpuCount && $self['cpuCount'] = $cpuCount;
+        null !== $cronSchedule && $self['cronSchedule'] = $cronSchedule;
+        null !== $dependencies && $self['dependencies'] = $dependencies;
+        null !== $entrypoint && $self['entrypoint'] = $entrypoint;
+        null !== $env && $self['env'] = $env;
+        null !== $gpuCount && $self['gpuCount'] = $gpuCount;
+        null !== $gpuType && $self['gpuType'] = $gpuType;
+        null !== $isWebService && $self['isWebService'] = $isWebService;
+        null !== $memoryMB && $self['memoryMB'] = $memoryMB;
+        null !== $pipInstall && $self['pipInstall'] = $pipInstall;
+        null !== $port && $self['port'] = $port;
+        null !== $pythonVersion && $self['pythonVersion'] = $pythonVersion;
+        null !== $retries && $self['retries'] = $retries;
+        null !== $secretGroups && $self['secretGroups'] = $secretGroups;
+        null !== $timeoutSeconds && $self['timeoutSeconds'] = $timeoutSeconds;
+        null !== $useUv && $self['useUv'] = $useUv;
+        null !== $warmInstances && $self['warmInstances'] = $warmInstances;
+        null !== $workdir && $self['workdir'] = $workdir;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -263,10 +263,10 @@ final class Config implements BaseModel
      */
     public function withAddPython(string $addPython): self
     {
-        $obj = clone $this;
-        $obj['addPython'] = $addPython;
+        $self = clone $this;
+        $self['addPython'] = $addPython;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -274,10 +274,10 @@ final class Config implements BaseModel
      */
     public function withAllowNetwork(bool $allowNetwork): self
     {
-        $obj = clone $this;
-        $obj['allowNetwork'] = $allowNetwork;
+        $self = clone $this;
+        $self['allowNetwork'] = $allowNetwork;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -287,10 +287,10 @@ final class Config implements BaseModel
      */
     public function withCmd(array $cmd): self
     {
-        $obj = clone $this;
-        $obj['cmd'] = $cmd;
+        $self = clone $this;
+        $self['cmd'] = $cmd;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -298,10 +298,10 @@ final class Config implements BaseModel
      */
     public function withConcurrency(int $concurrency): self
     {
-        $obj = clone $this;
-        $obj['concurrency'] = $concurrency;
+        $self = clone $this;
+        $self['concurrency'] = $concurrency;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -309,10 +309,10 @@ final class Config implements BaseModel
      */
     public function withCPUCount(int $cpuCount): self
     {
-        $obj = clone $this;
-        $obj['cpuCount'] = $cpuCount;
+        $self = clone $this;
+        $self['cpuCount'] = $cpuCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -320,10 +320,10 @@ final class Config implements BaseModel
      */
     public function withCronSchedule(string $cronSchedule): self
     {
-        $obj = clone $this;
-        $obj['cronSchedule'] = $cronSchedule;
+        $self = clone $this;
+        $self['cronSchedule'] = $cronSchedule;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -333,10 +333,10 @@ final class Config implements BaseModel
      */
     public function withDependencies(array $dependencies): self
     {
-        $obj = clone $this;
-        $obj['dependencies'] = $dependencies;
+        $self = clone $this;
+        $self['dependencies'] = $dependencies;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -346,10 +346,10 @@ final class Config implements BaseModel
      */
     public function withEntrypoint(array $entrypoint): self
     {
-        $obj = clone $this;
-        $obj['entrypoint'] = $entrypoint;
+        $self = clone $this;
+        $self['entrypoint'] = $entrypoint;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -359,10 +359,10 @@ final class Config implements BaseModel
      */
     public function withEnv(array $env): self
     {
-        $obj = clone $this;
-        $obj['env'] = $env;
+        $self = clone $this;
+        $self['env'] = $env;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -370,10 +370,10 @@ final class Config implements BaseModel
      */
     public function withGPUCount(int $gpuCount): self
     {
-        $obj = clone $this;
-        $obj['gpuCount'] = $gpuCount;
+        $self = clone $this;
+        $self['gpuCount'] = $gpuCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -383,10 +383,10 @@ final class Config implements BaseModel
      */
     public function withGPUType(GPUType|string $gpuType): self
     {
-        $obj = clone $this;
-        $obj['gpuType'] = $gpuType;
+        $self = clone $this;
+        $self['gpuType'] = $gpuType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -394,10 +394,10 @@ final class Config implements BaseModel
      */
     public function withIsWebService(bool $isWebService): self
     {
-        $obj = clone $this;
-        $obj['isWebService'] = $isWebService;
+        $self = clone $this;
+        $self['isWebService'] = $isWebService;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -405,10 +405,10 @@ final class Config implements BaseModel
      */
     public function withMemoryMB(int $memoryMB): self
     {
-        $obj = clone $this;
-        $obj['memoryMB'] = $memoryMB;
+        $self = clone $this;
+        $self['memoryMB'] = $memoryMB;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -418,10 +418,10 @@ final class Config implements BaseModel
      */
     public function withPipInstall(array $pipInstall): self
     {
-        $obj = clone $this;
-        $obj['pipInstall'] = $pipInstall;
+        $self = clone $this;
+        $self['pipInstall'] = $pipInstall;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -429,10 +429,10 @@ final class Config implements BaseModel
      */
     public function withPort(int $port): self
     {
-        $obj = clone $this;
-        $obj['port'] = $port;
+        $self = clone $this;
+        $self['port'] = $port;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -440,10 +440,10 @@ final class Config implements BaseModel
      */
     public function withPythonVersion(string $pythonVersion): self
     {
-        $obj = clone $this;
-        $obj['pythonVersion'] = $pythonVersion;
+        $self = clone $this;
+        $self['pythonVersion'] = $pythonVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -451,10 +451,10 @@ final class Config implements BaseModel
      */
     public function withRetries(int $retries): self
     {
-        $obj = clone $this;
-        $obj['retries'] = $retries;
+        $self = clone $this;
+        $self['retries'] = $retries;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -464,10 +464,10 @@ final class Config implements BaseModel
      */
     public function withSecretGroups(array $secretGroups): self
     {
-        $obj = clone $this;
-        $obj['secretGroups'] = $secretGroups;
+        $self = clone $this;
+        $self['secretGroups'] = $secretGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -475,10 +475,10 @@ final class Config implements BaseModel
      */
     public function withTimeoutSeconds(int $timeoutSeconds): self
     {
-        $obj = clone $this;
-        $obj['timeoutSeconds'] = $timeoutSeconds;
+        $self = clone $this;
+        $self['timeoutSeconds'] = $timeoutSeconds;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -486,10 +486,10 @@ final class Config implements BaseModel
      */
     public function withUseUv(bool $useUv): self
     {
-        $obj = clone $this;
-        $obj['useUv'] = $useUv;
+        $self = clone $this;
+        $self['useUv'] = $useUv;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -497,10 +497,10 @@ final class Config implements BaseModel
      */
     public function withWarmInstances(int $warmInstances): self
     {
-        $obj = clone $this;
-        $obj['warmInstances'] = $warmInstances;
+        $self = clone $this;
+        $self['warmInstances'] = $warmInstances;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -508,9 +508,9 @@ final class Config implements BaseModel
      */
     public function withWorkdir(string $workdir): self
     {
-        $obj = clone $this;
-        $obj['workdir'] = $workdir;
+        $self = clone $this;
+        $self['workdir'] = $workdir;
 
-        return $obj;
+        return $self;
     }
 }

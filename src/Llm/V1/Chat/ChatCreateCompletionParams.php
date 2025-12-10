@@ -124,19 +124,19 @@ final class ChatCreateCompletionParams implements BaseModel
         ?float $temperature = null,
         ?float $topP = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['messages'] = $messages;
+        $self['messages'] = $messages;
 
-        null !== $frequencyPenalty && $obj['frequencyPenalty'] = $frequencyPenalty;
-        null !== $maxTokens && $obj['maxTokens'] = $maxTokens;
-        null !== $model && $obj['model'] = $model;
-        null !== $presencePenalty && $obj['presencePenalty'] = $presencePenalty;
-        null !== $stream && $obj['stream'] = $stream;
-        null !== $temperature && $obj['temperature'] = $temperature;
-        null !== $topP && $obj['topP'] = $topP;
+        null !== $frequencyPenalty && $self['frequencyPenalty'] = $frequencyPenalty;
+        null !== $maxTokens && $self['maxTokens'] = $maxTokens;
+        null !== $model && $self['model'] = $model;
+        null !== $presencePenalty && $self['presencePenalty'] = $presencePenalty;
+        null !== $stream && $self['stream'] = $stream;
+        null !== $temperature && $self['temperature'] = $temperature;
+        null !== $topP && $self['topP'] = $topP;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withMessages(array $messages): self
     {
-        $obj = clone $this;
-        $obj['messages'] = $messages;
+        $self = clone $this;
+        $self['messages'] = $messages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withFrequencyPenalty(float $frequencyPenalty): self
     {
-        $obj = clone $this;
-        $obj['frequencyPenalty'] = $frequencyPenalty;
+        $self = clone $this;
+        $self['frequencyPenalty'] = $frequencyPenalty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withMaxTokens(int $maxTokens): self
     {
-        $obj = clone $this;
-        $obj['maxTokens'] = $maxTokens;
+        $self = clone $this;
+        $self['maxTokens'] = $maxTokens;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withPresencePenalty(float $presencePenalty): self
     {
-        $obj = clone $this;
-        $obj['presencePenalty'] = $presencePenalty;
+        $self = clone $this;
+        $self['presencePenalty'] = $presencePenalty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,10 +203,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withStream(bool $stream): self
     {
-        $obj = clone $this;
-        $obj['stream'] = $stream;
+        $self = clone $this;
+        $self['stream'] = $stream;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withTemperature(float $temperature): self
     {
-        $obj = clone $this;
-        $obj['temperature'] = $temperature;
+        $self = clone $this;
+        $self['temperature'] = $temperature;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,9 +225,9 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public function withTopP(float $topP): self
     {
-        $obj = clone $this;
-        $obj['topP'] = $topP;
+        $self = clone $this;
+        $self['topP'] = $topP;
 
-        return $obj;
+        return $self;
     }
 }

@@ -137,21 +137,21 @@ final class V1SimilarParams implements BaseModel
         ?\DateTimeInterface $startCrawlDate = null,
         ?\DateTimeInterface $startPublishedDate = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['url'] = $url;
+        $self['url'] = $url;
 
-        null !== $contents && $obj['contents'] = $contents;
-        null !== $endCrawlDate && $obj['endCrawlDate'] = $endCrawlDate;
-        null !== $endPublishedDate && $obj['endPublishedDate'] = $endPublishedDate;
-        null !== $excludeDomains && $obj['excludeDomains'] = $excludeDomains;
-        null !== $includeDomains && $obj['includeDomains'] = $includeDomains;
-        null !== $includeText && $obj['includeText'] = $includeText;
-        null !== $numResults && $obj['numResults'] = $numResults;
-        null !== $startCrawlDate && $obj['startCrawlDate'] = $startCrawlDate;
-        null !== $startPublishedDate && $obj['startPublishedDate'] = $startPublishedDate;
+        null !== $contents && $self['contents'] = $contents;
+        null !== $endCrawlDate && $self['endCrawlDate'] = $endCrawlDate;
+        null !== $endPublishedDate && $self['endPublishedDate'] = $endPublishedDate;
+        null !== $excludeDomains && $self['excludeDomains'] = $excludeDomains;
+        null !== $includeDomains && $self['includeDomains'] = $includeDomains;
+        null !== $includeText && $self['includeText'] = $includeText;
+        null !== $numResults && $self['numResults'] = $numResults;
+        null !== $startCrawlDate && $self['startCrawlDate'] = $startCrawlDate;
+        null !== $startPublishedDate && $self['startPublishedDate'] = $startPublishedDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withContents(string $contents): self
     {
-        $obj = clone $this;
-        $obj['contents'] = $contents;
+        $self = clone $this;
+        $self['contents'] = $contents;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withEndCrawlDate(\DateTimeInterface $endCrawlDate): self
     {
-        $obj = clone $this;
-        $obj['endCrawlDate'] = $endCrawlDate;
+        $self = clone $this;
+        $self['endCrawlDate'] = $endCrawlDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class V1SimilarParams implements BaseModel
     public function withEndPublishedDate(
         \DateTimeInterface $endPublishedDate
     ): self {
-        $obj = clone $this;
-        $obj['endPublishedDate'] = $endPublishedDate;
+        $self = clone $this;
+        $self['endPublishedDate'] = $endPublishedDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withExcludeDomains(array $excludeDomains): self
     {
-        $obj = clone $this;
-        $obj['excludeDomains'] = $excludeDomains;
+        $self = clone $this;
+        $self['excludeDomains'] = $excludeDomains;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -219,10 +219,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withIncludeDomains(array $includeDomains): self
     {
-        $obj = clone $this;
-        $obj['includeDomains'] = $includeDomains;
+        $self = clone $this;
+        $self['includeDomains'] = $includeDomains;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,10 +230,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withIncludeText(bool $includeText): self
     {
-        $obj = clone $this;
-        $obj['includeText'] = $includeText;
+        $self = clone $this;
+        $self['includeText'] = $includeText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,10 +241,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withNumResults(int $numResults): self
     {
-        $obj = clone $this;
-        $obj['numResults'] = $numResults;
+        $self = clone $this;
+        $self['numResults'] = $numResults;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,10 +252,10 @@ final class V1SimilarParams implements BaseModel
      */
     public function withStartCrawlDate(\DateTimeInterface $startCrawlDate): self
     {
-        $obj = clone $this;
-        $obj['startCrawlDate'] = $startCrawlDate;
+        $self = clone $this;
+        $self['startCrawlDate'] = $startCrawlDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,9 +264,9 @@ final class V1SimilarParams implements BaseModel
     public function withStartPublishedDate(
         \DateTimeInterface $startPublishedDate
     ): self {
-        $obj = clone $this;
-        $obj['startPublishedDate'] = $startPublishedDate;
+        $self = clone $this;
+        $self['startPublishedDate'] = $startPublishedDate;
 
-        return $obj;
+        return $self;
     }
 }

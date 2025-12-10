@@ -97,17 +97,17 @@ final class V1ExecuteResponse implements BaseModel
         ?array $stepResults = null,
         ?bool $webhookConfigured = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $durationMs && $obj['durationMs'] = $durationMs;
-        null !== $executionID && $obj['executionID'] = $executionID;
-        null !== $message && $obj['message'] = $message;
-        null !== $output && $obj['output'] = $output;
-        null !== $status && $obj['status'] = $status;
-        null !== $stepResults && $obj['stepResults'] = $stepResults;
-        null !== $webhookConfigured && $obj['webhookConfigured'] = $webhookConfigured;
+        null !== $durationMs && $self['durationMs'] = $durationMs;
+        null !== $executionID && $self['executionID'] = $executionID;
+        null !== $message && $self['message'] = $message;
+        null !== $output && $self['output'] = $output;
+        null !== $status && $self['status'] = $status;
+        null !== $stepResults && $self['stepResults'] = $stepResults;
+        null !== $webhookConfigured && $self['webhookConfigured'] = $webhookConfigured;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,10 +115,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withDurationMs(float $durationMs): self
     {
-        $obj = clone $this;
-        $obj['durationMs'] = $durationMs;
+        $self = clone $this;
+        $self['durationMs'] = $durationMs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -126,10 +126,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withExecutionID(string $executionID): self
     {
-        $obj = clone $this;
-        $obj['executionID'] = $executionID;
+        $self = clone $this;
+        $self['executionID'] = $executionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,10 +137,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withOutput(array $output): self
     {
-        $obj = clone $this;
-        $obj['output'] = $output;
+        $self = clone $this;
+        $self['output'] = $output;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,10 +163,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,10 +176,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withStepResults(array $stepResults): self
     {
-        $obj = clone $this;
-        $obj['stepResults'] = $stepResults;
+        $self = clone $this;
+        $self['stepResults'] = $stepResults;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -187,9 +187,9 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withWebhookConfigured(bool $webhookConfigured): self
     {
-        $obj = clone $this;
-        $obj['webhookConfigured'] = $webhookConfigured;
+        $self = clone $this;
+        $self['webhookConfigured'] = $webhookConfigured;
 
-        return $obj;
+        return $self;
     }
 }

@@ -95,15 +95,15 @@ final class VaultIngestResponse implements BaseModel
         Status|string $status,
         string $workflowID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enableGraphRag'] = $enableGraphRag;
-        $obj['message'] = $message;
-        $obj['objectID'] = $objectID;
-        $obj['status'] = $status;
-        $obj['workflowID'] = $workflowID;
+        $self['enableGraphRag'] = $enableGraphRag;
+        $self['message'] = $message;
+        $self['objectID'] = $objectID;
+        $self['status'] = $status;
+        $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class VaultIngestResponse implements BaseModel
      */
     public function withEnableGraphRag(bool $enableGraphRag): self
     {
-        $obj = clone $this;
-        $obj['enableGraphRag'] = $enableGraphRag;
+        $self = clone $this;
+        $self['enableGraphRag'] = $enableGraphRag;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class VaultIngestResponse implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class VaultIngestResponse implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class VaultIngestResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,9 +157,9 @@ final class VaultIngestResponse implements BaseModel
      */
     public function withWorkflowID(string $workflowID): self
     {
-        $obj = clone $this;
-        $obj['workflowID'] = $workflowID;
+        $self = clone $this;
+        $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 }

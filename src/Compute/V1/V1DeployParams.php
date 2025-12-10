@@ -180,20 +180,20 @@ final class V1DeployParams implements BaseModel
         ?string $image = null,
         Runtime|string|null $runtime = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['entrypointName'] = $entrypointName;
-        $obj['type'] = $type;
+        $self['entrypointName'] = $entrypointName;
+        $self['type'] = $type;
 
-        null !== $code && $obj['code'] = $code;
-        null !== $config && $obj['config'] = $config;
-        null !== $dockerfile && $obj['dockerfile'] = $dockerfile;
-        null !== $entrypointFile && $obj['entrypointFile'] = $entrypointFile;
-        null !== $environment && $obj['environment'] = $environment;
-        null !== $image && $obj['image'] = $image;
-        null !== $runtime && $obj['runtime'] = $runtime;
+        null !== $code && $self['code'] = $code;
+        null !== $config && $self['config'] = $config;
+        null !== $dockerfile && $self['dockerfile'] = $dockerfile;
+        null !== $entrypointFile && $self['entrypointFile'] = $entrypointFile;
+        null !== $environment && $self['environment'] = $environment;
+        null !== $image && $self['image'] = $image;
+        null !== $runtime && $self['runtime'] = $runtime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withEntrypointName(string $entrypointName): self
     {
-        $obj = clone $this;
-        $obj['entrypointName'] = $entrypointName;
+        $self = clone $this;
+        $self['entrypointName'] = $entrypointName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withCode(string $code): self
     {
-        $obj = clone $this;
-        $obj['code'] = $code;
+        $self = clone $this;
+        $self['code'] = $code;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -261,10 +261,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withConfig(Config|array $config): self
     {
-        $obj = clone $this;
-        $obj['config'] = $config;
+        $self = clone $this;
+        $self['config'] = $config;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withDockerfile(string $dockerfile): self
     {
-        $obj = clone $this;
-        $obj['dockerfile'] = $dockerfile;
+        $self = clone $this;
+        $self['dockerfile'] = $dockerfile;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -283,10 +283,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withEntrypointFile(string $entrypointFile): self
     {
-        $obj = clone $this;
-        $obj['entrypointFile'] = $entrypointFile;
+        $self = clone $this;
+        $self['entrypointFile'] = $entrypointFile;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -294,10 +294,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withEnvironment(string $environment): self
     {
-        $obj = clone $this;
-        $obj['environment'] = $environment;
+        $self = clone $this;
+        $self['environment'] = $environment;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -305,10 +305,10 @@ final class V1DeployParams implements BaseModel
      */
     public function withImage(string $image): self
     {
-        $obj = clone $this;
-        $obj['image'] = $image;
+        $self = clone $this;
+        $self['image'] = $image;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -318,9 +318,9 @@ final class V1DeployParams implements BaseModel
      */
     public function withRuntime(Runtime|string $runtime): self
     {
-        $obj = clone $this;
-        $obj['runtime'] = $runtime;
+        $self = clone $this;
+        $self['runtime'] = $runtime;
 
-        return $obj;
+        return $self;
     }
 }

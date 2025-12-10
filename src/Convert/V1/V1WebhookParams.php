@@ -97,15 +97,15 @@ final class V1WebhookParams implements BaseModel
         ?string $error = null,
         Result|array|null $result = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['jobID'] = $jobID;
-        $obj['status'] = $status;
+        $self['jobID'] = $jobID;
+        $self['status'] = $status;
 
-        null !== $error && $obj['error'] = $error;
-        null !== $result && $obj['result'] = $result;
+        null !== $error && $self['error'] = $error;
+        null !== $result && $self['result'] = $result;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class V1WebhookParams implements BaseModel
      */
     public function withJobID(string $jobID): self
     {
-        $obj = clone $this;
-        $obj['jobID'] = $jobID;
+        $self = clone $this;
+        $self['jobID'] = $jobID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -126,10 +126,10 @@ final class V1WebhookParams implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,10 +137,10 @@ final class V1WebhookParams implements BaseModel
      */
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,9 +154,9 @@ final class V1WebhookParams implements BaseModel
      */
     public function withResult(Result|array $result): self
     {
-        $obj = clone $this;
-        $obj['result'] = $result;
+        $self = clone $this;
+        $self['result'] = $result;
 
-        return $obj;
+        return $self;
     }
 }

@@ -120,19 +120,19 @@ final class V1ListVoicesParams implements BaseModel
         SortDirection|string|null $sortDirection = null,
         VoiceType|string|null $voiceType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $category && $obj['category'] = $category;
-        null !== $collectionID && $obj['collectionID'] = $collectionID;
-        null !== $includeTotalCount && $obj['includeTotalCount'] = $includeTotalCount;
-        null !== $nextPageToken && $obj['nextPageToken'] = $nextPageToken;
-        null !== $pageSize && $obj['pageSize'] = $pageSize;
-        null !== $search && $obj['search'] = $search;
-        null !== $sort && $obj['sort'] = $sort;
-        null !== $sortDirection && $obj['sortDirection'] = $sortDirection;
-        null !== $voiceType && $obj['voiceType'] = $voiceType;
+        null !== $category && $self['category'] = $category;
+        null !== $collectionID && $self['collectionID'] = $collectionID;
+        null !== $includeTotalCount && $self['includeTotalCount'] = $includeTotalCount;
+        null !== $nextPageToken && $self['nextPageToken'] = $nextPageToken;
+        null !== $pageSize && $self['pageSize'] = $pageSize;
+        null !== $search && $self['search'] = $search;
+        null !== $sort && $self['sort'] = $sort;
+        null !== $sortDirection && $self['sortDirection'] = $sortDirection;
+        null !== $voiceType && $self['voiceType'] = $voiceType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,10 +151,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withCollectionID(string $collectionID): self
     {
-        $obj = clone $this;
-        $obj['collectionID'] = $collectionID;
+        $self = clone $this;
+        $self['collectionID'] = $collectionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,10 +162,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withIncludeTotalCount(bool $includeTotalCount): self
     {
-        $obj = clone $this;
-        $obj['includeTotalCount'] = $includeTotalCount;
+        $self = clone $this;
+        $self['includeTotalCount'] = $includeTotalCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withNextPageToken(string $nextPageToken): self
     {
-        $obj = clone $this;
-        $obj['nextPageToken'] = $nextPageToken;
+        $self = clone $this;
+        $self['nextPageToken'] = $nextPageToken;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withPageSize(int $pageSize): self
     {
-        $obj = clone $this;
-        $obj['pageSize'] = $pageSize;
+        $self = clone $this;
+        $self['pageSize'] = $pageSize;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withSearch(string $search): self
     {
-        $obj = clone $this;
-        $obj['search'] = $search;
+        $self = clone $this;
+        $self['search'] = $search;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,10 +208,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withSort(Sort|string $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -221,10 +221,10 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withSortDirection(SortDirection|string $sortDirection): self
     {
-        $obj = clone $this;
-        $obj['sortDirection'] = $sortDirection;
+        $self = clone $this;
+        $self['sortDirection'] = $sortDirection;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -234,9 +234,9 @@ final class V1ListVoicesParams implements BaseModel
      */
     public function withVoiceType(VoiceType|string $voiceType): self
     {
-        $obj = clone $this;
-        $obj['voiceType'] = $voiceType;
+        $self = clone $this;
+        $self['voiceType'] = $voiceType;
 
-        return $obj;
+        return $self;
     }
 }

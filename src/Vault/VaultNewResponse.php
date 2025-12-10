@@ -93,18 +93,18 @@ final class VaultNewResponse implements BaseModel
         ?string $region = null,
         ?string $vectorBucket = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $description && $obj['description'] = $description;
-        null !== $filesBucket && $obj['filesBucket'] = $filesBucket;
-        null !== $indexName && $obj['indexName'] = $indexName;
-        null !== $name && $obj['name'] = $name;
-        null !== $region && $obj['region'] = $region;
-        null !== $vectorBucket && $obj['vectorBucket'] = $vectorBucket;
+        null !== $id && $self['id'] = $id;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $description && $self['description'] = $description;
+        null !== $filesBucket && $self['filesBucket'] = $filesBucket;
+        null !== $indexName && $self['indexName'] = $indexName;
+        null !== $name && $self['name'] = $name;
+        null !== $region && $self['region'] = $region;
+        null !== $vectorBucket && $self['vectorBucket'] = $vectorBucket;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,10 +134,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withFilesBucket(string $filesBucket): self
     {
-        $obj = clone $this;
-        $obj['filesBucket'] = $filesBucket;
+        $self = clone $this;
+        $self['filesBucket'] = $filesBucket;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -156,10 +156,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withIndexName(string $indexName): self
     {
-        $obj = clone $this;
-        $obj['indexName'] = $indexName;
+        $self = clone $this;
+        $self['indexName'] = $indexName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -167,10 +167,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -178,10 +178,10 @@ final class VaultNewResponse implements BaseModel
      */
     public function withRegion(string $region): self
     {
-        $obj = clone $this;
-        $obj['region'] = $region;
+        $self = clone $this;
+        $self['region'] = $region;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,9 +189,9 @@ final class VaultNewResponse implements BaseModel
      */
     public function withVectorBucket(string $vectorBucket): self
     {
-        $obj = clone $this;
-        $obj['vectorBucket'] = $vectorBucket;
+        $self = clone $this;
+        $self['vectorBucket'] = $vectorBucket;
 
-        return $obj;
+        return $self;
     }
 }

@@ -42,36 +42,36 @@ final class Instructions implements BaseModel
         ?string $method = null,
         ?string $note = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $headers && $obj['headers'] = $headers;
-        null !== $method && $obj['method'] = $method;
-        null !== $note && $obj['note'] = $note;
+        null !== $headers && $self['headers'] = $headers;
+        null !== $method && $self['method'] = $method;
+        null !== $note && $self['note'] = $note;
 
-        return $obj;
+        return $self;
     }
 
     public function withHeaders(mixed $headers): self
     {
-        $obj = clone $this;
-        $obj['headers'] = $headers;
+        $self = clone $this;
+        $self['headers'] = $headers;
 
-        return $obj;
+        return $self;
     }
 
     public function withMethod(string $method): self
     {
-        $obj = clone $this;
-        $obj['method'] = $method;
+        $self = clone $this;
+        $self['method'] = $method;
 
-        return $obj;
+        return $self;
     }
 
     public function withNote(string $note): self
     {
-        $obj = clone $this;
-        $obj['note'] = $note;
+        $self = clone $this;
+        $self['note'] = $note;
 
-        return $obj;
+        return $self;
     }
 }

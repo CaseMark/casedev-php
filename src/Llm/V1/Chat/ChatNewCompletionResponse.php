@@ -82,16 +82,16 @@ final class ChatNewCompletionResponse implements BaseModel
         ?string $object = null,
         Usage|array|null $usage = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $choices && $obj['choices'] = $choices;
-        null !== $created && $obj['created'] = $created;
-        null !== $model && $obj['model'] = $model;
-        null !== $object && $obj['object'] = $object;
-        null !== $usage && $obj['usage'] = $usage;
+        null !== $id && $self['id'] = $id;
+        null !== $choices && $self['choices'] = $choices;
+        null !== $created && $self['created'] = $created;
+        null !== $model && $self['model'] = $model;
+        null !== $object && $self['object'] = $object;
+        null !== $usage && $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class ChatNewCompletionResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class ChatNewCompletionResponse implements BaseModel
      */
     public function withChoices(array $choices): self
     {
-        $obj = clone $this;
-        $obj['choices'] = $choices;
+        $self = clone $this;
+        $self['choices'] = $choices;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class ChatNewCompletionResponse implements BaseModel
      */
     public function withCreated(int $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,18 +134,18 @@ final class ChatNewCompletionResponse implements BaseModel
      */
     public function withModel(string $model): self
     {
-        $obj = clone $this;
-        $obj['model'] = $model;
+        $self = clone $this;
+        $self['model'] = $model;
 
-        return $obj;
+        return $self;
     }
 
     public function withObject(string $object): self
     {
-        $obj = clone $this;
-        $obj['object'] = $object;
+        $self = clone $this;
+        $self['object'] = $object;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,9 +158,9 @@ final class ChatNewCompletionResponse implements BaseModel
      */
     public function withUsage(Usage|array $usage): self
     {
-        $obj = clone $this;
-        $obj['usage'] = $usage;
+        $self = clone $this;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 }

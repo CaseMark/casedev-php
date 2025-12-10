@@ -66,14 +66,14 @@ final class V1ExecuteResponse implements BaseModel
         Usage|array|null $usage = null,
         ?string $workflowName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $result && $obj['result'] = $result;
-        null !== $status && $obj['status'] = $status;
-        null !== $usage && $obj['usage'] = $usage;
-        null !== $workflowName && $obj['workflowName'] = $workflowName;
+        null !== $result && $self['result'] = $result;
+        null !== $status && $self['status'] = $status;
+        null !== $usage && $self['usage'] = $usage;
+        null !== $workflowName && $self['workflowName'] = $workflowName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withResult(mixed $result): self
     {
-        $obj = clone $this;
-        $obj['result'] = $result;
+        $self = clone $this;
+        $self['result'] = $result;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withUsage(Usage|array $usage): self
     {
-        $obj = clone $this;
-        $obj['usage'] = $usage;
+        $self = clone $this;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,9 +119,9 @@ final class V1ExecuteResponse implements BaseModel
      */
     public function withWorkflowName(string $workflowName): self
     {
-        $obj = clone $this;
-        $obj['workflowName'] = $workflowName;
+        $self = clone $this;
+        $self['workflowName'] = $workflowName;
 
-        return $obj;
+        return $self;
     }
 }

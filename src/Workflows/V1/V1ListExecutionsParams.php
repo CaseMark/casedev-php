@@ -48,20 +48,20 @@ final class V1ListExecutionsParams implements BaseModel
         ?int $limit = null,
         Status|string|null $status = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $status && $obj['status'] = $status;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $status && $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,9 +69,9 @@ final class V1ListExecutionsParams implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 }

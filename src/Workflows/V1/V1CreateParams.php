@@ -117,18 +117,18 @@ final class V1CreateParams implements BaseModel
         TriggerType|string|null $triggerType = null,
         Visibility|string|null $visibility = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
+        $self['name'] = $name;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $edges && $obj['edges'] = $edges;
-        null !== $nodes && $obj['nodes'] = $nodes;
-        null !== $triggerConfig && $obj['triggerConfig'] = $triggerConfig;
-        null !== $triggerType && $obj['triggerType'] = $triggerType;
-        null !== $visibility && $obj['visibility'] = $visibility;
+        null !== $description && $self['description'] = $description;
+        null !== $edges && $self['edges'] = $edges;
+        null !== $nodes && $self['nodes'] = $nodes;
+        null !== $triggerConfig && $self['triggerConfig'] = $triggerConfig;
+        null !== $triggerType && $self['triggerType'] = $triggerType;
+        null !== $visibility && $self['visibility'] = $visibility;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withEdges(array $edges): self
     {
-        $obj = clone $this;
-        $obj['edges'] = $edges;
+        $self = clone $this;
+        $self['edges'] = $edges;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withNodes(array $nodes): self
     {
-        $obj = clone $this;
-        $obj['nodes'] = $nodes;
+        $self = clone $this;
+        $self['nodes'] = $nodes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withTriggerConfig(mixed $triggerConfig): self
     {
-        $obj = clone $this;
-        $obj['triggerConfig'] = $triggerConfig;
+        $self = clone $this;
+        $self['triggerConfig'] = $triggerConfig;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class V1CreateParams implements BaseModel
      */
     public function withTriggerType(TriggerType|string $triggerType): self
     {
-        $obj = clone $this;
-        $obj['triggerType'] = $triggerType;
+        $self = clone $this;
+        $self['triggerType'] = $triggerType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,9 +208,9 @@ final class V1CreateParams implements BaseModel
      */
     public function withVisibility(Visibility|string $visibility): self
     {
-        $obj = clone $this;
-        $obj['visibility'] = $visibility;
+        $self = clone $this;
+        $self['visibility'] = $visibility;
 
-        return $obj;
+        return $self;
     }
 }

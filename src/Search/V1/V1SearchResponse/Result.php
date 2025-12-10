@@ -69,15 +69,15 @@ final class Result implements BaseModel
         ?string $title = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $domain && $obj['domain'] = $domain;
-        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
-        null !== $snippet && $obj['snippet'] = $snippet;
-        null !== $title && $obj['title'] = $title;
-        null !== $url && $obj['url'] = $url;
+        null !== $domain && $self['domain'] = $domain;
+        null !== $publishedDate && $self['publishedDate'] = $publishedDate;
+        null !== $snippet && $self['snippet'] = $snippet;
+        null !== $title && $self['title'] = $title;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,10 +85,10 @@ final class Result implements BaseModel
      */
     public function withDomain(string $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,10 +96,10 @@ final class Result implements BaseModel
      */
     public function withPublishedDate(\DateTimeInterface $publishedDate): self
     {
-        $obj = clone $this;
-        $obj['publishedDate'] = $publishedDate;
+        $self = clone $this;
+        $self['publishedDate'] = $publishedDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class Result implements BaseModel
      */
     public function withSnippet(string $snippet): self
     {
-        $obj = clone $this;
-        $obj['snippet'] = $snippet;
+        $self = clone $this;
+        $self['snippet'] = $snippet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class Result implements BaseModel
      */
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,9 +129,9 @@ final class Result implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

@@ -40,11 +40,11 @@ final class V1ExecuteParams implements BaseModel
      */
     public static function with(mixed $body = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $body && $obj['body'] = $body;
+        null !== $body && $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class V1ExecuteParams implements BaseModel
      */
     public function withBody(mixed $body): self
     {
-        $obj = clone $this;
-        $obj['body'] = $body;
+        $self = clone $this;
+        $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 }

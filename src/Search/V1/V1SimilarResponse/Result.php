@@ -64,72 +64,72 @@ final class Result implements BaseModel
         ?string $title = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $domain && $obj['domain'] = $domain;
-        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
-        null !== $similarityScore && $obj['similarityScore'] = $similarityScore;
-        null !== $snippet && $obj['snippet'] = $snippet;
-        null !== $text && $obj['text'] = $text;
-        null !== $title && $obj['title'] = $title;
-        null !== $url && $obj['url'] = $url;
+        null !== $domain && $self['domain'] = $domain;
+        null !== $publishedDate && $self['publishedDate'] = $publishedDate;
+        null !== $similarityScore && $self['similarityScore'] = $similarityScore;
+        null !== $snippet && $self['snippet'] = $snippet;
+        null !== $text && $self['text'] = $text;
+        null !== $title && $self['title'] = $title;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withDomain(string $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishedDate(string $publishedDate): self
     {
-        $obj = clone $this;
-        $obj['publishedDate'] = $publishedDate;
+        $self = clone $this;
+        $self['publishedDate'] = $publishedDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withSimilarityScore(float $similarityScore): self
     {
-        $obj = clone $this;
-        $obj['similarityScore'] = $similarityScore;
+        $self = clone $this;
+        $self['similarityScore'] = $similarityScore;
 
-        return $obj;
+        return $self;
     }
 
     public function withSnippet(string $snippet): self
     {
-        $obj = clone $this;
-        $obj['snippet'] = $snippet;
+        $self = clone $this;
+        $self['snippet'] = $snippet;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }
