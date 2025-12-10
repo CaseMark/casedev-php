@@ -35,7 +35,7 @@ final class InvokeTest extends TestCase
 
         $result = $this->client->compute->v1->invoke->run(
             'func_abc123 or document-analyzer',
-            ['input' => ['foo' => 'bar']]
+            input: ['foo' => 'bar']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -51,11 +51,9 @@ final class InvokeTest extends TestCase
 
         $result = $this->client->compute->v1->invoke->run(
             'func_abc123 or document-analyzer',
-            [
-                'input' => ['foo' => 'bar'],
-                'async' => true,
-                'functionSuffix' => '_modal',
-            ],
+            input: ['foo' => 'bar'],
+            async: true,
+            functionSuffix: '_modal',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

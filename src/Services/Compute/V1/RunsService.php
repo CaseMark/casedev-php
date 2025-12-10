@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
-use Casedev\Compute\V1\Runs\RunListParams;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\RunsContract;
@@ -14,14 +12,24 @@ use Casedev\ServiceContracts\Compute\V1\RunsContract;
 final class RunsService implements RunsContract
 {
     /**
+     * @api
+     */
+    public RunsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new RunsRawService($client);
+    }
 
     /**
      * @api
      *
      * Retrieve detailed information about a specific compute function run, including execution status, input/output data, resource usage metrics, and cost information.
+     *
+     * @param string $id Unique identifier of the compute run
      *
      * @throws APIException
      */
@@ -29,13 +37,8 @@ final class RunsService implements RunsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['compute/v1/runs/%1$s', $id],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -45,27 +48,24 @@ final class RunsService implements RunsContract
      *
      * Retrieve a list of recent compute runs for your organization. Filter by environment or function, and limit the number of results returned. Useful for monitoring serverless function executions and tracking performance metrics.
      *
-     * @param array{env?: string, function?: string, limit?: int}|RunListParams $params
+     * @param string $env Environment name to filter runs by
+     * @param string $function Function name to filter runs by
+     * @param int $limit Maximum number of runs to return (1-100, default: 50)
      *
      * @throws APIException
      */
     public function list(
-        array|RunListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $env = null,
+        ?string $function = null,
+        int $limit = 50,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = RunListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['env' => $env, 'function' => $function, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'compute/v1/runs',
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

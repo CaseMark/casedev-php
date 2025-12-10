@@ -5,19 +5,25 @@ declare(strict_types=1);
 namespace Casedev\Services\Webhooks;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Webhooks\V1Contract;
-use Casedev\Webhooks\V1\V1CreateParams;
 use Casedev\Webhooks\V1\V1NewResponse;
 
 final class V1Service implements V1Contract
 {
     /**
+     * @api
+     */
+    public V1RawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new V1RawService($client);
+    }
 
     /**
      * @api
@@ -32,29 +38,26 @@ final class V1Service implements V1Contract
      * - `action.completed` - Workflow action finished
      * - `compute.finished` - Compute job completed
      *
-     * @param array{
-     *   events: list<string>, url: string, description?: string
-     * }|V1CreateParams $params
+     * @param list<string> $events Array of event types to subscribe to
+     * @param string $url HTTPS URL where webhook events will be sent
+     * @param string $description Optional description for the webhook
      *
      * @throws APIException
      */
     public function create(
-        array|V1CreateParams $params,
-        ?RequestOptions $requestOptions = null
+        array $events,
+        string $url,
+        ?string $description = null,
+        ?RequestOptions $requestOptions = null,
     ): V1NewResponse {
-        [$parsed, $options] = V1CreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'events' => $events, 'url' => $url, 'description' => $description,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<V1NewResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'webhooks/v1',
-            body: (object) $parsed,
-            options: $options,
-            convert: V1NewResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -64,19 +67,16 @@ final class V1Service implements V1Contract
      *
      * Retrieve detailed information about a specific webhook endpoint, including its URL, description, subscribed events, and status.
      *
+     * @param string $id Unique identifier of the webhook endpoint
+     *
      * @throws APIException
      */
     public function retrieve(
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['webhooks/v1/%1$s', $id],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -90,13 +90,8 @@ final class V1Service implements V1Contract
      */
     public function list(?RequestOptions $requestOptions = null): mixed
     {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'webhooks/v1',
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -106,19 +101,16 @@ final class V1Service implements V1Contract
      *
      * Delete a webhook endpoint from your organization. This action is irreversible and will stop all webhook deliveries to the specified URL.
      *
+     * @param string $id Unique identifier of the webhook endpoint to delete
+     *
      * @throws APIException
      */
     public function delete(
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['webhooks/v1/%1$s', $id],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }

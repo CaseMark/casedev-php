@@ -5,52 +5,46 @@ declare(strict_types=1);
 namespace Casedev\Services\Vault;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
-use Casedev\Vault\Objects\ObjectDownloadParams;
-use Casedev\Vault\Objects\ObjectGetTextParams;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectRetrieveParams;
 
 final class ObjectsService implements ObjectsContract
 {
     /**
+     * @api
+     */
+    public ObjectsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ObjectsRawService($client);
+    }
 
     /**
      * @api
      *
      * Retrieves metadata for a specific document in a vault and generates a temporary download URL. The download URL expires after 1 hour for security. This endpoint also updates the file size if it wasn't previously calculated.
      *
-     * @param array{id: string}|ObjectRetrieveParams $params
+     * @param string $objectID Object ID within the vault
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function retrieve(
         string $objectID,
-        array|ObjectRetrieveParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = ObjectRetrieveParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $id = $parsed['id'];
-        unset($parsed['id']);
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['vault/%1$s/objects/%2$s', $id, $objectID],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieve($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -60,19 +54,16 @@ final class ObjectsService implements ObjectsContract
      *
      * Retrieve all objects stored in a specific vault, including document metadata, ingestion status, and processing statistics.
      *
+     * @param string $id The unique identifier of the vault
+     *
      * @throws APIException
      */
     public function list(
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['vault/%1$s/objects', $id],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -82,35 +73,33 @@ final class ObjectsService implements ObjectsContract
      *
      * Generate presigned URLs for direct S3 operations (GET, PUT, DELETE, HEAD) on vault objects. This allows secure, time-limited access to files without proxying through the API. Essential for large document uploads/downloads in legal workflows.
      *
-     * @param array{
-     *   id: string,
-     *   contentType?: string,
-     *   expiresIn?: int,
-     *   operation?: 'GET'|'PUT'|'DELETE'|'HEAD'|Operation,
-     * }|ObjectCreatePresignedURLParams $params
+     * @param string $objectID Path param: The unique identifier of the object
+     * @param string $id Path param: The unique identifier of the vault
+     * @param string $contentType Body param: Content type for PUT operations (optional, defaults to object's content type)
+     * @param int $expiresIn Body param: URL expiration time in seconds (1 minute to 7 days)
+     * @param 'GET'|'PUT'|'DELETE'|'HEAD'|Operation $operation Body param: The S3 operation to generate URL for
      *
      * @throws APIException
      */
     public function createPresignedURL(
         string $objectID,
-        array|ObjectCreatePresignedURLParams $params,
+        string $id,
+        ?string $contentType = null,
+        int $expiresIn = 3600,
+        string|Operation $operation = 'GET',
         ?RequestOptions $requestOptions = null,
     ): ObjectNewPresignedURLResponse {
-        [$parsed, $options] = ObjectCreatePresignedURLParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $id = $parsed['id'];
-        unset($parsed['id']);
+        $params = [
+            'id' => $id,
+            'contentType' => $contentType,
+            'expiresIn' => $expiresIn,
+            'operation' => $operation,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ObjectNewPresignedURLResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['vault/%1$s/objects/%2$s/presigned-url', $id, $objectID],
-            body: (object) array_diff_key($parsed, ['id']),
-            options: $options,
-            convert: ObjectNewPresignedURLResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createPresignedURL($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -120,29 +109,20 @@ final class ObjectsService implements ObjectsContract
      *
      * Downloads a file from a vault. Returns the actual file content as a binary stream with appropriate headers for file download. Useful for retrieving contracts, depositions, case files, and other legal documents stored in your vault.
      *
-     * @param array{id: string}|ObjectDownloadParams $params
+     * @param string $objectID Object ID within the vault
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function download(
         string $objectID,
-        array|ObjectDownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = ObjectDownloadParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $id = $parsed['id'];
-        unset($parsed['id']);
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->download($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -152,29 +132,20 @@ final class ObjectsService implements ObjectsContract
      *
      * Retrieves the full extracted text content from a processed vault object. Returns the concatenated text from all chunks, useful for document review, analysis, or export. The object must have completed processing before text can be retrieved.
      *
-     * @param array{id: string}|ObjectGetTextParams $params
+     * @param string $objectID The object ID
+     * @param string $id The vault ID
      *
      * @throws APIException
      */
     public function getText(
         string $objectID,
-        array|ObjectGetTextParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = ObjectGetTextParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $id = $parsed['id'];
-        unset($parsed['id']);
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['vault/%1$s/objects/%2$s/text', $id, $objectID],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getText($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

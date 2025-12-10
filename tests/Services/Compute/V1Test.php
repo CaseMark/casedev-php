@@ -34,9 +34,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->deploy([
-            'entrypointName' => 'entrypointName', 'type' => 'task',
-        ]);
+        $result = $this->client->compute->v1->deploy(
+            entrypointName: 'entrypointName',
+            type: 'task'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1DeployResponse::class, $result);
@@ -49,11 +50,11 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->deploy([
-            'entrypointName' => 'entrypointName',
-            'type' => 'task',
-            'code' => 'code',
-            'config' => [
+        $result = $this->client->compute->v1->deploy(
+            entrypointName: 'entrypointName',
+            type: 'task',
+            code: 'code',
+            config: [
                 'addPython' => 'addPython',
                 'allowNetwork' => true,
                 'cmd' => ['string'],
@@ -77,12 +78,12 @@ final class V1Test extends TestCase
                 'warmInstances' => 0,
                 'workdir' => 'workdir',
             ],
-            'dockerfile' => 'dockerfile',
-            'entrypointFile' => 'entrypointFile',
-            'environment' => 'environment',
-            'image' => 'image',
-            'runtime' => 'python',
-        ]);
+            dockerfile: 'dockerfile',
+            entrypointFile: 'entrypointFile',
+            environment: 'environment',
+            image: 'image',
+            runtime: 'python',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1DeployResponse::class, $result);
@@ -108,7 +109,7 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->getUsage([]);
+        $result = $this->client->compute->v1->getUsage();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

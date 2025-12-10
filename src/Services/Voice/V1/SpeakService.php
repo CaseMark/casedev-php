@@ -5,67 +5,86 @@ declare(strict_types=1);
 namespace Casedev\Services\Voice\V1;
 
 use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1\SpeakContract;
-use Casedev\Voice\V1\Speak\SpeakCreateParams;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
-use Casedev\Voice\V1\Speak\SpeakStreamParams;
 
 final class SpeakService implements SpeakContract
 {
     /**
+     * @api
+     */
+    public SpeakRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SpeakRawService($client);
+    }
 
     /**
      * @api
      *
      * Convert text to natural-sounding audio using ElevenLabs voices. Ideal for creating audio summaries of legal documents, client presentations, or accessibility features. Supports multiple languages and voice customization.
      *
+     * @param string $text Text to convert to speech
+     * @param bool $applyTextNormalization Apply automatic text normalization
+     * @param bool $enableLogging Enable request logging
+     * @param string $languageCode Language code for multilingual models
+     * @param 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID $modelID ElevenLabs model ID
+     * @param string $nextText Next context for better pronunciation
+     * @param int $optimizeStreamingLatency Optimize for streaming latency (0-4)
+     * @param 'mp3_44100_128'|'mp3_44100_192'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|OutputFormat $outputFormat Audio output format
+     * @param string $previousText Previous context for better pronunciation
+     * @param int $seed Seed for reproducible generation
+     * @param string $voiceID ElevenLabs voice ID (defaults to Rachel - professional, clear)
      * @param array{
-     *   text: string,
-     *   applyTextNormalization?: bool,
-     *   enableLogging?: bool,
-     *   languageCode?: string,
-     *   modelID?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID,
-     *   nextText?: string,
-     *   optimizeStreamingLatency?: int,
-     *   outputFormat?: value-of<OutputFormat>,
-     *   previousText?: string,
-     *   seed?: int,
-     *   voiceID?: string,
-     *   voiceSettings?: array{
-     *     similarityBoost?: float,
-     *     stability?: float,
-     *     style?: float,
-     *     useSpeakerBoost?: bool,
-     *   },
-     * }|SpeakCreateParams $params
+     *   similarityBoost?: float,
+     *   stability?: float,
+     *   style?: float,
+     *   useSpeakerBoost?: bool,
+     * } $voiceSettings Voice customization settings
      *
      * @throws APIException
      */
     public function create(
-        array|SpeakCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $text,
+        bool $applyTextNormalization = true,
+        bool $enableLogging = true,
+        ?string $languageCode = null,
+        string|ModelID $modelID = 'eleven_multilingual_v2',
+        ?string $nextText = null,
+        ?int $optimizeStreamingLatency = null,
+        string|OutputFormat $outputFormat = 'mp3_44100_128',
+        ?string $previousText = null,
+        ?int $seed = null,
+        string $voiceID = 'EXAVITQu4vr4xnSDxMaL',
+        ?array $voiceSettings = null,
+        ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SpeakCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'text' => $text,
+            'applyTextNormalization' => $applyTextNormalization,
+            'enableLogging' => $enableLogging,
+            'languageCode' => $languageCode,
+            'modelID' => $modelID,
+            'nextText' => $nextText,
+            'optimizeStreamingLatency' => $optimizeStreamingLatency,
+            'outputFormat' => $outputFormat,
+            'previousText' => $previousText,
+            'seed' => $seed,
+            'voiceID' => $voiceID,
+            'voiceSettings' => $voiceSettings,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'voice/v1/speak',
-            headers: ['Accept' => 'audio/mpeg'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -75,46 +94,60 @@ final class SpeakService implements SpeakContract
      *
      * Convert text to speech using ElevenLabs AI voices with streaming for real-time playback. Returns audio data as an MP3 stream for immediate playback with minimal latency. Perfect for legal document narration, client presentations, or accessibility features.
      *
+     * @param string $text Text to convert to speech
+     * @param bool $applyTextNormalization Apply text normalization
+     * @param bool $enableLogging Enable request logging
+     * @param string $languageCode Language code (e.g., 'en', 'es', 'fr')
+     * @param 'eleven_monolingual_v1'|'eleven_multilingual_v1'|'eleven_multilingual_v2'|'eleven_turbo_v2'|\Casedev\Voice\V1\Speak\SpeakStreamParams\ModelID $modelID TTS model to use
+     * @param string $nextText Next text for context
+     * @param int $optimizeStreamingLatency Optimize for streaming latency (0-4)
+     * @param 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|\Casedev\Voice\V1\Speak\SpeakStreamParams\OutputFormat $outputFormat Audio output format
+     * @param string $previousText Previous text for context
+     * @param int $seed Random seed for reproducible generation
+     * @param string $voiceID ElevenLabs voice ID (defaults to Rachel for professional clarity)
      * @param array{
-     *   text: string,
-     *   applyTextNormalization?: bool,
-     *   enableLogging?: bool,
-     *   languageCode?: string,
-     *   modelID?: value-of<SpeakStreamParams\ModelID>,
-     *   nextText?: string,
-     *   optimizeStreamingLatency?: int,
-     *   outputFormat?: 'mp3_44100_128'|'mp3_22050_32'|'pcm_16000'|'pcm_22050'|'pcm_24000'|'pcm_44100'|SpeakStreamParams\OutputFormat,
-     *   previousText?: string,
-     *   seed?: int,
-     *   voiceID?: string,
-     *   voiceSettings?: array{
-     *     similarityBoost?: float,
-     *     stability?: float,
-     *     style?: float,
-     *     useSpeakerBoost?: bool,
-     *   },
-     * }|SpeakStreamParams $params
+     *   similarityBoost?: float,
+     *   stability?: float,
+     *   style?: float,
+     *   useSpeakerBoost?: bool,
+     * } $voiceSettings
      *
      * @throws APIException
      */
     public function stream(
-        array|SpeakStreamParams $params,
-        ?RequestOptions $requestOptions = null
+        string $text,
+        bool $applyTextNormalization = true,
+        bool $enableLogging = true,
+        ?string $languageCode = null,
+        string|\Casedev\Voice\V1\Speak\SpeakStreamParams\ModelID $modelID = 'eleven_multilingual_v2',
+        ?string $nextText = null,
+        ?int $optimizeStreamingLatency = null,
+        string|\Casedev\Voice\V1\Speak\SpeakStreamParams\OutputFormat $outputFormat = 'mp3_44100_128',
+        ?string $previousText = null,
+        ?int $seed = null,
+        string $voiceID = 'EXAVITQu4vr4xnSDxMaL',
+        ?array $voiceSettings = null,
+        ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SpeakStreamParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'text' => $text,
+            'applyTextNormalization' => $applyTextNormalization,
+            'enableLogging' => $enableLogging,
+            'languageCode' => $languageCode,
+            'modelID' => $modelID,
+            'nextText' => $nextText,
+            'optimizeStreamingLatency' => $optimizeStreamingLatency,
+            'outputFormat' => $outputFormat,
+            'previousText' => $previousText,
+            'seed' => $seed,
+            'voiceID' => $voiceID,
+            'voiceSettings' => $voiceSettings,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'voice/v1/speak/stream',
-            headers: ['Accept' => 'audio/mpeg'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->stream(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

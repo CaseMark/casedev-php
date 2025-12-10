@@ -35,9 +35,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->actions->v1->create([
-            'definition' => 'string', 'name' => 'name',
-        ]);
+        $result = $this->client->actions->v1->create(
+            definition: 'string',
+            name: 'name'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);
@@ -50,12 +51,12 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->actions->v1->create([
-            'definition' => 'string',
-            'name' => 'name',
-            'description' => 'description',
-            'webhookID' => 'webhook_id',
-        ]);
+        $result = $this->client->actions->v1->create(
+            definition: 'string',
+            name: 'name',
+            description: 'description',
+            webhookID: 'webhook_id',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1NewResponse::class, $result);
@@ -109,7 +110,7 @@ final class V1Test extends TestCase
 
         $result = $this->client->actions->v1->execute(
             'id',
-            ['input' => ['foo' => 'bar']]
+            input: ['foo' => 'bar']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +126,8 @@ final class V1Test extends TestCase
 
         $result = $this->client->actions->v1->execute(
             'id',
-            ['input' => ['foo' => 'bar'], 'webhookID' => 'webhook_id']
+            input: ['foo' => 'bar'],
+            webhookID: 'webhook_id'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

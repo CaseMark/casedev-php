@@ -33,9 +33,10 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism doesn\'t support application/pdf responses');
         }
 
-        $result = $this->client->format->v1->createDocument([
-            'content' => 'content', 'outputFormat' => 'pdf',
-        ]);
+        $result = $this->client->format->v1->createDocument(
+            content: 'content',
+            outputFormat: 'pdf'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -48,11 +49,11 @@ final class V1Test extends TestCase
             $this->markTestSkipped('Prism doesn\'t support application/pdf responses');
         }
 
-        $result = $this->client->format->v1->createDocument([
-            'content' => 'content',
-            'outputFormat' => 'pdf',
-            'inputFormat' => 'md',
-            'options' => [
+        $result = $this->client->format->v1->createDocument(
+            content: 'content',
+            outputFormat: 'pdf',
+            inputFormat: 'md',
+            options: [
                 'components' => [
                     [
                         'content' => 'content',
@@ -62,7 +63,7 @@ final class V1Test extends TestCase
                     ],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);

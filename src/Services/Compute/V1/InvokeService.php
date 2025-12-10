@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
-use Casedev\Compute\V1\Invoke\InvokeRunParams;
 use Casedev\Compute\V1\Invoke\InvokeRunParams\FunctionSuffix;
-use Casedev\Compute\V1\Invoke\InvokeRunResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\AsynchronousResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\SynchronousResponse;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\InvokeContract;
@@ -18,41 +15,45 @@ use Casedev\ServiceContracts\Compute\V1\InvokeContract;
 final class InvokeService implements InvokeContract
 {
     /**
+     * @api
+     */
+    public InvokeRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new InvokeRawService($client);
+    }
 
     /**
      * @api
      *
      * Execute a deployed compute function with custom input data. Supports both synchronous and asynchronous execution modes. Functions can be invoked by ID or name and can process various types of input data for legal document analysis, data processing, or other computational tasks.
      *
-     * @param array{
-     *   input: array<string,mixed>,
-     *   async?: bool,
-     *   functionSuffix?: '_modal'|'_task'|'_web'|'_server'|FunctionSuffix,
-     * }|InvokeRunParams $params
+     * @param string $functionID Function ID or name to invoke
+     * @param array<string,mixed> $input Input data to pass to the function
+     * @param bool $async If true, returns immediately with run ID for background execution
+     * @param '_modal'|'_task'|'_web'|'_server'|FunctionSuffix $functionSuffix Override the auto-detected function suffix
      *
      * @throws APIException
      */
     public function run(
         string $functionID,
-        array|InvokeRunParams $params,
+        array $input,
+        bool $async = false,
+        string|FunctionSuffix|null $functionSuffix = null,
         ?RequestOptions $requestOptions = null,
     ): SynchronousResponse|AsynchronousResponse {
-        [$parsed, $options] = InvokeRunParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'input' => $input, 'async' => $async, 'functionSuffix' => $functionSuffix,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SynchronousResponse|AsynchronousResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['compute/v1/invoke/%1$s', $functionID],
-            body: (object) $parsed,
-            options: $options,
-            convert: InvokeRunResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->run($functionID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -6,14 +6,11 @@ namespace Casedev\ServiceContracts;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
-use Casedev\Vault\VaultCreateParams;
-use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams;
+use Casedev\Vault\VaultSearchParams\Method;
 use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUploadParams;
 use Casedev\Vault\VaultUploadResponse;
 
 interface VaultContract
@@ -21,17 +18,23 @@ interface VaultContract
     /**
      * @api
      *
-     * @param array<mixed>|VaultCreateParams $params
+     * @param string $name Display name for the vault
+     * @param string $description Optional description of the vault's purpose
+     * @param bool $enableGraph Enable knowledge graph for entity relationship mapping
      *
      * @throws APIException
      */
     public function create(
-        array|VaultCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $name,
+        ?string $description = null,
+        bool $enableGraph = true,
+        ?RequestOptions $requestOptions = null,
     ): VaultNewResponse;
 
     /**
      * @api
+     *
+     * @param string $id Unique identifier of the vault
      *
      * @throws APIException
      */
@@ -52,39 +55,56 @@ interface VaultContract
     /**
      * @api
      *
-     * @param array<mixed>|VaultIngestParams $params
+     * @param string $objectID Vault object ID
+     * @param string $id Vault ID
      *
      * @throws APIException
      */
     public function ingest(
         string $objectID,
-        array|VaultIngestParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): VaultIngestResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|VaultSearchParams $params
+     * @param string $id Unique identifier of the vault to search
+     * @param string $query Search query or question to find relevant documents
+     * @param array<string,mixed> $filters Additional filters to apply to search results
+     * @param 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method $method Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach
+     * @param int $topK Maximum number of results to return
      *
      * @throws APIException
      */
     public function search(
         string $id,
-        array|VaultSearchParams $params,
+        string $query,
+        ?array $filters = null,
+        string|Method $method = 'hybrid',
+        int $topK = 10,
         ?RequestOptions $requestOptions = null,
     ): VaultSearchResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|VaultUploadParams $params
+     * @param string $id Vault ID to upload the file to
+     * @param string $contentType MIME type of the file (e.g., application/pdf, image/jpeg)
+     * @param string $filename Name of the file to upload
+     * @param bool $autoIndex Whether to automatically process and index the file for search
+     * @param mixed $metadata Additional metadata to associate with the file
+     * @param float $sizeBytes Estimated file size in bytes for cost calculation
      *
      * @throws APIException
      */
     public function upload(
         string $id,
-        array|VaultUploadParams $params,
+        string $contentType,
+        string $filename,
+        bool $autoIndex = true,
+        mixed $metadata = null,
+        ?float $sizeBytes = null,
         ?RequestOptions $requestOptions = null,
     ): VaultUploadResponse;
 }

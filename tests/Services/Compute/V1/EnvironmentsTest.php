@@ -35,9 +35,9 @@ final class EnvironmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->environments->create([
-            'name' => 'document-review-prod',
-        ]);
+        $result = $this->client->compute->v1->environments->create(
+            name: 'document-review-prod'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(EnvironmentNewResponse::class, $result);
@@ -50,9 +50,9 @@ final class EnvironmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->compute->v1->environments->create([
-            'name' => 'document-review-prod',
-        ]);
+        $result = $this->client->compute->v1->environments->create(
+            name: 'document-review-prod'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(EnvironmentNewResponse::class, $result);

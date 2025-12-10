@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace Casedev\Services\Convert;
 
 use Casedev\Client;
-use Casedev\Convert\V1\V1ProcessParams;
 use Casedev\Convert\V1\V1ProcessResponse;
-use Casedev\Convert\V1\V1WebhookParams;
 use Casedev\Convert\V1\V1WebhookParams\Status;
 use Casedev\Convert\V1\V1WebhookResponse;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1Contract;
@@ -21,6 +18,11 @@ final class V1Service implements V1Contract
     /**
      * @api
      */
+    public V1RawService $raw;
+
+    /**
+     * @api
+     */
     public JobsService $jobs;
 
     /**
@@ -28,6 +30,7 @@ final class V1Service implements V1Contract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new V1RawService($client);
         $this->jobs = new JobsService($client);
     }
 
@@ -36,20 +39,16 @@ final class V1Service implements V1Contract
      *
      * Download the converted M4A audio file from a completed FTR conversion job. The file is streamed directly to the client with appropriate headers for audio playback or download.
      *
+     * @param string $id The unique job ID of the completed conversion
+     *
      * @throws APIException
      */
     public function download(
         string $id,
         ?RequestOptions $requestOptions = null
     ): string {
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['convert/v1/download/%1$s', $id],
-            headers: ['Accept' => 'audio/mp4'],
-            options: $requestOptions,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->download($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -63,27 +62,22 @@ final class V1Service implements V1Contract
      * **Output Format**: M4A audio
      * **Processing**: Asynchronous with webhook callbacks
      *
-     * @param array{inputURL: string, callbackURL?: string}|V1ProcessParams $params
+     * @param string $inputURL HTTPS URL to the FTR file (must be a valid S3 presigned URL)
+     * @param string $callbackURL Optional webhook URL to receive conversion completion notification
      *
      * @throws APIException
      */
     public function process(
-        array|V1ProcessParams $params,
-        ?RequestOptions $requestOptions = null
+        string $inputURL,
+        ?string $callbackURL = null,
+        ?RequestOptions $requestOptions = null,
     ): V1ProcessResponse {
-        [$parsed, $options] = V1ProcessParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputURL' => $inputURL, 'callbackURL' => $callbackURL];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<V1ProcessResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'convert/v1/process',
-            body: (object) $parsed,
-            options: $options,
-            convert: V1ProcessResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->process(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -93,34 +87,33 @@ final class V1Service implements V1Contract
      *
      * Internal webhook endpoint that receives completion notifications from the Modal FTR converter service. This endpoint handles status updates for file conversion jobs, including success and failure notifications. Requires valid Bearer token authentication.
      *
+     * @param string $jobID Unique identifier for the conversion job
+     * @param 'completed'|'failed'|Status $status Status of the conversion job
+     * @param string $error Error message for failed jobs
      * @param array{
-     *   jobID: string,
-     *   status: 'completed'|'failed'|Status,
-     *   error?: string,
-     *   result?: array{
-     *     durationSeconds?: float, fileSizeBytes?: int, storedFilename?: string
-     *   },
-     * }|V1WebhookParams $params
+     *   durationSeconds?: float, fileSizeBytes?: int, storedFilename?: string
+     * } $result Result data for completed jobs
      *
      * @throws APIException
      */
     public function webhook(
-        array|V1WebhookParams $params,
-        ?RequestOptions $requestOptions = null
+        string $jobID,
+        string|Status $status,
+        ?string $error = null,
+        ?array $result = null,
+        ?RequestOptions $requestOptions = null,
     ): V1WebhookResponse {
-        [$parsed, $options] = V1WebhookParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'jobID' => $jobID,
+            'status' => $status,
+            'error' => $error,
+            'result' => $result,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<V1WebhookResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'convert/v1/webhook',
-            body: (object) $parsed,
-            options: $options,
-            convert: V1WebhookResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->webhook(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

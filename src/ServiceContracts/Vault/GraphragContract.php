@@ -12,6 +12,8 @@ interface GraphragContract
     /**
      * @api
      *
+     * @param string $id The unique identifier of the vault
+     *
      * @throws APIException
      */
     public function getStats(
@@ -21,6 +23,8 @@ interface GraphragContract
 
     /**
      * @api
+     *
+     * @param string $id The unique identifier of the vault
      *
      * @throws APIException
      */

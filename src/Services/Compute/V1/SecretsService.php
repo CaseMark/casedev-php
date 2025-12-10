@@ -5,13 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
-use Casedev\Compute\V1\Secrets\SecretCreateParams;
-use Casedev\Compute\V1\Secrets\SecretDeleteGroupParams;
-use Casedev\Compute\V1\Secrets\SecretListParams;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
-use Casedev\Compute\V1\Secrets\SecretRetrieveGroupParams;
-use Casedev\Compute\V1\Secrets\SecretUpdateGroupParams;
-use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\SecretsContract;
@@ -19,9 +13,17 @@ use Casedev\ServiceContracts\Compute\V1\SecretsContract;
 final class SecretsService implements SecretsContract
 {
     /**
+     * @api
+     */
+    public SecretsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SecretsRawService($client);
+    }
 
     /**
      * @api
@@ -34,29 +36,24 @@ final class SecretsService implements SecretsContract
      * - Validation of group names
      * - Conflict detection for existing groups
      *
-     * @param array{
-     *   name: string, description?: string, env?: string
-     * }|SecretCreateParams $params
+     * @param string $name Unique name for the secret group. Must contain only letters, numbers, hyphens, and underscores.
+     * @param string $description Optional description of the secret group's purpose
+     * @param string $env Environment name where the secret group will be created. Uses default environment if not specified.
      *
      * @throws APIException
      */
     public function create(
-        array|SecretCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $name,
+        ?string $description = null,
+        ?string $env = null,
+        ?RequestOptions $requestOptions = null,
     ): SecretNewResponse {
-        [$parsed, $options] = SecretCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['name' => $name, 'description' => $description, 'env' => $env];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SecretNewResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'compute/v1/secrets',
-            body: (object) $parsed,
-            options: $options,
-            convert: SecretNewResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -66,27 +63,20 @@ final class SecretsService implements SecretsContract
      *
      * Retrieve all secret groups for a compute environment. Secret groups organize related secrets (API keys, credentials, etc.) that can be securely accessed by compute jobs during execution.
      *
-     * @param array{env?: string}|SecretListParams $params
+     * @param string $env Environment name to list secret groups for. If not specified, uses the default environment.
      *
      * @throws APIException
      */
     public function list(
-        array|SecretListParams $params,
+        ?string $env = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = SecretListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['env' => $env];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'compute/v1/secrets',
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -96,28 +86,24 @@ final class SecretsService implements SecretsContract
      *
      * Delete an entire secret group or a specific key within a secret group. Automatically syncs the deletion to Modal compute infrastructure. When deleting a specific key, the remaining secrets in the group are re-synced. When deleting the entire group, all secrets and the group itself are removed from both the database and Modal.
      *
-     * @param array{env?: string, key?: string}|SecretDeleteGroupParams $params
+     * @param string $group Name of the secret group
+     * @param string $env Environment name. If not provided, uses the default environment
+     * @param string $key Specific key to delete within the group. If not provided, the entire group is deleted
      *
      * @throws APIException
      */
     public function deleteGroup(
         string $group,
-        array|SecretDeleteGroupParams $params,
+        ?string $env = null,
+        ?string $key = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SecretDeleteGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['env' => $env, 'key' => $key];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['compute/v1/secrets/%1$s', $group],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteGroup($group, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -127,28 +113,22 @@ final class SecretsService implements SecretsContract
      *
      * Retrieve the keys (names) of secrets in a specified group within a compute environment. For security reasons, actual secret values are not returned - only the keys and metadata.
      *
-     * @param array{env?: string}|SecretRetrieveGroupParams $params
+     * @param string $group Name of the secret group to list keys from
+     * @param string $env Environment name. If not specified, uses the default environment
      *
      * @throws APIException
      */
     public function retrieveGroup(
         string $group,
-        array|SecretRetrieveGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?string $env = null,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = SecretRetrieveGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['env' => $env];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['compute/v1/secrets/%1$s', $group],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieveGroup($group, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -158,30 +138,24 @@ final class SecretsService implements SecretsContract
      *
      * Set or update secrets in a compute secret group. Secrets are encrypted with AES-256-GCM and synced to compute infrastructure in real-time. Use this to manage environment variables and API keys for your compute workloads.
      *
-     * @param array{
-     *   secrets: array<string,string>, env?: string
-     * }|SecretUpdateGroupParams $params
+     * @param string $group Name of the secret group
+     * @param array<string,string> $secrets Key-value pairs of secrets to set
+     * @param string $env Environment name (optional, uses default if not specified)
      *
      * @throws APIException
      */
     public function updateGroup(
         string $group,
-        array|SecretUpdateGroupParams $params,
+        array $secrets,
+        ?string $env = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SecretUpdateGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['secrets' => $secrets, 'env' => $env];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['compute/v1/secrets/%1$s', $group],
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateGroup($group, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

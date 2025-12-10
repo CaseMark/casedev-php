@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Casedev\ServiceContracts\Format\V1;
 
 use Casedev\Core\Exceptions\APIException;
-use Casedev\Format\V1\Templates\TemplateCreateParams;
-use Casedev\Format\V1\Templates\TemplateListParams;
+use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 
@@ -15,17 +14,31 @@ interface TemplatesContract
     /**
      * @api
      *
-     * @param array<mixed>|TemplateCreateParams $params
+     * @param string $content Template content with {{variable}} placeholders
+     * @param string $name Template name
+     * @param 'caption'|'signature'|'letterhead'|'certificate'|'footer'|'custom'|Type $type Template type
+     * @param string $description Template description
+     * @param mixed $styles CSS styles for the template
+     * @param list<string> $tags Template tags for organization
+     * @param list<string> $variables Template variables (auto-detected if not provided)
      *
      * @throws APIException
      */
     public function create(
-        array|TemplateCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $content,
+        string $name,
+        string|Type $type,
+        ?string $description = null,
+        mixed $styles = null,
+        ?array $tags = null,
+        ?array $variables = null,
+        ?RequestOptions $requestOptions = null,
     ): TemplateNewResponse;
 
     /**
      * @api
+     *
+     * @param string $id The unique identifier of the format template
      *
      * @throws APIException
      */
@@ -37,12 +50,12 @@ interface TemplatesContract
     /**
      * @api
      *
-     * @param array<mixed>|TemplateListParams $params
+     * @param string $type Filter templates by type (e.g., contract, pleading, letter)
      *
      * @throws APIException
      */
     public function list(
-        array|TemplateListParams $params,
+        ?string $type = null,
         ?RequestOptions $requestOptions = null
     ): mixed;
 }

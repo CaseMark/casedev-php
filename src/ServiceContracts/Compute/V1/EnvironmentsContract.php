@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Casedev\ServiceContracts\Compute\V1;
 
-use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
 use Casedev\Core\Exceptions\APIException;
@@ -15,17 +14,19 @@ interface EnvironmentsContract
     /**
      * @api
      *
-     * @param array<mixed>|EnvironmentCreateParams $params
+     * @param string $name Environment name (alphanumeric, hyphens, and underscores only)
      *
      * @throws APIException
      */
     public function create(
-        array|EnvironmentCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $name,
+        ?RequestOptions $requestOptions = null
     ): EnvironmentNewResponse;
 
     /**
      * @api
+     *
+     * @param string $name The name of the compute environment to retrieve
      *
      * @throws APIException
      */
@@ -44,6 +45,8 @@ interface EnvironmentsContract
     /**
      * @api
      *
+     * @param string $name Name of the compute environment to delete
+     *
      * @throws APIException
      */
     public function delete(
@@ -53,6 +56,8 @@ interface EnvironmentsContract
 
     /**
      * @api
+     *
+     * @param string $name Name of the compute environment to set as default
      *
      * @throws APIException
      */

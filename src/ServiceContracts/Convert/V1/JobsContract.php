@@ -12,6 +12,8 @@ interface JobsContract
     /**
      * @api
      *
+     * @param string $id The unique identifier of the conversion job
+     *
      * @throws APIException
      */
     public function retrieve(
@@ -21,6 +23,8 @@ interface JobsContract
 
     /**
      * @api
+     *
+     * @param string $id The job ID of the converted file to delete
      *
      * @throws APIException
      */

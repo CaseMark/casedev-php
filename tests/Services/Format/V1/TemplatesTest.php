@@ -34,9 +34,11 @@ final class TemplatesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->format->v1->templates->create([
-            'content' => 'content', 'name' => 'name', 'type' => 'caption',
-        ]);
+        $result = $this->client->format->v1->templates->create(
+            content: 'content',
+            name: 'name',
+            type: 'caption'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TemplateNewResponse::class, $result);
@@ -49,15 +51,15 @@ final class TemplatesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->format->v1->templates->create([
-            'content' => 'content',
-            'name' => 'name',
-            'type' => 'caption',
-            'description' => 'description',
-            'styles' => [],
-            'tags' => ['string'],
-            'variables' => ['string'],
-        ]);
+        $result = $this->client->format->v1->templates->create(
+            content: 'content',
+            name: 'name',
+            type: 'caption',
+            description: 'description',
+            styles: [],
+            tags: ['string'],
+            variables: ['string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TemplateNewResponse::class, $result);
@@ -83,7 +85,7 @@ final class TemplatesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->format->v1->templates->list([]);
+        $result = $this->client->format->v1->templates->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

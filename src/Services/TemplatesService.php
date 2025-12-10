@@ -13,6 +13,11 @@ final class TemplatesService implements TemplatesContract
     /**
      * @api
      */
+    public TemplatesRawService $raw;
+
+    /**
+     * @api
+     */
     public V1Service $v1;
 
     /**
@@ -20,6 +25,7 @@ final class TemplatesService implements TemplatesContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new TemplatesRawService($client);
         $this->v1 = new V1Service($client);
     }
 }

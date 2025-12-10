@@ -13,6 +13,11 @@ final class OcrService implements OcrContract
     /**
      * @api
      */
+    public OcrRawService $raw;
+
+    /**
+     * @api
+     */
     public V1Service $v1;
 
     /**
@@ -20,6 +25,7 @@ final class OcrService implements OcrContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new OcrRawService($client);
         $this->v1 = new V1Service($client);
     }
 }

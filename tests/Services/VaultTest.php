@@ -38,9 +38,7 @@ final class VaultTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->create([
-            'name' => 'Contract Review Archive',
-        ]);
+        $result = $this->client->vault->create(name: 'Contract Review Archive');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultNewResponse::class, $result);
@@ -53,11 +51,11 @@ final class VaultTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->create([
-            'name' => 'Contract Review Archive',
-            'description' => 'Repository for all client contract reviews and analysis',
-            'enableGraph' => true,
-        ]);
+        $result = $this->client->vault->create(
+            name: 'Contract Review Archive',
+            description: 'Repository for all client contract reviews and analysis',
+            enableGraph: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultNewResponse::class, $result);
@@ -96,7 +94,7 @@ final class VaultTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->ingest('objectId', ['id' => 'id']);
+        $result = $this->client->vault->ingest('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultIngestResponse::class, $result);
@@ -109,7 +107,7 @@ final class VaultTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->ingest('objectId', ['id' => 'id']);
+        $result = $this->client->vault->ingest('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultIngestResponse::class, $result);
@@ -122,7 +120,7 @@ final class VaultTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->vault->search('id', ['query' => 'query']);
+        $result = $this->client->vault->search('id', query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultSearchResponse::class, $result);
@@ -137,12 +135,10 @@ final class VaultTest extends TestCase
 
         $result = $this->client->vault->search(
             'id',
-            [
-                'query' => 'query',
-                'filters' => ['foo' => 'bar'],
-                'method' => 'vector',
-                'topK' => 1,
-            ],
+            query: 'query',
+            filters: ['foo' => 'bar'],
+            method: 'vector',
+            topK: 1
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -158,7 +154,8 @@ final class VaultTest extends TestCase
 
         $result = $this->client->vault->upload(
             'id',
-            ['contentType' => 'contentType', 'filename' => 'filename']
+            contentType: 'contentType',
+            filename: 'filename'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -174,13 +171,11 @@ final class VaultTest extends TestCase
 
         $result = $this->client->vault->upload(
             'id',
-            [
-                'contentType' => 'contentType',
-                'filename' => 'filename',
-                'autoIndex' => true,
-                'metadata' => [],
-                'sizeBytes' => 0,
-            ],
+            contentType: 'contentType',
+            filename: 'filename',
+            autoIndex: true,
+            metadata: [],
+            sizeBytes: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
