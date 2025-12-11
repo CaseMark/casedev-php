@@ -21,14 +21,14 @@ use Casedev\Search\V1\V1SearchParams\Type;
  *   additionalQueries?: list<string>,
  *   category?: string,
  *   contents?: string,
- *   endCrawlDate?: \DateTimeInterface,
- *   endPublishedDate?: \DateTimeInterface,
+ *   endCrawlDate?: string,
+ *   endPublishedDate?: string,
  *   excludeDomains?: list<string>,
  *   includeDomains?: list<string>,
  *   includeText?: bool,
  *   numResults?: int,
- *   startCrawlDate?: \DateTimeInterface,
- *   startPublishedDate?: \DateTimeInterface,
+ *   startCrawlDate?: string,
+ *   startPublishedDate?: string,
  *   type?: Type|value-of<Type>,
  *   userLocation?: string,
  * }
@@ -69,13 +69,13 @@ final class V1SearchParams implements BaseModel
      * End date for crawl date filtering.
      */
     #[Optional]
-    public ?\DateTimeInterface $endCrawlDate;
+    public ?string $endCrawlDate;
 
     /**
      * End date for published date filtering.
      */
     #[Optional]
-    public ?\DateTimeInterface $endPublishedDate;
+    public ?string $endPublishedDate;
 
     /**
      * Domains to exclude from search results.
@@ -109,13 +109,13 @@ final class V1SearchParams implements BaseModel
      * Start date for crawl date filtering.
      */
     #[Optional]
-    public ?\DateTimeInterface $startCrawlDate;
+    public ?string $startCrawlDate;
 
     /**
      * Start date for published date filtering.
      */
     #[Optional]
-    public ?\DateTimeInterface $startPublishedDate;
+    public ?string $startPublishedDate;
 
     /**
      * Type of search to perform.
@@ -165,14 +165,14 @@ final class V1SearchParams implements BaseModel
         ?array $additionalQueries = null,
         ?string $category = null,
         ?string $contents = null,
-        ?\DateTimeInterface $endCrawlDate = null,
-        ?\DateTimeInterface $endPublishedDate = null,
+        ?string $endCrawlDate = null,
+        ?string $endPublishedDate = null,
         ?array $excludeDomains = null,
         ?array $includeDomains = null,
         ?bool $includeText = null,
         ?int $numResults = null,
-        ?\DateTimeInterface $startCrawlDate = null,
-        ?\DateTimeInterface $startPublishedDate = null,
+        ?string $startCrawlDate = null,
+        ?string $startPublishedDate = null,
         Type|string|null $type = null,
         ?string $userLocation = null,
     ): self {
@@ -246,7 +246,7 @@ final class V1SearchParams implements BaseModel
     /**
      * End date for crawl date filtering.
      */
-    public function withEndCrawlDate(\DateTimeInterface $endCrawlDate): self
+    public function withEndCrawlDate(string $endCrawlDate): self
     {
         $self = clone $this;
         $self['endCrawlDate'] = $endCrawlDate;
@@ -257,9 +257,8 @@ final class V1SearchParams implements BaseModel
     /**
      * End date for published date filtering.
      */
-    public function withEndPublishedDate(
-        \DateTimeInterface $endPublishedDate
-    ): self {
+    public function withEndPublishedDate(string $endPublishedDate): self
+    {
         $self = clone $this;
         $self['endPublishedDate'] = $endPublishedDate;
 
@@ -317,7 +316,7 @@ final class V1SearchParams implements BaseModel
     /**
      * Start date for crawl date filtering.
      */
-    public function withStartCrawlDate(\DateTimeInterface $startCrawlDate): self
+    public function withStartCrawlDate(string $startCrawlDate): self
     {
         $self = clone $this;
         $self['startCrawlDate'] = $startCrawlDate;
@@ -328,9 +327,8 @@ final class V1SearchParams implements BaseModel
     /**
      * Start date for published date filtering.
      */
-    public function withStartPublishedDate(
-        \DateTimeInterface $startPublishedDate
-    ): self {
+    public function withStartPublishedDate(string $startPublishedDate): self
+    {
         $self = clone $this;
         $self['startPublishedDate'] = $startPublishedDate;
 

@@ -114,7 +114,7 @@ final class ObjectsRawService implements ObjectsRawContract
         return $this->client->request(
             method: 'post',
             path: ['vault/%1$s/objects/%2$s/presigned-url', $id, $objectID],
-            body: (object) array_diff_key($parsed, ['id']),
+            body: (object) array_diff_key($parsed, array_flip(['id'])),
             options: $options,
             convert: ObjectNewPresignedURLResponse::class,
         );

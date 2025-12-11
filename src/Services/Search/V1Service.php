@@ -209,14 +209,14 @@ final class V1Service implements V1Contract
      * @param list<string> $additionalQueries Additional related search queries to enhance results
      * @param string $category Category filter for search results
      * @param string $contents Specific content type to search for
-     * @param string|\DateTimeInterface $endCrawlDate End date for crawl date filtering
-     * @param string|\DateTimeInterface $endPublishedDate End date for published date filtering
+     * @param string $endCrawlDate End date for crawl date filtering
+     * @param string $endPublishedDate End date for published date filtering
      * @param list<string> $excludeDomains Domains to exclude from search results
      * @param list<string> $includeDomains Domains to include in search results
      * @param bool $includeText Whether to include full text content in results
      * @param int $numResults Number of search results to return
-     * @param string|\DateTimeInterface $startCrawlDate Start date for crawl date filtering
-     * @param string|\DateTimeInterface $startPublishedDate Start date for published date filtering
+     * @param string $startCrawlDate Start date for crawl date filtering
+     * @param string $startPublishedDate Start date for published date filtering
      * @param 'auto'|'search'|'news'|Type $type Type of search to perform
      * @param string $userLocation Geographic location for localized results
      *
@@ -227,14 +227,14 @@ final class V1Service implements V1Contract
         ?array $additionalQueries = null,
         ?string $category = null,
         ?string $contents = null,
-        string|\DateTimeInterface|null $endCrawlDate = null,
-        string|\DateTimeInterface|null $endPublishedDate = null,
+        ?string $endCrawlDate = null,
+        ?string $endPublishedDate = null,
         ?array $excludeDomains = null,
         ?array $includeDomains = null,
         ?bool $includeText = null,
         int $numResults = 10,
-        string|\DateTimeInterface|null $startCrawlDate = null,
-        string|\DateTimeInterface|null $startPublishedDate = null,
+        ?string $startCrawlDate = null,
+        ?string $startPublishedDate = null,
         string|Type $type = 'auto',
         ?string $userLocation = null,
         ?RequestOptions $requestOptions = null,
@@ -271,28 +271,28 @@ final class V1Service implements V1Contract
      *
      * @param string $url The URL to find similar content for
      * @param string $contents Additional content to consider for similarity matching
-     * @param string|\DateTimeInterface $endCrawlDate Only include pages crawled before this date
-     * @param string|\DateTimeInterface $endPublishedDate Only include pages published before this date
+     * @param string $endCrawlDate Only include pages crawled before this date
+     * @param string $endPublishedDate Only include pages published before this date
      * @param list<string> $excludeDomains Exclude results from these domains
      * @param list<string> $includeDomains Only search within these domains
      * @param bool $includeText Whether to include extracted text content in results
      * @param int $numResults Number of similar results to return
-     * @param string|\DateTimeInterface $startCrawlDate Only include pages crawled after this date
-     * @param string|\DateTimeInterface $startPublishedDate Only include pages published after this date
+     * @param string $startCrawlDate Only include pages crawled after this date
+     * @param string $startPublishedDate Only include pages published after this date
      *
      * @throws APIException
      */
     public function similar(
         string $url,
         ?string $contents = null,
-        string|\DateTimeInterface|null $endCrawlDate = null,
-        string|\DateTimeInterface|null $endPublishedDate = null,
+        ?string $endCrawlDate = null,
+        ?string $endPublishedDate = null,
         ?array $excludeDomains = null,
         ?array $includeDomains = null,
         ?bool $includeText = null,
         int $numResults = 10,
-        string|\DateTimeInterface|null $startCrawlDate = null,
-        string|\DateTimeInterface|null $startPublishedDate = null,
+        ?string $startCrawlDate = null,
+        ?string $startPublishedDate = null,
         ?RequestOptions $requestOptions = null,
     ): V1SimilarResponse {
         $params = [

@@ -177,14 +177,14 @@ final class V1Test extends TestCase
             additionalQueries: ['string'],
             category: 'category',
             contents: 'contents',
-            endCrawlDate: new \DateTimeImmutable('2019-12-27'),
-            endPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            endCrawlDate: '2019-12-27',
+            endPublishedDate: '2019-12-27',
             excludeDomains: ['string'],
             includeDomains: ['string'],
             includeText: true,
             numResults: 1,
-            startCrawlDate: new \DateTimeImmutable('2019-12-27'),
-            startPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            startCrawlDate: '2019-12-27',
+            startPublishedDate: '2019-12-27',
             type: 'auto',
             userLocation: 'userLocation',
         );
@@ -216,14 +216,14 @@ final class V1Test extends TestCase
         $result = $this->client->search->v1->similar(
             url: 'https://example.com',
             contents: 'contents',
-            endCrawlDate: new \DateTimeImmutable('2019-12-27'),
-            endPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            endCrawlDate: '2019-12-27',
+            endPublishedDate: '2019-12-27',
             excludeDomains: ['string'],
             includeDomains: ['string'],
             includeText: true,
             numResults: 1,
-            startCrawlDate: new \DateTimeImmutable('2019-12-27'),
-            startPublishedDate: new \DateTimeImmutable('2019-12-27'),
+            startCrawlDate: '2019-12-27',
+            startPublishedDate: '2019-12-27',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

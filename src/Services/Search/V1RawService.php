@@ -192,14 +192,14 @@ final class V1RawService implements V1RawContract
      *   additionalQueries?: list<string>,
      *   category?: string,
      *   contents?: string,
-     *   endCrawlDate?: string|\DateTimeInterface,
-     *   endPublishedDate?: string|\DateTimeInterface,
+     *   endCrawlDate?: string,
+     *   endPublishedDate?: string,
      *   excludeDomains?: list<string>,
      *   includeDomains?: list<string>,
      *   includeText?: bool,
      *   numResults?: int,
-     *   startCrawlDate?: string|\DateTimeInterface,
-     *   startPublishedDate?: string|\DateTimeInterface,
+     *   startCrawlDate?: string,
+     *   startPublishedDate?: string,
      *   type?: 'auto'|'search'|'news'|Type,
      *   userLocation?: string,
      * }|V1SearchParams $params
@@ -235,14 +235,14 @@ final class V1RawService implements V1RawContract
      * @param array{
      *   url: string,
      *   contents?: string,
-     *   endCrawlDate?: string|\DateTimeInterface,
-     *   endPublishedDate?: string|\DateTimeInterface,
+     *   endCrawlDate?: string,
+     *   endPublishedDate?: string,
      *   excludeDomains?: list<string>,
      *   includeDomains?: list<string>,
      *   includeText?: bool,
      *   numResults?: int,
-     *   startCrawlDate?: string|\DateTimeInterface,
-     *   startPublishedDate?: string|\DateTimeInterface,
+     *   startCrawlDate?: string,
+     *   startPublishedDate?: string,
      * }|V1SimilarParams $params
      *
      * @return BaseResponse<V1SimilarResponse>
