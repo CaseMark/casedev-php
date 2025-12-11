@@ -6,6 +6,7 @@ namespace Casedev\Services\Vault;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
@@ -41,7 +42,7 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($objectID, params: $params, requestOptions: $requestOptions);
@@ -89,14 +90,14 @@ final class ObjectsService implements ObjectsContract
         string|Operation $operation = 'GET',
         ?RequestOptions $requestOptions = null,
     ): ObjectNewPresignedURLResponse {
-        $params = [
-            'id' => $id,
-            'contentType' => $contentType,
-            'expiresIn' => $expiresIn,
-            'operation' => $operation,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'contentType' => $contentType,
+                'expiresIn' => $expiresIn,
+                'operation' => $operation,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createPresignedURL($objectID, params: $params, requestOptions: $requestOptions);
@@ -119,7 +120,7 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->download($objectID, params: $params, requestOptions: $requestOptions);
@@ -142,7 +143,7 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getText($objectID, params: $params, requestOptions: $requestOptions);

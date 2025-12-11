@@ -6,6 +6,7 @@ namespace Casedev\Services\Llm;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1Contract;
@@ -53,15 +54,15 @@ final class V1Service implements V1Contract
         ?string $user = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'input' => $input,
-            'model' => $model,
-            'dimensions' => $dimensions,
-            'encodingFormat' => $encodingFormat,
-            'user' => $user,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'input' => $input,
+                'model' => $model,
+                'dimensions' => $dimensions,
+                'encodingFormat' => $encodingFormat,
+                'user' => $user,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createEmbedding(params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace Casedev\Services\Voice;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1Contract;
 use Casedev\Services\Voice\V1\SpeakService;
@@ -63,19 +64,19 @@ final class V1Service implements V1Contract
         string|VoiceType|null $voiceType = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'category' => $category,
-            'collectionID' => $collectionID,
-            'includeTotalCount' => $includeTotalCount,
-            'nextPageToken' => $nextPageToken,
-            'pageSize' => $pageSize,
-            'search' => $search,
-            'sort' => $sort,
-            'sortDirection' => $sortDirection,
-            'voiceType' => $voiceType,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'category' => $category,
+                'collectionID' => $collectionID,
+                'includeTotalCount' => $includeTotalCount,
+                'nextPageToken' => $nextPageToken,
+                'pageSize' => $pageSize,
+                'search' => $search,
+                'sort' => $sort,
+                'sortDirection' => $sortDirection,
+                'voiceType' => $voiceType,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listVoices(params: $params, requestOptions: $requestOptions);

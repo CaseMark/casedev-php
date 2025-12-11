@@ -56,7 +56,7 @@ final class TemplatesTest extends TestCase
             name: 'name',
             type: 'caption',
             description: 'description',
-            styles: [],
+            styles: (object) [],
             tags: ['string'],
             variables: ['string'],
         );

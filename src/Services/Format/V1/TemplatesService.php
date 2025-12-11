@@ -6,6 +6,7 @@ namespace Casedev\Services\Format\V1;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
@@ -51,17 +52,17 @@ final class TemplatesService implements TemplatesContract
         ?array $variables = null,
         ?RequestOptions $requestOptions = null,
     ): TemplateNewResponse {
-        $params = [
-            'content' => $content,
-            'name' => $name,
-            'type' => $type,
-            'description' => $description,
-            'styles' => $styles,
-            'tags' => $tags,
-            'variables' => $variables,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'content' => $content,
+                'name' => $name,
+                'type' => $type,
+                'description' => $description,
+                'styles' => $styles,
+                'tags' => $tags,
+                'variables' => $variables,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -103,9 +104,7 @@ final class TemplatesService implements TemplatesContract
         ?string $type = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['type' => $type];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['type' => $type]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

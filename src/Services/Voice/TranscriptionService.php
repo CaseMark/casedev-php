@@ -6,6 +6,7 @@ namespace Casedev\Services\Voice;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\TranscriptionContract;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
@@ -52,18 +53,18 @@ final class TranscriptionService implements TranscriptionContract
         bool $speakerLabels = false,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'audioURL' => $audioURL,
-            'autoHighlights' => $autoHighlights,
-            'contentSafetyLabels' => $contentSafetyLabels,
-            'formatText' => $formatText,
-            'languageCode' => $languageCode,
-            'languageDetection' => $languageDetection,
-            'punctuate' => $punctuate,
-            'speakerLabels' => $speakerLabels,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'audioURL' => $audioURL,
+                'autoHighlights' => $autoHighlights,
+                'contentSafetyLabels' => $contentSafetyLabels,
+                'formatText' => $formatText,
+                'languageCode' => $languageCode,
+                'languageDetection' => $languageDetection,
+                'punctuate' => $punctuate,
+                'speakerLabels' => $speakerLabels,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

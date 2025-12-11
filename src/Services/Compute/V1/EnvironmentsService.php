@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\EnvironmentsContract;
 
@@ -39,7 +40,7 @@ final class EnvironmentsService implements EnvironmentsContract
         string $name,
         ?RequestOptions $requestOptions = null
     ): EnvironmentNewResponse {
-        $params = ['name' => $name];
+        $params = Util::removeNulls(['name' => $name]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

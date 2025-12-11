@@ -7,6 +7,7 @@ namespace Casedev\Services\Compute\V1;
 use Casedev\Client;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\SecretsContract;
 
@@ -48,9 +49,9 @@ final class SecretsService implements SecretsContract
         ?string $env = null,
         ?RequestOptions $requestOptions = null,
     ): SecretNewResponse {
-        $params = ['name' => $name, 'description' => $description, 'env' => $env];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['name' => $name, 'description' => $description, 'env' => $env]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -71,9 +72,7 @@ final class SecretsService implements SecretsContract
         ?string $env = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['env' => $env];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -98,9 +97,7 @@ final class SecretsService implements SecretsContract
         ?string $key = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['env' => $env, 'key' => $key];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['env' => $env, 'key' => $key]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteGroup($group, params: $params, requestOptions: $requestOptions);
@@ -123,9 +120,7 @@ final class SecretsService implements SecretsContract
         ?string $env = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['env' => $env];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieveGroup($group, params: $params, requestOptions: $requestOptions);
@@ -150,9 +145,7 @@ final class SecretsService implements SecretsContract
         ?string $env = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['secrets' => $secrets, 'env' => $env];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['secrets' => $secrets, 'env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateGroup($group, params: $params, requestOptions: $requestOptions);
