@@ -18,14 +18,14 @@ use Casedev\Core\Contracts\BaseModel;
  * @phpstan-type V1SimilarParamsShape = array{
  *   url: string,
  *   contents?: string,
- *   endCrawlDate?: \DateTimeInterface,
- *   endPublishedDate?: \DateTimeInterface,
+ *   endCrawlDate?: string,
+ *   endPublishedDate?: string,
  *   excludeDomains?: list<string>,
  *   includeDomains?: list<string>,
  *   includeText?: bool,
  *   numResults?: int,
- *   startCrawlDate?: \DateTimeInterface,
- *   startPublishedDate?: \DateTimeInterface,
+ *   startCrawlDate?: string,
+ *   startPublishedDate?: string,
  * }
  */
 final class V1SimilarParams implements BaseModel
@@ -50,13 +50,13 @@ final class V1SimilarParams implements BaseModel
      * Only include pages crawled before this date.
      */
     #[Optional]
-    public ?\DateTimeInterface $endCrawlDate;
+    public ?string $endCrawlDate;
 
     /**
      * Only include pages published before this date.
      */
     #[Optional]
-    public ?\DateTimeInterface $endPublishedDate;
+    public ?string $endPublishedDate;
 
     /**
      * Exclude results from these domains.
@@ -90,13 +90,13 @@ final class V1SimilarParams implements BaseModel
      * Only include pages crawled after this date.
      */
     #[Optional]
-    public ?\DateTimeInterface $startCrawlDate;
+    public ?string $startCrawlDate;
 
     /**
      * Only include pages published after this date.
      */
     #[Optional]
-    public ?\DateTimeInterface $startPublishedDate;
+    public ?string $startPublishedDate;
 
     /**
      * `new V1SimilarParams()` is missing required properties by the API.
@@ -128,14 +128,14 @@ final class V1SimilarParams implements BaseModel
     public static function with(
         string $url,
         ?string $contents = null,
-        ?\DateTimeInterface $endCrawlDate = null,
-        ?\DateTimeInterface $endPublishedDate = null,
+        ?string $endCrawlDate = null,
+        ?string $endPublishedDate = null,
         ?array $excludeDomains = null,
         ?array $includeDomains = null,
         ?bool $includeText = null,
         ?int $numResults = null,
-        ?\DateTimeInterface $startCrawlDate = null,
-        ?\DateTimeInterface $startPublishedDate = null,
+        ?string $startCrawlDate = null,
+        ?string $startPublishedDate = null,
     ): self {
         $self = new self;
 
@@ -179,7 +179,7 @@ final class V1SimilarParams implements BaseModel
     /**
      * Only include pages crawled before this date.
      */
-    public function withEndCrawlDate(\DateTimeInterface $endCrawlDate): self
+    public function withEndCrawlDate(string $endCrawlDate): self
     {
         $self = clone $this;
         $self['endCrawlDate'] = $endCrawlDate;
@@ -190,9 +190,8 @@ final class V1SimilarParams implements BaseModel
     /**
      * Only include pages published before this date.
      */
-    public function withEndPublishedDate(
-        \DateTimeInterface $endPublishedDate
-    ): self {
+    public function withEndPublishedDate(string $endPublishedDate): self
+    {
         $self = clone $this;
         $self['endPublishedDate'] = $endPublishedDate;
 
@@ -250,7 +249,7 @@ final class V1SimilarParams implements BaseModel
     /**
      * Only include pages crawled after this date.
      */
-    public function withStartCrawlDate(\DateTimeInterface $startCrawlDate): self
+    public function withStartCrawlDate(string $startCrawlDate): self
     {
         $self = clone $this;
         $self['startCrawlDate'] = $startCrawlDate;
@@ -261,9 +260,8 @@ final class V1SimilarParams implements BaseModel
     /**
      * Only include pages published after this date.
      */
-    public function withStartPublishedDate(
-        \DateTimeInterface $startPublishedDate
-    ): self {
+    public function withStartPublishedDate(string $startPublishedDate): self
+    {
         $self = clone $this;
         $self['startPublishedDate'] = $startPublishedDate;
 
