@@ -6,6 +6,7 @@ namespace Casedev\Services\Voice\V1;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\V1\SpeakContract;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
@@ -66,22 +67,22 @@ final class SpeakService implements SpeakContract
         ?array $voiceSettings = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = [
-            'text' => $text,
-            'applyTextNormalization' => $applyTextNormalization,
-            'enableLogging' => $enableLogging,
-            'languageCode' => $languageCode,
-            'modelID' => $modelID,
-            'nextText' => $nextText,
-            'optimizeStreamingLatency' => $optimizeStreamingLatency,
-            'outputFormat' => $outputFormat,
-            'previousText' => $previousText,
-            'seed' => $seed,
-            'voiceID' => $voiceID,
-            'voiceSettings' => $voiceSettings,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'text' => $text,
+                'applyTextNormalization' => $applyTextNormalization,
+                'enableLogging' => $enableLogging,
+                'languageCode' => $languageCode,
+                'modelID' => $modelID,
+                'nextText' => $nextText,
+                'optimizeStreamingLatency' => $optimizeStreamingLatency,
+                'outputFormat' => $outputFormat,
+                'previousText' => $previousText,
+                'seed' => $seed,
+                'voiceID' => $voiceID,
+                'voiceSettings' => $voiceSettings,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -129,22 +130,22 @@ final class SpeakService implements SpeakContract
         ?array $voiceSettings = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = [
-            'text' => $text,
-            'applyTextNormalization' => $applyTextNormalization,
-            'enableLogging' => $enableLogging,
-            'languageCode' => $languageCode,
-            'modelID' => $modelID,
-            'nextText' => $nextText,
-            'optimizeStreamingLatency' => $optimizeStreamingLatency,
-            'outputFormat' => $outputFormat,
-            'previousText' => $previousText,
-            'seed' => $seed,
-            'voiceID' => $voiceID,
-            'voiceSettings' => $voiceSettings,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'text' => $text,
+                'applyTextNormalization' => $applyTextNormalization,
+                'enableLogging' => $enableLogging,
+                'languageCode' => $languageCode,
+                'modelID' => $modelID,
+                'nextText' => $nextText,
+                'optimizeStreamingLatency' => $optimizeStreamingLatency,
+                'outputFormat' => $outputFormat,
+                'previousText' => $previousText,
+                'seed' => $seed,
+                'voiceID' => $voiceID,
+                'voiceSettings' => $voiceSettings,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->stream(params: $params, requestOptions: $requestOptions);

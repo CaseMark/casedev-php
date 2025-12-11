@@ -59,9 +59,9 @@ final class V1Test extends TestCase
         $result = $this->client->workflows->v1->create(
             name: 'Document Processor',
             description: 'description',
-            edges: [[]],
-            nodes: [[]],
-            triggerConfig: [],
+            edges: [(object) []],
+            nodes: [(object) []],
+            triggerConfig: (object) [],
             triggerType: 'manual',
             visibility: 'private',
         );

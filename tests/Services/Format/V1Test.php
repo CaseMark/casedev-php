@@ -57,9 +57,9 @@ final class V1Test extends TestCase
                 'components' => [
                     [
                         'content' => 'content',
-                        'styles' => [],
+                        'styles' => (object) [],
                         'templateID' => 'templateId',
-                        'variables' => [],
+                        'variables' => (object) [],
                     ],
                 ],
             ],

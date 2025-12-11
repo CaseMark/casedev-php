@@ -6,6 +6,7 @@ namespace Casedev\Services\Ocr;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
 use Casedev\Ocr\V1\V1ProcessParams\Engine;
 use Casedev\Ocr\V1\V1ProcessResponse;
@@ -61,7 +62,7 @@ final class V1Service implements V1Contract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->download($type, params: $params, requestOptions: $requestOptions);
@@ -96,17 +97,17 @@ final class V1Service implements V1Contract
         ?string $resultPrefix = null,
         ?RequestOptions $requestOptions = null,
     ): V1ProcessResponse {
-        $params = [
-            'documentURL' => $documentURL,
-            'callbackURL' => $callbackURL,
-            'documentID' => $documentID,
-            'engine' => $engine,
-            'features' => $features,
-            'resultBucket' => $resultBucket,
-            'resultPrefix' => $resultPrefix,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'documentURL' => $documentURL,
+                'callbackURL' => $callbackURL,
+                'documentID' => $documentID,
+                'engine' => $engine,
+                'features' => $features,
+                'resultBucket' => $resultBucket,
+                'resultPrefix' => $resultPrefix,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->process(params: $params, requestOptions: $requestOptions);

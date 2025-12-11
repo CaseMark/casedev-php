@@ -6,6 +6,7 @@ namespace Casedev\Services\Search;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\Search\V1\V1AnswerParams\SearchType;
 use Casedev\Search\V1\V1AnswerResponse;
@@ -65,21 +66,21 @@ final class V1Service implements V1Contract
         bool $useCustomLlm = false,
         ?RequestOptions $requestOptions = null,
     ): V1AnswerResponse {
-        $params = [
-            'query' => $query,
-            'excludeDomains' => $excludeDomains,
-            'includeDomains' => $includeDomains,
-            'maxTokens' => $maxTokens,
-            'model' => $model,
-            'numResults' => $numResults,
-            'searchType' => $searchType,
-            'stream' => $stream,
-            'temperature' => $temperature,
-            'text' => $text,
-            'useCustomLlm' => $useCustomLlm,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'query' => $query,
+                'excludeDomains' => $excludeDomains,
+                'includeDomains' => $includeDomains,
+                'maxTokens' => $maxTokens,
+                'model' => $model,
+                'numResults' => $numResults,
+                'searchType' => $searchType,
+                'stream' => $stream,
+                'temperature' => $temperature,
+                'text' => $text,
+                'useCustomLlm' => $useCustomLlm,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->answer(params: $params, requestOptions: $requestOptions);
@@ -118,20 +119,20 @@ final class V1Service implements V1Contract
         bool $text = true,
         ?RequestOptions $requestOptions = null,
     ): V1ContentsResponse {
-        $params = [
-            'urls' => $urls,
-            'context' => $context,
-            'extras' => $extras,
-            'highlights' => $highlights,
-            'livecrawl' => $livecrawl,
-            'livecrawlTimeout' => $livecrawlTimeout,
-            'subpages' => $subpages,
-            'subpageTarget' => $subpageTarget,
-            'summary' => $summary,
-            'text' => $text,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'urls' => $urls,
+                'context' => $context,
+                'extras' => $extras,
+                'highlights' => $highlights,
+                'livecrawl' => $livecrawl,
+                'livecrawlTimeout' => $livecrawlTimeout,
+                'subpages' => $subpages,
+                'subpageTarget' => $subpageTarget,
+                'summary' => $summary,
+                'text' => $text,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->contents(params: $params, requestOptions: $requestOptions);
@@ -158,14 +159,14 @@ final class V1Service implements V1Contract
         ?string $query = null,
         ?RequestOptions $requestOptions = null,
     ): V1ResearchResponse {
-        $params = [
-            'instructions' => $instructions,
-            'model' => $model,
-            'outputSchema' => $outputSchema,
-            'query' => $query,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'instructions' => $instructions,
+                'model' => $model,
+                'outputSchema' => $outputSchema,
+                'query' => $query,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->research(params: $params, requestOptions: $requestOptions);
@@ -190,9 +191,7 @@ final class V1Service implements V1Contract
         ?bool $stream = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['events' => $events, 'stream' => $stream];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['events' => $events, 'stream' => $stream]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieveResearch($id, params: $params, requestOptions: $requestOptions);
@@ -239,24 +238,24 @@ final class V1Service implements V1Contract
         ?string $userLocation = null,
         ?RequestOptions $requestOptions = null,
     ): V1SearchResponse {
-        $params = [
-            'query' => $query,
-            'additionalQueries' => $additionalQueries,
-            'category' => $category,
-            'contents' => $contents,
-            'endCrawlDate' => $endCrawlDate,
-            'endPublishedDate' => $endPublishedDate,
-            'excludeDomains' => $excludeDomains,
-            'includeDomains' => $includeDomains,
-            'includeText' => $includeText,
-            'numResults' => $numResults,
-            'startCrawlDate' => $startCrawlDate,
-            'startPublishedDate' => $startPublishedDate,
-            'type' => $type,
-            'userLocation' => $userLocation,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'query' => $query,
+                'additionalQueries' => $additionalQueries,
+                'category' => $category,
+                'contents' => $contents,
+                'endCrawlDate' => $endCrawlDate,
+                'endPublishedDate' => $endPublishedDate,
+                'excludeDomains' => $excludeDomains,
+                'includeDomains' => $includeDomains,
+                'includeText' => $includeText,
+                'numResults' => $numResults,
+                'startCrawlDate' => $startCrawlDate,
+                'startPublishedDate' => $startPublishedDate,
+                'type' => $type,
+                'userLocation' => $userLocation,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
@@ -295,20 +294,20 @@ final class V1Service implements V1Contract
         ?string $startPublishedDate = null,
         ?RequestOptions $requestOptions = null,
     ): V1SimilarResponse {
-        $params = [
-            'url' => $url,
-            'contents' => $contents,
-            'endCrawlDate' => $endCrawlDate,
-            'endPublishedDate' => $endPublishedDate,
-            'excludeDomains' => $excludeDomains,
-            'includeDomains' => $includeDomains,
-            'includeText' => $includeText,
-            'numResults' => $numResults,
-            'startCrawlDate' => $startCrawlDate,
-            'startPublishedDate' => $startPublishedDate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'url' => $url,
+                'contents' => $contents,
+                'endCrawlDate' => $endCrawlDate,
+                'endPublishedDate' => $endPublishedDate,
+                'excludeDomains' => $excludeDomains,
+                'includeDomains' => $includeDomains,
+                'includeText' => $includeText,
+                'numResults' => $numResults,
+                'startCrawlDate' => $startCrawlDate,
+                'startPublishedDate' => $startPublishedDate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->similar(params: $params, requestOptions: $requestOptions);

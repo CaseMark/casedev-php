@@ -6,6 +6,7 @@ namespace Casedev\Services\Format;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 use Casedev\RequestOptions;
@@ -56,14 +57,14 @@ final class V1Service implements V1Contract
         ?array $options = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = [
-            'content' => $content,
-            'outputFormat' => $outputFormat,
-            'inputFormat' => $inputFormat,
-            'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'content' => $content,
+                'outputFormat' => $outputFormat,
+                'inputFormat' => $inputFormat,
+                'options' => $options,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createDocument(params: $params, requestOptions: $requestOptions);

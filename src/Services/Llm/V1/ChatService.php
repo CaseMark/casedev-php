@@ -6,6 +6,7 @@ namespace Casedev\Services\Llm\V1;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 use Casedev\RequestOptions;
@@ -55,18 +56,18 @@ final class ChatService implements ChatContract
         ?float $topP = null,
         ?RequestOptions $requestOptions = null,
     ): ChatNewCompletionResponse {
-        $params = [
-            'messages' => $messages,
-            'frequencyPenalty' => $frequencyPenalty,
-            'maxTokens' => $maxTokens,
-            'model' => $model,
-            'presencePenalty' => $presencePenalty,
-            'stream' => $stream,
-            'temperature' => $temperature,
-            'topP' => $topP,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'messages' => $messages,
+                'frequencyPenalty' => $frequencyPenalty,
+                'maxTokens' => $maxTokens,
+                'model' => $model,
+                'presencePenalty' => $presencePenalty,
+                'stream' => $stream,
+                'temperature' => $temperature,
+                'topP' => $topP,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createCompletion(params: $params, requestOptions: $requestOptions);

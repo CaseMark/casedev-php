@@ -6,6 +6,7 @@ namespace Casedev\Services\Workflows;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Workflows\V1Contract;
 use Casedev\Workflows\V1\V1CreateParams\TriggerType;
@@ -62,17 +63,17 @@ final class V1Service implements V1Contract
         string|Visibility $visibility = 'private',
         ?RequestOptions $requestOptions = null,
     ): V1NewResponse {
-        $params = [
-            'name' => $name,
-            'description' => $description,
-            'edges' => $edges,
-            'nodes' => $nodes,
-            'triggerConfig' => $triggerConfig,
-            'triggerType' => $triggerType,
-            'visibility' => $visibility,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'description' => $description,
+                'edges' => $edges,
+                'nodes' => $nodes,
+                'triggerConfig' => $triggerConfig,
+                'triggerType' => $triggerType,
+                'visibility' => $visibility,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -123,17 +124,17 @@ final class V1Service implements V1Contract
         string|\Casedev\Workflows\V1\V1UpdateParams\Visibility|null $visibility = null,
         ?RequestOptions $requestOptions = null,
     ): V1UpdateResponse {
-        $params = [
-            'description' => $description,
-            'edges' => $edges,
-            'name' => $name,
-            'nodes' => $nodes,
-            'triggerConfig' => $triggerConfig,
-            'triggerType' => $triggerType,
-            'visibility' => $visibility,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'description' => $description,
+                'edges' => $edges,
+                'name' => $name,
+                'nodes' => $nodes,
+                'triggerConfig' => $triggerConfig,
+                'triggerType' => $triggerType,
+                'visibility' => $visibility,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($id, params: $params, requestOptions: $requestOptions);
@@ -158,11 +159,9 @@ final class V1Service implements V1Contract
         string|\Casedev\Workflows\V1\V1ListParams\Visibility|null $visibility = null,
         ?RequestOptions $requestOptions = null,
     ): V1ListResponse {
-        $params = [
-            'limit' => $limit, 'offset' => $offset, 'visibility' => $visibility,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['limit' => $limit, 'offset' => $offset, 'visibility' => $visibility]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -223,9 +222,7 @@ final class V1Service implements V1Contract
         mixed $body = null,
         ?RequestOptions $requestOptions = null
     ): V1ExecuteResponse {
-        $params = ['body' => $body];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['body' => $body]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->execute($id, params: $params, requestOptions: $requestOptions);
@@ -249,9 +246,7 @@ final class V1Service implements V1Contract
         string|Status|null $status = null,
         ?RequestOptions $requestOptions = null,
     ): V1ListExecutionsResponse {
-        $params = ['limit' => $limit, 'status' => $status];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['limit' => $limit, 'status' => $status]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listExecutions($id, params: $params, requestOptions: $requestOptions);

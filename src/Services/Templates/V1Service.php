@@ -6,6 +6,7 @@ namespace Casedev\Services\Templates;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Templates\V1Contract;
 use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
@@ -68,16 +69,16 @@ final class V1Service implements V1Contract
         ?string $type = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'category' => $category,
-            'limit' => $limit,
-            'offset' => $offset,
-            'published' => $published,
-            'subCategory' => $subCategory,
-            'type' => $type,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'category' => $category,
+                'limit' => $limit,
+                'offset' => $offset,
+                'published' => $published,
+                'subCategory' => $subCategory,
+                'type' => $type,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -109,9 +110,7 @@ final class V1Service implements V1Contract
         ?array $options = null,
         ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse {
-        $params = ['input' => $input, 'options' => $options];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['input' => $input, 'options' => $options]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->execute($id, params: $params, requestOptions: $requestOptions);
@@ -155,9 +154,9 @@ final class V1Service implements V1Contract
         int $limit = 10,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['query' => $query, 'category' => $category, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['query' => $query, 'category' => $category, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);

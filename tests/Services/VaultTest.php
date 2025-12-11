@@ -174,7 +174,7 @@ final class VaultTest extends TestCase
             contentType: 'contentType',
             filename: 'filename',
             autoIndex: true,
-            metadata: [],
+            metadata: (object) [],
             sizeBytes: 0,
         );
 

@@ -9,6 +9,7 @@ use Casedev\Compute\V1\Invoke\InvokeRunParams\FunctionSuffix;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\AsynchronousResponse;
 use Casedev\Compute\V1\Invoke\InvokeRunResponse\SynchronousResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\InvokeContract;
 
@@ -46,11 +47,13 @@ final class InvokeService implements InvokeContract
         string|FunctionSuffix|null $functionSuffix = null,
         ?RequestOptions $requestOptions = null,
     ): SynchronousResponse|AsynchronousResponse {
-        $params = [
-            'input' => $input, 'async' => $async, 'functionSuffix' => $functionSuffix,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'input' => $input,
+                'async' => $async,
+                'functionSuffix' => $functionSuffix,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->run($functionID, params: $params, requestOptions: $requestOptions);

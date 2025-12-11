@@ -94,7 +94,7 @@ final class V1Test extends TestCase
         $result = $this->client->search->v1->contents(
             urls: ['https://example.com'],
             context: 'context',
-            extras: [],
+            extras: (object) [],
             highlights: true,
             livecrawl: true,
             livecrawlTimeout: 0,
@@ -131,7 +131,7 @@ final class V1Test extends TestCase
         $result = $this->client->search->v1->research(
             instructions: 'instructions',
             model: 'fast',
-            outputSchema: [],
+            outputSchema: (object) [],
             query: 'query',
         );
 

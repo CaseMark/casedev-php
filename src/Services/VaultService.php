@@ -6,6 +6,7 @@ namespace Casedev\Services;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
@@ -61,13 +62,13 @@ final class VaultService implements VaultContract
         bool $enableGraph = true,
         ?RequestOptions $requestOptions = null,
     ): VaultNewResponse {
-        $params = [
-            'name' => $name,
-            'description' => $description,
-            'enableGraph' => $enableGraph,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'description' => $description,
+                'enableGraph' => $enableGraph,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -125,7 +126,7 @@ final class VaultService implements VaultContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): VaultIngestResponse {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->ingest($objectID, params: $params, requestOptions: $requestOptions);
@@ -154,14 +155,14 @@ final class VaultService implements VaultContract
         int $topK = 10,
         ?RequestOptions $requestOptions = null,
     ): VaultSearchResponse {
-        $params = [
-            'query' => $query,
-            'filters' => $filters,
-            'method' => $method,
-            'topK' => $topK,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'query' => $query,
+                'filters' => $filters,
+                'method' => $method,
+                'topK' => $topK,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search($id, params: $params, requestOptions: $requestOptions);
@@ -192,15 +193,15 @@ final class VaultService implements VaultContract
         ?float $sizeBytes = null,
         ?RequestOptions $requestOptions = null,
     ): VaultUploadResponse {
-        $params = [
-            'contentType' => $contentType,
-            'filename' => $filename,
-            'autoIndex' => $autoIndex,
-            'metadata' => $metadata,
-            'sizeBytes' => $sizeBytes,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'contentType' => $contentType,
+                'filename' => $filename,
+                'autoIndex' => $autoIndex,
+                'metadata' => $metadata,
+                'sizeBytes' => $sizeBytes,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upload($id, params: $params, requestOptions: $requestOptions);

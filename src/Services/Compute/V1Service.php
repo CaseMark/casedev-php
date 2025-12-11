@@ -10,6 +10,7 @@ use Casedev\Compute\V1\V1DeployParams\Runtime;
 use Casedev\Compute\V1\V1DeployParams\Type;
 use Casedev\Compute\V1\V1DeployResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1Contract;
 use Casedev\Services\Compute\V1\EnvironmentsService;
@@ -115,19 +116,19 @@ final class V1Service implements V1Contract
         string|Runtime $runtime = 'python',
         ?RequestOptions $requestOptions = null,
     ): V1DeployResponse {
-        $params = [
-            'entrypointName' => $entrypointName,
-            'type' => $type,
-            'code' => $code,
-            'config' => $config,
-            'dockerfile' => $dockerfile,
-            'entrypointFile' => $entrypointFile,
-            'environment' => $environment,
-            'image' => $image,
-            'runtime' => $runtime,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'entrypointName' => $entrypointName,
+                'type' => $type,
+                'code' => $code,
+                'config' => $config,
+                'dockerfile' => $dockerfile,
+                'entrypointFile' => $entrypointFile,
+                'environment' => $environment,
+                'image' => $image,
+                'runtime' => $runtime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deploy(params: $params, requestOptions: $requestOptions);
@@ -165,9 +166,7 @@ final class V1Service implements V1Contract
         ?int $year = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['month' => $month, 'year' => $year];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['month' => $month, 'year' => $year]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getUsage(params: $params, requestOptions: $requestOptions);

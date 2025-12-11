@@ -8,6 +8,7 @@ use Casedev\Actions\V1\V1ExecuteResponse;
 use Casedev\Actions\V1\V1NewResponse;
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Actions\V1Contract;
 
@@ -45,14 +46,14 @@ final class V1Service implements V1Contract
         ?string $webhookID = null,
         ?RequestOptions $requestOptions = null,
     ): V1NewResponse {
-        $params = [
-            'definition' => $definition,
-            'name' => $name,
-            'description' => $description,
-            'webhookID' => $webhookID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'definition' => $definition,
+                'name' => $name,
+                'description' => $description,
+                'webhookID' => $webhookID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -130,9 +131,7 @@ final class V1Service implements V1Contract
         ?string $webhookID = null,
         ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse {
-        $params = ['input' => $input, 'webhookID' => $webhookID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['input' => $input, 'webhookID' => $webhookID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->execute($id, params: $params, requestOptions: $requestOptions);

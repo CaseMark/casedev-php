@@ -6,6 +6,7 @@ namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\RunsContract;
 
@@ -60,9 +61,9 @@ final class RunsService implements RunsContract
         int $limit = 50,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['env' => $env, 'function' => $function, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['env' => $env, 'function' => $function, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

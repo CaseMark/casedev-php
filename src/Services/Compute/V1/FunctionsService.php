@@ -6,6 +6,7 @@ namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\FunctionsContract;
 
@@ -37,9 +38,7 @@ final class FunctionsService implements FunctionsContract
         ?string $env = null,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['env' => $env];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -62,9 +61,7 @@ final class FunctionsService implements FunctionsContract
         int $tail = 200,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['tail' => $tail];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['tail' => $tail]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getLogs($id, params: $params, requestOptions: $requestOptions);

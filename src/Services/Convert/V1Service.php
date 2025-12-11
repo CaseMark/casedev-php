@@ -9,6 +9,7 @@ use Casedev\Convert\V1\V1ProcessResponse;
 use Casedev\Convert\V1\V1WebhookParams\Status;
 use Casedev\Convert\V1\V1WebhookResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1Contract;
 use Casedev\Services\Convert\V1\JobsService;
@@ -72,9 +73,9 @@ final class V1Service implements V1Contract
         ?string $callbackURL = null,
         ?RequestOptions $requestOptions = null,
     ): V1ProcessResponse {
-        $params = ['inputURL' => $inputURL, 'callbackURL' => $callbackURL];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['inputURL' => $inputURL, 'callbackURL' => $callbackURL]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->process(params: $params, requestOptions: $requestOptions);
@@ -103,14 +104,14 @@ final class V1Service implements V1Contract
         ?array $result = null,
         ?RequestOptions $requestOptions = null,
     ): V1WebhookResponse {
-        $params = [
-            'jobID' => $jobID,
-            'status' => $status,
-            'error' => $error,
-            'result' => $result,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'jobID' => $jobID,
+                'status' => $status,
+                'error' => $error,
+                'result' => $result,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->webhook(params: $params, requestOptions: $requestOptions);
