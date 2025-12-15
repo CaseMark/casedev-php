@@ -8,7 +8,6 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Voice\V1\Speak\SpeakCreateParams;
-use Casedev\Voice\V1\Speak\SpeakStreamParams;
 
 interface SpeakRawContract
 {
@@ -23,20 +22,6 @@ interface SpeakRawContract
      */
     public function create(
         array|SpeakCreateParams $params,
-        ?RequestOptions $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<mixed>|SpeakStreamParams $params
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function stream(
-        array|SpeakStreamParams $params,
         ?RequestOptions $requestOptions = null
     ): BaseResponse;
 }
