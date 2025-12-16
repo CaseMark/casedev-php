@@ -7,14 +7,16 @@ namespace Casedev\Workflows\V1;
 use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
+use Casedev\Workflows\V1\V1ExecuteResponse\Mode;
 use Casedev\Workflows\V1\V1ExecuteResponse\Status;
 
 /**
  * @phpstan-type V1ExecuteResponseShape = array{
  *   duration?: int|null,
- *   error?: string|null,
+ *   executionArn?: string|null,
  *   executionID?: string|null,
- *   outputs?: mixed,
+ *   mode?: value-of<Mode>|null,
+ *   output?: mixed,
  *   status?: value-of<Status>|null,
  * }
  */
@@ -27,13 +29,17 @@ final class V1ExecuteResponse implements BaseModel
     public ?int $duration;
 
     #[Optional]
-    public ?string $error;
+    public ?string $executionArn;
 
     #[Optional('executionId')]
     public ?string $executionID;
 
+    /** @var value-of<Mode>|null $mode */
+    #[Optional(enum: Mode::class)]
+    public ?string $mode;
+
     #[Optional]
-    public mixed $outputs;
+    public mixed $output;
 
     /** @var value-of<Status>|null $status */
     #[Optional(enum: Status::class)]
@@ -49,21 +55,24 @@ final class V1ExecuteResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param Mode|value-of<Mode> $mode
      * @param Status|value-of<Status> $status
      */
     public static function with(
         ?int $duration = null,
-        ?string $error = null,
+        ?string $executionArn = null,
         ?string $executionID = null,
-        mixed $outputs = null,
+        Mode|string|null $mode = null,
+        mixed $output = null,
         Status|string|null $status = null,
     ): self {
         $self = new self;
 
         null !== $duration && $self['duration'] = $duration;
-        null !== $error && $self['error'] = $error;
+        null !== $executionArn && $self['executionArn'] = $executionArn;
         null !== $executionID && $self['executionID'] = $executionID;
-        null !== $outputs && $self['outputs'] = $outputs;
+        null !== $mode && $self['mode'] = $mode;
+        null !== $output && $self['output'] = $output;
         null !== $status && $self['status'] = $status;
 
         return $self;
@@ -77,10 +86,10 @@ final class V1ExecuteResponse implements BaseModel
         return $self;
     }
 
-    public function withError(string $error): self
+    public function withExecutionArn(string $executionArn): self
     {
         $self = clone $this;
-        $self['error'] = $error;
+        $self['executionArn'] = $executionArn;
 
         return $self;
     }
@@ -93,10 +102,21 @@ final class V1ExecuteResponse implements BaseModel
         return $self;
     }
 
-    public function withOutputs(mixed $outputs): self
+    /**
+     * @param Mode|value-of<Mode> $mode
+     */
+    public function withMode(Mode|string $mode): self
     {
         $self = clone $this;
-        $self['outputs'] = $outputs;
+        $self['mode'] = $mode;
+
+        return $self;
+    }
+
+    public function withOutput(mixed $output): self
+    {
+        $self = clone $this;
+        $self['output'] = $output;
 
         return $self;
     }

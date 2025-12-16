@@ -63,7 +63,7 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Returns current pricing for GPU and CPU compute resources. This public endpoint provides detailed pricing information for all available compute types, including GPU instances and CPU cores, with billing model details.
+     * Returns current pricing for GPU instances. Prices are fetched in real-time and include a 20% platform fee. For detailed instance types and availability, use GET /compute/v1/instance-types.
      *
      * @throws APIException
      */

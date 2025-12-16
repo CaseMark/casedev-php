@@ -31,7 +31,7 @@ final class VaultRawService implements VaultRawContract
     /**
      * @api
      *
-     * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional knowledge graph features for legal document analysis and discovery.
+     * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
      *
      * @param array{
      *   name: string, description?: string, enableGraph?: bool
@@ -87,7 +87,7 @@ final class VaultRawService implements VaultRawContract
     /**
      * @api
      *
-     * List all vaults for the authenticated organization. Returns vault metadata including storage configuration and usage statistics.
+     * List all vaults for the authenticated organization. Returns vault metadata including name, description, storage configuration, and usage statistics.
      *
      * @return BaseResponse<VaultListResponse>
      *
@@ -145,7 +145,7 @@ final class VaultRawService implements VaultRawContract
      * @param string $id Unique identifier of the vault to search
      * @param array{
      *   query: string,
-     *   filters?: array<string,mixed>,
+     *   filters?: array{objectID?: string|list<string>},
      *   method?: 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method,
      *   topK?: int,
      * }|VaultSearchParams $params

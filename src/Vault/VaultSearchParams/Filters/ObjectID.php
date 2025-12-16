@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Actions\V1\V1CreateParams;
+namespace Casedev\Vault\VaultSearchParams\Filters;
 
 use Casedev\Core\Concerns\SdkUnion;
 use Casedev\Core\Conversion\Contracts\Converter;
 use Casedev\Core\Conversion\Contracts\ConverterSource;
+use Casedev\Core\Conversion\ListOf;
 
 /**
- * Action definition in YAML string, JSON string, or JSON object format.
+ * Filter to specific document(s) by object ID. Accepts a single ID or array of IDs.
  */
-final class Definition implements ConverterSource
+final class ObjectID implements ConverterSource
 {
     use SdkUnion;
 
@@ -20,6 +21,6 @@ final class Definition implements ConverterSource
      */
     public static function variants(): array
     {
-        return ['string', 'mixed'];
+        return ['string', new ListOf('string')];
     }
 }

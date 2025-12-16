@@ -14,10 +14,12 @@ use Casedev\Core\Contracts\BaseModel;
  *   completedAt?: string|null,
  *   durationMs?: int|null,
  *   error?: string|null,
+ *   executionArn?: string|null,
  *   input?: mixed,
  *   output?: mixed,
  *   startedAt?: string|null,
  *   status?: string|null,
+ *   steps?: list<mixed>|null,
  *   triggerType?: string|null,
  *   workflowID?: string|null,
  * }
@@ -40,6 +42,9 @@ final class V1GetExecutionResponse implements BaseModel
     public ?string $error;
 
     #[Optional]
+    public ?string $executionArn;
+
+    #[Optional]
     public mixed $input;
 
     #[Optional]
@@ -50,6 +55,10 @@ final class V1GetExecutionResponse implements BaseModel
 
     #[Optional]
     public ?string $status;
+
+    /** @var list<mixed>|null $steps */
+    #[Optional(list: 'mixed')]
+    public ?array $steps;
 
     #[Optional]
     public ?string $triggerType;
@@ -66,16 +75,20 @@ final class V1GetExecutionResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<mixed> $steps
      */
     public static function with(
         ?string $id = null,
         ?string $completedAt = null,
         ?int $durationMs = null,
         ?string $error = null,
+        ?string $executionArn = null,
         mixed $input = null,
         mixed $output = null,
         ?string $startedAt = null,
         ?string $status = null,
+        ?array $steps = null,
         ?string $triggerType = null,
         ?string $workflowID = null,
     ): self {
@@ -85,10 +98,12 @@ final class V1GetExecutionResponse implements BaseModel
         null !== $completedAt && $self['completedAt'] = $completedAt;
         null !== $durationMs && $self['durationMs'] = $durationMs;
         null !== $error && $self['error'] = $error;
+        null !== $executionArn && $self['executionArn'] = $executionArn;
         null !== $input && $self['input'] = $input;
         null !== $output && $self['output'] = $output;
         null !== $startedAt && $self['startedAt'] = $startedAt;
         null !== $status && $self['status'] = $status;
+        null !== $steps && $self['steps'] = $steps;
         null !== $triggerType && $self['triggerType'] = $triggerType;
         null !== $workflowID && $self['workflowID'] = $workflowID;
 
@@ -127,6 +142,14 @@ final class V1GetExecutionResponse implements BaseModel
         return $self;
     }
 
+    public function withExecutionArn(string $executionArn): self
+    {
+        $self = clone $this;
+        $self['executionArn'] = $executionArn;
+
+        return $self;
+    }
+
     public function withInput(mixed $input): self
     {
         $self = clone $this;
@@ -155,6 +178,17 @@ final class V1GetExecutionResponse implements BaseModel
     {
         $self = clone $this;
         $self['status'] = $status;
+
+        return $self;
+    }
+
+    /**
+     * @param list<mixed> $steps
+     */
+    public function withSteps(array $steps): self
+    {
+        $self = clone $this;
+        $self['steps'] = $steps;
 
         return $self;
     }

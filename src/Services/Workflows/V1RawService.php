@@ -199,7 +199,7 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Deploy a workflow to Modal compute. Returns a webhook URL and secret for triggering the workflow.
+     * Deploy a workflow to AWS Step Functions. Returns a webhook URL and secret for triggering the workflow.
      *
      * @param string $id Workflow ID
      *
@@ -223,10 +223,19 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Execute a workflow for testing. This runs the workflow synchronously without deployment.
+     * Execute a deployed workflow. Supports three modes:
+     * - **Fire-and-forget** (default): Returns immediately with executionId. Poll /executions/{id} for status.
+     * - **Callback**: Returns immediately, POSTs result to callbackUrl when workflow completes.
+     * - **Sync wait**: Blocks until workflow completes (max 5 minutes).
      *
      * @param string $id Workflow ID
-     * @param array{body?: mixed}|V1ExecuteParams $params
+     * @param array{
+     *   callbackHeaders?: mixed,
+     *   callbackURL?: string,
+     *   input?: mixed,
+     *   timeout?: string,
+     *   wait?: bool,
+     * }|V1ExecuteParams $params
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -246,7 +255,7 @@ final class V1RawService implements V1RawContract
         return $this->client->request(
             method: 'post',
             path: ['workflows/v1/%1$s/execute', $id],
-            body: $parsed['body'],
+            body: (object) $parsed,
             options: $options,
             convert: V1ExecuteResponse::class,
         );
@@ -290,7 +299,7 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Get detailed information about a workflow execution.
+     * Get detailed information about a workflow execution, including live Step Functions status.
      *
      * @param string $id Execution ID
      *
@@ -314,7 +323,7 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Stop a deployed workflow and release its webhook URL.
+     * Stop a deployed workflow and delete its Step Functions state machine.
      *
      * @param string $id Workflow ID
      *

@@ -9,6 +9,7 @@ use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
+use Casedev\Vault\VaultSearchParams\Filters;
 use Casedev\Vault\VaultSearchParams\Method;
 
 /**
@@ -18,7 +19,7 @@ use Casedev\Vault\VaultSearchParams\Method;
  *
  * @phpstan-type VaultSearchParamsShape = array{
  *   query: string,
- *   filters?: array<string,mixed>,
+ *   filters?: Filters|array{objectID?: string|null|list<string>},
  *   method?: Method|value-of<Method>,
  *   topK?: int,
  * }
@@ -36,12 +37,10 @@ final class VaultSearchParams implements BaseModel
     public string $query;
 
     /**
-     * Additional filters to apply to search results.
-     *
-     * @var array<string,mixed>|null $filters
+     * Filters to narrow search results to specific documents.
      */
-    #[Optional(map: 'mixed')]
-    public ?array $filters;
+    #[Optional]
+    public ?Filters $filters;
 
     /**
      * Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach.
@@ -81,12 +80,12 @@ final class VaultSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $filters
+     * @param Filters|array{objectID?: string|list<string>|null} $filters
      * @param Method|value-of<Method> $method
      */
     public static function with(
         string $query,
-        ?array $filters = null,
+        Filters|array|null $filters = null,
         Method|string|null $method = null,
         ?int $topK = null,
     ): self {
@@ -113,11 +112,11 @@ final class VaultSearchParams implements BaseModel
     }
 
     /**
-     * Additional filters to apply to search results.
+     * Filters to narrow search results to specific documents.
      *
-     * @param array<string,mixed> $filters
+     * @param Filters|array{objectID?: string|list<string>|null} $filters
      */
-    public function withFilters(array $filters): self
+    public function withFilters(Filters|array $filters): self
     {
         $self = clone $this;
         $self['filters'] = $filters;

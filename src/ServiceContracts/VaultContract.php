@@ -71,7 +71,9 @@ interface VaultContract
      *
      * @param string $id Unique identifier of the vault to search
      * @param string $query Search query or question to find relevant documents
-     * @param array<string,mixed> $filters Additional filters to apply to search results
+     * @param array{
+     *   objectID?: string|list<string>
+     * } $filters Filters to narrow search results to specific documents
      * @param 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method $method Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach
      * @param int $topK Maximum number of results to return
      *

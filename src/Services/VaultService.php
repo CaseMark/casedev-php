@@ -48,7 +48,7 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
-     * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional knowledge graph features for legal document analysis and discovery.
+     * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
      *
      * @param string $name Display name for the vault
      * @param string $description Optional description of the vault's purpose
@@ -98,7 +98,7 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
-     * List all vaults for the authenticated organization. Returns vault metadata including storage configuration and usage statistics.
+     * List all vaults for the authenticated organization. Returns vault metadata including name, description, storage configuration, and usage statistics.
      *
      * @throws APIException
      */
@@ -141,7 +141,9 @@ final class VaultService implements VaultContract
      *
      * @param string $id Unique identifier of the vault to search
      * @param string $query Search query or question to find relevant documents
-     * @param array<string,mixed> $filters Additional filters to apply to search results
+     * @param array{
+     *   objectID?: string|list<string>
+     * } $filters Filters to narrow search results to specific documents
      * @param 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method $method Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach
      * @param int $topK Maximum number of results to return
      *
