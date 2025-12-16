@@ -136,9 +136,9 @@ final class VaultTest extends TestCase
         $result = $this->client->vault->search(
             'id',
             query: 'query',
-            filters: ['foo' => 'bar'],
+            filters: ['objectID' => 'string'],
             method: 'vector',
-            topK: 1
+            topK: 1,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

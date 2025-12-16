@@ -11,6 +11,7 @@ use Casedev\Core\Contracts\BaseModel;
 /**
  * @phpstan-type V1DeployResponseShape = array{
  *   message?: string|null,
+ *   stateMachineArn?: string|null,
  *   success?: bool|null,
  *   webhookSecret?: string|null,
  *   webhookURL?: string|null,
@@ -23,6 +24,9 @@ final class V1DeployResponse implements BaseModel
 
     #[Optional]
     public ?string $message;
+
+    #[Optional]
+    public ?string $stateMachineArn;
 
     #[Optional]
     public ?bool $success;
@@ -48,6 +52,7 @@ final class V1DeployResponse implements BaseModel
      */
     public static function with(
         ?string $message = null,
+        ?string $stateMachineArn = null,
         ?bool $success = null,
         ?string $webhookSecret = null,
         ?string $webhookURL = null,
@@ -55,6 +60,7 @@ final class V1DeployResponse implements BaseModel
         $self = new self;
 
         null !== $message && $self['message'] = $message;
+        null !== $stateMachineArn && $self['stateMachineArn'] = $stateMachineArn;
         null !== $success && $self['success'] = $success;
         null !== $webhookSecret && $self['webhookSecret'] = $webhookSecret;
         null !== $webhookURL && $self['webhookURL'] = $webhookURL;
@@ -66,6 +72,14 @@ final class V1DeployResponse implements BaseModel
     {
         $self = clone $this;
         $self['message'] = $message;
+
+        return $self;
+    }
+
+    public function withStateMachineArn(string $stateMachineArn): self
+    {
+        $self = clone $this;
+        $self['stateMachineArn'] = $stateMachineArn;
 
         return $self;
     }

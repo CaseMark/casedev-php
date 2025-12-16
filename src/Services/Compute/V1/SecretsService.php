@@ -83,7 +83,7 @@ final class SecretsService implements SecretsContract
     /**
      * @api
      *
-     * Delete an entire secret group or a specific key within a secret group. Automatically syncs the deletion to Modal compute infrastructure. When deleting a specific key, the remaining secrets in the group are re-synced. When deleting the entire group, all secrets and the group itself are removed from both the database and Modal.
+     * Delete an entire secret group or a specific key within a secret group. When deleting a specific key, the remaining secrets in the group are preserved. When deleting the entire group, all secrets and the group itself are removed.
      *
      * @param string $group Name of the secret group
      * @param string $env Environment name. If not provided, uses the default environment
@@ -131,7 +131,7 @@ final class SecretsService implements SecretsContract
     /**
      * @api
      *
-     * Set or update secrets in a compute secret group. Secrets are encrypted with AES-256-GCM and synced to compute infrastructure in real-time. Use this to manage environment variables and API keys for your compute workloads.
+     * Set or update secrets in a compute secret group. Secrets are encrypted with AES-256-GCM. Use this to manage environment variables and API keys for your compute workloads.
      *
      * @param string $group Name of the secret group
      * @param array<string,string> $secrets Key-value pairs of secrets to set

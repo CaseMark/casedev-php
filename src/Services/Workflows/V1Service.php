@@ -191,7 +191,7 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Deploy a workflow to Modal compute. Returns a webhook URL and secret for triggering the workflow.
+     * Deploy a workflow to AWS Step Functions. Returns a webhook URL and secret for triggering the workflow.
      *
      * @param string $id Workflow ID
      *
@@ -210,19 +210,38 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Execute a workflow for testing. This runs the workflow synchronously without deployment.
+     * Execute a deployed workflow. Supports three modes:
+     * - **Fire-and-forget** (default): Returns immediately with executionId. Poll /executions/{id} for status.
+     * - **Callback**: Returns immediately, POSTs result to callbackUrl when workflow completes.
+     * - **Sync wait**: Blocks until workflow completes (max 5 minutes).
      *
      * @param string $id Workflow ID
-     * @param mixed $body Input data to pass to the workflow trigger
+     * @param mixed $callbackHeaders Headers to include in callback request (e.g., Authorization)
+     * @param string $callbackURL URL to POST results when workflow completes (enables callback mode)
+     * @param mixed $input Input data to pass to the workflow
+     * @param string $timeout Timeout for sync wait mode (e.g., '30s', '2m'). Max 5m. Default: 30s
+     * @param bool $wait Wait for completion (default: false, max 5 min)
      *
      * @throws APIException
      */
     public function execute(
         string $id,
-        mixed $body = null,
-        ?RequestOptions $requestOptions = null
+        mixed $callbackHeaders = null,
+        ?string $callbackURL = null,
+        mixed $input = null,
+        ?string $timeout = null,
+        ?bool $wait = null,
+        ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse {
-        $params = Util::removeNulls(['body' => $body]);
+        $params = Util::removeNulls(
+            [
+                'callbackHeaders' => $callbackHeaders,
+                'callbackURL' => $callbackURL,
+                'input' => $input,
+                'timeout' => $timeout,
+                'wait' => $wait,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->execute($id, params: $params, requestOptions: $requestOptions);
@@ -257,7 +276,7 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Get detailed information about a workflow execution.
+     * Get detailed information about a workflow execution, including live Step Functions status.
      *
      * @param string $id Execution ID
      *
@@ -276,7 +295,7 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Stop a deployed workflow and release its webhook URL.
+     * Stop a deployed workflow and delete its Step Functions state machine.
      *
      * @param string $id Workflow ID
      *

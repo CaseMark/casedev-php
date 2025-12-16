@@ -6,6 +6,8 @@ namespace Casedev\Workflows\V1\V1ExecuteResponse;
 
 enum Status: string
 {
+    case RUNNING = 'running';
+
     case COMPLETED = 'completed';
 
     case FAILED = 'failed';

@@ -125,14 +125,22 @@ interface V1Contract
      * @api
      *
      * @param string $id Workflow ID
-     * @param mixed $body Input data to pass to the workflow trigger
+     * @param mixed $callbackHeaders Headers to include in callback request (e.g., Authorization)
+     * @param string $callbackURL URL to POST results when workflow completes (enables callback mode)
+     * @param mixed $input Input data to pass to the workflow
+     * @param string $timeout Timeout for sync wait mode (e.g., '30s', '2m'). Max 5m. Default: 30s
+     * @param bool $wait Wait for completion (default: false, max 5 min)
      *
      * @throws APIException
      */
     public function execute(
         string $id,
-        mixed $body = null,
-        ?RequestOptions $requestOptions = null
+        mixed $callbackHeaders = null,
+        ?string $callbackURL = null,
+        mixed $input = null,
+        ?string $timeout = null,
+        ?bool $wait = null,
+        ?RequestOptions $requestOptions = null,
     ): V1ExecuteResponse;
 
     /**
