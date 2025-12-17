@@ -19,12 +19,12 @@ use Casedev\Workflows\V1\V1CreateParams\Visibility;
  *
  * @phpstan-type V1CreateParamsShape = array{
  *   name: string,
- *   description?: string,
- *   edges?: list<mixed>,
- *   nodes?: list<mixed>,
+ *   description?: string|null,
+ *   edges?: list<mixed>|null,
+ *   nodes?: list<mixed>|null,
  *   triggerConfig?: mixed,
- *   triggerType?: TriggerType|value-of<TriggerType>,
- *   visibility?: Visibility|value-of<Visibility>,
+ *   triggerType?: null|TriggerType|value-of<TriggerType>,
+ *   visibility?: null|Visibility|value-of<Visibility>,
  * }
  */
 final class V1CreateParams implements BaseModel

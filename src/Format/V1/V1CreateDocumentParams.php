@@ -11,7 +11,6 @@ use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
 use Casedev\Format\V1\V1CreateDocumentParams\Options;
-use Casedev\Format\V1\V1CreateDocumentParams\Options\Component;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 
 /**
@@ -19,11 +18,13 @@ use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
  *
  * @see Casedev\Services\Format\V1Service::createDocument()
  *
+ * @phpstan-import-type OptionsShape from \Casedev\Format\V1\V1CreateDocumentParams\Options
+ *
  * @phpstan-type V1CreateDocumentParamsShape = array{
  *   content: string,
  *   outputFormat: OutputFormat|value-of<OutputFormat>,
- *   inputFormat?: InputFormat|value-of<InputFormat>,
- *   options?: Options|array{components?: list<Component>|null},
+ *   inputFormat?: null|InputFormat|value-of<InputFormat>,
+ *   options?: OptionsShape|null,
  * }
  */
 final class V1CreateDocumentParams implements BaseModel
@@ -83,7 +84,7 @@ final class V1CreateDocumentParams implements BaseModel
      *
      * @param OutputFormat|value-of<OutputFormat> $outputFormat
      * @param InputFormat|value-of<InputFormat> $inputFormat
-     * @param Options|array{components?: list<Component>|null} $options
+     * @param OptionsShape $options
      */
     public static function with(
         string $content,
@@ -140,7 +141,7 @@ final class V1CreateDocumentParams implements BaseModel
     }
 
     /**
-     * @param Options|array{components?: list<Component>|null} $options
+     * @param OptionsShape $options
      */
     public function withOptions(Options|array $options): self
     {

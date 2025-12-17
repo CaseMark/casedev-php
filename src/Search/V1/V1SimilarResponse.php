@@ -10,9 +10,11 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1SimilarResponse\Result;
 
 /**
+ * @phpstan-import-type ResultShape from \Casedev\Search\V1\V1SimilarResponse\Result
+ *
  * @phpstan-type V1SimilarResponseShape = array{
  *   processingTime?: float|null,
- *   results?: list<Result>|null,
+ *   results?: list<ResultShape>|null,
  *   totalResults?: int|null,
  * }
  */
@@ -41,15 +43,7 @@ final class V1SimilarResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result|array{
-     *   domain?: string|null,
-     *   publishedDate?: string|null,
-     *   similarityScore?: float|null,
-     *   snippet?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<ResultShape> $results
      */
     public static function with(
         ?float $processingTime = null,
@@ -74,15 +68,7 @@ final class V1SimilarResponse implements BaseModel
     }
 
     /**
-     * @param list<Result|array{
-     *   domain?: string|null,
-     *   publishedDate?: string|null,
-     *   similarityScore?: float|null,
-     *   snippet?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<ResultShape> $results
      */
     public function withResults(array $results): self
     {

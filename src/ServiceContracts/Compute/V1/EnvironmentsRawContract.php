@@ -16,7 +16,7 @@ interface EnvironmentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EnvironmentCreateParams $params
+     * @param array<string,mixed>|EnvironmentCreateParams $params
      *
      * @return BaseResponse<EnvironmentNewResponse>
      *

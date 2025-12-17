@@ -10,10 +10,12 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultUploadResponse\Instructions;
 
 /**
+ * @phpstan-import-type InstructionsShape from \Casedev\Vault\VaultUploadResponse\Instructions
+ *
  * @phpstan-type VaultUploadResponseShape = array{
  *   autoIndex?: bool|null,
  *   expiresIn?: float|null,
- *   instructions?: Instructions|null,
+ *   instructions?: null|Instructions|InstructionsShape,
  *   nextStep?: string|null,
  *   objectID?: string|null,
  *   s3Key?: string|null,
@@ -74,9 +76,7 @@ final class VaultUploadResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Instructions|array{
-     *   headers?: mixed, method?: string|null, note?: string|null
-     * } $instructions
+     * @param InstructionsShape $instructions
      */
     public static function with(
         ?bool $autoIndex = null,
@@ -123,9 +123,7 @@ final class VaultUploadResponse implements BaseModel
     }
 
     /**
-     * @param Instructions|array{
-     *   headers?: mixed, method?: string|null, note?: string|null
-     * } $instructions
+     * @param InstructionsShape $instructions
      */
     public function withInstructions(Instructions|array $instructions): self
     {

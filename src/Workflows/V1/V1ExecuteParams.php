@@ -19,10 +19,10 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @phpstan-type V1ExecuteParamsShape = array{
  *   callbackHeaders?: mixed,
- *   callbackURL?: string,
+ *   callbackURL?: string|null,
  *   input?: mixed,
- *   timeout?: string,
- *   wait?: bool,
+ *   timeout?: string|null,
+ *   wait?: bool|null,
  * }
  */
 final class V1ExecuteParams implements BaseModel

@@ -15,9 +15,9 @@ use Casedev\Workflows\V1\V1ExecuteResponse\Status;
  *   duration?: int|null,
  *   executionArn?: string|null,
  *   executionID?: string|null,
- *   mode?: value-of<Mode>|null,
+ *   mode?: null|Mode|value-of<Mode>,
  *   output?: mixed,
- *   status?: value-of<Status>|null,
+ *   status?: null|Status|value-of<Status>,
  * }
  */
 final class V1ExecuteResponse implements BaseModel

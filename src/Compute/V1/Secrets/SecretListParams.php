@@ -14,7 +14,7 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Compute\V1\SecretsService::list()
  *
- * @phpstan-type SecretListParamsShape = array{env?: string}
+ * @phpstan-type SecretListParamsShape = array{env?: string|null}
  */
 final class SecretListParams implements BaseModel
 {

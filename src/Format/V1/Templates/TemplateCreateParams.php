@@ -20,10 +20,10 @@ use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
  *   content: string,
  *   name: string,
  *   type: Type|value-of<Type>,
- *   description?: string,
+ *   description?: string|null,
  *   styles?: mixed,
- *   tags?: list<string>,
- *   variables?: list<string>,
+ *   tags?: list<string>|null,
+ *   variables?: list<string>|null,
  * }
  */
 final class TemplateCreateParams implements BaseModel

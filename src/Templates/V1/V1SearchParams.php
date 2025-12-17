@@ -16,7 +16,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Templates\V1Service::search()
  *
  * @phpstan-type V1SearchParamsShape = array{
- *   query: string, category?: string, limit?: int
+ *   query: string, category?: string|null, limit?: int|null
  * }
  */
 final class V1SearchParams implements BaseModel

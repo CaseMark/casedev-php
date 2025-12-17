@@ -14,7 +14,7 @@ use Casedev\Vault\VaultIngestResponse\Status;
  *   enableGraphRag: bool,
  *   message: string,
  *   objectID: string,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   workflowID: string,
  * }
  */

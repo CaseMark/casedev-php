@@ -10,11 +10,13 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Workflows\V1\V1ListResponse\Workflow;
 
 /**
+ * @phpstan-import-type WorkflowShape from \Casedev\Workflows\V1\V1ListResponse\Workflow
+ *
  * @phpstan-type V1ListResponseShape = array{
  *   limit?: int|null,
  *   offset?: int|null,
  *   total?: int|null,
- *   workflows?: list<Workflow>|null,
+ *   workflows?: list<WorkflowShape>|null,
  * }
  */
 final class V1ListResponse implements BaseModel
@@ -45,16 +47,7 @@ final class V1ListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Workflow|array{
-     *   id?: string|null,
-     *   createdAt?: string|null,
-     *   deployedAt?: string|null,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   triggerType?: string|null,
-     *   updatedAt?: string|null,
-     *   visibility?: string|null,
-     * }> $workflows
+     * @param list<WorkflowShape> $workflows
      */
     public static function with(
         ?int $limit = null,
@@ -97,16 +90,7 @@ final class V1ListResponse implements BaseModel
     }
 
     /**
-     * @param list<Workflow|array{
-     *   id?: string|null,
-     *   createdAt?: string|null,
-     *   deployedAt?: string|null,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   triggerType?: string|null,
-     *   updatedAt?: string|null,
-     *   visibility?: string|null,
-     * }> $workflows
+     * @param list<WorkflowShape> $workflows
      */
     public function withWorkflows(array $workflows): self
     {

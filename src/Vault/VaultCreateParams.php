@@ -16,7 +16,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\VaultService::create()
  *
  * @phpstan-type VaultCreateParamsShape = array{
- *   name: string, description?: string, enableGraph?: bool
+ *   name: string, description?: string|null, enableGraph?: bool|null
  * }
  */
 final class VaultCreateParams implements BaseModel

@@ -17,13 +17,13 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @phpstan-type TranscriptionCreateParamsShape = array{
  *   audioURL: string,
- *   autoHighlights?: bool,
- *   contentSafetyLabels?: bool,
- *   formatText?: bool,
- *   languageCode?: string,
- *   languageDetection?: bool,
- *   punctuate?: bool,
- *   speakerLabels?: bool,
+ *   autoHighlights?: bool|null,
+ *   contentSafetyLabels?: bool|null,
+ *   formatText?: bool|null,
+ *   languageCode?: string|null,
+ *   languageDetection?: bool|null,
+ *   punctuate?: bool|null,
+ *   speakerLabels?: bool|null,
  * }
  */
 final class TranscriptionCreateParams implements BaseModel

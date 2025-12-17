@@ -22,7 +22,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Compute\V1\SecretsService::create()
  *
  * @phpstan-type SecretCreateParamsShape = array{
- *   name: string, description?: string, env?: string
+ *   name: string, description?: string|null, env?: string|null
  * }
  */
 final class SecretCreateParams implements BaseModel

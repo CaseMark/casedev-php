@@ -14,7 +14,7 @@ interface SpeakRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SpeakCreateParams $params
+     * @param array<string,mixed>|SpeakCreateParams $params
      *
      * @return BaseResponse<string>
      *

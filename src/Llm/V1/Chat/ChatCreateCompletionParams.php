@@ -10,24 +10,23 @@ use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
 
 /**
  * Create a completion for the provided prompt and parameters. Compatible with OpenAI's chat completions API. Supports 40+ models including GPT-4, Claude, Gemini, and CaseMark legal AI models. Includes streaming support, token counting, and usage tracking.
  *
  * @see Casedev\Services\Llm\V1\ChatService::createCompletion()
  *
+ * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
- *   messages: list<Message|array{
- *     content?: string|null, role?: value-of<Role>|null
- *   }>,
- *   frequencyPenalty?: float,
- *   maxTokens?: int,
- *   model?: string,
- *   presencePenalty?: float,
- *   stream?: bool,
- *   temperature?: float,
- *   topP?: float,
+ *   messages: list<MessageShape>,
+ *   frequencyPenalty?: float|null,
+ *   maxTokens?: int|null,
+ *   model?: string|null,
+ *   presencePenalty?: float|null,
+ *   stream?: bool|null,
+ *   temperature?: float|null,
+ *   topP?: float|null,
  * }
  */
 final class ChatCreateCompletionParams implements BaseModel
@@ -110,9 +109,7 @@ final class ChatCreateCompletionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Message|array{
-     *   content?: string|null, role?: value-of<Role>|null
-     * }> $messages
+     * @param list<MessageShape> $messages
      */
     public static function with(
         array $messages,
@@ -142,9 +139,7 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * List of messages comprising the conversation.
      *
-     * @param list<Message|array{
-     *   content?: string|null, role?: value-of<Role>|null
-     * }> $messages
+     * @param list<MessageShape> $messages
      */
     public function withMessages(array $messages): self
     {

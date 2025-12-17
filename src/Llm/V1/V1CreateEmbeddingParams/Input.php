@@ -11,6 +11,8 @@ use Casedev\Core\Conversion\ListOf;
 
 /**
  * Text or array of texts to create embeddings for.
+ *
+ * @phpstan-type InputShape = string|list<string>
  */
 final class Input implements ConverterSource
 {

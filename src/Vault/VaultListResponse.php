@@ -10,8 +10,10 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultListResponse\Vault;
 
 /**
+ * @phpstan-import-type VaultShape from \Casedev\Vault\VaultListResponse\Vault
+ *
  * @phpstan-type VaultListResponseShape = array{
- *   total?: int|null, vaults?: list<Vault>|null
+ *   total?: int|null, vaults?: list<VaultShape>|null
  * }
  */
 final class VaultListResponse implements BaseModel
@@ -39,15 +41,7 @@ final class VaultListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Vault|array{
-     *   id?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   enableGraph?: bool|null,
-     *   name?: string|null,
-     *   totalBytes?: int|null,
-     *   totalObjects?: int|null,
-     * }> $vaults
+     * @param list<VaultShape> $vaults
      */
     public static function with(?int $total = null, ?array $vaults = null): self
     {
@@ -71,15 +65,7 @@ final class VaultListResponse implements BaseModel
     }
 
     /**
-     * @param list<Vault|array{
-     *   id?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   enableGraph?: bool|null,
-     *   name?: string|null,
-     *   totalBytes?: int|null,
-     *   totalObjects?: int|null,
-     * }> $vaults
+     * @param list<VaultShape> $vaults
      */
     public function withVaults(array $vaults): self
     {

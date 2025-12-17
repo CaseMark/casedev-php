@@ -10,9 +10,11 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1AnswerResponse\Citation;
 
 /**
+ * @phpstan-import-type CitationShape from \Casedev\Search\V1\V1AnswerResponse\Citation
+ *
  * @phpstan-type V1AnswerResponseShape = array{
  *   answer?: string|null,
- *   citations?: list<Citation>|null,
+ *   citations?: list<CitationShape>|null,
  *   model?: string|null,
  *   searchType?: string|null,
  * }
@@ -58,13 +60,7 @@ final class V1AnswerResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Citation|array{
-     *   id?: string|null,
-     *   publishedDate?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $citations
+     * @param list<CitationShape> $citations
      */
     public static function with(
         ?string $answer = null,
@@ -96,13 +92,7 @@ final class V1AnswerResponse implements BaseModel
     /**
      * Sources used to generate the answer.
      *
-     * @param list<Citation|array{
-     *   id?: string|null,
-     *   publishedDate?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $citations
+     * @param list<CitationShape> $citations
      */
     public function withCitations(array $citations): self
     {

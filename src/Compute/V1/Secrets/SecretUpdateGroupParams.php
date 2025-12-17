@@ -16,7 +16,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Compute\V1\SecretsService::updateGroup()
  *
  * @phpstan-type SecretUpdateGroupParamsShape = array{
- *   secrets: array<string,string>, env?: string
+ *   secrets: array<string,string>, env?: string|null
  * }
  */
 final class SecretUpdateGroupParams implements BaseModel

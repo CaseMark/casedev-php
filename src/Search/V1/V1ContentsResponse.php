@@ -10,7 +10,9 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Search\V1\V1ContentsResponse\Result;
 
 /**
- * @phpstan-type V1ContentsResponseShape = array{results?: list<Result>|null}
+ * @phpstan-import-type ResultShape from \Casedev\Search\V1\V1ContentsResponse\Result
+ *
+ * @phpstan-type V1ContentsResponseShape = array{results?: list<ResultShape>|null}
  */
 final class V1ContentsResponse implements BaseModel
 {
@@ -31,14 +33,7 @@ final class V1ContentsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Result|array{
-     *   highlights?: list<string>|null,
-     *   metadata?: mixed,
-     *   summary?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<ResultShape> $results
      */
     public static function with(?array $results = null): self
     {
@@ -50,14 +45,7 @@ final class V1ContentsResponse implements BaseModel
     }
 
     /**
-     * @param list<Result|array{
-     *   highlights?: list<string>|null,
-     *   metadata?: mixed,
-     *   summary?: string|null,
-     *   text?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<ResultShape> $results
      */
     public function withResults(array $results): self
     {

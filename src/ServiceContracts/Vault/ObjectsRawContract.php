@@ -19,7 +19,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID Object ID within the vault
-     * @param array<mixed>|ObjectRetrieveParams $params
+     * @param array<string,mixed>|ObjectRetrieveParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -49,7 +49,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID Path param: The unique identifier of the object
-     * @param array<mixed>|ObjectCreatePresignedURLParams $params
+     * @param array<string,mixed>|ObjectCreatePresignedURLParams $params
      *
      * @return BaseResponse<ObjectNewPresignedURLResponse>
      *
@@ -65,7 +65,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID Object ID within the vault
-     * @param array<mixed>|ObjectDownloadParams $params
+     * @param array<string,mixed>|ObjectDownloadParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -81,7 +81,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID The object ID
-     * @param array<mixed>|ObjectGetTextParams $params
+     * @param array<string,mixed>|ObjectGetTextParams $params
      *
      * @return BaseResponse<mixed>
      *

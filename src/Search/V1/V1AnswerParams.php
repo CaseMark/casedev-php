@@ -18,16 +18,16 @@ use Casedev\Search\V1\V1AnswerParams\SearchType;
  *
  * @phpstan-type V1AnswerParamsShape = array{
  *   query: string,
- *   excludeDomains?: list<string>,
- *   includeDomains?: list<string>,
- *   maxTokens?: int,
- *   model?: string,
- *   numResults?: int,
- *   searchType?: SearchType|value-of<SearchType>,
- *   stream?: bool,
- *   temperature?: float,
- *   text?: bool,
- *   useCustomLlm?: bool,
+ *   excludeDomains?: list<string>|null,
+ *   includeDomains?: list<string>|null,
+ *   maxTokens?: int|null,
+ *   model?: string|null,
+ *   numResults?: int|null,
+ *   searchType?: null|SearchType|value-of<SearchType>,
+ *   stream?: bool|null,
+ *   temperature?: float|null,
+ *   text?: bool|null,
+ *   useCustomLlm?: bool|null,
  * }
  */
 final class V1AnswerParams implements BaseModel

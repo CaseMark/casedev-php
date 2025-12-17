@@ -14,7 +14,9 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Compute\V1\SecretsService::deleteGroup()
  *
- * @phpstan-type SecretDeleteGroupParamsShape = array{env?: string, key?: string}
+ * @phpstan-type SecretDeleteGroupParamsShape = array{
+ *   env?: string|null, key?: string|null
+ * }
  */
 final class SecretDeleteGroupParams implements BaseModel
 {

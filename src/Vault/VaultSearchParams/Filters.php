@@ -12,7 +12,9 @@ use Casedev\Vault\VaultSearchParams\Filters\ObjectID;
 /**
  * Filters to narrow search results to specific documents.
  *
- * @phpstan-type FiltersShape = array{objectID?: string|null|list<string>}
+ * @phpstan-import-type ObjectIDShape from \Casedev\Vault\VaultSearchParams\Filters\ObjectID
+ *
+ * @phpstan-type FiltersShape = array{objectID?: ObjectIDShape|null}
  */
 final class Filters implements BaseModel
 {
@@ -37,7 +39,7 @@ final class Filters implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param string|list<string> $objectID
+     * @param ObjectIDShape $objectID
      */
     public static function with(string|array|null $objectID = null): self
     {
@@ -51,7 +53,7 @@ final class Filters implements BaseModel
     /**
      * Filter to specific document(s) by object ID. Accepts a single ID or array of IDs.
      *
-     * @param string|list<string> $objectID
+     * @param ObjectIDShape $objectID
      */
     public function withObjectID(string|array $objectID): self
     {

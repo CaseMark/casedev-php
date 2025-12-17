@@ -18,9 +18,9 @@ use Casedev\Search\V1\V1ResearchParams\Model;
  *
  * @phpstan-type V1ResearchParamsShape = array{
  *   instructions: string,
- *   model?: Model|value-of<Model>,
+ *   model?: null|Model|value-of<Model>,
  *   outputSchema?: mixed,
- *   query?: string,
+ *   query?: string|null,
  * }
  */
 final class V1ResearchParams implements BaseModel

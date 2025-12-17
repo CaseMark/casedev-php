@@ -14,7 +14,7 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Compute\V1Service::getUsage()
  *
- * @phpstan-type V1GetUsageParamsShape = array{month?: int, year?: int}
+ * @phpstan-type V1GetUsageParamsShape = array{month?: int|null, year?: int|null}
  */
 final class V1GetUsageParams implements BaseModel
 {

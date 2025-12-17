@@ -11,7 +11,7 @@ use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
 
 /**
  * @phpstan-type OptionsShape = array{
- *   format?: value-of<Format>|null, model?: string|null
+ *   format?: null|Format|value-of<Format>, model?: string|null
  * }
  */
 final class Options implements BaseModel

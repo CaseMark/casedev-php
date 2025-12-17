@@ -15,7 +15,7 @@ interface ChatRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChatCreateCompletionParams $params
+     * @param array<string,mixed>|ChatCreateCompletionParams $params
      *
      * @return BaseResponse<ChatNewCompletionResponse>
      *

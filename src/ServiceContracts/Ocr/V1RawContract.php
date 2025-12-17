@@ -32,7 +32,7 @@ interface V1RawContract
      * @api
      *
      * @param Type|value-of<Type> $type Format to download: `text` (plain text), `json` (structured data with coordinates), `pdf` (searchable PDF with text layer), `original` (original uploaded document)
-     * @param array<mixed>|V1DownloadParams $params
+     * @param array<string,mixed>|V1DownloadParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -47,7 +47,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ProcessParams $params
+     * @param array<string,mixed>|V1ProcessParams $params
      *
      * @return BaseResponse<V1ProcessResponse>
      *

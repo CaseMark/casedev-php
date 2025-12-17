@@ -25,7 +25,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1GetUsageParams $params
+     * @param array<string,mixed>|V1GetUsageParams $params
      *
      * @return BaseResponse<mixed>
      *

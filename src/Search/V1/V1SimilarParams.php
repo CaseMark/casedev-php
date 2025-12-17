@@ -17,15 +17,15 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @phpstan-type V1SimilarParamsShape = array{
  *   url: string,
- *   contents?: string,
- *   endCrawlDate?: string,
- *   endPublishedDate?: string,
- *   excludeDomains?: list<string>,
- *   includeDomains?: list<string>,
- *   includeText?: bool,
- *   numResults?: int,
- *   startCrawlDate?: string,
- *   startPublishedDate?: string,
+ *   contents?: string|null,
+ *   endCrawlDate?: string|null,
+ *   endPublishedDate?: string|null,
+ *   excludeDomains?: list<string>|null,
+ *   includeDomains?: list<string>|null,
+ *   includeText?: bool|null,
+ *   numResults?: int|null,
+ *   startCrawlDate?: string|null,
+ *   startPublishedDate?: string|null,
  * }
  */
 final class V1SimilarParams implements BaseModel

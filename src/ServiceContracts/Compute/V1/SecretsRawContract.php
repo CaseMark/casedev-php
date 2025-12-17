@@ -19,7 +19,7 @@ interface SecretsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SecretCreateParams $params
+     * @param array<string,mixed>|SecretCreateParams $params
      *
      * @return BaseResponse<SecretNewResponse>
      *
@@ -33,7 +33,7 @@ interface SecretsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SecretListParams $params
+     * @param array<string,mixed>|SecretListParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -48,7 +48,7 @@ interface SecretsRawContract
      * @api
      *
      * @param string $group Name of the secret group
-     * @param array<mixed>|SecretDeleteGroupParams $params
+     * @param array<string,mixed>|SecretDeleteGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -64,7 +64,7 @@ interface SecretsRawContract
      * @api
      *
      * @param string $group Name of the secret group to list keys from
-     * @param array<mixed>|SecretRetrieveGroupParams $params
+     * @param array<string,mixed>|SecretRetrieveGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -80,7 +80,7 @@ interface SecretsRawContract
      * @api
      *
      * @param string $group Name of the secret group
-     * @param array<mixed>|SecretUpdateGroupParams $params
+     * @param array<string,mixed>|SecretUpdateGroupParams $params
      *
      * @return BaseResponse<mixed>
      *

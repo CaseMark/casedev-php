@@ -16,7 +16,7 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Format\V1\TemplatesService::list()
  *
- * @phpstan-type TemplateListParamsShape = array{type?: string}
+ * @phpstan-type TemplateListParamsShape = array{type?: string|null}
  */
 final class TemplateListParams implements BaseModel
 {

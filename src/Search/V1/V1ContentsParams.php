@@ -17,15 +17,15 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @phpstan-type V1ContentsParamsShape = array{
  *   urls: list<string>,
- *   context?: string,
+ *   context?: string|null,
  *   extras?: mixed,
- *   highlights?: bool,
- *   livecrawl?: bool,
- *   livecrawlTimeout?: int,
- *   subpages?: bool,
- *   subpageTarget?: int,
- *   summary?: bool,
- *   text?: bool,
+ *   highlights?: bool|null,
+ *   livecrawl?: bool|null,
+ *   livecrawlTimeout?: int|null,
+ *   subpages?: bool|null,
+ *   subpageTarget?: int|null,
+ *   summary?: bool|null,
+ *   text?: bool|null,
  * }
  */
 final class V1ContentsParams implements BaseModel

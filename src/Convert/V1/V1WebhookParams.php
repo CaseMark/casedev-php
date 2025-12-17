@@ -17,15 +17,13 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Convert\V1Service::webhook()
  *
+ * @phpstan-import-type ResultShape from \Casedev\Convert\V1\V1WebhookParams\Result
+ *
  * @phpstan-type V1WebhookParamsShape = array{
  *   jobID: string,
  *   status: Status|value-of<Status>,
- *   error?: string,
- *   result?: Result|array{
- *     durationSeconds?: float|null,
- *     fileSizeBytes?: int|null,
- *     storedFilename?: string|null,
- *   },
+ *   error?: string|null,
+ *   result?: ResultShape|null,
  * }
  */
 final class V1WebhookParams implements BaseModel
@@ -85,11 +83,7 @@ final class V1WebhookParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param Result|array{
-     *   durationSeconds?: float|null,
-     *   fileSizeBytes?: int|null,
-     *   storedFilename?: string|null,
-     * } $result
+     * @param ResultShape $result
      */
     public static function with(
         string $jobID,
@@ -146,11 +140,7 @@ final class V1WebhookParams implements BaseModel
     /**
      * Result data for completed jobs.
      *
-     * @param Result|array{
-     *   durationSeconds?: float|null,
-     *   fileSizeBytes?: int|null,
-     *   storedFilename?: string|null,
-     * } $result
+     * @param ResultShape $result
      */
     public function withResult(Result|array $result): self
     {

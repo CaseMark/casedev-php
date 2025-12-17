@@ -11,10 +11,12 @@ use Casedev\Templates\V1\V1ExecuteResponse\Status;
 use Casedev\Templates\V1\V1ExecuteResponse\Usage;
 
 /**
+ * @phpstan-import-type UsageShape from \Casedev\Templates\V1\V1ExecuteResponse\Usage
+ *
  * @phpstan-type V1ExecuteResponseShape = array{
  *   result?: mixed,
- *   status?: value-of<Status>|null,
- *   usage?: Usage|null,
+ *   status?: null|Status|value-of<Status>,
+ *   usage?: null|Usage|UsageShape,
  *   workflowName?: string|null,
  * }
  */
@@ -53,12 +55,7 @@ final class V1ExecuteResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param Usage|array{
-     *   completionTokens?: int|null,
-     *   cost?: float|null,
-     *   promptTokens?: int|null,
-     *   totalTokens?: int|null,
-     * } $usage
+     * @param UsageShape $usage
      */
     public static function with(
         mixed $result = null,
@@ -99,12 +96,7 @@ final class V1ExecuteResponse implements BaseModel
     }
 
     /**
-     * @param Usage|array{
-     *   completionTokens?: int|null,
-     *   cost?: float|null,
-     *   promptTokens?: int|null,
-     *   totalTokens?: int|null,
-     * } $usage
+     * @param UsageShape $usage
      */
     public function withUsage(Usage|array $usage): self
     {

@@ -16,7 +16,9 @@ use Casedev\Workflows\V1\V1ListParams\Visibility;
  * @see Casedev\Services\Workflows\V1Service::list()
  *
  * @phpstan-type V1ListParamsShape = array{
- *   limit?: int, offset?: int, visibility?: Visibility|value-of<Visibility>
+ *   limit?: int|null,
+ *   offset?: int|null,
+ *   visibility?: null|Visibility|value-of<Visibility>,
  * }
  */
 final class V1ListParams implements BaseModel
