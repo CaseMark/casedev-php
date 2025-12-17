@@ -11,6 +11,8 @@ use Casedev\Core\Conversion\ListOf;
 
 /**
  * Filter to specific document(s) by object ID. Accepts a single ID or array of IDs.
+ *
+ * @phpstan-type ObjectIDShape = string|list<string>
  */
 final class ObjectID implements ConverterSource
 {

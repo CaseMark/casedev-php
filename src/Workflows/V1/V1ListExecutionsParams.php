@@ -16,7 +16,7 @@ use Casedev\Workflows\V1\V1ListExecutionsParams\Status;
  * @see Casedev\Services\Workflows\V1Service::listExecutions()
  *
  * @phpstan-type V1ListExecutionsParamsShape = array{
- *   limit?: int, status?: Status|value-of<Status>
+ *   limit?: int|null, status?: null|Status|value-of<Status>
  * }
  */
 final class V1ListExecutionsParams implements BaseModel

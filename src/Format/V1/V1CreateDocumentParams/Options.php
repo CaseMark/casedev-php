@@ -10,7 +10,9 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Format\V1\V1CreateDocumentParams\Options\Component;
 
 /**
- * @phpstan-type OptionsShape = array{components?: list<Component>|null}
+ * @phpstan-import-type ComponentShape from \Casedev\Format\V1\V1CreateDocumentParams\Options\Component
+ *
+ * @phpstan-type OptionsShape = array{components?: list<ComponentShape>|null}
  */
 final class Options implements BaseModel
 {
@@ -35,12 +37,7 @@ final class Options implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Component|array{
-     *   content?: string|null,
-     *   styles?: mixed,
-     *   templateID?: string|null,
-     *   variables?: mixed,
-     * }> $components
+     * @param list<ComponentShape> $components
      */
     public static function with(?array $components = null): self
     {
@@ -54,12 +51,7 @@ final class Options implements BaseModel
     /**
      * Template components with variables.
      *
-     * @param list<Component|array{
-     *   content?: string|null,
-     *   styles?: mixed,
-     *   templateID?: string|null,
-     *   variables?: mixed,
-     * }> $components
+     * @param list<ComponentShape> $components
      */
     public function withComponents(array $components): self
     {

@@ -14,7 +14,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1CreateDocumentParams $params
+     * @param array<string,mixed>|V1CreateDocumentParams $params
      *
      * @return BaseResponse<string>
      *

@@ -15,12 +15,12 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Templates\V1Service::list()
  *
  * @phpstan-type V1ListParamsShape = array{
- *   category?: string,
- *   limit?: int,
- *   offset?: int,
- *   published?: bool,
- *   subCategory?: string,
- *   type?: string,
+ *   category?: string|null,
+ *   limit?: int|null,
+ *   offset?: int|null,
+ *   published?: bool|null,
+ *   subCategory?: string|null,
+ *   type?: string|null,
  * }
  */
 final class V1ListParams implements BaseModel

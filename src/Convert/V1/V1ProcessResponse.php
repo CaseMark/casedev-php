@@ -11,7 +11,9 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type V1ProcessResponseShape = array{
- *   jobID?: string|null, message?: string|null, status?: value-of<Status>|null
+ *   jobID?: string|null,
+ *   message?: string|null,
+ *   status?: null|Status|value-of<Status>,
  * }
  */
 final class V1ProcessResponse implements BaseModel

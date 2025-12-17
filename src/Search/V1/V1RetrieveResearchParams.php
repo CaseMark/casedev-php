@@ -15,7 +15,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Search\V1Service::retrieveResearch()
  *
  * @phpstan-type V1RetrieveResearchParamsShape = array{
- *   events?: string, stream?: bool
+ *   events?: string|null, stream?: bool|null
  * }
  */
 final class V1RetrieveResearchParams implements BaseModel

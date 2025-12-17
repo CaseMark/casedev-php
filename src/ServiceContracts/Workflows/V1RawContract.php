@@ -28,7 +28,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1CreateParams $params
+     * @param array<string,mixed>|V1CreateParams $params
      *
      * @return BaseResponse<V1NewResponse>
      *
@@ -57,7 +57,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id Workflow ID
-     * @param array<mixed>|V1UpdateParams $params
+     * @param array<string,mixed>|V1UpdateParams $params
      *
      * @return BaseResponse<V1UpdateResponse>
      *
@@ -72,7 +72,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ListParams $params
+     * @param array<string,mixed>|V1ListParams $params
      *
      * @return BaseResponse<V1ListResponse>
      *
@@ -115,7 +115,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id Workflow ID
-     * @param array<mixed>|V1ExecuteParams $params
+     * @param array<string,mixed>|V1ExecuteParams $params
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -131,7 +131,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id Workflow ID
-     * @param array<mixed>|V1ListExecutionsParams $params
+     * @param array<string,mixed>|V1ListExecutionsParams $params
      *
      * @return BaseResponse<V1ListExecutionsResponse>
      *

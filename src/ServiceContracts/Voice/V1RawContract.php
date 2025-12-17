@@ -14,7 +14,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ListVoicesParams $params
+     * @param array<string,mixed>|V1ListVoicesParams $params
      *
      * @return BaseResponse<mixed>
      *

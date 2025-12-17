@@ -17,7 +17,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   isDefault?: bool|null,
  *   name?: string|null,
  *   slug?: string|null,
- *   status?: value-of<Status>|null,
+ *   status?: null|Status|value-of<Status>,
  * }
  */
 final class EnvironmentNewResponse implements BaseModel

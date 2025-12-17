@@ -18,9 +18,9 @@ use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
  *
  * @phpstan-type ObjectCreatePresignedURLParamsShape = array{
  *   id: string,
- *   contentType?: string,
- *   expiresIn?: int,
- *   operation?: Operation|value-of<Operation>,
+ *   contentType?: string|null,
+ *   expiresIn?: int|null,
+ *   operation?: null|Operation|value-of<Operation>,
  * }
  */
 final class ObjectCreatePresignedURLParams implements BaseModel

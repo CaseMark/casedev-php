@@ -18,15 +18,15 @@ use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
  * @see Casedev\Services\Voice\V1Service::listVoices()
  *
  * @phpstan-type V1ListVoicesParamsShape = array{
- *   category?: string,
- *   collectionID?: string,
- *   includeTotalCount?: bool,
- *   nextPageToken?: string,
- *   pageSize?: int,
- *   search?: string,
- *   sort?: Sort|value-of<Sort>,
- *   sortDirection?: SortDirection|value-of<SortDirection>,
- *   voiceType?: VoiceType|value-of<VoiceType>,
+ *   category?: string|null,
+ *   collectionID?: string|null,
+ *   includeTotalCount?: bool|null,
+ *   nextPageToken?: string|null,
+ *   pageSize?: int|null,
+ *   search?: string|null,
+ *   sort?: null|Sort|value-of<Sort>,
+ *   sortDirection?: null|SortDirection|value-of<SortDirection>,
+ *   voiceType?: null|VoiceType|value-of<VoiceType>,
  * }
  */
 final class V1ListVoicesParams implements BaseModel

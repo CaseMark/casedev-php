@@ -14,7 +14,7 @@ use Casedev\Core\Contracts\BaseModel;
  *
  * @see Casedev\Services\Compute\V1\SecretsService::retrieveGroup()
  *
- * @phpstan-type SecretRetrieveGroupParamsShape = array{env?: string}
+ * @phpstan-type SecretRetrieveGroupParamsShape = array{env?: string|null}
  */
 final class SecretRetrieveGroupParams implements BaseModel
 {

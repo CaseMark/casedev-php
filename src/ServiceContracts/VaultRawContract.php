@@ -22,7 +22,7 @@ interface VaultRawContract
     /**
      * @api
      *
-     * @param array<mixed>|VaultCreateParams $params
+     * @param array<string,mixed>|VaultCreateParams $params
      *
      * @return BaseResponse<VaultNewResponse>
      *
@@ -60,7 +60,7 @@ interface VaultRawContract
      * @api
      *
      * @param string $objectID Vault object ID
-     * @param array<mixed>|VaultIngestParams $params
+     * @param array<string,mixed>|VaultIngestParams $params
      *
      * @return BaseResponse<VaultIngestResponse>
      *
@@ -76,7 +76,7 @@ interface VaultRawContract
      * @api
      *
      * @param string $id Unique identifier of the vault to search
-     * @param array<mixed>|VaultSearchParams $params
+     * @param array<string,mixed>|VaultSearchParams $params
      *
      * @return BaseResponse<VaultSearchResponse>
      *
@@ -92,7 +92,7 @@ interface VaultRawContract
      * @api
      *
      * @param string $id Vault ID to upload the file to
-     * @param array<mixed>|VaultUploadParams $params
+     * @param array<string,mixed>|VaultUploadParams $params
      *
      * @return BaseResponse<VaultUploadResponse>
      *

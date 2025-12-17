@@ -10,8 +10,12 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
 
 /**
+ * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message
+ *
  * @phpstan-type ChoiceShape = array{
- *   finishReason?: string|null, index?: int|null, message?: Message|null
+ *   finishReason?: string|null,
+ *   index?: int|null,
+ *   message?: null|Message|MessageShape,
  * }
  */
 final class Choice implements BaseModel
@@ -38,7 +42,7 @@ final class Choice implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Message|array{content?: string|null, role?: string|null} $message
+     * @param MessageShape $message
      */
     public static function with(
         ?string $finishReason = null,
@@ -71,7 +75,7 @@ final class Choice implements BaseModel
     }
 
     /**
-     * @param Message|array{content?: string|null, role?: string|null} $message
+     * @param MessageShape $message
      */
     public function withMessage(Message|array $message): self
     {

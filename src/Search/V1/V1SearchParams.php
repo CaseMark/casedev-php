@@ -18,19 +18,19 @@ use Casedev\Search\V1\V1SearchParams\Type;
  *
  * @phpstan-type V1SearchParamsShape = array{
  *   query: string,
- *   additionalQueries?: list<string>,
- *   category?: string,
- *   contents?: string,
- *   endCrawlDate?: string,
- *   endPublishedDate?: string,
- *   excludeDomains?: list<string>,
- *   includeDomains?: list<string>,
- *   includeText?: bool,
- *   numResults?: int,
- *   startCrawlDate?: string,
- *   startPublishedDate?: string,
- *   type?: Type|value-of<Type>,
- *   userLocation?: string,
+ *   additionalQueries?: list<string>|null,
+ *   category?: string|null,
+ *   contents?: string|null,
+ *   endCrawlDate?: string|null,
+ *   endPublishedDate?: string|null,
+ *   excludeDomains?: list<string>|null,
+ *   includeDomains?: list<string>|null,
+ *   includeText?: bool|null,
+ *   numResults?: int|null,
+ *   startCrawlDate?: string|null,
+ *   startPublishedDate?: string|null,
+ *   type?: null|Type|value-of<Type>,
+ *   userLocation?: string|null,
  * }
  */
 final class V1SearchParams implements BaseModel

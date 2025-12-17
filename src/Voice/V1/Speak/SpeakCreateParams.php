@@ -18,24 +18,21 @@ use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
  *
  * @see Casedev\Services\Voice\V1\SpeakService::create()
  *
+ * @phpstan-import-type VoiceSettingsShape from \Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
+ *
  * @phpstan-type SpeakCreateParamsShape = array{
  *   text: string,
- *   applyTextNormalization?: bool,
- *   enableLogging?: bool,
- *   languageCode?: string,
- *   modelID?: ModelID|value-of<ModelID>,
- *   nextText?: string,
- *   optimizeStreamingLatency?: int,
- *   outputFormat?: OutputFormat|value-of<OutputFormat>,
- *   previousText?: string,
- *   seed?: int,
- *   voiceID?: string,
- *   voiceSettings?: VoiceSettings|array{
- *     similarityBoost?: float|null,
- *     stability?: float|null,
- *     style?: float|null,
- *     useSpeakerBoost?: bool|null,
- *   },
+ *   applyTextNormalization?: bool|null,
+ *   enableLogging?: bool|null,
+ *   languageCode?: string|null,
+ *   modelID?: null|ModelID|value-of<ModelID>,
+ *   nextText?: string|null,
+ *   optimizeStreamingLatency?: int|null,
+ *   outputFormat?: null|OutputFormat|value-of<OutputFormat>,
+ *   previousText?: string|null,
+ *   seed?: int|null,
+ *   voiceID?: string|null,
+ *   voiceSettings?: VoiceSettingsShape|null,
  * }
  */
 final class SpeakCreateParams implements BaseModel
@@ -146,12 +143,7 @@ final class SpeakCreateParams implements BaseModel
      *
      * @param ModelID|value-of<ModelID> $modelID
      * @param OutputFormat|value-of<OutputFormat> $outputFormat
-     * @param VoiceSettings|array{
-     *   similarityBoost?: float|null,
-     *   stability?: float|null,
-     *   style?: float|null,
-     *   useSpeakerBoost?: bool|null,
-     * } $voiceSettings
+     * @param VoiceSettingsShape $voiceSettings
      */
     public static function with(
         string $text,
@@ -316,12 +308,7 @@ final class SpeakCreateParams implements BaseModel
     /**
      * Voice customization settings.
      *
-     * @param VoiceSettings|array{
-     *   similarityBoost?: float|null,
-     *   stability?: float|null,
-     *   style?: float|null,
-     *   useSpeakerBoost?: bool|null,
-     * } $voiceSettings
+     * @param VoiceSettingsShape $voiceSettings
      */
     public function withVoiceSettings(VoiceSettings|array $voiceSettings): self
     {

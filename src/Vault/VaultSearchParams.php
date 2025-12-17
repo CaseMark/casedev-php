@@ -17,11 +17,13 @@ use Casedev\Vault\VaultSearchParams\Method;
  *
  * @see Casedev\Services\VaultService::search()
  *
+ * @phpstan-import-type FiltersShape from \Casedev\Vault\VaultSearchParams\Filters
+ *
  * @phpstan-type VaultSearchParamsShape = array{
  *   query: string,
- *   filters?: Filters|array{objectID?: string|null|list<string>},
- *   method?: Method|value-of<Method>,
- *   topK?: int,
+ *   filters?: FiltersShape|null,
+ *   method?: null|Method|value-of<Method>,
+ *   topK?: int|null,
  * }
  */
 final class VaultSearchParams implements BaseModel
@@ -80,7 +82,7 @@ final class VaultSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Filters|array{objectID?: string|list<string>|null} $filters
+     * @param FiltersShape $filters
      * @param Method|value-of<Method> $method
      */
     public static function with(
@@ -114,7 +116,7 @@ final class VaultSearchParams implements BaseModel
     /**
      * Filters to narrow search results to specific documents.
      *
-     * @param Filters|array{objectID?: string|list<string>|null} $filters
+     * @param FiltersShape $filters
      */
     public function withFilters(Filters|array $filters): self
     {

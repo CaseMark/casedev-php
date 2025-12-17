@@ -8,17 +8,19 @@ use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice\Message;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
 
 /**
+ * @phpstan-import-type ChoiceShape from \Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice
+ * @phpstan-import-type UsageShape from \Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage
+ *
  * @phpstan-type ChatNewCompletionResponseShape = array{
  *   id?: string|null,
- *   choices?: list<Choice>|null,
+ *   choices?: list<ChoiceShape>|null,
  *   created?: int|null,
  *   model?: string|null,
  *   object?: string|null,
- *   usage?: Usage|null,
+ *   usage?: null|Usage|UsageShape,
  * }
  */
 final class ChatNewCompletionResponse implements BaseModel
@@ -64,15 +66,8 @@ final class ChatNewCompletionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Choice|array{
-     *   finishReason?: string|null, index?: int|null, message?: Message|null
-     * }> $choices
-     * @param Usage|array{
-     *   completionTokens?: int|null,
-     *   cost?: float|null,
-     *   promptTokens?: int|null,
-     *   totalTokens?: int|null,
-     * } $usage
+     * @param list<ChoiceShape> $choices
+     * @param UsageShape $usage
      */
     public static function with(
         ?string $id = null,
@@ -106,9 +101,7 @@ final class ChatNewCompletionResponse implements BaseModel
     }
 
     /**
-     * @param list<Choice|array{
-     *   finishReason?: string|null, index?: int|null, message?: Message|null
-     * }> $choices
+     * @param list<ChoiceShape> $choices
      */
     public function withChoices(array $choices): self
     {
@@ -149,12 +142,7 @@ final class ChatNewCompletionResponse implements BaseModel
     }
 
     /**
-     * @param Usage|array{
-     *   completionTokens?: int|null,
-     *   cost?: float|null,
-     *   promptTokens?: int|null,
-     *   totalTokens?: int|null,
-     * } $usage
+     * @param UsageShape $usage
      */
     public function withUsage(Usage|array $usage): self
     {

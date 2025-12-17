@@ -11,7 +11,7 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
 
 /**
  * @phpstan-type MessageShape = array{
- *   content?: string|null, role?: value-of<Role>|null
+ *   content?: string|null, role?: null|Role|value-of<Role>
  * }
  */
 final class Message implements BaseModel

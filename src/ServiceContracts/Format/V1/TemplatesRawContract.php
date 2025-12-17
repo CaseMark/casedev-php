@@ -16,7 +16,7 @@ interface TemplatesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TemplateCreateParams $params
+     * @param array<string,mixed>|TemplateCreateParams $params
      *
      * @return BaseResponse<TemplateNewResponse>
      *
@@ -44,7 +44,7 @@ interface TemplatesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TemplateListParams $params
+     * @param array<string,mixed>|TemplateListParams $params
      *
      * @return BaseResponse<mixed>
      *

@@ -18,9 +18,9 @@ use Casedev\Core\Contracts\BaseModel;
  * @phpstan-type VaultUploadParamsShape = array{
  *   contentType: string,
  *   filename: string,
- *   autoIndex?: bool,
+ *   autoIndex?: bool|null,
  *   metadata?: mixed,
- *   sizeBytes?: float,
+ *   sizeBytes?: float|null,
  * }
  */
 final class VaultUploadParams implements BaseModel

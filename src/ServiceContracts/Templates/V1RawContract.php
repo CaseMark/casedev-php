@@ -31,7 +31,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ListParams $params
+     * @param array<string,mixed>|V1ListParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -46,7 +46,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id Unique identifier of the workflow to execute
-     * @param array<mixed>|V1ExecuteParams $params
+     * @param array<string,mixed>|V1ExecuteParams $params
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -75,7 +75,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1SearchParams $params
+     * @param array<string,mixed>|V1SearchParams $params
      *
      * @return BaseResponse<mixed>
      *

@@ -12,14 +12,16 @@ use Casedev\Voice\Transcription\TranscriptionGetResponse\Status;
 use Casedev\Voice\Transcription\TranscriptionGetResponse\Word;
 
 /**
+ * @phpstan-import-type WordShape from \Casedev\Voice\Transcription\TranscriptionGetResponse\Word
+ *
  * @phpstan-type TranscriptionGetResponseShape = array{
  *   id: string,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   audioDuration?: float|null,
  *   confidence?: float|null,
  *   error?: string|null,
  *   text?: string|null,
- *   words?: list<Word>|null,
+ *   words?: list<WordShape>|null,
  * }
  */
 final class TranscriptionGetResponse implements BaseModel
@@ -98,12 +100,7 @@ final class TranscriptionGetResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<Word|array{
-     *   confidence?: float|null,
-     *   end?: float|null,
-     *   start?: float|null,
-     *   text?: string|null,
-     * }> $words
+     * @param list<WordShape> $words
      */
     public static function with(
         string $id,
@@ -199,12 +196,7 @@ final class TranscriptionGetResponse implements BaseModel
     /**
      * Word-level timestamps and confidence scores.
      *
-     * @param list<Word|array{
-     *   confidence?: float|null,
-     *   end?: float|null,
-     *   start?: float|null,
-     *   text?: string|null,
-     * }> $words
+     * @param list<WordShape> $words
      */
     public function withWords(array $words): self
     {

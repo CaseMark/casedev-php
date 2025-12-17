@@ -17,7 +17,7 @@ use Casedev\Ocr\V1\V1ProcessResponse\Status;
  *   engine?: string|null,
  *   estimatedCompletion?: \DateTimeInterface|null,
  *   pageCount?: int|null,
- *   status?: value-of<Status>|null,
+ *   status?: null|Status|value-of<Status>,
  * }
  */
 final class V1ProcessResponse implements BaseModel

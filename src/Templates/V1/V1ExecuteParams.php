@@ -10,7 +10,6 @@ use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Templates\V1\V1ExecuteParams\Options;
-use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
 
 /**
  * Execute a pre-built workflow with custom input data. Workflows automate common legal document processing tasks like contract analysis, due diligence reviews, and document classification.
@@ -24,9 +23,10 @@ use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
  *
  * @see Casedev\Services\Templates\V1Service::execute()
  *
+ * @phpstan-import-type OptionsShape from \Casedev\Templates\V1\V1ExecuteParams\Options
+ *
  * @phpstan-type V1ExecuteParamsShape = array{
- *   input: mixed,
- *   options?: Options|array{format?: value-of<Format>|null, model?: string|null},
+ *   input: mixed, options?: OptionsShape|null
  * }
  */
 final class V1ExecuteParams implements BaseModel
@@ -68,9 +68,7 @@ final class V1ExecuteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Options|array{
-     *   format?: value-of<Format>|null, model?: string|null
-     * } $options
+     * @param OptionsShape $options
      */
     public static function with(
         mixed $input,
@@ -97,9 +95,7 @@ final class V1ExecuteParams implements BaseModel
     }
 
     /**
-     * @param Options|array{
-     *   format?: value-of<Format>|null, model?: string|null
-     * } $options
+     * @param OptionsShape $options
      */
     public function withOptions(Options|array $options): self
     {

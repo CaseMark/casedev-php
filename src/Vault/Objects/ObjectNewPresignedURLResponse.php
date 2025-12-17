@@ -10,12 +10,14 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
 
 /**
+ * @phpstan-import-type MetadataShape from \Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata
+ *
  * @phpstan-type ObjectNewPresignedURLResponseShape = array{
  *   expiresAt?: \DateTimeInterface|null,
  *   expiresIn?: int|null,
  *   filename?: string|null,
  *   instructions?: mixed,
- *   metadata?: Metadata|null,
+ *   metadata?: null|Metadata|MetadataShape,
  *   objectID?: string|null,
  *   operation?: string|null,
  *   presignedURL?: string|null,
@@ -95,12 +97,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Metadata|array{
-     *   bucket?: string|null,
-     *   contentType?: string|null,
-     *   region?: string|null,
-     *   sizeBytes?: int|null,
-     * } $metadata
+     * @param MetadataShape $metadata
      */
     public static function with(
         ?\DateTimeInterface $expiresAt = null,
@@ -175,12 +172,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     }
 
     /**
-     * @param Metadata|array{
-     *   bucket?: string|null,
-     *   contentType?: string|null,
-     *   region?: string|null,
-     *   sizeBytes?: int|null,
-     * } $metadata
+     * @param MetadataShape $metadata
      */
     public function withMetadata(Metadata|array $metadata): self
     {

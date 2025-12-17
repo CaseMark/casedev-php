@@ -14,7 +14,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1CreateEmbeddingParams $params
+     * @param array<string,mixed>|V1CreateEmbeddingParams $params
      *
      * @return BaseResponse<mixed>
      *

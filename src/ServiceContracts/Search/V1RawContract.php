@@ -24,7 +24,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1AnswerParams $params
+     * @param array<string,mixed>|V1AnswerParams $params
      *
      * @return BaseResponse<V1AnswerResponse>
      *
@@ -38,7 +38,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ContentsParams $params
+     * @param array<string,mixed>|V1ContentsParams $params
      *
      * @return BaseResponse<V1ContentsResponse>
      *
@@ -52,7 +52,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ResearchParams $params
+     * @param array<string,mixed>|V1ResearchParams $params
      *
      * @return BaseResponse<V1ResearchResponse>
      *
@@ -67,7 +67,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id Unique identifier for the research task
-     * @param array<mixed>|V1RetrieveResearchParams $params
+     * @param array<string,mixed>|V1RetrieveResearchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -82,7 +82,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1SearchParams $params
+     * @param array<string,mixed>|V1SearchParams $params
      *
      * @return BaseResponse<V1SearchResponse>
      *
@@ -96,7 +96,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1SimilarParams $params
+     * @param array<string,mixed>|V1SimilarParams $params
      *
      * @return BaseResponse<V1SimilarResponse>
      *

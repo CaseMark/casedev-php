@@ -20,7 +20,7 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\Convert\V1Service::process()
  *
  * @phpstan-type V1ProcessParamsShape = array{
- *   inputURL: string, callbackURL?: string
+ *   inputURL: string, callbackURL?: string|null
  * }
  */
 final class V1ProcessParams implements BaseModel

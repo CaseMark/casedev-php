@@ -31,7 +31,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1ProcessParams $params
+     * @param array<string,mixed>|V1ProcessParams $params
      *
      * @return BaseResponse<V1ProcessResponse>
      *
@@ -45,7 +45,7 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param array<mixed>|V1WebhookParams $params
+     * @param array<string,mixed>|V1WebhookParams $params
      *
      * @return BaseResponse<V1WebhookResponse>
      *

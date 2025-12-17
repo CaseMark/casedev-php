@@ -17,12 +17,14 @@ use Casedev\Llm\V1\V1CreateEmbeddingParams\Input;
  *
  * @see Casedev\Services\Llm\V1Service::createEmbedding()
  *
+ * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
+ *
  * @phpstan-type V1CreateEmbeddingParamsShape = array{
- *   input: string|list<string>,
+ *   input: InputShape,
  *   model: string,
- *   dimensions?: int,
- *   encodingFormat?: EncodingFormat|value-of<EncodingFormat>,
- *   user?: string,
+ *   dimensions?: int|null,
+ *   encodingFormat?: null|EncodingFormat|value-of<EncodingFormat>,
+ *   user?: string|null,
  * }
  */
 final class V1CreateEmbeddingParams implements BaseModel
@@ -89,7 +91,7 @@ final class V1CreateEmbeddingParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param string|list<string> $input
+     * @param InputShape $input
      * @param EncodingFormat|value-of<EncodingFormat> $encodingFormat
      */
     public static function with(
@@ -114,7 +116,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     /**
      * Text or array of texts to create embeddings for.
      *
-     * @param string|list<string> $input
+     * @param InputShape $input
      */
     public function withInput(string|array $input): self
     {

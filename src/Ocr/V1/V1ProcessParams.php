@@ -17,16 +17,16 @@ use Casedev\Ocr\V1\V1ProcessParams\Features;
  *
  * @see Casedev\Services\Ocr\V1Service::process()
  *
+ * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
+ *
  * @phpstan-type V1ProcessParamsShape = array{
  *   documentURL: string,
- *   callbackURL?: string,
- *   documentID?: string,
- *   engine?: Engine|value-of<Engine>,
- *   features?: Features|array{
- *     forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
- *   },
- *   resultBucket?: string,
- *   resultPrefix?: string,
+ *   callbackURL?: string|null,
+ *   documentID?: string|null,
+ *   engine?: null|Engine|value-of<Engine>,
+ *   features?: FeaturesShape|null,
+ *   resultBucket?: string|null,
+ *   resultPrefix?: string|null,
  * }
  */
 final class V1ProcessParams implements BaseModel
@@ -104,9 +104,7 @@ final class V1ProcessParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Engine|value-of<Engine> $engine
-     * @param Features|array{
-     *   forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
-     * } $features
+     * @param FeaturesShape $features
      */
     public static function with(
         string $documentURL,
@@ -180,9 +178,7 @@ final class V1ProcessParams implements BaseModel
     /**
      * OCR features to extract.
      *
-     * @param Features|array{
-     *   forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
-     * } $features
+     * @param FeaturesShape $features
      */
     public function withFeatures(Features|array $features): self
     {
