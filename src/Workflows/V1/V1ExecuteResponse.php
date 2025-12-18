@@ -55,8 +55,8 @@ final class V1ExecuteResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Mode|value-of<Mode> $mode
-     * @param Status|value-of<Status> $status
+     * @param Mode|value-of<Mode>|null $mode
+     * @param Status|value-of<Status>|null $status
      */
     public static function with(
         ?int $duration = null,

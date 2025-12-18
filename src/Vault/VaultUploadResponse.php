@@ -76,7 +76,7 @@ final class VaultUploadResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param InstructionsShape $instructions
+     * @param Instructions|InstructionsShape|null $instructions
      */
     public static function with(
         ?bool $autoIndex = null,
@@ -123,7 +123,7 @@ final class VaultUploadResponse implements BaseModel
     }
 
     /**
-     * @param InstructionsShape $instructions
+     * @param Instructions|InstructionsShape $instructions
      */
     public function withInstructions(Instructions|array $instructions): self
     {

@@ -60,7 +60,7 @@ final class V1AnswerResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CitationShape> $citations
+     * @param list<CitationShape>|null $citations
      */
     public static function with(
         ?string $answer = null,

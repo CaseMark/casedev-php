@@ -37,7 +37,7 @@ final class Options implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ComponentShape> $components
+     * @param list<ComponentShape>|null $components
      */
     public static function with(?array $components = null): self
     {

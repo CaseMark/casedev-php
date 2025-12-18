@@ -92,7 +92,7 @@ final class V1CreateEmbeddingParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param InputShape $input
-     * @param EncodingFormat|value-of<EncodingFormat> $encodingFormat
+     * @param EncodingFormat|value-of<EncodingFormat>|null $encodingFormat
      */
     public static function with(
         string|array $input,

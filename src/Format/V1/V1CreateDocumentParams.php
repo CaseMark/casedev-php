@@ -24,7 +24,7 @@ use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
  *   content: string,
  *   outputFormat: OutputFormat|value-of<OutputFormat>,
  *   inputFormat?: null|InputFormat|value-of<InputFormat>,
- *   options?: OptionsShape|null,
+ *   options?: null|Options|OptionsShape,
  * }
  */
 final class V1CreateDocumentParams implements BaseModel
@@ -83,8 +83,8 @@ final class V1CreateDocumentParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param OutputFormat|value-of<OutputFormat> $outputFormat
-     * @param InputFormat|value-of<InputFormat> $inputFormat
-     * @param OptionsShape $options
+     * @param InputFormat|value-of<InputFormat>|null $inputFormat
+     * @param Options|OptionsShape|null $options
      */
     public static function with(
         string $content,
@@ -141,7 +141,7 @@ final class V1CreateDocumentParams implements BaseModel
     }
 
     /**
-     * @param OptionsShape $options
+     * @param Options|OptionsShape $options
      */
     public function withOptions(Options|array $options): self
     {

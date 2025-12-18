@@ -100,7 +100,7 @@ final class TranscriptionGetResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<WordShape> $words
+     * @param list<WordShape>|null $words
      */
     public static function with(
         string $id,

@@ -47,7 +47,7 @@ final class V1ListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<WorkflowShape> $workflows
+     * @param list<WorkflowShape>|null $workflows
      */
     public static function with(
         ?int $limit = null,

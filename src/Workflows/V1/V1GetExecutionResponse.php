@@ -76,7 +76,7 @@ final class V1GetExecutionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $steps
+     * @param list<mixed>|null $steps
      */
     public static function with(
         ?string $id = null,

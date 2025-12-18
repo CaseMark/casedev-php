@@ -97,7 +97,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param MetadataShape $metadata
+     * @param Metadata|MetadataShape|null $metadata
      */
     public static function with(
         ?\DateTimeInterface $expiresAt = null,
@@ -172,7 +172,7 @@ final class ObjectNewPresignedURLResponse implements BaseModel
     }
 
     /**
-     * @param MetadataShape $metadata
+     * @param Metadata|MetadataShape $metadata
      */
     public function withMetadata(Metadata|array $metadata): self
     {

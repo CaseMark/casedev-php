@@ -32,7 +32,7 @@ use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
  *   previousText?: string|null,
  *   seed?: int|null,
  *   voiceID?: string|null,
- *   voiceSettings?: VoiceSettingsShape|null,
+ *   voiceSettings?: null|VoiceSettings|VoiceSettingsShape,
  * }
  */
 final class SpeakCreateParams implements BaseModel
@@ -141,9 +141,9 @@ final class SpeakCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ModelID|value-of<ModelID> $modelID
-     * @param OutputFormat|value-of<OutputFormat> $outputFormat
-     * @param VoiceSettingsShape $voiceSettings
+     * @param ModelID|value-of<ModelID>|null $modelID
+     * @param OutputFormat|value-of<OutputFormat>|null $outputFormat
+     * @param VoiceSettings|VoiceSettingsShape|null $voiceSettings
      */
     public static function with(
         string $text,
@@ -308,7 +308,7 @@ final class SpeakCreateParams implements BaseModel
     /**
      * Voice customization settings.
      *
-     * @param VoiceSettingsShape $voiceSettings
+     * @param VoiceSettings|VoiceSettingsShape $voiceSettings
      */
     public function withVoiceSettings(VoiceSettings|array $voiceSettings): self
     {

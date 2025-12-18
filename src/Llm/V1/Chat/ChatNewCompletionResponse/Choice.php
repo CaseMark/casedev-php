@@ -42,7 +42,7 @@ final class Choice implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param MessageShape $message
+     * @param Message|MessageShape|null $message
      */
     public static function with(
         ?string $finishReason = null,
@@ -75,7 +75,7 @@ final class Choice implements BaseModel
     }
 
     /**
-     * @param MessageShape $message
+     * @param Message|MessageShape $message
      */
     public function withMessage(Message|array $message): self
     {

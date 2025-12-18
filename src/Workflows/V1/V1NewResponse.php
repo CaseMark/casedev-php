@@ -65,8 +65,8 @@ final class V1NewResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $edges
-     * @param list<mixed> $nodes
+     * @param list<mixed>|null $edges
+     * @param list<mixed>|null $nodes
      */
     public static function with(
         ?string $id = null,

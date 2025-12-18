@@ -43,7 +43,7 @@ final class V1SimilarResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ResultShape> $results
+     * @param list<ResultShape>|null $results
      */
     public static function with(
         ?float $processingTime = null,

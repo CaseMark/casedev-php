@@ -64,7 +64,7 @@ final class TemplateNewResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $variables
+     * @param list<string>|null $variables
      */
     public static function with(
         ?string $id = null,

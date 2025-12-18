@@ -54,8 +54,8 @@ final class V1ExecuteResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Status|value-of<Status> $status
-     * @param UsageShape $usage
+     * @param Status|value-of<Status>|null $status
+     * @param Usage|UsageShape|null $usage
      */
     public static function with(
         mixed $result = null,
@@ -96,7 +96,7 @@ final class V1ExecuteResponse implements BaseModel
     }
 
     /**
-     * @param UsageShape $usage
+     * @param Usage|UsageShape $usage
      */
     public function withUsage(Usage|array $usage): self
     {

@@ -132,9 +132,9 @@ final class V1AnswerParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $excludeDomains
-     * @param list<string> $includeDomains
-     * @param SearchType|value-of<SearchType> $searchType
+     * @param list<string>|null $excludeDomains
+     * @param list<string>|null $includeDomains
+     * @param SearchType|value-of<SearchType>|null $searchType
      */
     public static function with(
         string $query,

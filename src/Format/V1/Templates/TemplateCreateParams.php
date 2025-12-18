@@ -105,8 +105,8 @@ final class TemplateCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<string> $tags
-     * @param list<string> $variables
+     * @param list<string>|null $tags
+     * @param list<string>|null $variables
      */
     public static function with(
         string $content,

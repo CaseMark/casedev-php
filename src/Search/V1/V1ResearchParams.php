@@ -79,7 +79,7 @@ final class V1ResearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Model|value-of<Model> $model
+     * @param Model|value-of<Model>|null $model
      */
     public static function with(
         string $instructions,

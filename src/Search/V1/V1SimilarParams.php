@@ -122,8 +122,8 @@ final class V1SimilarParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $excludeDomains
-     * @param list<string> $includeDomains
+     * @param list<string>|null $excludeDomains
+     * @param list<string>|null $includeDomains
      */
     public static function with(
         string $url,
