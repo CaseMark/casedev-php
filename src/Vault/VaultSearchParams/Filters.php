@@ -39,7 +39,7 @@ final class Filters implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ObjectIDShape $objectID
+     * @param ObjectIDShape|null $objectID
      */
     public static function with(string|array|null $objectID = null): self
     {

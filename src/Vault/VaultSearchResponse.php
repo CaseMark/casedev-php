@@ -74,8 +74,8 @@ final class VaultSearchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ChunkShape> $chunks
-     * @param list<SourceShape> $sources
+     * @param list<ChunkShape>|null $chunks
+     * @param list<SourceShape>|null $sources
      */
     public static function with(
         ?array $chunks = null,

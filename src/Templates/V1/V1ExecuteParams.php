@@ -26,7 +26,7 @@ use Casedev\Templates\V1\V1ExecuteParams\Options;
  * @phpstan-import-type OptionsShape from \Casedev\Templates\V1\V1ExecuteParams\Options
  *
  * @phpstan-type V1ExecuteParamsShape = array{
- *   input: mixed, options?: OptionsShape|null
+ *   input: mixed, options?: null|Options|OptionsShape
  * }
  */
 final class V1ExecuteParams implements BaseModel
@@ -68,7 +68,7 @@ final class V1ExecuteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param OptionsShape $options
+     * @param Options|OptionsShape|null $options
      */
     public static function with(
         mixed $input,
@@ -95,7 +95,7 @@ final class V1ExecuteParams implements BaseModel
     }
 
     /**
-     * @param OptionsShape $options
+     * @param Options|OptionsShape $options
      */
     public function withOptions(Options|array $options): self
     {

@@ -23,7 +23,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   jobID: string,
  *   status: Status|value-of<Status>,
  *   error?: string|null,
- *   result?: ResultShape|null,
+ *   result?: null|Result|ResultShape,
  * }
  */
 final class V1WebhookParams implements BaseModel
@@ -83,7 +83,7 @@ final class V1WebhookParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param ResultShape $result
+     * @param Result|ResultShape|null $result
      */
     public static function with(
         string $jobID,
@@ -140,7 +140,7 @@ final class V1WebhookParams implements BaseModel
     /**
      * Result data for completed jobs.
      *
-     * @param ResultShape $result
+     * @param Result|ResultShape $result
      */
     public function withResult(Result|array $result): self
     {

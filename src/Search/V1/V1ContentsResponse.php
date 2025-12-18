@@ -33,7 +33,7 @@ final class V1ContentsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ResultShape> $results
+     * @param list<ResultShape>|null $results
      */
     public static function with(?array $results = null): self
     {

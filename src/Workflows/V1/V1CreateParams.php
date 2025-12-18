@@ -103,10 +103,10 @@ final class V1CreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $edges
-     * @param list<mixed> $nodes
-     * @param TriggerType|value-of<TriggerType> $triggerType
-     * @param Visibility|value-of<Visibility> $visibility
+     * @param list<mixed>|null $edges
+     * @param list<mixed>|null $nodes
+     * @param TriggerType|value-of<TriggerType>|null $triggerType
+     * @param Visibility|value-of<Visibility>|null $visibility
      */
     public static function with(
         string $name,

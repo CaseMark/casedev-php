@@ -71,7 +71,7 @@ final class Result implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $highlights
+     * @param list<string>|null $highlights
      */
     public static function with(
         ?array $highlights = null,

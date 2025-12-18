@@ -24,7 +24,7 @@ use Casedev\Ocr\V1\V1ProcessParams\Features;
  *   callbackURL?: string|null,
  *   documentID?: string|null,
  *   engine?: null|Engine|value-of<Engine>,
- *   features?: FeaturesShape|null,
+ *   features?: null|Features|FeaturesShape,
  *   resultBucket?: string|null,
  *   resultPrefix?: string|null,
  * }
@@ -103,8 +103,8 @@ final class V1ProcessParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Engine|value-of<Engine> $engine
-     * @param FeaturesShape $features
+     * @param Engine|value-of<Engine>|null $engine
+     * @param Features|FeaturesShape|null $features
      */
     public static function with(
         string $documentURL,
@@ -178,7 +178,7 @@ final class V1ProcessParams implements BaseModel
     /**
      * OCR features to extract.
      *
-     * @param FeaturesShape $features
+     * @param Features|FeaturesShape $features
      */
     public function withFeatures(Features|array $features): self
     {

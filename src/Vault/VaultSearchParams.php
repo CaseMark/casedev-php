@@ -21,7 +21,7 @@ use Casedev\Vault\VaultSearchParams\Method;
  *
  * @phpstan-type VaultSearchParamsShape = array{
  *   query: string,
- *   filters?: FiltersShape|null,
+ *   filters?: null|Filters|FiltersShape,
  *   method?: null|Method|value-of<Method>,
  *   topK?: int|null,
  * }
@@ -82,8 +82,8 @@ final class VaultSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FiltersShape $filters
-     * @param Method|value-of<Method> $method
+     * @param Filters|FiltersShape|null $filters
+     * @param Method|value-of<Method>|null $method
      */
     public static function with(
         string $query,
@@ -116,7 +116,7 @@ final class VaultSearchParams implements BaseModel
     /**
      * Filters to narrow search results to specific documents.
      *
-     * @param FiltersShape $filters
+     * @param Filters|FiltersShape $filters
      */
     public function withFilters(Filters|array $filters): self
     {

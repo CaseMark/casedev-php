@@ -76,7 +76,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Operation|value-of<Operation> $operation
+     * @param Operation|value-of<Operation>|null $operation
      */
     public static function with(
         string $id,

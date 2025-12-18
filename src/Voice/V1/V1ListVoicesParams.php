@@ -105,9 +105,9 @@ final class V1ListVoicesParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Sort|value-of<Sort> $sort
-     * @param SortDirection|value-of<SortDirection> $sortDirection
-     * @param VoiceType|value-of<VoiceType> $voiceType
+     * @param Sort|value-of<Sort>|null $sort
+     * @param SortDirection|value-of<SortDirection>|null $sortDirection
+     * @param VoiceType|value-of<VoiceType>|null $voiceType
      */
     public static function with(
         ?string $category = null,

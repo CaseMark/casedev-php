@@ -35,7 +35,7 @@ final class V1ListExecutionsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExecutionShape> $executions
+     * @param list<ExecutionShape>|null $executions
      */
     public static function with(?array $executions = null): self
     {

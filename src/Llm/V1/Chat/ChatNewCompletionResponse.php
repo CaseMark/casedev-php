@@ -66,8 +66,8 @@ final class ChatNewCompletionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ChoiceShape> $choices
-     * @param UsageShape $usage
+     * @param list<ChoiceShape>|null $choices
+     * @param Usage|UsageShape|null $usage
      */
     public static function with(
         ?string $id = null,
@@ -142,7 +142,7 @@ final class ChatNewCompletionResponse implements BaseModel
     }
 
     /**
-     * @param UsageShape $usage
+     * @param Usage|UsageShape $usage
      */
     public function withUsage(Usage|array $usage): self
     {

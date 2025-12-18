@@ -57,7 +57,7 @@ final class V1ListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Visibility|value-of<Visibility> $visibility
+     * @param Visibility|value-of<Visibility>|null $visibility
      */
     public static function with(
         ?int $limit = null,

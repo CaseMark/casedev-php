@@ -41,7 +41,7 @@ final class VaultListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VaultShape> $vaults
+     * @param list<VaultShape>|null $vaults
      */
     public static function with(?int $total = null, ?array $vaults = null): self
     {

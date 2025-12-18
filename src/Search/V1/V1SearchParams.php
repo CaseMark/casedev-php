@@ -155,10 +155,10 @@ final class V1SearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $additionalQueries
-     * @param list<string> $excludeDomains
-     * @param list<string> $includeDomains
-     * @param Type|value-of<Type> $type
+     * @param list<string>|null $additionalQueries
+     * @param list<string>|null $excludeDomains
+     * @param list<string>|null $includeDomains
+     * @param Type|value-of<Type>|null $type
      */
     public static function with(
         string $query,
