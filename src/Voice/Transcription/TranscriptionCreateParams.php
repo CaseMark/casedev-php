@@ -5,25 +5,36 @@ declare(strict_types=1);
 namespace Casedev\Voice\Transcription;
 
 use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 
 /**
- * Creates an asynchronous transcription job for audio files. Supports various audio formats and advanced features like speaker identification, content moderation, and automatic highlights. Returns a job ID for checking transcription status and retrieving results.
+ * Creates an asynchronous transcription job for audio files. Supports two modes:
+ *
+ * **Vault-based (recommended)**: Pass `vault_id` and `object_id` to transcribe audio from your vault. The transcript will automatically be saved back to the vault when complete.
+ *
+ * **Direct URL (legacy)**: Pass `audio_url` for direct transcription without automatic storage.
  *
  * @see Casedev\Services\Voice\TranscriptionService::create()
  *
  * @phpstan-type TranscriptionCreateParamsShape = array{
- *   audioURL: string,
+ *   audioURL?: string|null,
  *   autoHighlights?: bool|null,
+ *   boostParam?: null|BoostParam|value-of<BoostParam>,
  *   contentSafetyLabels?: bool|null,
+ *   format?: null|Format|value-of<Format>,
  *   formatText?: bool|null,
  *   languageCode?: string|null,
  *   languageDetection?: bool|null,
+ *   objectID?: string|null,
  *   punctuate?: bool|null,
  *   speakerLabels?: bool|null,
+ *   speakersExpected?: int|null,
+ *   vaultID?: string|null,
+ *   wordBoost?: list<string>|null,
  * }
  */
 final class TranscriptionCreateParams implements BaseModel
@@ -33,10 +44,10 @@ final class TranscriptionCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * URL of the audio file to transcribe.
+     * URL of the audio file to transcribe (legacy mode, no auto-storage).
      */
-    #[Required('audio_url')]
-    public string $audioURL;
+    #[Optional('audio_url')]
+    public ?string $audioURL;
 
     /**
      * Automatically extract key phrases and topics.
@@ -45,10 +56,26 @@ final class TranscriptionCreateParams implements BaseModel
     public ?bool $autoHighlights;
 
     /**
+     * How much to boost custom vocabulary.
+     *
+     * @var value-of<BoostParam>|null $boostParam
+     */
+    #[Optional('boost_param', enum: BoostParam::class)]
+    public ?string $boostParam;
+
+    /**
      * Enable content moderation and safety labeling.
      */
     #[Optional('content_safety_labels')]
     public ?bool $contentSafetyLabels;
+
+    /**
+     * Output format for the transcript when using vault mode.
+     *
+     * @var value-of<Format>|null $format
+     */
+    #[Optional(enum: Format::class)]
+    public ?string $format;
 
     /**
      * Format text with proper capitalization.
@@ -69,6 +96,12 @@ final class TranscriptionCreateParams implements BaseModel
     public ?bool $languageDetection;
 
     /**
+     * Object ID of the audio file in the vault (use with vault_id).
+     */
+    #[Optional('object_id')]
+    public ?string $objectID;
+
+    /**
      * Add punctuation to the transcript.
      */
     #[Optional]
@@ -81,19 +114,25 @@ final class TranscriptionCreateParams implements BaseModel
     public ?bool $speakerLabels;
 
     /**
-     * `new TranscriptionCreateParams()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * TranscriptionCreateParams::with(audioURL: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new TranscriptionCreateParams)->withAudioURL(...)
-     * ```
+     * Expected number of speakers (improves accuracy when known).
      */
+    #[Optional('speakers_expected')]
+    public ?int $speakersExpected;
+
+    /**
+     * Vault ID containing the audio file (use with object_id).
+     */
+    #[Optional('vault_id')]
+    public ?string $vaultID;
+
+    /**
+     * Custom vocabulary words to boost (e.g., legal terms).
+     *
+     * @var list<string>|null $wordBoost
+     */
+    #[Optional('word_boost', list: 'string')]
+    public ?array $wordBoost;
+
     public function __construct()
     {
         $this->initialize();
@@ -103,34 +142,49 @@ final class TranscriptionCreateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param BoostParam|value-of<BoostParam>|null $boostParam
+     * @param Format|value-of<Format>|null $format
+     * @param list<string>|null $wordBoost
      */
     public static function with(
-        string $audioURL,
+        ?string $audioURL = null,
         ?bool $autoHighlights = null,
+        BoostParam|string|null $boostParam = null,
         ?bool $contentSafetyLabels = null,
+        Format|string|null $format = null,
         ?bool $formatText = null,
         ?string $languageCode = null,
         ?bool $languageDetection = null,
+        ?string $objectID = null,
         ?bool $punctuate = null,
         ?bool $speakerLabels = null,
+        ?int $speakersExpected = null,
+        ?string $vaultID = null,
+        ?array $wordBoost = null,
     ): self {
         $self = new self;
 
-        $self['audioURL'] = $audioURL;
-
+        null !== $audioURL && $self['audioURL'] = $audioURL;
         null !== $autoHighlights && $self['autoHighlights'] = $autoHighlights;
+        null !== $boostParam && $self['boostParam'] = $boostParam;
         null !== $contentSafetyLabels && $self['contentSafetyLabels'] = $contentSafetyLabels;
+        null !== $format && $self['format'] = $format;
         null !== $formatText && $self['formatText'] = $formatText;
         null !== $languageCode && $self['languageCode'] = $languageCode;
         null !== $languageDetection && $self['languageDetection'] = $languageDetection;
+        null !== $objectID && $self['objectID'] = $objectID;
         null !== $punctuate && $self['punctuate'] = $punctuate;
         null !== $speakerLabels && $self['speakerLabels'] = $speakerLabels;
+        null !== $speakersExpected && $self['speakersExpected'] = $speakersExpected;
+        null !== $vaultID && $self['vaultID'] = $vaultID;
+        null !== $wordBoost && $self['wordBoost'] = $wordBoost;
 
         return $self;
     }
 
     /**
-     * URL of the audio file to transcribe.
+     * URL of the audio file to transcribe (legacy mode, no auto-storage).
      */
     public function withAudioURL(string $audioURL): self
     {
@@ -152,12 +206,38 @@ final class TranscriptionCreateParams implements BaseModel
     }
 
     /**
+     * How much to boost custom vocabulary.
+     *
+     * @param BoostParam|value-of<BoostParam> $boostParam
+     */
+    public function withBoostParam(BoostParam|string $boostParam): self
+    {
+        $self = clone $this;
+        $self['boostParam'] = $boostParam;
+
+        return $self;
+    }
+
+    /**
      * Enable content moderation and safety labeling.
      */
     public function withContentSafetyLabels(bool $contentSafetyLabels): self
     {
         $self = clone $this;
         $self['contentSafetyLabels'] = $contentSafetyLabels;
+
+        return $self;
+    }
+
+    /**
+     * Output format for the transcript when using vault mode.
+     *
+     * @param Format|value-of<Format> $format
+     */
+    public function withFormat(Format|string $format): self
+    {
+        $self = clone $this;
+        $self['format'] = $format;
 
         return $self;
     }
@@ -196,6 +276,17 @@ final class TranscriptionCreateParams implements BaseModel
     }
 
     /**
+     * Object ID of the audio file in the vault (use with vault_id).
+     */
+    public function withObjectID(string $objectID): self
+    {
+        $self = clone $this;
+        $self['objectID'] = $objectID;
+
+        return $self;
+    }
+
+    /**
      * Add punctuation to the transcript.
      */
     public function withPunctuate(bool $punctuate): self
@@ -213,6 +304,41 @@ final class TranscriptionCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['speakerLabels'] = $speakerLabels;
+
+        return $self;
+    }
+
+    /**
+     * Expected number of speakers (improves accuracy when known).
+     */
+    public function withSpeakersExpected(int $speakersExpected): self
+    {
+        $self = clone $this;
+        $self['speakersExpected'] = $speakersExpected;
+
+        return $self;
+    }
+
+    /**
+     * Vault ID containing the audio file (use with object_id).
+     */
+    public function withVaultID(string $vaultID): self
+    {
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
+
+        return $self;
+    }
+
+    /**
+     * Custom vocabulary words to boost (e.g., legal terms).
+     *
+     * @param list<string> $wordBoost
+     */
+    public function withWordBoost(array $wordBoost): self
+    {
+        $self = clone $this;
+        $self['wordBoost'] = $wordBoost;
 
         return $self;
     }

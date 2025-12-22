@@ -10,6 +10,8 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\TranscriptionRawContract;
 use Casedev\Voice\Transcription\TranscriptionCreateParams;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
 
 final class TranscriptionRawService implements TranscriptionRawContract
@@ -23,17 +25,27 @@ final class TranscriptionRawService implements TranscriptionRawContract
     /**
      * @api
      *
-     * Creates an asynchronous transcription job for audio files. Supports various audio formats and advanced features like speaker identification, content moderation, and automatic highlights. Returns a job ID for checking transcription status and retrieving results.
+     * Creates an asynchronous transcription job for audio files. Supports two modes:
+     *
+     * **Vault-based (recommended)**: Pass `vault_id` and `object_id` to transcribe audio from your vault. The transcript will automatically be saved back to the vault when complete.
+     *
+     * **Direct URL (legacy)**: Pass `audio_url` for direct transcription without automatic storage.
      *
      * @param array{
-     *   audioURL: string,
+     *   audioURL?: string,
      *   autoHighlights?: bool,
+     *   boostParam?: 'low'|'default'|'high'|BoostParam,
      *   contentSafetyLabels?: bool,
+     *   format?: 'json'|'text'|Format,
      *   formatText?: bool,
      *   languageCode?: string,
      *   languageDetection?: bool,
+     *   objectID?: string,
      *   punctuate?: bool,
      *   speakerLabels?: bool,
+     *   speakersExpected?: int,
+     *   vaultID?: string,
+     *   wordBoost?: list<string>,
      * }|TranscriptionCreateParams $params
      *
      * @return BaseResponse<mixed>
@@ -62,9 +74,9 @@ final class TranscriptionRawService implements TranscriptionRawContract
     /**
      * @api
      *
-     * Retrieve the status and result of an audio transcription job. Returns the transcription text when complete, or status information for pending jobs.
+     * Retrieve the status and result of an audio transcription job. For vault-based jobs, returns status and result_object_id when complete. For legacy direct URL jobs, returns the full transcription data.
      *
-     * @param string $id The transcription job ID returned from the create transcription endpoint
+     * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
      *
      * @return BaseResponse<TranscriptionGetResponse>
      *

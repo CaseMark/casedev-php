@@ -6,6 +6,8 @@ namespace Casedev\ServiceContracts\Voice;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
 
 interface TranscriptionContract
@@ -13,33 +15,45 @@ interface TranscriptionContract
     /**
      * @api
      *
-     * @param string $audioURL URL of the audio file to transcribe
+     * @param string $audioURL URL of the audio file to transcribe (legacy mode, no auto-storage)
      * @param bool $autoHighlights Automatically extract key phrases and topics
+     * @param 'low'|'default'|'high'|BoostParam $boostParam How much to boost custom vocabulary
      * @param bool $contentSafetyLabels Enable content moderation and safety labeling
+     * @param 'json'|'text'|Format $format Output format for the transcript when using vault mode
      * @param bool $formatText Format text with proper capitalization
      * @param string $languageCode Language code (e.g., 'en_us', 'es', 'fr'). If not specified, language will be auto-detected
      * @param bool $languageDetection Enable automatic language detection
+     * @param string $objectID Object ID of the audio file in the vault (use with vault_id)
      * @param bool $punctuate Add punctuation to the transcript
      * @param bool $speakerLabels Enable speaker identification and labeling
+     * @param int $speakersExpected Expected number of speakers (improves accuracy when known)
+     * @param string $vaultID Vault ID containing the audio file (use with object_id)
+     * @param list<string> $wordBoost Custom vocabulary words to boost (e.g., legal terms)
      *
      * @throws APIException
      */
     public function create(
-        string $audioURL,
+        ?string $audioURL = null,
         bool $autoHighlights = false,
+        string|BoostParam|null $boostParam = null,
         bool $contentSafetyLabels = false,
+        string|Format $format = 'json',
         bool $formatText = true,
         ?string $languageCode = null,
         bool $languageDetection = false,
+        ?string $objectID = null,
         bool $punctuate = true,
         bool $speakerLabels = false,
+        ?int $speakersExpected = null,
+        ?string $vaultID = null,
+        ?array $wordBoost = null,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param string $id The transcription job ID returned from the create transcription endpoint
+     * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
      *
      * @throws APIException
      */

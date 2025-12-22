@@ -9,19 +9,20 @@ use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Voice\Transcription\TranscriptionGetResponse\Status;
-use Casedev\Voice\Transcription\TranscriptionGetResponse\Word;
 
 /**
- * @phpstan-import-type WordShape from \Casedev\Voice\Transcription\TranscriptionGetResponse\Word
- *
  * @phpstan-type TranscriptionGetResponseShape = array{
  *   id: string,
  *   status: Status|value-of<Status>,
  *   audioDuration?: float|null,
  *   confidence?: float|null,
  *   error?: string|null,
+ *   resultObjectID?: string|null,
+ *   sourceObjectID?: string|null,
  *   text?: string|null,
- *   words?: list<WordShape>|null,
+ *   vaultID?: string|null,
+ *   wordCount?: int|null,
+ *   words?: list<mixed>|null,
  * }
  */
 final class TranscriptionGetResponse implements BaseModel
@@ -50,29 +51,53 @@ final class TranscriptionGetResponse implements BaseModel
     public ?float $audioDuration;
 
     /**
-     * Overall confidence score for the transcription.
+     * Overall confidence score (0-100).
      */
     #[Optional]
     public ?float $confidence;
 
     /**
-     * Error message (only present when status is error).
+     * Error message (only present when status is failed).
      */
     #[Optional]
     public ?string $error;
 
     /**
-     * Full transcription text (only present when status is completed).
+     * Result transcript object ID (vault-based jobs, when completed).
+     */
+    #[Optional('result_object_id')]
+    public ?string $resultObjectID;
+
+    /**
+     * Source audio object ID (vault-based jobs only).
+     */
+    #[Optional('source_object_id')]
+    public ?string $sourceObjectID;
+
+    /**
+     * Full transcription text (legacy direct URL jobs only).
      */
     #[Optional]
     public ?string $text;
 
     /**
-     * Word-level timestamps and confidence scores.
-     *
-     * @var list<Word>|null $words
+     * Vault ID (vault-based jobs only).
      */
-    #[Optional(list: Word::class)]
+    #[Optional('vault_id')]
+    public ?string $vaultID;
+
+    /**
+     * Number of words in the transcript.
+     */
+    #[Optional('word_count')]
+    public ?int $wordCount;
+
+    /**
+     * Word-level timestamps (legacy direct URL jobs only).
+     *
+     * @var list<mixed>|null $words
+     */
+    #[Optional(list: 'mixed')]
     public ?array $words;
 
     /**
@@ -100,7 +125,7 @@ final class TranscriptionGetResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<WordShape>|null $words
+     * @param list<mixed>|null $words
      */
     public static function with(
         string $id,
@@ -108,7 +133,11 @@ final class TranscriptionGetResponse implements BaseModel
         ?float $audioDuration = null,
         ?float $confidence = null,
         ?string $error = null,
+        ?string $resultObjectID = null,
+        ?string $sourceObjectID = null,
         ?string $text = null,
+        ?string $vaultID = null,
+        ?int $wordCount = null,
         ?array $words = null,
     ): self {
         $self = new self;
@@ -119,7 +148,11 @@ final class TranscriptionGetResponse implements BaseModel
         null !== $audioDuration && $self['audioDuration'] = $audioDuration;
         null !== $confidence && $self['confidence'] = $confidence;
         null !== $error && $self['error'] = $error;
+        null !== $resultObjectID && $self['resultObjectID'] = $resultObjectID;
+        null !== $sourceObjectID && $self['sourceObjectID'] = $sourceObjectID;
         null !== $text && $self['text'] = $text;
+        null !== $vaultID && $self['vaultID'] = $vaultID;
+        null !== $wordCount && $self['wordCount'] = $wordCount;
         null !== $words && $self['words'] = $words;
 
         return $self;
@@ -161,7 +194,7 @@ final class TranscriptionGetResponse implements BaseModel
     }
 
     /**
-     * Overall confidence score for the transcription.
+     * Overall confidence score (0-100).
      */
     public function withConfidence(float $confidence): self
     {
@@ -172,7 +205,7 @@ final class TranscriptionGetResponse implements BaseModel
     }
 
     /**
-     * Error message (only present when status is error).
+     * Error message (only present when status is failed).
      */
     public function withError(string $error): self
     {
@@ -183,7 +216,29 @@ final class TranscriptionGetResponse implements BaseModel
     }
 
     /**
-     * Full transcription text (only present when status is completed).
+     * Result transcript object ID (vault-based jobs, when completed).
+     */
+    public function withResultObjectID(string $resultObjectID): self
+    {
+        $self = clone $this;
+        $self['resultObjectID'] = $resultObjectID;
+
+        return $self;
+    }
+
+    /**
+     * Source audio object ID (vault-based jobs only).
+     */
+    public function withSourceObjectID(string $sourceObjectID): self
+    {
+        $self = clone $this;
+        $self['sourceObjectID'] = $sourceObjectID;
+
+        return $self;
+    }
+
+    /**
+     * Full transcription text (legacy direct URL jobs only).
      */
     public function withText(string $text): self
     {
@@ -194,9 +249,31 @@ final class TranscriptionGetResponse implements BaseModel
     }
 
     /**
-     * Word-level timestamps and confidence scores.
+     * Vault ID (vault-based jobs only).
+     */
+    public function withVaultID(string $vaultID): self
+    {
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
+
+        return $self;
+    }
+
+    /**
+     * Number of words in the transcript.
+     */
+    public function withWordCount(int $wordCount): self
+    {
+        $self = clone $this;
+        $self['wordCount'] = $wordCount;
+
+        return $self;
+    }
+
+    /**
+     * Word-level timestamps (legacy direct URL jobs only).
      *
-     * @param list<WordShape> $words
+     * @param list<mixed> $words
      */
     public function withWords(array $words): self
     {
