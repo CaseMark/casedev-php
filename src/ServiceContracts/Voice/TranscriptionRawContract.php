@@ -29,7 +29,7 @@ interface TranscriptionRawContract
     /**
      * @api
      *
-     * @param string $id The transcription job ID returned from the create transcription endpoint
+     * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
      *
      * @return BaseResponse<TranscriptionGetResponse>
      *

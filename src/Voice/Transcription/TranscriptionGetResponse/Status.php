@@ -15,5 +15,5 @@ enum Status: string
 
     case COMPLETED = 'completed';
 
-    case ERROR = 'error';
+    case FAILED = 'failed';
 }
