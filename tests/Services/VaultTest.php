@@ -175,6 +175,7 @@ final class VaultTest extends TestCase
             filename: 'filename',
             autoIndex: true,
             metadata: (object) [],
+            relativePath: 'relative_path',
             sizeBytes: 0,
         );
 
