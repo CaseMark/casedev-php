@@ -185,6 +185,7 @@ final class VaultRawService implements VaultRawContract
      *   filename: string,
      *   autoIndex?: bool,
      *   metadata?: mixed,
+     *   relativePath?: string,
      *   sizeBytes?: float,
      * }|VaultUploadParams $params
      *

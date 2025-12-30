@@ -20,6 +20,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   filename: string,
  *   autoIndex?: bool|null,
  *   metadata?: mixed,
+ *   relativePath?: string|null,
  *   sizeBytes?: float|null,
  * }
  */
@@ -52,6 +53,12 @@ final class VaultUploadParams implements BaseModel
      */
     #[Optional]
     public mixed $metadata;
+
+    /**
+     * Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'.
+     */
+    #[Optional('relative_path')]
+    public ?string $relativePath;
 
     /**
      * Estimated file size in bytes for cost calculation.
@@ -88,6 +95,7 @@ final class VaultUploadParams implements BaseModel
         string $filename,
         ?bool $autoIndex = null,
         mixed $metadata = null,
+        ?string $relativePath = null,
         ?float $sizeBytes = null,
     ): self {
         $self = new self;
@@ -97,6 +105,7 @@ final class VaultUploadParams implements BaseModel
 
         null !== $autoIndex && $self['autoIndex'] = $autoIndex;
         null !== $metadata && $self['metadata'] = $metadata;
+        null !== $relativePath && $self['relativePath'] = $relativePath;
         null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
 
         return $self;
@@ -142,6 +151,17 @@ final class VaultUploadParams implements BaseModel
     {
         $self = clone $this;
         $self['metadata'] = $metadata;
+
+        return $self;
+    }
+
+    /**
+     * Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'.
+     */
+    public function withRelativePath(string $relativePath): self
+    {
+        $self = clone $this;
+        $self['relativePath'] = $relativePath;
 
         return $self;
     }
