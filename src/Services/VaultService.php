@@ -53,6 +53,7 @@ final class VaultService implements VaultContract
      * @param string $name Display name for the vault
      * @param string $description Optional description of the vault's purpose
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping
+     * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      *
      * @throws APIException
      */
@@ -60,6 +61,7 @@ final class VaultService implements VaultContract
         string $name,
         ?string $description = null,
         bool $enableGraph = true,
+        mixed $metadata = null,
         ?RequestOptions $requestOptions = null,
     ): VaultNewResponse {
         $params = Util::removeNulls(
@@ -67,6 +69,7 @@ final class VaultService implements VaultContract
                 'name' => $name,
                 'description' => $description,
                 'enableGraph' => $enableGraph,
+                'metadata' => $metadata,
             ],
         );
 

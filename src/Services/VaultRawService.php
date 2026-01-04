@@ -34,7 +34,7 @@ final class VaultRawService implements VaultRawContract
      * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
      *
      * @param array{
-     *   name: string, description?: string, enableGraph?: bool
+     *   name: string, description?: string, enableGraph?: bool, metadata?: mixed
      * }|VaultCreateParams $params
      *
      * @return BaseResponse<VaultNewResponse>
