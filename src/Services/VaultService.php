@@ -182,7 +182,7 @@ final class VaultService implements VaultContract
      * @param string $filename Name of the file to upload
      * @param bool $autoIndex Whether to automatically process and index the file for search
      * @param mixed $metadata Additional metadata to associate with the file
-     * @param string $relativePath Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'
+     * @param string $path Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'
      * @param float $sizeBytes Estimated file size in bytes for cost calculation
      *
      * @throws APIException
@@ -193,7 +193,7 @@ final class VaultService implements VaultContract
         string $filename,
         bool $autoIndex = true,
         mixed $metadata = null,
-        ?string $relativePath = null,
+        ?string $path = null,
         ?float $sizeBytes = null,
         ?RequestOptions $requestOptions = null,
     ): VaultUploadResponse {
@@ -203,7 +203,7 @@ final class VaultService implements VaultContract
                 'filename' => $filename,
                 'autoIndex' => $autoIndex,
                 'metadata' => $metadata,
-                'relativePath' => $relativePath,
+                'path' => $path,
                 'sizeBytes' => $sizeBytes,
             ],
         );

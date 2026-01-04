@@ -18,7 +18,7 @@ use Casedev\Vault\VaultUploadResponse\Instructions;
  *   instructions?: null|Instructions|InstructionsShape,
  *   nextStep?: string|null,
  *   objectID?: string|null,
- *   relativePath?: string|null,
+ *   path?: string|null,
  *   s3Key?: string|null,
  *   uploadURL?: string|null,
  * }
@@ -58,8 +58,8 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Folder path for hierarchy if provided.
      */
-    #[Optional('relative_path', nullable: true)]
-    public ?string $relativePath;
+    #[Optional(nullable: true)]
+    public ?string $path;
 
     /**
      * S3 object key for the file.
@@ -91,7 +91,7 @@ final class VaultUploadResponse implements BaseModel
         Instructions|array|null $instructions = null,
         ?string $nextStep = null,
         ?string $objectID = null,
-        ?string $relativePath = null,
+        ?string $path = null,
         ?string $s3Key = null,
         ?string $uploadURL = null,
     ): self {
@@ -102,7 +102,7 @@ final class VaultUploadResponse implements BaseModel
         null !== $instructions && $self['instructions'] = $instructions;
         null !== $nextStep && $self['nextStep'] = $nextStep;
         null !== $objectID && $self['objectID'] = $objectID;
-        null !== $relativePath && $self['relativePath'] = $relativePath;
+        null !== $path && $self['path'] = $path;
         null !== $s3Key && $self['s3Key'] = $s3Key;
         null !== $uploadURL && $self['uploadURL'] = $uploadURL;
 
@@ -167,10 +167,10 @@ final class VaultUploadResponse implements BaseModel
     /**
      * Folder path for hierarchy if provided.
      */
-    public function withRelativePath(?string $relativePath): self
+    public function withPath(?string $path): self
     {
         $self = clone $this;
-        $self['relativePath'] = $relativePath;
+        $self['path'] = $path;
 
         return $self;
     }
