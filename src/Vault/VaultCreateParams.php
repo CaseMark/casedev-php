@@ -16,7 +16,10 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\VaultService::create()
  *
  * @phpstan-type VaultCreateParamsShape = array{
- *   name: string, description?: string|null, enableGraph?: bool|null
+ *   name: string,
+ *   description?: string|null,
+ *   enableGraph?: bool|null,
+ *   metadata?: mixed,
  * }
  */
 final class VaultCreateParams implements BaseModel
@@ -42,6 +45,12 @@ final class VaultCreateParams implements BaseModel
      */
     #[Optional]
     public ?bool $enableGraph;
+
+    /**
+     * Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking).
+     */
+    #[Optional]
+    public mixed $metadata;
 
     /**
      * `new VaultCreateParams()` is missing required properties by the API.
@@ -70,7 +79,8 @@ final class VaultCreateParams implements BaseModel
     public static function with(
         string $name,
         ?string $description = null,
-        ?bool $enableGraph = null
+        ?bool $enableGraph = null,
+        mixed $metadata = null,
     ): self {
         $self = new self;
 
@@ -78,6 +88,7 @@ final class VaultCreateParams implements BaseModel
 
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
+        null !== $metadata && $self['metadata'] = $metadata;
 
         return $self;
     }
@@ -111,6 +122,17 @@ final class VaultCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['enableGraph'] = $enableGraph;
+
+        return $self;
+    }
+
+    /**
+     * Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking).
+     */
+    public function withMetadata(mixed $metadata): self
+    {
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
         return $self;
     }
