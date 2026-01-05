@@ -117,7 +117,7 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
-     * Triggers OCR ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. Processing happens asynchronously with GraphRAG support if enabled on the vault. Returns immediately with workflow tracking information.
+     * Triggers OCR ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. Processing happens asynchronously. GraphRAG indexing must be triggered separately via POST /vault/:id/graphrag/:objectId. Returns immediately with workflow tracking information.
      *
      * @param string $objectID Vault object ID
      * @param string $id Vault ID

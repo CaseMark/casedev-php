@@ -24,7 +24,7 @@ final class VaultIngestResponse implements BaseModel
     use SdkModel;
 
     /**
-     * Whether GraphRAG is enabled for this vault.
+     * Always false - GraphRAG must be triggered separately via POST /vault/:id/graphrag/:objectId.
      */
     #[Required('enableGraphRAG')]
     public bool $enableGraphRag;
@@ -107,7 +107,7 @@ final class VaultIngestResponse implements BaseModel
     }
 
     /**
-     * Whether GraphRAG is enabled for this vault.
+     * Always false - GraphRAG must be triggered separately via POST /vault/:id/graphrag/:objectId.
      */
     public function withEnableGraphRag(bool $enableGraphRag): self
     {
