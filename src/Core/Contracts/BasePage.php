@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Casedev\Core\Contracts;
 
 /**
- * @internal
+ * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
  *
- * @phpstan-import-type normalized_request from \Casedev\Core\BaseClient
+ * @internal
  *
  * @template Item
  *
