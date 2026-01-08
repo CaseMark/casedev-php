@@ -14,12 +14,16 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface SecretsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SecretCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SecretNewResponse>
      *
@@ -27,13 +31,14 @@ interface SecretsRawContract
      */
     public function create(
         array|SecretCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SecretListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -41,7 +46,7 @@ interface SecretsRawContract
      */
     public function list(
         array|SecretListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -49,6 +54,7 @@ interface SecretsRawContract
      *
      * @param string $group Name of the secret group
      * @param array<string,mixed>|SecretDeleteGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -57,7 +63,7 @@ interface SecretsRawContract
     public function deleteGroup(
         string $group,
         array|SecretDeleteGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -65,6 +71,7 @@ interface SecretsRawContract
      *
      * @param string $group Name of the secret group to list keys from
      * @param array<string,mixed>|SecretRetrieveGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,7 +80,7 @@ interface SecretsRawContract
     public function retrieveGroup(
         string $group,
         array|SecretRetrieveGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -81,6 +88,7 @@ interface SecretsRawContract
      *
      * @param string $group Name of the secret group
      * @param array<string,mixed>|SecretUpdateGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -89,6 +97,6 @@ interface SecretsRawContract
     public function updateGroup(
         string $group,
         array|SecretUpdateGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

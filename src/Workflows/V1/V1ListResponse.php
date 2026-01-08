@@ -16,7 +16,7 @@ use Casedev\Workflows\V1\V1ListResponse\Workflow;
  *   limit?: int|null,
  *   offset?: int|null,
  *   total?: int|null,
- *   workflows?: list<WorkflowShape>|null,
+ *   workflows?: list<Workflow|WorkflowShape>|null,
  * }
  */
 final class V1ListResponse implements BaseModel
@@ -47,7 +47,7 @@ final class V1ListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<WorkflowShape>|null $workflows
+     * @param list<Workflow|WorkflowShape>|null $workflows
      */
     public static function with(
         ?int $limit = null,
@@ -90,7 +90,7 @@ final class V1ListResponse implements BaseModel
     }
 
     /**
-     * @param list<WorkflowShape> $workflows
+     * @param list<Workflow|WorkflowShape> $workflows
      */
     public function withWorkflows(array $workflows): self
     {

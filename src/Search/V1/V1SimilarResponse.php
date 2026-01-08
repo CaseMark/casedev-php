@@ -14,7 +14,7 @@ use Casedev\Search\V1\V1SimilarResponse\Result;
  *
  * @phpstan-type V1SimilarResponseShape = array{
  *   processingTime?: float|null,
- *   results?: list<ResultShape>|null,
+ *   results?: list<Result|ResultShape>|null,
  *   totalResults?: int|null,
  * }
  */
@@ -43,7 +43,7 @@ final class V1SimilarResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ResultShape>|null $results
+     * @param list<Result|ResultShape>|null $results
      */
     public static function with(
         ?float $processingTime = null,
@@ -68,7 +68,7 @@ final class V1SimilarResponse implements BaseModel
     }
 
     /**
-     * @param list<ResultShape> $results
+     * @param list<Result|ResultShape> $results
      */
     public function withResults(array $results): self
     {

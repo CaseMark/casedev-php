@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Convert\V1\V1ProcessParams;
 use Casedev\Convert\V1\V1ProcessResponse;
 use Casedev\Convert\V1\V1WebhookParams;
+use Casedev\Convert\V1\V1WebhookParams\Result;
 use Casedev\Convert\V1\V1WebhookParams\Status;
 use Casedev\Convert\V1\V1WebhookResponse;
 use Casedev\Core\Contracts\BaseResponse;
@@ -15,6 +16,10 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1RawContract;
 
+/**
+ * @phpstan-import-type ResultShape from \Casedev\Convert\V1\V1WebhookParams\Result
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +34,7 @@ final class V1RawService implements V1RawContract
      * Download the converted M4A audio file from a completed FTR conversion job. The file is streamed directly to the client with appropriate headers for audio playback or download.
      *
      * @param string $id The unique job ID of the completed conversion
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -36,7 +42,7 @@ final class V1RawService implements V1RawContract
      */
     public function download(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -58,6 +64,7 @@ final class V1RawService implements V1RawContract
      * **Processing**: Asynchronous with webhook callbacks
      *
      * @param array{inputURL: string, callbackURL?: string}|V1ProcessParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ProcessResponse>
      *
@@ -65,7 +72,7 @@ final class V1RawService implements V1RawContract
      */
     public function process(
         array|V1ProcessParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ProcessParams::parseRequest(
             $params,
@@ -89,12 +96,11 @@ final class V1RawService implements V1RawContract
      *
      * @param array{
      *   jobID: string,
-     *   status: 'completed'|'failed'|Status,
+     *   status: Status|value-of<Status>,
      *   error?: string,
-     *   result?: array{
-     *     durationSeconds?: float, fileSizeBytes?: int, storedFilename?: string
-     *   },
+     *   result?: Result|ResultShape,
      * }|V1WebhookParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1WebhookResponse>
      *
@@ -102,7 +108,7 @@ final class V1RawService implements V1RawContract
      */
     public function webhook(
         array|V1WebhookParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1WebhookParams::parseRequest(
             $params,

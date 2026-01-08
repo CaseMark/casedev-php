@@ -12,6 +12,9 @@ use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1\TemplatesContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class TemplatesService implements TemplatesContract
 {
     /**
@@ -34,23 +37,24 @@ final class TemplatesService implements TemplatesContract
      *
      * @param string $content Template content with {{variable}} placeholders
      * @param string $name Template name
-     * @param 'caption'|'signature'|'letterhead'|'certificate'|'footer'|'custom'|Type $type Template type
+     * @param Type|value-of<Type> $type Template type
      * @param string $description Template description
      * @param mixed $styles CSS styles for the template
      * @param list<string> $tags Template tags for organization
      * @param list<string> $variables Template variables (auto-detected if not provided)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $content,
         string $name,
-        string|Type $type,
+        Type|string $type,
         ?string $description = null,
         mixed $styles = null,
         ?array $tags = null,
         ?array $variables = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): TemplateNewResponse {
         $params = Util::removeNulls(
             [
@@ -76,12 +80,13 @@ final class TemplatesService implements TemplatesContract
      * Retrieve a specific document format template by ID. Format templates define how documents should be structured and formatted for specific legal use cases such as contracts, briefs, or pleadings.
      *
      * @param string $id The unique identifier of the format template
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
@@ -97,12 +102,13 @@ final class TemplatesService implements TemplatesContract
      * Filter by type to get specific template categories like contracts, pleadings, or correspondence.
      *
      * @param string $type Filter templates by type (e.g., contract, pleading, letter)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         ?string $type = null,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         $params = Util::removeNulls(['type' => $type]);
 

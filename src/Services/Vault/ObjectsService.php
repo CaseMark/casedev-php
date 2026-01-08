@@ -12,6 +12,9 @@ use Casedev\ServiceContracts\Vault\ObjectsContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class ObjectsService implements ObjectsContract
 {
     /**
@@ -34,13 +37,14 @@ final class ObjectsService implements ObjectsContract
      *
      * @param string $objectID Object ID within the vault
      * @param string $id Vault ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $objectID,
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['id' => $id]);
 
@@ -56,12 +60,13 @@ final class ObjectsService implements ObjectsContract
      * Retrieve all objects stored in a specific vault, including document metadata, ingestion status, and processing statistics.
      *
      * @param string $id The unique identifier of the vault
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($id, requestOptions: $requestOptions);
@@ -78,7 +83,8 @@ final class ObjectsService implements ObjectsContract
      * @param string $id Path param: The unique identifier of the vault
      * @param string $contentType Body param: Content type for PUT operations (optional, defaults to object's content type)
      * @param int $expiresIn Body param: URL expiration time in seconds (1 minute to 7 days)
-     * @param 'GET'|'PUT'|'DELETE'|'HEAD'|Operation $operation Body param: The S3 operation to generate URL for
+     * @param Operation|value-of<Operation> $operation Body param: The S3 operation to generate URL for
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -87,8 +93,8 @@ final class ObjectsService implements ObjectsContract
         string $id,
         ?string $contentType = null,
         int $expiresIn = 3600,
-        string|Operation $operation = 'GET',
-        ?RequestOptions $requestOptions = null,
+        Operation|string $operation = 'GET',
+        RequestOptions|array|null $requestOptions = null,
     ): ObjectNewPresignedURLResponse {
         $params = Util::removeNulls(
             [
@@ -112,13 +118,14 @@ final class ObjectsService implements ObjectsContract
      *
      * @param string $objectID Object ID within the vault
      * @param string $id Vault ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function download(
         string $objectID,
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['id' => $id]);
 
@@ -135,13 +142,14 @@ final class ObjectsService implements ObjectsContract
      *
      * @param string $objectID The object ID
      * @param string $id The vault ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getText(
         string $objectID,
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['id' => $id]);
 

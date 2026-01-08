@@ -9,12 +9,16 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Voice\V1\V1ListVoicesParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|V1ListVoicesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -22,6 +26,6 @@ interface V1RawContract
      */
     public function listVoices(
         array|V1ListVoicesParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -16,7 +16,7 @@ use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
  *
  * @phpstan-type ChatNewCompletionResponseShape = array{
  *   id?: string|null,
- *   choices?: list<ChoiceShape>|null,
+ *   choices?: list<Choice|ChoiceShape>|null,
  *   created?: int|null,
  *   model?: string|null,
  *   object?: string|null,
@@ -66,7 +66,7 @@ final class ChatNewCompletionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ChoiceShape>|null $choices
+     * @param list<Choice|ChoiceShape>|null $choices
      * @param Usage|UsageShape|null $usage
      */
     public static function with(
@@ -101,7 +101,7 @@ final class ChatNewCompletionResponse implements BaseModel
     }
 
     /**
-     * @param list<ChoiceShape> $choices
+     * @param list<Choice|ChoiceShape> $choices
      */
     public function withChoices(array $choices): self
     {

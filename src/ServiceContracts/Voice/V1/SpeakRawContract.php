@@ -9,12 +9,16 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Voice\V1\Speak\SpeakCreateParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface SpeakRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SpeakCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -22,6 +26,6 @@ interface SpeakRawContract
      */
     public function create(
         array|SpeakCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

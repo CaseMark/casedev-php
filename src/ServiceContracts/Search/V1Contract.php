@@ -15,6 +15,9 @@ use Casedev\Search\V1\V1SearchParams\Type;
 use Casedev\Search\V1\V1SearchResponse;
 use Casedev\Search\V1\V1SimilarResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1Contract
 {
     /**
@@ -26,11 +29,12 @@ interface V1Contract
      * @param int $maxTokens Maximum tokens for LLM response
      * @param string $model LLM model to use when useCustomLLM is true
      * @param int $numResults Number of search results to consider
-     * @param 'auto'|'web'|'news'|'academic'|SearchType $searchType Type of search to perform
+     * @param SearchType|value-of<SearchType> $searchType Type of search to perform
      * @param bool $stream Stream the response (only for native provider answers)
      * @param float $temperature LLM temperature for answer generation
      * @param bool $text Include text content in response
      * @param bool $useCustomLlm Use Case.dev LLM for answer generation instead of provider's native answer
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -41,12 +45,12 @@ interface V1Contract
         int $maxTokens = 2048,
         string $model = 'gpt-4o',
         int $numResults = 10,
-        string|SearchType $searchType = 'auto',
+        SearchType|string $searchType = 'auto',
         bool $stream = false,
         float $temperature = 0.3,
         bool $text = true,
         bool $useCustomLlm = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1AnswerResponse;
 
     /**
@@ -62,6 +66,7 @@ interface V1Contract
      * @param int $subpageTarget Maximum number of subpages to crawl
      * @param bool $summary Whether to generate content summaries
      * @param bool $text Whether to extract text content
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -76,25 +81,26 @@ interface V1Contract
         int $subpageTarget = 5,
         bool $summary = false,
         bool $text = true,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ContentsResponse;
 
     /**
      * @api
      *
      * @param string $instructions Research instructions or query
-     * @param 'fast'|'normal'|'pro'|Model $model Research quality level - fast (quick), normal (balanced), pro (comprehensive)
+     * @param Model|value-of<Model> $model Research quality level - fast (quick), normal (balanced), pro (comprehensive)
      * @param mixed $outputSchema Optional JSON schema to structure the research output
      * @param string $query Alias for instructions (for convenience)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function research(
         string $instructions,
-        string|Model $model = 'normal',
+        Model|string $model = 'normal',
         mixed $outputSchema = null,
         ?string $query = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ResearchResponse;
 
     /**
@@ -103,6 +109,7 @@ interface V1Contract
      * @param string $id Unique identifier for the research task
      * @param string $events Filter specific event types for streaming
      * @param bool $stream Enable streaming for real-time updates
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -110,7 +117,7 @@ interface V1Contract
         string $id,
         ?string $events = null,
         ?bool $stream = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -128,8 +135,9 @@ interface V1Contract
      * @param int $numResults Number of search results to return
      * @param string $startCrawlDate Start date for crawl date filtering
      * @param string $startPublishedDate Start date for published date filtering
-     * @param 'auto'|'search'|'news'|Type $type Type of search to perform
+     * @param Type|value-of<Type> $type Type of search to perform
      * @param string $userLocation Geographic location for localized results
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -146,9 +154,9 @@ interface V1Contract
         int $numResults = 10,
         ?string $startCrawlDate = null,
         ?string $startPublishedDate = null,
-        string|Type $type = 'auto',
+        Type|string $type = 'auto',
         ?string $userLocation = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1SearchResponse;
 
     /**
@@ -164,6 +172,7 @@ interface V1Contract
      * @param int $numResults Number of similar results to return
      * @param string $startCrawlDate Only include pages crawled after this date
      * @param string $startPublishedDate Only include pages published after this date
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -178,6 +187,6 @@ interface V1Contract
         int $numResults = 10,
         ?string $startCrawlDate = null,
         ?string $startPublishedDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1SimilarResponse;
 }

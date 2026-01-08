@@ -10,6 +10,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\LlmRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class LlmRawService implements LlmRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,12 +32,14 @@ final class LlmRawService implements LlmRawContract
      * - Configure AI SDK clients
      * - Build model selection interfaces
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function getConfig(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

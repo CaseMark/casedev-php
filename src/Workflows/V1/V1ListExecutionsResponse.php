@@ -13,7 +13,7 @@ use Casedev\Workflows\V1\V1ListExecutionsResponse\Execution;
  * @phpstan-import-type ExecutionShape from \Casedev\Workflows\V1\V1ListExecutionsResponse\Execution
  *
  * @phpstan-type V1ListExecutionsResponseShape = array{
- *   executions?: list<ExecutionShape>|null
+ *   executions?: list<Execution|ExecutionShape>|null
  * }
  */
 final class V1ListExecutionsResponse implements BaseModel
@@ -35,7 +35,7 @@ final class V1ListExecutionsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExecutionShape>|null $executions
+     * @param list<Execution|ExecutionShape>|null $executions
      */
     public static function with(?array $executions = null): self
     {
@@ -47,7 +47,7 @@ final class V1ListExecutionsResponse implements BaseModel
     }
 
     /**
-     * @param list<ExecutionShape> $executions
+     * @param list<Execution|ExecutionShape> $executions
      */
     public function withExecutions(array $executions): self
     {

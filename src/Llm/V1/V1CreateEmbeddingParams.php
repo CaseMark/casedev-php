@@ -17,6 +17,7 @@ use Casedev\Llm\V1\V1CreateEmbeddingParams\Input;
  *
  * @see Casedev\Services\Llm\V1Service::createEmbedding()
  *
+ * @phpstan-import-type InputVariants from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
  * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
  *
  * @phpstan-type V1CreateEmbeddingParamsShape = array{
@@ -36,7 +37,7 @@ final class V1CreateEmbeddingParams implements BaseModel
     /**
      * Text or array of texts to create embeddings for.
      *
-     * @var string|list<string> $input
+     * @var InputVariants $input
      */
     #[Required(union: Input::class)]
     public string|array $input;

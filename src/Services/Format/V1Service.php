@@ -8,11 +8,16 @@ use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
+use Casedev\Format\V1\V1CreateDocumentParams\Options;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1Contract;
 use Casedev\Services\Format\V1\TemplatesService;
 
+/**
+ * @phpstan-import-type OptionsShape from \Casedev\Format\V1\V1CreateDocumentParams\Options
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -40,22 +45,19 @@ final class V1Service implements V1Contract
      * Convert Markdown, JSON, or text content to professionally formatted PDF, DOCX, or HTML documents. Supports template components with variable interpolation for creating consistent legal documents like contracts, briefs, and reports.
      *
      * @param string $content The source content to format
-     * @param 'pdf'|'docx'|'html_preview'|OutputFormat $outputFormat Desired output format
-     * @param 'md'|'json'|'text'|InputFormat $inputFormat Format of the input content
-     * @param array{
-     *   components?: list<array{
-     *     content?: string, styles?: mixed, templateID?: string, variables?: mixed
-     *   }>,
-     * } $options
+     * @param OutputFormat|value-of<OutputFormat> $outputFormat Desired output format
+     * @param InputFormat|value-of<InputFormat> $inputFormat Format of the input content
+     * @param Options|OptionsShape $options
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createDocument(
         string $content,
-        string|OutputFormat $outputFormat,
-        string|InputFormat $inputFormat = 'md',
-        ?array $options = null,
-        ?RequestOptions $requestOptions = null,
+        OutputFormat|string $outputFormat,
+        InputFormat|string $inputFormat = 'md',
+        Options|array|null $options = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
             [

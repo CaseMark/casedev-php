@@ -13,6 +13,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\EnvironmentsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class EnvironmentsRawService implements EnvironmentsRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,6 +30,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * Creates a new compute environment for running serverless workloads. Each environment gets its own isolated namespace with a unique domain for hosting applications and APIs. The first environment created becomes the default environment for the organization.
      *
      * @param array{name: string}|EnvironmentCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EnvironmentNewResponse>
      *
@@ -34,7 +38,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      */
     public function create(
         array|EnvironmentCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EnvironmentCreateParams::parseRequest(
             $params,
@@ -57,6 +61,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * Retrieve a specific compute environment by name. Returns environment configuration including status, domain, and metadata for your serverless compute infrastructure.
      *
      * @param string $name The name of the compute environment to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -64,7 +69,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      */
     public function retrieve(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -80,12 +85,15 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      *
      * Retrieve all compute environments for your organization. Environments provide isolated execution contexts for running code and workflows.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
@@ -101,6 +109,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * Permanently delete a compute environment and all its associated resources. This will stop all running deployments and clean up related configurations. The default environment cannot be deleted if other environments exist.
      *
      * @param string $name Name of the compute environment to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EnvironmentDeleteResponse>
      *
@@ -108,7 +117,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      */
     public function delete(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -125,6 +134,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * Sets a compute environment as the default for the organization. Only one environment can be default at a time - setting a new default will automatically unset the previous one.
      *
      * @param string $name Name of the compute environment to set as default
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -132,7 +142,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      */
     public function setDefault(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

@@ -12,6 +12,10 @@ use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1RawContract;
 
+/**
+ * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -26,12 +30,13 @@ final class V1RawService implements V1RawContract
      * Create vector embeddings from text using OpenAI-compatible models. Perfect for semantic search, document similarity, and building RAG systems for legal documents.
      *
      * @param array{
-     *   input: string|list<string>,
+     *   input: InputShape,
      *   model: string,
      *   dimensions?: int,
-     *   encodingFormat?: 'float'|'base64'|EncodingFormat,
+     *   encodingFormat?: EncodingFormat|value-of<EncodingFormat>,
      *   user?: string,
      * }|V1CreateEmbeddingParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -39,7 +44,7 @@ final class V1RawService implements V1RawContract
      */
     public function createEmbedding(
         array|V1CreateEmbeddingParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1CreateEmbeddingParams::parseRequest(
             $params,
@@ -63,12 +68,14 @@ final class V1RawService implements V1RawContract
      *
      * This endpoint is compatible with OpenAI's models API format, making it easy to integrate with existing applications.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function listModels(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

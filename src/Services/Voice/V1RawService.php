@@ -15,6 +15,9 @@ use Casedev\Voice\V1\V1ListVoicesParams\Sort;
 use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
 use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -35,10 +38,11 @@ final class V1RawService implements V1RawContract
      *   nextPageToken?: string,
      *   pageSize?: int,
      *   search?: string,
-     *   sort?: 'name'|'created_at'|'updated_at'|Sort,
-     *   sortDirection?: 'asc'|'desc'|SortDirection,
-     *   voiceType?: 'premade'|'cloned'|'professional'|VoiceType,
+     *   sort?: Sort|value-of<Sort>,
+     *   sortDirection?: SortDirection|value-of<SortDirection>,
+     *   voiceType?: VoiceType|value-of<VoiceType>,
      * }|V1ListVoicesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -46,7 +50,7 @@ final class V1RawService implements V1RawContract
      */
     public function listVoices(
         array|V1ListVoicesParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ListVoicesParams::parseRequest(
             $params,

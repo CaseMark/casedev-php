@@ -14,6 +14,9 @@ use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class TranscriptionRawService implements TranscriptionRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,9 +37,9 @@ final class TranscriptionRawService implements TranscriptionRawContract
      * @param array{
      *   audioURL?: string,
      *   autoHighlights?: bool,
-     *   boostParam?: 'low'|'default'|'high'|BoostParam,
+     *   boostParam?: BoostParam|value-of<BoostParam>,
      *   contentSafetyLabels?: bool,
-     *   format?: 'json'|'text'|Format,
+     *   format?: Format|value-of<Format>,
      *   formatText?: bool,
      *   languageCode?: string,
      *   languageDetection?: bool,
@@ -47,6 +50,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      *   vaultID?: string,
      *   wordBoost?: list<string>,
      * }|TranscriptionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -54,7 +58,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      */
     public function create(
         array|TranscriptionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TranscriptionCreateParams::parseRequest(
             $params,
@@ -77,6 +81,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      * Retrieve the status and result of an audio transcription job. For vault-based jobs, returns status and result_object_id when complete. For legacy direct URL jobs, returns the full transcription data.
      *
      * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptionGetResponse>
      *
@@ -84,7 +89,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

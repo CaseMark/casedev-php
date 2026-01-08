@@ -10,6 +10,9 @@ use Casedev\Voice\V1\V1ListVoicesParams\Sort;
 use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
 use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1Contract
 {
     /**
@@ -21,9 +24,10 @@ interface V1Contract
      * @param string $nextPageToken Token for retrieving the next page of results
      * @param int $pageSize Number of voices to return per page (max 100)
      * @param string $search Search term to filter voices by name or description
-     * @param 'name'|'created_at'|'updated_at'|Sort $sort Field to sort by
-     * @param 'asc'|'desc'|SortDirection $sortDirection Sort direction
-     * @param 'premade'|'cloned'|'professional'|VoiceType $voiceType Filter by voice type
+     * @param Sort|value-of<Sort> $sort Field to sort by
+     * @param SortDirection|value-of<SortDirection> $sortDirection Sort direction
+     * @param VoiceType|value-of<VoiceType> $voiceType Filter by voice type
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -34,9 +38,9 @@ interface V1Contract
         ?string $nextPageToken = null,
         int $pageSize = 50,
         ?string $search = null,
-        string|Sort|null $sort = null,
-        string|SortDirection $sortDirection = 'asc',
-        string|VoiceType|null $voiceType = null,
-        ?RequestOptions $requestOptions = null,
+        Sort|string|null $sort = null,
+        SortDirection|string $sortDirection = 'asc',
+        VoiceType|string|null $voiceType = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 }

@@ -17,12 +17,16 @@ use Casedev\Vault\VaultSearchResponse;
 use Casedev\Vault\VaultUploadParams;
 use Casedev\Vault\VaultUploadResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface VaultRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|VaultCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultNewResponse>
      *
@@ -30,13 +34,14 @@ interface VaultRawContract
      */
     public function create(
         array|VaultCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Unique identifier of the vault
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -44,23 +49,28 @@ interface VaultRawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<VaultListResponse>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse;
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID Vault object ID
      * @param array<string,mixed>|VaultIngestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultIngestResponse>
      *
@@ -69,7 +79,7 @@ interface VaultRawContract
     public function ingest(
         string $objectID,
         array|VaultIngestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -77,6 +87,7 @@ interface VaultRawContract
      *
      * @param string $id Unique identifier of the vault to search
      * @param array<string,mixed>|VaultSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultSearchResponse>
      *
@@ -85,7 +96,7 @@ interface VaultRawContract
     public function search(
         string $id,
         array|VaultSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -93,6 +104,7 @@ interface VaultRawContract
      *
      * @param string $id Vault ID to upload the file to
      * @param array<string,mixed>|VaultUploadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultUploadResponse>
      *
@@ -101,6 +113,6 @@ interface VaultRawContract
     public function upload(
         string $id,
         array|VaultUploadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

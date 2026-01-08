@@ -12,12 +12,16 @@ use Casedev\Ocr\V1\V1ProcessParams;
 use Casedev\Ocr\V1\V1ProcessResponse;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -25,14 +29,15 @@ interface V1RawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param Type|value-of<Type> $type Format to download: `text` (plain text), `json` (structured data with coordinates), `pdf` (searchable PDF with text layer), `original` (original uploaded document)
+     * @param Type|string $type Format to download: `text` (plain text), `json` (structured data with coordinates), `pdf` (searchable PDF with text layer), `original` (original uploaded document)
      * @param array<string,mixed>|V1DownloadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -41,13 +46,14 @@ interface V1RawContract
     public function download(
         Type|string $type,
         array|V1DownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1ProcessParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ProcessResponse>
      *
@@ -55,6 +61,6 @@ interface V1RawContract
      */
     public function process(
         array|V1ProcessParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

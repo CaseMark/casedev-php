@@ -23,6 +23,9 @@ use Casedev\Workflows\V1\V1NewResponse;
 use Casedev\Workflows\V1\V1UndeployResponse;
 use Casedev\Workflows\V1\V1UpdateResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -48,8 +51,9 @@ final class V1Service implements V1Contract
      * @param list<mixed> $edges React Flow edges
      * @param list<mixed> $nodes React Flow nodes
      * @param mixed $triggerConfig Trigger configuration
-     * @param 'manual'|'webhook'|'schedule'|'vault_upload'|TriggerType $triggerType
-     * @param 'private'|'org'|'public'|Visibility $visibility Workflow visibility
+     * @param TriggerType|value-of<TriggerType> $triggerType
+     * @param Visibility|value-of<Visibility> $visibility Workflow visibility
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -59,9 +63,9 @@ final class V1Service implements V1Contract
         ?array $edges = null,
         ?array $nodes = null,
         mixed $triggerConfig = null,
-        string|TriggerType $triggerType = 'webhook',
-        string|Visibility $visibility = 'private',
-        ?RequestOptions $requestOptions = null,
+        TriggerType|string $triggerType = 'webhook',
+        Visibility|string $visibility = 'private',
+        RequestOptions|array|null $requestOptions = null,
     ): V1NewResponse {
         $params = Util::removeNulls(
             [
@@ -87,12 +91,13 @@ final class V1Service implements V1Contract
      * Get a specific workflow by ID with full configuration.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): V1GetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
@@ -108,8 +113,9 @@ final class V1Service implements V1Contract
      * @param string $id Workflow ID
      * @param list<mixed> $edges
      * @param list<mixed> $nodes
-     * @param 'manual'|'webhook'|'schedule'|'vault_upload'|\Casedev\Workflows\V1\V1UpdateParams\TriggerType $triggerType
-     * @param 'private'|'org'|'public'|\Casedev\Workflows\V1\V1UpdateParams\Visibility $visibility
+     * @param \Casedev\Workflows\V1\V1UpdateParams\TriggerType|value-of<\Casedev\Workflows\V1\V1UpdateParams\TriggerType> $triggerType
+     * @param \Casedev\Workflows\V1\V1UpdateParams\Visibility|value-of<\Casedev\Workflows\V1\V1UpdateParams\Visibility> $visibility
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -120,9 +126,9 @@ final class V1Service implements V1Contract
         ?string $name = null,
         ?array $nodes = null,
         mixed $triggerConfig = null,
-        string|\Casedev\Workflows\V1\V1UpdateParams\TriggerType|null $triggerType = null,
-        string|\Casedev\Workflows\V1\V1UpdateParams\Visibility|null $visibility = null,
-        ?RequestOptions $requestOptions = null,
+        \Casedev\Workflows\V1\V1UpdateParams\TriggerType|string|null $triggerType = null,
+        \Casedev\Workflows\V1\V1UpdateParams\Visibility|string|null $visibility = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1UpdateResponse {
         $params = Util::removeNulls(
             [
@@ -149,15 +155,16 @@ final class V1Service implements V1Contract
      *
      * @param int $limit Maximum number of results
      * @param int $offset Offset for pagination
-     * @param 'private'|'org'|'public'|\Casedev\Workflows\V1\V1ListParams\Visibility $visibility Filter by visibility
+     * @param \Casedev\Workflows\V1\V1ListParams\Visibility|value-of<\Casedev\Workflows\V1\V1ListParams\Visibility> $visibility Filter by visibility
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         int $limit = 50,
         int $offset = 0,
-        string|\Casedev\Workflows\V1\V1ListParams\Visibility|null $visibility = null,
-        ?RequestOptions $requestOptions = null,
+        \Casedev\Workflows\V1\V1ListParams\Visibility|string|null $visibility = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ListResponse {
         $params = Util::removeNulls(
             ['limit' => $limit, 'offset' => $offset, 'visibility' => $visibility]
@@ -175,12 +182,13 @@ final class V1Service implements V1Contract
      * Delete a workflow and all associated data.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): V1DeleteResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($id, requestOptions: $requestOptions);
@@ -194,12 +202,13 @@ final class V1Service implements V1Contract
      * Deploy a workflow to AWS Step Functions. Returns a webhook URL and secret for triggering the workflow.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function deploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): V1DeployResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deploy($id, requestOptions: $requestOptions);
@@ -221,6 +230,7 @@ final class V1Service implements V1Contract
      * @param mixed $input Input data to pass to the workflow
      * @param string $timeout Timeout for sync wait mode (e.g., '30s', '2m'). Max 5m. Default: 30s
      * @param bool $wait Wait for completion (default: false, max 5 min)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -231,7 +241,7 @@ final class V1Service implements V1Contract
         mixed $input = null,
         ?string $timeout = null,
         ?bool $wait = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ExecuteResponse {
         $params = Util::removeNulls(
             [
@@ -255,15 +265,16 @@ final class V1Service implements V1Contract
      * List all executions for a specific workflow.
      *
      * @param string $id Workflow ID
-     * @param 'pending'|'running'|'completed'|'failed'|'cancelled'|Status $status
+     * @param Status|value-of<Status> $status
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function listExecutions(
         string $id,
         int $limit = 20,
-        string|Status|null $status = null,
-        ?RequestOptions $requestOptions = null,
+        Status|string|null $status = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ListExecutionsResponse {
         $params = Util::removeNulls(['limit' => $limit, 'status' => $status]);
 
@@ -279,12 +290,13 @@ final class V1Service implements V1Contract
      * Get detailed information about a workflow execution, including live Step Functions status.
      *
      * @param string $id Execution ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): V1GetExecutionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieveExecution($id, requestOptions: $requestOptions);
@@ -298,12 +310,13 @@ final class V1Service implements V1Contract
      * Stop a deployed workflow and delete its Step Functions state machine.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function undeploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): V1UndeployResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->undeploy($id, requestOptions: $requestOptions);

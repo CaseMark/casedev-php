@@ -11,11 +11,15 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Templates\V1RawContract;
 use Casedev\Templates\V1\V1ExecuteParams;
-use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
+use Casedev\Templates\V1\V1ExecuteParams\Options;
 use Casedev\Templates\V1\V1ExecuteResponse;
 use Casedev\Templates\V1\V1ListParams;
 use Casedev\Templates\V1\V1SearchParams;
 
+/**
+ * @phpstan-import-type OptionsShape from \Casedev\Templates\V1\V1ExecuteParams\Options
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -30,6 +34,7 @@ final class V1RawService implements V1RawContract
      * Retrieve metadata for a published workflow by ID. Returns workflow configuration including input/output schemas, but excludes the prompt template for security.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -37,7 +42,7 @@ final class V1RawService implements V1RawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -61,6 +66,7 @@ final class V1RawService implements V1RawContract
      *   subCategory?: string,
      *   type?: string,
      * }|V1ListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -68,7 +74,7 @@ final class V1RawService implements V1RawContract
      */
     public function list(
         array|V1ListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         [$parsed, $options] = V1ListParams::parseRequest(
             $params,
@@ -102,8 +108,9 @@ final class V1RawService implements V1RawContract
      *
      * @param string $id Unique identifier of the workflow to execute
      * @param array{
-     *   input: mixed, options?: array{format?: 'json'|'text'|Format, model?: string}
+     *   input: mixed, options?: Options|OptionsShape
      * }|V1ExecuteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -112,7 +119,7 @@ final class V1RawService implements V1RawContract
     public function execute(
         string $id,
         array|V1ExecuteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ExecuteParams::parseRequest(
             $params,
@@ -135,6 +142,7 @@ final class V1RawService implements V1RawContract
      * Retrieves the status and details of a workflow execution. This endpoint is designed for future asynchronous execution support and currently returns a 501 Not Implemented status since all executions are synchronous.
      *
      * @param string $id Unique identifier of the workflow execution
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -142,7 +150,7 @@ final class V1RawService implements V1RawContract
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -161,6 +169,7 @@ final class V1RawService implements V1RawContract
      * @param array{
      *   query: string, category?: string, limit?: int
      * }|V1SearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -168,7 +177,7 @@ final class V1RawService implements V1RawContract
      */
     public function search(
         array|V1SearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1SearchParams::parseRequest(
             $params,

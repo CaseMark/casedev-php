@@ -28,6 +28,9 @@ use Casedev\Workflows\V1\V1UndeployResponse;
 use Casedev\Workflows\V1\V1UpdateParams;
 use Casedev\Workflows\V1\V1UpdateResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -47,9 +50,10 @@ final class V1RawService implements V1RawContract
      *   edges?: list<mixed>,
      *   nodes?: list<mixed>,
      *   triggerConfig?: mixed,
-     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload'|TriggerType,
-     *   visibility?: 'private'|'org'|'public'|Visibility,
+     *   triggerType?: TriggerType|value-of<TriggerType>,
+     *   visibility?: Visibility|value-of<Visibility>,
      * }|V1CreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1NewResponse>
      *
@@ -57,7 +61,7 @@ final class V1RawService implements V1RawContract
      */
     public function create(
         array|V1CreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1CreateParams::parseRequest(
             $params,
@@ -80,6 +84,7 @@ final class V1RawService implements V1RawContract
      * Get a specific workflow by ID with full configuration.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetResponse>
      *
@@ -87,7 +92,7 @@ final class V1RawService implements V1RawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -110,9 +115,10 @@ final class V1RawService implements V1RawContract
      *   name?: string,
      *   nodes?: list<mixed>,
      *   triggerConfig?: mixed,
-     *   triggerType?: 'manual'|'webhook'|'schedule'|'vault_upload'|V1UpdateParams\TriggerType,
-     *   visibility?: 'private'|'org'|'public'|V1UpdateParams\Visibility,
+     *   triggerType?: V1UpdateParams\TriggerType|value-of<V1UpdateParams\TriggerType>,
+     *   visibility?: V1UpdateParams\Visibility|value-of<V1UpdateParams\Visibility>,
      * }|V1UpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1UpdateResponse>
      *
@@ -121,7 +127,7 @@ final class V1RawService implements V1RawContract
     public function update(
         string $id,
         array|V1UpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1UpdateParams::parseRequest(
             $params,
@@ -146,8 +152,9 @@ final class V1RawService implements V1RawContract
      * @param array{
      *   limit?: int,
      *   offset?: int,
-     *   visibility?: 'private'|'org'|'public'|V1ListParams\Visibility,
+     *   visibility?: V1ListParams\Visibility|value-of<V1ListParams\Visibility>,
      * }|V1ListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ListResponse>
      *
@@ -155,7 +162,7 @@ final class V1RawService implements V1RawContract
      */
     public function list(
         array|V1ListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         [$parsed, $options] = V1ListParams::parseRequest(
             $params,
@@ -178,6 +185,7 @@ final class V1RawService implements V1RawContract
      * Delete a workflow and all associated data.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1DeleteResponse>
      *
@@ -185,7 +193,7 @@ final class V1RawService implements V1RawContract
      */
     public function delete(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -202,6 +210,7 @@ final class V1RawService implements V1RawContract
      * Deploy a workflow to AWS Step Functions. Returns a webhook URL and secret for triggering the workflow.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1DeployResponse>
      *
@@ -209,7 +218,7 @@ final class V1RawService implements V1RawContract
      */
     public function deploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -236,6 +245,7 @@ final class V1RawService implements V1RawContract
      *   timeout?: string,
      *   wait?: bool,
      * }|V1ExecuteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -244,7 +254,7 @@ final class V1RawService implements V1RawContract
     public function execute(
         string $id,
         array|V1ExecuteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ExecuteParams::parseRequest(
             $params,
@@ -268,9 +278,9 @@ final class V1RawService implements V1RawContract
      *
      * @param string $id Workflow ID
      * @param array{
-     *   limit?: int,
-     *   status?: 'pending'|'running'|'completed'|'failed'|'cancelled'|Status,
+     *   limit?: int, status?: Status|value-of<Status>
      * }|V1ListExecutionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ListExecutionsResponse>
      *
@@ -279,7 +289,7 @@ final class V1RawService implements V1RawContract
     public function listExecutions(
         string $id,
         array|V1ListExecutionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ListExecutionsParams::parseRequest(
             $params,
@@ -302,6 +312,7 @@ final class V1RawService implements V1RawContract
      * Get detailed information about a workflow execution, including live Step Functions status.
      *
      * @param string $id Execution ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetExecutionResponse>
      *
@@ -309,7 +320,7 @@ final class V1RawService implements V1RawContract
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -326,6 +337,7 @@ final class V1RawService implements V1RawContract
      * Stop a deployed workflow and delete its Step Functions state machine.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1UndeployResponse>
      *
@@ -333,7 +345,7 @@ final class V1RawService implements V1RawContract
      */
     public function undeploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
