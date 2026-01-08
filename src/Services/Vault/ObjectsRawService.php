@@ -16,6 +16,9 @@ use Casedev\Vault\Objects\ObjectGetTextParams;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 use Casedev\Vault\Objects\ObjectRetrieveParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class ObjectsRawService implements ObjectsRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class ObjectsRawService implements ObjectsRawContract
      *
      * @param string $objectID Object ID within the vault
      * @param array{id: string}|ObjectRetrieveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -39,7 +43,7 @@ final class ObjectsRawService implements ObjectsRawContract
     public function retrieve(
         string $objectID,
         array|ObjectRetrieveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ObjectRetrieveParams::parseRequest(
             $params,
@@ -63,6 +67,7 @@ final class ObjectsRawService implements ObjectsRawContract
      * Retrieve all objects stored in a specific vault, including document metadata, ingestion status, and processing statistics.
      *
      * @param string $id The unique identifier of the vault
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -70,7 +75,7 @@ final class ObjectsRawService implements ObjectsRawContract
      */
     public function list(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -91,8 +96,9 @@ final class ObjectsRawService implements ObjectsRawContract
      *   id: string,
      *   contentType?: string,
      *   expiresIn?: int,
-     *   operation?: 'GET'|'PUT'|'DELETE'|'HEAD'|Operation,
+     *   operation?: Operation|value-of<Operation>,
      * }|ObjectCreatePresignedURLParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectNewPresignedURLResponse>
      *
@@ -101,7 +107,7 @@ final class ObjectsRawService implements ObjectsRawContract
     public function createPresignedURL(
         string $objectID,
         array|ObjectCreatePresignedURLParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ObjectCreatePresignedURLParams::parseRequest(
             $params,
@@ -127,6 +133,7 @@ final class ObjectsRawService implements ObjectsRawContract
      *
      * @param string $objectID Object ID within the vault
      * @param array{id: string}|ObjectDownloadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -135,7 +142,7 @@ final class ObjectsRawService implements ObjectsRawContract
     public function download(
         string $objectID,
         array|ObjectDownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ObjectDownloadParams::parseRequest(
             $params,
@@ -160,6 +167,7 @@ final class ObjectsRawService implements ObjectsRawContract
      *
      * @param string $objectID The object ID
      * @param array{id: string}|ObjectGetTextParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -168,7 +176,7 @@ final class ObjectsRawService implements ObjectsRawContract
     public function getText(
         string $objectID,
         array|ObjectGetTextParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ObjectGetTextParams::parseRequest(
             $params,

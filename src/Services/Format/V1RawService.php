@@ -9,10 +9,15 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\V1CreateDocumentParams;
 use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
+use Casedev\Format\V1\V1CreateDocumentParams\Options;
 use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1RawContract;
 
+/**
+ * @phpstan-import-type OptionsShape from \Casedev\Format\V1\V1CreateDocumentParams\Options
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -28,14 +33,11 @@ final class V1RawService implements V1RawContract
      *
      * @param array{
      *   content: string,
-     *   outputFormat: 'pdf'|'docx'|'html_preview'|OutputFormat,
-     *   inputFormat?: 'md'|'json'|'text'|InputFormat,
-     *   options?: array{
-     *     components?: list<array{
-     *       content?: string, styles?: mixed, templateID?: string, variables?: mixed
-     *     }>,
-     *   },
+     *   outputFormat: OutputFormat|value-of<OutputFormat>,
+     *   inputFormat?: InputFormat|value-of<InputFormat>,
+     *   options?: Options|OptionsShape,
      * }|V1CreateDocumentParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -43,7 +45,7 @@ final class V1RawService implements V1RawContract
      */
     public function createDocument(
         array|V1CreateDocumentParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1CreateDocumentParams::parseRequest(
             $params,

@@ -9,12 +9,16 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\V1CreateDocumentParams;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|V1CreateDocumentParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -22,6 +26,6 @@ interface V1RawContract
      */
     public function createDocument(
         array|V1CreateDocumentParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

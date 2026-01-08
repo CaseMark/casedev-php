@@ -15,11 +15,11 @@ use Casedev\Vault\VaultSearchResponse\Source;
  * @phpstan-import-type SourceShape from \Casedev\Vault\VaultSearchResponse\Source
  *
  * @phpstan-type VaultSearchResponseShape = array{
- *   chunks?: list<ChunkShape>|null,
+ *   chunks?: list<Chunk|ChunkShape>|null,
  *   method?: string|null,
  *   query?: string|null,
  *   response?: string|null,
- *   sources?: list<SourceShape>|null,
+ *   sources?: list<Source|SourceShape>|null,
  *   vaultID?: string|null,
  * }
  */
@@ -74,8 +74,8 @@ final class VaultSearchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ChunkShape>|null $chunks
-     * @param list<SourceShape>|null $sources
+     * @param list<Chunk|ChunkShape>|null $chunks
+     * @param list<Source|SourceShape>|null $sources
      */
     public static function with(
         ?array $chunks = null,
@@ -100,7 +100,7 @@ final class VaultSearchResponse implements BaseModel
     /**
      * Relevant text chunks with similarity scores.
      *
-     * @param list<ChunkShape> $chunks
+     * @param list<Chunk|ChunkShape> $chunks
      */
     public function withChunks(array $chunks): self
     {
@@ -144,7 +144,7 @@ final class VaultSearchResponse implements BaseModel
     }
 
     /**
-     * @param list<SourceShape> $sources
+     * @param list<Source|SourceShape> $sources
      */
     public function withSources(array $sources): self
     {

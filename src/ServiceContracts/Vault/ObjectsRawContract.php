@@ -13,6 +13,9 @@ use Casedev\Vault\Objects\ObjectGetTextParams;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 use Casedev\Vault\Objects\ObjectRetrieveParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface ObjectsRawContract
 {
     /**
@@ -20,6 +23,7 @@ interface ObjectsRawContract
      *
      * @param string $objectID Object ID within the vault
      * @param array<string,mixed>|ObjectRetrieveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -28,13 +32,14 @@ interface ObjectsRawContract
     public function retrieve(
         string $objectID,
         array|ObjectRetrieveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id The unique identifier of the vault
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -42,7 +47,7 @@ interface ObjectsRawContract
      */
     public function list(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -50,6 +55,7 @@ interface ObjectsRawContract
      *
      * @param string $objectID Path param: The unique identifier of the object
      * @param array<string,mixed>|ObjectCreatePresignedURLParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectNewPresignedURLResponse>
      *
@@ -58,7 +64,7 @@ interface ObjectsRawContract
     public function createPresignedURL(
         string $objectID,
         array|ObjectCreatePresignedURLParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -66,6 +72,7 @@ interface ObjectsRawContract
      *
      * @param string $objectID Object ID within the vault
      * @param array<string,mixed>|ObjectDownloadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -74,7 +81,7 @@ interface ObjectsRawContract
     public function download(
         string $objectID,
         array|ObjectDownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -82,6 +89,7 @@ interface ObjectsRawContract
      *
      * @param string $objectID The object ID
      * @param array<string,mixed>|ObjectGetTextParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -90,6 +98,6 @@ interface ObjectsRawContract
     public function getText(
         string $objectID,
         array|ObjectGetTextParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

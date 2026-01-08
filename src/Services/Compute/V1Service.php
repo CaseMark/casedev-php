@@ -15,6 +15,9 @@ use Casedev\Services\Compute\V1\InvokeService;
 use Casedev\Services\Compute\V1\RunsService;
 use Casedev\Services\Compute\V1\SecretsService;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -65,10 +68,13 @@ final class V1Service implements V1Contract
      *
      * Returns current pricing for GPU instances. Prices are fetched in real-time and include a 20% platform fee. For detailed instance types and availability, use GET /compute/v1/instance-types.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
-    public function getPricing(?RequestOptions $requestOptions = null): mixed
-    {
+    public function getPricing(
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getPricing(requestOptions: $requestOptions);
 
@@ -82,13 +88,14 @@ final class V1Service implements V1Contract
      *
      * @param int $month Month to filter usage data (1-12, defaults to current month)
      * @param int $year Year to filter usage data (defaults to current year)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getUsage(
         ?int $month = null,
         ?int $year = null,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['month' => $month, 'year' => $year]);
 

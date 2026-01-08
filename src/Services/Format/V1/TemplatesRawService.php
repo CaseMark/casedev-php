@@ -14,6 +14,9 @@ use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1\TemplatesRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class TemplatesRawService implements TemplatesRawContract
 {
     // @phpstan-ignore-next-line
@@ -30,12 +33,13 @@ final class TemplatesRawService implements TemplatesRawContract
      * @param array{
      *   content: string,
      *   name: string,
-     *   type: 'caption'|'signature'|'letterhead'|'certificate'|'footer'|'custom'|Type,
+     *   type: Type|value-of<Type>,
      *   description?: string,
      *   styles?: mixed,
      *   tags?: list<string>,
      *   variables?: list<string>,
      * }|TemplateCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TemplateNewResponse>
      *
@@ -43,7 +47,7 @@ final class TemplatesRawService implements TemplatesRawContract
      */
     public function create(
         array|TemplateCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateCreateParams::parseRequest(
             $params,
@@ -66,6 +70,7 @@ final class TemplatesRawService implements TemplatesRawContract
      * Retrieve a specific document format template by ID. Format templates define how documents should be structured and formatted for specific legal use cases such as contracts, briefs, or pleadings.
      *
      * @param string $id The unique identifier of the format template
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,7 +78,7 @@ final class TemplatesRawService implements TemplatesRawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -92,6 +97,7 @@ final class TemplatesRawService implements TemplatesRawContract
      * Filter by type to get specific template categories like contracts, pleadings, or correspondence.
      *
      * @param array{type?: string}|TemplateListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -99,7 +105,7 @@ final class TemplatesRawService implements TemplatesRawContract
      */
     public function list(
         array|TemplateListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateListParams::parseRequest(
             $params,

@@ -19,7 +19,7 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
  * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
  *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
- *   messages: list<MessageShape>,
+ *   messages: list<Message|MessageShape>,
  *   frequencyPenalty?: float|null,
  *   maxTokens?: int|null,
  *   model?: string|null,
@@ -109,7 +109,7 @@ final class ChatCreateCompletionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MessageShape> $messages
+     * @param list<Message|MessageShape> $messages
      */
     public static function with(
         array $messages,
@@ -139,7 +139,7 @@ final class ChatCreateCompletionParams implements BaseModel
     /**
      * List of messages comprising the conversation.
      *
-     * @param list<MessageShape> $messages
+     * @param list<Message|MessageShape> $messages
      */
     public function withMessages(array $messages): self
     {

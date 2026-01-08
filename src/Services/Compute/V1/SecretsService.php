@@ -11,6 +11,9 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\SecretsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class SecretsService implements SecretsContract
 {
     /**
@@ -40,6 +43,7 @@ final class SecretsService implements SecretsContract
      * @param string $name Unique name for the secret group. Must contain only letters, numbers, hyphens, and underscores.
      * @param string $description Optional description of the secret group's purpose
      * @param string $env Environment name where the secret group will be created. Uses default environment if not specified.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -47,7 +51,7 @@ final class SecretsService implements SecretsContract
         string $name,
         ?string $description = null,
         ?string $env = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SecretNewResponse {
         $params = Util::removeNulls(
             ['name' => $name, 'description' => $description, 'env' => $env]
@@ -65,12 +69,13 @@ final class SecretsService implements SecretsContract
      * Retrieve all secret groups for a compute environment. Secret groups organize related secrets (API keys, credentials, etc.) that can be securely accessed by compute jobs during execution.
      *
      * @param string $env Environment name to list secret groups for. If not specified, uses the default environment.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         ?string $env = null,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         $params = Util::removeNulls(['env' => $env]);
 
@@ -88,6 +93,7 @@ final class SecretsService implements SecretsContract
      * @param string $group Name of the secret group
      * @param string $env Environment name. If not provided, uses the default environment
      * @param string $key Specific key to delete within the group. If not provided, the entire group is deleted
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -95,7 +101,7 @@ final class SecretsService implements SecretsContract
         string $group,
         ?string $env = null,
         ?string $key = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['env' => $env, 'key' => $key]);
 
@@ -112,13 +118,14 @@ final class SecretsService implements SecretsContract
      *
      * @param string $group Name of the secret group to list keys from
      * @param string $env Environment name. If not specified, uses the default environment
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieveGroup(
         string $group,
         ?string $env = null,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['env' => $env]);
 
@@ -136,6 +143,7 @@ final class SecretsService implements SecretsContract
      * @param string $group Name of the secret group
      * @param array<string,string> $secrets Key-value pairs of secrets to set
      * @param string $env Environment name (optional, uses default if not specified)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -143,7 +151,7 @@ final class SecretsService implements SecretsContract
         string $group,
         array $secrets,
         ?string $env = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['secrets' => $secrets, 'env' => $env]);
 

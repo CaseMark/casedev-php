@@ -12,7 +12,12 @@ use Casedev\ServiceContracts\Voice\V1\SpeakRawContract;
 use Casedev\Voice\V1\Speak\SpeakCreateParams;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
 use Casedev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
+use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
 
+/**
+ * @phpstan-import-type VoiceSettingsShape from \Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class SpeakRawService implements SpeakRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,20 +36,16 @@ final class SpeakRawService implements SpeakRawContract
      *   applyTextNormalization?: bool,
      *   enableLogging?: bool,
      *   languageCode?: string,
-     *   modelID?: 'eleven_multilingual_v2'|'eleven_turbo_v2'|'eleven_monolingual_v1'|ModelID,
+     *   modelID?: ModelID|value-of<ModelID>,
      *   nextText?: string,
      *   optimizeStreamingLatency?: int,
      *   outputFormat?: value-of<OutputFormat>,
      *   previousText?: string,
      *   seed?: int,
      *   voiceID?: string,
-     *   voiceSettings?: array{
-     *     similarityBoost?: float,
-     *     stability?: float,
-     *     style?: float,
-     *     useSpeakerBoost?: bool,
-     *   },
+     *   voiceSettings?: VoiceSettings|VoiceSettingsShape,
      * }|SpeakCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -52,7 +53,7 @@ final class SpeakRawService implements SpeakRawContract
      */
     public function create(
         array|SpeakCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SpeakCreateParams::parseRequest(
             $params,

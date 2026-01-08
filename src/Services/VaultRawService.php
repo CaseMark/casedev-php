@@ -15,11 +15,16 @@ use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchParams;
+use Casedev\Vault\VaultSearchParams\Filters;
 use Casedev\Vault\VaultSearchParams\Method;
 use Casedev\Vault\VaultSearchResponse;
 use Casedev\Vault\VaultUploadParams;
 use Casedev\Vault\VaultUploadResponse;
 
+/**
+ * @phpstan-import-type FiltersShape from \Casedev\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class VaultRawService implements VaultRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,6 +41,7 @@ final class VaultRawService implements VaultRawContract
      * @param array{
      *   name: string, description?: string, enableGraph?: bool, metadata?: mixed
      * }|VaultCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultNewResponse>
      *
@@ -43,7 +49,7 @@ final class VaultRawService implements VaultRawContract
      */
     public function create(
         array|VaultCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = VaultCreateParams::parseRequest(
             $params,
@@ -66,6 +72,7 @@ final class VaultRawService implements VaultRawContract
      * Retrieve detailed information about a specific vault, including storage configuration, chunking strategy, and usage statistics. Returns vault metadata, bucket information, and vector storage details.
      *
      * @param string $id Unique identifier of the vault
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,7 +80,7 @@ final class VaultRawService implements VaultRawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -89,12 +96,15 @@ final class VaultRawService implements VaultRawContract
      *
      * List all vaults for the authenticated organization. Returns vault metadata including name, description, storage configuration, and usage statistics.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<VaultListResponse>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
@@ -111,6 +121,7 @@ final class VaultRawService implements VaultRawContract
      *
      * @param string $objectID Vault object ID
      * @param array{id: string}|VaultIngestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultIngestResponse>
      *
@@ -119,7 +130,7 @@ final class VaultRawService implements VaultRawContract
     public function ingest(
         string $objectID,
         array|VaultIngestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = VaultIngestParams::parseRequest(
             $params,
@@ -145,10 +156,11 @@ final class VaultRawService implements VaultRawContract
      * @param string $id Unique identifier of the vault to search
      * @param array{
      *   query: string,
-     *   filters?: array{objectID?: string|list<string>},
-     *   method?: 'vector'|'graph'|'hybrid'|'global'|'local'|'fast'|'entity'|Method,
+     *   filters?: Filters|FiltersShape,
+     *   method?: Method|value-of<Method>,
      *   topK?: int,
      * }|VaultSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultSearchResponse>
      *
@@ -157,7 +169,7 @@ final class VaultRawService implements VaultRawContract
     public function search(
         string $id,
         array|VaultSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = VaultSearchParams::parseRequest(
             $params,
@@ -188,6 +200,7 @@ final class VaultRawService implements VaultRawContract
      *   path?: string,
      *   sizeBytes?: float,
      * }|VaultUploadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VaultUploadResponse>
      *
@@ -196,7 +209,7 @@ final class VaultRawService implements VaultRawContract
     public function upload(
         string $id,
         array|VaultUploadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = VaultUploadParams::parseRequest(
             $params,

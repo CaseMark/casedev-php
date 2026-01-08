@@ -9,6 +9,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1\JobsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class JobsService implements JobsContract
 {
     /**
@@ -30,12 +33,13 @@ final class JobsService implements JobsContract
      * Retrieve the status of a file conversion job. Returns detailed information about the conversion progress, completion status, and any errors that occurred during processing.
      *
      * @param string $id The unique identifier of the conversion job
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
@@ -49,12 +53,13 @@ final class JobsService implements JobsContract
      * Delete a converted file from Modal storage by its job ID. This permanently removes the file and its associated metadata from the system.
      *
      * @param string $id The job ID of the converted file to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($id, requestOptions: $requestOptions);

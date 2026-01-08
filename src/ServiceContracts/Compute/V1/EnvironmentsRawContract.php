@@ -11,12 +11,16 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface EnvironmentsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EnvironmentCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EnvironmentNewResponse>
      *
@@ -24,13 +28,14 @@ interface EnvironmentsRawContract
      */
     public function create(
         array|EnvironmentCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $name The name of the compute environment to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -38,22 +43,27 @@ interface EnvironmentsRawContract
      */
     public function retrieve(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse;
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $name Name of the compute environment to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EnvironmentDeleteResponse>
      *
@@ -61,13 +71,14 @@ interface EnvironmentsRawContract
      */
     public function delete(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $name Name of the compute environment to set as default
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -75,6 +86,6 @@ interface EnvironmentsRawContract
      */
     public function setDefault(
         string $name,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

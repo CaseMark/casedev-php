@@ -16,6 +16,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1\SecretsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class SecretsRawService implements SecretsRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,6 +41,7 @@ final class SecretsRawService implements SecretsRawContract
      * @param array{
      *   name: string, description?: string, env?: string
      * }|SecretCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SecretNewResponse>
      *
@@ -45,7 +49,7 @@ final class SecretsRawService implements SecretsRawContract
      */
     public function create(
         array|SecretCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SecretCreateParams::parseRequest(
             $params,
@@ -68,6 +72,7 @@ final class SecretsRawService implements SecretsRawContract
      * Retrieve all secret groups for a compute environment. Secret groups organize related secrets (API keys, credentials, etc.) that can be securely accessed by compute jobs during execution.
      *
      * @param array{env?: string}|SecretListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -75,7 +80,7 @@ final class SecretsRawService implements SecretsRawContract
      */
     public function list(
         array|SecretListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SecretListParams::parseRequest(
             $params,
@@ -99,6 +104,7 @@ final class SecretsRawService implements SecretsRawContract
      *
      * @param string $group Name of the secret group
      * @param array{env?: string, key?: string}|SecretDeleteGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -107,7 +113,7 @@ final class SecretsRawService implements SecretsRawContract
     public function deleteGroup(
         string $group,
         array|SecretDeleteGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SecretDeleteGroupParams::parseRequest(
             $params,
@@ -131,6 +137,7 @@ final class SecretsRawService implements SecretsRawContract
      *
      * @param string $group Name of the secret group to list keys from
      * @param array{env?: string}|SecretRetrieveGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -139,7 +146,7 @@ final class SecretsRawService implements SecretsRawContract
     public function retrieveGroup(
         string $group,
         array|SecretRetrieveGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SecretRetrieveGroupParams::parseRequest(
             $params,
@@ -165,6 +172,7 @@ final class SecretsRawService implements SecretsRawContract
      * @param array{
      *   secrets: array<string,string>, env?: string
      * }|SecretUpdateGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -173,7 +181,7 @@ final class SecretsRawService implements SecretsRawContract
     public function updateGroup(
         string $group,
         array|SecretUpdateGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SecretUpdateGroupParams::parseRequest(
             $params,

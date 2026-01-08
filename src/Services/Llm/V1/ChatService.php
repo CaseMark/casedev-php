@@ -7,11 +7,15 @@ namespace Casedev\Services\Llm\V1;
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
+use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1\ChatContract;
 
+/**
+ * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class ChatService implements ChatContract
 {
     /**
@@ -32,9 +36,7 @@ final class ChatService implements ChatContract
      *
      * Create a completion for the provided prompt and parameters. Compatible with OpenAI's chat completions API. Supports 40+ models including GPT-4, Claude, Gemini, and CaseMark legal AI models. Includes streaming support, token counting, and usage tracking.
      *
-     * @param list<array{
-     *   content?: string, role?: 'system'|'user'|'assistant'|Role
-     * }> $messages List of messages comprising the conversation
+     * @param list<Message|MessageShape> $messages List of messages comprising the conversation
      * @param float $frequencyPenalty Frequency penalty parameter
      * @param int $maxTokens Maximum number of tokens to generate
      * @param string $model Model to use for completion. Defaults to casemark-core-1 if not specified
@@ -42,6 +44,7 @@ final class ChatService implements ChatContract
      * @param bool $stream Whether to stream back partial progress
      * @param float $temperature Sampling temperature between 0 and 2
      * @param float $topP Nucleus sampling parameter
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -54,7 +57,7 @@ final class ChatService implements ChatContract
         ?bool $stream = null,
         ?float $temperature = null,
         ?float $topP = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ChatNewCompletionResponse {
         $params = Util::removeNulls(
             [

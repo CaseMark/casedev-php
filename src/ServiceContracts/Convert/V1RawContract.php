@@ -12,12 +12,16 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param string $id The unique job ID of the completed conversion
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -25,13 +29,14 @@ interface V1RawContract
      */
     public function download(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1ProcessParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ProcessResponse>
      *
@@ -39,13 +44,14 @@ interface V1RawContract
      */
     public function process(
         array|V1ProcessParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1WebhookParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1WebhookResponse>
      *
@@ -53,6 +59,6 @@ interface V1RawContract
      */
     public function webhook(
         array|V1WebhookParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

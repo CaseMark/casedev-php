@@ -13,7 +13,9 @@ use Casedev\Search\V1\V1SearchResponse\Result;
  * @phpstan-import-type ResultShape from \Casedev\Search\V1\V1SearchResponse\Result
  *
  * @phpstan-type V1SearchResponseShape = array{
- *   query?: string|null, results?: list<ResultShape>|null, totalResults?: int|null
+ *   query?: string|null,
+ *   results?: list<Result|ResultShape>|null,
+ *   totalResults?: int|null,
  * }
  */
 final class V1SearchResponse implements BaseModel
@@ -51,7 +53,7 @@ final class V1SearchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ResultShape>|null $results
+     * @param list<Result|ResultShape>|null $results
      */
     public static function with(
         ?string $query = null,
@@ -81,7 +83,7 @@ final class V1SearchResponse implements BaseModel
     /**
      * Array of search results.
      *
-     * @param list<ResultShape> $results
+     * @param list<Result|ResultShape> $results
      */
     public function withResults(array $results): self
     {

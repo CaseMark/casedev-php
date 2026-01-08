@@ -23,12 +23,16 @@ use Casedev\Workflows\V1\V1UndeployResponse;
 use Casedev\Workflows\V1\V1UpdateParams;
 use Casedev\Workflows\V1\V1UpdateResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|V1CreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1NewResponse>
      *
@@ -36,13 +40,14 @@ interface V1RawContract
      */
     public function create(
         array|V1CreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetResponse>
      *
@@ -50,7 +55,7 @@ interface V1RawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -58,6 +63,7 @@ interface V1RawContract
      *
      * @param string $id Workflow ID
      * @param array<string,mixed>|V1UpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1UpdateResponse>
      *
@@ -66,13 +72,14 @@ interface V1RawContract
     public function update(
         string $id,
         array|V1UpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1ListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ListResponse>
      *
@@ -80,13 +87,14 @@ interface V1RawContract
      */
     public function list(
         array|V1ListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1DeleteResponse>
      *
@@ -94,13 +102,14 @@ interface V1RawContract
      */
     public function delete(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1DeployResponse>
      *
@@ -108,7 +117,7 @@ interface V1RawContract
      */
     public function deploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -116,6 +125,7 @@ interface V1RawContract
      *
      * @param string $id Workflow ID
      * @param array<string,mixed>|V1ExecuteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ExecuteResponse>
      *
@@ -124,7 +134,7 @@ interface V1RawContract
     public function execute(
         string $id,
         array|V1ExecuteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -132,6 +142,7 @@ interface V1RawContract
      *
      * @param string $id Workflow ID
      * @param array<string,mixed>|V1ListExecutionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ListExecutionsResponse>
      *
@@ -140,13 +151,14 @@ interface V1RawContract
     public function listExecutions(
         string $id,
         array|V1ListExecutionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Execution ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetExecutionResponse>
      *
@@ -154,13 +166,14 @@ interface V1RawContract
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1UndeployResponse>
      *
@@ -168,6 +181,6 @@ interface V1RawContract
      */
     public function undeploy(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

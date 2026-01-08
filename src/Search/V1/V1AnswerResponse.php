@@ -14,7 +14,7 @@ use Casedev\Search\V1\V1AnswerResponse\Citation;
  *
  * @phpstan-type V1AnswerResponseShape = array{
  *   answer?: string|null,
- *   citations?: list<CitationShape>|null,
+ *   citations?: list<Citation|CitationShape>|null,
  *   model?: string|null,
  *   searchType?: string|null,
  * }
@@ -60,7 +60,7 @@ final class V1AnswerResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CitationShape>|null $citations
+     * @param list<Citation|CitationShape>|null $citations
      */
     public static function with(
         ?string $answer = null,
@@ -92,7 +92,7 @@ final class V1AnswerResponse implements BaseModel
     /**
      * Sources used to generate the answer.
      *
-     * @param list<CitationShape> $citations
+     * @param list<Citation|CitationShape> $citations
      */
     public function withCitations(array $citations): self
     {

@@ -24,6 +24,9 @@ use Casedev\Search\V1\V1SimilarParams;
 use Casedev\Search\V1\V1SimilarResponse;
 use Casedev\ServiceContracts\Search\V1RawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -44,12 +47,13 @@ final class V1RawService implements V1RawContract
      *   maxTokens?: int,
      *   model?: string,
      *   numResults?: int,
-     *   searchType?: 'auto'|'web'|'news'|'academic'|SearchType,
+     *   searchType?: SearchType|value-of<SearchType>,
      *   stream?: bool,
      *   temperature?: float,
      *   text?: bool,
      *   useCustomLlm?: bool,
      * }|V1AnswerParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1AnswerResponse>
      *
@@ -57,7 +61,7 @@ final class V1RawService implements V1RawContract
      */
     public function answer(
         array|V1AnswerParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1AnswerParams::parseRequest(
             $params,
@@ -91,6 +95,7 @@ final class V1RawService implements V1RawContract
      *   summary?: bool,
      *   text?: bool,
      * }|V1ContentsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ContentsResponse>
      *
@@ -98,7 +103,7 @@ final class V1RawService implements V1RawContract
      */
     public function contents(
         array|V1ContentsParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ContentsParams::parseRequest(
             $params,
@@ -122,10 +127,11 @@ final class V1RawService implements V1RawContract
      *
      * @param array{
      *   instructions: string,
-     *   model?: 'fast'|'normal'|'pro'|Model,
+     *   model?: Model|value-of<Model>,
      *   outputSchema?: mixed,
      *   query?: string,
      * }|V1ResearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ResearchResponse>
      *
@@ -133,7 +139,7 @@ final class V1RawService implements V1RawContract
      */
     public function research(
         array|V1ResearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ResearchParams::parseRequest(
             $params,
@@ -157,6 +163,7 @@ final class V1RawService implements V1RawContract
      *
      * @param string $id Unique identifier for the research task
      * @param array{events?: string, stream?: bool}|V1RetrieveResearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -165,7 +172,7 @@ final class V1RawService implements V1RawContract
     public function retrieveResearch(
         string $id,
         array|V1RetrieveResearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1RetrieveResearchParams::parseRequest(
             $params,
@@ -200,9 +207,10 @@ final class V1RawService implements V1RawContract
      *   numResults?: int,
      *   startCrawlDate?: string,
      *   startPublishedDate?: string,
-     *   type?: 'auto'|'search'|'news'|Type,
+     *   type?: Type|value-of<Type>,
      *   userLocation?: string,
      * }|V1SearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1SearchResponse>
      *
@@ -210,7 +218,7 @@ final class V1RawService implements V1RawContract
      */
     public function search(
         array|V1SearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1SearchParams::parseRequest(
             $params,
@@ -244,6 +252,7 @@ final class V1RawService implements V1RawContract
      *   startCrawlDate?: string,
      *   startPublishedDate?: string,
      * }|V1SimilarParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1SimilarResponse>
      *
@@ -251,7 +260,7 @@ final class V1RawService implements V1RawContract
      */
     public function similar(
         array|V1SimilarParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1SimilarParams::parseRequest(
             $params,

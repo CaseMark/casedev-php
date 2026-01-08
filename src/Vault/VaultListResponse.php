@@ -13,7 +13,7 @@ use Casedev\Vault\VaultListResponse\Vault;
  * @phpstan-import-type VaultShape from \Casedev\Vault\VaultListResponse\Vault
  *
  * @phpstan-type VaultListResponseShape = array{
- *   total?: int|null, vaults?: list<VaultShape>|null
+ *   total?: int|null, vaults?: list<Vault|VaultShape>|null
  * }
  */
 final class VaultListResponse implements BaseModel
@@ -41,7 +41,7 @@ final class VaultListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VaultShape>|null $vaults
+     * @param list<Vault|VaultShape>|null $vaults
      */
     public static function with(?int $total = null, ?array $vaults = null): self
     {
@@ -65,7 +65,7 @@ final class VaultListResponse implements BaseModel
     }
 
     /**
-     * @param list<VaultShape> $vaults
+     * @param list<Vault|VaultShape> $vaults
      */
     public function withVaults(array $vaults): self
     {

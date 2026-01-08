@@ -10,12 +10,16 @@ use Casedev\RequestOptions;
 use Casedev\Voice\Transcription\TranscriptionCreateParams;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface TranscriptionRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|TranscriptionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -23,13 +27,14 @@ interface TranscriptionRawContract
      */
     public function create(
         array|TranscriptionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptionGetResponse>
      *
@@ -37,6 +42,6 @@ interface TranscriptionRawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

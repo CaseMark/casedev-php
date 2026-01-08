@@ -10,6 +10,9 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\LlmContract;
 use Casedev\Services\Llm\V1Service;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class LlmService implements LlmContract
 {
     /**
@@ -42,10 +45,13 @@ final class LlmService implements LlmContract
      * - Configure AI SDK clients
      * - Build model selection interfaces
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
-    public function getConfig(?RequestOptions $requestOptions = null): mixed
-    {
+    public function getConfig(
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getConfig(requestOptions: $requestOptions);
 

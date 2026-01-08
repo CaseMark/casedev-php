@@ -10,12 +10,16 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams;
 use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 use Casedev\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface ChatRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ChatCreateCompletionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ChatNewCompletionResponse>
      *
@@ -23,6 +27,6 @@ interface ChatRawContract
      */
     public function createCompletion(
         array|ChatCreateCompletionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

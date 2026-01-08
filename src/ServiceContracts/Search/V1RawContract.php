@@ -19,12 +19,16 @@ use Casedev\Search\V1\V1SearchResponse;
 use Casedev\Search\V1\V1SimilarParams;
 use Casedev\Search\V1\V1SimilarResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 interface V1RawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|V1AnswerParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1AnswerResponse>
      *
@@ -32,13 +36,14 @@ interface V1RawContract
      */
     public function answer(
         array|V1AnswerParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1ContentsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ContentsResponse>
      *
@@ -46,13 +51,14 @@ interface V1RawContract
      */
     public function contents(
         array|V1ContentsParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1ResearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ResearchResponse>
      *
@@ -60,7 +66,7 @@ interface V1RawContract
      */
     public function research(
         array|V1ResearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface V1RawContract
      *
      * @param string $id Unique identifier for the research task
      * @param array<string,mixed>|V1RetrieveResearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,13 +83,14 @@ interface V1RawContract
     public function retrieveResearch(
         string $id,
         array|V1RetrieveResearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1SearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1SearchResponse>
      *
@@ -90,13 +98,14 @@ interface V1RawContract
      */
     public function search(
         array|V1SearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|V1SimilarParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1SimilarResponse>
      *
@@ -104,6 +113,6 @@ interface V1RawContract
      */
     public function similar(
         array|V1SimilarParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -6,6 +6,7 @@ namespace Casedev\Services\Convert;
 
 use Casedev\Client;
 use Casedev\Convert\V1\V1ProcessResponse;
+use Casedev\Convert\V1\V1WebhookParams\Result;
 use Casedev\Convert\V1\V1WebhookParams\Status;
 use Casedev\Convert\V1\V1WebhookResponse;
 use Casedev\Core\Exceptions\APIException;
@@ -14,6 +15,10 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Convert\V1Contract;
 use Casedev\Services\Convert\V1\JobsService;
 
+/**
+ * @phpstan-import-type ResultShape from \Casedev\Convert\V1\V1WebhookParams\Result
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -41,12 +46,13 @@ final class V1Service implements V1Contract
      * Download the converted M4A audio file from a completed FTR conversion job. The file is streamed directly to the client with appropriate headers for audio playback or download.
      *
      * @param string $id The unique job ID of the completed conversion
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function download(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): string {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->download($id, requestOptions: $requestOptions);
@@ -65,13 +71,14 @@ final class V1Service implements V1Contract
      *
      * @param string $inputURL HTTPS URL to the FTR file (must be a valid S3 presigned URL)
      * @param string $callbackURL Optional webhook URL to receive conversion completion notification
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function process(
         string $inputURL,
         ?string $callbackURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ProcessResponse {
         $params = Util::removeNulls(
             ['inputURL' => $inputURL, 'callbackURL' => $callbackURL]
@@ -89,20 +96,19 @@ final class V1Service implements V1Contract
      * Internal webhook endpoint that receives completion notifications from the Modal FTR converter service. This endpoint handles status updates for file conversion jobs, including success and failure notifications. Requires valid Bearer token authentication.
      *
      * @param string $jobID Unique identifier for the conversion job
-     * @param 'completed'|'failed'|Status $status Status of the conversion job
+     * @param Status|value-of<Status> $status Status of the conversion job
      * @param string $error Error message for failed jobs
-     * @param array{
-     *   durationSeconds?: float, fileSizeBytes?: int, storedFilename?: string
-     * } $result Result data for completed jobs
+     * @param Result|ResultShape $result Result data for completed jobs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function webhook(
         string $jobID,
-        string|Status $status,
+        Status|string $status,
         ?string $error = null,
-        ?array $result = null,
-        ?RequestOptions $requestOptions = null,
+        Result|array|null $result = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1WebhookResponse {
         $params = Util::removeNulls(
             [

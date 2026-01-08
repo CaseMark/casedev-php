@@ -9,9 +9,13 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Templates\V1Contract;
-use Casedev\Templates\V1\V1ExecuteParams\Options\Format;
+use Casedev\Templates\V1\V1ExecuteParams\Options;
 use Casedev\Templates\V1\V1ExecuteResponse;
 
+/**
+ * @phpstan-import-type OptionsShape from \Casedev\Templates\V1\V1ExecuteParams\Options
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -33,12 +37,13 @@ final class V1Service implements V1Contract
      * Retrieve metadata for a published workflow by ID. Returns workflow configuration including input/output schemas, but excludes the prompt template for security.
      *
      * @param string $id Workflow ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
@@ -57,6 +62,7 @@ final class V1Service implements V1Contract
      * @param bool $published Include only published workflows
      * @param string $subCategory Filter workflows by subcategory (e.g., 'due-diligence', 'litigation', 'mergers')
      * @param string $type Filter workflows by type (e.g., 'document-review', 'contract-analysis', 'compliance-check')
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -67,7 +73,7 @@ final class V1Service implements V1Contract
         bool $published = true,
         ?string $subCategory = null,
         ?string $type = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [
@@ -100,15 +106,16 @@ final class V1Service implements V1Contract
      *
      * @param string $id Unique identifier of the workflow to execute
      * @param mixed $input Input data for the workflow (structure varies by workflow type)
-     * @param array{format?: 'json'|'text'|Format, model?: string} $options
+     * @param Options|OptionsShape $options
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function execute(
         string $id,
         mixed $input,
-        ?array $options = null,
-        ?RequestOptions $requestOptions = null,
+        Options|array|null $options = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1ExecuteResponse {
         $params = Util::removeNulls(['input' => $input, 'options' => $options]);
 
@@ -124,12 +131,13 @@ final class V1Service implements V1Contract
      * Retrieves the status and details of a workflow execution. This endpoint is designed for future asynchronous execution support and currently returns a 501 Not Implemented status since all executions are synchronous.
      *
      * @param string $id Unique identifier of the workflow execution
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieveExecution(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieveExecution($id, requestOptions: $requestOptions);
@@ -145,6 +153,7 @@ final class V1Service implements V1Contract
      * @param string $query Search query to find relevant workflows
      * @param string $category Optional category filter to narrow results
      * @param int $limit Maximum number of results to return (default: 10, max: 50)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -152,7 +161,7 @@ final class V1Service implements V1Contract
         string $query,
         ?string $category = null,
         int $limit = 10,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['query' => $query, 'category' => $category, 'limit' => $limit]

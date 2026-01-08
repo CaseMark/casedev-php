@@ -9,6 +9,9 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\StreamingContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class StreamingService implements StreamingContract
 {
     /**
@@ -36,10 +39,13 @@ final class StreamingService implements StreamingContract
      *
      * **Pricing:** $0.30 per minute ($18.00 per hour)
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
-    public function getURL(?RequestOptions $requestOptions = null): mixed
-    {
+    public function getURL(
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getURL(requestOptions: $requestOptions);
 

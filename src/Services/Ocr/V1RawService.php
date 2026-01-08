@@ -11,10 +11,15 @@ use Casedev\Ocr\V1\V1DownloadParams;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
 use Casedev\Ocr\V1\V1ProcessParams;
 use Casedev\Ocr\V1\V1ProcessParams\Engine;
+use Casedev\Ocr\V1\V1ProcessParams\Features;
 use Casedev\Ocr\V1\V1ProcessResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Ocr\V1RawContract;
 
+/**
+ * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1RawService implements V1RawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +34,7 @@ final class V1RawService implements V1RawContract
      * Retrieve the status and results of an OCR job. Returns job progress, extracted text, and metadata when processing is complete.
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -36,7 +42,7 @@ final class V1RawService implements V1RawContract
      */
     public function retrieve(
         string $id,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -54,6 +60,7 @@ final class V1RawService implements V1RawContract
      *
      * @param Type|value-of<Type> $type Format to download: `text` (plain text), `json` (structured data with coordinates), `pdf` (searchable PDF with text layer), `original` (original uploaded document)
      * @param array{id: string}|V1DownloadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -62,7 +69,7 @@ final class V1RawService implements V1RawContract
     public function download(
         Type|string $type,
         array|V1DownloadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1DownloadParams::parseRequest(
             $params,
@@ -89,11 +96,12 @@ final class V1RawService implements V1RawContract
      *   documentURL: string,
      *   callbackURL?: string,
      *   documentID?: string,
-     *   engine?: 'doctr'|'paddleocr'|Engine,
-     *   features?: array{forms?: bool, layout?: bool, tables?: bool, text?: bool},
+     *   engine?: Engine|value-of<Engine>,
+     *   features?: Features|FeaturesShape,
      *   resultBucket?: string,
      *   resultPrefix?: string,
      * }|V1ProcessParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1ProcessResponse>
      *
@@ -101,7 +109,7 @@ final class V1RawService implements V1RawContract
      */
     public function process(
         array|V1ProcessParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = V1ProcessParams::parseRequest(
             $params,
