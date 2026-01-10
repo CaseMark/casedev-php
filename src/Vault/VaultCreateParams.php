@@ -19,6 +19,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   name: string,
  *   description?: string|null,
  *   enableGraph?: bool|null,
+ *   enableIndexing?: bool|null,
  *   metadata?: mixed,
  * }
  */
@@ -41,10 +42,16 @@ final class VaultCreateParams implements BaseModel
     public ?string $description;
 
     /**
-     * Enable knowledge graph for entity relationship mapping.
+     * Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      */
     #[Optional]
     public ?bool $enableGraph;
+
+    /**
+     * Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     */
+    #[Optional]
+    public ?bool $enableIndexing;
 
     /**
      * Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking).
@@ -80,6 +87,7 @@ final class VaultCreateParams implements BaseModel
         string $name,
         ?string $description = null,
         ?bool $enableGraph = null,
+        ?bool $enableIndexing = null,
         mixed $metadata = null,
     ): self {
         $self = new self;
@@ -88,6 +96,7 @@ final class VaultCreateParams implements BaseModel
 
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
+        null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
         null !== $metadata && $self['metadata'] = $metadata;
 
         return $self;
@@ -116,12 +125,23 @@ final class VaultCreateParams implements BaseModel
     }
 
     /**
-     * Enable knowledge graph for entity relationship mapping.
+     * Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      */
     public function withEnableGraph(bool $enableGraph): self
     {
         $self = clone $this;
         $self['enableGraph'] = $enableGraph;
+
+        return $self;
+    }
+
+    /**
+     * Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     */
+    public function withEnableIndexing(bool $enableIndexing): self
+    {
+        $self = clone $this;
+        $self['enableIndexing'] = $enableIndexing;
 
         return $self;
     }

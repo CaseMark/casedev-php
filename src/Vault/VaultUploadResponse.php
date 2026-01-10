@@ -14,6 +14,7 @@ use Casedev\Vault\VaultUploadResponse\Instructions;
  *
  * @phpstan-type VaultUploadResponseShape = array{
  *   autoIndex?: bool|null,
+ *   enableIndexing?: bool|null,
  *   expiresIn?: float|null,
  *   instructions?: null|Instructions|InstructionsShape,
  *   nextStep?: string|null,
@@ -33,6 +34,12 @@ final class VaultUploadResponse implements BaseModel
      */
     #[Optional('auto_index')]
     public ?bool $autoIndex;
+
+    /**
+     * Whether the vault supports indexing. False for storage-only vaults.
+     */
+    #[Optional]
+    public ?bool $enableIndexing;
 
     /**
      * URL expiration time in seconds.
@@ -87,6 +94,7 @@ final class VaultUploadResponse implements BaseModel
      */
     public static function with(
         ?bool $autoIndex = null,
+        ?bool $enableIndexing = null,
         ?float $expiresIn = null,
         Instructions|array|null $instructions = null,
         ?string $nextStep = null,
@@ -98,6 +106,7 @@ final class VaultUploadResponse implements BaseModel
         $self = new self;
 
         null !== $autoIndex && $self['autoIndex'] = $autoIndex;
+        null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
         null !== $expiresIn && $self['expiresIn'] = $expiresIn;
         null !== $instructions && $self['instructions'] = $instructions;
         null !== $nextStep && $self['nextStep'] = $nextStep;
@@ -116,6 +125,17 @@ final class VaultUploadResponse implements BaseModel
     {
         $self = clone $this;
         $self['autoIndex'] = $autoIndex;
+
+        return $self;
+    }
+
+    /**
+     * Whether the vault supports indexing. False for storage-only vaults.
+     */
+    public function withEnableIndexing(bool $enableIndexing): self
+    {
+        $self = clone $this;
+        $self['enableIndexing'] = $enableIndexing;
 
         return $self;
     }
