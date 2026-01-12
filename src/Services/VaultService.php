@@ -57,7 +57,8 @@ final class VaultService implements VaultContract
      *
      * @param string $name Display name for the vault
      * @param string $description Optional description of the vault's purpose
-     * @param bool $enableGraph Enable knowledge graph for entity relationship mapping
+     * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
+     * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
      * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      * @param RequestOpts|null $requestOptions
      *
@@ -67,6 +68,7 @@ final class VaultService implements VaultContract
         string $name,
         ?string $description = null,
         bool $enableGraph = true,
+        bool $enableIndexing = true,
         mixed $metadata = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultNewResponse {
@@ -75,6 +77,7 @@ final class VaultService implements VaultContract
                 'name' => $name,
                 'description' => $description,
                 'enableGraph' => $enableGraph,
+                'enableIndexing' => $enableIndexing,
                 'metadata' => $metadata,
             ],
         );
