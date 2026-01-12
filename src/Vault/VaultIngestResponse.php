@@ -15,7 +15,7 @@ use Casedev\Vault\VaultIngestResponse\Status;
  *   message: string,
  *   objectID: string,
  *   status: Status|value-of<Status>,
- *   workflowID: string,
+ *   workflowID: string|null,
  * }
  */
 final class VaultIngestResponse implements BaseModel
@@ -42,7 +42,7 @@ final class VaultIngestResponse implements BaseModel
     public string $objectID;
 
     /**
-     * Current ingestion status.
+     * Current ingestion status. 'stored' for file types without text extraction (no chunks/vectors created).
      *
      * @var value-of<Status> $status
      */
@@ -50,10 +50,10 @@ final class VaultIngestResponse implements BaseModel
     public string $status;
 
     /**
-     * Workflow run ID for tracking progress.
+     * Workflow run ID for tracking progress. Null for file types that skip processing.
      */
     #[Required('workflowId')]
-    public string $workflowID;
+    public ?string $workflowID;
 
     /**
      * `new VaultIngestResponse()` is missing required properties by the API.
@@ -93,7 +93,7 @@ final class VaultIngestResponse implements BaseModel
         string $message,
         string $objectID,
         Status|string $status,
-        string $workflowID,
+        ?string $workflowID,
     ): self {
         $self = new self;
 
@@ -140,7 +140,7 @@ final class VaultIngestResponse implements BaseModel
     }
 
     /**
-     * Current ingestion status.
+     * Current ingestion status. 'stored' for file types without text extraction (no chunks/vectors created).
      *
      * @param Status|value-of<Status> $status
      */
@@ -153,9 +153,9 @@ final class VaultIngestResponse implements BaseModel
     }
 
     /**
-     * Workflow run ID for tracking progress.
+     * Workflow run ID for tracking progress. Null for file types that skip processing.
      */
-    public function withWorkflowID(string $workflowID): self
+    public function withWorkflowID(?string $workflowID): self
     {
         $self = clone $this;
         $self['workflowID'] = $workflowID;
