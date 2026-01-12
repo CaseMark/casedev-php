@@ -6,18 +6,14 @@ namespace Casedev;
 
 use Casedev\Core\BaseClient;
 use Casedev\Core\Util;
-use Casedev\Services\ActionsService;
 use Casedev\Services\ComputeService;
-use Casedev\Services\ConvertService;
 use Casedev\Services\FormatService;
 use Casedev\Services\LlmService;
 use Casedev\Services\OcrService;
 use Casedev\Services\SearchService;
-use Casedev\Services\TemplatesService;
 use Casedev\Services\VaultService;
 use Casedev\Services\VoiceService;
 use Casedev\Services\WebhooksService;
-use Casedev\Services\WorkflowsService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 
@@ -32,17 +28,7 @@ class Client extends BaseClient
     /**
      * @api
      */
-    public ActionsService $actions;
-
-    /**
-     * @api
-     */
     public ComputeService $compute;
-
-    /**
-     * @api
-     */
-    public ConvertService $convert;
 
     /**
      * @api
@@ -78,16 +64,6 @@ class Client extends BaseClient
      * @api
      */
     public WebhooksService $webhooks;
-
-    /**
-     * @api
-     */
-    public TemplatesService $templates;
-
-    /**
-     * @api
-     */
-    public WorkflowsService $workflows;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -127,9 +103,7 @@ class Client extends BaseClient
             options: $options
         );
 
-        $this->actions = new ActionsService($this);
         $this->compute = new ComputeService($this);
-        $this->convert = new ConvertService($this);
         $this->format = new FormatService($this);
         $this->llm = new LlmService($this);
         $this->ocr = new OcrService($this);
@@ -137,8 +111,6 @@ class Client extends BaseClient
         $this->vault = new VaultService($this);
         $this->voice = new VoiceService($this);
         $this->webhooks = new WebhooksService($this);
-        $this->templates = new TemplatesService($this);
-        $this->workflows = new WorkflowsService($this);
     }
 
     /** @return array<string,string> */
