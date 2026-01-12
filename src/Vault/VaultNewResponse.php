@@ -13,6 +13,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   id?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   description?: string|null,
+ *   enableIndexing?: bool|null,
  *   filesBucket?: string|null,
  *   indexName?: string|null,
  *   name?: string|null,
@@ -44,15 +45,21 @@ final class VaultNewResponse implements BaseModel
     public ?string $description;
 
     /**
+     * Whether vector indexing is enabled for this vault.
+     */
+    #[Optional]
+    public ?bool $enableIndexing;
+
+    /**
      * S3 bucket name for document storage.
      */
     #[Optional]
     public ?string $filesBucket;
 
     /**
-     * Vector search index name.
+     * Vector search index name. Null for storage-only vaults.
      */
-    #[Optional]
+    #[Optional(nullable: true)]
     public ?string $indexName;
 
     /**
@@ -68,9 +75,9 @@ final class VaultNewResponse implements BaseModel
     public ?string $region;
 
     /**
-     * S3 bucket name for vector embeddings.
+     * S3 bucket name for vector embeddings. Null for storage-only vaults.
      */
-    #[Optional]
+    #[Optional(nullable: true)]
     public ?string $vectorBucket;
 
     public function __construct()
@@ -87,6 +94,7 @@ final class VaultNewResponse implements BaseModel
         ?string $id = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
+        ?bool $enableIndexing = null,
         ?string $filesBucket = null,
         ?string $indexName = null,
         ?string $name = null,
@@ -98,6 +106,7 @@ final class VaultNewResponse implements BaseModel
         null !== $id && $self['id'] = $id;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $description && $self['description'] = $description;
+        null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
         null !== $filesBucket && $self['filesBucket'] = $filesBucket;
         null !== $indexName && $self['indexName'] = $indexName;
         null !== $name && $self['name'] = $name;
@@ -141,6 +150,17 @@ final class VaultNewResponse implements BaseModel
     }
 
     /**
+     * Whether vector indexing is enabled for this vault.
+     */
+    public function withEnableIndexing(bool $enableIndexing): self
+    {
+        $self = clone $this;
+        $self['enableIndexing'] = $enableIndexing;
+
+        return $self;
+    }
+
+    /**
      * S3 bucket name for document storage.
      */
     public function withFilesBucket(string $filesBucket): self
@@ -152,9 +172,9 @@ final class VaultNewResponse implements BaseModel
     }
 
     /**
-     * Vector search index name.
+     * Vector search index name. Null for storage-only vaults.
      */
-    public function withIndexName(string $indexName): self
+    public function withIndexName(?string $indexName): self
     {
         $self = clone $this;
         $self['indexName'] = $indexName;
@@ -185,9 +205,9 @@ final class VaultNewResponse implements BaseModel
     }
 
     /**
-     * S3 bucket name for vector embeddings.
+     * S3 bucket name for vector embeddings. Null for storage-only vaults.
      */
-    public function withVectorBucket(string $vectorBucket): self
+    public function withVectorBucket(?string $vectorBucket): self
     {
         $self = clone $this;
         $self['vectorBucket'] = $vectorBucket;
