@@ -11,6 +11,7 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
 use Casedev\Services\Vault\ObjectsService;
+use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
@@ -101,7 +102,7 @@ final class VaultService implements VaultContract
     public function retrieve(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): VaultGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
 

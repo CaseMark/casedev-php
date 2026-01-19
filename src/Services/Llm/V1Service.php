@@ -8,6 +8,8 @@ use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use Casedev\Llm\V1\V1ListModelsResponse;
+use Casedev\Llm\V1\V1NewEmbeddingResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1Contract;
 use Casedev\Services\Llm\V1\ChatService;
@@ -58,7 +60,7 @@ final class V1Service implements V1Contract
         EncodingFormat|string $encodingFormat = 'float',
         ?string $user = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): V1NewEmbeddingResponse {
         $params = Util::removeNulls(
             [
                 'input' => $input,
@@ -88,7 +90,7 @@ final class V1Service implements V1Contract
      */
     public function listModels(
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): V1ListModelsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listModels(requestOptions: $requestOptions);
 

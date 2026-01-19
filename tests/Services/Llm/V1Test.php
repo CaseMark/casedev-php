@@ -3,6 +3,8 @@
 namespace Tests\Services\Llm;
 
 use Casedev\Client;
+use Casedev\Llm\V1\V1ListModelsResponse;
+use Casedev\Llm\V1\V1NewEmbeddingResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,7 +41,7 @@ final class V1Test extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1NewEmbeddingResponse::class, $result);
     }
 
     #[Test]
@@ -58,7 +60,7 @@ final class V1Test extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1NewEmbeddingResponse::class, $result);
     }
 
     #[Test]
@@ -71,6 +73,6 @@ final class V1Test extends TestCase
         $result = $this->client->llm->v1->listModels();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1ListModelsResponse::class, $result);
     }
 }

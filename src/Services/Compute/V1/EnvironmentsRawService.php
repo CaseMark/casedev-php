@@ -7,7 +7,10 @@ namespace Casedev\Services\Compute\V1;
 use Casedev\Client;
 use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
+use Casedev\Compute\V1\Environments\EnvironmentListResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -63,7 +66,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * @param string $name The name of the compute environment to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentGetResponse>
      *
      * @throws APIException
      */
@@ -76,7 +79,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
             method: 'get',
             path: ['compute/v1/environments/%1$s', $name],
             options: $requestOptions,
-            convert: null,
+            convert: EnvironmentGetResponse::class,
         );
     }
 
@@ -87,7 +90,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentListResponse>
      *
      * @throws APIException
      */
@@ -99,7 +102,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
             method: 'get',
             path: 'compute/v1/environments',
             options: $requestOptions,
-            convert: null,
+            convert: EnvironmentListResponse::class,
         );
     }
 
@@ -136,7 +139,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
      * @param string $name Name of the compute environment to set as default
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentSetDefaultResponse>
      *
      * @throws APIException
      */
@@ -149,7 +152,7 @@ final class EnvironmentsRawService implements EnvironmentsRawContract
             method: 'post',
             path: ['compute/v1/environments/%1$s/default', $name],
             options: $requestOptions,
-            convert: null,
+            convert: EnvironmentSetDefaultResponse::class,
         );
     }
 }

@@ -9,6 +9,8 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\V1CreateEmbeddingParams;
 use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use Casedev\Llm\V1\V1ListModelsResponse;
+use Casedev\Llm\V1\V1NewEmbeddingResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Llm\V1RawContract;
 
@@ -38,7 +40,7 @@ final class V1RawService implements V1RawContract
      * }|V1CreateEmbeddingParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1NewEmbeddingResponse>
      *
      * @throws APIException
      */
@@ -57,7 +59,7 @@ final class V1RawService implements V1RawContract
             path: 'llm/v1/embeddings',
             body: (object) $parsed,
             options: $options,
-            convert: null,
+            convert: V1NewEmbeddingResponse::class,
         );
     }
 
@@ -70,7 +72,7 @@ final class V1RawService implements V1RawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1ListModelsResponse>
      *
      * @throws APIException
      */
@@ -82,7 +84,7 @@ final class V1RawService implements V1RawContract
             method: 'get',
             path: 'llm/v1/models',
             options: $requestOptions,
-            convert: null,
+            convert: V1ListModelsResponse::class,
         );
     }
 }

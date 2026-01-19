@@ -9,6 +9,7 @@ use Casedev\RequestOptions;
 use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
+use Casedev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -52,7 +53,7 @@ interface TranscriptionContract
         ?string $vaultID = null,
         ?array $wordBoost = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): TranscriptionNewResponse;
 
     /**
      * @api

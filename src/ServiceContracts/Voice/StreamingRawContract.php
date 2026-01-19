@@ -7,6 +7,7 @@ namespace Casedev\ServiceContracts\Voice;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -18,7 +19,7 @@ interface StreamingRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<StreamingGetURLResponse>
      *
      * @throws APIException
      */

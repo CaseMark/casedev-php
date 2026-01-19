@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\ServiceContracts\Compute;
 
+use Casedev\Compute\V1\V1GetUsageResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
@@ -36,5 +37,5 @@ interface V1Contract
         ?int $month = null,
         ?int $year = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): V1GetUsageResponse;
 }

@@ -6,6 +6,7 @@ namespace Casedev\Services;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Llm\LlmGetConfigResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\LlmContract;
 use Casedev\Services\Llm\V1Service;
@@ -51,7 +52,7 @@ final class LlmService implements LlmContract
      */
     public function getConfig(
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): LlmGetConfigResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getConfig(requestOptions: $requestOptions);
 

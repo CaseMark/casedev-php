@@ -3,7 +3,11 @@
 namespace Tests\Services\Compute\V1;
 
 use Casedev\Client;
+use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretListResponse;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
+use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -67,7 +71,7 @@ final class SecretsTest extends TestCase
         $result = $this->client->compute->v1->secrets->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(SecretListResponse::class, $result);
     }
 
     #[Test]
@@ -80,7 +84,7 @@ final class SecretsTest extends TestCase
         $result = $this->client->compute->v1->secrets->deleteGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(SecretDeleteGroupResponse::class, $result);
     }
 
     #[Test]
@@ -93,7 +97,7 @@ final class SecretsTest extends TestCase
         $result = $this->client->compute->v1->secrets->retrieveGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(SecretGetGroupResponse::class, $result);
     }
 
     #[Test]
@@ -109,7 +113,7 @@ final class SecretsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(SecretUpdateGroupResponse::class, $result);
     }
 
     #[Test]
@@ -126,6 +130,6 @@ final class SecretsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(SecretUpdateGroupResponse::class, $result);
     }
 }

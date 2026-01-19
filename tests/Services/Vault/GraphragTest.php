@@ -3,6 +3,8 @@
 namespace Tests\Services\Vault;
 
 use Casedev\Client;
+use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
+use Casedev\Vault\Graphrag\GraphragInitResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,7 +38,7 @@ final class GraphragTest extends TestCase
         $result = $this->client->vault->graphrag->getStats('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(GraphragGetStatsResponse::class, $result);
     }
 
     #[Test]
@@ -49,6 +51,6 @@ final class GraphragTest extends TestCase
         $result = $this->client->vault->graphrag->init('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(GraphragInitResponse::class, $result);
     }
 }

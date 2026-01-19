@@ -9,6 +9,8 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\GraphragRawContract;
+use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
+use Casedev\Vault\Graphrag\GraphragInitResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -29,7 +31,7 @@ final class GraphragRawService implements GraphragRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<GraphragGetStatsResponse>
      *
      * @throws APIException
      */
@@ -42,7 +44,7 @@ final class GraphragRawService implements GraphragRawContract
             method: 'get',
             path: ['vault/%1$s/graphrag/stats', $id],
             options: $requestOptions,
-            convert: null,
+            convert: GraphragGetStatsResponse::class,
         );
     }
 
@@ -54,7 +56,7 @@ final class GraphragRawService implements GraphragRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<GraphragInitResponse>
      *
      * @throws APIException
      */
@@ -67,7 +69,7 @@ final class GraphragRawService implements GraphragRawContract
             method: 'post',
             path: ['vault/%1$s/graphrag/init', $id],
             options: $requestOptions,
-            convert: null,
+            convert: GraphragInitResponse::class,
         );
     }
 }

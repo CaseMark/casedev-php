@@ -9,6 +9,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Voice\Transcription\TranscriptionCreateParams;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
+use Casedev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -21,7 +22,7 @@ interface TranscriptionRawContract
      * @param array<string,mixed>|TranscriptionCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TranscriptionNewResponse>
      *
      * @throws APIException
      */

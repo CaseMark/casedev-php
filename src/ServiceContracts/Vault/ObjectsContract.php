@@ -7,6 +7,9 @@ namespace Casedev\ServiceContracts\Vault;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetTextResponse;
+use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 
 /**
@@ -27,7 +30,7 @@ interface ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): ObjectGetResponse;
 
     /**
      * @api
@@ -40,7 +43,7 @@ interface ObjectsContract
     public function list(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): ObjectListResponse;
 
     /**
      * @api
@@ -76,7 +79,7 @@ interface ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): string;
 
     /**
      * @api
@@ -91,5 +94,5 @@ interface ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): ObjectGetTextResponse;
 }

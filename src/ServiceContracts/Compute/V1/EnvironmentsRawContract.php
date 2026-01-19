@@ -6,7 +6,10 @@ namespace Casedev\ServiceContracts\Compute\V1;
 
 use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
+use Casedev\Compute\V1\Environments\EnvironmentListResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -37,7 +40,7 @@ interface EnvironmentsRawContract
      * @param string $name The name of the compute environment to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentGetResponse>
      *
      * @throws APIException
      */
@@ -51,7 +54,7 @@ interface EnvironmentsRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentListResponse>
      *
      * @throws APIException
      */
@@ -80,7 +83,7 @@ interface EnvironmentsRawContract
      * @param string $name Name of the compute environment to set as default
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<EnvironmentSetDefaultResponse>
      *
      * @throws APIException
      */

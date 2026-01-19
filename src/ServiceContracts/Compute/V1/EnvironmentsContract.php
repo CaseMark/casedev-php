@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Casedev\ServiceContracts\Compute\V1;
 
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
+use Casedev\Compute\V1\Environments\EnvironmentListResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
@@ -38,7 +41,7 @@ interface EnvironmentsContract
     public function retrieve(
         string $name,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): EnvironmentGetResponse;
 
     /**
      * @api
@@ -49,7 +52,7 @@ interface EnvironmentsContract
      */
     public function list(
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): EnvironmentListResponse;
 
     /**
      * @api
@@ -75,5 +78,5 @@ interface EnvironmentsContract
     public function setDefault(
         string $name,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): EnvironmentSetDefaultResponse;
 }

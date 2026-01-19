@@ -7,6 +7,8 @@ namespace Casedev\ServiceContracts\Vault;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
+use Casedev\Vault\Graphrag\GraphragInitResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -19,7 +21,7 @@ interface GraphragRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<GraphragGetStatsResponse>
      *
      * @throws APIException
      */
@@ -34,7 +36,7 @@ interface GraphragRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<GraphragInitResponse>
      *
      * @throws APIException
      */

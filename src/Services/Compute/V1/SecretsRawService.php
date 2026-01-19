@@ -7,10 +7,14 @@ namespace Casedev\Services\Compute\V1;
 use Casedev\Client;
 use Casedev\Compute\V1\Secrets\SecretCreateParams;
 use Casedev\Compute\V1\Secrets\SecretDeleteGroupParams;
+use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
 use Casedev\Compute\V1\Secrets\SecretListParams;
+use Casedev\Compute\V1\Secrets\SecretListResponse;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
 use Casedev\Compute\V1\Secrets\SecretRetrieveGroupParams;
 use Casedev\Compute\V1\Secrets\SecretUpdateGroupParams;
+use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -74,7 +78,7 @@ final class SecretsRawService implements SecretsRawContract
      * @param array{env?: string}|SecretListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretListResponse>
      *
      * @throws APIException
      */
@@ -93,7 +97,7 @@ final class SecretsRawService implements SecretsRawContract
             path: 'compute/v1/secrets',
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: SecretListResponse::class,
         );
     }
 
@@ -106,7 +110,7 @@ final class SecretsRawService implements SecretsRawContract
      * @param array{env?: string, key?: string}|SecretDeleteGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretDeleteGroupResponse>
      *
      * @throws APIException
      */
@@ -126,7 +130,7 @@ final class SecretsRawService implements SecretsRawContract
             path: ['compute/v1/secrets/%1$s', $group],
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: SecretDeleteGroupResponse::class,
         );
     }
 
@@ -139,7 +143,7 @@ final class SecretsRawService implements SecretsRawContract
      * @param array{env?: string}|SecretRetrieveGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretGetGroupResponse>
      *
      * @throws APIException
      */
@@ -159,7 +163,7 @@ final class SecretsRawService implements SecretsRawContract
             path: ['compute/v1/secrets/%1$s', $group],
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: SecretGetGroupResponse::class,
         );
     }
 
@@ -174,7 +178,7 @@ final class SecretsRawService implements SecretsRawContract
      * }|SecretUpdateGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretUpdateGroupResponse>
      *
      * @throws APIException
      */
@@ -194,7 +198,7 @@ final class SecretsRawService implements SecretsRawContract
             path: ['compute/v1/secrets/%1$s', $group],
             body: (object) $parsed,
             options: $options,
-            convert: null,
+            convert: SecretUpdateGroupResponse::class,
         );
     }
 }

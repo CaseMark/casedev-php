@@ -3,6 +3,8 @@
 namespace Tests\Services\Format\V1;
 
 use Casedev\Client;
+use Casedev\Format\V1\Templates\TemplateGetResponse;
+use Casedev\Format\V1\Templates\TemplateListResponse;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -75,7 +77,7 @@ final class TemplatesTest extends TestCase
         $result = $this->client->format->v1->templates->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(TemplateGetResponse::class, $result);
     }
 
     #[Test]
@@ -88,6 +90,6 @@ final class TemplatesTest extends TestCase
         $result = $this->client->format->v1->templates->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(TemplateListResponse::class, $result);
     }
 }

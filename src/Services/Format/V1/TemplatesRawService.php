@@ -9,7 +9,9 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\Templates\TemplateCreateParams;
 use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
+use Casedev\Format\V1\Templates\TemplateGetResponse;
 use Casedev\Format\V1\Templates\TemplateListParams;
+use Casedev\Format\V1\Templates\TemplateListResponse;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1\TemplatesRawContract;
@@ -72,7 +74,7 @@ final class TemplatesRawService implements TemplatesRawContract
      * @param string $id The unique identifier of the format template
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TemplateGetResponse>
      *
      * @throws APIException
      */
@@ -85,7 +87,7 @@ final class TemplatesRawService implements TemplatesRawContract
             method: 'get',
             path: ['format/v1/templates/%1$s', $id],
             options: $requestOptions,
-            convert: null,
+            convert: TemplateGetResponse::class,
         );
     }
 
@@ -99,7 +101,7 @@ final class TemplatesRawService implements TemplatesRawContract
      * @param array{type?: string}|TemplateListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TemplateListResponse>
      *
      * @throws APIException
      */
@@ -118,7 +120,7 @@ final class TemplatesRawService implements TemplatesRawContract
             path: 'format/v1/templates',
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: TemplateListResponse::class,
         );
     }
 }

@@ -3,6 +3,9 @@
 namespace Tests\Services\Vault;
 
 use Casedev\Client;
+use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetTextResponse;
+use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -37,7 +40,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ObjectGetResponse::class, $result);
     }
 
     #[Test]
@@ -50,7 +53,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ObjectGetResponse::class, $result);
     }
 
     #[Test]
@@ -63,7 +66,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->list('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ObjectListResponse::class, $result);
     }
 
     #[Test]
@@ -111,7 +114,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -124,7 +127,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -137,7 +140,7 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ObjectGetTextResponse::class, $result);
     }
 
     #[Test]
@@ -150,6 +153,6 @@ final class ObjectsTest extends TestCase
         $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ObjectGetTextResponse::class, $result);
     }
 }

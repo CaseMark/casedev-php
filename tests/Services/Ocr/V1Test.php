@@ -3,6 +3,7 @@
 namespace Tests\Services\Ocr;
 
 use Casedev\Client;
+use Casedev\Ocr\V1\V1GetResponse;
 use Casedev\Ocr\V1\V1ProcessResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -37,7 +38,7 @@ final class V1Test extends TestCase
         $result = $this->client->ocr->v1->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1GetResponse::class, $result);
     }
 
     #[Test]
@@ -50,7 +51,7 @@ final class V1Test extends TestCase
         $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -63,7 +64,7 @@ final class V1Test extends TestCase
         $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertIsString($result);
     }
 
     #[Test]

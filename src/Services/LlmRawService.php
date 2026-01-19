@@ -7,6 +7,7 @@ namespace Casedev\Services;
 use Casedev\Client;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Llm\LlmGetConfigResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\LlmRawContract;
 
@@ -34,7 +35,7 @@ final class LlmRawService implements LlmRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<LlmGetConfigResponse>
      *
      * @throws APIException
      */
@@ -46,7 +47,7 @@ final class LlmRawService implements LlmRawContract
             method: 'get',
             path: 'llm/config',
             options: $requestOptions,
-            convert: null
+            convert: LlmGetConfigResponse::class,
         );
     }
 }

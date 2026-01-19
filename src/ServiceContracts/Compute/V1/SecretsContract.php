@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace Casedev\ServiceContracts\Compute\V1;
 
+use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretListResponse;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
+use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 
@@ -41,7 +45,7 @@ interface SecretsContract
     public function list(
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): SecretListResponse;
 
     /**
      * @api
@@ -58,7 +62,7 @@ interface SecretsContract
         ?string $env = null,
         ?string $key = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): SecretDeleteGroupResponse;
 
     /**
      * @api
@@ -73,7 +77,7 @@ interface SecretsContract
         string $group,
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): SecretGetGroupResponse;
 
     /**
      * @api
@@ -90,5 +94,5 @@ interface SecretsContract
         array $secrets,
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): SecretUpdateGroupResponse;
 }

@@ -7,6 +7,8 @@ namespace Casedev\ServiceContracts\Llm;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\V1CreateEmbeddingParams;
+use Casedev\Llm\V1\V1ListModelsResponse;
+use Casedev\Llm\V1\V1NewEmbeddingResponse;
 use Casedev\RequestOptions;
 
 /**
@@ -20,7 +22,7 @@ interface V1RawContract
      * @param array<string,mixed>|V1CreateEmbeddingParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1NewEmbeddingResponse>
      *
      * @throws APIException
      */
@@ -34,7 +36,7 @@ interface V1RawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1ListModelsResponse>
      *
      * @throws APIException
      */

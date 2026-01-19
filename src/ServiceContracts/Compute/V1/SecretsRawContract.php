@@ -6,10 +6,14 @@ namespace Casedev\ServiceContracts\Compute\V1;
 
 use Casedev\Compute\V1\Secrets\SecretCreateParams;
 use Casedev\Compute\V1\Secrets\SecretDeleteGroupParams;
+use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
 use Casedev\Compute\V1\Secrets\SecretListParams;
+use Casedev\Compute\V1\Secrets\SecretListResponse;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
 use Casedev\Compute\V1\Secrets\SecretRetrieveGroupParams;
 use Casedev\Compute\V1\Secrets\SecretUpdateGroupParams;
+use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -40,7 +44,7 @@ interface SecretsRawContract
      * @param array<string,mixed>|SecretListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretListResponse>
      *
      * @throws APIException
      */
@@ -56,7 +60,7 @@ interface SecretsRawContract
      * @param array<string,mixed>|SecretDeleteGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretDeleteGroupResponse>
      *
      * @throws APIException
      */
@@ -73,7 +77,7 @@ interface SecretsRawContract
      * @param array<string,mixed>|SecretRetrieveGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretGetGroupResponse>
      *
      * @throws APIException
      */
@@ -90,7 +94,7 @@ interface SecretsRawContract
      * @param array<string,mixed>|SecretUpdateGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<SecretUpdateGroupResponse>
      *
      * @throws APIException
      */

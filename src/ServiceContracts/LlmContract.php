@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\ServiceContracts;
 
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Llm\LlmGetConfigResponse;
 use Casedev\RequestOptions;
 
 /**
@@ -21,5 +22,5 @@ interface LlmContract
      */
     public function getConfig(
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): LlmGetConfigResponse;
 }

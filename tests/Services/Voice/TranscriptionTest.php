@@ -4,6 +4,7 @@ namespace Tests\Services\Voice;
 
 use Casedev\Client;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
+use Casedev\Voice\Transcription\TranscriptionNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +38,7 @@ final class TranscriptionTest extends TestCase
         $result = $this->client->voice->transcription->create();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(TranscriptionNewResponse::class, $result);
     }
 
     #[Test]

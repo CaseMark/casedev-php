@@ -6,6 +6,7 @@ namespace Casedev\ServiceContracts;
 
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Llm\LlmGetConfigResponse;
 use Casedev\RequestOptions;
 
 /**
@@ -18,7 +19,7 @@ interface LlmRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<LlmGetConfigResponse>
      *
      * @throws APIException
      */

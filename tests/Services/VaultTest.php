@@ -3,6 +3,7 @@
 namespace Tests\Services;
 
 use Casedev\Client;
+use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
@@ -73,7 +74,7 @@ final class VaultTest extends TestCase
         $result = $this->client->vault->retrieve('vault_abc123');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(VaultGetResponse::class, $result);
     }
 
     #[Test]

@@ -8,6 +8,7 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Ocr\V1\V1DownloadParams;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
+use Casedev\Ocr\V1\V1GetResponse;
 use Casedev\Ocr\V1\V1ProcessParams;
 use Casedev\Ocr\V1\V1ProcessResponse;
 use Casedev\RequestOptions;
@@ -23,7 +24,7 @@ interface V1RawContract
      * @param string $id The OCR job ID returned from the create OCR endpoint
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetResponse>
      *
      * @throws APIException
      */
@@ -39,7 +40,7 @@ interface V1RawContract
      * @param array<string,mixed>|V1DownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */

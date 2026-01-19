@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
+use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
+use Casedev\Compute\V1\Secrets\SecretListResponse;
 use Casedev\Compute\V1\Secrets\SecretNewResponse;
+use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\RequestOptions;
@@ -76,7 +80,7 @@ final class SecretsService implements SecretsContract
     public function list(
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): SecretListResponse {
         $params = Util::removeNulls(['env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
@@ -102,7 +106,7 @@ final class SecretsService implements SecretsContract
         ?string $env = null,
         ?string $key = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): SecretDeleteGroupResponse {
         $params = Util::removeNulls(['env' => $env, 'key' => $key]);
 
         // @phpstan-ignore-next-line argument.type
@@ -126,7 +130,7 @@ final class SecretsService implements SecretsContract
         string $group,
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): SecretGetGroupResponse {
         $params = Util::removeNulls(['env' => $env]);
 
         // @phpstan-ignore-next-line argument.type
@@ -152,7 +156,7 @@ final class SecretsService implements SecretsContract
         array $secrets,
         ?string $env = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): SecretUpdateGroupResponse {
         $params = Util::removeNulls(['secrets' => $secrets, 'env' => $env]);
 
         // @phpstan-ignore-next-line argument.type

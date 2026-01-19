@@ -8,6 +8,7 @@ use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\StreamingContract;
+use Casedev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -45,7 +46,7 @@ final class StreamingService implements StreamingContract
      */
     public function getURL(
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): StreamingGetURLResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getURL(requestOptions: $requestOptions);
 

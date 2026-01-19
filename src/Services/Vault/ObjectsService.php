@@ -10,6 +10,9 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetTextResponse;
+use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 
 /**
@@ -45,7 +48,7 @@ final class ObjectsService implements ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): ObjectGetResponse {
         $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
@@ -67,7 +70,7 @@ final class ObjectsService implements ObjectsContract
     public function list(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): ObjectListResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($id, requestOptions: $requestOptions);
 
@@ -126,7 +129,7 @@ final class ObjectsService implements ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): string {
         $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
@@ -150,7 +153,7 @@ final class ObjectsService implements ObjectsContract
         string $objectID,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): ObjectGetTextResponse {
         $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type

@@ -3,6 +3,7 @@
 namespace Tests\Services\Voice;
 
 use Casedev\Client;
+use Casedev\Voice\V1\V1ListVoicesResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,6 +37,6 @@ final class V1Test extends TestCase
         $result = $this->client->voice->v1->listVoices();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1ListVoicesResponse::class, $result);
     }
 }
