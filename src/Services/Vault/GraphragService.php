@@ -8,6 +8,8 @@ use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\GraphragContract;
+use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
+use Casedev\Vault\Graphrag\GraphragInitResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -40,7 +42,7 @@ final class GraphragService implements GraphragContract
     public function getStats(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): GraphragGetStatsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getStats($id, requestOptions: $requestOptions);
 
@@ -60,7 +62,7 @@ final class GraphragService implements GraphragContract
     public function init(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): GraphragInitResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->init($id, requestOptions: $requestOptions);
 

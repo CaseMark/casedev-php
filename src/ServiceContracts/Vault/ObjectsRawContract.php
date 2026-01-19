@@ -9,7 +9,10 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
 use Casedev\Vault\Objects\ObjectDownloadParams;
+use Casedev\Vault\Objects\ObjectGetResponse;
 use Casedev\Vault\Objects\ObjectGetTextParams;
+use Casedev\Vault\Objects\ObjectGetTextResponse;
+use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 use Casedev\Vault\Objects\ObjectRetrieveParams;
 
@@ -25,7 +28,7 @@ interface ObjectsRawContract
      * @param array<string,mixed>|ObjectRetrieveParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectGetResponse>
      *
      * @throws APIException
      */
@@ -41,7 +44,7 @@ interface ObjectsRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectListResponse>
      *
      * @throws APIException
      */
@@ -74,7 +77,7 @@ interface ObjectsRawContract
      * @param array<string,mixed>|ObjectDownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */
@@ -91,7 +94,7 @@ interface ObjectsRawContract
      * @param array<string,mixed>|ObjectGetTextParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectGetTextResponse>
      *
      * @throws APIException
      */

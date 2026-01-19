@@ -7,7 +7,9 @@ namespace Casedev\ServiceContracts\Format\V1;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\Templates\TemplateCreateParams;
+use Casedev\Format\V1\Templates\TemplateGetResponse;
 use Casedev\Format\V1\Templates\TemplateListParams;
+use Casedev\Format\V1\Templates\TemplateListResponse;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 
@@ -37,7 +39,7 @@ interface TemplatesRawContract
      * @param string $id The unique identifier of the format template
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TemplateGetResponse>
      *
      * @throws APIException
      */
@@ -52,7 +54,7 @@ interface TemplatesRawContract
      * @param array<string,mixed>|TemplateListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TemplateListResponse>
      *
      * @throws APIException
      */

@@ -14,6 +14,7 @@ use Casedev\Voice\V1\V1ListVoicesParams;
 use Casedev\Voice\V1\V1ListVoicesParams\Sort;
 use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
 use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
+use Casedev\Voice\V1\V1ListVoicesResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -44,7 +45,7 @@ final class V1RawService implements V1RawContract
      * }|V1ListVoicesParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1ListVoicesResponse>
      *
      * @throws APIException
      */
@@ -73,7 +74,7 @@ final class V1RawService implements V1RawContract
                 ],
             ),
             options: $options,
-            convert: null,
+            convert: V1ListVoicesResponse::class,
         );
     }
 }

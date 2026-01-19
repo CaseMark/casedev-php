@@ -6,6 +6,8 @@ namespace Casedev\ServiceContracts\Llm;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use Casedev\Llm\V1\V1ListModelsResponse;
+use Casedev\Llm\V1\V1NewEmbeddingResponse;
 use Casedev\RequestOptions;
 
 /**
@@ -33,7 +35,7 @@ interface V1Contract
         EncodingFormat|string $encodingFormat = 'float',
         ?string $user = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): V1NewEmbeddingResponse;
 
     /**
      * @api
@@ -44,5 +46,5 @@ interface V1Contract
      */
     public function listModels(
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): V1ListModelsResponse;
 }

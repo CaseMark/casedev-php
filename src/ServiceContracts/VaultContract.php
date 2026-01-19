@@ -6,6 +6,7 @@ namespace Casedev\ServiceContracts;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
@@ -52,7 +53,7 @@ interface VaultContract
     public function retrieve(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): VaultGetResponse;
 
     /**
      * @api

@@ -13,6 +13,7 @@ use Casedev\Voice\Transcription\TranscriptionCreateParams;
 use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
 use Casedev\Voice\Transcription\TranscriptionGetResponse;
+use Casedev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -52,7 +53,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      * }|TranscriptionCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<TranscriptionNewResponse>
      *
      * @throws APIException
      */
@@ -71,7 +72,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
             path: 'voice/transcription',
             body: (object) $parsed,
             options: $options,
-            convert: null,
+            convert: TranscriptionNewResponse::class,
         );
     }
 

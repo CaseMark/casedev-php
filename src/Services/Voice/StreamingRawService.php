@@ -9,6 +9,7 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Voice\StreamingRawContract;
+use Casedev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -35,7 +36,7 @@ final class StreamingRawService implements StreamingRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<StreamingGetURLResponse>
      *
      * @throws APIException
      */
@@ -47,7 +48,7 @@ final class StreamingRawService implements StreamingRawContract
             method: 'get',
             path: 'voice/streaming/url',
             options: $requestOptions,
-            convert: null,
+            convert: StreamingGetURLResponse::class,
         );
     }
 }

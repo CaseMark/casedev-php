@@ -9,6 +9,7 @@ use Casedev\RequestOptions;
 use Casedev\Voice\V1\V1ListVoicesParams\Sort;
 use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
 use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
+use Casedev\Voice\V1\V1ListVoicesResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -42,5 +43,5 @@ interface V1Contract
         SortDirection|string $sortDirection = 'asc',
         VoiceType|string|null $voiceType = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): V1ListVoicesResponse;
 }

@@ -3,6 +3,7 @@
 namespace Tests\Services\Compute;
 
 use Casedev\Client;
+use Casedev\Compute\V1\V1GetUsageResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -49,6 +50,6 @@ final class V1Test extends TestCase
         $result = $this->client->compute->v1->getUsage();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1GetUsageResponse::class, $result);
     }
 }

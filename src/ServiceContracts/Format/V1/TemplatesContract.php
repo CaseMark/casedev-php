@@ -6,6 +6,8 @@ namespace Casedev\ServiceContracts\Format\V1;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
+use Casedev\Format\V1\Templates\TemplateGetResponse;
+use Casedev\Format\V1\Templates\TemplateListResponse;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 
@@ -50,7 +52,7 @@ interface TemplatesContract
     public function retrieve(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): TemplateGetResponse;
 
     /**
      * @api
@@ -63,5 +65,5 @@ interface TemplatesContract
     public function list(
         ?string $type = null,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): TemplateListResponse;
 }

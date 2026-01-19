@@ -6,6 +6,7 @@ namespace Casedev\ServiceContracts\Ocr;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
+use Casedev\Ocr\V1\V1GetResponse;
 use Casedev\Ocr\V1\V1ProcessParams\Engine;
 use Casedev\Ocr\V1\V1ProcessParams\Features;
 use Casedev\Ocr\V1\V1ProcessResponse;
@@ -28,7 +29,7 @@ interface V1Contract
     public function retrieve(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): V1GetResponse;
 
     /**
      * @api
@@ -43,7 +44,7 @@ interface V1Contract
         Type|string $type,
         string $id,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): string;
 
     /**
      * @api

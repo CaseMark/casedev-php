@@ -13,6 +13,7 @@ use Casedev\Search\V1\V1AnswerParams\SearchType;
 use Casedev\Search\V1\V1AnswerResponse;
 use Casedev\Search\V1\V1ContentsParams;
 use Casedev\Search\V1\V1ContentsResponse;
+use Casedev\Search\V1\V1GetResearchResponse;
 use Casedev\Search\V1\V1ResearchParams;
 use Casedev\Search\V1\V1ResearchParams\Model;
 use Casedev\Search\V1\V1ResearchResponse;
@@ -165,7 +166,7 @@ final class V1RawService implements V1RawContract
      * @param array{events?: string, stream?: bool}|V1RetrieveResearchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetResearchResponse>
      *
      * @throws APIException
      */
@@ -185,7 +186,7 @@ final class V1RawService implements V1RawContract
             path: ['search/v1/research/%1$s', $id],
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: V1GetResearchResponse::class,
         );
     }
 

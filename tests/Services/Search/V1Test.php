@@ -5,6 +5,7 @@ namespace Tests\Services\Search;
 use Casedev\Client;
 use Casedev\Search\V1\V1AnswerResponse;
 use Casedev\Search\V1\V1ContentsResponse;
+use Casedev\Search\V1\V1GetResearchResponse;
 use Casedev\Search\V1\V1ResearchResponse;
 use Casedev\Search\V1\V1SearchResponse;
 use Casedev\Search\V1\V1SimilarResponse;
@@ -149,7 +150,7 @@ final class V1Test extends TestCase
         $result = $this->client->search->v1->retrieveResearch('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(V1GetResearchResponse::class, $result);
     }
 
     #[Test]

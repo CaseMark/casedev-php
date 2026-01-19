@@ -11,6 +11,7 @@ use Casedev\Search\V1\V1AnswerParams;
 use Casedev\Search\V1\V1AnswerResponse;
 use Casedev\Search\V1\V1ContentsParams;
 use Casedev\Search\V1\V1ContentsResponse;
+use Casedev\Search\V1\V1GetResearchResponse;
 use Casedev\Search\V1\V1ResearchParams;
 use Casedev\Search\V1\V1ResearchResponse;
 use Casedev\Search\V1\V1RetrieveResearchParams;
@@ -76,7 +77,7 @@ interface V1RawContract
      * @param array<string,mixed>|V1RetrieveResearchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetResearchResponse>
      *
      * @throws APIException
      */

@@ -3,6 +3,7 @@
 namespace Tests\Services\Voice;
 
 use Casedev\Client;
+use Casedev\Voice\Streaming\StreamingGetURLResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,6 +37,6 @@ final class StreamingTest extends TestCase
         $result = $this->client->voice->streaming->getURL();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(StreamingGetURLResponse::class, $result);
     }
 }

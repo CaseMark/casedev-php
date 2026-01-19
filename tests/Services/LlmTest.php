@@ -3,6 +3,7 @@
 namespace Tests\Services;
 
 use Casedev\Client;
+use Casedev\Llm\LlmGetConfigResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,6 +37,6 @@ final class LlmTest extends TestCase
         $result = $this->client->llm->getConfig();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(LlmGetConfigResponse::class, $result);
     }
 }

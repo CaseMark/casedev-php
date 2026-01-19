@@ -4,7 +4,10 @@ namespace Tests\Services\Compute\V1;
 
 use Casedev\Client;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
+use Casedev\Compute\V1\Environments\EnvironmentListResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -68,7 +71,7 @@ final class EnvironmentsTest extends TestCase
         $result = $this->client->compute->v1->environments->retrieve('name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(EnvironmentGetResponse::class, $result);
     }
 
     #[Test]
@@ -81,7 +84,7 @@ final class EnvironmentsTest extends TestCase
         $result = $this->client->compute->v1->environments->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(EnvironmentListResponse::class, $result);
     }
 
     #[Test]
@@ -111,6 +114,6 @@ final class EnvironmentsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(EnvironmentSetDefaultResponse::class, $result);
     }
 }

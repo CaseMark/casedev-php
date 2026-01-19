@@ -12,7 +12,10 @@ use Casedev\ServiceContracts\Vault\ObjectsRawContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use Casedev\Vault\Objects\ObjectDownloadParams;
+use Casedev\Vault\Objects\ObjectGetResponse;
 use Casedev\Vault\Objects\ObjectGetTextParams;
+use Casedev\Vault\Objects\ObjectGetTextResponse;
+use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
 use Casedev\Vault\Objects\ObjectRetrieveParams;
 
@@ -36,7 +39,7 @@ final class ObjectsRawService implements ObjectsRawContract
      * @param array{id: string}|ObjectRetrieveParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectGetResponse>
      *
      * @throws APIException
      */
@@ -57,7 +60,7 @@ final class ObjectsRawService implements ObjectsRawContract
             method: 'get',
             path: ['vault/%1$s/objects/%2$s', $id, $objectID],
             options: $options,
-            convert: null,
+            convert: ObjectGetResponse::class,
         );
     }
 
@@ -69,7 +72,7 @@ final class ObjectsRawService implements ObjectsRawContract
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectListResponse>
      *
      * @throws APIException
      */
@@ -82,7 +85,7 @@ final class ObjectsRawService implements ObjectsRawContract
             method: 'get',
             path: ['vault/%1$s/objects', $id],
             options: $requestOptions,
-            convert: null,
+            convert: ObjectListResponse::class,
         );
     }
 
@@ -135,7 +138,7 @@ final class ObjectsRawService implements ObjectsRawContract
      * @param array{id: string}|ObjectDownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */
@@ -156,7 +159,7 @@ final class ObjectsRawService implements ObjectsRawContract
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
             options: $options,
-            convert: null,
+            convert: 'string',
         );
     }
 
@@ -169,7 +172,7 @@ final class ObjectsRawService implements ObjectsRawContract
      * @param array{id: string}|ObjectGetTextParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<ObjectGetTextResponse>
      *
      * @throws APIException
      */
@@ -190,7 +193,7 @@ final class ObjectsRawService implements ObjectsRawContract
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/text', $id, $objectID],
             options: $options,
-            convert: null,
+            convert: ObjectGetTextResponse::class,
         );
     }
 }

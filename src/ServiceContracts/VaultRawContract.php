@@ -8,6 +8,7 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Vault\VaultCreateParams;
+use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
@@ -43,7 +44,7 @@ interface VaultRawContract
      * @param string $id Unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<VaultGetResponse>
      *
      * @throws APIException
      */

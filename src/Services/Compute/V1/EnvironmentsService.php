@@ -6,7 +6,10 @@ namespace Casedev\Services\Compute\V1;
 
 use Casedev\Client;
 use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
+use Casedev\Compute\V1\Environments\EnvironmentListResponse;
 use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\RequestOptions;
@@ -65,7 +68,7 @@ final class EnvironmentsService implements EnvironmentsContract
     public function retrieve(
         string $name,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): EnvironmentGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($name, requestOptions: $requestOptions);
 
@@ -83,7 +86,7 @@ final class EnvironmentsService implements EnvironmentsContract
      */
     public function list(
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): EnvironmentListResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(requestOptions: $requestOptions);
 
@@ -123,7 +126,7 @@ final class EnvironmentsService implements EnvironmentsContract
     public function setDefault(
         string $name,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): EnvironmentSetDefaultResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setDefault($name, requestOptions: $requestOptions);
 

@@ -10,6 +10,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultRawContract;
 use Casedev\Vault\VaultCreateParams;
+use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestParams;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
@@ -78,7 +79,7 @@ final class VaultRawService implements VaultRawContract
      * @param string $id Unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<VaultGetResponse>
      *
      * @throws APIException
      */
@@ -91,7 +92,7 @@ final class VaultRawService implements VaultRawContract
             method: 'get',
             path: ['vault/%1$s', $id],
             options: $requestOptions,
-            convert: null,
+            convert: VaultGetResponse::class,
         );
     }
 

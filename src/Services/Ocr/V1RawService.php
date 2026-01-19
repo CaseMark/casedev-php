@@ -9,6 +9,7 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Ocr\V1\V1DownloadParams;
 use Casedev\Ocr\V1\V1DownloadParams\Type;
+use Casedev\Ocr\V1\V1GetResponse;
 use Casedev\Ocr\V1\V1ProcessParams;
 use Casedev\Ocr\V1\V1ProcessParams\Engine;
 use Casedev\Ocr\V1\V1ProcessParams\Features;
@@ -36,7 +37,7 @@ final class V1RawService implements V1RawContract
      * @param string $id The OCR job ID returned from the create OCR endpoint
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetResponse>
      *
      * @throws APIException
      */
@@ -49,7 +50,7 @@ final class V1RawService implements V1RawContract
             method: 'get',
             path: ['ocr/v1/%1$s', $id],
             options: $requestOptions,
-            convert: null,
+            convert: V1GetResponse::class,
         );
     }
 
@@ -62,7 +63,7 @@ final class V1RawService implements V1RawContract
      * @param array{id: string}|V1DownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */
@@ -83,7 +84,7 @@ final class V1RawService implements V1RawContract
             method: 'get',
             path: ['ocr/v1/%1$s/download/%2$s', $id, $type],
             options: $options,
-            convert: null,
+            convert: 'string',
         );
     }
 

@@ -6,6 +6,7 @@ namespace Casedev\Services\Compute;
 
 use Casedev\Client;
 use Casedev\Compute\V1\V1GetUsageParams;
+use Casedev\Compute\V1\V1GetUsageResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -53,7 +54,7 @@ final class V1RawService implements V1RawContract
      * @param array{month?: int, year?: int}|V1GetUsageParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetUsageResponse>
      *
      * @throws APIException
      */
@@ -72,7 +73,7 @@ final class V1RawService implements V1RawContract
             path: 'compute/v1/usage',
             query: $parsed,
             options: $options,
-            convert: null,
+            convert: V1GetUsageResponse::class,
         );
     }
 }

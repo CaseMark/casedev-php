@@ -8,6 +8,8 @@ use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
+use Casedev\Format\V1\Templates\TemplateGetResponse;
+use Casedev\Format\V1\Templates\TemplateListResponse;
 use Casedev\Format\V1\Templates\TemplateNewResponse;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Format\V1\TemplatesContract;
@@ -87,7 +89,7 @@ final class TemplatesService implements TemplatesContract
     public function retrieve(
         string $id,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): TemplateGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
 
@@ -109,7 +111,7 @@ final class TemplatesService implements TemplatesContract
     public function list(
         ?string $type = null,
         RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    ): TemplateListResponse {
         $params = Util::removeNulls(['type' => $type]);
 
         // @phpstan-ignore-next-line argument.type

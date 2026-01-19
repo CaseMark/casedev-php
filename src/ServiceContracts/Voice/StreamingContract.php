@@ -6,6 +6,7 @@ namespace Casedev\ServiceContracts\Voice;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -21,5 +22,5 @@ interface StreamingContract
      */
     public function getURL(
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): StreamingGetURLResponse;
 }

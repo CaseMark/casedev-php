@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Services\Compute;
 
 use Casedev\Client;
+use Casedev\Compute\V1\V1GetUsageResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\RequestOptions;
@@ -96,7 +97,7 @@ final class V1Service implements V1Contract
         ?int $month = null,
         ?int $year = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): V1GetUsageResponse {
         $params = Util::removeNulls(['month' => $month, 'year' => $year]);
 
         // @phpstan-ignore-next-line argument.type

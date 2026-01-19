@@ -11,6 +11,7 @@ use Casedev\RequestOptions;
 use Casedev\Search\V1\V1AnswerParams\SearchType;
 use Casedev\Search\V1\V1AnswerResponse;
 use Casedev\Search\V1\V1ContentsResponse;
+use Casedev\Search\V1\V1GetResearchResponse;
 use Casedev\Search\V1\V1ResearchParams\Model;
 use Casedev\Search\V1\V1ResearchResponse;
 use Casedev\Search\V1\V1SearchParams\Type;
@@ -197,7 +198,7 @@ final class V1Service implements V1Contract
         ?string $events = null,
         ?bool $stream = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed {
+    ): V1GetResearchResponse {
         $params = Util::removeNulls(['events' => $events, 'stream' => $stream]);
 
         // @phpstan-ignore-next-line argument.type

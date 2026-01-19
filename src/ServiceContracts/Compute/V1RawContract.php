@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\ServiceContracts\Compute;
 
 use Casedev\Compute\V1\V1GetUsageParams;
+use Casedev\Compute\V1\V1GetUsageResponse;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
@@ -33,7 +34,7 @@ interface V1RawContract
      * @param array<string,mixed>|V1GetUsageParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<V1GetUsageResponse>
      *
      * @throws APIException
      */
