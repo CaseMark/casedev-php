@@ -29,7 +29,7 @@ final class VaultSearchResponse implements BaseModel
     use SdkModel;
 
     /**
-     * Relevant text chunks with similarity scores.
+     * Relevant text chunks with similarity scores and page locations.
      *
      * @var list<Chunk>|null $chunks
      */
@@ -98,7 +98,7 @@ final class VaultSearchResponse implements BaseModel
     }
 
     /**
-     * Relevant text chunks with similarity scores.
+     * Relevant text chunks with similarity scores and page locations.
      *
      * @param list<Chunk|ChunkShape> $chunks
      */
