@@ -200,10 +200,10 @@ final class VaultRawService implements VaultRawContract
      * @param array{
      *   contentType: string,
      *   filename: string,
+     *   sizeBytes: int,
      *   autoIndex?: bool,
      *   metadata?: mixed,
      *   path?: string,
-     *   sizeBytes?: float,
      * }|VaultUploadParams $params
      * @param RequestOpts|null $requestOptions
      *

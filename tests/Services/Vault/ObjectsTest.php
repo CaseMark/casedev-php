@@ -98,6 +98,7 @@ final class ObjectsTest extends TestCase
             contentType: 'contentType',
             expiresIn: 60,
             operation: 'GET',
+            sizeBytes: 1,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

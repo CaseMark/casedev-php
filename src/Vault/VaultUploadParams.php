@@ -18,10 +18,10 @@ use Casedev\Core\Contracts\BaseModel;
  * @phpstan-type VaultUploadParamsShape = array{
  *   contentType: string,
  *   filename: string,
+ *   sizeBytes: int,
  *   autoIndex?: bool|null,
  *   metadata?: mixed,
  *   path?: string|null,
- *   sizeBytes?: float|null,
  * }
  */
 final class VaultUploadParams implements BaseModel
@@ -43,6 +43,12 @@ final class VaultUploadParams implements BaseModel
     public string $filename;
 
     /**
+     * File size in bytes (required, max 500MB). Used to enforce upload limits at S3 level.
+     */
+    #[Required]
+    public int $sizeBytes;
+
+    /**
      * Whether to automatically process and index the file for search.
      */
     #[Optional('auto_index')]
@@ -61,23 +67,20 @@ final class VaultUploadParams implements BaseModel
     public ?string $path;
 
     /**
-     * Estimated file size in bytes for cost calculation.
-     */
-    #[Optional]
-    public ?float $sizeBytes;
-
-    /**
      * `new VaultUploadParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * VaultUploadParams::with(contentType: ..., filename: ...)
+     * VaultUploadParams::with(contentType: ..., filename: ..., sizeBytes: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new VaultUploadParams)->withContentType(...)->withFilename(...)
+     * (new VaultUploadParams)
+     *   ->withContentType(...)
+     *   ->withFilename(...)
+     *   ->withSizeBytes(...)
      * ```
      */
     public function __construct()
@@ -93,20 +96,20 @@ final class VaultUploadParams implements BaseModel
     public static function with(
         string $contentType,
         string $filename,
+        int $sizeBytes,
         ?bool $autoIndex = null,
         mixed $metadata = null,
         ?string $path = null,
-        ?float $sizeBytes = null,
     ): self {
         $self = new self;
 
         $self['contentType'] = $contentType;
         $self['filename'] = $filename;
+        $self['sizeBytes'] = $sizeBytes;
 
         null !== $autoIndex && $self['autoIndex'] = $autoIndex;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $path && $self['path'] = $path;
-        null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
 
         return $self;
     }
@@ -129,6 +132,17 @@ final class VaultUploadParams implements BaseModel
     {
         $self = clone $this;
         $self['filename'] = $filename;
+
+        return $self;
+    }
+
+    /**
+     * File size in bytes (required, max 500MB). Used to enforce upload limits at S3 level.
+     */
+    public function withSizeBytes(int $sizeBytes): self
+    {
+        $self = clone $this;
+        $self['sizeBytes'] = $sizeBytes;
 
         return $self;
     }
@@ -162,17 +176,6 @@ final class VaultUploadParams implements BaseModel
     {
         $self = clone $this;
         $self['path'] = $path;
-
-        return $self;
-    }
-
-    /**
-     * Estimated file size in bytes for cost calculation.
-     */
-    public function withSizeBytes(float $sizeBytes): self
-    {
-        $self = clone $this;
-        $self['sizeBytes'] = $sizeBytes;
 
         return $self;
     }
