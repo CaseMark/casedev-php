@@ -158,7 +158,8 @@ final class VaultTest extends TestCase
         $result = $this->client->vault->upload(
             'id',
             contentType: 'contentType',
-            filename: 'filename'
+            filename: 'filename',
+            sizeBytes: 1
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -176,10 +177,10 @@ final class VaultTest extends TestCase
             'id',
             contentType: 'contentType',
             filename: 'filename',
+            sizeBytes: 1,
             autoIndex: true,
             metadata: (object) [],
             path: 'path',
-            sizeBytes: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

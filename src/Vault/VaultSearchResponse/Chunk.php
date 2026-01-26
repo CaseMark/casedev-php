@@ -18,6 +18,8 @@ use Casedev\Core\Contracts\BaseModel;
  *   score?: float|null,
  *   source?: string|null,
  *   text?: string|null,
+ *   wordEndIndex?: int|null,
+ *   wordStartIndex?: int|null,
  * }
  */
 final class Chunk implements BaseModel
@@ -73,6 +75,18 @@ final class Chunk implements BaseModel
     #[Optional]
     public ?string $text;
 
+    /**
+     * Ending word index (0-based) in the OCR word list. Use with GET /vault/:id/objects/:objectId/ocr-words to retrieve bounding boxes for highlighting.
+     */
+    #[Optional('word_end_index', nullable: true)]
+    public ?int $wordEndIndex;
+
+    /**
+     * Starting word index (0-based) in the OCR word list. Use with GET /vault/:id/objects/:objectId/ocr-words to retrieve bounding boxes for highlighting.
+     */
+    #[Optional('word_start_index', nullable: true)]
+    public ?int $wordStartIndex;
+
     public function __construct()
     {
         $this->initialize();
@@ -92,6 +106,8 @@ final class Chunk implements BaseModel
         ?float $score = null,
         ?string $source = null,
         ?string $text = null,
+        ?int $wordEndIndex = null,
+        ?int $wordStartIndex = null,
     ): self {
         $self = new self;
 
@@ -103,6 +119,8 @@ final class Chunk implements BaseModel
         null !== $score && $self['score'] = $score;
         null !== $source && $self['source'] = $source;
         null !== $text && $self['text'] = $text;
+        null !== $wordEndIndex && $self['wordEndIndex'] = $wordEndIndex;
+        null !== $wordStartIndex && $self['wordStartIndex'] = $wordStartIndex;
 
         return $self;
     }
@@ -191,6 +209,28 @@ final class Chunk implements BaseModel
     {
         $self = clone $this;
         $self['text'] = $text;
+
+        return $self;
+    }
+
+    /**
+     * Ending word index (0-based) in the OCR word list. Use with GET /vault/:id/objects/:objectId/ocr-words to retrieve bounding boxes for highlighting.
+     */
+    public function withWordEndIndex(?int $wordEndIndex): self
+    {
+        $self = clone $this;
+        $self['wordEndIndex'] = $wordEndIndex;
+
+        return $self;
+    }
+
+    /**
+     * Starting word index (0-based) in the OCR word list. Use with GET /vault/:id/objects/:objectId/ocr-words to retrieve bounding boxes for highlighting.
+     */
+    public function withWordStartIndex(?int $wordStartIndex): self
+    {
+        $self = clone $this;
+        $self['wordStartIndex'] = $wordStartIndex;
 
         return $self;
     }

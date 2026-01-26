@@ -53,6 +53,7 @@ interface ObjectsContract
      * @param string $contentType Body param: Content type for PUT operations (optional, defaults to object's content type)
      * @param int $expiresIn Body param: URL expiration time in seconds (1 minute to 7 days)
      * @param Operation|value-of<Operation> $operation Body param: The S3 operation to generate URL for
+     * @param int $sizeBytes Body param: File size in bytes (required for PUT operations, max 500MB). Used to enforce upload limits at S3 level.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -63,6 +64,7 @@ interface ObjectsContract
         ?string $contentType = null,
         int $expiresIn = 3600,
         Operation|string $operation = 'GET',
+        ?int $sizeBytes = null,
         RequestOptions|array|null $requestOptions = null,
     ): ObjectNewPresignedURLResponse;
 

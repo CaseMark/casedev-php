@@ -100,6 +100,7 @@ final class ObjectsRawService implements ObjectsRawContract
      *   contentType?: string,
      *   expiresIn?: int,
      *   operation?: Operation|value-of<Operation>,
+     *   sizeBytes?: int,
      * }|ObjectCreatePresignedURLParams $params
      * @param RequestOpts|null $requestOptions
      *

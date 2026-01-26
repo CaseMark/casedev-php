@@ -21,6 +21,7 @@ use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
  *   contentType?: string|null,
  *   expiresIn?: int|null,
  *   operation?: null|Operation|value-of<Operation>,
+ *   sizeBytes?: int|null,
  * }
  */
 final class ObjectCreatePresignedURLParams implements BaseModel
@@ -53,6 +54,12 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     public ?string $operation;
 
     /**
+     * File size in bytes (required for PUT operations, max 500MB). Used to enforce upload limits at S3 level.
+     */
+    #[Optional]
+    public ?int $sizeBytes;
+
+    /**
      * `new ObjectCreatePresignedURLParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
@@ -83,6 +90,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
         ?string $contentType = null,
         ?int $expiresIn = null,
         Operation|string|null $operation = null,
+        ?int $sizeBytes = null,
     ): self {
         $self = new self;
 
@@ -91,6 +99,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
         null !== $contentType && $self['contentType'] = $contentType;
         null !== $expiresIn && $self['expiresIn'] = $expiresIn;
         null !== $operation && $self['operation'] = $operation;
+        null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
 
         return $self;
     }
@@ -134,6 +143,17 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     {
         $self = clone $this;
         $self['operation'] = $operation;
+
+        return $self;
+    }
+
+    /**
+     * File size in bytes (required for PUT operations, max 500MB). Used to enforce upload limits at S3 level.
+     */
+    public function withSizeBytes(int $sizeBytes): self
+    {
+        $self = clone $this;
+        $self['sizeBytes'] = $sizeBytes;
 
         return $self;
     }
