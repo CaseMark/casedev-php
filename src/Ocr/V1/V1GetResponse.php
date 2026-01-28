@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace Casedev\Ocr\V1;
 
 use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Ocr\V1\V1GetResponse\Status;
 
 /**
  * @phpstan-type V1GetResponseShape = array{
- *   id?: string|null,
+ *   id: string,
+ *   createdAt: \DateTimeInterface,
+ *   status: Status|value-of<Status>,
  *   completedAt?: \DateTimeInterface|null,
- *   createdAt?: \DateTimeInterface|null,
  *   metadata?: mixed,
  *   pageCount?: int|null,
- *   status?: null|Status|value-of<Status>,
  *   text?: string|null,
  * }
  */
@@ -28,20 +29,28 @@ final class V1GetResponse implements BaseModel
     /**
      * OCR job ID.
      */
-    #[Optional]
-    public ?string $id;
+    #[Required]
+    public string $id;
+
+    /**
+     * Job creation timestamp.
+     */
+    #[Required('created_at')]
+    public \DateTimeInterface $createdAt;
+
+    /**
+     * Current job status.
+     *
+     * @var value-of<Status> $status
+     */
+    #[Required(enum: Status::class)]
+    public string $status;
 
     /**
      * Job completion timestamp.
      */
     #[Optional('completed_at')]
     public ?\DateTimeInterface $completedAt;
-
-    /**
-     * Job creation timestamp.
-     */
-    #[Optional('created_at')]
-    public ?\DateTimeInterface $createdAt;
 
     /**
      * Additional processing metadata.
@@ -56,19 +65,25 @@ final class V1GetResponse implements BaseModel
     public ?int $pageCount;
 
     /**
-     * Current job status.
-     *
-     * @var value-of<Status>|null $status
-     */
-    #[Optional(enum: Status::class)]
-    public ?string $status;
-
-    /**
      * Extracted text content (when completed).
      */
     #[Optional]
     public ?string $text;
 
+    /**
+     * `new V1GetResponse()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * V1GetResponse::with(id: ..., createdAt: ..., status: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new V1GetResponse)->withID(...)->withCreatedAt(...)->withStatus(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -79,25 +94,26 @@ final class V1GetResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Status|value-of<Status>|null $status
+     * @param Status|value-of<Status> $status
      */
     public static function with(
-        ?string $id = null,
+        string $id,
+        \DateTimeInterface $createdAt,
+        Status|string $status,
         ?\DateTimeInterface $completedAt = null,
-        ?\DateTimeInterface $createdAt = null,
         mixed $metadata = null,
         ?int $pageCount = null,
-        Status|string|null $status = null,
         ?string $text = null,
     ): self {
         $self = new self;
 
-        null !== $id && $self['id'] = $id;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['status'] = $status;
+
         null !== $completedAt && $self['completedAt'] = $completedAt;
-        null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $pageCount && $self['pageCount'] = $pageCount;
-        null !== $status && $self['status'] = $status;
         null !== $text && $self['text'] = $text;
 
         return $self;
@@ -115,23 +131,36 @@ final class V1GetResponse implements BaseModel
     }
 
     /**
-     * Job completion timestamp.
-     */
-    public function withCompletedAt(\DateTimeInterface $completedAt): self
-    {
-        $self = clone $this;
-        $self['completedAt'] = $completedAt;
-
-        return $self;
-    }
-
-    /**
      * Job creation timestamp.
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
         $self['createdAt'] = $createdAt;
+
+        return $self;
+    }
+
+    /**
+     * Current job status.
+     *
+     * @param Status|value-of<Status> $status
+     */
+    public function withStatus(Status|string $status): self
+    {
+        $self = clone $this;
+        $self['status'] = $status;
+
+        return $self;
+    }
+
+    /**
+     * Job completion timestamp.
+     */
+    public function withCompletedAt(\DateTimeInterface $completedAt): self
+    {
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
         return $self;
     }
@@ -154,19 +183,6 @@ final class V1GetResponse implements BaseModel
     {
         $self = clone $this;
         $self['pageCount'] = $pageCount;
-
-        return $self;
-    }
-
-    /**
-     * Current job status.
-     *
-     * @param Status|value-of<Status> $status
-     */
-    public function withStatus(Status|string $status): self
-    {
-        $self = clone $this;
-        $self['status'] = $status;
 
         return $self;
     }

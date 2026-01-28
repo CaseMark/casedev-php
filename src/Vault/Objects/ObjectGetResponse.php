@@ -5,25 +5,26 @@ declare(strict_types=1);
 namespace Casedev\Vault\Objects;
 
 use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ObjectGetResponseShape = array{
- *   id?: string|null,
+ *   id: string,
+ *   contentType: string,
+ *   createdAt: \DateTimeInterface,
+ *   downloadURL: string,
+ *   expiresIn: int,
+ *   filename: string,
+ *   ingestionStatus: string,
+ *   vaultID: string,
  *   chunkCount?: int|null,
- *   contentType?: string|null,
- *   createdAt?: \DateTimeInterface|null,
- *   downloadURL?: string|null,
- *   expiresIn?: int|null,
- *   filename?: string|null,
- *   ingestionStatus?: string|null,
  *   metadata?: mixed,
  *   pageCount?: int|null,
  *   path?: string|null,
  *   sizeBytes?: int|null,
  *   textLength?: int|null,
- *   vaultID?: string|null,
  *   vectorCount?: int|null,
  * }
  */
@@ -35,50 +36,56 @@ final class ObjectGetResponse implements BaseModel
     /**
      * Object ID.
      */
-    #[Optional]
-    public ?string $id;
+    #[Required]
+    public string $id;
+
+    /**
+     * MIME type.
+     */
+    #[Required]
+    public string $contentType;
+
+    /**
+     * Upload timestamp.
+     */
+    #[Required]
+    public \DateTimeInterface $createdAt;
+
+    /**
+     * Presigned S3 download URL.
+     */
+    #[Required('downloadUrl')]
+    public string $downloadURL;
+
+    /**
+     * URL expiration time in seconds.
+     */
+    #[Required]
+    public int $expiresIn;
+
+    /**
+     * Original filename.
+     */
+    #[Required]
+    public string $filename;
+
+    /**
+     * Processing status (pending, processing, completed, failed).
+     */
+    #[Required]
+    public string $ingestionStatus;
+
+    /**
+     * Vault ID.
+     */
+    #[Required('vaultId')]
+    public string $vaultID;
 
     /**
      * Number of text chunks created.
      */
     #[Optional]
     public ?int $chunkCount;
-
-    /**
-     * MIME type.
-     */
-    #[Optional]
-    public ?string $contentType;
-
-    /**
-     * Upload timestamp.
-     */
-    #[Optional]
-    public ?\DateTimeInterface $createdAt;
-
-    /**
-     * Presigned S3 download URL.
-     */
-    #[Optional('downloadUrl')]
-    public ?string $downloadURL;
-
-    /**
-     * URL expiration time in seconds.
-     */
-    #[Optional]
-    public ?int $expiresIn;
-
-    /**
-     * Original filename.
-     */
-    #[Optional]
-    public ?string $filename;
-
-    /**
-     * Processing status (pending, processing, completed, failed).
-     */
-    #[Optional]
-    public ?string $ingestionStatus;
 
     /**
      * Additional metadata.
@@ -111,17 +118,42 @@ final class ObjectGetResponse implements BaseModel
     public ?int $textLength;
 
     /**
-     * Vault ID.
-     */
-    #[Optional('vaultId')]
-    public ?string $vaultID;
-
-    /**
      * Number of embedding vectors generated.
      */
     #[Optional]
     public ?int $vectorCount;
 
+    /**
+     * `new ObjectGetResponse()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ObjectGetResponse::with(
+     *   id: ...,
+     *   contentType: ...,
+     *   createdAt: ...,
+     *   downloadURL: ...,
+     *   expiresIn: ...,
+     *   filename: ...,
+     *   ingestionStatus: ...,
+     *   vaultID: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ObjectGetResponse)
+     *   ->withID(...)
+     *   ->withContentType(...)
+     *   ->withCreatedAt(...)
+     *   ->withDownloadURL(...)
+     *   ->withExpiresIn(...)
+     *   ->withFilename(...)
+     *   ->withIngestionStatus(...)
+     *   ->withVaultID(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -133,38 +165,39 @@ final class ObjectGetResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $id = null,
+        string $id,
+        string $contentType,
+        \DateTimeInterface $createdAt,
+        string $downloadURL,
+        int $expiresIn,
+        string $filename,
+        string $ingestionStatus,
+        string $vaultID,
         ?int $chunkCount = null,
-        ?string $contentType = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?string $downloadURL = null,
-        ?int $expiresIn = null,
-        ?string $filename = null,
-        ?string $ingestionStatus = null,
         mixed $metadata = null,
         ?int $pageCount = null,
         ?string $path = null,
         ?int $sizeBytes = null,
         ?int $textLength = null,
-        ?string $vaultID = null,
         ?int $vectorCount = null,
     ): self {
         $self = new self;
 
-        null !== $id && $self['id'] = $id;
+        $self['id'] = $id;
+        $self['contentType'] = $contentType;
+        $self['createdAt'] = $createdAt;
+        $self['downloadURL'] = $downloadURL;
+        $self['expiresIn'] = $expiresIn;
+        $self['filename'] = $filename;
+        $self['ingestionStatus'] = $ingestionStatus;
+        $self['vaultID'] = $vaultID;
+
         null !== $chunkCount && $self['chunkCount'] = $chunkCount;
-        null !== $contentType && $self['contentType'] = $contentType;
-        null !== $createdAt && $self['createdAt'] = $createdAt;
-        null !== $downloadURL && $self['downloadURL'] = $downloadURL;
-        null !== $expiresIn && $self['expiresIn'] = $expiresIn;
-        null !== $filename && $self['filename'] = $filename;
-        null !== $ingestionStatus && $self['ingestionStatus'] = $ingestionStatus;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $pageCount && $self['pageCount'] = $pageCount;
         null !== $path && $self['path'] = $path;
         null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
         null !== $textLength && $self['textLength'] = $textLength;
-        null !== $vaultID && $self['vaultID'] = $vaultID;
         null !== $vectorCount && $self['vectorCount'] = $vectorCount;
 
         return $self;
@@ -177,17 +210,6 @@ final class ObjectGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['id'] = $id;
-
-        return $self;
-    }
-
-    /**
-     * Number of text chunks created.
-     */
-    public function withChunkCount(int $chunkCount): self
-    {
-        $self = clone $this;
-        $self['chunkCount'] = $chunkCount;
 
         return $self;
     }
@@ -259,6 +281,28 @@ final class ObjectGetResponse implements BaseModel
     }
 
     /**
+     * Vault ID.
+     */
+    public function withVaultID(string $vaultID): self
+    {
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
+
+        return $self;
+    }
+
+    /**
+     * Number of text chunks created.
+     */
+    public function withChunkCount(int $chunkCount): self
+    {
+        $self = clone $this;
+        $self['chunkCount'] = $chunkCount;
+
+        return $self;
+    }
+
+    /**
      * Additional metadata.
      */
     public function withMetadata(mixed $metadata): self
@@ -309,17 +353,6 @@ final class ObjectGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['textLength'] = $textLength;
-
-        return $self;
-    }
-
-    /**
-     * Vault ID.
-     */
-    public function withVaultID(string $vaultID): self
-    {
-        $self = clone $this;
-        $self['vaultID'] = $vaultID;
 
         return $self;
     }

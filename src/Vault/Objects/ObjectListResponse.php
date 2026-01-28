@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\Objects\ObjectListResponse\Object_;
@@ -13,9 +13,7 @@ use Casedev\Vault\Objects\ObjectListResponse\Object_;
  * @phpstan-import-type ObjectShape from \Casedev\Vault\Objects\ObjectListResponse\Object_
  *
  * @phpstan-type ObjectListResponseShape = array{
- *   count?: float|null,
- *   objects?: list<Object_|ObjectShape>|null,
- *   vaultID?: string|null,
+ *   count: float, objects: list<Object_|ObjectShape>, vaultID: string
  * }
  */
 final class ObjectListResponse implements BaseModel
@@ -26,19 +24,33 @@ final class ObjectListResponse implements BaseModel
     /**
      * Total number of objects in the vault.
      */
-    #[Optional]
-    public ?float $count;
+    #[Required]
+    public float $count;
 
-    /** @var list<Object_>|null $objects */
-    #[Optional(list: Object_::class)]
-    public ?array $objects;
+    /** @var list<Object_> $objects */
+    #[Required(list: Object_::class)]
+    public array $objects;
 
     /**
      * The ID of the vault.
      */
-    #[Optional('vaultId')]
-    public ?string $vaultID;
+    #[Required('vaultId')]
+    public string $vaultID;
 
+    /**
+     * `new ObjectListResponse()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ObjectListResponse::with(count: ..., objects: ..., vaultID: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ObjectListResponse)->withCount(...)->withObjects(...)->withVaultID(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -49,18 +61,18 @@ final class ObjectListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Object_|ObjectShape>|null $objects
+     * @param list<Object_|ObjectShape> $objects
      */
     public static function with(
-        ?float $count = null,
-        ?array $objects = null,
-        ?string $vaultID = null
+        float $count,
+        array $objects,
+        string $vaultID
     ): self {
         $self = new self;
 
-        null !== $count && $self['count'] = $count;
-        null !== $objects && $self['objects'] = $objects;
-        null !== $vaultID && $self['vaultID'] = $vaultID;
+        $self['count'] = $count;
+        $self['objects'] = $objects;
+        $self['vaultID'] = $vaultID;
 
         return $self;
     }
