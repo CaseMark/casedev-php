@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Casedev\Vault;
 
 use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\VaultGetResponse\ChunkStrategy;
@@ -13,17 +14,17 @@ use Casedev\Vault\VaultGetResponse\ChunkStrategy;
  * @phpstan-import-type ChunkStrategyShape from \Casedev\Vault\VaultGetResponse\ChunkStrategy
  *
  * @phpstan-type VaultGetResponseShape = array{
- *   id?: string|null,
+ *   id: string,
+ *   createdAt: \DateTimeInterface,
+ *   filesBucket: string,
+ *   name: string,
+ *   region: string,
  *   chunkStrategy?: null|ChunkStrategy|ChunkStrategyShape,
- *   createdAt?: \DateTimeInterface|null,
  *   description?: string|null,
  *   enableGraph?: bool|null,
- *   filesBucket?: string|null,
  *   indexName?: string|null,
  *   kmsKeyID?: string|null,
  *   metadata?: mixed,
- *   name?: string|null,
- *   region?: string|null,
  *   totalBytes?: int|null,
  *   totalObjects?: int|null,
  *   totalVectors?: int|null,
@@ -39,20 +40,38 @@ final class VaultGetResponse implements BaseModel
     /**
      * Vault identifier.
      */
-    #[Optional]
-    public ?string $id;
+    #[Required]
+    public string $id;
+
+    /**
+     * Vault creation timestamp.
+     */
+    #[Required]
+    public \DateTimeInterface $createdAt;
+
+    /**
+     * S3 bucket for document storage.
+     */
+    #[Required]
+    public string $filesBucket;
+
+    /**
+     * Vault name.
+     */
+    #[Required]
+    public string $name;
+
+    /**
+     * AWS region.
+     */
+    #[Required]
+    public string $region;
 
     /**
      * Document chunking strategy configuration.
      */
     #[Optional]
     public ?ChunkStrategy $chunkStrategy;
-
-    /**
-     * Vault creation timestamp.
-     */
-    #[Optional]
-    public ?\DateTimeInterface $createdAt;
 
     /**
      * Vault description.
@@ -65,12 +84,6 @@ final class VaultGetResponse implements BaseModel
      */
     #[Optional]
     public ?bool $enableGraph;
-
-    /**
-     * S3 bucket for document storage.
-     */
-    #[Optional]
-    public ?string $filesBucket;
 
     /**
      * Search index name.
@@ -89,18 +102,6 @@ final class VaultGetResponse implements BaseModel
      */
     #[Optional]
     public mixed $metadata;
-
-    /**
-     * Vault name.
-     */
-    #[Optional]
-    public ?string $name;
-
-    /**
-     * AWS region.
-     */
-    #[Optional]
-    public ?string $region;
 
     /**
      * Total storage size in bytes.
@@ -132,6 +133,27 @@ final class VaultGetResponse implements BaseModel
     #[Optional(nullable: true)]
     public ?string $vectorBucket;
 
+    /**
+     * `new VaultGetResponse()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * VaultGetResponse::with(
+     *   id: ..., createdAt: ..., filesBucket: ..., name: ..., region: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new VaultGetResponse)
+     *   ->withID(...)
+     *   ->withCreatedAt(...)
+     *   ->withFilesBucket(...)
+     *   ->withName(...)
+     *   ->withRegion(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -145,17 +167,17 @@ final class VaultGetResponse implements BaseModel
      * @param ChunkStrategy|ChunkStrategyShape|null $chunkStrategy
      */
     public static function with(
-        ?string $id = null,
+        string $id,
+        \DateTimeInterface $createdAt,
+        string $filesBucket,
+        string $name,
+        string $region,
         ChunkStrategy|array|null $chunkStrategy = null,
-        ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
         ?bool $enableGraph = null,
-        ?string $filesBucket = null,
         ?string $indexName = null,
         ?string $kmsKeyID = null,
         mixed $metadata = null,
-        ?string $name = null,
-        ?string $region = null,
         ?int $totalBytes = null,
         ?int $totalObjects = null,
         ?int $totalVectors = null,
@@ -164,17 +186,18 @@ final class VaultGetResponse implements BaseModel
     ): self {
         $self = new self;
 
-        null !== $id && $self['id'] = $id;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['filesBucket'] = $filesBucket;
+        $self['name'] = $name;
+        $self['region'] = $region;
+
         null !== $chunkStrategy && $self['chunkStrategy'] = $chunkStrategy;
-        null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
-        null !== $filesBucket && $self['filesBucket'] = $filesBucket;
         null !== $indexName && $self['indexName'] = $indexName;
         null !== $kmsKeyID && $self['kmsKeyID'] = $kmsKeyID;
         null !== $metadata && $self['metadata'] = $metadata;
-        null !== $name && $self['name'] = $name;
-        null !== $region && $self['region'] = $region;
         null !== $totalBytes && $self['totalBytes'] = $totalBytes;
         null !== $totalObjects && $self['totalObjects'] = $totalObjects;
         null !== $totalVectors && $self['totalVectors'] = $totalVectors;
@@ -196,6 +219,50 @@ final class VaultGetResponse implements BaseModel
     }
 
     /**
+     * Vault creation timestamp.
+     */
+    public function withCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
+
+        return $self;
+    }
+
+    /**
+     * S3 bucket for document storage.
+     */
+    public function withFilesBucket(string $filesBucket): self
+    {
+        $self = clone $this;
+        $self['filesBucket'] = $filesBucket;
+
+        return $self;
+    }
+
+    /**
+     * Vault name.
+     */
+    public function withName(string $name): self
+    {
+        $self = clone $this;
+        $self['name'] = $name;
+
+        return $self;
+    }
+
+    /**
+     * AWS region.
+     */
+    public function withRegion(string $region): self
+    {
+        $self = clone $this;
+        $self['region'] = $region;
+
+        return $self;
+    }
+
+    /**
      * Document chunking strategy configuration.
      *
      * @param ChunkStrategy|ChunkStrategyShape $chunkStrategy
@@ -204,17 +271,6 @@ final class VaultGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['chunkStrategy'] = $chunkStrategy;
-
-        return $self;
-    }
-
-    /**
-     * Vault creation timestamp.
-     */
-    public function withCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $self = clone $this;
-        $self['createdAt'] = $createdAt;
 
         return $self;
     }
@@ -237,17 +293,6 @@ final class VaultGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['enableGraph'] = $enableGraph;
-
-        return $self;
-    }
-
-    /**
-     * S3 bucket for document storage.
-     */
-    public function withFilesBucket(string $filesBucket): self
-    {
-        $self = clone $this;
-        $self['filesBucket'] = $filesBucket;
 
         return $self;
     }
@@ -281,28 +326,6 @@ final class VaultGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['metadata'] = $metadata;
-
-        return $self;
-    }
-
-    /**
-     * Vault name.
-     */
-    public function withName(string $name): self
-    {
-        $self = clone $this;
-        $self['name'] = $name;
-
-        return $self;
-    }
-
-    /**
-     * AWS region.
-     */
-    public function withRegion(string $region): self
-    {
-        $self = clone $this;
-        $self['region'] = $region;
 
         return $self;
     }

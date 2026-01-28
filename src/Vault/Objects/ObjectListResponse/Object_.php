@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace Casedev\Vault\Objects\ObjectListResponse;
 
 use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ObjectShape = array{
- *   id?: string|null,
+ *   id: string,
+ *   contentType: string,
+ *   createdAt: \DateTimeInterface,
+ *   filename: string,
+ *   ingestionStatus: string,
  *   chunkCount?: float|null,
- *   contentType?: string|null,
- *   createdAt?: \DateTimeInterface|null,
- *   filename?: string|null,
  *   ingestionCompletedAt?: \DateTimeInterface|null,
- *   ingestionStatus?: string|null,
  *   metadata?: mixed,
  *   pageCount?: float|null,
  *   path?: string|null,
@@ -34,8 +35,32 @@ final class Object_ implements BaseModel
     /**
      * Unique object identifier.
      */
-    #[Optional]
-    public ?string $id;
+    #[Required]
+    public string $id;
+
+    /**
+     * MIME type of the document.
+     */
+    #[Required]
+    public string $contentType;
+
+    /**
+     * Document upload timestamp.
+     */
+    #[Required]
+    public \DateTimeInterface $createdAt;
+
+    /**
+     * Original filename of the uploaded document.
+     */
+    #[Required]
+    public string $filename;
+
+    /**
+     * Processing status of the document.
+     */
+    #[Required]
+    public string $ingestionStatus;
 
     /**
      * Number of text chunks created for vectorization.
@@ -44,34 +69,10 @@ final class Object_ implements BaseModel
     public ?float $chunkCount;
 
     /**
-     * MIME type of the document.
-     */
-    #[Optional]
-    public ?string $contentType;
-
-    /**
-     * Document upload timestamp.
-     */
-    #[Optional]
-    public ?\DateTimeInterface $createdAt;
-
-    /**
-     * Original filename of the uploaded document.
-     */
-    #[Optional]
-    public ?string $filename;
-
-    /**
      * Processing completion timestamp.
      */
     #[Optional]
     public ?\DateTimeInterface $ingestionCompletedAt;
-
-    /**
-     * Processing status of the document.
-     */
-    #[Optional]
-    public ?string $ingestionStatus;
 
     /**
      * Custom metadata associated with the document.
@@ -117,6 +118,27 @@ final class Object_ implements BaseModel
     #[Optional]
     public ?float $vectorCount;
 
+    /**
+     * `new Object_()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * Object_::with(
+     *   id: ..., contentType: ..., createdAt: ..., filename: ..., ingestionStatus: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new Object_)
+     *   ->withID(...)
+     *   ->withContentType(...)
+     *   ->withCreatedAt(...)
+     *   ->withFilename(...)
+     *   ->withIngestionStatus(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -130,13 +152,13 @@ final class Object_ implements BaseModel
      * @param list<string>|null $tags
      */
     public static function with(
-        ?string $id = null,
+        string $id,
+        string $contentType,
+        \DateTimeInterface $createdAt,
+        string $filename,
+        string $ingestionStatus,
         ?float $chunkCount = null,
-        ?string $contentType = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?string $filename = null,
         ?\DateTimeInterface $ingestionCompletedAt = null,
-        ?string $ingestionStatus = null,
         mixed $metadata = null,
         ?float $pageCount = null,
         ?string $path = null,
@@ -147,13 +169,14 @@ final class Object_ implements BaseModel
     ): self {
         $self = new self;
 
-        null !== $id && $self['id'] = $id;
+        $self['id'] = $id;
+        $self['contentType'] = $contentType;
+        $self['createdAt'] = $createdAt;
+        $self['filename'] = $filename;
+        $self['ingestionStatus'] = $ingestionStatus;
+
         null !== $chunkCount && $self['chunkCount'] = $chunkCount;
-        null !== $contentType && $self['contentType'] = $contentType;
-        null !== $createdAt && $self['createdAt'] = $createdAt;
-        null !== $filename && $self['filename'] = $filename;
         null !== $ingestionCompletedAt && $self['ingestionCompletedAt'] = $ingestionCompletedAt;
-        null !== $ingestionStatus && $self['ingestionStatus'] = $ingestionStatus;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $pageCount && $self['pageCount'] = $pageCount;
         null !== $path && $self['path'] = $path;
@@ -172,17 +195,6 @@ final class Object_ implements BaseModel
     {
         $self = clone $this;
         $self['id'] = $id;
-
-        return $self;
-    }
-
-    /**
-     * Number of text chunks created for vectorization.
-     */
-    public function withChunkCount(float $chunkCount): self
-    {
-        $self = clone $this;
-        $self['chunkCount'] = $chunkCount;
 
         return $self;
     }
@@ -221,6 +233,28 @@ final class Object_ implements BaseModel
     }
 
     /**
+     * Processing status of the document.
+     */
+    public function withIngestionStatus(string $ingestionStatus): self
+    {
+        $self = clone $this;
+        $self['ingestionStatus'] = $ingestionStatus;
+
+        return $self;
+    }
+
+    /**
+     * Number of text chunks created for vectorization.
+     */
+    public function withChunkCount(float $chunkCount): self
+    {
+        $self = clone $this;
+        $self['chunkCount'] = $chunkCount;
+
+        return $self;
+    }
+
+    /**
      * Processing completion timestamp.
      */
     public function withIngestionCompletedAt(
@@ -228,17 +262,6 @@ final class Object_ implements BaseModel
     ): self {
         $self = clone $this;
         $self['ingestionCompletedAt'] = $ingestionCompletedAt;
-
-        return $self;
-    }
-
-    /**
-     * Processing status of the document.
-     */
-    public function withIngestionStatus(string $ingestionStatus): self
-    {
-        $self = clone $this;
-        $self['ingestionStatus'] = $ingestionStatus;
 
         return $self;
     }

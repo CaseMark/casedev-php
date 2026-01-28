@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Casedev\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\Objects\ObjectGetTextResponse\Metadata;
@@ -13,7 +13,7 @@ use Casedev\Vault\Objects\ObjectGetTextResponse\Metadata;
  * @phpstan-import-type MetadataShape from \Casedev\Vault\Objects\ObjectGetTextResponse\Metadata
  *
  * @phpstan-type ObjectGetTextResponseShape = array{
- *   metadata?: null|Metadata|MetadataShape, text?: string|null
+ *   metadata: Metadata|MetadataShape, text: string
  * }
  */
 final class ObjectGetTextResponse implements BaseModel
@@ -21,15 +21,29 @@ final class ObjectGetTextResponse implements BaseModel
     /** @use SdkModel<ObjectGetTextResponseShape> */
     use SdkModel;
 
-    #[Optional]
-    public ?Metadata $metadata;
+    #[Required]
+    public Metadata $metadata;
 
     /**
      * Full concatenated text content from all chunks.
      */
-    #[Optional]
-    public ?string $text;
+    #[Required]
+    public string $text;
 
+    /**
+     * `new ObjectGetTextResponse()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ObjectGetTextResponse::with(metadata: ..., text: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ObjectGetTextResponse)->withMetadata(...)->withText(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -40,16 +54,14 @@ final class ObjectGetTextResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Metadata|MetadataShape|null $metadata
+     * @param Metadata|MetadataShape $metadata
      */
-    public static function with(
-        Metadata|array|null $metadata = null,
-        ?string $text = null
-    ): self {
+    public static function with(Metadata|array $metadata, string $text): self
+    {
         $self = new self;
 
-        null !== $metadata && $self['metadata'] = $metadata;
-        null !== $text && $self['text'] = $text;
+        $self['metadata'] = $metadata;
+        $self['text'] = $text;
 
         return $self;
     }

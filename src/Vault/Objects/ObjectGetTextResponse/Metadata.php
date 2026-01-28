@@ -5,17 +5,18 @@ declare(strict_types=1);
 namespace Casedev\Vault\Objects\ObjectGetTextResponse;
 
 use Casedev\Core\Attributes\Optional;
+use Casedev\Core\Attributes\Required;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MetadataShape = array{
- *   chunkCount?: int|null,
- *   filename?: string|null,
+ *   chunkCount: int,
+ *   filename: string,
+ *   length: int,
+ *   objectID: string,
+ *   vaultID: string,
  *   ingestionCompletedAt?: \DateTimeInterface|null,
- *   length?: int|null,
- *   objectID?: string|null,
- *   vaultID?: string|null,
  * }
  */
 final class Metadata implements BaseModel
@@ -26,14 +27,32 @@ final class Metadata implements BaseModel
     /**
      * Number of text chunks the document was split into.
      */
-    #[Optional('chunk_count')]
-    public ?int $chunkCount;
+    #[Required('chunk_count')]
+    public int $chunkCount;
 
     /**
      * Original filename of the document.
      */
-    #[Optional]
-    public ?string $filename;
+    #[Required]
+    public string $filename;
+
+    /**
+     * Total character count of the extracted text.
+     */
+    #[Required]
+    public int $length;
+
+    /**
+     * The object ID.
+     */
+    #[Required('object_id')]
+    public string $objectID;
+
+    /**
+     * The vault ID.
+     */
+    #[Required('vault_id')]
+    public string $vaultID;
 
     /**
      * When the document processing completed.
@@ -42,23 +61,26 @@ final class Metadata implements BaseModel
     public ?\DateTimeInterface $ingestionCompletedAt;
 
     /**
-     * Total character count of the extracted text.
+     * `new Metadata()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * Metadata::with(
+     *   chunkCount: ..., filename: ..., length: ..., objectID: ..., vaultID: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new Metadata)
+     *   ->withChunkCount(...)
+     *   ->withFilename(...)
+     *   ->withLength(...)
+     *   ->withObjectID(...)
+     *   ->withVaultID(...)
+     * ```
      */
-    #[Optional]
-    public ?int $length;
-
-    /**
-     * The object ID.
-     */
-    #[Optional('object_id')]
-    public ?string $objectID;
-
-    /**
-     * The vault ID.
-     */
-    #[Optional('vault_id')]
-    public ?string $vaultID;
-
     public function __construct()
     {
         $this->initialize();
@@ -70,21 +92,22 @@ final class Metadata implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?int $chunkCount = null,
-        ?string $filename = null,
+        int $chunkCount,
+        string $filename,
+        int $length,
+        string $objectID,
+        string $vaultID,
         ?\DateTimeInterface $ingestionCompletedAt = null,
-        ?int $length = null,
-        ?string $objectID = null,
-        ?string $vaultID = null,
     ): self {
         $self = new self;
 
-        null !== $chunkCount && $self['chunkCount'] = $chunkCount;
-        null !== $filename && $self['filename'] = $filename;
+        $self['chunkCount'] = $chunkCount;
+        $self['filename'] = $filename;
+        $self['length'] = $length;
+        $self['objectID'] = $objectID;
+        $self['vaultID'] = $vaultID;
+
         null !== $ingestionCompletedAt && $self['ingestionCompletedAt'] = $ingestionCompletedAt;
-        null !== $length && $self['length'] = $length;
-        null !== $objectID && $self['objectID'] = $objectID;
-        null !== $vaultID && $self['vaultID'] = $vaultID;
 
         return $self;
     }
@@ -107,18 +130,6 @@ final class Metadata implements BaseModel
     {
         $self = clone $this;
         $self['filename'] = $filename;
-
-        return $self;
-    }
-
-    /**
-     * When the document processing completed.
-     */
-    public function withIngestionCompletedAt(
-        \DateTimeInterface $ingestionCompletedAt
-    ): self {
-        $self = clone $this;
-        $self['ingestionCompletedAt'] = $ingestionCompletedAt;
 
         return $self;
     }
@@ -152,6 +163,18 @@ final class Metadata implements BaseModel
     {
         $self = clone $this;
         $self['vaultID'] = $vaultID;
+
+        return $self;
+    }
+
+    /**
+     * When the document processing completed.
+     */
+    public function withIngestionCompletedAt(
+        \DateTimeInterface $ingestionCompletedAt
+    ): self {
+        $self = clone $this;
+        $self['ingestionCompletedAt'] = $ingestionCompletedAt;
 
         return $self;
     }
