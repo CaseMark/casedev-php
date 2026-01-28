@@ -7,12 +7,17 @@ namespace Casedev\Ocr\V1\V1ProcessParams;
 use Casedev\Core\Attributes\Optional;
 use Casedev\Core\Concerns\SdkModel;
 use Casedev\Core\Contracts\BaseModel;
+use Casedev\Ocr\V1\V1ProcessParams\Features\Tables;
 
 /**
- * OCR features to extract.
+ * Additional processing options.
+ *
+ * @phpstan-import-type TablesShape from \Casedev\Ocr\V1\V1ProcessParams\Features\Tables
  *
  * @phpstan-type FeaturesShape = array{
- *   forms?: bool|null, layout?: bool|null, tables?: bool|null, text?: bool|null
+ *   embed?: array<string,mixed>|null,
+ *   forms?: array<string,mixed>|null,
+ *   tables?: null|Tables|TablesShape,
  * }
  */
 final class Features implements BaseModel
@@ -21,28 +26,26 @@ final class Features implements BaseModel
     use SdkModel;
 
     /**
-     * Detect form fields.
+     * Generate searchable PDF with text layer.
+     *
+     * @var array<string,mixed>|null $embed
      */
-    #[Optional]
-    public ?bool $forms;
+    #[Optional(map: 'mixed')]
+    public ?array $embed;
 
     /**
-     * Preserve document layout.
+     * Detect and extract form fields.
+     *
+     * @var array<string,mixed>|null $forms
      */
-    #[Optional]
-    public ?bool $layout;
+    #[Optional(map: 'mixed')]
+    public ?array $forms;
 
     /**
-     * Detect and extract tables.
+     * Extract tables as structured data.
      */
     #[Optional]
-    public ?bool $tables;
-
-    /**
-     * Extract text content.
-     */
-    #[Optional]
-    public ?bool $text;
+    public ?Tables $tables;
 
     public function __construct()
     {
@@ -53,27 +56,44 @@ final class Features implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param array<string,mixed>|null $embed
+     * @param array<string,mixed>|null $forms
+     * @param Tables|TablesShape|null $tables
      */
     public static function with(
-        ?bool $forms = null,
-        ?bool $layout = null,
-        ?bool $tables = null,
-        ?bool $text = null,
+        ?array $embed = null,
+        ?array $forms = null,
+        Tables|array|null $tables = null
     ): self {
         $self = new self;
 
+        null !== $embed && $self['embed'] = $embed;
         null !== $forms && $self['forms'] = $forms;
-        null !== $layout && $self['layout'] = $layout;
         null !== $tables && $self['tables'] = $tables;
-        null !== $text && $self['text'] = $text;
 
         return $self;
     }
 
     /**
-     * Detect form fields.
+     * Generate searchable PDF with text layer.
+     *
+     * @param array<string,mixed> $embed
      */
-    public function withForms(bool $forms): self
+    public function withEmbed(array $embed): self
+    {
+        $self = clone $this;
+        $self['embed'] = $embed;
+
+        return $self;
+    }
+
+    /**
+     * Detect and extract form fields.
+     *
+     * @param array<string,mixed> $forms
+     */
+    public function withForms(array $forms): self
     {
         $self = clone $this;
         $self['forms'] = $forms;
@@ -82,34 +102,14 @@ final class Features implements BaseModel
     }
 
     /**
-     * Preserve document layout.
+     * Extract tables as structured data.
+     *
+     * @param Tables|TablesShape $tables
      */
-    public function withLayout(bool $layout): self
-    {
-        $self = clone $this;
-        $self['layout'] = $layout;
-
-        return $self;
-    }
-
-    /**
-     * Detect and extract tables.
-     */
-    public function withTables(bool $tables): self
+    public function withTables(Tables|array $tables): self
     {
         $self = clone $this;
         $self['tables'] = $tables;
-
-        return $self;
-    }
-
-    /**
-     * Extract text content.
-     */
-    public function withText(bool $text): self
-    {
-        $self = clone $this;
-        $self['text'] = $text;
 
         return $self;
     }
