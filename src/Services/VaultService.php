@@ -196,10 +196,10 @@ final class VaultService implements VaultContract
      * @param string $id Vault ID to upload the file to
      * @param string $contentType MIME type of the file (e.g., application/pdf, image/jpeg)
      * @param string $filename Name of the file to upload
-     * @param int $sizeBytes File size in bytes (required, max 500MB). Used to enforce upload limits at S3 level.
      * @param bool $autoIndex Whether to automatically process and index the file for search
      * @param mixed $metadata Additional metadata to associate with the file
      * @param string $path Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'
+     * @param int $sizeBytes File size in bytes (optional, max 500MB). When provided, enforces exact file size at S3 level.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -208,20 +208,20 @@ final class VaultService implements VaultContract
         string $id,
         string $contentType,
         string $filename,
-        int $sizeBytes,
         bool $autoIndex = true,
         mixed $metadata = null,
         ?string $path = null,
+        ?int $sizeBytes = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultUploadResponse {
         $params = Util::removeNulls(
             [
                 'contentType' => $contentType,
                 'filename' => $filename,
-                'sizeBytes' => $sizeBytes,
                 'autoIndex' => $autoIndex,
                 'metadata' => $metadata,
                 'path' => $path,
+                'sizeBytes' => $sizeBytes,
             ],
         );
 
