@@ -53,7 +53,7 @@ interface V1Contract
      * @param string $callbackURL URL to receive completion webhook
      * @param string $documentID Optional custom document identifier
      * @param Engine|value-of<Engine> $engine OCR engine to use
-     * @param Features|FeaturesShape $features OCR features to extract
+     * @param Features|FeaturesShape $features Additional processing options
      * @param string $resultBucket S3 bucket to store results
      * @param string $resultPrefix S3 key prefix for results
      * @param RequestOpts|null $requestOptions

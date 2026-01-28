@@ -62,7 +62,7 @@ final class V1ProcessParams implements BaseModel
     public ?string $engine;
 
     /**
-     * OCR features to extract.
+     * Additional processing options.
      */
     #[Optional]
     public ?Features $features;
@@ -176,7 +176,7 @@ final class V1ProcessParams implements BaseModel
     }
 
     /**
-     * OCR features to extract.
+     * Additional processing options.
      *
      * @param Features|FeaturesShape $features
      */

@@ -95,7 +95,9 @@ final class V1Test extends TestCase
             documentID: 'contract-2024-001',
             engine: 'doctr',
             features: [
-                'forms' => false, 'layout' => true, 'tables' => true, 'text' => true,
+                'embed' => [],
+                'forms' => ['foo' => 'bar'],
+                'tables' => ['format' => 'csv'],
             ],
             resultBucket: 'my-ocr-results',
             resultPrefix: 'ocr/2024/',
