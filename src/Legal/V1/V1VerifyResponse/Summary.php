@@ -10,7 +10,7 @@ use Casedev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SummaryShape = array{
- *   ambiguous?: int|null,
+ *   multipleMatches?: int|null,
  *   notFound?: int|null,
  *   total?: int|null,
  *   verified?: int|null,
@@ -25,7 +25,7 @@ final class Summary implements BaseModel
      * Citations with multiple possible matches.
      */
     #[Optional]
-    public ?int $ambiguous;
+    public ?int $multipleMatches;
 
     /**
      * Citations not found in database.
@@ -56,14 +56,14 @@ final class Summary implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?int $ambiguous = null,
+        ?int $multipleMatches = null,
         ?int $notFound = null,
         ?int $total = null,
         ?int $verified = null,
     ): self {
         $self = new self;
 
-        null !== $ambiguous && $self['ambiguous'] = $ambiguous;
+        null !== $multipleMatches && $self['multipleMatches'] = $multipleMatches;
         null !== $notFound && $self['notFound'] = $notFound;
         null !== $total && $self['total'] = $total;
         null !== $verified && $self['verified'] = $verified;
@@ -74,10 +74,10 @@ final class Summary implements BaseModel
     /**
      * Citations with multiple possible matches.
      */
-    public function withAmbiguous(int $ambiguous): self
+    public function withMultipleMatches(int $multipleMatches): self
     {
         $self = clone $this;
-        $self['ambiguous'] = $ambiguous;
+        $self['multipleMatches'] = $multipleMatches;
 
         return $self;
     }

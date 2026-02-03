@@ -10,5 +10,5 @@ enum Status: string
 
     case NOT_FOUND = 'not_found';
 
-    case AMBIGUOUS = 'ambiguous';
+    case MULTIPLE_MATCHES = 'multiple_matches';
 }

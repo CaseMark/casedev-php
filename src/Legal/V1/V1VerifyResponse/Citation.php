@@ -35,7 +35,7 @@ final class Citation implements BaseModel
     use SdkModel;
 
     /**
-     * Multiple candidates (when ambiguous).
+     * Multiple candidates (when multiple_matches or heuristic verification).
      *
      * @var list<Candidate>|null $candidates
      */
@@ -49,7 +49,7 @@ final class Citation implements BaseModel
     public ?Case_ $case;
 
     /**
-     * Heuristic confidence score when using fallback verification.
+     * Confidence score (1.0 for CourtListener, heuristic score for fallback).
      */
     #[Optional]
     public ?float $confidence;
@@ -122,7 +122,7 @@ final class Citation implements BaseModel
     }
 
     /**
-     * Multiple candidates (when ambiguous).
+     * Multiple candidates (when multiple_matches or heuristic verification).
      *
      * @param list<Candidate|CandidateShape> $candidates
      */
@@ -148,7 +148,7 @@ final class Citation implements BaseModel
     }
 
     /**
-     * Heuristic confidence score when using fallback verification.
+     * Confidence score (1.0 for CourtListener, heuristic score for fallback).
      */
     public function withConfidence(float $confidence): self
     {
