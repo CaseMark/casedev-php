@@ -73,9 +73,9 @@ class Client extends BaseClient
         ?string $baseUrl = null,
         RequestOptions|array|null $requestOptions = null,
     ) {
-        $this->apiKey = (string) ($apiKey ?? getenv('CASEDEV_API_KEY'));
+        $this->apiKey = (string) ($apiKey ?? Util::getenv('CASEDEV_API_KEY'));
 
-        $baseUrl ??= getenv('CASEDEV_BASE_URL') ?: 'https://api.case.dev';
+        $baseUrl ??= Util::getenv('CASEDEV_BASE_URL') ?: 'https://api.case.dev';
 
         $options = RequestOptions::parse(
             RequestOptions::with(

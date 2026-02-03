@@ -3,6 +3,7 @@
 namespace Tests\Services\Vault;
 
 use Casedev\Client;
+use Casedev\Core\Util;
 use Casedev\Vault\Objects\ObjectGetResponse;
 use Casedev\Vault\Objects\ObjectGetTextResponse;
 use Casedev\Vault\Objects\ObjectListResponse;
@@ -24,7 +25,7 @@ final class ObjectsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(apiKey: 'My API Key', baseUrl: $testUrl);
 
         $this->client = $client;
