@@ -199,7 +199,7 @@ final class VaultService implements VaultContract
      * @param bool $autoIndex Whether to automatically process and index the file for search
      * @param mixed $metadata Additional metadata to associate with the file
      * @param string $path Optional folder path for hierarchy preservation. Allows integrations to maintain source folder structure from systems like NetDocs, Clio, or Smokeball. Example: '/Discovery/Depositions/2024'
-     * @param int $sizeBytes File size in bytes (optional, max 500MB). When provided, enforces exact file size at S3 level.
+     * @param int $sizeBytes File size in bytes (optional, max 5GB for single PUT uploads). When provided, enforces exact file size at S3 level.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
