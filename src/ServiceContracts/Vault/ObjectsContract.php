@@ -7,10 +7,15 @@ namespace Casedev\ServiceContracts\Vault;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Casedev\Vault\Objects\ObjectDeleteParams\Force;
+use Casedev\Vault\Objects\ObjectDeleteResponse;
+use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
 use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use Casedev\Vault\Objects\ObjectGetTextResponse;
 use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
+use Casedev\Vault\Objects\ObjectUpdateResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -35,6 +40,27 @@ interface ObjectsContract
     /**
      * @api
      *
+     * @param string $objectID Path param: Object ID to update
+     * @param string $id Path param: Vault ID
+     * @param string $filename Body param: New filename for the document (affects display name and downloads)
+     * @param mixed $metadata Body param: Additional metadata to merge with existing metadata
+     * @param string|null $path Body param: Folder path for hierarchy preservation (e.g., '/Discovery/Depositions'). Set to null or empty string to remove.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $objectID,
+        string $id,
+        ?string $filename = null,
+        mixed $metadata = null,
+        ?string $path = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectUpdateResponse;
+
+    /**
+     * @api
+     *
      * @param string $id The unique identifier of the vault
      * @param RequestOpts|null $requestOptions
      *
@@ -44,6 +70,23 @@ interface ObjectsContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): ObjectListResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: Object ID to delete
+     * @param string $id Path param: Vault ID
+     * @param Force|value-of<Force> $force Query param: Force delete a stuck document that is still in 'processing' state. Use this if a document got stuck during ingestion (e.g., OCR timeout).
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $objectID,
+        string $id,
+        Force|string|null $force = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectDeleteResponse;
 
     /**
      * @api
@@ -82,6 +125,44 @@ interface ObjectsContract
         string $id,
         RequestOptions|array|null $requestOptions = null,
     ): string;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: The object ID
+     * @param string $id Path param: The vault ID
+     * @param int $page Query param: Filter to a specific page number (1-indexed). If omitted, returns all pages.
+     * @param int $wordEnd Query param: Filter to words ending at this index (inclusive). Useful for retrieving words for a specific chunk.
+     * @param int $wordStart Query param: Filter to words starting at this index (inclusive). Useful for retrieving words for a specific chunk.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getOcrWords(
+        string $objectID,
+        string $id,
+        ?int $page = null,
+        ?int $wordEnd = null,
+        ?int $wordStart = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetOcrWordsResponse;
+
+    /**
+     * @api
+     *
+     * @param string $jobID CaseMark job ID
+     * @param string $id Vault ID
+     * @param string $objectID Source object ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSummarizeJob(
+        string $jobID,
+        string $id,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetSummarizeJobResponse;
 
     /**
      * @api

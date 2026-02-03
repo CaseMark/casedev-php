@@ -6,10 +6,12 @@ namespace Casedev\Services\Vault;
 
 use Casedev\Client;
 use Casedev\Core\Exceptions\APIException;
+use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\GraphragContract;
 use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
 use Casedev\Vault\Graphrag\GraphragInitResponse;
+use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -65,6 +67,30 @@ final class GraphragService implements GraphragContract
     ): GraphragInitResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->init($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Manually trigger GraphRAG indexing for a vault object. The object must already be ingested (completed status). This extracts entities, relationships, and communities from the document for advanced knowledge graph queries.
+     *
+     * @param string $objectID Vault object ID
+     * @param string $id Vault ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function processObject(
+        string $objectID,
+        string $id,
+        RequestOptions|array|null $requestOptions = null,
+    ): GraphragProcessObjectResponse {
+        $params = Util::removeNulls(['id' => $id]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->processObject($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

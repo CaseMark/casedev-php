@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Casedev\Applications\V1\Projects\ProjectCreateEnvParams;
+
+/**
+ * Variable type.
+ */
+enum Type: string
+{
+    case PLAIN = 'plain';
+
+    case ENCRYPTED = 'encrypted';
+
+    case SECRET = 'secret';
+}

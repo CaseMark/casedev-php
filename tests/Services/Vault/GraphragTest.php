@@ -6,6 +6,7 @@ use Casedev\Client;
 use Casedev\Core\Util;
 use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
 use Casedev\Vault\Graphrag\GraphragInitResponse;
+use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -53,5 +54,37 @@ final class GraphragTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(GraphragInitResponse::class, $result);
+    }
+
+    #[Test]
+    public function testProcessObject(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->graphrag->processObject(
+            'objectId',
+            id: 'id'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(GraphragProcessObjectResponse::class, $result);
+    }
+
+    #[Test]
+    public function testProcessObjectWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->graphrag->processObject(
+            'objectId',
+            id: 'id'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(GraphragProcessObjectResponse::class, $result);
     }
 }
