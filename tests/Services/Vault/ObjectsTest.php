@@ -4,10 +4,14 @@ namespace Tests\Services\Vault;
 
 use Casedev\Client;
 use Casedev\Core\Util;
+use Casedev\Vault\Objects\ObjectDeleteResponse;
+use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
 use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use Casedev\Vault\Objects\ObjectGetTextResponse;
 use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
+use Casedev\Vault\Objects\ObjectUpdateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -58,6 +62,38 @@ final class ObjectsTest extends TestCase
     }
 
     #[Test]
+    public function testUpdate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->update('objectId', id: 'id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectUpdateResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->update(
+            'objectId',
+            id: 'id',
+            filename: 'deposition-smith-2024.pdf',
+            metadata: (object) [],
+            path: '/Discovery/Depositions',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectUpdateResponse::class, $result);
+    }
+
+    #[Test]
     public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -68,6 +104,36 @@ final class ObjectsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ObjectListResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->delete('objectId', id: 'id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDeleteResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDeleteWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->delete(
+            'objectId',
+            id: 'id',
+            force: 'true'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDeleteResponse::class, $result);
     }
 
     #[Test]
@@ -130,6 +196,72 @@ final class ObjectsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testGetOcrWords(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->getOcrWords('objectId', id: 'id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetOcrWordsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetOcrWordsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->getOcrWords(
+            'objectId',
+            id: 'id',
+            page: 0,
+            wordEnd: 0,
+            wordStart: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetOcrWordsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSummarizeJob(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->getSummarizeJob(
+            'jobId',
+            id: 'id',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetSummarizeJobResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSummarizeJobWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->objects->getSummarizeJob(
+            'jobId',
+            id: 'id',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetSummarizeJobResponse::class, $result);
     }
 
     #[Test]

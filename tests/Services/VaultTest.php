@@ -4,11 +4,13 @@ namespace Tests\Services;
 
 use Casedev\Client;
 use Casedev\Core\Util;
+use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
 use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchResponse;
+use Casedev\Vault\VaultUpdateResponse;
 use Casedev\Vault\VaultUploadResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -79,6 +81,19 @@ final class VaultTest extends TestCase
     }
 
     #[Test]
+    public function testUpdate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->update('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VaultUpdateResponse::class, $result);
+    }
+
+    #[Test]
     public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -89,6 +104,19 @@ final class VaultTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultListResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->delete('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VaultDeleteResponse::class, $result);
     }
 
     #[Test]

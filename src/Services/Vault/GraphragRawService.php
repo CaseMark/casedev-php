@@ -11,6 +11,8 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\GraphragRawContract;
 use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
 use Casedev\Vault\Graphrag\GraphragInitResponse;
+use Casedev\Vault\Graphrag\GraphragProcessObjectParams;
+use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -70,6 +72,40 @@ final class GraphragRawService implements GraphragRawContract
             path: ['vault/%1$s/graphrag/init', $id],
             options: $requestOptions,
             convert: GraphragInitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Manually trigger GraphRAG indexing for a vault object. The object must already be ingested (completed status). This extracts entities, relationships, and communities from the document for advanced knowledge graph queries.
+     *
+     * @param string $objectID Vault object ID
+     * @param array{id: string}|GraphragProcessObjectParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<GraphragProcessObjectResponse>
+     *
+     * @throws APIException
+     */
+    public function processObject(
+        string $objectID,
+        array|GraphragProcessObjectParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = GraphragProcessObjectParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $id = $parsed['id'];
+        unset($parsed['id']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['vault/%1$s/graphrag/%2$s', $id, $objectID],
+            options: $options,
+            convert: GraphragProcessObjectResponse::class,
         );
     }
 }

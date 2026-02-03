@@ -11,9 +11,8 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Compute\V1Contract;
 use Casedev\Services\Compute\V1\EnvironmentsService;
-use Casedev\Services\Compute\V1\FunctionsService;
-use Casedev\Services\Compute\V1\InvokeService;
-use Casedev\Services\Compute\V1\RunsService;
+use Casedev\Services\Compute\V1\InstancesService;
+use Casedev\Services\Compute\V1\InstanceTypesService;
 use Casedev\Services\Compute\V1\SecretsService;
 
 /**
@@ -34,17 +33,12 @@ final class V1Service implements V1Contract
     /**
      * @api
      */
-    public FunctionsService $functions;
+    public InstanceTypesService $instanceTypes;
 
     /**
      * @api
      */
-    public InvokeService $invoke;
-
-    /**
-     * @api
-     */
-    public RunsService $runs;
+    public InstancesService $instances;
 
     /**
      * @api
@@ -58,9 +52,8 @@ final class V1Service implements V1Contract
     {
         $this->raw = new V1RawService($client);
         $this->environments = new EnvironmentsService($client);
-        $this->functions = new FunctionsService($client);
-        $this->invoke = new InvokeService($client);
-        $this->runs = new RunsService($client);
+        $this->instanceTypes = new InstanceTypesService($client);
+        $this->instances = new InstancesService($client);
         $this->secrets = new SecretsService($client);
     }
 

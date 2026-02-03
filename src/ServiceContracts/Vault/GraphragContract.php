@@ -8,6 +8,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
 use Casedev\Vault\Graphrag\GraphragInitResponse;
+use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -39,4 +40,19 @@ interface GraphragContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): GraphragInitResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Vault object ID
+     * @param string $id Vault ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function processObject(
+        string $objectID,
+        string $id,
+        RequestOptions|array|null $requestOptions = null,
+    ): GraphragProcessObjectResponse;
 }

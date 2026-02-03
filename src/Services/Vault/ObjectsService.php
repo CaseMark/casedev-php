@@ -10,10 +10,15 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Vault\ObjectsContract;
 use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Casedev\Vault\Objects\ObjectDeleteParams\Force;
+use Casedev\Vault\Objects\ObjectDeleteResponse;
+use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
 use Casedev\Vault\Objects\ObjectGetResponse;
+use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use Casedev\Vault\Objects\ObjectGetTextResponse;
 use Casedev\Vault\Objects\ObjectListResponse;
 use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
+use Casedev\Vault\Objects\ObjectUpdateResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
@@ -60,6 +65,43 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      *
+     * Update a document's filename, path, or metadata. Use this to rename files or organize them into virtual folders. The path is stored in metadata.path and can be used to build folder hierarchies in your application.
+     *
+     * @param string $objectID Path param: Object ID to update
+     * @param string $id Path param: Vault ID
+     * @param string $filename Body param: New filename for the document (affects display name and downloads)
+     * @param mixed $metadata Body param: Additional metadata to merge with existing metadata
+     * @param string|null $path Body param: Folder path for hierarchy preservation (e.g., '/Discovery/Depositions'). Set to null or empty string to remove.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $objectID,
+        string $id,
+        ?string $filename = null,
+        mixed $metadata = null,
+        ?string $path = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectUpdateResponse {
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'filename' => $filename,
+                'metadata' => $metadata,
+                'path' => $path,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Retrieve all objects stored in a specific vault, including document metadata, ingestion status, and processing statistics.
      *
      * @param string $id The unique identifier of the vault
@@ -73,6 +115,32 @@ final class ObjectsService implements ObjectsContract
     ): ObjectListResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Permanently deletes a document from the vault including all associated vectors, chunks, graph data, and the original file. This operation cannot be undone.
+     *
+     * @param string $objectID Path param: Object ID to delete
+     * @param string $id Path param: Vault ID
+     * @param Force|value-of<Force> $force Query param: Force delete a stuck document that is still in 'processing' state. Use this if a document got stuck during ingestion (e.g., OCR timeout).
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $objectID,
+        string $id,
+        Force|string|null $force = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectDeleteResponse {
+        $params = Util::removeNulls(['id' => $id, 'force' => $force]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -137,6 +205,69 @@ final class ObjectsService implements ObjectsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->download($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves word-level OCR bounding box data for a processed PDF document. Each word includes its text, normalized bounding box coordinates (0-1 range), confidence score, and global word index. Use this data to highlight specific text ranges in a PDF viewer based on word indices from search results.
+     *
+     * @param string $objectID Path param: The object ID
+     * @param string $id Path param: The vault ID
+     * @param int $page Query param: Filter to a specific page number (1-indexed). If omitted, returns all pages.
+     * @param int $wordEnd Query param: Filter to words ending at this index (inclusive). Useful for retrieving words for a specific chunk.
+     * @param int $wordStart Query param: Filter to words starting at this index (inclusive). Useful for retrieving words for a specific chunk.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getOcrWords(
+        string $objectID,
+        string $id,
+        ?int $page = null,
+        ?int $wordEnd = null,
+        ?int $wordStart = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetOcrWordsResponse {
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'page' => $page,
+                'wordEnd' => $wordEnd,
+                'wordStart' => $wordStart,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getOcrWords($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+     *
+     * @param string $jobID CaseMark job ID
+     * @param string $id Vault ID
+     * @param string $objectID Source object ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSummarizeJob(
+        string $jobID,
+        string $id,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetSummarizeJobResponse {
+        $params = Util::removeNulls(['id' => $id, 'objectID' => $objectID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getSummarizeJob($jobID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

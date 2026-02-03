@@ -11,6 +11,7 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
 use Casedev\Services\Vault\ObjectsService;
+use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
 use Casedev\Vault\VaultListResponse;
@@ -18,6 +19,7 @@ use Casedev\Vault\VaultNewResponse;
 use Casedev\Vault\VaultSearchParams\Filters;
 use Casedev\Vault\VaultSearchParams\Method;
 use Casedev\Vault\VaultSearchResponse;
+use Casedev\Vault\VaultUpdateResponse;
 use Casedev\Vault\VaultUploadResponse;
 
 /**
@@ -112,6 +114,40 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
+     * Update vault settings including name, description, and enableGraph. Changing enableGraph only affects future document uploads - existing documents retain their current graph/non-graph state.
+     *
+     * @param string $id Vault ID to update
+     * @param string|null $description New description for the vault. Set to null to remove.
+     * @param bool $enableGraph Whether to enable GraphRAG for future document uploads
+     * @param string $name New name for the vault
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $id,
+        ?string $description = null,
+        ?bool $enableGraph = null,
+        ?string $name = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultUpdateResponse {
+        $params = Util::removeNulls(
+            [
+                'description' => $description,
+                'enableGraph' => $enableGraph,
+                'name' => $name,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * List all vaults for the authenticated organization. Returns vault metadata including name, description, storage configuration, and usage statistics.
      *
      * @param RequestOpts|null $requestOptions
@@ -123,6 +159,30 @@ final class VaultService implements VaultContract
     ): VaultListResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Permanently deletes a vault and all its contents including documents, vectors, graph data, and S3 buckets. This operation cannot be undone. For large vaults, use the async=true query parameter to queue deletion in the background.
+     *
+     * @param string $id Vault ID to delete
+     * @param bool $async If true and vault has many objects, queue deletion in background and return immediately
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        bool $async = false,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultDeleteResponse {
+        $params = Util::removeNulls(['async' => $async]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

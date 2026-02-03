@@ -6,14 +6,22 @@ namespace Casedev;
 
 use Casedev\Core\BaseClient;
 use Casedev\Core\Util;
+use Casedev\Services\ApplicationsService;
 use Casedev\Services\ComputeService;
+use Casedev\Services\DatabaseService;
 use Casedev\Services\FormatService;
+use Casedev\Services\LegalService;
 use Casedev\Services\LlmService;
+use Casedev\Services\MemoryService;
 use Casedev\Services\OcrService;
+use Casedev\Services\PaymentsService;
+use Casedev\Services\PrivilegeService;
+use Casedev\Services\ProjectsService;
 use Casedev\Services\SearchService;
+use Casedev\Services\SuperdocService;
+use Casedev\Services\TranslateService;
 use Casedev\Services\VaultService;
 use Casedev\Services\VoiceService;
-use Casedev\Services\WebhooksService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 
@@ -28,7 +36,17 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public ApplicationsService $applications;
+
+    /**
+     * @api
+     */
     public ComputeService $compute;
+
+    /**
+     * @api
+     */
+    public DatabaseService $database;
 
     /**
      * @api
@@ -38,7 +56,17 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public LegalService $legal;
+
+    /**
+     * @api
+     */
     public LlmService $llm;
+
+    /**
+     * @api
+     */
+    public MemoryService $memory;
 
     /**
      * @api
@@ -48,7 +76,32 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public PaymentsService $payments;
+
+    /**
+     * @api
+     */
+    public PrivilegeService $privilege;
+
+    /**
+     * @api
+     */
+    public ProjectsService $projects;
+
+    /**
+     * @api
+     */
     public SearchService $search;
+
+    /**
+     * @api
+     */
+    public SuperdocService $superdoc;
+
+    /**
+     * @api
+     */
+    public TranslateService $translate;
 
     /**
      * @api
@@ -59,11 +112,6 @@ class Client extends BaseClient
      * @api
      */
     public VoiceService $voice;
-
-    /**
-     * @api
-     */
-    public WebhooksService $webhooks;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -103,14 +151,22 @@ class Client extends BaseClient
             options: $options
         );
 
+        $this->applications = new ApplicationsService($this);
         $this->compute = new ComputeService($this);
+        $this->database = new DatabaseService($this);
         $this->format = new FormatService($this);
+        $this->legal = new LegalService($this);
         $this->llm = new LlmService($this);
+        $this->memory = new MemoryService($this);
         $this->ocr = new OcrService($this);
+        $this->payments = new PaymentsService($this);
+        $this->privilege = new PrivilegeService($this);
+        $this->projects = new ProjectsService($this);
         $this->search = new SearchService($this);
+        $this->superdoc = new SuperdocService($this);
+        $this->translate = new TranslateService($this);
         $this->vault = new VaultService($this);
         $this->voice = new VoiceService($this);
-        $this->webhooks = new WebhooksService($this);
     }
 
     /** @return array<string,string> */

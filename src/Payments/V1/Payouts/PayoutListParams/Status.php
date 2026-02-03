@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Casedev\Payments\V1\Payouts\PayoutListParams;
+
+enum Status: string
+{
+    case PENDING = 'pending';
+
+    case PROCESSING = 'processing';
+
+    case COMPLETED = 'completed';
+
+    case FAILED = 'failed';
+
+    case CANCELLED = 'cancelled';
+}
