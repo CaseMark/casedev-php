@@ -61,7 +61,7 @@ final class VaultUploadParams implements BaseModel
     public ?string $path;
 
     /**
-     * File size in bytes (optional, max 500MB). When provided, enforces exact file size at S3 level.
+     * File size in bytes (optional, max 5GB for single PUT uploads). When provided, enforces exact file size at S3 level.
      */
     #[Optional]
     public ?int $sizeBytes;
@@ -167,7 +167,7 @@ final class VaultUploadParams implements BaseModel
     }
 
     /**
-     * File size in bytes (optional, max 500MB). When provided, enforces exact file size at S3 level.
+     * File size in bytes (optional, max 5GB for single PUT uploads). When provided, enforces exact file size at S3 level.
      */
     public function withSizeBytes(int $sizeBytes): self
     {

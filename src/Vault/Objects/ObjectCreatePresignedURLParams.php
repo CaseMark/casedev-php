@@ -54,7 +54,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     public ?string $operation;
 
     /**
-     * File size in bytes (optional, max 500MB). When provided for PUT operations, enforces exact file size at S3 level.
+     * File size in bytes (optional, max 5GB for single PUT uploads). When provided for PUT operations, enforces exact file size at S3 level.
      */
     #[Optional]
     public ?int $sizeBytes;
@@ -148,7 +148,7 @@ final class ObjectCreatePresignedURLParams implements BaseModel
     }
 
     /**
-     * File size in bytes (optional, max 500MB). When provided for PUT operations, enforces exact file size at S3 level.
+     * File size in bytes (optional, max 5GB for single PUT uploads). When provided for PUT operations, enforces exact file size at S3 level.
      */
     public function withSizeBytes(int $sizeBytes): self
     {
