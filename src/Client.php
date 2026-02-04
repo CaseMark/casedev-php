@@ -14,9 +14,7 @@ use Casedev\Services\LegalService;
 use Casedev\Services\LlmService;
 use Casedev\Services\MemoryService;
 use Casedev\Services\OcrService;
-use Casedev\Services\PaymentsService;
 use Casedev\Services\PrivilegeService;
-use Casedev\Services\ProjectsService;
 use Casedev\Services\SearchService;
 use Casedev\Services\SuperdocService;
 use Casedev\Services\TranslateService;
@@ -76,17 +74,7 @@ class Client extends BaseClient
     /**
      * @api
      */
-    public PaymentsService $payments;
-
-    /**
-     * @api
-     */
     public PrivilegeService $privilege;
-
-    /**
-     * @api
-     */
-    public ProjectsService $projects;
 
     /**
      * @api
@@ -159,9 +147,7 @@ class Client extends BaseClient
         $this->llm = new LlmService($this);
         $this->memory = new MemoryService($this);
         $this->ocr = new OcrService($this);
-        $this->payments = new PaymentsService($this);
         $this->privilege = new PrivilegeService($this);
-        $this->projects = new ProjectsService($this);
         $this->search = new SearchService($this);
         $this->superdoc = new SuperdocService($this);
         $this->translate = new TranslateService($this);

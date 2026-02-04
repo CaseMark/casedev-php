@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace Casedev\Services\Database;
 
 use Casedev\Client;
+use Casedev\Core\Exceptions\APIException;
+use Casedev\Database\V1\V1GetUsageResponse;
+use Casedev\RequestOptions;
 use Casedev\ServiceContracts\Database\V1Contract;
 use Casedev\Services\Database\V1\ProjectsService;
 
+/**
+ * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ */
 final class V1Service implements V1Contract
 {
     /**
@@ -27,5 +33,23 @@ final class V1Service implements V1Contract
     {
         $this->raw = new V1RawService($client);
         $this->projects = new ProjectsService($client);
+    }
+
+    /**
+     * @api
+     *
+     * Returns detailed database usage statistics and billing information for the current billing period. Includes compute hours, storage, data transfer, and branch counts with associated costs broken down by project.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getUsage(
+        RequestOptions|array|null $requestOptions = null
+    ): V1GetUsageResponse {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getUsage(requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 }

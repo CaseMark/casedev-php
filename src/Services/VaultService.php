@@ -10,6 +10,7 @@ use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
+use Casedev\Services\Vault\MultipartService;
 use Casedev\Services\Vault\ObjectsService;
 use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
@@ -41,6 +42,11 @@ final class VaultService implements VaultContract
     /**
      * @api
      */
+    public MultipartService $multipart;
+
+    /**
+     * @api
+     */
     public ObjectsService $objects;
 
     /**
@@ -50,6 +56,7 @@ final class VaultService implements VaultContract
     {
         $this->raw = new VaultRawService($client);
         $this->graphrag = new GraphragService($client);
+        $this->multipart = new MultipartService($client);
         $this->objects = new ObjectsService($client);
     }
 
