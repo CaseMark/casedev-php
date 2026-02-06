@@ -12,6 +12,7 @@ use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\GraphragService;
 use Casedev\Services\Vault\MultipartService;
 use Casedev\Services\Vault\ObjectsService;
+use Casedev\Vault\VaultConfirmUploadResponse;
 use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
@@ -197,6 +198,49 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
+     * Confirm whether a direct-to-S3 vault upload succeeded or failed. This endpoint emits vault.upload.completed or vault.upload.failed events and is idempotent for repeated confirmations.
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param string $id Path param: Vault ID
+     * @param bool $success Body param
+     * @param string $errorCode Body param: Client-side error code (required when success=false)
+     * @param string $errorMessage Body param: Client-side error message (required when success=false)
+     * @param int $sizeBytes Body param: Uploaded file size in bytes (required when success=true)
+     * @param string $etag Body param: S3 ETag for the uploaded object (optional if client cannot access ETag header)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        string $id,
+        bool $success,
+        string $errorCode,
+        string $errorMessage,
+        ?int $sizeBytes = null,
+        ?string $etag = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultConfirmUploadResponse {
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'sizeBytes' => $sizeBytes,
+                'success' => $success,
+                'errorCode' => $errorCode,
+                'errorMessage' => $errorMessage,
+                'etag' => $etag,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->confirmUpload($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Triggers ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. For supported file types (PDF, DOCX, TXT, RTF, XML, audio, video), processing happens asynchronously. For unsupported types (images, archives, etc.), the file is marked as completed immediately without text extraction. GraphRAG indexing must be triggered separately via POST /vault/:id/graphrag/:objectId.
      *
      * @param string $objectID Vault object ID
@@ -258,7 +302,7 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
-     * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
+     * Generate a presigned URL for uploading files directly to a vault's S3 storage. After uploading to S3, confirm the upload result via POST /vault/:vaultId/upload/:objectId/confirm before triggering ingestion.
      *
      * @param string $id Vault ID to upload the file to
      * @param string $contentType MIME type of the file (e.g., application/pdf, image/jpeg)

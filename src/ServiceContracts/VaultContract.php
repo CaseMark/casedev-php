@@ -6,6 +6,7 @@ namespace Casedev\ServiceContracts;
 
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Vault\VaultConfirmUploadResponse;
 use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
@@ -101,6 +102,31 @@ interface VaultContract
         bool $async = false,
         RequestOptions|array|null $requestOptions = null,
     ): VaultDeleteResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param string $id Path param: Vault ID
+     * @param bool $success Body param
+     * @param string $errorCode Body param: Client-side error code (required when success=false)
+     * @param string $errorMessage Body param: Client-side error message (required when success=false)
+     * @param int $sizeBytes Body param: Uploaded file size in bytes (required when success=true)
+     * @param string $etag Body param: S3 ETag for the uploaded object (optional if client cannot access ETag header)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        string $id,
+        bool $success,
+        string $errorCode,
+        string $errorMessage,
+        ?int $sizeBytes = null,
+        ?string $etag = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultConfirmUploadResponse;
 
     /**
      * @api

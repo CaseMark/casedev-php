@@ -4,6 +4,7 @@ namespace Tests\Services;
 
 use Casedev\Client;
 use Casedev\Core\Util;
+use Casedev\Vault\VaultConfirmUploadResponse;
 use Casedev\Vault\VaultDeleteResponse;
 use Casedev\Vault\VaultGetResponse;
 use Casedev\Vault\VaultIngestResponse;
@@ -117,6 +118,46 @@ final class VaultTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(VaultDeleteResponse::class, $result);
+    }
+
+    #[Test]
+    public function testConfirmUpload(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->confirmUpload(
+            'objectId',
+            id: 'id',
+            success: false,
+            errorCode: 'errorCode',
+            errorMessage: 'errorMessage',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VaultConfirmUploadResponse::class, $result);
+    }
+
+    #[Test]
+    public function testConfirmUploadWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->vault->confirmUpload(
+            'objectId',
+            id: 'id',
+            sizeBytes: 1,
+            success: false,
+            errorCode: 'errorCode',
+            errorMessage: 'errorMessage',
+            etag: 'etag',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VaultConfirmUploadResponse::class, $result);
     }
 
     #[Test]

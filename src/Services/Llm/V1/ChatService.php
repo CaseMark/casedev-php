@@ -39,7 +39,7 @@ final class ChatService implements ChatContract
      * @param list<Message|MessageShape> $messages List of messages comprising the conversation
      * @param float $frequencyPenalty Frequency penalty parameter
      * @param int $maxTokens Maximum number of tokens to generate
-     * @param string $model Model to use for completion. Defaults to casemark-core-1 if not specified
+     * @param string $model Model to use for completion. Defaults to casemark/casemark-core-3 if not specified
      * @param float $presencePenalty Presence penalty parameter
      * @param bool $stream Whether to stream back partial progress
      * @param float $temperature Sampling temperature between 0 and 2
