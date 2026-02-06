@@ -7,6 +7,8 @@ namespace Casedev\ServiceContracts;
 use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
+use Casedev\Vault\VaultConfirmUploadParams;
+use Casedev\Vault\VaultConfirmUploadResponse;
 use Casedev\Vault\VaultCreateParams;
 use Casedev\Vault\VaultDeleteParams;
 use Casedev\Vault\VaultDeleteResponse;
@@ -101,6 +103,23 @@ interface VaultRawContract
     public function delete(
         string $id,
         array|VaultDeleteParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param array<string,mixed>|VaultConfirmUploadParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<VaultConfirmUploadResponse>
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        array|VaultConfirmUploadParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

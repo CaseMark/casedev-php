@@ -11,7 +11,7 @@ use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
- * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
+ * Generate a presigned URL for uploading files directly to a vault's S3 storage. After uploading to S3, confirm the upload result via POST /vault/:vaultId/upload/:objectId/confirm before triggering ingestion.
  *
  * @see Casedev\Services\VaultService::upload()
  *

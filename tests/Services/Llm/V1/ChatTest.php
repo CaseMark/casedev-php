@@ -52,7 +52,7 @@ final class ChatTest extends TestCase
             messages: [['content' => 'content', 'role' => 'system']],
             frequencyPenalty: 0,
             maxTokens: 1000,
-            model: 'gpt-4o',
+            model: 'casemark/casemark-core-3',
             presencePenalty: 0,
             stream: false,
             temperature: 0.7,

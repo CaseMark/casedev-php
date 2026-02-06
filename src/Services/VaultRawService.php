@@ -9,6 +9,8 @@ use Casedev\Core\Contracts\BaseResponse;
 use Casedev\Core\Exceptions\APIException;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultRawContract;
+use Casedev\Vault\VaultConfirmUploadParams;
+use Casedev\Vault\VaultConfirmUploadResponse;
 use Casedev\Vault\VaultCreateParams;
 use Casedev\Vault\VaultDeleteParams;
 use Casedev\Vault\VaultDeleteResponse;
@@ -194,6 +196,51 @@ final class VaultRawService implements VaultRawContract
     /**
      * @api
      *
+     * Confirm whether a direct-to-S3 vault upload succeeded or failed. This endpoint emits vault.upload.completed or vault.upload.failed events and is idempotent for repeated confirmations.
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param array{
+     *   id: string,
+     *   sizeBytes?: int,
+     *   success: bool,
+     *   errorCode: string,
+     *   errorMessage: string,
+     *   etag?: string,
+     * }|VaultConfirmUploadParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<VaultConfirmUploadResponse>
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        array|VaultConfirmUploadParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = VaultConfirmUploadParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $id = $parsed['id'];
+        unset($parsed['id']);
+
+        /** @var array<string,mixed> */
+        $body = $parsed['body'];
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['vault/%1$s/upload/%2$s/confirm', $id, $objectID],
+            body: (object) array_diff_key($parsed, array_flip(['id'])),
+            options: $options,
+            convert: VaultConfirmUploadResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Triggers ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. For supported file types (PDF, DOCX, TXT, RTF, XML, audio, video), processing happens asynchronously. For unsupported types (images, archives, etc.), the file is marked as completed immediately without text extraction. GraphRAG indexing must be triggered separately via POST /vault/:id/graphrag/:objectId.
      *
      * @param string $objectID Vault object ID
@@ -266,7 +313,7 @@ final class VaultRawService implements VaultRawContract
     /**
      * @api
      *
-     * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
+     * Generate a presigned URL for uploading files directly to a vault's S3 storage. After uploading to S3, confirm the upload result via POST /vault/:vaultId/upload/:objectId/confirm before triggering ingestion.
      *
      * @param string $id Vault ID to upload the file to
      * @param array{
