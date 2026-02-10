@@ -5,7 +5,6 @@ namespace Tests\Services\Vault;
 use Casedev\Client;
 use Casedev\Core\Util;
 use Casedev\Vault\Multipart\MultipartGetPartURLsResponse;
-use Casedev\Vault\Multipart\MultipartInitResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -64,44 +63,6 @@ final class MultipartTest extends TestCase
     }
 
     #[Test]
-    public function testComplete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->vault->multipart->complete(
-            'id',
-            objectID: 'objectId',
-            parts: [['etag' => 'etag', 'partNumber' => 1]],
-            sizeBytes: 1,
-            uploadID: 'uploadId',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testCompleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->vault->multipart->complete(
-            'id',
-            objectID: 'objectId',
-            parts: [['etag' => 'etag', 'partNumber' => 1]],
-            sizeBytes: 1,
-            uploadID: 'uploadId',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
     public function testGetPartURLs(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -135,45 +96,5 @@ final class MultipartTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MultipartGetPartURLsResponse::class, $result);
-    }
-
-    #[Test]
-    public function testInit(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->vault->multipart->init(
-            'id',
-            contentType: 'contentType',
-            filename: 'filename',
-            sizeBytes: 1
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MultipartInitResponse::class, $result);
-    }
-
-    #[Test]
-    public function testInitWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->vault->multipart->init(
-            'id',
-            contentType: 'contentType',
-            filename: 'filename',
-            sizeBytes: 1,
-            autoIndex: true,
-            metadata: (object) [],
-            partSizeBytes: 5242880,
-            path: 'path',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MultipartInitResponse::class, $result);
     }
 }

@@ -10,7 +10,7 @@ use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
- * Abort a multipart upload and discard uploaded parts.
+ * Abort a multipart upload and discard uploaded parts (live).
  *
  * @see Casedev\Services\Vault\MultipartService::abort()
  *
