@@ -11,7 +11,7 @@ use Casedev\Core\Contracts\BaseModel;
 use Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part;
 
 /**
- * Generate presigned URLs for individual multipart upload parts.
+ * Generate presigned URLs for individual multipart upload parts (live).
  *
  * @see Casedev\Services\Vault\MultipartService::getPartURLs()
  *

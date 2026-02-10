@@ -19,6 +19,9 @@ final class Part implements BaseModel
     #[Required]
     public int $partNumber;
 
+    /**
+     * Part size in bytes (min 5MB except final part, max 5GB).
+     */
     #[Required]
     public int $sizeBytes;
 
@@ -64,6 +67,9 @@ final class Part implements BaseModel
         return $self;
     }
 
+    /**
+     * Part size in bytes (min 5MB except final part, max 5GB).
+     */
     public function withSizeBytes(int $sizeBytes): self
     {
         $self = clone $this;
