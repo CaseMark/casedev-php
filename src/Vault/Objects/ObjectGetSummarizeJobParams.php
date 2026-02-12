@@ -10,7 +10,7 @@ use Casedev\Core\Concerns\SdkParams;
 use Casedev\Core\Contracts\BaseModel;
 
 /**
- * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+ * Get the status of a CaseMark summary workflow job.
  *
  * @see Casedev\Services\Vault\ObjectsService::getSummarizeJob()
  *
