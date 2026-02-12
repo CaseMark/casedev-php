@@ -287,7 +287,7 @@ final class ObjectsRawService implements ObjectsRawContract
     /**
      * @api
      *
-     * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+     * Get the status of a CaseMark summary workflow job.
      *
      * @param string $jobID CaseMark job ID
      * @param array{id: string, objectID: string}|ObjectGetSummarizeJobParams $params
