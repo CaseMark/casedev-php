@@ -17,6 +17,11 @@ use Casedev\Legal\V1\V1GetFullTextParams;
 use Casedev\Legal\V1\V1GetFullTextResponse;
 use Casedev\Legal\V1\V1ListJurisdictionsParams;
 use Casedev\Legal\V1\V1ListJurisdictionsResponse;
+use Casedev\Legal\V1\V1PatentSearchParams;
+use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
+use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
+use Casedev\Legal\V1\V1PatentSearchResponse;
 use Casedev\Legal\V1\V1ResearchParams;
 use Casedev\Legal\V1\V1ResearchResponse;
 use Casedev\Legal\V1\V1SimilarParams;
@@ -196,6 +201,51 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1ListJurisdictionsResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Search the USPTO Open Data Portal for US patent applications and granted patents. Supports free-text queries, field-specific search, filters by assignee/inventor/status/type, date ranges, and pagination. Covers applications filed on or after January 1, 2001. Data is refreshed daily.
+     *
+     * @param array{
+     *   query: string,
+     *   applicationStatus?: string,
+     *   applicationType?: ApplicationType|value-of<ApplicationType>,
+     *   assignee?: string,
+     *   filingDateFrom?: string,
+     *   filingDateTo?: string,
+     *   grantDateFrom?: string,
+     *   grantDateTo?: string,
+     *   inventor?: string,
+     *   limit?: int,
+     *   offset?: int,
+     *   sortBy?: SortBy|value-of<SortBy>,
+     *   sortOrder?: SortOrder|value-of<SortOrder>,
+     * }|V1PatentSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1PatentSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function patentSearch(
+        array|V1PatentSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1PatentSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/patent-search',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1PatentSearchResponse::class,
         );
     }
 

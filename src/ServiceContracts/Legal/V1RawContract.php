@@ -16,6 +16,8 @@ use Casedev\Legal\V1\V1GetFullTextParams;
 use Casedev\Legal\V1\V1GetFullTextResponse;
 use Casedev\Legal\V1\V1ListJurisdictionsParams;
 use Casedev\Legal\V1\V1ListJurisdictionsResponse;
+use Casedev\Legal\V1\V1PatentSearchParams;
+use Casedev\Legal\V1\V1PatentSearchResponse;
 use Casedev\Legal\V1\V1ResearchParams;
 use Casedev\Legal\V1\V1ResearchResponse;
 use Casedev\Legal\V1\V1SimilarParams;
@@ -101,6 +103,21 @@ interface V1RawContract
      */
     public function listJurisdictions(
         array|V1ListJurisdictionsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|V1PatentSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1PatentSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function patentSearch(
+        array|V1PatentSearchParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
