@@ -67,4 +67,17 @@ interface TranscriptionContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): TranscriptionGetResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
 }
