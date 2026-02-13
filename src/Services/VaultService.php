@@ -9,6 +9,7 @@ use Casedev\Core\Exceptions\APIException;
 use Casedev\Core\Util;
 use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
+use Casedev\Services\Vault\EventsService;
 use Casedev\Services\Vault\GraphragService;
 use Casedev\Services\Vault\MultipartService;
 use Casedev\Services\Vault\ObjectsService;
@@ -38,6 +39,11 @@ final class VaultService implements VaultContract
     /**
      * @api
      */
+    public EventsService $events;
+
+    /**
+     * @api
+     */
     public GraphragService $graphrag;
 
     /**
@@ -56,6 +62,7 @@ final class VaultService implements VaultContract
     public function __construct(private Client $client)
     {
         $this->raw = new VaultRawService($client);
+        $this->events = new EventsService($client);
         $this->graphrag = new GraphragService($client);
         $this->multipart = new MultipartService($client);
         $this->objects = new ObjectsService($client);
