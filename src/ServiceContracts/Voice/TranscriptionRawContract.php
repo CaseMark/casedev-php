@@ -45,4 +45,19 @@ interface TranscriptionRawContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 }

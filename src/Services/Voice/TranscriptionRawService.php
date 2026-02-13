@@ -100,4 +100,29 @@ final class TranscriptionRawService implements TranscriptionRawContract
             convert: TranscriptionGetResponse::class,
         );
     }
+
+    /**
+     * @api
+     *
+     * Deletes a transcription job. For managed vault jobs (tr_*), also removes local job records and managed transcript result objects. Idempotent: returns success if already deleted.
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['voice/transcription/%1$s', $id],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
 }

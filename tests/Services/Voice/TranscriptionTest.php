@@ -54,4 +54,17 @@ final class TranscriptionTest extends TestCase
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TranscriptionGetResponse::class, $result);
     }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->voice->transcription->delete('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
 }
