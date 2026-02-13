@@ -12,6 +12,10 @@ use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
 use Casedev\Legal\V1\V1GetCitationsResponse;
 use Casedev\Legal\V1\V1GetFullTextResponse;
 use Casedev\Legal\V1\V1ListJurisdictionsResponse;
+use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
+use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
+use Casedev\Legal\V1\V1PatentSearchResponse;
 use Casedev\Legal\V1\V1ResearchResponse;
 use Casedev\Legal\V1\V1SimilarResponse;
 use Casedev\Legal\V1\V1VerifyResponse;
@@ -165,6 +169,68 @@ final class V1Service implements V1Contract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listJurisdictions(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Search the USPTO Open Data Portal for US patent applications and granted patents. Supports free-text queries, field-specific search, filters by assignee/inventor/status/type, date ranges, and pagination. Covers applications filed on or after January 1, 2001. Data is refreshed daily.
+     *
+     * @param string $query Free-text search across all patent fields, or field-specific query (e.g. "applicationMetaData.patentNumber:11234567"). Supports AND, OR, NOT operators.
+     * @param string $applicationStatus Filter by application status (e.g. "Patented Case", "Abandoned", "Pending")
+     * @param ApplicationType|value-of<ApplicationType> $applicationType Filter by application type
+     * @param string $assignee Filter by assignee/owner name (e.g. "Google LLC")
+     * @param string $filingDateFrom Start of filing date range (YYYY-MM-DD)
+     * @param string $filingDateTo End of filing date range (YYYY-MM-DD)
+     * @param string $grantDateFrom Start of grant date range (YYYY-MM-DD)
+     * @param string $grantDateTo End of grant date range (YYYY-MM-DD)
+     * @param string $inventor Filter by inventor name
+     * @param int $limit Number of results to return (default 25, max 100)
+     * @param int $offset Starting position for pagination
+     * @param SortBy|value-of<SortBy> $sortBy Field to sort results by
+     * @param SortOrder|value-of<SortOrder> $sortOrder Sort order (default desc, newest first)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function patentSearch(
+        string $query,
+        ?string $applicationStatus = null,
+        ApplicationType|string|null $applicationType = null,
+        ?string $assignee = null,
+        ?string $filingDateFrom = null,
+        ?string $filingDateTo = null,
+        ?string $grantDateFrom = null,
+        ?string $grantDateTo = null,
+        ?string $inventor = null,
+        int $limit = 25,
+        int $offset = 0,
+        SortBy|string $sortBy = 'filingDate',
+        SortOrder|string $sortOrder = 'desc',
+        RequestOptions|array|null $requestOptions = null,
+    ): V1PatentSearchResponse {
+        $params = Util::removeNulls(
+            [
+                'query' => $query,
+                'applicationStatus' => $applicationStatus,
+                'applicationType' => $applicationType,
+                'assignee' => $assignee,
+                'filingDateFrom' => $filingDateFrom,
+                'filingDateTo' => $filingDateTo,
+                'grantDateFrom' => $grantDateFrom,
+                'grantDateTo' => $grantDateTo,
+                'inventor' => $inventor,
+                'limit' => $limit,
+                'offset' => $offset,
+                'sortBy' => $sortBy,
+                'sortOrder' => $sortOrder,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->patentSearch(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

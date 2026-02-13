@@ -9,6 +9,7 @@ use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
 use Casedev\Legal\V1\V1GetCitationsResponse;
 use Casedev\Legal\V1\V1GetFullTextResponse;
 use Casedev\Legal\V1\V1ListJurisdictionsResponse;
+use Casedev\Legal\V1\V1PatentSearchResponse;
 use Casedev\Legal\V1\V1ResearchResponse;
 use Casedev\Legal\V1\V1SimilarResponse;
 use Casedev\Legal\V1\V1VerifyResponse;
@@ -176,6 +177,46 @@ final class V1Test extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ListJurisdictionsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testPatentSearch(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->legal->v1->patentSearch(query: 'x');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1PatentSearchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testPatentSearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->legal->v1->patentSearch(
+            query: 'x',
+            applicationStatus: 'applicationStatus',
+            applicationType: 'Utility',
+            assignee: 'assignee',
+            filingDateFrom: '2019-12-27',
+            filingDateTo: '2019-12-27',
+            grantDateFrom: '2019-12-27',
+            grantDateTo: '2019-12-27',
+            inventor: 'inventor',
+            limit: 1,
+            offset: 0,
+            sortBy: 'filingDate',
+            sortOrder: 'asc',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1PatentSearchResponse::class, $result);
     }
 
     #[Test]
