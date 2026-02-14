@@ -53,6 +53,7 @@ final class TranscriptionService implements TranscriptionContract
      * @param bool $punctuate Add punctuation to the transcript
      * @param bool $speakerLabels Enable speaker identification and labeling
      * @param int $speakersExpected Expected number of speakers (improves accuracy when known)
+     * @param list<string> $speechModels Priority-ordered speech models to use
      * @param string $vaultID Vault ID containing the audio file (use with object_id)
      * @param list<string> $wordBoost Custom vocabulary words to boost (e.g., legal terms)
      * @param RequestOpts|null $requestOptions
@@ -72,6 +73,7 @@ final class TranscriptionService implements TranscriptionContract
         bool $punctuate = true,
         bool $speakerLabels = false,
         ?int $speakersExpected = null,
+        array $speechModels = ['universal-3-pro', 'universal-2'],
         ?string $vaultID = null,
         ?array $wordBoost = null,
         RequestOptions|array|null $requestOptions = null,
@@ -90,6 +92,7 @@ final class TranscriptionService implements TranscriptionContract
                 'punctuate' => $punctuate,
                 'speakerLabels' => $speakerLabels,
                 'speakersExpected' => $speakersExpected,
+                'speechModels' => $speechModels,
                 'vaultID' => $vaultID,
                 'wordBoost' => $wordBoost,
             ],
