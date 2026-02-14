@@ -48,6 +48,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      *   punctuate?: bool,
      *   speakerLabels?: bool,
      *   speakersExpected?: int,
+     *   speechModels?: list<string>,
      *   vaultID?: string,
      *   wordBoost?: list<string>,
      * }|TranscriptionCreateParams $params

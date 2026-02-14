@@ -33,6 +33,7 @@ use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
  *   punctuate?: bool|null,
  *   speakerLabels?: bool|null,
  *   speakersExpected?: int|null,
+ *   speechModels?: list<string>|null,
  *   vaultID?: string|null,
  *   wordBoost?: list<string>|null,
  * }
@@ -120,6 +121,14 @@ final class TranscriptionCreateParams implements BaseModel
     public ?int $speakersExpected;
 
     /**
+     * Priority-ordered speech models to use.
+     *
+     * @var list<string>|null $speechModels
+     */
+    #[Optional('speech_models', list: 'string')]
+    public ?array $speechModels;
+
+    /**
      * Vault ID containing the audio file (use with object_id).
      */
     #[Optional('vault_id')]
@@ -145,6 +154,7 @@ final class TranscriptionCreateParams implements BaseModel
      *
      * @param BoostParam|value-of<BoostParam>|null $boostParam
      * @param Format|value-of<Format>|null $format
+     * @param list<string>|null $speechModels
      * @param list<string>|null $wordBoost
      */
     public static function with(
@@ -160,6 +170,7 @@ final class TranscriptionCreateParams implements BaseModel
         ?bool $punctuate = null,
         ?bool $speakerLabels = null,
         ?int $speakersExpected = null,
+        ?array $speechModels = null,
         ?string $vaultID = null,
         ?array $wordBoost = null,
     ): self {
@@ -177,6 +188,7 @@ final class TranscriptionCreateParams implements BaseModel
         null !== $punctuate && $self['punctuate'] = $punctuate;
         null !== $speakerLabels && $self['speakerLabels'] = $speakerLabels;
         null !== $speakersExpected && $self['speakersExpected'] = $speakersExpected;
+        null !== $speechModels && $self['speechModels'] = $speechModels;
         null !== $vaultID && $self['vaultID'] = $vaultID;
         null !== $wordBoost && $self['wordBoost'] = $wordBoost;
 
@@ -315,6 +327,19 @@ final class TranscriptionCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['speakersExpected'] = $speakersExpected;
+
+        return $self;
+    }
+
+    /**
+     * Priority-ordered speech models to use.
+     *
+     * @param list<string> $speechModels
+     */
+    public function withSpeechModels(array $speechModels): self
+    {
+        $self = clone $this;
+        $self['speechModels'] = $speechModels;
 
         return $self;
     }
