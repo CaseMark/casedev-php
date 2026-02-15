@@ -32,6 +32,7 @@ final class ChatRawService implements ChatRawContract
      *
      * @param array{
      *   messages: list<Message|MessageShape>,
+     *   casemarkShowReasoning?: bool,
      *   frequencyPenalty?: float,
      *   maxTokens?: int,
      *   model?: string,
