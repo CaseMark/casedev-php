@@ -19,6 +19,7 @@ interface ChatContract
      * @api
      *
      * @param list<Message|MessageShape> $messages List of messages comprising the conversation
+     * @param bool $casemarkShowReasoning CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
      * @param float $frequencyPenalty Frequency penalty parameter
      * @param int $maxTokens Maximum number of tokens to generate
      * @param string $model Model to use for completion. Defaults to casemark/casemark-core-3 if not specified
@@ -32,6 +33,7 @@ interface ChatContract
      */
     public function createCompletion(
         array $messages,
+        ?bool $casemarkShowReasoning = null,
         ?float $frequencyPenalty = null,
         ?int $maxTokens = null,
         ?string $model = null,

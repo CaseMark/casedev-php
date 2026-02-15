@@ -20,6 +20,7 @@ use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
  *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
  *   messages: list<Message|MessageShape>,
+ *   casemarkShowReasoning?: bool|null,
  *   frequencyPenalty?: float|null,
  *   maxTokens?: int|null,
  *   model?: string|null,
@@ -42,6 +43,12 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     #[Required(list: Message::class)]
     public array $messages;
+
+    /**
+     * CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
+     */
+    #[Optional('casemark_show_reasoning')]
+    public ?bool $casemarkShowReasoning;
 
     /**
      * Frequency penalty parameter.
@@ -113,6 +120,7 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public static function with(
         array $messages,
+        ?bool $casemarkShowReasoning = null,
         ?float $frequencyPenalty = null,
         ?int $maxTokens = null,
         ?string $model = null,
@@ -125,6 +133,7 @@ final class ChatCreateCompletionParams implements BaseModel
 
         $self['messages'] = $messages;
 
+        null !== $casemarkShowReasoning && $self['casemarkShowReasoning'] = $casemarkShowReasoning;
         null !== $frequencyPenalty && $self['frequencyPenalty'] = $frequencyPenalty;
         null !== $maxTokens && $self['maxTokens'] = $maxTokens;
         null !== $model && $self['model'] = $model;
@@ -145,6 +154,17 @@ final class ChatCreateCompletionParams implements BaseModel
     {
         $self = clone $this;
         $self['messages'] = $messages;
+
+        return $self;
+    }
+
+    /**
+     * CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
+     */
+    public function withCasemarkShowReasoning(bool $casemarkShowReasoning): self
+    {
+        $self = clone $this;
+        $self['casemarkShowReasoning'] = $casemarkShowReasoning;
 
         return $self;
     }

@@ -50,6 +50,7 @@ final class ChatTest extends TestCase
 
         $result = $this->client->llm->v1->chat->createCompletion(
             messages: [['content' => 'content', 'role' => 'system']],
+            casemarkShowReasoning: false,
             frequencyPenalty: 0,
             maxTokens: 1000,
             model: 'casemark/casemark-core-3',
