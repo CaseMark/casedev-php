@@ -50,6 +50,7 @@ final class VaultRawService implements VaultRawContract
      *   description?: string,
      *   enableGraph?: bool,
      *   enableIndexing?: bool,
+     *   groupID?: string,
      *   metadata?: mixed,
      * }|VaultCreateParams $params
      * @param RequestOpts|null $requestOptions
@@ -109,7 +110,10 @@ final class VaultRawService implements VaultRawContract
      *
      * @param string $id Vault ID to update
      * @param array{
-     *   description?: string|null, enableGraph?: bool, name?: string
+     *   description?: string|null,
+     *   enableGraph?: bool,
+     *   groupID?: string|null,
+     *   name?: string,
      * }|VaultUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *

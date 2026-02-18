@@ -61,6 +61,7 @@ final class VaultTest extends TestCase
             description: 'Repository for all client contract reviews and analysis',
             enableGraph: true,
             enableIndexing: true,
+            groupID: 'grp_abc123',
             metadata: ['containsPHI' => true, 'hipaaCompliant' => true],
         );
 

@@ -11,6 +11,7 @@ use Casedev\RequestOptions;
 use Casedev\ServiceContracts\VaultContract;
 use Casedev\Services\Vault\EventsService;
 use Casedev\Services\Vault\GraphragService;
+use Casedev\Services\Vault\GroupsService;
 use Casedev\Services\Vault\MultipartService;
 use Casedev\Services\Vault\ObjectsService;
 use Casedev\Vault\VaultConfirmUploadResponse;
@@ -49,6 +50,11 @@ final class VaultService implements VaultContract
     /**
      * @api
      */
+    public GroupsService $groups;
+
+    /**
+     * @api
+     */
     public MultipartService $multipart;
 
     /**
@@ -64,6 +70,7 @@ final class VaultService implements VaultContract
         $this->raw = new VaultRawService($client);
         $this->events = new EventsService($client);
         $this->graphrag = new GraphragService($client);
+        $this->groups = new GroupsService($client);
         $this->multipart = new MultipartService($client);
         $this->objects = new ObjectsService($client);
     }
@@ -77,6 +84,7 @@ final class VaultService implements VaultContract
      * @param string $description Optional description of the vault's purpose
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
      * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      * @param RequestOpts|null $requestOptions
      *
@@ -87,6 +95,7 @@ final class VaultService implements VaultContract
         ?string $description = null,
         bool $enableGraph = true,
         bool $enableIndexing = true,
+        ?string $groupID = null,
         mixed $metadata = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultNewResponse {
@@ -96,6 +105,7 @@ final class VaultService implements VaultContract
                 'description' => $description,
                 'enableGraph' => $enableGraph,
                 'enableIndexing' => $enableIndexing,
+                'groupID' => $groupID,
                 'metadata' => $metadata,
             ],
         );
@@ -134,6 +144,7 @@ final class VaultService implements VaultContract
      * @param string $id Vault ID to update
      * @param string|null $description New description for the vault. Set to null to remove.
      * @param bool $enableGraph Whether to enable GraphRAG for future document uploads
+     * @param string|null $groupID move the vault to a different group, or set to null to remove from its current group
      * @param string $name New name for the vault
      * @param RequestOpts|null $requestOptions
      *
@@ -143,6 +154,7 @@ final class VaultService implements VaultContract
         string $id,
         ?string $description = null,
         ?bool $enableGraph = null,
+        ?string $groupID = null,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultUpdateResponse {
@@ -150,6 +162,7 @@ final class VaultService implements VaultContract
             [
                 'description' => $description,
                 'enableGraph' => $enableGraph,
+                'groupID' => $groupID,
                 'name' => $name,
             ],
         );

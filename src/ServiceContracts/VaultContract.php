@@ -31,6 +31,7 @@ interface VaultContract
      * @param string $description Optional description of the vault's purpose
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
      * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      * @param RequestOpts|null $requestOptions
      *
@@ -41,6 +42,7 @@ interface VaultContract
         ?string $description = null,
         bool $enableGraph = true,
         bool $enableIndexing = true,
+        ?string $groupID = null,
         mixed $metadata = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultNewResponse;
@@ -64,6 +66,7 @@ interface VaultContract
      * @param string $id Vault ID to update
      * @param string|null $description New description for the vault. Set to null to remove.
      * @param bool $enableGraph Whether to enable GraphRAG for future document uploads
+     * @param string|null $groupID move the vault to a different group, or set to null to remove from its current group
      * @param string $name New name for the vault
      * @param RequestOpts|null $requestOptions
      *
@@ -73,6 +76,7 @@ interface VaultContract
         string $id,
         ?string $description = null,
         ?bool $enableGraph = null,
+        ?string $groupID = null,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultUpdateResponse;
