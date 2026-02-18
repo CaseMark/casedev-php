@@ -20,6 +20,7 @@ use Casedev\Core\Contracts\BaseModel;
  *   description?: string|null,
  *   enableGraph?: bool|null,
  *   enableIndexing?: bool|null,
+ *   groupID?: string|null,
  *   metadata?: mixed,
  * }
  */
@@ -52,6 +53,12 @@ final class VaultCreateParams implements BaseModel
      */
     #[Optional]
     public ?bool $enableIndexing;
+
+    /**
+     * Assign the vault to a vault group for access control. Required when using a group-scoped API key.
+     */
+    #[Optional('groupId')]
+    public ?string $groupID;
 
     /**
      * Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking).
@@ -88,6 +95,7 @@ final class VaultCreateParams implements BaseModel
         ?string $description = null,
         ?bool $enableGraph = null,
         ?bool $enableIndexing = null,
+        ?string $groupID = null,
         mixed $metadata = null,
     ): self {
         $self = new self;
@@ -97,6 +105,7 @@ final class VaultCreateParams implements BaseModel
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
         null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
+        null !== $groupID && $self['groupID'] = $groupID;
         null !== $metadata && $self['metadata'] = $metadata;
 
         return $self;
@@ -142,6 +151,17 @@ final class VaultCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['enableIndexing'] = $enableIndexing;
+
+        return $self;
+    }
+
+    /**
+     * Assign the vault to a vault group for access control. Required when using a group-scoped API key.
+     */
+    public function withGroupID(string $groupID): self
+    {
+        $self = clone $this;
+        $self['groupID'] = $groupID;
 
         return $self;
     }

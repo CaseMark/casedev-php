@@ -15,7 +15,10 @@ use Casedev\Core\Contracts\BaseModel;
  * @see Casedev\Services\VaultService::update()
  *
  * @phpstan-type VaultUpdateParamsShape = array{
- *   description?: string|null, enableGraph?: bool|null, name?: string|null
+ *   description?: string|null,
+ *   enableGraph?: bool|null,
+ *   groupID?: string|null,
+ *   name?: string|null,
  * }
  */
 final class VaultUpdateParams implements BaseModel
@@ -37,6 +40,12 @@ final class VaultUpdateParams implements BaseModel
     public ?bool $enableGraph;
 
     /**
+     * Move the vault to a different group, or set to null to remove from its current group.
+     */
+    #[Optional('groupId', nullable: true)]
+    public ?string $groupID;
+
+    /**
      * New name for the vault.
      */
     #[Optional]
@@ -55,12 +64,14 @@ final class VaultUpdateParams implements BaseModel
     public static function with(
         ?string $description = null,
         ?bool $enableGraph = null,
-        ?string $name = null
+        ?string $groupID = null,
+        ?string $name = null,
     ): self {
         $self = new self;
 
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
+        null !== $groupID && $self['groupID'] = $groupID;
         null !== $name && $self['name'] = $name;
 
         return $self;
@@ -84,6 +95,17 @@ final class VaultUpdateParams implements BaseModel
     {
         $self = clone $this;
         $self['enableGraph'] = $enableGraph;
+
+        return $self;
+    }
+
+    /**
+     * Move the vault to a different group, or set to null to remove from its current group.
+     */
+    public function withGroupID(?string $groupID): self
+    {
+        $self = clone $this;
+        $self['groupID'] = $groupID;
 
         return $self;
     }

@@ -17,6 +17,7 @@ use Casedev\Services\OcrService;
 use Casedev\Services\PrivilegeService;
 use Casedev\Services\SearchService;
 use Casedev\Services\SuperdocService;
+use Casedev\Services\SystemService;
 use Casedev\Services\TranslateService;
 use Casedev\Services\VaultService;
 use Casedev\Services\VoiceService;
@@ -30,6 +31,11 @@ use Http\Discovery\Psr18ClientDiscovery;
 class Client extends BaseClient
 {
     public string $apiKey;
+
+    /**
+     * @api
+     */
+    public SystemService $system;
 
     /**
      * @api
@@ -139,6 +145,7 @@ class Client extends BaseClient
             options: $options
         );
 
+        $this->system = new SystemService($this);
         $this->applications = new ApplicationsService($this);
         $this->compute = new ComputeService($this);
         $this->database = new DatabaseService($this);
