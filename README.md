@@ -12,12 +12,14 @@ The REST API documentation can be found on [docs.case.dev](https://docs.case.dev
 
 To use this package, install via Composer by adding the following to your application's `composer.json`:
 
+<!-- x-release-please-start-version -->
+
 ```json
 {
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:stainless-sdks/router-php.git"
+      "url": "git@github.com:CaseMark/casedev-php.git"
     }
   ],
   "require": {
@@ -25,6 +27,8 @@ To use this package, install via Composer by adding the following to your applic
   }
 }
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
@@ -171,4 +175,4 @@ PHP 8.1.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/stainless-sdks/router-php/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/CaseMark/casedev-php/tree/main/CONTRIBUTING.md).
