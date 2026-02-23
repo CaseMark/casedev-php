@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects;
+namespace Router\Applications\V1\Projects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Remove a domain from a project.
  *
- * @see Casedev\Services\Applications\V1\ProjectsService::deleteDomain()
+ * @see Router\Services\Applications\V1\ProjectsService::deleteDomain()
  *
  * @phpstan-type ProjectDeleteDomainParamsShape = array{id: string}
  */

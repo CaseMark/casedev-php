@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1GetCitationsFromURLResponse;
+namespace Router\Legal\V1\V1GetCitationsFromURLResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Case_;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Regulation;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Statute;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Case_;
+use Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Regulation;
+use Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Statute;
 
 /**
- * @phpstan-import-type CaseShape from \Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Case_
- * @phpstan-import-type RegulationShape from \Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Regulation
- * @phpstan-import-type StatuteShape from \Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations\Statute
+ * @phpstan-import-type CaseShape from \Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Case_
+ * @phpstan-import-type RegulationShape from \Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Regulation
+ * @phpstan-import-type StatuteShape from \Router\Legal\V1\V1GetCitationsFromURLResponse\Citations\Statute
  *
  * @phpstan-type CitationsShape = array{
  *   cases?: list<Case_|CaseShape>|null,

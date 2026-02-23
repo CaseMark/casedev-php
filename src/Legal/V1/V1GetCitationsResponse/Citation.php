@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1GetCitationsResponse;
+namespace Router\Legal\V1\V1GetCitationsResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1GetCitationsResponse\Citation\Components;
-use Casedev\Legal\V1\V1GetCitationsResponse\Citation\Span;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1GetCitationsResponse\Citation\Components;
+use Router\Legal\V1\V1GetCitationsResponse\Citation\Span;
 
 /**
- * @phpstan-import-type ComponentsShape from \Casedev\Legal\V1\V1GetCitationsResponse\Citation\Components
- * @phpstan-import-type SpanShape from \Casedev\Legal\V1\V1GetCitationsResponse\Citation\Span
+ * @phpstan-import-type ComponentsShape from \Router\Legal\V1\V1GetCitationsResponse\Citation\Components
+ * @phpstan-import-type SpanShape from \Router\Legal\V1\V1GetCitationsResponse\Citation\Span
  *
  * @phpstan-type CitationShape = array{
  *   components?: null|Components|ComponentsShape,

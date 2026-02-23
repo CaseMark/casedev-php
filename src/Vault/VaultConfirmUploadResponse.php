@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace Router\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\VaultConfirmUploadResponse\Status;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\VaultConfirmUploadResponse\Status;
 
 /**
  * @phpstan-type VaultConfirmUploadResponseShape = array{

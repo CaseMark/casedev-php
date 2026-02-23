@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault\Events;
+namespace Router\Services\Vault\Events;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\Events\SubscriptionsRawContract;
-use Casedev\Vault\Events\Subscriptions\SubscriptionCreateParams;
-use Casedev\Vault\Events\Subscriptions\SubscriptionDeleteParams;
-use Casedev\Vault\Events\Subscriptions\SubscriptionTestParams;
-use Casedev\Vault\Events\Subscriptions\SubscriptionUpdateParams;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Vault\Events\SubscriptionsRawContract;
+use Router\Vault\Events\Subscriptions\SubscriptionCreateParams;
+use Router\Vault\Events\Subscriptions\SubscriptionDeleteParams;
+use Router\Vault\Events\Subscriptions\SubscriptionTestParams;
+use Router\Vault\Events\Subscriptions\SubscriptionUpdateParams;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class SubscriptionsRawService implements SubscriptionsRawContract
 {

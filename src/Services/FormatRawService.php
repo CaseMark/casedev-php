@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace Router\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\FormatRawContract;
+use Router\Client;
+use Router\ServiceContracts\FormatRawContract;
 
 final class FormatRawService implements FormatRawContract
 {

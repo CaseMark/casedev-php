@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Concerns;
+namespace Router\Core\Concerns;
 
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\EnumOf;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\EnumOf;
 
 /**
  * @internal

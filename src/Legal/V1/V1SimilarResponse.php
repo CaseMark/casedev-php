@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1SimilarResponse\SimilarSource;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1SimilarResponse\SimilarSource;
 
 /**
- * @phpstan-import-type SimilarSourceShape from \Casedev\Legal\V1\V1SimilarResponse\SimilarSource
+ * @phpstan-import-type SimilarSourceShape from \Router\Legal\V1\V1SimilarResponse\SimilarSource
  *
  * @phpstan-type V1SimilarResponseShape = array{
  *   found?: int|null,

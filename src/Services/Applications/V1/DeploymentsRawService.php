@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace Router\Services\Applications\V1;
 
-use Casedev\Applications\V1\Deployments\DeploymentCancelParams;
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams;
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams\Target;
-use Casedev\Applications\V1\Deployments\DeploymentGetLogsParams;
-use Casedev\Applications\V1\Deployments\DeploymentListParams;
-use Casedev\Applications\V1\Deployments\DeploymentRetrieveParams;
-use Casedev\Applications\V1\Deployments\DeploymentStreamParams;
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\DeploymentsRawContract;
+use Router\Applications\V1\Deployments\DeploymentCancelParams;
+use Router\Applications\V1\Deployments\DeploymentCreateParams;
+use Router\Applications\V1\Deployments\DeploymentCreateParams\Target;
+use Router\Applications\V1\Deployments\DeploymentGetLogsParams;
+use Router\Applications\V1\Deployments\DeploymentListParams;
+use Router\Applications\V1\Deployments\DeploymentRetrieveParams;
+use Router\Applications\V1\Deployments\DeploymentStreamParams;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\Applications\V1\DeploymentsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class DeploymentsRawService implements DeploymentsRawContract
 {

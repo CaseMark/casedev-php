@@ -2,19 +2,18 @@
 
 namespace Tests\Services\Database\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Database\V1\Projects\ProjectDeleteResponse;
-use Casedev\Database\V1\Projects\ProjectGetConnectionResponse;
-use Casedev\Database\V1\Projects\ProjectGetResponse;
-use Casedev\Database\V1\Projects\ProjectListBranchesResponse;
-use Casedev\Database\V1\Projects\ProjectListResponse;
-use Casedev\Database\V1\Projects\ProjectNewBranchResponse;
-use Casedev\Database\V1\Projects\ProjectNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Database\V1\Projects\ProjectDeleteResponse;
+use Router\Database\V1\Projects\ProjectGetConnectionResponse;
+use Router\Database\V1\Projects\ProjectGetResponse;
+use Router\Database\V1\Projects\ProjectListBranchesResponse;
+use Router\Database\V1\Projects\ProjectListResponse;
+use Router\Database\V1\Projects\ProjectNewBranchResponse;
+use Router\Database\V1\Projects\ProjectNewResponse;
 
 /**
  * @internal
@@ -37,10 +36,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->create(
             name: 'litigation-docs-db'
         );
@@ -52,10 +47,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->create(
             name: 'litigation-docs-db',
             description: 'Production database for litigation document management',
@@ -69,10 +60,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -82,10 +69,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -95,10 +78,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->delete('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -108,10 +87,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateBranch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->createBranch(
             'id',
             name: 'staging'
@@ -124,10 +99,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateBranchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->createBranch(
             'id',
             name: 'staging',
@@ -141,10 +112,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testGetConnection(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->getConnection('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -154,10 +121,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testListBranches(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->projects->listBranches('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

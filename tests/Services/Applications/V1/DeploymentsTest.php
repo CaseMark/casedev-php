@@ -2,12 +2,11 @@
 
 namespace Tests\Services\Applications\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->create(
             projectID: 'projectId'
         );
@@ -45,10 +40,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->create(
             projectID: 'projectId',
             ref: 'ref',
@@ -62,10 +53,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->retrieve(
             'id',
             projectID: 'projectId'
@@ -78,10 +65,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testRetrieveWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->retrieve(
             'id',
             projectID: 'projectId',
@@ -95,10 +78,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->list(
             projectID: 'projectId'
         );
@@ -110,10 +89,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testListWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->list(
             projectID: 'projectId',
             limit: 0,
@@ -128,10 +103,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testCancel(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->cancel(
             'id',
             projectID: 'projectId'
@@ -144,10 +115,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testCancelWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->cancel(
             'id',
             projectID: 'projectId'
@@ -160,10 +127,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testCreateFromFiles(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->createFromFiles();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -173,10 +136,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testGetLogs(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->getLogs(
             'id',
             projectID: 'projectId'
@@ -189,10 +148,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testGetLogsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->getLogs(
             'id',
             projectID: 'projectId'
@@ -205,10 +160,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testGetStatus(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->getStatus('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -218,10 +169,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testStream(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->stream(
             'id',
             projectID: 'projectId'
@@ -234,10 +181,6 @@ final class DeploymentsTest extends TestCase
     #[Test]
     public function testStreamWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->deployments->stream(
             'id',
             projectID: 'projectId',

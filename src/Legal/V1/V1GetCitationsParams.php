@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Parses legal citations from text and returns structured Bluebook components (case name, reporter, volume, page, year, court). Accepts either a single citation or a full text block.
  *
- * @see Casedev\Services\Legal\V1Service::getCitations()
+ * @see Router\Services\Legal\V1Service::getCitations()
  *
  * @phpstan-type V1GetCitationsParamsShape = array{text: string}
  */

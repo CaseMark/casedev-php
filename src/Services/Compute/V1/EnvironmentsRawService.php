@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Compute\V1;
+namespace Router\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
-use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
-use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
-use Casedev\Compute\V1\Environments\EnvironmentListResponse;
-use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
-use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Compute\V1\EnvironmentsRawContract;
+use Router\Client;
+use Router\Compute\V1\Environments\EnvironmentCreateParams;
+use Router\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Router\Compute\V1\Environments\EnvironmentGetResponse;
+use Router\Compute\V1\Environments\EnvironmentListResponse;
+use Router\Compute\V1\Environments\EnvironmentNewResponse;
+use Router\Compute\V1\Environments\EnvironmentSetDefaultResponse;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Compute\V1\EnvironmentsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class EnvironmentsRawService implements EnvironmentsRawContract
 {

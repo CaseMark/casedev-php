@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Retrieves the full extracted text content from a processed vault object. Returns the concatenated text from all chunks, useful for document review, analysis, or export. The object must have completed processing before text can be retrieved.
  *
- * @see Casedev\Services\Vault\ObjectsService::getText()
+ * @see Router\Services\Vault\ObjectsService::getText()
  *
  * @phpstan-type ObjectGetTextParamsShape = array{id: string}
  */

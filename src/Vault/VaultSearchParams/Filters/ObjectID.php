@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\VaultSearchParams\Filters;
+namespace Router\Vault\VaultSearchParams\Filters;
 
-use Casedev\Core\Concerns\SdkUnion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Conversion\ListOf;
+use Router\Core\Concerns\SdkUnion;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\Contracts\ConverterSource;
+use Router\Core\Conversion\ListOf;
 
 /**
  * Filter to specific document(s) by object ID. Accepts a single ID or array of IDs.

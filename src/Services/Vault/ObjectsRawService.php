@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace Router\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\ObjectsRawContract;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
-use Casedev\Vault\Objects\ObjectDeleteParams;
-use Casedev\Vault\Objects\ObjectDeleteParams\Force;
-use Casedev\Vault\Objects\ObjectDeleteResponse;
-use Casedev\Vault\Objects\ObjectDownloadParams;
-use Casedev\Vault\Objects\ObjectGetOcrWordsParams;
-use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
-use Casedev\Vault\Objects\ObjectGetResponse;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobParams;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
-use Casedev\Vault\Objects\ObjectGetTextParams;
-use Casedev\Vault\Objects\ObjectGetTextResponse;
-use Casedev\Vault\Objects\ObjectListResponse;
-use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectRetrieveParams;
-use Casedev\Vault\Objects\ObjectUpdateParams;
-use Casedev\Vault\Objects\ObjectUpdateResponse;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Vault\ObjectsRawContract;
+use Router\Vault\Objects\ObjectCreatePresignedURLParams;
+use Router\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Router\Vault\Objects\ObjectDeleteParams;
+use Router\Vault\Objects\ObjectDeleteParams\Force;
+use Router\Vault\Objects\ObjectDeleteResponse;
+use Router\Vault\Objects\ObjectDownloadParams;
+use Router\Vault\Objects\ObjectGetOcrWordsParams;
+use Router\Vault\Objects\ObjectGetOcrWordsResponse;
+use Router\Vault\Objects\ObjectGetResponse;
+use Router\Vault\Objects\ObjectGetSummarizeJobParams;
+use Router\Vault\Objects\ObjectGetSummarizeJobResponse;
+use Router\Vault\Objects\ObjectGetTextParams;
+use Router\Vault\Objects\ObjectGetTextResponse;
+use Router\Vault\Objects\ObjectListResponse;
+use Router\Vault\Objects\ObjectNewPresignedURLResponse;
+use Router\Vault\Objects\ObjectRetrieveParams;
+use Router\Vault\Objects\ObjectUpdateParams;
+use Router\Vault\Objects\ObjectUpdateResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class ObjectsRawService implements ObjectsRawContract
 {
@@ -242,6 +242,7 @@ final class ObjectsRawService implements ObjectsRawContract
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
+            headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
         );

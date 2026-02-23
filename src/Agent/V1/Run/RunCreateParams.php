@@ -1,0 +1,136 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Router\Agent\V1\Run;
+
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+
+/**
+ * Creates a run in queued state. Call POST /agent/v1/run/:id/exec to start execution.
+ *
+ * @see Router\Services\Agent\V1\RunService::create()
+ *
+ * @phpstan-type RunCreateParamsShape = array{
+ *   agentID: string, prompt: string, guidance?: string|null, model?: string|null
+ * }
+ */
+final class RunCreateParams implements BaseModel
+{
+    /** @use SdkModel<RunCreateParamsShape> */
+    use SdkModel;
+    use SdkParams;
+
+    /**
+     * ID of the agent to run.
+     */
+    #[Required('agentId')]
+    public string $agentID;
+
+    /**
+     * Task prompt for the agent.
+     */
+    #[Required]
+    public string $prompt;
+
+    /**
+     * Additional guidance for this run.
+     */
+    #[Optional(nullable: true)]
+    public ?string $guidance;
+
+    /**
+     * Override the agent default model for this run.
+     */
+    #[Optional(nullable: true)]
+    public ?string $model;
+
+    /**
+     * `new RunCreateParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * RunCreateParams::with(agentID: ..., prompt: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new RunCreateParams)->withAgentID(...)->withPrompt(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        string $agentID,
+        string $prompt,
+        ?string $guidance = null,
+        ?string $model = null,
+    ): self {
+        $self = new self;
+
+        $self['agentID'] = $agentID;
+        $self['prompt'] = $prompt;
+
+        null !== $guidance && $self['guidance'] = $guidance;
+        null !== $model && $self['model'] = $model;
+
+        return $self;
+    }
+
+    /**
+     * ID of the agent to run.
+     */
+    public function withAgentID(string $agentID): self
+    {
+        $self = clone $this;
+        $self['agentID'] = $agentID;
+
+        return $self;
+    }
+
+    /**
+     * Task prompt for the agent.
+     */
+    public function withPrompt(string $prompt): self
+    {
+        $self = clone $this;
+        $self['prompt'] = $prompt;
+
+        return $self;
+    }
+
+    /**
+     * Additional guidance for this run.
+     */
+    public function withGuidance(?string $guidance): self
+    {
+        $self = clone $this;
+        $self['guidance'] = $guidance;
+
+        return $self;
+    }
+
+    /**
+     * Override the agent default model for this run.
+     */
+    public function withModel(?string $model): self
+    {
+        $self = clone $this;
+        $self['model'] = $model;
+
+        return $self;
+    }
+}

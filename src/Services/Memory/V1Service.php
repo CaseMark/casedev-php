@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Memory;
+namespace Router\Services\Memory;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Memory\V1\V1CreateParams\Message;
-use Casedev\Memory\V1\V1DeleteAllResponse;
-use Casedev\Memory\V1\V1DeleteResponse;
-use Casedev\Memory\V1\V1GetResponse;
-use Casedev\Memory\V1\V1ListResponse;
-use Casedev\Memory\V1\V1NewResponse;
-use Casedev\Memory\V1\V1SearchResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Memory\V1Contract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Memory\V1\V1CreateParams\Message;
+use Router\Memory\V1\V1DeleteAllResponse;
+use Router\Memory\V1\V1DeleteResponse;
+use Router\Memory\V1\V1GetResponse;
+use Router\Memory\V1\V1ListResponse;
+use Router\Memory\V1\V1NewResponse;
+use Router\Memory\V1\V1SearchResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Memory\V1Contract;
 
 /**
- * @phpstan-import-type MessageShape from \Casedev\Memory\V1\V1CreateParams\Message
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type MessageShape from \Router\Memory\V1\V1CreateParams\Message
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {

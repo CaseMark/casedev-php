@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Events\Subscriptions;
+namespace Router\Vault\Events\Subscriptions;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Deactivates a vault webhook subscription.
  *
- * @see Casedev\Services\Vault\Events\SubscriptionsService::delete()
+ * @see Router\Services\Vault\Events\SubscriptionsService::delete()
  *
  * @phpstan-type SubscriptionDeleteParamsShape = array{id: string}
  */

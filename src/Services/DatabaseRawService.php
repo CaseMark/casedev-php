@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace Router\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\DatabaseRawContract;
+use Router\Client;
+use Router\ServiceContracts\DatabaseRawContract;
 
 final class DatabaseRawService implements DatabaseRawContract
 {

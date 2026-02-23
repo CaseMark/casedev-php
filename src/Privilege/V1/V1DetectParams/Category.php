@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Privilege\V1\V1DetectParams;
+namespace Router\Privilege\V1\V1DetectParams;
 
 enum Category: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1\V1ListLanguagesParams;
+namespace Router\Translate\V1\V1ListLanguagesParams;
 
 /**
  * Translation model to check language support for.

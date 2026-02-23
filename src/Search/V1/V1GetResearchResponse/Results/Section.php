@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1\V1GetResearchResponse\Results;
+namespace Router\Search\V1\V1GetResearchResponse\Results;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Search\V1\V1GetResearchResponse\Results\Section\Source;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Search\V1\V1GetResearchResponse\Results\Section\Source;
 
 /**
- * @phpstan-import-type SourceShape from \Casedev\Search\V1\V1GetResearchResponse\Results\Section\Source
+ * @phpstan-import-type SourceShape from \Router\Search\V1\V1GetResearchResponse\Results\Section\Source
  *
  * @phpstan-type SectionShape = array{
  *   content?: string|null,
- *   sources?: list<\Casedev\Search\V1\V1GetResearchResponse\Results\Section\Source|SourceShape>|null,
+ *   sources?: list<\Router\Search\V1\V1GetResearchResponse\Results\Section\Source|SourceShape>|null,
  *   title?: string|null,
  * }
  */

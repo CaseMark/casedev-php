@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core;
+namespace Router\Core;
 
-use Casedev\Core\Contracts\BasePage;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Contracts\BaseStream;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Exceptions\APIConnectionException;
-use Casedev\Core\Exceptions\APIStatusException;
-use Casedev\Core\Implementation\RawResponse;
-use Casedev\RequestOptions;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
+use Router\Core\Contracts\BasePage;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Contracts\BaseStream;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\Contracts\ConverterSource;
+use Router\Core\Exceptions\APIConnectionException;
+use Router\Core\Exceptions\APIStatusException;
+use Router\Core\Implementation\RawResponse;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  *
  * @phpstan-type NormalizedRequest = array{
  *   method: string,

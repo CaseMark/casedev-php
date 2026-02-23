@@ -1,13 +1,13 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace Router\Core\Exceptions;
 
 use Psr\Http\Message\RequestInterface;
 
 class APITimeoutException extends APIConnectionException
 {
     /** @var string */
-    protected const DESC = 'Casedev API Timeout Exception';
+    protected const DESC = 'Router API Timeout Exception';
 
     public function __construct(
         RequestInterface $request,

@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Superdoc;
+namespace Router\Services\Superdoc;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Superdoc\V1RawContract;
-use Casedev\Superdoc\V1\V1AnnotateParams;
-use Casedev\Superdoc\V1\V1AnnotateParams\Document;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field;
-use Casedev\Superdoc\V1\V1AnnotateParams\OutputFormat;
-use Casedev\Superdoc\V1\V1ConvertParams;
-use Casedev\Superdoc\V1\V1ConvertParams\From;
-use Casedev\Superdoc\V1\V1ConvertParams\To;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Superdoc\V1RawContract;
+use Router\Superdoc\V1\V1AnnotateParams;
+use Router\Superdoc\V1\V1AnnotateParams\Document;
+use Router\Superdoc\V1\V1AnnotateParams\Field;
+use Router\Superdoc\V1\V1AnnotateParams\OutputFormat;
+use Router\Superdoc\V1\V1ConvertParams;
+use Router\Superdoc\V1\V1ConvertParams\From;
+use Router\Superdoc\V1\V1ConvertParams\To;
 
 /**
- * @phpstan-import-type DocumentShape from \Casedev\Superdoc\V1\V1AnnotateParams\Document
- * @phpstan-import-type FieldShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type DocumentShape from \Router\Superdoc\V1\V1AnnotateParams\Document
+ * @phpstan-import-type FieldShape from \Router\Superdoc\V1\V1AnnotateParams\Field
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

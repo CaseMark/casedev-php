@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\System\SystemListServicesResponse;
+namespace Router\System\SystemListServicesResponse;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ServiceShape = array{

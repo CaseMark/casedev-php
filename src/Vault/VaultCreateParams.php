@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace Router\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
  *
- * @see Casedev\Services\VaultService::create()
+ * @see Router\Services\VaultService::create()
  *
  * @phpstan-type VaultCreateParamsShape = array{
  *   name: string,

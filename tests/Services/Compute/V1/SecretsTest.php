@@ -2,17 +2,16 @@
 
 namespace Tests\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\Secrets\SecretDeleteGroupResponse;
-use Casedev\Compute\V1\Secrets\SecretGetGroupResponse;
-use Casedev\Compute\V1\Secrets\SecretListResponse;
-use Casedev\Compute\V1\Secrets\SecretNewResponse;
-use Casedev\Compute\V1\Secrets\SecretUpdateGroupResponse;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use Router\Compute\V1\Secrets\SecretGetGroupResponse;
+use Router\Compute\V1\Secrets\SecretListResponse;
+use Router\Compute\V1\Secrets\SecretNewResponse;
+use Router\Compute\V1\Secrets\SecretUpdateGroupResponse;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -35,10 +34,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->create(name: 'name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -48,10 +43,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->create(
             name: 'name',
             description: 'description',
@@ -65,10 +56,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -78,10 +65,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testDeleteGroup(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->deleteGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -91,10 +74,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testRetrieveGroup(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->retrieveGroup('group');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -104,10 +83,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testUpdateGroup(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->updateGroup(
             'litigation-apis',
             secrets: ['foo' => 'string']
@@ -120,10 +95,6 @@ final class SecretsTest extends TestCase
     #[Test]
     public function testUpdateGroupWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->secrets->updateGroup(
             'litigation-apis',
             secrets: ['foo' => 'string'],

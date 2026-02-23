@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1;
+namespace Router\Memory\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Memory\V1\V1CreateParams\Message;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Memory\V1\V1CreateParams\Message;
 
 /**
  * Store memories from conversation messages. Automatically extracts facts and handles deduplication.
@@ -19,9 +19,9 @@ use Casedev\Memory\V1\V1CreateParams\Message;
  * - Healthcare: tag_1=patient_id, tag_2=encounter_id
  * - E-commerce: tag_1=customer_id, tag_2=order_id
  *
- * @see Casedev\Services\Memory\V1Service::create()
+ * @see Router\Services\Memory\V1Service::create()
  *
- * @phpstan-import-type MessageShape from \Casedev\Memory\V1\V1CreateParams\Message
+ * @phpstan-import-type MessageShape from \Router\Memory\V1\V1CreateParams\Message
  *
  * @phpstan-type V1CreateParamsShape = array{
  *   messages: list<Message|MessageShape>,

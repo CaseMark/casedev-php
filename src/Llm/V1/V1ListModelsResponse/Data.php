@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\V1ListModelsResponse;
+namespace Router\Llm\V1\V1ListModelsResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\V1ListModelsResponse\Data\Pricing;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Llm\V1\V1ListModelsResponse\Data\Pricing;
 
 /**
- * @phpstan-import-type PricingShape from \Casedev\Llm\V1\V1ListModelsResponse\Data\Pricing
+ * @phpstan-import-type PricingShape from \Router\Llm\V1\V1ListModelsResponse\Data\Pricing
  *
  * @phpstan-type DataShape = array{
  *   id?: string|null,

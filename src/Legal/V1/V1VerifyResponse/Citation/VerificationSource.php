@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1VerifyResponse\Citation;
+namespace Router\Legal\V1\V1VerifyResponse\Citation;
 
 /**
  * Source of verification result (heuristic for fallback matches).

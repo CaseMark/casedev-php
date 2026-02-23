@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Privilege\V1;
+namespace Router\Privilege\V1;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Privilege\V1\V1DetectResponse\Category;
-use Casedev\Privilege\V1\V1DetectResponse\Recommendation;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Privilege\V1\V1DetectResponse\Category;
+use Router\Privilege\V1\V1DetectResponse\Recommendation;
 
 /**
- * @phpstan-import-type CategoryShape from \Casedev\Privilege\V1\V1DetectResponse\Category
+ * @phpstan-import-type CategoryShape from \Router\Privilege\V1\V1DetectResponse\Category
  *
  * @phpstan-type V1DetectResponseShape = array{
  *   categories: list<Category|CategoryShape>,

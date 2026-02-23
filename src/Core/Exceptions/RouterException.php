@@ -1,11 +1,11 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace Router\Core\Exceptions;
 
-class CasedevException extends \Exception
+class RouterException extends \Exception
 {
     /** @var string */
-    protected const DESC = 'Casedev Error';
+    protected const DESC = 'Router Error';
 
     public function __construct(string $message, int $code = 0, ?\Throwable $previous = null)
     {

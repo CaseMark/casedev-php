@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1PatentSearchParams;
+namespace Router\Legal\V1\V1PatentSearchParams;
 
 /**
  * Filter by application type.

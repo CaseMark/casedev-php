@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace Router\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\VaultGetResponse\ChunkStrategy;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\VaultGetResponse\ChunkStrategy;
 
 /**
- * @phpstan-import-type ChunkStrategyShape from \Casedev\Vault\VaultGetResponse\ChunkStrategy
+ * @phpstan-import-type ChunkStrategyShape from \Router\Vault\VaultGetResponse\ChunkStrategy
  *
  * @phpstan-type VaultGetResponseShape = array{
  *   id: string,

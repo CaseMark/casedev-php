@@ -1,20 +1,20 @@
 <?php
 
-namespace Casedev\Core\Implementation;
+namespace Router\Core\Implementation;
 
-use Casedev\Core\BaseClient;
-use Casedev\Core\Concerns\ResponseProxy;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Conversion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Router\Core\BaseClient;
+use Router\Core\Concerns\ResponseProxy;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Conversion;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\Contracts\ConverterSource;
+use Router\Core\Util;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \Router\Core\BaseClient
  *
  * @internal
  *

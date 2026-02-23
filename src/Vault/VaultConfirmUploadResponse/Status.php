@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\VaultConfirmUploadResponse;
+namespace Router\Vault\VaultConfirmUploadResponse;
 
 enum Status: string
 {

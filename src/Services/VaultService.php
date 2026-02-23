@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace Router\Services;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\VaultContract;
-use Casedev\Services\Vault\EventsService;
-use Casedev\Services\Vault\GraphragService;
-use Casedev\Services\Vault\GroupsService;
-use Casedev\Services\Vault\MultipartService;
-use Casedev\Services\Vault\ObjectsService;
-use Casedev\Vault\VaultConfirmUploadResponse;
-use Casedev\Vault\VaultDeleteResponse;
-use Casedev\Vault\VaultGetResponse;
-use Casedev\Vault\VaultIngestResponse;
-use Casedev\Vault\VaultListResponse;
-use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams\Filters;
-use Casedev\Vault\VaultSearchParams\Method;
-use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUpdateResponse;
-use Casedev\Vault\VaultUploadResponse;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\VaultContract;
+use Router\Services\Vault\EventsService;
+use Router\Services\Vault\GraphragService;
+use Router\Services\Vault\GroupsService;
+use Router\Services\Vault\MultipartService;
+use Router\Services\Vault\ObjectsService;
+use Router\Vault\VaultConfirmUploadResponse;
+use Router\Vault\VaultDeleteResponse;
+use Router\Vault\VaultGetResponse;
+use Router\Vault\VaultIngestResponse;
+use Router\Vault\VaultListResponse;
+use Router\Vault\VaultNewResponse;
+use Router\Vault\VaultSearchParams\Filters;
+use Router\Vault\VaultSearchParams\Method;
+use Router\Vault\VaultSearchResponse;
+use Router\Vault\VaultUpdateResponse;
+use Router\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type FiltersShape from \Casedev\Vault\VaultSearchParams\Filters
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FiltersShape from \Router\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class VaultService implements VaultContract
 {
@@ -222,10 +222,10 @@ final class VaultService implements VaultContract
      *
      * @param string $objectID Path param: Vault object ID
      * @param string $id Path param: Vault ID
-     * @param bool $success Body param
-     * @param string $errorCode Body param: Client-side error code (required when success=false)
-     * @param string $errorMessage Body param: Client-side error message (required when success=false)
-     * @param int $sizeBytes Body param: Uploaded file size in bytes (required when success=true)
+     * @param int $sizeBytes Body param: Uploaded file size in bytes
+     * @param bool $success Body param: Whether the upload succeeded
+     * @param string $errorCode Body param: Client-side error code
+     * @param string $errorMessage Body param: Client-side error message
      * @param string $etag Body param: S3 ETag for the uploaded object (optional if client cannot access ETag header)
      * @param RequestOpts|null $requestOptions
      *
@@ -234,10 +234,10 @@ final class VaultService implements VaultContract
     public function confirmUpload(
         string $objectID,
         string $id,
+        int $sizeBytes,
         bool $success,
         string $errorCode,
         string $errorMessage,
-        ?int $sizeBytes = null,
         ?string $etag = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultConfirmUploadResponse {
@@ -246,9 +246,9 @@ final class VaultService implements VaultContract
                 'id' => $id,
                 'sizeBytes' => $sizeBytes,
                 'success' => $success,
+                'etag' => $etag,
                 'errorCode' => $errorCode,
                 'errorMessage' => $errorMessage,
-                'etag' => $etag,
             ],
         );
 

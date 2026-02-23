@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Format;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Router\Client;
+use Router\Core\Util;
 use Tests\UnsupportedMockTests;
 
 /**
@@ -31,7 +31,7 @@ final class V1Test extends TestCase
     public function testCreateDocument(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism doesn\'t support application/pdf responses');
+            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
         }
 
         $result = $this->client->format->v1->createDocument(
@@ -47,7 +47,7 @@ final class V1Test extends TestCase
     public function testCreateDocumentWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism doesn\'t support application/pdf responses');
+            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
         }
 
         $result = $this->client->format->v1->createDocument(

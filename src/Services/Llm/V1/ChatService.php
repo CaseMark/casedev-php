@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Llm\V1;
+namespace Router\Services\Llm\V1;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Llm\V1\ChatContract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+use Router\Llm\V1\Chat\ChatNewCompletionResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Llm\V1\ChatContract;
 
 /**
- * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type MessageShape from \Router\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class ChatService implements ChatContract
 {

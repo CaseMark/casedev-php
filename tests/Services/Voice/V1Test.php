@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Voice\V1\V1ListVoicesResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Voice\V1\V1ListVoicesResponse;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testListVoices(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->voice->v1->listVoices();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

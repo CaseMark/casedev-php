@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1VerifyResponse\Citation;
-use Casedev\Legal\V1\V1VerifyResponse\Summary;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1VerifyResponse\Citation;
+use Router\Legal\V1\V1VerifyResponse\Summary;
 
 /**
- * @phpstan-import-type CitationShape from \Casedev\Legal\V1\V1VerifyResponse\Citation
- * @phpstan-import-type SummaryShape from \Casedev\Legal\V1\V1VerifyResponse\Summary
+ * @phpstan-import-type CitationShape from \Router\Legal\V1\V1VerifyResponse\Citation
+ * @phpstan-import-type SummaryShape from \Router\Legal\V1\V1VerifyResponse\Summary
  *
  * @phpstan-type V1VerifyResponseShape = array{
  *   citations?: list<Citation|CitationShape>|null,

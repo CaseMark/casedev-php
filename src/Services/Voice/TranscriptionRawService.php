@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace Router\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\TranscriptionRawContract;
-use Casedev\Voice\Transcription\TranscriptionCreateParams;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Voice\TranscriptionRawContract;
+use Router\Voice\Transcription\TranscriptionCreateParams;
+use Router\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use Router\Voice\Transcription\TranscriptionCreateParams\Format;
+use Router\Voice\Transcription\TranscriptionGetResponse;
+use Router\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class TranscriptionRawService implements TranscriptionRawContract
 {

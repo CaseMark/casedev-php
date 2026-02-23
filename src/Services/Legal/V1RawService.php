@@ -2,37 +2,39 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Legal;
+namespace Router\Services\Legal;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Legal\V1\V1FindParams;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLParams;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsParams;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextParams;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsParams;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1PatentSearchParams;
-use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
-use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
-use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
-use Casedev\Legal\V1\V1PatentSearchResponse;
-use Casedev\Legal\V1\V1ResearchParams;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarParams;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyParams;
-use Casedev\Legal\V1\V1VerifyResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Legal\V1RawContract;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\Legal\V1\V1FindParams;
+use Router\Legal\V1\V1FindResponse;
+use Router\Legal\V1\V1GetCitationsFromURLParams;
+use Router\Legal\V1\V1GetCitationsFromURLResponse;
+use Router\Legal\V1\V1GetCitationsParams;
+use Router\Legal\V1\V1GetCitationsResponse;
+use Router\Legal\V1\V1GetFullTextParams;
+use Router\Legal\V1\V1GetFullTextResponse;
+use Router\Legal\V1\V1ListJurisdictionsParams;
+use Router\Legal\V1\V1ListJurisdictionsResponse;
+use Router\Legal\V1\V1PatentSearchParams;
+use Router\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Router\Legal\V1\V1PatentSearchParams\SortBy;
+use Router\Legal\V1\V1PatentSearchParams\SortOrder;
+use Router\Legal\V1\V1PatentSearchResponse;
+use Router\Legal\V1\V1ResearchParams;
+use Router\Legal\V1\V1ResearchResponse;
+use Router\Legal\V1\V1SimilarParams;
+use Router\Legal\V1\V1SimilarResponse;
+use Router\Legal\V1\V1TrademarkSearchParams;
+use Router\Legal\V1\V1TrademarkSearchResponse;
+use Router\Legal\V1\V1VerifyParams;
+use Router\Legal\V1\V1VerifyResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Legal\V1RawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {
@@ -318,6 +320,39 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1SimilarResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Look up trademark status and details from the USPTO Trademark Status & Document Retrieval (TSDR) system. Supports lookup by serial number or registration number. Returns mark text, status, owner, goods/services, Nice classification, filing/registration dates, and more.
+     *
+     * @param array{
+     *   registrationNumber?: string, serialNumber?: string
+     * }|V1TrademarkSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1TrademarkSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function trademarkSearch(
+        array|V1TrademarkSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1TrademarkSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/trademark-search',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1TrademarkSearchResponse::class,
         );
     }
 

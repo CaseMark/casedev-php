@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects;
+namespace Router\Database\V1\Projects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Creates a new branch from the specified parent branch (or default 'main' branch). Branches provide instant point-in-time clones of your database for isolated development, staging, testing, or feature work. Perfect for testing schema changes, running migrations safely, or creating ephemeral preview environments.
  *
- * @see Casedev\Services\Database\V1\ProjectsService::createBranch()
+ * @see Router\Services\Database\V1\ProjectsService::createBranch()
  *
  * @phpstan-type ProjectCreateBranchParamsShape = array{
  *   name: string, parentBranchID?: string|null

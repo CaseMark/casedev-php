@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Applications\V1;
+namespace Router\ServiceContracts\Applications\V1;
 
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams\Target;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use Router\Applications\V1\Deployments\DeploymentCreateParams\Target;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface DeploymentsContract
 {
@@ -53,7 +53,7 @@ interface DeploymentsContract
      * @param string $projectID Project ID
      * @param float $limit Maximum number of deployments to return
      * @param string $state Filter by deployment state
-     * @param \Casedev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\Casedev\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
+     * @param \Router\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\Router\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -62,7 +62,7 @@ interface DeploymentsContract
         string $projectID,
         float $limit = 20,
         ?string $state = null,
-        \Casedev\Applications\V1\Deployments\DeploymentListParams\Target|string|null $target = null,
+        \Router\Applications\V1\Deployments\DeploymentListParams\Target|string|null $target = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
 

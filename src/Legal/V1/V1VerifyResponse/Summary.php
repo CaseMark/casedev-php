@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1VerifyResponse;
+namespace Router\Legal\V1\V1VerifyResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SummaryShape = array{

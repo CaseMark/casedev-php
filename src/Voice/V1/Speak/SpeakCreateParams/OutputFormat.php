@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1\Speak\SpeakCreateParams;
+namespace Router\Voice\V1\Speak\SpeakCreateParams;
 
 /**
  * Audio output format.

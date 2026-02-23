@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Privilege;
+namespace Router\Services\Privilege;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Privilege\V1\V1DetectParams\Category;
-use Casedev\Privilege\V1\V1DetectParams\Jurisdiction;
-use Casedev\Privilege\V1\V1DetectResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Privilege\V1Contract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Privilege\V1\V1DetectParams\Category;
+use Router\Privilege\V1\V1DetectParams\Jurisdiction;
+use Router\Privilege\V1\V1DetectResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Privilege\V1Contract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1\V1DetectResponse\Data;
+namespace Router\Translate\V1\V1DetectResponse\Data;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type DetectionShape = array{

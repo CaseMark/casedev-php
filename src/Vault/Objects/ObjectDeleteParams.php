@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Objects\ObjectDeleteParams\Force;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\Objects\ObjectDeleteParams\Force;
 
 /**
  * Permanently deletes a document from the vault including all associated vectors, chunks, graph data, and the original file. This operation cannot be undone.
  *
- * @see Casedev\Services\Vault\ObjectsService::delete()
+ * @see Router\Services\Vault\ObjectsService::delete()
  *
  * @phpstan-type ObjectDeleteParamsShape = array{
  *   id: string, force?: null|Force|value-of<Force>

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
-use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
-use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Router\Legal\V1\V1PatentSearchParams\SortBy;
+use Router\Legal\V1\V1PatentSearchParams\SortOrder;
 
 /**
  * Search the USPTO Open Data Portal for US patent applications and granted patents. Supports free-text queries, field-specific search, filters by assignee/inventor/status/type, date ranges, and pagination. Covers applications filed on or after January 1, 2001. Data is refreshed daily.
  *
- * @see Casedev\Services\Legal\V1Service::patentSearch()
+ * @see Router\Services\Legal\V1Service::patentSearch()
  *
  * @phpstan-type V1PatentSearchParamsShape = array{
  *   query: string,

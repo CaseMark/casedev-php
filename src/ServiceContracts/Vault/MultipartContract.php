@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Vault;
+namespace Router\ServiceContracts\Vault;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part;
-use Casedev\Vault\Multipart\MultipartGetPartURLsResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\Vault\Multipart\MultipartGetPartURLsParams\Part;
+use Router\Vault\Multipart\MultipartGetPartURLsResponse;
 
 /**
- * @phpstan-import-type PartShape from \Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type PartShape from \Router\Vault\Multipart\MultipartGetPartURLsParams\Part
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface MultipartContract
 {

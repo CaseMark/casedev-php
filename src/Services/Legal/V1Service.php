@@ -2,28 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Legal;
+namespace Router\Services\Legal;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
-use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
-use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
-use Casedev\Legal\V1\V1PatentSearchResponse;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Legal\V1Contract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Legal\V1\V1FindResponse;
+use Router\Legal\V1\V1GetCitationsFromURLResponse;
+use Router\Legal\V1\V1GetCitationsResponse;
+use Router\Legal\V1\V1GetFullTextResponse;
+use Router\Legal\V1\V1ListJurisdictionsResponse;
+use Router\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Router\Legal\V1\V1PatentSearchParams\SortBy;
+use Router\Legal\V1\V1PatentSearchParams\SortOrder;
+use Router\Legal\V1\V1PatentSearchResponse;
+use Router\Legal\V1\V1ResearchResponse;
+use Router\Legal\V1\V1SimilarResponse;
+use Router\Legal\V1\V1TrademarkSearchResponse;
+use Router\Legal\V1\V1VerifyResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Legal\V1Contract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {
@@ -301,6 +302,35 @@ final class V1Service implements V1Contract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->similar(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Look up trademark status and details from the USPTO Trademark Status & Document Retrieval (TSDR) system. Supports lookup by serial number or registration number. Returns mark text, status, owner, goods/services, Nice classification, filing/registration dates, and more.
+     *
+     * @param string $registrationNumber USPTO registration number (e.g. "6123456"). Provide either serialNumber or registrationNumber.
+     * @param string $serialNumber USPTO serial number (e.g. "97123456"). Provide either serialNumber or registrationNumber.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function trademarkSearch(
+        ?string $registrationNumber = null,
+        ?string $serialNumber = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1TrademarkSearchResponse {
+        $params = Util::removeNulls(
+            [
+                'registrationNumber' => $registrationNumber,
+                'serialNumber' => $serialNumber,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->trademarkSearch(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

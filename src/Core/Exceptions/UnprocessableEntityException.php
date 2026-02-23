@@ -1,9 +1,9 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace Router\Core\Exceptions;
 
 class UnprocessableEntityException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Casedev Unprocessable Entity Exception';
+    protected const DESC = 'Router Unprocessable Entity Exception';
 }

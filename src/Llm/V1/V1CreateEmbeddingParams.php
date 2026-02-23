@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1;
+namespace Router\Llm\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
-use Casedev\Llm\V1\V1CreateEmbeddingParams\Input;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use Router\Llm\V1\V1CreateEmbeddingParams\Input;
 
 /**
  * Create vector embeddings from text using OpenAI-compatible models. Perfect for semantic search, document similarity, and building RAG systems for legal documents.
  *
- * @see Casedev\Services\Llm\V1Service::createEmbedding()
+ * @see Router\Services\Llm\V1Service::createEmbedding()
  *
- * @phpstan-import-type InputVariants from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
- * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type InputVariants from \Router\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type InputShape from \Router\Llm\V1\V1CreateEmbeddingParams\Input
  *
  * @phpstan-type V1CreateEmbeddingParamsShape = array{
  *   input: InputShape,

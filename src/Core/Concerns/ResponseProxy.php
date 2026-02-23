@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Concerns;
+namespace Router\Core\Concerns;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;

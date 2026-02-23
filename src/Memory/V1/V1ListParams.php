@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1;
+namespace Router\Memory\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * List all memories with optional filtering by tags and category.
  *
- * @see Casedev\Services\Memory\V1Service::list()
+ * @see Router\Services\Memory\V1Service::list()
  *
  * @phpstan-type V1ListParamsShape = array{
  *   category?: string|null,

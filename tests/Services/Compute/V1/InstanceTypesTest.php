@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\InstanceTypes\InstanceTypeListResponse;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Compute\V1\InstanceTypes\InstanceTypeListResponse;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class InstanceTypesTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->instanceTypes->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

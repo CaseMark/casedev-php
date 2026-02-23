@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1\V1TranslateResponse;
+namespace Router\Translate\V1\V1TranslateResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1TranslateResponse\Data\Translation;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Translate\V1\V1TranslateResponse\Data\Translation;
 
 /**
- * @phpstan-import-type TranslationShape from \Casedev\Translate\V1\V1TranslateResponse\Data\Translation
+ * @phpstan-import-type TranslationShape from \Router\Translate\V1\V1TranslateResponse\Data\Translation
  *
  * @phpstan-type DataShape = array{
  *   translations?: list<Translation|TranslationShape>|null

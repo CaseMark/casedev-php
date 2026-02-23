@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\Objects\ObjectNewPresignedURLResponse\Metadata;
 
 /**
- * @phpstan-import-type MetadataShape from \Casedev\Vault\Objects\ObjectNewPresignedURLResponse\Metadata
+ * @phpstan-import-type MetadataShape from \Router\Vault\Objects\ObjectNewPresignedURLResponse\Metadata
  *
  * @phpstan-type ObjectNewPresignedURLResponseShape = array{
  *   expiresAt?: \DateTimeInterface|null,

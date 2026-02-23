@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Instances;
+namespace Router\Compute\V1\Instances;
 
-use Casedev\Compute\V1\Instances\InstanceGetResponse\SSH;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Compute\V1\Instances\InstanceGetResponse\SSH;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SSHShape from \Casedev\Compute\V1\Instances\InstanceGetResponse\SSH
+ * @phpstan-import-type SSHShape from \Router\Compute\V1\Instances\InstanceGetResponse\SSH
  *
  * @phpstan-type InstanceGetResponseShape = array{
  *   id?: string|null,

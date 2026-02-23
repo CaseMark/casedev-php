@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace Router\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\MultipartContract;
-use Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part;
-use Casedev\Vault\Multipart\MultipartGetPartURLsResponse;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\Vault\MultipartContract;
+use Router\Vault\Multipart\MultipartGetPartURLsParams\Part;
+use Router\Vault\Multipart\MultipartGetPartURLsResponse;
 
 /**
- * @phpstan-import-type PartShape from \Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type PartShape from \Router\Vault\Multipart\MultipartGetPartURLsParams\Part
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class MultipartService implements MultipartContract
 {

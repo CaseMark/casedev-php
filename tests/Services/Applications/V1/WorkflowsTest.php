@@ -2,12 +2,11 @@
 
 namespace Tests\Services\Applications\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class WorkflowsTest extends TestCase
     #[Test]
     public function testGetStatus(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->workflows->getStatus(
             'id',
             projectID: 'projectId'
@@ -46,10 +41,6 @@ final class WorkflowsTest extends TestCase
     #[Test]
     public function testGetStatusWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->workflows->getStatus(
             'id',
             projectID: 'projectId'

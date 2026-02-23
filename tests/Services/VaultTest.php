@@ -2,21 +2,20 @@
 
 namespace Tests\Services;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Vault\VaultConfirmUploadResponse;
-use Casedev\Vault\VaultDeleteResponse;
-use Casedev\Vault\VaultGetResponse;
-use Casedev\Vault\VaultIngestResponse;
-use Casedev\Vault\VaultListResponse;
-use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUpdateResponse;
-use Casedev\Vault\VaultUploadResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Vault\VaultConfirmUploadResponse;
+use Router\Vault\VaultDeleteResponse;
+use Router\Vault\VaultGetResponse;
+use Router\Vault\VaultIngestResponse;
+use Router\Vault\VaultListResponse;
+use Router\Vault\VaultNewResponse;
+use Router\Vault\VaultSearchResponse;
+use Router\Vault\VaultUpdateResponse;
+use Router\Vault\VaultUploadResponse;
 
 /**
  * @internal
@@ -39,10 +38,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->create(name: 'Contract Review Archive');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -52,10 +47,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->create(
             name: 'Contract Review Archive',
             description: 'Repository for all client contract reviews and analysis',
@@ -72,10 +63,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->retrieve('vault_abc123');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -85,10 +72,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testUpdate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->update('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -98,10 +81,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -111,10 +90,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->delete('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -124,13 +99,10 @@ final class VaultTest extends TestCase
     #[Test]
     public function testConfirmUpload(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->confirmUpload(
             'objectId',
             id: 'id',
+            sizeBytes: 1,
             success: false,
             errorCode: 'errorCode',
             errorMessage: 'errorMessage',
@@ -143,18 +115,14 @@ final class VaultTest extends TestCase
     #[Test]
     public function testConfirmUploadWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->confirmUpload(
             'objectId',
             id: 'id',
             sizeBytes: 1,
             success: false,
+            etag: 'etag',
             errorCode: 'errorCode',
             errorMessage: 'errorMessage',
-            etag: 'etag',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -164,10 +132,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testIngest(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->ingest('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -177,10 +141,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testIngestWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->ingest('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -190,10 +150,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testSearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->search('id', query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -203,10 +159,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testSearchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->search(
             'id',
             query: 'query',
@@ -222,10 +174,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testUpload(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->upload(
             'id',
             contentType: 'contentType',
@@ -239,10 +187,6 @@ final class VaultTest extends TestCase
     #[Test]
     public function testUploadWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->upload(
             'id',
             contentType: 'contentType',

@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Translate;
+namespace Router\Services\Translate;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Translate\V1Contract;
-use Casedev\Translate\V1\V1DetectResponse;
-use Casedev\Translate\V1\V1ListLanguagesParams\Model;
-use Casedev\Translate\V1\V1ListLanguagesResponse;
-use Casedev\Translate\V1\V1TranslateParams\Format;
-use Casedev\Translate\V1\V1TranslateResponse;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\Translate\V1Contract;
+use Router\Translate\V1\V1DetectResponse;
+use Router\Translate\V1\V1ListLanguagesParams\Model;
+use Router\Translate\V1\V1ListLanguagesResponse;
+use Router\Translate\V1\V1TranslateParams\Format;
+use Router\Translate\V1\V1TranslateResponse;
 
 /**
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1DetectParams\Q
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1TranslateParams\Q as QShape1
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type QShape from \Router\Translate\V1\V1DetectParams\Q
+ * @phpstan-import-type QShape from \Router\Translate\V1\V1TranslateParams\Q as QShape1
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {
@@ -89,7 +89,7 @@ final class V1Service implements V1Contract
      * @param QShape1 $q Text to translate. Can be a single string or an array for batch translation.
      * @param string $target Target language code (ISO 639-1)
      * @param Format|value-of<Format> $format Format of the source text. Use 'html' to preserve HTML tags.
-     * @param \Casedev\Translate\V1\V1TranslateParams\Model|value-of<\Casedev\Translate\V1\V1TranslateParams\Model> $model Translation model. 'nmt' (Neural Machine Translation) is recommended for quality.
+     * @param \Router\Translate\V1\V1TranslateParams\Model|value-of<\Router\Translate\V1\V1TranslateParams\Model> $model Translation model. 'nmt' (Neural Machine Translation) is recommended for quality.
      * @param string $source Source language code (ISO 639-1). If not specified, language is auto-detected.
      * @param RequestOpts|null $requestOptions
      *
@@ -99,7 +99,7 @@ final class V1Service implements V1Contract
         string|array $q,
         string $target,
         Format|string $format = 'text',
-        \Casedev\Translate\V1\V1TranslateParams\Model|string $model = 'nmt',
+        \Router\Translate\V1\V1TranslateParams\Model|string $model = 'nmt',
         ?string $source = null,
         RequestOptions|array|null $requestOptions = null,
     ): V1TranslateResponse {

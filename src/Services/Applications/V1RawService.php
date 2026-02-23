@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications;
+namespace Router\Services\Applications;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\Applications\V1RawContract;
+use Router\Client;
+use Router\ServiceContracts\Applications\V1RawContract;
 
 final class V1RawService implements V1RawContract
 {

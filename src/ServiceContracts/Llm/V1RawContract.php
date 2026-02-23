@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Llm;
+namespace Router\ServiceContracts\Llm;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\V1\V1CreateEmbeddingParams;
-use Casedev\Llm\V1\V1ListModelsResponse;
-use Casedev\Llm\V1\V1NewEmbeddingResponse;
-use Casedev\RequestOptions;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\Llm\V1\V1CreateEmbeddingParams;
+use Router\Llm\V1\V1ListModelsResponse;
+use Router\Llm\V1\V1NewEmbeddingResponse;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface V1RawContract
 {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1;
+namespace Router\Translate\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1ListLanguagesParams\Model;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Translate\V1\V1ListLanguagesParams\Model;
 
 /**
  * Get the list of languages supported for translation. Optionally specify a target language to get translated language names.
  *
- * @see Casedev\Services\Translate\V1Service::listLanguages()
+ * @see Router\Services\Translate\V1Service::listLanguages()
  *
  * @phpstan-type V1ListLanguagesParamsShape = array{
  *   model?: null|Model|value-of<Model>, target?: string|null

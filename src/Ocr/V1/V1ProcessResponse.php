@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Ocr\V1;
+namespace Router\Ocr\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Ocr\V1\V1ProcessResponse\Status;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Ocr\V1\V1ProcessResponse\Status;
 
 /**
  * @phpstan-type V1ProcessResponseShape = array{

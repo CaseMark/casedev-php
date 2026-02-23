@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Secrets\SecretListResponse;
+namespace Router\Compute\V1\Secrets\SecretListResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type GroupShape = array{

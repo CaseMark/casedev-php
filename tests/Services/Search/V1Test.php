@@ -2,18 +2,17 @@
 
 namespace Tests\Services\Search;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Search\V1\V1AnswerResponse;
-use Casedev\Search\V1\V1ContentsResponse;
-use Casedev\Search\V1\V1GetResearchResponse;
-use Casedev\Search\V1\V1ResearchResponse;
-use Casedev\Search\V1\V1SearchResponse;
-use Casedev\Search\V1\V1SimilarResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Search\V1\V1AnswerResponse;
+use Router\Search\V1\V1ContentsResponse;
+use Router\Search\V1\V1GetResearchResponse;
+use Router\Search\V1\V1ResearchResponse;
+use Router\Search\V1\V1SearchResponse;
+use Router\Search\V1\V1SimilarResponse;
 
 /**
  * @internal
@@ -36,10 +35,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testAnswer(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->answer(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -49,10 +44,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testAnswerWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->answer(
             query: 'query',
             excludeDomains: ['string'],
@@ -74,10 +65,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testContents(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->contents(
             urls: ['https://example.com']
         );
@@ -89,10 +76,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testContentsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->contents(
             urls: ['https://example.com'],
             context: 'context',
@@ -113,10 +96,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testResearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->research(instructions: 'instructions');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -126,10 +105,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testResearchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->research(
             instructions: 'instructions',
             model: 'fast',
@@ -144,10 +119,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testRetrieveResearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->retrieveResearch('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -157,10 +128,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->search(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -170,10 +137,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSearchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->search(
             query: 'query',
             additionalQueries: ['string'],
@@ -198,10 +161,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSimilar(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->similar(url: 'https://example.com');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -211,10 +170,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSimilarWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->search->v1->similar(
             url: 'https://example.com',
             contents: 'contents',

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Compute\V1;
+namespace Router\ServiceContracts\Compute\V1;
 
-use Casedev\Compute\V1\Environments\EnvironmentCreateParams;
-use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
-use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
-use Casedev\Compute\V1\Environments\EnvironmentListResponse;
-use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
-use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use Router\Compute\V1\Environments\EnvironmentCreateParams;
+use Router\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Router\Compute\V1\Environments\EnvironmentGetResponse;
+use Router\Compute\V1\Environments\EnvironmentListResponse;
+use Router\Compute\V1\Environments\EnvironmentNewResponse;
+use Router\Compute\V1\Environments\EnvironmentSetDefaultResponse;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface EnvironmentsRawContract
 {
