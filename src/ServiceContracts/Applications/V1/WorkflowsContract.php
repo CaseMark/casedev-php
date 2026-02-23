@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Applications\V1;
+namespace Router\ServiceContracts\Applications\V1;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface WorkflowsContract
 {

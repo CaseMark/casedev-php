@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace Router\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\FormatContract;
-use Casedev\Services\Format\V1Service;
+use Router\Client;
+use Router\ServiceContracts\FormatContract;
+use Router\Services\Format\V1Service;
 
 final class FormatService implements FormatContract
 {

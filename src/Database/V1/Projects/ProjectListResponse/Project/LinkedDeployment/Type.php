@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment;
+namespace Router\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment;
 
 /**
  * Type of deployment.

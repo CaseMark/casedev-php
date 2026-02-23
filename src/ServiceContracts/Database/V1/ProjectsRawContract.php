@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Database\V1;
+namespace Router\ServiceContracts\Database\V1;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Database\V1\Projects\ProjectCreateBranchParams;
-use Casedev\Database\V1\Projects\ProjectCreateParams;
-use Casedev\Database\V1\Projects\ProjectDeleteResponse;
-use Casedev\Database\V1\Projects\ProjectGetConnectionParams;
-use Casedev\Database\V1\Projects\ProjectGetConnectionResponse;
-use Casedev\Database\V1\Projects\ProjectGetResponse;
-use Casedev\Database\V1\Projects\ProjectListBranchesResponse;
-use Casedev\Database\V1\Projects\ProjectListResponse;
-use Casedev\Database\V1\Projects\ProjectNewBranchResponse;
-use Casedev\Database\V1\Projects\ProjectNewResponse;
-use Casedev\RequestOptions;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\Database\V1\Projects\ProjectCreateBranchParams;
+use Router\Database\V1\Projects\ProjectCreateParams;
+use Router\Database\V1\Projects\ProjectDeleteResponse;
+use Router\Database\V1\Projects\ProjectGetConnectionParams;
+use Router\Database\V1\Projects\ProjectGetConnectionResponse;
+use Router\Database\V1\Projects\ProjectGetResponse;
+use Router\Database\V1\Projects\ProjectListBranchesResponse;
+use Router\Database\V1\Projects\ProjectListResponse;
+use Router\Database\V1\Projects\ProjectNewBranchResponse;
+use Router\Database\V1\Projects\ProjectNewResponse;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface ProjectsRawContract
 {

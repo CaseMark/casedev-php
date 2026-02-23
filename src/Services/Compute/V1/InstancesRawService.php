@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Compute\V1;
+namespace Router\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\Instances\InstanceCreateParams;
-use Casedev\Compute\V1\Instances\InstanceDeleteResponse;
-use Casedev\Compute\V1\Instances\InstanceGetResponse;
-use Casedev\Compute\V1\Instances\InstanceListResponse;
-use Casedev\Compute\V1\Instances\InstanceNewResponse;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Compute\V1\InstancesRawContract;
+use Router\Client;
+use Router\Compute\V1\Instances\InstanceCreateParams;
+use Router\Compute\V1\Instances\InstanceDeleteResponse;
+use Router\Compute\V1\Instances\InstanceGetResponse;
+use Router\Compute\V1\Instances\InstanceListResponse;
+use Router\Compute\V1\Instances\InstanceNewResponse;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Compute\V1\InstancesRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class InstancesRawService implements InstancesRawContract
 {

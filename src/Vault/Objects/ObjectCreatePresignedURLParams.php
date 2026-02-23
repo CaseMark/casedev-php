@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 
 /**
  * Generate presigned URLs for direct S3 operations (GET, PUT, DELETE, HEAD) on vault objects. This allows secure, time-limited access to files without proxying through the API. Essential for large document uploads/downloads in legal workflows.
  *
- * @see Casedev\Services\Vault\ObjectsService::createPresignedURL()
+ * @see Router\Services\Vault\ObjectsService::createPresignedURL()
  *
  * @phpstan-type ObjectCreatePresignedURLParamsShape = array{
  *   id: string,

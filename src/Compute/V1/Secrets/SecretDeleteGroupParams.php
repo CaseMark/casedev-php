@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Secrets;
+namespace Router\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Delete an entire secret group or a specific key within a secret group. When deleting a specific key, the remaining secrets in the group are preserved. When deleting the entire group, all secrets and the group itself are removed.
  *
- * @see Casedev\Services\Compute\V1\SecretsService::deleteGroup()
+ * @see Router\Services\Compute\V1\SecretsService::deleteGroup()
  *
  * @phpstan-type SecretDeleteGroupParamsShape = array{
  *   env?: string|null, key?: string|null

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1\Templates\TemplateCreateParams;
+namespace Router\Format\V1\Templates\TemplateCreateParams;
 
 /**
  * Template type.

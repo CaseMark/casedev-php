@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts;
+namespace Router\ServiceContracts;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\System\SystemListServicesResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\System\SystemListServicesResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface SystemContract
 {

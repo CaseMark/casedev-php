@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectCreateEnvParams;
+namespace Router\Applications\V1\Projects\ProjectCreateEnvParams;
 
 /**
  * Variable type.

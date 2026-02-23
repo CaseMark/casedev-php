@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1\V1AnswerParams;
+namespace Router\Search\V1\V1AnswerParams;
 
 /**
  * Type of search to perform.

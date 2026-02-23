@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Get the status of a CaseMark summary workflow job.
  *
- * @see Casedev\Services\Vault\ObjectsService::getSummarizeJob()
+ * @see Router\Services\Vault\ObjectsService::getSummarizeJob()
  *
  * @phpstan-type ObjectGetSummarizeJobParamsShape = array{
  *   id: string, objectID: string

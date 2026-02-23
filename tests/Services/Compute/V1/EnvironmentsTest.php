@@ -2,17 +2,16 @@
 
 namespace Tests\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
-use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
-use Casedev\Compute\V1\Environments\EnvironmentListResponse;
-use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
-use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Compute\V1\Environments\EnvironmentDeleteResponse;
+use Router\Compute\V1\Environments\EnvironmentGetResponse;
+use Router\Compute\V1\Environments\EnvironmentListResponse;
+use Router\Compute\V1\Environments\EnvironmentNewResponse;
+use Router\Compute\V1\Environments\EnvironmentSetDefaultResponse;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -35,10 +34,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->create(
             name: 'document-review-prod'
         );
@@ -50,10 +45,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->create(
             name: 'document-review-prod'
         );
@@ -65,10 +56,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->retrieve('name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -78,10 +65,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -91,10 +74,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->delete(
             'litigation-processing'
         );
@@ -106,10 +85,6 @@ final class EnvironmentsTest extends TestCase
     #[Test]
     public function testSetDefault(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->environments->setDefault(
             'prod-legal-docs'
         );

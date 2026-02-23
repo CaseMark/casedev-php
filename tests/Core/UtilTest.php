@@ -2,11 +2,11 @@
 
 namespace Tests\Core;
 
-use Casedev\Core\Util;
 use Http\Discovery\Psr17FactoryDiscovery;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Router\Core\Util;
 
 /**
  * @internal

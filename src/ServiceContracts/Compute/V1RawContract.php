@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Compute;
+namespace Router\ServiceContracts\Compute;
 
-use Casedev\Compute\V1\V1GetUsageParams;
-use Casedev\Compute\V1\V1GetUsageResponse;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use Router\Compute\V1\V1GetUsageParams;
+use Router\Compute\V1\V1GetUsageResponse;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface V1RawContract
 {

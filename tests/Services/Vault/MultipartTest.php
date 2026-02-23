@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Vault\Multipart\MultipartGetPartURLsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Vault\Multipart\MultipartGetPartURLsResponse;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class MultipartTest extends TestCase
     #[Test]
     public function testAbort(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->multipart->abort(
             'id',
             objectID: 'objectId',
@@ -48,10 +43,6 @@ final class MultipartTest extends TestCase
     #[Test]
     public function testAbortWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->multipart->abort(
             'id',
             objectID: 'objectId',
@@ -65,10 +56,6 @@ final class MultipartTest extends TestCase
     #[Test]
     public function testGetPartURLs(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->multipart->getPartURLs(
             'id',
             objectID: 'objectId',
@@ -83,10 +70,6 @@ final class MultipartTest extends TestCase
     #[Test]
     public function testGetPartURLsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->multipart->getPartURLs(
             'id',
             objectID: 'objectId',

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Instances\InstanceListResponse;
+namespace Router\Compute\V1\Instances\InstanceListResponse;
 
-use Casedev\Compute\V1\Instances\InstanceListResponse\Instance\Status;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Compute\V1\Instances\InstanceListResponse\Instance\Status;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type InstanceShape = array{

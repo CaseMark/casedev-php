@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Concerns;
+namespace Router\Core\Concerns;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Exceptions\APIStatusException;
-use Casedev\RequestOptions;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\Contracts\ConverterSource;
+use Router\Core\Exceptions\APIStatusException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \Router\Core\BaseClient
  *
  * @internal
  *

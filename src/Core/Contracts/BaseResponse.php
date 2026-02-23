@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Contracts;
+namespace Router\Core\Contracts;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

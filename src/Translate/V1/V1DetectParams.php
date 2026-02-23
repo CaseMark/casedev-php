@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1;
+namespace Router\Translate\V1;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1DetectParams\Q;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Translate\V1\V1DetectParams\Q;
 
 /**
  * Detect the language of text. Returns the most likely language code and confidence score. Supports batch detection for multiple texts.
  *
- * @see Casedev\Services\Translate\V1Service::detect()
+ * @see Router\Services\Translate\V1Service::detect()
  *
- * @phpstan-import-type QVariants from \Casedev\Translate\V1\V1DetectParams\Q
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1DetectParams\Q
+ * @phpstan-import-type QVariants from \Router\Translate\V1\V1DetectParams\Q
+ * @phpstan-import-type QShape from \Router\Translate\V1\V1DetectParams\Q
  *
  * @phpstan-type V1DetectParamsShape = array{q: QShape}
  */

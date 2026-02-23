@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace Router\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\GroupsContract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Vault\GroupsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class GroupsService implements GroupsContract
 {

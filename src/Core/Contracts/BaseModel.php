@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Contracts;
+namespace Router\Core\Contracts;
 
-use Casedev\Core\Conversion\Contracts\ConverterSource;
+use Router\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * @internal

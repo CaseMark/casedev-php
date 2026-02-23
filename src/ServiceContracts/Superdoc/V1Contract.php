@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Superdoc;
+namespace Router\ServiceContracts\Superdoc;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Superdoc\V1\V1AnnotateParams\Document;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field;
-use Casedev\Superdoc\V1\V1AnnotateParams\OutputFormat;
-use Casedev\Superdoc\V1\V1ConvertParams\From;
-use Casedev\Superdoc\V1\V1ConvertParams\To;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\Superdoc\V1\V1AnnotateParams\Document;
+use Router\Superdoc\V1\V1AnnotateParams\Field;
+use Router\Superdoc\V1\V1AnnotateParams\OutputFormat;
+use Router\Superdoc\V1\V1ConvertParams\From;
+use Router\Superdoc\V1\V1ConvertParams\To;
 
 /**
- * @phpstan-import-type DocumentShape from \Casedev\Superdoc\V1\V1AnnotateParams\Document
- * @phpstan-import-type FieldShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type DocumentShape from \Router\Superdoc\V1\V1AnnotateParams\Document
+ * @phpstan-import-type FieldShape from \Router\Superdoc\V1\V1AnnotateParams\Field
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface V1Contract
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications;
+namespace Router\Services\Applications;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\Applications\V1Contract;
-use Casedev\Services\Applications\V1\DeploymentsService;
-use Casedev\Services\Applications\V1\ProjectsService;
-use Casedev\Services\Applications\V1\WorkflowsService;
+use Router\Client;
+use Router\ServiceContracts\Applications\V1Contract;
+use Router\Services\Applications\V1\DeploymentsService;
+use Router\Services\Applications\V1\ProjectsService;
+use Router\Services\Applications\V1\WorkflowsService;
 
 final class V1Service implements V1Contract
 {

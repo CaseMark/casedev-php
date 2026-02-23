@@ -2,25 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Legal;
+namespace Router\ServiceContracts\Legal;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1PatentSearchParams\ApplicationType;
-use Casedev\Legal\V1\V1PatentSearchParams\SortBy;
-use Casedev\Legal\V1\V1PatentSearchParams\SortOrder;
-use Casedev\Legal\V1\V1PatentSearchResponse;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyResponse;
-use Casedev\RequestOptions;
+use Router\Core\Exceptions\APIException;
+use Router\Legal\V1\V1FindResponse;
+use Router\Legal\V1\V1GetCitationsFromURLResponse;
+use Router\Legal\V1\V1GetCitationsResponse;
+use Router\Legal\V1\V1GetFullTextResponse;
+use Router\Legal\V1\V1ListJurisdictionsResponse;
+use Router\Legal\V1\V1PatentSearchParams\ApplicationType;
+use Router\Legal\V1\V1PatentSearchParams\SortBy;
+use Router\Legal\V1\V1PatentSearchParams\SortOrder;
+use Router\Legal\V1\V1PatentSearchResponse;
+use Router\Legal\V1\V1ResearchResponse;
+use Router\Legal\V1\V1SimilarResponse;
+use Router\Legal\V1\V1TrademarkSearchResponse;
+use Router\Legal\V1\V1VerifyResponse;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface V1Contract
 {
@@ -173,6 +174,21 @@ interface V1Contract
         ?string $startPublishedDate = null,
         RequestOptions|array|null $requestOptions = null,
     ): V1SimilarResponse;
+
+    /**
+     * @api
+     *
+     * @param string $registrationNumber USPTO registration number (e.g. "6123456"). Provide either serialNumber or registrationNumber.
+     * @param string $serialNumber USPTO serial number (e.g. "97123456"). Provide either serialNumber or registrationNumber.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function trademarkSearch(
+        ?string $registrationNumber = null,
+        ?string $serialNumber = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1TrademarkSearchResponse;
 
     /**
      * @api

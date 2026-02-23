@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Superdoc\V1\V1AnnotateParams;
+namespace Router\Superdoc\V1\V1AnnotateParams;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Document source - provide either URL or base64.

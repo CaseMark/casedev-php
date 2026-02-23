@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Llm\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\Llm\V1\Chat\ChatNewCompletionResponse;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class ChatTest extends TestCase
     #[Test]
     public function testCreateCompletion(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->v1->chat->createCompletion(messages: [[]]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -44,10 +39,6 @@ final class ChatTest extends TestCase
     #[Test]
     public function testCreateCompletionWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->v1->chat->createCompletion(
             messages: [['content' => 'content', 'role' => 'system']],
             casemarkShowReasoning: false,

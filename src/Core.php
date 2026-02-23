@@ -2,4 +2,4 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core;
+namespace Router\Core;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1;
+namespace Router\Memory\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type V1DeleteAllResponseShape = array{deleted?: int|null}

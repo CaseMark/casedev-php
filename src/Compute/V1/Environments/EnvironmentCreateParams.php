@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Environments;
+namespace Router\Compute\V1\Environments;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Creates a new compute environment for running serverless workloads. Each environment gets its own isolated namespace with a unique domain for hosting applications and APIs. The first environment created becomes the default environment for the organization.
  *
- * @see Casedev\Services\Compute\V1\EnvironmentsService::create()
+ * @see Router\Services\Compute\V1\EnvironmentsService::create()
  *
  * @phpstan-type EnvironmentCreateParamsShape = array{name: string}
  */

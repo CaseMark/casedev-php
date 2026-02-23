@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Instances;
+namespace Router\Compute\V1\Instances;
 
-use Casedev\Compute\V1\Instances\InstanceListResponse\Instance;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Compute\V1\Instances\InstanceListResponse\Instance;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type InstanceShape from \Casedev\Compute\V1\Instances\InstanceListResponse\Instance
+ * @phpstan-import-type InstanceShape from \Router\Compute\V1\Instances\InstanceListResponse\Instance
  *
  * @phpstan-type InstanceListResponseShape = array{
  *   count?: int|null, instances?: list<Instance|InstanceShape>|null

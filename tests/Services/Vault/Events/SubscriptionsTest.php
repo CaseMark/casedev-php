@@ -2,12 +2,11 @@
 
 namespace Tests\Services\Vault\Events;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->create(
             'id',
             callbackURL: 'https://example.com'
@@ -46,10 +41,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->create(
             'id',
             callbackURL: 'https://example.com',
@@ -65,10 +56,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testUpdate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->update(
             'subscriptionId',
             id: 'id'
@@ -81,10 +68,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testUpdateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->update(
             'subscriptionId',
             id: 'id',
@@ -103,10 +86,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->list('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -116,10 +95,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->delete(
             'subscriptionId',
             id: 'id'
@@ -132,10 +107,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testDeleteWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->delete(
             'subscriptionId',
             id: 'id'
@@ -148,10 +119,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testTest(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->test(
             'subscriptionId',
             id: 'id'
@@ -164,10 +131,6 @@ final class SubscriptionsTest extends TestCase
     #[Test]
     public function testTestWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->events->subscriptions->test(
             'subscriptionId',
             id: 'id',

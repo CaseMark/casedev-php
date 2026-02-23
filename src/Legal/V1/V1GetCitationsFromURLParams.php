@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Extract all legal citations and references from a document URL. Returns structured citation data including case citations, statute references, and regulatory citations.
  *
- * @see Casedev\Services\Legal\V1Service::getCitationsFromURL()
+ * @see Router\Services\Legal\V1Service::getCitationsFromURL()
  *
  * @phpstan-type V1GetCitationsFromURLParamsShape = array{url: string}
  */

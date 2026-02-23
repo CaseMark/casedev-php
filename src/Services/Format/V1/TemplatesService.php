@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Format\V1;
+namespace Router\Services\Format\V1;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
-use Casedev\Format\V1\Templates\TemplateGetResponse;
-use Casedev\Format\V1\Templates\TemplateListResponse;
-use Casedev\Format\V1\Templates\TemplateNewResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Format\V1\TemplatesContract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Format\V1\Templates\TemplateCreateParams\Type;
+use Router\Format\V1\Templates\TemplateGetResponse;
+use Router\Format\V1\Templates\TemplateListResponse;
+use Router\Format\V1\Templates\TemplateNewResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Format\V1\TemplatesContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class TemplatesService implements TemplatesContract
 {

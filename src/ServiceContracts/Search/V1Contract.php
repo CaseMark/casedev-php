@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Search;
+namespace Router\ServiceContracts\Search;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Search\V1\V1AnswerParams\SearchType;
-use Casedev\Search\V1\V1AnswerResponse;
-use Casedev\Search\V1\V1ContentsResponse;
-use Casedev\Search\V1\V1GetResearchResponse;
-use Casedev\Search\V1\V1ResearchParams\Model;
-use Casedev\Search\V1\V1ResearchResponse;
-use Casedev\Search\V1\V1SearchParams\Type;
-use Casedev\Search\V1\V1SearchResponse;
-use Casedev\Search\V1\V1SimilarResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\Search\V1\V1AnswerParams\SearchType;
+use Router\Search\V1\V1AnswerResponse;
+use Router\Search\V1\V1ContentsResponse;
+use Router\Search\V1\V1GetResearchResponse;
+use Router\Search\V1\V1ResearchParams\Model;
+use Router\Search\V1\V1ResearchResponse;
+use Router\Search\V1\V1SearchParams\Type;
+use Router\Search\V1\V1SearchResponse;
+use Router\Search\V1\V1SimilarResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface V1Contract
 {

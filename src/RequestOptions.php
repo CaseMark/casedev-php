@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev;
+namespace Router;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required as Property;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required as Property;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type RequestOptionShape = array{

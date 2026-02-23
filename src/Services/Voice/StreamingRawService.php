@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace Router\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\StreamingRawContract;
-use Casedev\Voice\Streaming\StreamingGetURLResponse;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\ServiceContracts\Voice\StreamingRawContract;
+use Router\Voice\Streaming\StreamingGetURLResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class StreamingRawService implements StreamingRawContract
 {

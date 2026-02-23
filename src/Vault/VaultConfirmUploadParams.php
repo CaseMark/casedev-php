@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace Router\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Confirm whether a direct-to-S3 vault upload succeeded or failed. This endpoint emits vault.upload.completed or vault.upload.failed events and is idempotent for repeated confirmations.
  *
- * @see Casedev\Services\VaultService::confirmUpload()
+ * @see Router\Services\VaultService::confirmUpload()
  *
  * @phpstan-type VaultConfirmUploadParamsShape = array{
  *   id: string,
- *   sizeBytes?: int|null,
+ *   sizeBytes: int,
  *   success: bool,
+ *   etag?: string|null,
  *   errorCode: string,
  *   errorMessage: string,
- *   etag?: string|null,
  * }
  */
 final class VaultConfirmUploadParams implements BaseModel
@@ -34,25 +34,16 @@ final class VaultConfirmUploadParams implements BaseModel
     public string $id;
 
     /**
-     * Uploaded file size in bytes (required when success=true).
+     * Uploaded file size in bytes.
      */
-    #[Optional]
-    public ?int $sizeBytes;
+    #[Required]
+    public int $sizeBytes;
 
+    /**
+     * Whether the upload succeeded.
+     */
     #[Required]
     public bool $success;
-
-    /**
-     * Client-side error code (required when success=false).
-     */
-    #[Required]
-    public string $errorCode;
-
-    /**
-     * Client-side error message (required when success=false).
-     */
-    #[Required]
-    public string $errorMessage;
 
     /**
      * S3 ETag for the uploaded object (optional if client cannot access ETag header).
@@ -61,12 +52,24 @@ final class VaultConfirmUploadParams implements BaseModel
     public ?string $etag;
 
     /**
+     * Client-side error code.
+     */
+    #[Required]
+    public string $errorCode;
+
+    /**
+     * Client-side error message.
+     */
+    #[Required]
+    public string $errorMessage;
+
+    /**
      * `new VaultConfirmUploadParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
      * VaultConfirmUploadParams::with(
-     *   id: ..., success: ..., errorCode: ..., errorMessage: ...
+     *   id: ..., sizeBytes: ..., success: ..., errorCode: ..., errorMessage: ...
      * )
      * ```
      *
@@ -75,6 +78,7 @@ final class VaultConfirmUploadParams implements BaseModel
      * ```
      * (new VaultConfirmUploadParams)
      *   ->withID(...)
+     *   ->withSizeBytes(...)
      *   ->withSuccess(...)
      *   ->withErrorCode(...)
      *   ->withErrorMessage(...)
@@ -92,20 +96,20 @@ final class VaultConfirmUploadParams implements BaseModel
      */
     public static function with(
         string $id,
+        int $sizeBytes,
         bool $success,
         string $errorCode,
         string $errorMessage,
-        ?int $sizeBytes = null,
         ?string $etag = null,
     ): self {
         $self = new self;
 
         $self['id'] = $id;
+        $self['sizeBytes'] = $sizeBytes;
         $self['success'] = $success;
         $self['errorCode'] = $errorCode;
         $self['errorMessage'] = $errorMessage;
 
-        null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
         null !== $etag && $self['etag'] = $etag;
 
         return $self;
@@ -120,7 +124,7 @@ final class VaultConfirmUploadParams implements BaseModel
     }
 
     /**
-     * Uploaded file size in bytes (required when success=true).
+     * Uploaded file size in bytes.
      */
     public function withSizeBytes(int $sizeBytes): self
     {
@@ -130,32 +134,13 @@ final class VaultConfirmUploadParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether the upload succeeded.
+     */
     public function withSuccess(bool $success): self
     {
         $self = clone $this;
         $self['success'] = $success;
-
-        return $self;
-    }
-
-    /**
-     * Client-side error code (required when success=false).
-     */
-    public function withErrorCode(string $errorCode): self
-    {
-        $self = clone $this;
-        $self['errorCode'] = $errorCode;
-
-        return $self;
-    }
-
-    /**
-     * Client-side error message (required when success=false).
-     */
-    public function withErrorMessage(string $errorMessage): self
-    {
-        $self = clone $this;
-        $self['errorMessage'] = $errorMessage;
 
         return $self;
     }
@@ -167,6 +152,28 @@ final class VaultConfirmUploadParams implements BaseModel
     {
         $self = clone $this;
         $self['etag'] = $etag;
+
+        return $self;
+    }
+
+    /**
+     * Client-side error code.
+     */
+    public function withErrorCode(string $errorCode): self
+    {
+        $self = clone $this;
+        $self['errorCode'] = $errorCode;
+
+        return $self;
+    }
+
+    /**
+     * Client-side error message.
+     */
+    public function withErrorMessage(string $errorMessage): self
+    {
+        $self = clone $this;
+        $self['errorMessage'] = $errorMessage;
 
         return $self;
     }

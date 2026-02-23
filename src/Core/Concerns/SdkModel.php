@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Concerns;
+namespace Router\Core\Concerns;
 
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Core\Conversion;
-use Casedev\Core\Conversion\CoerceState;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\ModelOf;
-use Casedev\Core\Util;
+use Router\Core\Contracts\BaseModel;
+use Router\Core\Conversion;
+use Router\Core\Conversion\CoerceState;
+use Router\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\ModelOf;
+use Router\Core\Util;
 
 /**
  * @internal

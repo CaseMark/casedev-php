@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace Router\Services\Applications\V1;
 
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams\Target;
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\DeploymentsContract;
+use Router\Applications\V1\Deployments\DeploymentCreateParams\Target;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\Applications\V1\DeploymentsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class DeploymentsService implements DeploymentsContract
 {
@@ -93,7 +93,7 @@ final class DeploymentsService implements DeploymentsContract
      * @param string $projectID Project ID
      * @param float $limit Maximum number of deployments to return
      * @param string $state Filter by deployment state
-     * @param \Casedev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\Casedev\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
+     * @param \Router\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\Router\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -102,7 +102,7 @@ final class DeploymentsService implements DeploymentsContract
         string $projectID,
         float $limit = 20,
         ?string $state = null,
-        \Casedev\Applications\V1\Deployments\DeploymentListParams\Target|string|null $target = null,
+        \Router\Applications\V1\Deployments\DeploymentListParams\Target|string|null $target = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(

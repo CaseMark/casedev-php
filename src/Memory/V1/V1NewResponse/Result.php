@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1\V1NewResponse;
+namespace Router\Memory\V1\V1NewResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Memory\V1\V1NewResponse\Result\Event;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Memory\V1\V1NewResponse\Result\Event;
 
 /**
  * @phpstan-type ResultShape = array{

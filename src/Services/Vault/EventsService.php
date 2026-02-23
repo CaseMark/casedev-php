@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace Router\Services\Vault;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\Vault\EventsContract;
-use Casedev\Services\Vault\Events\SubscriptionsService;
+use Router\Client;
+use Router\ServiceContracts\Vault\EventsContract;
+use Router\Services\Vault\Events\SubscriptionsService;
 
 final class EventsService implements EventsContract
 {

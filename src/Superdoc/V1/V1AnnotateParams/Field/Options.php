@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Superdoc\V1\V1AnnotateParams\Field;
+namespace Router\Superdoc\V1\V1AnnotateParams\Field;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Optional configuration (e.g., image dimensions).

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Conversion;
+namespace Router\Core\Conversion;
 
-use Casedev\Core\Conversion\Concerns\ArrayOf;
-use Casedev\Core\Conversion\Contracts\Converter;
+use Router\Core\Conversion\Concerns\ArrayOf;
+use Router\Core\Conversion\Contracts\Converter;
 
 /**
  * @internal

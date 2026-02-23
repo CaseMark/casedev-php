@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Voice;
+namespace Router\ServiceContracts\Voice;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use Router\Voice\Transcription\TranscriptionCreateParams\Format;
+use Router\Voice\Transcription\TranscriptionGetResponse;
+use Router\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface TranscriptionContract
 {

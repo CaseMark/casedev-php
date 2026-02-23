@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Voice\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Router\Client;
+use Router\Core\Util;
 use Tests\UnsupportedMockTests;
 
 /**
@@ -31,7 +31,7 @@ final class SpeakTest extends TestCase
     public function testCreate(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism doesn\'t support audio/mpeg responses');
+            $this->markTestSkipped('Mock server doesn\'t support audio/mpeg responses');
         }
 
         $result = $this->client->voice->v1->speak->create(text: 'text');
@@ -44,7 +44,7 @@ final class SpeakTest extends TestCase
     public function testCreateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism doesn\'t support audio/mpeg responses');
+            $this->markTestSkipped('Mock server doesn\'t support audio/mpeg responses');
         }
 
         $result = $this->client->voice->v1->speak->create(

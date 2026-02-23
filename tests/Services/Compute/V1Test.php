@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Compute;
 
-use Casedev\Client;
-use Casedev\Compute\V1\V1GetUsageResponse;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Compute\V1\V1GetUsageResponse;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetPricing(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->getPricing();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -44,10 +39,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetUsage(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->compute->v1->getUsage();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

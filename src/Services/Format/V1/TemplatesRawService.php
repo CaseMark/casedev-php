@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Format\V1;
+namespace Router\Services\Format\V1;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Format\V1\Templates\TemplateCreateParams;
-use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
-use Casedev\Format\V1\Templates\TemplateGetResponse;
-use Casedev\Format\V1\Templates\TemplateListParams;
-use Casedev\Format\V1\Templates\TemplateListResponse;
-use Casedev\Format\V1\Templates\TemplateNewResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Format\V1\TemplatesRawContract;
+use Router\Client;
+use Router\Core\Contracts\BaseResponse;
+use Router\Core\Exceptions\APIException;
+use Router\Format\V1\Templates\TemplateCreateParams;
+use Router\Format\V1\Templates\TemplateCreateParams\Type;
+use Router\Format\V1\Templates\TemplateGetResponse;
+use Router\Format\V1\Templates\TemplateListParams;
+use Router\Format\V1\Templates\TemplateListResponse;
+use Router\Format\V1\Templates\TemplateNewResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Format\V1\TemplatesRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class TemplatesRawService implements TemplatesRawContract
 {

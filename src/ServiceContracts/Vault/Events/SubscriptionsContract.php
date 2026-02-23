@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Vault\Events;
+namespace Router\ServiceContracts\Vault\Events;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface SubscriptionsContract
 {

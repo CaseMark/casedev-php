@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Voice\V1;
+namespace Router\ServiceContracts\Voice\V1;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
+use Router\Core\Exceptions\APIException;
+use Router\RequestOptions;
+use Router\Voice\V1\Speak\SpeakCreateParams\ModelID;
+use Router\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
+use Router\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
 
 /**
- * @phpstan-import-type VoiceSettingsShape from \Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type VoiceSettingsShape from \Router\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 interface SpeakContract
 {

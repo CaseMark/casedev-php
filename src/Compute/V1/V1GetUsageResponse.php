@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1;
+namespace Router\Compute\V1;
 
-use Casedev\Compute\V1\V1GetUsageResponse\ByEnvironment;
-use Casedev\Compute\V1\V1GetUsageResponse\Period;
-use Casedev\Compute\V1\V1GetUsageResponse\Summary;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Compute\V1\V1GetUsageResponse\ByEnvironment;
+use Router\Compute\V1\V1GetUsageResponse\Period;
+use Router\Compute\V1\V1GetUsageResponse\Summary;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ByEnvironmentShape from \Casedev\Compute\V1\V1GetUsageResponse\ByEnvironment
- * @phpstan-import-type PeriodShape from \Casedev\Compute\V1\V1GetUsageResponse\Period
- * @phpstan-import-type SummaryShape from \Casedev\Compute\V1\V1GetUsageResponse\Summary
+ * @phpstan-import-type ByEnvironmentShape from \Router\Compute\V1\V1GetUsageResponse\ByEnvironment
+ * @phpstan-import-type PeriodShape from \Router\Compute\V1\V1GetUsageResponse\Period
+ * @phpstan-import-type SummaryShape from \Router\Compute\V1\V1GetUsageResponse\Summary
  *
  * @phpstan-type V1GetUsageResponseShape = array{
  *   byEnvironment?: list<ByEnvironment|ByEnvironmentShape>|null,

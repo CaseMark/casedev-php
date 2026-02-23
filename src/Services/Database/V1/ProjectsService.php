@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Database\V1;
+namespace Router\Services\Database\V1;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Database\V1\Projects\ProjectCreateParams\Region;
-use Casedev\Database\V1\Projects\ProjectDeleteResponse;
-use Casedev\Database\V1\Projects\ProjectGetConnectionResponse;
-use Casedev\Database\V1\Projects\ProjectGetResponse;
-use Casedev\Database\V1\Projects\ProjectListBranchesResponse;
-use Casedev\Database\V1\Projects\ProjectListResponse;
-use Casedev\Database\V1\Projects\ProjectNewBranchResponse;
-use Casedev\Database\V1\Projects\ProjectNewResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Database\V1\ProjectsContract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Database\V1\Projects\ProjectCreateParams\Region;
+use Router\Database\V1\Projects\ProjectDeleteResponse;
+use Router\Database\V1\Projects\ProjectGetConnectionResponse;
+use Router\Database\V1\Projects\ProjectGetResponse;
+use Router\Database\V1\Projects\ProjectListBranchesResponse;
+use Router\Database\V1\Projects\ProjectListResponse;
+use Router\Database\V1\Projects\ProjectNewBranchResponse;
+use Router\Database\V1\Projects\ProjectNewResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Database\V1\ProjectsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class ProjectsService implements ProjectsContract
 {

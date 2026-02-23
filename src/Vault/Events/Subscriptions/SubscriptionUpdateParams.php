@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Events\Subscriptions;
+namespace Router\Vault\Events\Subscriptions;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Updates callback URL, filters, active state, or signing secret for a vault webhook subscription.
  *
- * @see Casedev\Services\Vault\Events\SubscriptionsService::update()
+ * @see Router\Services\Vault\Events\SubscriptionsService::update()
  *
  * @phpstan-type SubscriptionUpdateParamsShape = array{
  *   id: string,

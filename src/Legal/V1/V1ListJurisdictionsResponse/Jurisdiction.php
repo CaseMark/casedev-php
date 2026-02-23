@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1ListJurisdictionsResponse;
+namespace Router\Legal\V1\V1ListJurisdictionsResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse\Jurisdiction\Level;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1ListJurisdictionsResponse\Jurisdiction\Level;
 
 /**
  * @phpstan-type JurisdictionShape = array{

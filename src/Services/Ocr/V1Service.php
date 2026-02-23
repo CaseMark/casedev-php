@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Ocr;
+namespace Router\Services\Ocr;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Ocr\V1\V1DownloadParams\Type;
-use Casedev\Ocr\V1\V1GetResponse;
-use Casedev\Ocr\V1\V1ProcessParams\Engine;
-use Casedev\Ocr\V1\V1ProcessParams\Features;
-use Casedev\Ocr\V1\V1ProcessResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Ocr\V1Contract;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Ocr\V1\V1DownloadParams\Type;
+use Router\Ocr\V1\V1GetResponse;
+use Router\Ocr\V1\V1ProcessParams\Engine;
+use Router\Ocr\V1\V1ProcessParams\Features;
+use Router\Ocr\V1\V1ProcessResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Ocr\V1Contract;
 
 /**
- * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FeaturesShape from \Router\Ocr\V1\V1ProcessParams\Features
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {

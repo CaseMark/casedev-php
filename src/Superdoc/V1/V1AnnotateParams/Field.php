@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Superdoc\V1\V1AnnotateParams;
+namespace Router\Superdoc\V1\V1AnnotateParams;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field\Options;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field\Type;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Superdoc\V1\V1AnnotateParams\Field\Options;
+use Router\Superdoc\V1\V1AnnotateParams\Field\Type;
 
 /**
- * @phpstan-import-type ValueVariants from \Casedev\Superdoc\V1\V1AnnotateParams\Field\Value
- * @phpstan-import-type ValueShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field\Value
- * @phpstan-import-type OptionsShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field\Options
+ * @phpstan-import-type ValueVariants from \Router\Superdoc\V1\V1AnnotateParams\Field\Value
+ * @phpstan-import-type ValueShape from \Router\Superdoc\V1\V1AnnotateParams\Field\Value
+ * @phpstan-import-type OptionsShape from \Router\Superdoc\V1\V1AnnotateParams\Field\Options
  *
  * @phpstan-type FieldShape = array{
  *   type: Type|value-of<Type>,

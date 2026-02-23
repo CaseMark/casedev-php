@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Conversion\Contracts;
+namespace Router\Core\Conversion\Contracts;
 
 /**
  * @internal

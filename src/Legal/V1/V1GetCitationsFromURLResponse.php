@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace Router\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Legal\V1\V1GetCitationsFromURLResponse\Citations;
 
 /**
- * @phpstan-import-type CitationsShape from \Casedev\Legal\V1\V1GetCitationsFromURLResponse\Citations
+ * @phpstan-import-type CitationsShape from \Router\Legal\V1\V1GetCitationsFromURLResponse\Citations
  *
  * @phpstan-type V1GetCitationsFromURLResponseShape = array{
  *   citations?: null|Citations|CitationsShape,

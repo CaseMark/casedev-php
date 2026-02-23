@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace Router\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\LegalRawContract;
+use Router\Client;
+use Router\ServiceContracts\LegalRawContract;
 
 final class LegalRawService implements LegalRawContract
 {

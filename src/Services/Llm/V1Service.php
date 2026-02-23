@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Llm;
+namespace Router\Services\Llm;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
-use Casedev\Llm\V1\V1ListModelsResponse;
-use Casedev\Llm\V1\V1NewEmbeddingResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Llm\V1Contract;
-use Casedev\Services\Llm\V1\ChatService;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use Router\Llm\V1\V1ListModelsResponse;
+use Router\Llm\V1\V1NewEmbeddingResponse;
+use Router\RequestOptions;
+use Router\ServiceContracts\Llm\V1Contract;
+use Router\Services\Llm\V1\ChatService;
 
 /**
- * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type InputShape from \Router\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {

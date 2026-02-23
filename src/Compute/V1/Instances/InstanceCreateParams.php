@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Instances;
+namespace Router\Compute\V1\Instances;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Launches a new GPU compute instance with automatic SSH key generation. Supports mounting Case.dev Vaults as filesystems and configurable auto-shutdown. Instance boots in ~2-5 minutes. Perfect for batch OCR processing, AI model training, and intensive document analysis workloads.
  *
- * @see Casedev\Services\Compute\V1\InstancesService::create()
+ * @see Router\Services\Compute\V1\InstancesService::create()
  *
  * @phpstan-type InstanceCreateParamsShape = array{
  *   instanceType: string,

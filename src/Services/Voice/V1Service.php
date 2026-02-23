@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace Router\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\V1Contract;
-use Casedev\Services\Voice\V1\SpeakService;
-use Casedev\Voice\V1\V1ListVoicesParams\Sort;
-use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
-use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
-use Casedev\Voice\V1\V1ListVoicesResponse;
+use Router\Client;
+use Router\Core\Exceptions\APIException;
+use Router\Core\Util;
+use Router\RequestOptions;
+use Router\ServiceContracts\Voice\V1Contract;
+use Router\Services\Voice\V1\SpeakService;
+use Router\Voice\V1\V1ListVoicesParams\Sort;
+use Router\Voice\V1\V1ListVoicesParams\SortDirection;
+use Router\Voice\V1\V1ListVoicesParams\VoiceType;
+use Router\Voice\V1\V1ListVoicesResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \Router\RequestOptions
  */
 final class V1Service implements V1Contract
 {

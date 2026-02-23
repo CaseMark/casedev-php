@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Applications;
+namespace Router\ServiceContracts\Applications;
 
 interface V1Contract {}

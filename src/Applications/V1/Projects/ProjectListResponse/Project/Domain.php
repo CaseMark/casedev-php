@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectListResponse\Project;
+namespace Router\Applications\V1\Projects\ProjectListResponse\Project;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type DomainShape = array{

@@ -2,12 +2,11 @@
 
 namespace Tests\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class GroupsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->groups->create();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -43,10 +38,6 @@ final class GroupsTest extends TestCase
     #[Test]
     public function testUpdate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->groups->update('groupId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,10 +47,6 @@ final class GroupsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->groups->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -69,10 +56,6 @@ final class GroupsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->groups->delete('groupId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

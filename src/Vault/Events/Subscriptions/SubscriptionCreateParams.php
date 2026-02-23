@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Events\Subscriptions;
+namespace Router\Vault\Events\Subscriptions;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * Creates a webhook subscription for vault lifecycle events. Optional object filters can limit notifications to specific vault objects.
  *
- * @see Casedev\Services\Vault\Events\SubscriptionsService::create()
+ * @see Router\Services\Vault\Events\SubscriptionsService::create()
  *
  * @phpstan-type SubscriptionCreateParamsShape = array{
  *   callbackURL: string,

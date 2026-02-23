@@ -2,13 +2,12 @@
 
 namespace Tests\Services;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\System\SystemListServicesResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
+use Router\Client;
+use Router\Core\Util;
+use Router\System\SystemListServicesResponse;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class SystemTest extends TestCase
     #[Test]
     public function testListServices(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->system->listServices();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

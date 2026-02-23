@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace Router\Vault\Objects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Objects\ObjectListResponse\Object_;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\Objects\ObjectListResponse\Object_;
 
 /**
- * @phpstan-import-type ObjectShape from \Casedev\Vault\Objects\ObjectListResponse\Object_
+ * @phpstan-import-type ObjectShape from \Router\Vault\Objects\ObjectListResponse\Object_
  *
  * @phpstan-type ObjectListResponseShape = array{
  *   count: float, objects: list<Object_|ObjectShape>, vaultID: string

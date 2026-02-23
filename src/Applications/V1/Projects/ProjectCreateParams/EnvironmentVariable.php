@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectCreateParams;
+namespace Router\Applications\V1\Projects\ProjectCreateParams;
 
-use Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable\Target;
-use Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable\Type;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable\Target;
+use Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable\Type;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EnvironmentVariableShape = array{

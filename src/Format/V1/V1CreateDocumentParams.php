@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1;
+namespace Router\Format\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Format\V1\V1CreateDocumentParams\InputFormat;
-use Casedev\Format\V1\V1CreateDocumentParams\Options;
-use Casedev\Format\V1\V1CreateDocumentParams\OutputFormat;
+use Router\Core\Attributes\Optional;
+use Router\Core\Attributes\Required;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Concerns\SdkParams;
+use Router\Core\Contracts\BaseModel;
+use Router\Format\V1\V1CreateDocumentParams\InputFormat;
+use Router\Format\V1\V1CreateDocumentParams\Options;
+use Router\Format\V1\V1CreateDocumentParams\OutputFormat;
 
 /**
  * Convert Markdown, JSON, or text content to professionally formatted PDF, DOCX, or HTML documents. Supports template components with variable interpolation for creating consistent legal documents like contracts, briefs, and reports.
  *
- * @see Casedev\Services\Format\V1Service::createDocument()
+ * @see Router\Services\Format\V1Service::createDocument()
  *
- * @phpstan-import-type OptionsShape from \Casedev\Format\V1\V1CreateDocumentParams\Options
+ * @phpstan-import-type OptionsShape from \Router\Format\V1\V1CreateDocumentParams\Options
  *
  * @phpstan-type V1CreateDocumentParamsShape = array{
  *   content: string,

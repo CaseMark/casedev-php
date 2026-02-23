@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\Transcription\TranscriptionGetResponse;
+namespace Router\Voice\Transcription\TranscriptionGetResponse;
 
 /**
  * Current status of the transcription job.

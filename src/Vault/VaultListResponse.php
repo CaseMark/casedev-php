@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace Router\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\VaultListResponse\Vault;
+use Router\Core\Attributes\Optional;
+use Router\Core\Concerns\SdkModel;
+use Router\Core\Contracts\BaseModel;
+use Router\Vault\VaultListResponse\Vault;
 
 /**
- * @phpstan-import-type VaultShape from \Casedev\Vault\VaultListResponse\Vault
+ * @phpstan-import-type VaultShape from \Router\Vault\VaultListResponse\Vault
  *
  * @phpstan-type VaultListResponseShape = array{
  *   total?: int|null, vaults?: list<Vault|VaultShape>|null
