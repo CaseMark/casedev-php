@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Translate\V1\V1TranslateParams;
+namespace CaseDev\Translate\V1\V1TranslateParams;
 
-use Router\Core\Concerns\SdkUnion;
-use Router\Core\Conversion\Contracts\Converter;
-use Router\Core\Conversion\Contracts\ConverterSource;
-use Router\Core\Conversion\ListOf;
+use CaseDev\Core\Concerns\SdkUnion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\ListOf;
 
 /**
  * Text to translate. Can be a single string or an array for batch translation.

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Llm\V1\Chat;
+namespace CaseDev\Llm\V1\Chat;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
 
 /**
  * Create a completion for the provided prompt and parameters. Compatible with OpenAI's chat completions API. Supports 40+ models including GPT-4, Claude, Gemini, and CaseMark legal AI models. Includes streaming support, token counting, and usage tracking.
  *
- * @see Router\Services\Llm\V1\ChatService::createCompletion()
+ * @see CaseDev\Services\Llm\V1\ChatService::createCompletion()
  *
- * @phpstan-import-type MessageShape from \Router\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ * @phpstan-import-type MessageShape from \CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message
  *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
  *   messages: list<Message|MessageShape>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Voice\Transcription\TranscriptionCreateParams;
+namespace CaseDev\Voice\Transcription\TranscriptionCreateParams;
 
 /**
  * Output format for the transcript when using vault mode.

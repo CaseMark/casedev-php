@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\System;
+namespace CaseDev\System;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\System\SystemListServicesResponse\Service;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\System\SystemListServicesResponse\Service;
 
 /**
- * @phpstan-import-type ServiceShape from \Router\System\SystemListServicesResponse\Service
+ * @phpstan-import-type ServiceShape from \CaseDev\System\SystemListServicesResponse\Service
  *
  * @phpstan-type SystemListServicesResponseShape = array{
  *   services: list<Service|ServiceShape>

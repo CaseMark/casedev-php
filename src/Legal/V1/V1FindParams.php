@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Search for legal sources including cases, statutes, and regulations from authoritative legal databases. Returns ranked candidates. Always verify with legal.verify() before citing.
  *
- * @see Router\Services\Legal\V1Service::find()
+ * @see CaseDev\Services\Legal\V1Service::find()
  *
  * @phpstan-type V1FindParamsShape = array{
  *   query: string, jurisdiction?: string|null, numResults?: int|null

@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Memory;
+namespace CaseDev\Services\Memory;
 
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\Memory\V1\V1CreateParams;
-use Router\Memory\V1\V1CreateParams\Message;
-use Router\Memory\V1\V1DeleteAllParams;
-use Router\Memory\V1\V1DeleteAllResponse;
-use Router\Memory\V1\V1DeleteResponse;
-use Router\Memory\V1\V1GetResponse;
-use Router\Memory\V1\V1ListParams;
-use Router\Memory\V1\V1ListResponse;
-use Router\Memory\V1\V1NewResponse;
-use Router\Memory\V1\V1SearchParams;
-use Router\Memory\V1\V1SearchResponse;
-use Router\RequestOptions;
-use Router\ServiceContracts\Memory\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\Memory\V1\V1CreateParams;
+use CaseDev\Memory\V1\V1CreateParams\Message;
+use CaseDev\Memory\V1\V1DeleteAllParams;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListParams;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchParams;
+use CaseDev\Memory\V1\V1SearchResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Memory\V1RawContract;
 
 /**
- * @phpstan-import-type MessageShape from \Router\Memory\V1\V1CreateParams\Message
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type MessageShape from \CaseDev\Memory\V1\V1CreateParams\Message
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

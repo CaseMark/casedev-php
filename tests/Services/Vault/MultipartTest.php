@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Vault;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Vault\Multipart\MultipartGetPartURLsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Vault\Multipart\MultipartGetPartURLsResponse;
 
 /**
  * @internal

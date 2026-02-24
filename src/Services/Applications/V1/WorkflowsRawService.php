@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Applications\V1;
+namespace CaseDev\Services\Applications\V1;
 
-use Router\Applications\V1\Workflows\WorkflowGetStatusParams;
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\RequestOptions;
-use Router\ServiceContracts\Applications\V1\WorkflowsRawContract;
+use CaseDev\Applications\V1\Workflows\WorkflowGetStatusParams;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Applications\V1\WorkflowsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class WorkflowsRawService implements WorkflowsRawContract
 {

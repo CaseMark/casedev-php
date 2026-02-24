@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\DatabaseContract;
-use Router\Services\Database\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\DatabaseContract;
+use CaseDev\Services\Database\V1Service;
 
 final class DatabaseService implements DatabaseContract
 {

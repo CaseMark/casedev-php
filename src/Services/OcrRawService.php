@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\OcrRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\OcrRawContract;
 
 final class OcrRawService implements OcrRawContract
 {

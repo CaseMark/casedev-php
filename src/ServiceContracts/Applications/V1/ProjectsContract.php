@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Applications\V1;
+namespace CaseDev\ServiceContracts\Applications\V1;
 
-use Router\Applications\V1\Projects\ProjectCreateEnvParams\Type;
-use Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
-use Router\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
-use Router\Applications\V1\Projects\ProjectListResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
+use CaseDev\Applications\V1\Projects\ProjectListResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type EnvironmentVariableShape from \Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
- * @phpstan-import-type EnvironmentVariableShape from \Router\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface ProjectsContract
 {
@@ -90,7 +90,7 @@ interface ProjectsContract
      * @api
      *
      * @param string $id Project ID
-     * @param list<\Router\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable|EnvironmentVariableShape1> $environmentVariables Additional environment variables to set or update before deployment
+     * @param list<\CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable|EnvironmentVariableShape1> $environmentVariables Additional environment variables to set or update before deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -123,7 +123,7 @@ interface ProjectsContract
      *
      * @param string $id Project ID
      * @param string $key Environment variable name
-     * @param list<\Router\Applications\V1\Projects\ProjectCreateEnvParams\Target|value-of<\Router\Applications\V1\Projects\ProjectCreateEnvParams\Target>> $target Deployment targets for this variable
+     * @param list<\CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Target|value-of<\CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Target>> $target Deployment targets for this variable
      * @param string $value Environment variable value
      * @param string $gitBranch Specific git branch (for preview deployments)
      * @param Type|value-of<Type> $type Variable type

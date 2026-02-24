@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Graphrag\GraphragGetStatsResponse;
+namespace CaseDev\Vault\Graphrag\GraphragGetStatsResponse;
 
 /**
  * Current processing status.

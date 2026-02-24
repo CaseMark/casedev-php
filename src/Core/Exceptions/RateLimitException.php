@@ -1,9 +1,9 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class RateLimitException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Router Rate Limit Exception';
+    protected const DESC = 'CaseDev Rate Limit Exception';
 }

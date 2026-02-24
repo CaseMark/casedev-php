@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Legal;
+namespace CaseDev\ServiceContracts\Legal;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Legal\V1\V1FindParams;
-use Router\Legal\V1\V1FindResponse;
-use Router\Legal\V1\V1GetCitationsFromURLParams;
-use Router\Legal\V1\V1GetCitationsFromURLResponse;
-use Router\Legal\V1\V1GetCitationsParams;
-use Router\Legal\V1\V1GetCitationsResponse;
-use Router\Legal\V1\V1GetFullTextParams;
-use Router\Legal\V1\V1GetFullTextResponse;
-use Router\Legal\V1\V1ListJurisdictionsParams;
-use Router\Legal\V1\V1ListJurisdictionsResponse;
-use Router\Legal\V1\V1PatentSearchParams;
-use Router\Legal\V1\V1PatentSearchResponse;
-use Router\Legal\V1\V1ResearchParams;
-use Router\Legal\V1\V1ResearchResponse;
-use Router\Legal\V1\V1SimilarParams;
-use Router\Legal\V1\V1SimilarResponse;
-use Router\Legal\V1\V1TrademarkSearchParams;
-use Router\Legal\V1\V1TrademarkSearchResponse;
-use Router\Legal\V1\V1VerifyParams;
-use Router\Legal\V1\V1VerifyResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1FindParams;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsParams;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextParams;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsParams;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchParams;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchParams;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarParams;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchParams;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyParams;
+use CaseDev\Legal\V1\V1VerifyResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

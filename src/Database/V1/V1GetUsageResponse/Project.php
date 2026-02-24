@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\V1GetUsageResponse;
+namespace CaseDev\Database\V1\V1GetUsageResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\V1GetUsageResponse\Project\Costs;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\V1GetUsageResponse\Project\Costs;
 
 /**
- * @phpstan-import-type CostsShape from \Router\Database\V1\V1GetUsageResponse\Project\Costs
+ * @phpstan-import-type CostsShape from \CaseDev\Database\V1\V1GetUsageResponse\Project\Costs
  *
  * @phpstan-type ProjectShape = array{
  *   id?: string|null,

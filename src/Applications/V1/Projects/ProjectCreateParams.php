@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Create a new web application project.
  *
- * @see Router\Services\Applications\V1\ProjectsService::create()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::create()
  *
- * @phpstan-import-type EnvironmentVariableShape from \Router\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
  *
  * @phpstan-type ProjectCreateParamsShape = array{
  *   gitRepo: string,

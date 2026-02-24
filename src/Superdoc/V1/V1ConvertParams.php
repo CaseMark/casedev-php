@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Superdoc\V1;
+namespace CaseDev\Superdoc\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Superdoc\V1\V1ConvertParams\From;
-use Router\Superdoc\V1\V1ConvertParams\To;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Superdoc\V1\V1ConvertParams\From;
+use CaseDev\Superdoc\V1\V1ConvertParams\To;
 
 /**
  * Convert documents between formats using SuperDoc. Supports DOCX to PDF, Markdown to DOCX, and HTML to DOCX conversions.
  *
- * @see Router\Services\Superdoc\V1Service::convert()
+ * @see CaseDev\Services\Superdoc\V1Service::convert()
  *
  * @phpstan-type V1ConvertParamsShape = array{
  *   from: From|value-of<From>,

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1SearchResponse\Result;
+namespace CaseDev\Memory\V1\V1SearchResponse\Result;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Tag values for this memory.

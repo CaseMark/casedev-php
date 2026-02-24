@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\Environments;
+namespace CaseDev\Compute\V1\Environments;
 
-use Router\Compute\V1\Environments\EnvironmentListResponse\Environment;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Compute\V1\Environments\EnvironmentListResponse\Environment;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type EnvironmentShape from \Router\Compute\V1\Environments\EnvironmentListResponse\Environment
+ * @phpstan-import-type EnvironmentShape from \CaseDev\Compute\V1\Environments\EnvironmentListResponse\Environment
  *
  * @phpstan-type EnvironmentListResponseShape = array{
  *   environments?: list<Environment|EnvironmentShape>|null

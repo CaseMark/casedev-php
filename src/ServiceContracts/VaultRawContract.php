@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts;
+namespace CaseDev\ServiceContracts;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Vault\VaultConfirmUploadParams;
-use Router\Vault\VaultConfirmUploadResponse;
-use Router\Vault\VaultCreateParams;
-use Router\Vault\VaultDeleteParams;
-use Router\Vault\VaultDeleteResponse;
-use Router\Vault\VaultGetResponse;
-use Router\Vault\VaultIngestParams;
-use Router\Vault\VaultIngestResponse;
-use Router\Vault\VaultListResponse;
-use Router\Vault\VaultNewResponse;
-use Router\Vault\VaultSearchParams;
-use Router\Vault\VaultSearchResponse;
-use Router\Vault\VaultUpdateParams;
-use Router\Vault\VaultUpdateResponse;
-use Router\Vault\VaultUploadParams;
-use Router\Vault\VaultUploadResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Vault\VaultConfirmUploadParams;
+use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultCreateParams;
+use CaseDev\Vault\VaultDeleteParams;
+use CaseDev\Vault\VaultDeleteResponse;
+use CaseDev\Vault\VaultGetResponse;
+use CaseDev\Vault\VaultIngestParams;
+use CaseDev\Vault\VaultIngestResponse;
+use CaseDev\Vault\VaultListResponse;
+use CaseDev\Vault\VaultNewResponse;
+use CaseDev\Vault\VaultSearchParams;
+use CaseDev\Vault\VaultSearchResponse;
+use CaseDev\Vault\VaultUpdateParams;
+use CaseDev\Vault\VaultUpdateResponse;
+use CaseDev\Vault\VaultUploadParams;
+use CaseDev\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface VaultRawContract
 {

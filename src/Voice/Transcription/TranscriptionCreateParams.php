@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Router\Voice\Transcription;
+namespace CaseDev\Voice\Transcription;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Router\Voice\Transcription\TranscriptionCreateParams\Format;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
 
 /**
  * Creates an asynchronous transcription job for audio files. Supports two modes:
@@ -18,7 +18,7 @@ use Router\Voice\Transcription\TranscriptionCreateParams\Format;
  *
  * **Direct URL (legacy)**: Pass `audio_url` for direct transcription without automatic storage.
  *
- * @see Router\Services\Voice\TranscriptionService::create()
+ * @see CaseDev\Services\Voice\TranscriptionService::create()
  *
  * @phpstan-type TranscriptionCreateParamsShape = array{
  *   audioURL?: string|null,

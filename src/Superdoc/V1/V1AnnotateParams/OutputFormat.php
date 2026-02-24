@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Superdoc\V1\V1AnnotateParams;
+namespace CaseDev\Superdoc\V1\V1AnnotateParams;
 
 /**
  * Output format for the annotated document.

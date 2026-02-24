@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1\V1GetResearchResponse;
+namespace CaseDev\Search\V1\V1GetResearchResponse;
 
 /**
  * Research model used.

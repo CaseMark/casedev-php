@@ -2,15 +2,15 @@
 
 namespace Tests\Services\Compute\V1;
 
+use CaseDev\Client;
+use CaseDev\Compute\V1\Instances\InstanceDeleteResponse;
+use CaseDev\Compute\V1\Instances\InstanceGetResponse;
+use CaseDev\Compute\V1\Instances\InstanceListResponse;
+use CaseDev\Compute\V1\Instances\InstanceNewResponse;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Compute\V1\Instances\InstanceDeleteResponse;
-use Router\Compute\V1\Instances\InstanceGetResponse;
-use Router\Compute\V1\Instances\InstanceListResponse;
-use Router\Compute\V1\Instances\InstanceNewResponse;
-use Router\Core\Util;
 
 /**
  * @internal

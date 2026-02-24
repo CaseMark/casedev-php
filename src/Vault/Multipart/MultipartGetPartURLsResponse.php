@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Multipart;
+namespace CaseDev\Vault\Multipart;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\Multipart\MultipartGetPartURLsResponse\URL;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Multipart\MultipartGetPartURLsResponse\URL;
 
 /**
- * @phpstan-import-type URLShape from \Router\Vault\Multipart\MultipartGetPartURLsResponse\URL
+ * @phpstan-import-type URLShape from \CaseDev\Vault\Multipart\MultipartGetPartURLsResponse\URL
  *
  * @phpstan-type MultipartGetPartURLsResponseShape = array{
  *   urls?: list<URL|URLShape>|null

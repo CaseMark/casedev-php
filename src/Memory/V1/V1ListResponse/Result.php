@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1ListResponse;
+namespace CaseDev\Memory\V1\V1ListResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ResultShape = array{

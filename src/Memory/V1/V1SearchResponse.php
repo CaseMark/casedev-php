@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1;
+namespace CaseDev\Memory\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Memory\V1\V1SearchResponse\Result;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1SearchResponse\Result;
 
 /**
- * @phpstan-import-type ResultShape from \Router\Memory\V1\V1SearchResponse\Result
+ * @phpstan-import-type ResultShape from \CaseDev\Memory\V1\V1SearchResponse\Result
  *
  * @phpstan-type V1SearchResponseShape = array{
  *   results?: list<Result|ResultShape>|null

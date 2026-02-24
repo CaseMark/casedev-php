@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1\V1VerifyResponse\Citation;
+namespace CaseDev\Legal\V1\V1VerifyResponse\Citation;
 
 enum Status: string
 {

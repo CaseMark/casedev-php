@@ -1,9 +1,9 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class AuthenticationException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Router Authentication Exception';
+    protected const DESC = 'CaseDev Authentication Exception';
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1\V1ResearchParams;
+namespace CaseDev\Search\V1\V1ResearchParams;
 
 /**
  * Research quality level - fast (quick), normal (balanced), pro (comprehensive).

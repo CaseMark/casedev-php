@@ -1,9 +1,9 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class NotFoundException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Router Not Found Exception';
+    protected const DESC = 'CaseDev Not Found Exception';
 }

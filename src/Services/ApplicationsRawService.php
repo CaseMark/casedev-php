@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\ApplicationsRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\ApplicationsRawContract;
 
 final class ApplicationsRawService implements ApplicationsRawContract
 {

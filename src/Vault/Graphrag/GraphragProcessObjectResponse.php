@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Graphrag;
+namespace CaseDev\Vault\Graphrag;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\Graphrag\GraphragProcessObjectResponse\Stats;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse\Stats;
 
 /**
- * @phpstan-import-type StatsShape from \Router\Vault\Graphrag\GraphragProcessObjectResponse\Stats
+ * @phpstan-import-type StatsShape from \CaseDev\Vault\Graphrag\GraphragProcessObjectResponse\Stats
  *
  * @phpstan-type GraphragProcessObjectResponseShape = array{
  *   communities: int,

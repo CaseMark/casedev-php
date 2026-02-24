@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run\RunCancelResponse;
+namespace CaseDev\Agent\V1\Run\RunCancelResponse;
 
 enum Status: string
 {

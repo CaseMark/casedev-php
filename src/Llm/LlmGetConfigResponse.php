@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Llm;
+namespace CaseDev\Llm;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Llm\LlmGetConfigResponse\Model;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\LlmGetConfigResponse\Model;
 
 /**
- * @phpstan-import-type ModelShape from \Router\Llm\LlmGetConfigResponse\Model
+ * @phpstan-import-type ModelShape from \CaseDev\Llm\LlmGetConfigResponse\Model
  *
  * @phpstan-type LlmGetConfigResponseShape = array{models: list<Model|ModelShape>}
  */

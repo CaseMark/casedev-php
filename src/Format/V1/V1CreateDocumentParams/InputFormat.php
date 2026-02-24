@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Format\V1\V1CreateDocumentParams;
+namespace CaseDev\Format\V1\V1CreateDocumentParams;
 
 /**
  * Format of the input content.

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Router\Core\Conversion;
+namespace CaseDev\Core\Conversion;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Contracts\BaseModel;
-use Router\Core\Conversion;
-use Router\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Core\Conversion;
+use CaseDev\Core\Conversion\Contracts\Converter;
 
 /**
  * @internal

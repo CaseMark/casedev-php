@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Compute;
+namespace CaseDev\Services\Compute;
 
-use Router\Client;
-use Router\Compute\V1\V1GetUsageParams;
-use Router\Compute\V1\V1GetUsageResponse;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\ServiceContracts\Compute\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Compute\V1\V1GetUsageParams;
+use CaseDev\Compute\V1\V1GetUsageResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Compute\V1RawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

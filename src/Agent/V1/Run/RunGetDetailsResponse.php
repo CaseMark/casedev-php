@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run;
+namespace CaseDev\Agent\V1\Run;
 
-use Router\Agent\V1\Run\RunGetDetailsResponse\Result;
-use Router\Agent\V1\Run\RunGetDetailsResponse\Status;
-use Router\Agent\V1\Run\RunGetDetailsResponse\Step;
-use Router\Agent\V1\Run\RunGetDetailsResponse\Usage;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Result;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Status;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Step;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Usage;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ResultShape from \Router\Agent\V1\Run\RunGetDetailsResponse\Result
- * @phpstan-import-type StepShape from \Router\Agent\V1\Run\RunGetDetailsResponse\Step
- * @phpstan-import-type UsageShape from \Router\Agent\V1\Run\RunGetDetailsResponse\Usage
+ * @phpstan-import-type ResultShape from \CaseDev\Agent\V1\Run\RunGetDetailsResponse\Result
+ * @phpstan-import-type StepShape from \CaseDev\Agent\V1\Run\RunGetDetailsResponse\Step
+ * @phpstan-import-type UsageShape from \CaseDev\Agent\V1\Run\RunGetDetailsResponse\Usage
  *
  * @phpstan-type RunGetDetailsResponseShape = array{
  *   id?: string|null,

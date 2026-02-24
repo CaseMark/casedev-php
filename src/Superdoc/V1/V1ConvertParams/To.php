@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Superdoc\V1\V1ConvertParams;
+namespace CaseDev\Superdoc\V1\V1ConvertParams;
 
 /**
  * Target format for conversion.

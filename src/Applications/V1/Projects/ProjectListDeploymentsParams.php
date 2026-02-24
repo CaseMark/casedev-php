@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Router\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * List deployments for a specific project.
  *
- * @see Router\Services\Applications\V1\ProjectsService::listDeployments()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::listDeployments()
  *
  * @phpstan-type ProjectListDeploymentsParamsShape = array{
  *   limit?: float|null, state?: string|null, target?: null|Target|value-of<Target>

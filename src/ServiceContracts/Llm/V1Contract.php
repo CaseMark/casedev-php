@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Llm;
+namespace CaseDev\ServiceContracts\Llm;
 
-use Router\Core\Exceptions\APIException;
-use Router\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
-use Router\Llm\V1\V1ListModelsResponse;
-use Router\Llm\V1\V1NewEmbeddingResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use CaseDev\Llm\V1\V1ListModelsResponse;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type InputShape from \Router\Llm\V1\V1CreateEmbeddingParams\Input
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type InputShape from \CaseDev\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

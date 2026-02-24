@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Memory;
+namespace CaseDev\ServiceContracts\Memory;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Memory\V1\V1CreateParams;
-use Router\Memory\V1\V1DeleteAllParams;
-use Router\Memory\V1\V1DeleteAllResponse;
-use Router\Memory\V1\V1DeleteResponse;
-use Router\Memory\V1\V1GetResponse;
-use Router\Memory\V1\V1ListParams;
-use Router\Memory\V1\V1ListResponse;
-use Router\Memory\V1\V1NewResponse;
-use Router\Memory\V1\V1SearchParams;
-use Router\Memory\V1\V1SearchResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Memory\V1\V1CreateParams;
+use CaseDev\Memory\V1\V1DeleteAllParams;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListParams;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchParams;
+use CaseDev\Memory\V1\V1SearchResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

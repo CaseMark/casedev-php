@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Workflows;
+namespace CaseDev\Applications\V1\Workflows;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Get current deployment workflow status and accumulated events.
  *
- * @see Router\Services\Applications\V1\WorkflowsService::getStatus()
+ * @see CaseDev\Services\Applications\V1\WorkflowsService::getStatus()
  *
  * @phpstan-type WorkflowGetStatusParamsShape = array{projectID: string}
  */

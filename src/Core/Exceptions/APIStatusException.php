@@ -1,15 +1,15 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
+use CaseDev\Core\Util;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Router\Core\Util;
 
 class APIStatusException extends APIException
 {
     /** @var string */
-    protected const DESC = 'Router API Status Error';
+    protected const DESC = 'CaseDev API Status Error';
 
     public ?int $status;
 

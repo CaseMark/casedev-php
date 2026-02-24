@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Agent;
+namespace CaseDev\Services\Agent;
 
-use Router\Client;
-use Router\ServiceContracts\Agent\V1Contract;
-use Router\Services\Agent\V1\AgentsService;
-use Router\Services\Agent\V1\RunService;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\Agent\V1Contract;
+use CaseDev\Services\Agent\V1\AgentsService;
+use CaseDev\Services\Agent\V1\RunService;
 
 final class V1Service implements V1Contract
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1\V1ProcessParams\Features;
+namespace CaseDev\Ocr\V1\V1ProcessParams\Features;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Ocr\V1\V1ProcessParams\Features\Tables\Format;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1ProcessParams\Features\Tables\Format;
 
 /**
  * Extract tables as structured data.

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects\ProjectListResponse;
+namespace CaseDev\Database\V1\Projects\ProjectListResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment;
-use Router\Database\V1\Projects\ProjectListResponse\Project\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment;
+use CaseDev\Database\V1\Projects\ProjectListResponse\Project\Status;
 
 /**
- * @phpstan-import-type LinkedDeploymentShape from \Router\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment
+ * @phpstan-import-type LinkedDeploymentShape from \CaseDev\Database\V1\Projects\ProjectListResponse\Project\LinkedDeployment
  *
  * @phpstan-type ProjectShape = array{
  *   id?: string|null,

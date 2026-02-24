@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\PrivilegeContract;
-use Router\Services\Privilege\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\PrivilegeContract;
+use CaseDev\Services\Privilege\V1Service;
 
 final class PrivilegeService implements PrivilegeContract
 {

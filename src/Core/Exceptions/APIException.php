@@ -1,11 +1,11 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class APIException extends RouterException
+class APIException extends CaseDevException
 {
     public ?int $status = null;
 

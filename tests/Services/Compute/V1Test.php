@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Compute;
 
+use CaseDev\Client;
+use CaseDev\Compute\V1\V1GetUsageResponse;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Compute\V1\V1GetUsageResponse;
-use Router\Core\Util;
 
 /**
  * @internal

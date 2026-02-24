@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Agent\V1;
+namespace CaseDev\ServiceContracts\Agent\V1;
 
-use Router\Agent\V1\Agents\AgentCreateParams;
-use Router\Agent\V1\Agents\AgentDeleteResponse;
-use Router\Agent\V1\Agents\AgentGetResponse;
-use Router\Agent\V1\Agents\AgentListResponse;
-use Router\Agent\V1\Agents\AgentNewResponse;
-use Router\Agent\V1\Agents\AgentUpdateParams;
-use Router\Agent\V1\Agents\AgentUpdateResponse;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Agent\V1\Agents\AgentCreateParams;
+use CaseDev\Agent\V1\Agents\AgentDeleteResponse;
+use CaseDev\Agent\V1\Agents\AgentGetResponse;
+use CaseDev\Agent\V1\Agents\AgentListResponse;
+use CaseDev\Agent\V1\Agents\AgentNewResponse;
+use CaseDev\Agent\V1\Agents\AgentUpdateParams;
+use CaseDev\Agent\V1\Agents\AgentUpdateResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface AgentsRawContract
 {

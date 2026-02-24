@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Voice;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Voice\Transcription\TranscriptionGetResponse;
-use Router\Voice\Transcription\TranscriptionNewResponse;
 
 /**
  * @internal

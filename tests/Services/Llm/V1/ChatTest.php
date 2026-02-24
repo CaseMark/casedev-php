@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Llm\V1;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Llm\V1\Chat\ChatNewCompletionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Llm\V1\Chat\ChatNewCompletionResponse;
 
 /**
  * @internal

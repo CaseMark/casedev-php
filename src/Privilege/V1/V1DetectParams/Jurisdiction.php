@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Privilege\V1\V1DetectParams;
+namespace CaseDev\Privilege\V1\V1DetectParams;
 
 /**
  * Jurisdiction for privilege rules.

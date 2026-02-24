@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Search;
+namespace CaseDev\ServiceContracts\Search;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Search\V1\V1AnswerParams;
-use Router\Search\V1\V1AnswerResponse;
-use Router\Search\V1\V1ContentsParams;
-use Router\Search\V1\V1ContentsResponse;
-use Router\Search\V1\V1GetResearchResponse;
-use Router\Search\V1\V1ResearchParams;
-use Router\Search\V1\V1ResearchResponse;
-use Router\Search\V1\V1RetrieveResearchParams;
-use Router\Search\V1\V1SearchParams;
-use Router\Search\V1\V1SearchResponse;
-use Router\Search\V1\V1SimilarParams;
-use Router\Search\V1\V1SimilarResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Search\V1\V1AnswerParams;
+use CaseDev\Search\V1\V1AnswerResponse;
+use CaseDev\Search\V1\V1ContentsParams;
+use CaseDev\Search\V1\V1ContentsResponse;
+use CaseDev\Search\V1\V1GetResearchResponse;
+use CaseDev\Search\V1\V1ResearchParams;
+use CaseDev\Search\V1\V1ResearchResponse;
+use CaseDev\Search\V1\V1RetrieveResearchParams;
+use CaseDev\Search\V1\V1SearchParams;
+use CaseDev\Search\V1\V1SearchResponse;
+use CaseDev\Search\V1\V1SimilarParams;
+use CaseDev\Search\V1\V1SimilarResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

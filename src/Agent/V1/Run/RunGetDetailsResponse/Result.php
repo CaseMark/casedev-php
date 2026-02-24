@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run\RunGetDetailsResponse;
+namespace CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 
-use Router\Agent\V1\Run\RunGetDetailsResponse\Result\Logs;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Result\Logs;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Final output from the agent.
  *
- * @phpstan-import-type LogsShape from \Router\Agent\V1\Run\RunGetDetailsResponse\Result\Logs
+ * @phpstan-import-type LogsShape from \CaseDev\Agent\V1\Run\RunGetDetailsResponse\Result\Logs
  *
  * @phpstan-type ResultShape = array{
  *   logs?: null|Logs|LogsShape, output?: string|null

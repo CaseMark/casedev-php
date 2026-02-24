@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Vault;
+namespace CaseDev\ServiceContracts\Vault;
 
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
-use Router\Vault\Objects\ObjectDeleteParams\Force;
-use Router\Vault\Objects\ObjectDeleteResponse;
-use Router\Vault\Objects\ObjectGetOcrWordsResponse;
-use Router\Vault\Objects\ObjectGetResponse;
-use Router\Vault\Objects\ObjectGetSummarizeJobResponse;
-use Router\Vault\Objects\ObjectGetTextResponse;
-use Router\Vault\Objects\ObjectListResponse;
-use Router\Vault\Objects\ObjectNewPresignedURLResponse;
-use Router\Vault\Objects\ObjectUpdateResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
+use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetResponse;
+use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
+use CaseDev\Vault\Objects\ObjectGetTextResponse;
+use CaseDev\Vault\Objects\ObjectListResponse;
+use CaseDev\Vault\Objects\ObjectNewPresignedURLResponse;
+use CaseDev\Vault\Objects\ObjectUpdateResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface ObjectsContract
 {

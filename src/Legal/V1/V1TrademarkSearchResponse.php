@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Legal\V1\V1TrademarkSearchResponse\GoodsAndService;
-use Router\Legal\V1\V1TrademarkSearchResponse\Owner;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse\GoodsAndService;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse\Owner;
 
 /**
- * @phpstan-import-type GoodsAndServiceShape from \Router\Legal\V1\V1TrademarkSearchResponse\GoodsAndService
- * @phpstan-import-type OwnerShape from \Router\Legal\V1\V1TrademarkSearchResponse\Owner
+ * @phpstan-import-type GoodsAndServiceShape from \CaseDev\Legal\V1\V1TrademarkSearchResponse\GoodsAndService
+ * @phpstan-import-type OwnerShape from \CaseDev\Legal\V1\V1TrademarkSearchResponse\Owner
  *
  * @phpstan-type V1TrademarkSearchResponseShape = array{
  *   attorney?: string|null,

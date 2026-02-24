@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\VoiceContract;
-use Router\Services\Voice\StreamingService;
-use Router\Services\Voice\TranscriptionService;
-use Router\Services\Voice\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\VoiceContract;
+use CaseDev\Services\Voice\StreamingService;
+use CaseDev\Services\Voice\TranscriptionService;
+use CaseDev\Services\Voice\V1Service;
 
 final class VoiceService implements VoiceContract
 {

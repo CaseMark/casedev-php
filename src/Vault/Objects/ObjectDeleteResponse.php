@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\Objects\ObjectDeleteResponse\DeletedObject;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Objects\ObjectDeleteResponse\DeletedObject;
 
 /**
- * @phpstan-import-type DeletedObjectShape from \Router\Vault\Objects\ObjectDeleteResponse\DeletedObject
+ * @phpstan-import-type DeletedObjectShape from \CaseDev\Vault\Objects\ObjectDeleteResponse\DeletedObject
  *
  * @phpstan-type ObjectDeleteResponseShape = array{
  *   deletedObject?: null|DeletedObject|DeletedObjectShape, success?: bool|null

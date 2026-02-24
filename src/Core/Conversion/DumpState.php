@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Core\Conversion;
+namespace CaseDev\Core\Conversion;
 
 /**
  * @internal

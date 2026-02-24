@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all secret groups for a compute environment. Secret groups organize related secrets (API keys, credentials, etc.) that can be securely accessed by compute jobs during execution.
  *
- * @see Router\Services\Compute\V1\SecretsService::list()
+ * @see CaseDev\Services\Compute\V1\SecretsService::list()
  *
  * @phpstan-type SecretListParamsShape = array{env?: string|null}
  */

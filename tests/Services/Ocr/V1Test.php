@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Ocr;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Ocr\V1\V1GetResponse;
+use CaseDev\Ocr\V1\V1ProcessResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Ocr\V1\V1GetResponse;
-use Router\Ocr\V1\V1ProcessResponse;
 use Tests\UnsupportedMockTests;
 
 /**

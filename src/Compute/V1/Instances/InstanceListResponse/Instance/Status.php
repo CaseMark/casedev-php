@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\Instances\InstanceListResponse\Instance;
+namespace CaseDev\Compute\V1\Instances\InstanceListResponse\Instance;
 
 enum Status: string
 {

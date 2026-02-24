@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Llm\LlmGetConfigResponse;
-use Router\RequestOptions;
-use Router\ServiceContracts\LlmContract;
-use Router\Services\Llm\V1Service;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\LlmGetConfigResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\LlmContract;
+use CaseDev\Services\Llm\V1Service;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class LlmService implements LlmContract
 {

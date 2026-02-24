@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Router\Voice\Transcription;
+namespace CaseDev\Voice\Transcription;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Voice\Transcription\TranscriptionGetResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse\Status;
 
 /**
  * @phpstan-type TranscriptionGetResponseShape = array{

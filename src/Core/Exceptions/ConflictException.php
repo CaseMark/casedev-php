@@ -1,9 +1,9 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class ConflictException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Router Conflict Exception';
+    protected const DESC = 'CaseDev Conflict Exception';
 }

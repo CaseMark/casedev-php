@@ -6,7 +6,7 @@
       "src/Version.php"
     ],
     "psr-4": {
-      "Router\\": "src/"
+      "CaseDev\\": "src/"
     }
   },
   "autoload-dev": {
@@ -27,7 +27,7 @@
     "sort-packages": true
   },
   "description": "Casedev PHP SDK",
-  "name": "org-placeholder/router",
+  "name": "casemark/casedev",
   "require": {
     "php": "^8.1",
     "php-http/discovery": "^1",

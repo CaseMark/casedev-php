@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Core\Concerns;
+namespace CaseDev\Core\Concerns;
 
-use Router\Core\Conversion;
-use Router\Core\Conversion\DumpState;
-use Router\RequestOptions;
+use CaseDev\Core\Conversion;
+use CaseDev\Core\Conversion\DumpState;
+use CaseDev\RequestOptions;
 
 /**
  * @internal

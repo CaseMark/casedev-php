@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Router\Compute\V1\Secrets\SecretListResponse\Group;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Compute\V1\Secrets\SecretListResponse\Group;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type GroupShape from \Router\Compute\V1\Secrets\SecretListResponse\Group
+ * @phpstan-import-type GroupShape from \CaseDev\Compute\V1\Secrets\SecretListResponse\Group
  *
  * @phpstan-type SecretListResponseShape = array{
  *   groups?: list<Group|GroupShape>|null

@@ -2,14 +2,14 @@
 
 namespace Tests\Services\Translate;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Translate\V1\V1DetectResponse;
+use CaseDev\Translate\V1\V1ListLanguagesResponse;
+use CaseDev\Translate\V1\V1TranslateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Translate\V1\V1DetectResponse;
-use Router\Translate\V1\V1ListLanguagesResponse;
-use Router\Translate\V1\V1TranslateResponse;
 
 /**
  * @internal

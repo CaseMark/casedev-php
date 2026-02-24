@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Voice;
+namespace CaseDev\Services\Voice;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\RequestOptions;
-use Router\ServiceContracts\Voice\TranscriptionContract;
-use Router\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Router\Voice\Transcription\TranscriptionCreateParams\Format;
-use Router\Voice\Transcription\TranscriptionGetResponse;
-use Router\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\TranscriptionContract;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class TranscriptionService implements TranscriptionContract
 {

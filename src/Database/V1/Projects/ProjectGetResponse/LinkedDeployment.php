@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects\ProjectGetResponse;
+namespace CaseDev\Database\V1\Projects\ProjectGetResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\Projects\ProjectGetResponse\LinkedDeployment\Type;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectGetResponse\LinkedDeployment\Type;
 
 /**
  * @phpstan-type LinkedDeploymentShape = array{

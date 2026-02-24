@@ -10,22 +10,10 @@ The REST API documentation can be found on [docs.case.dev](https://docs.case.dev
 
 ## Installation
 
-To use this package, install via Composer by adding the following to your application's `composer.json`:
-
 <!-- x-release-please-start-version -->
 
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:CaseMark/casedev-php.git"
-    }
-  ],
-  "require": {
-    "org-placeholder/router": "dev-main"
-  }
-}
+```
+composer require "casemark/casedev 0.0.1"
 ```
 
 <!-- x-release-please-end -->
@@ -38,7 +26,7 @@ Parameters with a default value must be set by name.
 ```php
 <?php
 
-use Router\Client;
+use CaseDev\Client;
 
 $client = new Client(
   apiKey: getenv('CASEDEV_API_KEY') ?: 'My API Key', environment: 'local'
@@ -60,14 +48,14 @@ However, builders are also provided `(new Dog)->withName("Joey")`.
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Router\Core\Exceptions\APIException` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `CaseDev\Core\Exceptions\APIException` will be thrown:
 
 ```php
 <?php
 
-use Router\Core\Exceptions\APIConnectionException;
-use Router\Core\Exceptions\RateLimitException;
-use Router\Core\Exceptions\APIStatusException;
+use CaseDev\Core\Exceptions\APIConnectionException;
+use CaseDev\Core\Exceptions\RateLimitException;
+use CaseDev\Core\Exceptions\APIStatusException;
 
 try {
   $vault = $client->vault->create(name: 'My Vault');
@@ -109,7 +97,7 @@ You can use the `maxRetries` option to configure or disable this:
 ```php
 <?php
 
-use Router\Client;
+use CaseDev\Client;
 
 // Configure the default for all requests:
 $client = new Client(requestOptions: ['maxRetries' => 0]);

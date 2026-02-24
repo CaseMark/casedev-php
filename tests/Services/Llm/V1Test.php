@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Llm;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Llm\V1\V1ListModelsResponse;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Llm\V1\V1ListModelsResponse;
-use Router\Llm\V1\V1NewEmbeddingResponse;
 
 /**
  * @internal

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\Projects\ProjectGetResponse\Branch;
-use Router\Database\V1\Projects\ProjectGetResponse\Database;
-use Router\Database\V1\Projects\ProjectGetResponse\LinkedDeployment;
-use Router\Database\V1\Projects\ProjectGetResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectGetResponse\Branch;
+use CaseDev\Database\V1\Projects\ProjectGetResponse\Database;
+use CaseDev\Database\V1\Projects\ProjectGetResponse\LinkedDeployment;
+use CaseDev\Database\V1\Projects\ProjectGetResponse\Status;
 
 /**
- * @phpstan-import-type BranchShape from \Router\Database\V1\Projects\ProjectGetResponse\Branch
- * @phpstan-import-type DatabaseShape from \Router\Database\V1\Projects\ProjectGetResponse\Database
- * @phpstan-import-type LinkedDeploymentShape from \Router\Database\V1\Projects\ProjectGetResponse\LinkedDeployment
+ * @phpstan-import-type BranchShape from \CaseDev\Database\V1\Projects\ProjectGetResponse\Branch
+ * @phpstan-import-type DatabaseShape from \CaseDev\Database\V1\Projects\ProjectGetResponse\Database
+ * @phpstan-import-type LinkedDeploymentShape from \CaseDev\Database\V1\Projects\ProjectGetResponse\LinkedDeployment
  *
  * @phpstan-type ProjectGetResponseShape = array{
  *   id: string,

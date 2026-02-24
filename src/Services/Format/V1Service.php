@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Format;
+namespace CaseDev\Services\Format;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\Format\V1\V1CreateDocumentParams\InputFormat;
-use Router\Format\V1\V1CreateDocumentParams\Options;
-use Router\Format\V1\V1CreateDocumentParams\OutputFormat;
-use Router\RequestOptions;
-use Router\ServiceContracts\Format\V1Contract;
-use Router\Services\Format\V1\TemplatesService;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\Format\V1\V1CreateDocumentParams\InputFormat;
+use CaseDev\Format\V1\V1CreateDocumentParams\Options;
+use CaseDev\Format\V1\V1CreateDocumentParams\OutputFormat;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Format\V1Contract;
+use CaseDev\Services\Format\V1\TemplatesService;
 
 /**
- * @phpstan-import-type OptionsShape from \Router\Format\V1\V1CreateDocumentParams\Options
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type OptionsShape from \CaseDev\Format\V1\V1CreateDocumentParams\Options
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {

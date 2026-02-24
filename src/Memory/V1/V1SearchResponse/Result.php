@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1SearchResponse;
+namespace CaseDev\Memory\V1\V1SearchResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Memory\V1\V1SearchResponse\Result\Tags;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1SearchResponse\Result\Tags;
 
 /**
- * @phpstan-import-type TagsShape from \Router\Memory\V1\V1SearchResponse\Result\Tags
+ * @phpstan-import-type TagsShape from \CaseDev\Memory\V1\V1SearchResponse\Result\Tags
  *
  * @phpstan-type ResultShape = array{
  *   id?: string|null,

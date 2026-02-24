@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Multipart;
+namespace CaseDev\Vault\Multipart;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Abort a multipart upload and discard uploaded parts (live).
  *
- * @see Router\Services\Vault\MultipartService::abort()
+ * @see CaseDev\Services\Vault\MultipartService::abort()
  *
  * @phpstan-type MultipartAbortParamsShape = array{
  *   objectID: string, uploadID: string
