@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\MemoryRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\MemoryRawContract;
 
 final class MemoryRawService implements MemoryRawContract
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run\RunGetDetailsResponse;
+namespace CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 
-use Router\Agent\V1\Run\RunGetDetailsResponse\Step\Type;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Step\Type;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type StepShape = array{

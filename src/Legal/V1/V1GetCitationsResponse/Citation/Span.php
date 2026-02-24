@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1\V1GetCitationsResponse\Citation;
+namespace CaseDev\Legal\V1\V1GetCitationsResponse\Citation;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SpanShape = array{end?: int|null, start?: int|null}

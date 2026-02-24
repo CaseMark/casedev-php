@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run\RunGetDetailsResponse;
+namespace CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 
 enum Status: string
 {

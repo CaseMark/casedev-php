@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects\ObjectCreatePresignedURLParams;
+namespace CaseDev\Vault\Objects\ObjectCreatePresignedURLParams;
 
 /**
  * The S3 operation to generate URL for.

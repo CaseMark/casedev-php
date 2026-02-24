@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Privilege;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Privilege\V1\V1DetectResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Privilege\V1\V1DetectResponse;
 
 /**
  * @internal

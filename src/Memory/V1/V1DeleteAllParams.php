@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1;
+namespace CaseDev\Memory\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Delete multiple memories matching tag filter criteria. CAUTION: This will delete all matching memories for your organization.
  *
- * @see Router\Services\Memory\V1Service::deleteAll()
+ * @see CaseDev\Services\Memory\V1Service::deleteAll()
  *
  * @phpstan-type V1DeleteAllParamsShape = array{
  *   tag1?: string|null,

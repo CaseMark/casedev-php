@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1\V1ProcessResponse;
+namespace CaseDev\Ocr\V1\V1ProcessResponse;
 
 /**
  * Current job status.

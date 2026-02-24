@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Deployments\DeploymentCreateParams;
+namespace CaseDev\Applications\V1\Deployments\DeploymentCreateParams;
 
 /**
  * Deployment target.

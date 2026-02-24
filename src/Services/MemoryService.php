@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\MemoryContract;
-use Router\Services\Memory\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\MemoryContract;
+use CaseDev\Services\Memory\V1Service;
 
 final class MemoryService implements MemoryContract
 {

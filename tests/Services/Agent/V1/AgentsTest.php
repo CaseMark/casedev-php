@@ -2,16 +2,16 @@
 
 namespace Tests\Services\Agent\V1;
 
+use CaseDev\Agent\V1\Agents\AgentDeleteResponse;
+use CaseDev\Agent\V1\Agents\AgentGetResponse;
+use CaseDev\Agent\V1\Agents\AgentListResponse;
+use CaseDev\Agent\V1\Agents\AgentNewResponse;
+use CaseDev\Agent\V1\Agents\AgentUpdateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Agent\V1\Agents\AgentDeleteResponse;
-use Router\Agent\V1\Agents\AgentGetResponse;
-use Router\Agent\V1\Agents\AgentListResponse;
-use Router\Agent\V1\Agents\AgentNewResponse;
-use Router\Agent\V1\Agents\AgentUpdateResponse;
-use Router\Client;
-use Router\Core\Util;
 
 /**
  * @internal

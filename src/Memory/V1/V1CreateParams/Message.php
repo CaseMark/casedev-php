@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1CreateParams;
+namespace CaseDev\Memory\V1\V1CreateParams;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Memory\V1\V1CreateParams\Message\Role;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1CreateParams\Message\Role;
 
 /**
  * @phpstan-type MessageShape = array{content: string, role: Role|value-of<Role>}

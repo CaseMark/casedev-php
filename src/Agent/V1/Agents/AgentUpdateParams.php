@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Agents;
+namespace CaseDev\Agent\V1\Agents;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Updates an agent definition. Only provided fields are changed.
  *
- * @see Router\Services\Agent\V1\AgentsService::update()
+ * @see CaseDev\Services\Agent\V1\AgentsService::update()
  *
  * @phpstan-type AgentUpdateParamsShape = array{
  *   description?: string|null,

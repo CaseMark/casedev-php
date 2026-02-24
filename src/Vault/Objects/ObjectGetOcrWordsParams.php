@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieves word-level OCR bounding box data for a processed PDF document. Each word includes its text, normalized bounding box coordinates (0-1 range), confidence score, and global word index. Use this data to highlight specific text ranges in a PDF viewer based on word indices from search results.
  *
- * @see Router\Services\Vault\ObjectsService::getOcrWords()
+ * @see CaseDev\Services\Vault\ObjectsService::getOcrWords()
  *
  * @phpstan-type ObjectGetOcrWordsParamsShape = array{
  *   id: string, page?: int|null, wordEnd?: int|null, wordStart?: int|null

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1;
+namespace CaseDev\Ocr\V1;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Download OCR processing results in various formats. Returns the processed document as text extraction, structured JSON with coordinates, searchable PDF with text layer, or the original uploaded document.
  *
- * @see Router\Services\Ocr\V1Service::download()
+ * @see CaseDev\Services\Ocr\V1Service::download()
  *
  * @phpstan-type V1DownloadParamsShape = array{id: string}
  */

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Compute\V1;
+namespace CaseDev\ServiceContracts\Compute\V1;
 
-use Router\Compute\V1\Secrets\SecretDeleteGroupResponse;
-use Router\Compute\V1\Secrets\SecretGetGroupResponse;
-use Router\Compute\V1\Secrets\SecretListResponse;
-use Router\Compute\V1\Secrets\SecretNewResponse;
-use Router\Compute\V1\Secrets\SecretUpdateGroupResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretGetGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretListResponse;
+use CaseDev\Compute\V1\Secrets\SecretNewResponse;
+use CaseDev\Compute\V1\Secrets\SecretUpdateGroupResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface SecretsContract
 {

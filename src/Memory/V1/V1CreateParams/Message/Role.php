@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1CreateParams\Message;
+namespace CaseDev\Memory\V1\V1CreateParams\Message;
 
 /**
  * Message role.

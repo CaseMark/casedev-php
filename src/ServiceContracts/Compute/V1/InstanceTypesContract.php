@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Compute\V1;
+namespace CaseDev\ServiceContracts\Compute\V1;
 
-use Router\Compute\V1\InstanceTypes\InstanceTypeListResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface InstanceTypesContract
 {

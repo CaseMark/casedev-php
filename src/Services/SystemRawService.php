@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\ServiceContracts\SystemRawContract;
-use Router\System\SystemListServicesResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\SystemRawContract;
+use CaseDev\System\SystemListServicesResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SystemRawService implements SystemRawContract
 {

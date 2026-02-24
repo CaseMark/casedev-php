@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Router\Voice\V1\Speak;
+namespace CaseDev\Voice\V1\Speak;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Voice\V1\Speak\SpeakCreateParams\ModelID;
-use Router\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
-use Router\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\ModelID;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
 
 /**
  * Convert text to natural-sounding audio using ElevenLabs voices. Ideal for creating audio summaries of legal documents, client presentations, or accessibility features. Supports multiple languages and voice customization.
  *
- * @see Router\Services\Voice\V1\SpeakService::create()
+ * @see CaseDev\Services\Voice\V1\SpeakService::create()
  *
- * @phpstan-import-type VoiceSettingsShape from \Router\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
+ * @phpstan-import-type VoiceSettingsShape from \CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
  *
  * @phpstan-type SpeakCreateParamsShape = array{
  *   text: string,

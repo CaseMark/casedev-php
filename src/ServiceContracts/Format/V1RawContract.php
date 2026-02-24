@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Format;
+namespace CaseDev\ServiceContracts\Format;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Format\V1\V1CreateDocumentParams;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Format\V1\V1CreateDocumentParams;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

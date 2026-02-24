@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1;
+namespace CaseDev\Database\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\V1GetUsageResponse\Period;
-use Router\Database\V1\V1GetUsageResponse\Pricing;
-use Router\Database\V1\V1GetUsageResponse\Project;
-use Router\Database\V1\V1GetUsageResponse\Totals;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\V1GetUsageResponse\Period;
+use CaseDev\Database\V1\V1GetUsageResponse\Pricing;
+use CaseDev\Database\V1\V1GetUsageResponse\Project;
+use CaseDev\Database\V1\V1GetUsageResponse\Totals;
 
 /**
- * @phpstan-import-type PeriodShape from \Router\Database\V1\V1GetUsageResponse\Period
- * @phpstan-import-type PricingShape from \Router\Database\V1\V1GetUsageResponse\Pricing
- * @phpstan-import-type ProjectShape from \Router\Database\V1\V1GetUsageResponse\Project
- * @phpstan-import-type TotalsShape from \Router\Database\V1\V1GetUsageResponse\Totals
+ * @phpstan-import-type PeriodShape from \CaseDev\Database\V1\V1GetUsageResponse\Period
+ * @phpstan-import-type PricingShape from \CaseDev\Database\V1\V1GetUsageResponse\Pricing
+ * @phpstan-import-type ProjectShape from \CaseDev\Database\V1\V1GetUsageResponse\Project
+ * @phpstan-import-type TotalsShape from \CaseDev\Database\V1\V1GetUsageResponse\Totals
  *
  * @phpstan-type V1GetUsageResponseShape = array{
  *   period?: null|Period|PeriodShape,

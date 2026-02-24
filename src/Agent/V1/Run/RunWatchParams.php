@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run;
+namespace CaseDev\Agent\V1\Run;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Register a callback URL to receive notifications when the run completes. URL must use https and must not point to a private network.
  *
- * @see Router\Services\Agent\V1\RunService::watch()
+ * @see CaseDev\Services\Agent\V1\RunService::watch()
  *
  * @phpstan-type RunWatchParamsShape = array{callbackURL: string}
  */

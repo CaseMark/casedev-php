@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Superdoc;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
 use Tests\UnsupportedMockTests;
 
 /**

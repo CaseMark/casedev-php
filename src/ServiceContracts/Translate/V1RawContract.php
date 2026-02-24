@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Translate;
+namespace CaseDev\ServiceContracts\Translate;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Translate\V1\V1DetectParams;
-use Router\Translate\V1\V1DetectResponse;
-use Router\Translate\V1\V1ListLanguagesParams;
-use Router\Translate\V1\V1ListLanguagesResponse;
-use Router\Translate\V1\V1TranslateParams;
-use Router\Translate\V1\V1TranslateResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Translate\V1\V1DetectParams;
+use CaseDev\Translate\V1\V1DetectResponse;
+use CaseDev\Translate\V1\V1ListLanguagesParams;
+use CaseDev\Translate\V1\V1ListLanguagesResponse;
+use CaseDev\Translate\V1\V1TranslateParams;
+use CaseDev\Translate\V1\V1TranslateResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

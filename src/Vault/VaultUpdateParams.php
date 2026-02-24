@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault;
+namespace CaseDev\Vault;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Update vault settings including name, description, and enableGraph. Changing enableGraph only affects future document uploads - existing documents retain their current graph/non-graph state.
  *
- * @see Router\Services\VaultService::update()
+ * @see CaseDev\Services\VaultService::update()
  *
  * @phpstan-type VaultUpdateParamsShape = array{
  *   description?: string|null,

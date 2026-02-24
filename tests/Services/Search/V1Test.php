@@ -2,17 +2,17 @@
 
 namespace Tests\Services\Search;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Search\V1\V1AnswerResponse;
+use CaseDev\Search\V1\V1ContentsResponse;
+use CaseDev\Search\V1\V1GetResearchResponse;
+use CaseDev\Search\V1\V1ResearchResponse;
+use CaseDev\Search\V1\V1SearchResponse;
+use CaseDev\Search\V1\V1SimilarResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Search\V1\V1AnswerResponse;
-use Router\Search\V1\V1ContentsResponse;
-use Router\Search\V1\V1GetResearchResponse;
-use Router\Search\V1\V1ResearchResponse;
-use Router\Search\V1\V1SearchResponse;
-use Router\Search\V1\V1SimilarResponse;
 
 /**
  * @internal

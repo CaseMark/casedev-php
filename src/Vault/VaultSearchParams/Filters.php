@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\VaultSearchParams;
+namespace CaseDev\Vault\VaultSearchParams;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\VaultSearchParams\Filters\ObjectID;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultSearchParams\Filters\ObjectID;
 
 /**
  * Filters to narrow search results to specific documents.
  *
- * @phpstan-import-type ObjectIDVariants from \Router\Vault\VaultSearchParams\Filters\ObjectID
- * @phpstan-import-type ObjectIDShape from \Router\Vault\VaultSearchParams\Filters\ObjectID
+ * @phpstan-import-type ObjectIDVariants from \CaseDev\Vault\VaultSearchParams\Filters\ObjectID
+ * @phpstan-import-type ObjectIDShape from \CaseDev\Vault\VaultSearchParams\Filters\ObjectID
  *
  * @phpstan-type FiltersShape = array{objectID?: ObjectIDShape|null}
  */

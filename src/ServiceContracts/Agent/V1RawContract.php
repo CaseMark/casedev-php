@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Agent;
+namespace CaseDev\ServiceContracts\Agent;
 
 interface V1RawContract {}

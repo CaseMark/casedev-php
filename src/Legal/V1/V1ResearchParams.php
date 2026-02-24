@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Perform comprehensive legal research with multiple query variations. Uses advanced deep search to find relevant sources across different phrasings of the legal issue.
  *
- * @see Router\Services\Legal\V1Service::research()
+ * @see CaseDev\Services\Legal\V1Service::research()
  *
  * @phpstan-type V1ResearchParamsShape = array{
  *   query: string,

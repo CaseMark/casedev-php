@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieves metadata for a specific document in a vault and generates a temporary download URL. The download URL expires after 1 hour for security. This endpoint also updates the file size if it wasn't previously calculated.
  *
- * @see Router\Services\Vault\ObjectsService::retrieve()
+ * @see CaseDev\Services\Vault\ObjectsService::retrieve()
  *
  * @phpstan-type ObjectRetrieveParamsShape = array{id: string}
  */

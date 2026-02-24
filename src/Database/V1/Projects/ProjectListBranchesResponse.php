@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\Projects\ProjectListBranchesResponse\Branch;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectListBranchesResponse\Branch;
 
 /**
- * @phpstan-import-type BranchShape from \Router\Database\V1\Projects\ProjectListBranchesResponse\Branch
+ * @phpstan-import-type BranchShape from \CaseDev\Database\V1\Projects\ProjectListBranchesResponse\Branch
  *
  * @phpstan-type ProjectListBranchesResponseShape = array{
  *   branches: list<Branch|BranchShape>

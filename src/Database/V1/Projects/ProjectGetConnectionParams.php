@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieves the PostgreSQL connection URI for a database project. Supports selecting specific branches and pooled vs direct connections. Connection strings include credentials and should be stored securely. Use for configuring applications and deployment environments.
  *
- * @see Router\Services\Database\V1\ProjectsService::getConnection()
+ * @see CaseDev\Services\Database\V1\ProjectsService::getConnection()
  *
  * @phpstan-type ProjectGetConnectionParamsShape = array{
  *   branch?: string|null, pooled?: bool|null

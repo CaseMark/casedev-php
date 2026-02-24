@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Ocr;
+namespace CaseDev\ServiceContracts\Ocr;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Ocr\V1\V1DownloadParams;
-use Router\Ocr\V1\V1DownloadParams\Type;
-use Router\Ocr\V1\V1GetResponse;
-use Router\Ocr\V1\V1ProcessParams;
-use Router\Ocr\V1\V1ProcessResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Ocr\V1\V1DownloadParams;
+use CaseDev\Ocr\V1\V1DownloadParams\Type;
+use CaseDev\Ocr\V1\V1GetResponse;
+use CaseDev\Ocr\V1\V1ProcessParams;
+use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Router\Translate\V1\V1DetectResponse;
+namespace CaseDev\Translate\V1\V1DetectResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Core\Conversion\ListOf;
-use Router\Translate\V1\V1DetectResponse\Data\Detection;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Core\Conversion\ListOf;
+use CaseDev\Translate\V1\V1DetectResponse\Data\Detection;
 
 /**
- * @phpstan-import-type DetectionShape from \Router\Translate\V1\V1DetectResponse\Data\Detection
+ * @phpstan-import-type DetectionShape from \CaseDev\Translate\V1\V1DetectResponse\Data\Detection
  *
  * @phpstan-type DataShape = array{
  *   detections?: list<list<Detection|DetectionShape>>|null

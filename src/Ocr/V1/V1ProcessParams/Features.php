@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1\V1ProcessParams;
+namespace CaseDev\Ocr\V1\V1ProcessParams;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Ocr\V1\V1ProcessParams\Features\Tables;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1ProcessParams\Features\Tables;
 
 /**
  * Additional processing options.
  *
- * @phpstan-import-type TablesShape from \Router\Ocr\V1\V1ProcessParams\Features\Tables
+ * @phpstan-import-type TablesShape from \CaseDev\Ocr\V1\V1ProcessParams\Features\Tables
  *
  * @phpstan-type FeaturesShape = array{
  *   embed?: array<string,mixed>|null,

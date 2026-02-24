@@ -2,12 +2,12 @@
 
 namespace Tests\Services;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\System\SystemListServicesResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\System\SystemListServicesResponse;
 
 /**
  * @internal

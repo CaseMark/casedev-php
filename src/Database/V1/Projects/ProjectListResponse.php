@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Database\V1\Projects\ProjectListResponse\Project;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectListResponse\Project;
 
 /**
- * @phpstan-import-type ProjectShape from \Router\Database\V1\Projects\ProjectListResponse\Project
+ * @phpstan-import-type ProjectShape from \CaseDev\Database\V1\Projects\ProjectListResponse\Project
  *
  * @phpstan-type ProjectListResponseShape = array{
  *   projects: list<Project|ProjectShape>

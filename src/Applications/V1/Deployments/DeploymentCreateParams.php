@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Deployments;
+namespace CaseDev\Applications\V1\Deployments;
 
-use Router\Applications\V1\Deployments\DeploymentCreateParams\Target;
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Deployments\DeploymentCreateParams\Target;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Trigger a new deployment for a project.
  *
- * @see Router\Services\Applications\V1\DeploymentsService::create()
+ * @see CaseDev\Services\Applications\V1\DeploymentsService::create()
  *
  * @phpstan-type DeploymentCreateParamsShape = array{
  *   projectID: string, ref?: string|null, target?: null|Target|value-of<Target>

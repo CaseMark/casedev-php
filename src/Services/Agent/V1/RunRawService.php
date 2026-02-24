@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Agent\V1;
+namespace CaseDev\Services\Agent\V1;
 
-use Router\Agent\V1\Run\RunCancelResponse;
-use Router\Agent\V1\Run\RunCreateParams;
-use Router\Agent\V1\Run\RunExecResponse;
-use Router\Agent\V1\Run\RunGetDetailsResponse;
-use Router\Agent\V1\Run\RunGetStatusResponse;
-use Router\Agent\V1\Run\RunNewResponse;
-use Router\Agent\V1\Run\RunWatchParams;
-use Router\Agent\V1\Run\RunWatchResponse;
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\ServiceContracts\Agent\V1\RunRawContract;
+use CaseDev\Agent\V1\Run\RunCancelResponse;
+use CaseDev\Agent\V1\Run\RunCreateParams;
+use CaseDev\Agent\V1\Run\RunExecResponse;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
+use CaseDev\Agent\V1\Run\RunGetStatusResponse;
+use CaseDev\Agent\V1\Run\RunNewResponse;
+use CaseDev\Agent\V1\Run\RunWatchParams;
+use CaseDev\Agent\V1\Run\RunWatchResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Agent\V1\RunRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class RunRawService implements RunRawContract
 {

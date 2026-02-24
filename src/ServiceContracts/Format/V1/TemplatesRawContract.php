@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Format\V1;
+namespace CaseDev\ServiceContracts\Format\V1;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Format\V1\Templates\TemplateCreateParams;
-use Router\Format\V1\Templates\TemplateGetResponse;
-use Router\Format\V1\Templates\TemplateListParams;
-use Router\Format\V1\Templates\TemplateListResponse;
-use Router\Format\V1\Templates\TemplateNewResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Format\V1\Templates\TemplateCreateParams;
+use CaseDev\Format\V1\Templates\TemplateGetResponse;
+use CaseDev\Format\V1\Templates\TemplateListParams;
+use CaseDev\Format\V1\Templates\TemplateListResponse;
+use CaseDev\Format\V1\Templates\TemplateNewResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface TemplatesRawContract
 {

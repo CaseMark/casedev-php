@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Router\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Trigger a new deployment for a project.
  *
- * @see Router\Services\Applications\V1\ProjectsService::createDeployment()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::createDeployment()
  *
- * @phpstan-import-type EnvironmentVariableShape from \Router\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable
  *
  * @phpstan-type ProjectCreateDeploymentParamsShape = array{
  *   environmentVariables?: list<EnvironmentVariable|EnvironmentVariableShape>|null

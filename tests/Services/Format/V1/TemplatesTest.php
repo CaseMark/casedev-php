@@ -2,14 +2,14 @@
 
 namespace Tests\Services\Format\V1;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Format\V1\Templates\TemplateGetResponse;
+use CaseDev\Format\V1\Templates\TemplateListResponse;
+use CaseDev\Format\V1\Templates\TemplateNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Format\V1\Templates\TemplateGetResponse;
-use Router\Format\V1\Templates\TemplateListResponse;
-use Router\Format\V1\Templates\TemplateNewResponse;
 
 /**
  * @internal

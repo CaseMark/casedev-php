@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1\V1PatentSearchParams;
+namespace CaseDev\Legal\V1\V1PatentSearchParams;
 
 /**
  * Field to sort results by.

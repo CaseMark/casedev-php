@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Voice;
+namespace CaseDev\ServiceContracts\Voice;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Voice\V1\V1ListVoicesParams;
-use Router\Voice\V1\V1ListVoicesResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Voice\V1\V1ListVoicesParams;
+use CaseDev\Voice\V1\V1ListVoicesResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

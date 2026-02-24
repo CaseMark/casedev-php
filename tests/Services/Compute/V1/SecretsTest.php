@@ -2,16 +2,16 @@
 
 namespace Tests\Services\Compute\V1;
 
+use CaseDev\Client;
+use CaseDev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretGetGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretListResponse;
+use CaseDev\Compute\V1\Secrets\SecretNewResponse;
+use CaseDev\Compute\V1\Secrets\SecretUpdateGroupResponse;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Compute\V1\Secrets\SecretDeleteGroupResponse;
-use Router\Compute\V1\Secrets\SecretGetGroupResponse;
-use Router\Compute\V1\Secrets\SecretListResponse;
-use Router\Compute\V1\Secrets\SecretNewResponse;
-use Router\Compute\V1\Secrets\SecretUpdateGroupResponse;
-use Router\Core\Util;
 
 /**
  * @internal

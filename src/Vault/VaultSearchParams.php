@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault;
+namespace CaseDev\Vault;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\VaultSearchParams\Filters;
-use Router\Vault\VaultSearchParams\Method;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultSearchParams\Filters;
+use CaseDev\Vault\VaultSearchParams\Method;
 
 /**
  * Search across vault documents using multiple methods including hybrid vector + graph search, GraphRAG global search, entity-based search, and fast similarity search. Returns relevant documents and contextual answers based on the search method.
  *
- * @see Router\Services\VaultService::search()
+ * @see CaseDev\Services\VaultService::search()
  *
- * @phpstan-import-type FiltersShape from \Router\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type FiltersShape from \CaseDev\Vault\VaultSearchParams\Filters
  *
  * @phpstan-type VaultSearchParamsShape = array{
  *   query: string,

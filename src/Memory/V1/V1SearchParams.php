@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1;
+namespace CaseDev\Memory\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Search memories using semantic similarity. Filter by tag fields to narrow results.
@@ -17,7 +17,7 @@ use Router\Core\Contracts\BaseModel;
  * - Legal app: tag_1=client_id, tag_2=matter_id
  * - Healthcare: tag_1=patient_id, tag_2=encounter_id
  *
- * @see Router\Services\Memory\V1Service::search()
+ * @see CaseDev\Services\Memory\V1Service::search()
  *
  * @phpstan-type V1SearchParamsShape = array{
  *   query: string,

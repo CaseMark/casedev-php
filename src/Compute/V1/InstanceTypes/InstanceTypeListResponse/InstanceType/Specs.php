@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType;
+namespace CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SpecsShape = array{

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault;
+namespace CaseDev\Vault;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\VaultSearchResponse\Chunk;
-use Router\Vault\VaultSearchResponse\Source;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultSearchResponse\Chunk;
+use CaseDev\Vault\VaultSearchResponse\Source;
 
 /**
- * @phpstan-import-type ChunkShape from \Router\Vault\VaultSearchResponse\Chunk
- * @phpstan-import-type SourceShape from \Router\Vault\VaultSearchResponse\Source
+ * @phpstan-import-type ChunkShape from \CaseDev\Vault\VaultSearchResponse\Chunk
+ * @phpstan-import-type SourceShape from \CaseDev\Vault\VaultSearchResponse\Source
  *
  * @phpstan-type VaultSearchResponseShape = array{
  *   chunks?: list<Chunk|ChunkShape>|null,

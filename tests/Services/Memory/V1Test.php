@@ -2,17 +2,17 @@
 
 namespace Tests\Services\Memory;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Memory\V1\V1DeleteAllResponse;
-use Router\Memory\V1\V1DeleteResponse;
-use Router\Memory\V1\V1GetResponse;
-use Router\Memory\V1\V1ListResponse;
-use Router\Memory\V1\V1NewResponse;
-use Router\Memory\V1\V1SearchResponse;
 
 /**
  * @internal

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Legal\V1\V1VerifyResponse;
+namespace CaseDev\Legal\V1\V1VerifyResponse;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Legal\V1\V1VerifyResponse\Citation\Candidate;
-use Router\Legal\V1\V1VerifyResponse\Citation\Case_;
-use Router\Legal\V1\V1VerifyResponse\Citation\Span;
-use Router\Legal\V1\V1VerifyResponse\Citation\Status;
-use Router\Legal\V1\V1VerifyResponse\Citation\VerificationSource;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Legal\V1\V1VerifyResponse\Citation\Candidate;
+use CaseDev\Legal\V1\V1VerifyResponse\Citation\Case_;
+use CaseDev\Legal\V1\V1VerifyResponse\Citation\Span;
+use CaseDev\Legal\V1\V1VerifyResponse\Citation\Status;
+use CaseDev\Legal\V1\V1VerifyResponse\Citation\VerificationSource;
 
 /**
- * @phpstan-import-type CandidateShape from \Router\Legal\V1\V1VerifyResponse\Citation\Candidate
- * @phpstan-import-type CaseShape from \Router\Legal\V1\V1VerifyResponse\Citation\Case_
- * @phpstan-import-type SpanShape from \Router\Legal\V1\V1VerifyResponse\Citation\Span
+ * @phpstan-import-type CandidateShape from \CaseDev\Legal\V1\V1VerifyResponse\Citation\Candidate
+ * @phpstan-import-type CaseShape from \CaseDev\Legal\V1\V1VerifyResponse\Citation\Case_
+ * @phpstan-import-type SpanShape from \CaseDev\Legal\V1\V1VerifyResponse\Citation\Span
  *
  * @phpstan-type CitationShape = array{
  *   candidates?: list<Candidate|CandidateShape>|null,

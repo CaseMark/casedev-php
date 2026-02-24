@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\RequestOptions;
-use Router\ServiceContracts\VaultContract;
-use Router\Services\Vault\EventsService;
-use Router\Services\Vault\GraphragService;
-use Router\Services\Vault\GroupsService;
-use Router\Services\Vault\MultipartService;
-use Router\Services\Vault\ObjectsService;
-use Router\Vault\VaultConfirmUploadResponse;
-use Router\Vault\VaultDeleteResponse;
-use Router\Vault\VaultGetResponse;
-use Router\Vault\VaultIngestResponse;
-use Router\Vault\VaultListResponse;
-use Router\Vault\VaultNewResponse;
-use Router\Vault\VaultSearchParams\Filters;
-use Router\Vault\VaultSearchParams\Method;
-use Router\Vault\VaultSearchResponse;
-use Router\Vault\VaultUpdateResponse;
-use Router\Vault\VaultUploadResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\VaultContract;
+use CaseDev\Services\Vault\EventsService;
+use CaseDev\Services\Vault\GraphragService;
+use CaseDev\Services\Vault\GroupsService;
+use CaseDev\Services\Vault\MultipartService;
+use CaseDev\Services\Vault\ObjectsService;
+use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultDeleteResponse;
+use CaseDev\Vault\VaultGetResponse;
+use CaseDev\Vault\VaultIngestResponse;
+use CaseDev\Vault\VaultListResponse;
+use CaseDev\Vault\VaultNewResponse;
+use CaseDev\Vault\VaultSearchParams\Filters;
+use CaseDev\Vault\VaultSearchParams\Method;
+use CaseDev\Vault\VaultSearchResponse;
+use CaseDev\Vault\VaultUpdateResponse;
+use CaseDev\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type FiltersShape from \Router\Vault\VaultSearchParams\Filters
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type FiltersShape from \CaseDev\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class VaultService implements VaultContract
 {

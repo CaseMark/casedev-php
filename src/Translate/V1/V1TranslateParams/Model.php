@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Translate\V1\V1TranslateParams;
+namespace CaseDev\Translate\V1\V1TranslateParams;
 
 /**
  * Translation model. 'nmt' (Neural Machine Translation) is recommended for quality.

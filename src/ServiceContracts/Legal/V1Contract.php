@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Legal;
+namespace CaseDev\ServiceContracts\Legal;
 
-use Router\Core\Exceptions\APIException;
-use Router\Legal\V1\V1FindResponse;
-use Router\Legal\V1\V1GetCitationsFromURLResponse;
-use Router\Legal\V1\V1GetCitationsResponse;
-use Router\Legal\V1\V1GetFullTextResponse;
-use Router\Legal\V1\V1ListJurisdictionsResponse;
-use Router\Legal\V1\V1PatentSearchParams\ApplicationType;
-use Router\Legal\V1\V1PatentSearchParams\SortBy;
-use Router\Legal\V1\V1PatentSearchParams\SortOrder;
-use Router\Legal\V1\V1PatentSearchResponse;
-use Router\Legal\V1\V1ResearchResponse;
-use Router\Legal\V1\V1SimilarResponse;
-use Router\Legal\V1\V1TrademarkSearchResponse;
-use Router\Legal\V1\V1VerifyResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchParams\ApplicationType;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortBy;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortOrder;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Privilege;
+namespace CaseDev\Services\Privilege;
 
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Privilege\V1\V1DetectParams;
-use Router\Privilege\V1\V1DetectParams\Category;
-use Router\Privilege\V1\V1DetectParams\Jurisdiction;
-use Router\Privilege\V1\V1DetectResponse;
-use Router\RequestOptions;
-use Router\ServiceContracts\Privilege\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Privilege\V1\V1DetectParams;
+use CaseDev\Privilege\V1\V1DetectParams\Category;
+use CaseDev\Privilege\V1\V1DetectParams\Jurisdiction;
+use CaseDev\Privilege\V1\V1DetectResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Privilege\V1RawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

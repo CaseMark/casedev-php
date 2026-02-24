@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Set or update secrets in a compute secret group. Secrets are encrypted with AES-256-GCM. Use this to manage environment variables and API keys for your compute workloads.
  *
- * @see Router\Services\Compute\V1\SecretsService::updateGroup()
+ * @see CaseDev\Services\Compute\V1\SecretsService::updateGroup()
  *
  * @phpstan-type SecretUpdateGroupParamsShape = array{
  *   secrets: array<string,string>, env?: string|null

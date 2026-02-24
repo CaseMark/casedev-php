@@ -2,14 +2,14 @@
 
 namespace Tests\Services\Vault;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Vault\Graphrag\GraphragGetStatsResponse;
+use CaseDev\Vault\Graphrag\GraphragInitResponse;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Vault\Graphrag\GraphragGetStatsResponse;
-use Router\Vault\Graphrag\GraphragInitResponse;
-use Router\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
  * @internal

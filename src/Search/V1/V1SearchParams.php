@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Search\V1\V1SearchParams\Type;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1SearchParams\Type;
 
 /**
  * Executes intelligent web search queries with advanced filtering and customization options. Ideal for legal research, case law discovery, and gathering supporting documentation for litigation or compliance matters.
  *
- * @see Router\Services\Search\V1Service::search()
+ * @see CaseDev\Services\Search\V1Service::search()
  *
  * @phpstan-type V1SearchParamsShape = array{
  *   query: string,

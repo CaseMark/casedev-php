@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Services;
+namespace CaseDev\Services;
 
-use Router\Client;
-use Router\ServiceContracts\SuperdocContract;
-use Router\Services\Superdoc\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\SuperdocContract;
+use CaseDev\Services\Superdoc\V1Service;
 
 final class SuperdocService implements SuperdocContract
 {

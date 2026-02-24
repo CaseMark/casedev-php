@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Llm\V1;
+namespace CaseDev\Llm\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Llm\V1\V1NewEmbeddingResponse\Data;
-use Router\Llm\V1\V1NewEmbeddingResponse\Usage;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse\Data;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse\Usage;
 
 /**
- * @phpstan-import-type DataShape from \Router\Llm\V1\V1NewEmbeddingResponse\Data
- * @phpstan-import-type UsageShape from \Router\Llm\V1\V1NewEmbeddingResponse\Usage
+ * @phpstan-import-type DataShape from \CaseDev\Llm\V1\V1NewEmbeddingResponse\Data
+ * @phpstan-import-type UsageShape from \CaseDev\Llm\V1\V1NewEmbeddingResponse\Usage
  *
  * @phpstan-type V1NewEmbeddingResponseShape = array{
  *   data?: list<Data|DataShape>|null,

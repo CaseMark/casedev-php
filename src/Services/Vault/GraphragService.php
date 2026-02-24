@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Vault;
+namespace CaseDev\Services\Vault;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Core\Util;
-use Router\RequestOptions;
-use Router\ServiceContracts\Vault\GraphragContract;
-use Router\Vault\Graphrag\GraphragGetStatsResponse;
-use Router\Vault\Graphrag\GraphragInitResponse;
-use Router\Vault\Graphrag\GraphragProcessObjectResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Vault\GraphragContract;
+use CaseDev\Vault\Graphrag\GraphragGetStatsResponse;
+use CaseDev\Vault\Graphrag\GraphragInitResponse;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class GraphragService implements GraphragContract
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Privilege;
+namespace CaseDev\ServiceContracts\Privilege;
 
-use Router\Core\Exceptions\APIException;
-use Router\Privilege\V1\V1DetectParams\Category;
-use Router\Privilege\V1\V1DetectParams\Jurisdiction;
-use Router\Privilege\V1\V1DetectResponse;
-use Router\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Privilege\V1\V1DetectParams\Category;
+use CaseDev\Privilege\V1\V1DetectParams\Jurisdiction;
+use CaseDev\Privilege\V1\V1DetectResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

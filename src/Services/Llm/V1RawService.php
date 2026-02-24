@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Llm;
+namespace CaseDev\Services\Llm;
 
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\Llm\V1\V1CreateEmbeddingParams;
-use Router\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
-use Router\Llm\V1\V1ListModelsResponse;
-use Router\Llm\V1\V1NewEmbeddingResponse;
-use Router\RequestOptions;
-use Router\ServiceContracts\Llm\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\V1\V1CreateEmbeddingParams;
+use CaseDev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use CaseDev\Llm\V1\V1ListModelsResponse;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Llm\V1RawContract;
 
 /**
- * @phpstan-import-type InputShape from \Router\Llm\V1\V1CreateEmbeddingParams\Input
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type InputShape from \CaseDev\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

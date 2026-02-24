@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Translate\V1\V1ListLanguagesResponse\Data;
+namespace CaseDev\Translate\V1\V1ListLanguagesResponse\Data;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LanguageShape = array{language?: string|null, name?: string|null}

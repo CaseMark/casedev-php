@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects\ObjectDeleteParams;
+namespace CaseDev\Vault\Objects\ObjectDeleteParams;
 
 /**
  * Force delete a stuck document that is still in 'processing' state. Use this if a document got stuck during ingestion (e.g., OCR timeout).

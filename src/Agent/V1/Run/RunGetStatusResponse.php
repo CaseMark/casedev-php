@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Agent\V1\Run;
+namespace CaseDev\Agent\V1\Run;
 
-use Router\Agent\V1\Run\RunGetStatusResponse\Status;
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Agent\V1\Run\RunGetStatusResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type RunGetStatusResponseShape = array{

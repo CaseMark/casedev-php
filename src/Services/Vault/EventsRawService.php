@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Vault;
+namespace CaseDev\Services\Vault;
 
-use Router\Client;
-use Router\ServiceContracts\Vault\EventsRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\Vault\EventsRawContract;
 
 final class EventsRawService implements EventsRawContract
 {

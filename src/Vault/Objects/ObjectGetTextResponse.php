@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\Objects\ObjectGetTextResponse\Metadata;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Objects\ObjectGetTextResponse\Metadata;
 
 /**
- * @phpstan-import-type MetadataShape from \Router\Vault\Objects\ObjectGetTextResponse\Metadata
+ * @phpstan-import-type MetadataShape from \CaseDev\Vault\Objects\ObjectGetTextResponse\Metadata
  *
  * @phpstan-type ObjectGetTextResponseShape = array{
  *   metadata: Metadata|MetadataShape, text: string

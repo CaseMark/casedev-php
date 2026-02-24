@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Voice\V1;
+namespace CaseDev\ServiceContracts\Voice\V1;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\Voice\V1\Speak\SpeakCreateParams;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface SpeakRawContract
 {

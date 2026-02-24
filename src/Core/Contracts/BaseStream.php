@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Core\Contracts;
+namespace CaseDev\Core\Contracts;
 
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Router\Core\Conversion\Contracts\Converter;
-use Router\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * @internal

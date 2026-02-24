@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Compute\V1;
+namespace CaseDev\ServiceContracts\Compute\V1;
 
-use Router\Compute\V1\Instances\InstanceDeleteResponse;
-use Router\Compute\V1\Instances\InstanceGetResponse;
-use Router\Compute\V1\Instances\InstanceListResponse;
-use Router\Compute\V1\Instances\InstanceNewResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Compute\V1\Instances\InstanceDeleteResponse;
+use CaseDev\Compute\V1\Instances\InstanceGetResponse;
+use CaseDev\Compute\V1\Instances\InstanceListResponse;
+use CaseDev\Compute\V1\Instances\InstanceNewResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface InstancesContract
 {

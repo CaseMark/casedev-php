@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault;
+namespace CaseDev\Vault;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Triggers ingestion workflow for a vault object to extract text, generate chunks, and create embeddings. For supported file types (PDF, DOCX, TXT, RTF, XML, audio, video), processing happens asynchronously. For unsupported types (images, archives, etc.), the file is marked as completed immediately without text extraction. GraphRAG indexing must be triggered separately via POST /vault/:id/graphrag/:objectId.
  *
- * @see Router\Services\VaultService::ingest()
+ * @see CaseDev\Services\VaultService::ingest()
  *
  * @phpstan-type VaultIngestParamsShape = array{id: string}
  */

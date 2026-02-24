@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\VaultSearchParams;
+namespace CaseDev\Vault\VaultSearchParams;
 
 /**
  * Search method: 'global' for comprehensive questions, 'entity' for specific entities, 'fast' for quick similarity search, 'hybrid' for combined approach.

@@ -1,9 +1,9 @@
 <?php
 
-namespace Router\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class PermissionDeniedException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Router Permission Denied Exception';
+    protected const DESC = 'CaseDev Permission Denied Exception';
 }

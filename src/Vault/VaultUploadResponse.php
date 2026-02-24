@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault;
+namespace CaseDev\Vault;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Vault\VaultUploadResponse\Instructions;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultUploadResponse\Instructions;
 
 /**
- * @phpstan-import-type InstructionsShape from \Router\Vault\VaultUploadResponse\Instructions
+ * @phpstan-import-type InstructionsShape from \CaseDev\Vault\VaultUploadResponse\Instructions
  *
  * @phpstan-type VaultUploadResponseShape = array{
  *   autoIndex?: bool|null,

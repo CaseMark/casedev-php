@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Router\Applications\V1\Projects\ProjectCreateEnvParams\Target;
-use Router\Applications\V1\Projects\ProjectCreateEnvParams\Type;
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Target;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Create a new environment variable for a project.
  *
- * @see Router\Services\Applications\V1\ProjectsService::createEnv()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::createEnv()
  *
  * @phpstan-type ProjectCreateEnvParamsShape = array{
  *   key: string,

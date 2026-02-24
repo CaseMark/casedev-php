@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1;
+namespace CaseDev\Ocr\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Ocr\V1\V1GetResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1GetResponse\Status;
 
 /**
  * @phpstan-type V1GetResponseShape = array{

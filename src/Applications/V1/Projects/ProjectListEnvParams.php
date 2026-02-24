@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * List all environment variables for a project (values are hidden unless decrypt=true).
  *
- * @see Router\Services\Applications\V1\ProjectsService::listEnv()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::listEnv()
  *
  * @phpstan-type ProjectListEnvParamsShape = array{decrypt?: bool|null}
  */

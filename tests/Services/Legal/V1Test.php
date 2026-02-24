@@ -2,21 +2,21 @@
 
 namespace Tests\Services\Legal;
 
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Core\Util;
-use Router\Legal\V1\V1FindResponse;
-use Router\Legal\V1\V1GetCitationsFromURLResponse;
-use Router\Legal\V1\V1GetCitationsResponse;
-use Router\Legal\V1\V1GetFullTextResponse;
-use Router\Legal\V1\V1ListJurisdictionsResponse;
-use Router\Legal\V1\V1PatentSearchResponse;
-use Router\Legal\V1\V1ResearchResponse;
-use Router\Legal\V1\V1SimilarResponse;
-use Router\Legal\V1\V1TrademarkSearchResponse;
-use Router\Legal\V1\V1VerifyResponse;
 
 /**
  * @internal

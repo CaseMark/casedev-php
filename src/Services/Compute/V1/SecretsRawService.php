@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Compute\V1;
+namespace CaseDev\Services\Compute\V1;
 
-use Router\Client;
-use Router\Compute\V1\Secrets\SecretCreateParams;
-use Router\Compute\V1\Secrets\SecretDeleteGroupParams;
-use Router\Compute\V1\Secrets\SecretDeleteGroupResponse;
-use Router\Compute\V1\Secrets\SecretGetGroupResponse;
-use Router\Compute\V1\Secrets\SecretListParams;
-use Router\Compute\V1\Secrets\SecretListResponse;
-use Router\Compute\V1\Secrets\SecretNewResponse;
-use Router\Compute\V1\Secrets\SecretRetrieveGroupParams;
-use Router\Compute\V1\Secrets\SecretUpdateGroupParams;
-use Router\Compute\V1\Secrets\SecretUpdateGroupResponse;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\ServiceContracts\Compute\V1\SecretsRawContract;
+use CaseDev\Client;
+use CaseDev\Compute\V1\Secrets\SecretCreateParams;
+use CaseDev\Compute\V1\Secrets\SecretDeleteGroupParams;
+use CaseDev\Compute\V1\Secrets\SecretDeleteGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretGetGroupResponse;
+use CaseDev\Compute\V1\Secrets\SecretListParams;
+use CaseDev\Compute\V1\Secrets\SecretListResponse;
+use CaseDev\Compute\V1\Secrets\SecretNewResponse;
+use CaseDev\Compute\V1\Secrets\SecretRetrieveGroupParams;
+use CaseDev\Compute\V1\Secrets\SecretUpdateGroupParams;
+use CaseDev\Compute\V1\Secrets\SecretUpdateGroupResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Compute\V1\SecretsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SecretsRawService implements SecretsRawContract
 {

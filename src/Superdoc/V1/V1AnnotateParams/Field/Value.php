@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Superdoc\V1\V1AnnotateParams\Field;
+namespace CaseDev\Superdoc\V1\V1AnnotateParams\Field;
 
-use Router\Core\Concerns\SdkUnion;
-use Router\Core\Conversion\Contracts\Converter;
-use Router\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Concerns\SdkUnion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * Value to populate.

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Find web pages and documents similar to a given URL. Useful for legal research to discover related case law, statutes, or legal commentary that shares similar themes or content structure.
  *
- * @see Router\Services\Search\V1Service::similar()
+ * @see CaseDev\Services\Search\V1Service::similar()
  *
  * @phpstan-type V1SimilarParamsShape = array{
  *   url: string,

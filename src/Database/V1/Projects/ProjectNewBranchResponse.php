@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ProjectNewBranchResponseShape = array{

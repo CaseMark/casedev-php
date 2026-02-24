@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Router\Voice\V1\Speak\SpeakCreateParams;
+namespace CaseDev\Voice\V1\Speak\SpeakCreateParams;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Voice customization settings.

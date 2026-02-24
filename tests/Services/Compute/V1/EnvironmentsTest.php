@@ -2,16 +2,16 @@
 
 namespace Tests\Services\Compute\V1;
 
+use CaseDev\Client;
+use CaseDev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentGetResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentListResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentNewResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Router\Client;
-use Router\Compute\V1\Environments\EnvironmentDeleteResponse;
-use Router\Compute\V1\Environments\EnvironmentGetResponse;
-use Router\Compute\V1\Environments\EnvironmentListResponse;
-use Router\Compute\V1\Environments\EnvironmentNewResponse;
-use Router\Compute\V1\Environments\EnvironmentSetDefaultResponse;
-use Router\Core\Util;
 
 /**
  * @internal

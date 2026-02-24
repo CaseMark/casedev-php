@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Router\Llm\V1\Chat\ChatCreateCompletionParams;
+namespace CaseDev\Llm\V1\Chat\ChatCreateCompletionParams;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message\Role;
 
 /**
  * @phpstan-type MessageShape = array{

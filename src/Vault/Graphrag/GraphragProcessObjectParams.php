@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Vault\Graphrag;
+namespace CaseDev\Vault\Graphrag;
 
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Manually trigger GraphRAG indexing for a vault object. The object must already be ingested (completed status). This extracts entities, relationships, and communities from the document for advanced knowledge graph queries.
  *
- * @see Router\Services\Vault\GraphragService::processObject()
+ * @see CaseDev\Services\Vault\GraphragService::processObject()
  *
  * @phpstan-type GraphragProcessObjectParamsShape = array{id: string}
  */

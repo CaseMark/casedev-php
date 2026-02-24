@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Database\V1\Projects\ProjectNewResponse;
+namespace CaseDev\Database\V1\Projects\ProjectNewResponse;
 
 /**
  * Project status.

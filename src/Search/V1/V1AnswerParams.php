@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Attributes\Required;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Search\V1\V1AnswerParams\SearchType;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1AnswerParams\SearchType;
 
 /**
  * Generate comprehensive answers to questions using web search results. Supports two modes: native provider answers or custom LLM-powered answers using Case.dev's AI gateway. Perfect for legal research, fact-checking, and gathering supporting evidence for cases.
  *
- * @see Router\Services\Search\V1Service::answer()
+ * @see CaseDev\Services\Search\V1Service::answer()
  *
  * @phpstan-type V1AnswerParamsShape = array{
  *   query: string,

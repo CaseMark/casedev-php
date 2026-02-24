@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Database;
+namespace CaseDev\Services\Database;
 
-use Router\Client;
-use Router\Core\Exceptions\APIException;
-use Router\Database\V1\V1GetUsageResponse;
-use Router\RequestOptions;
-use Router\ServiceContracts\Database\V1Contract;
-use Router\Services\Database\V1\ProjectsService;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Database\V1\V1GetUsageResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Database\V1Contract;
+use CaseDev\Services\Database\V1\ProjectsService;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {

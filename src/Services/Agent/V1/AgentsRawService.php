@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Router\Services\Agent\V1;
+namespace CaseDev\Services\Agent\V1;
 
-use Router\Agent\V1\Agents\AgentCreateParams;
-use Router\Agent\V1\Agents\AgentCreateParams\Sandbox;
-use Router\Agent\V1\Agents\AgentDeleteResponse;
-use Router\Agent\V1\Agents\AgentGetResponse;
-use Router\Agent\V1\Agents\AgentListResponse;
-use Router\Agent\V1\Agents\AgentNewResponse;
-use Router\Agent\V1\Agents\AgentUpdateParams;
-use Router\Agent\V1\Agents\AgentUpdateResponse;
-use Router\Client;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
-use Router\ServiceContracts\Agent\V1\AgentsRawContract;
+use CaseDev\Agent\V1\Agents\AgentCreateParams;
+use CaseDev\Agent\V1\Agents\AgentCreateParams\Sandbox;
+use CaseDev\Agent\V1\Agents\AgentDeleteResponse;
+use CaseDev\Agent\V1\Agents\AgentGetResponse;
+use CaseDev\Agent\V1\Agents\AgentListResponse;
+use CaseDev\Agent\V1\Agents\AgentNewResponse;
+use CaseDev\Agent\V1\Agents\AgentUpdateParams;
+use CaseDev\Agent\V1\Agents\AgentUpdateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Agent\V1\AgentsRawContract;
 
 /**
- * @phpstan-import-type SandboxShape from \Router\Agent\V1\Agents\AgentCreateParams\Sandbox
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type SandboxShape from \CaseDev\Agent\V1\Agents\AgentCreateParams\Sandbox
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class AgentsRawService implements AgentsRawContract
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Vault;
+namespace CaseDev\ServiceContracts\Vault;
 
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface GroupsRawContract
 {

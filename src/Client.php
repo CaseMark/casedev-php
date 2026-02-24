@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Router;
+namespace CaseDev;
 
+use CaseDev\Core\BaseClient;
+use CaseDev\Core\Util;
+use CaseDev\Services\AgentService;
+use CaseDev\Services\ApplicationsService;
+use CaseDev\Services\ComputeService;
+use CaseDev\Services\DatabaseService;
+use CaseDev\Services\FormatService;
+use CaseDev\Services\LegalService;
+use CaseDev\Services\LlmService;
+use CaseDev\Services\MemoryService;
+use CaseDev\Services\OcrService;
+use CaseDev\Services\PrivilegeService;
+use CaseDev\Services\SearchService;
+use CaseDev\Services\SuperdocService;
+use CaseDev\Services\SystemService;
+use CaseDev\Services\TranslateService;
+use CaseDev\Services\VaultService;
+use CaseDev\Services\VoiceService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
-use Router\Core\BaseClient;
-use Router\Core\Util;
-use Router\Services\AgentService;
-use Router\Services\ApplicationsService;
-use Router\Services\ComputeService;
-use Router\Services\DatabaseService;
-use Router\Services\FormatService;
-use Router\Services\LegalService;
-use Router\Services\LlmService;
-use Router\Services\MemoryService;
-use Router\Services\OcrService;
-use Router\Services\PrivilegeService;
-use Router\Services\SearchService;
-use Router\Services\SuperdocService;
-use Router\Services\SystemService;
-use Router\Services\TranslateService;
-use Router\Services\VaultService;
-use Router\Services\VoiceService;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Router\Core\BaseClient
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type NormalizedRequest from \CaseDev\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 class Client extends BaseClient
 {

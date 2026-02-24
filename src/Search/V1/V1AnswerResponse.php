@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Contracts\BaseModel;
-use Router\Search\V1\V1AnswerResponse\Citation;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1AnswerResponse\Citation;
 
 /**
- * @phpstan-import-type CitationShape from \Router\Search\V1\V1AnswerResponse\Citation
+ * @phpstan-import-type CitationShape from \CaseDev\Search\V1\V1AnswerResponse\Citation
  *
  * @phpstan-type V1AnswerResponseShape = array{
  *   answer?: string|null,

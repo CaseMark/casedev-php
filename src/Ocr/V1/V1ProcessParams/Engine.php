@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Ocr\V1\V1ProcessParams;
+namespace CaseDev\Ocr\V1\V1ProcessParams;
 
 /**
  * OCR engine to use.

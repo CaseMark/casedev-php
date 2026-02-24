@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Router\Memory\V1\V1NewResponse\Result;
+namespace CaseDev\Memory\V1\V1NewResponse\Result;
 
 /**
  * What happened to this memory.

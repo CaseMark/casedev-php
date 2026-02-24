@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Router\ServiceContracts\Applications\V1;
+namespace CaseDev\ServiceContracts\Applications\V1;
 
-use Router\Applications\V1\Workflows\WorkflowGetStatusParams;
-use Router\Core\Contracts\BaseResponse;
-use Router\Core\Exceptions\APIException;
-use Router\RequestOptions;
+use CaseDev\Applications\V1\Workflows\WorkflowGetStatusParams;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Router\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface WorkflowsRawContract
 {

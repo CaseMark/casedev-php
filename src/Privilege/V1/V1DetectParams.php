@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Router\Privilege\V1;
+namespace CaseDev\Privilege\V1;
 
-use Router\Core\Attributes\Optional;
-use Router\Core\Concerns\SdkModel;
-use Router\Core\Concerns\SdkParams;
-use Router\Core\Contracts\BaseModel;
-use Router\Privilege\V1\V1DetectParams\Category;
-use Router\Privilege\V1\V1DetectParams\Jurisdiction;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Privilege\V1\V1DetectParams\Category;
+use CaseDev\Privilege\V1\V1DetectParams\Jurisdiction;
 
 /**
  * Analyzes text or vault documents for legal privilege. Detects attorney-client privilege, work product doctrine, common interest privilege, and litigation hold materials.
@@ -22,7 +22,7 @@ use Router\Privilege\V1\V1DetectParams\Jurisdiction;
  *
  * **Note:** When analyzing vault documents, results are automatically stored in the document's `privilege_analysis` metadata field.
  *
- * @see Router\Services\Privilege\V1Service::detect()
+ * @see CaseDev\Services\Privilege\V1Service::detect()
  *
  * @phpstan-type V1DetectParamsShape = array{
  *   categories?: list<Category|value-of<Category>>|null,
