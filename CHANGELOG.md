@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2026-02-24)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/CaseMark/casedev-php/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* prevent duplicate Slack alerts from release-please branches ([2a88aa8](https://github.com/CaseMark/casedev-php/commit/2a88aa822d04e13fd0483df252b59c1c1118ad7b))
+
 ## 0.1.0 (2026-02-24)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/CaseMark/casedev-php/compare/v0.0.1...v0.1.0)
