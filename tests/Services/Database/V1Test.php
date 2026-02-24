@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Database;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Database\V1\V1GetUsageResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Database\V1\V1GetUsageResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetUsage(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->database->v1->getUsage();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Voice;
+namespace CaseDev\ServiceContracts\Voice;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Voice\Transcription\TranscriptionCreateParams;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface TranscriptionRawContract
 {
@@ -42,6 +42,21 @@ interface TranscriptionRawContract
      * @throws APIException
      */
     public function retrieve(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;

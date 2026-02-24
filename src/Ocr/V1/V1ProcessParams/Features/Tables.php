@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Ocr\V1\V1ProcessParams\Features;
+namespace CaseDev\Ocr\V1\V1ProcessParams\Features;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Ocr\V1\V1ProcessParams\Features\Tables\Format;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1ProcessParams\Features\Tables\Format;
 
 /**
  * Extract tables as structured data.

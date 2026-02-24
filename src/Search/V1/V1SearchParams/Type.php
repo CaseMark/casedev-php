@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1\V1SearchParams;
+namespace CaseDev\Search\V1\V1SearchParams;
 
 /**
  * Type of search to perform.

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Casedev\Compute\V1\Secrets\SecretGetGroupResponse\Group;
-use Casedev\Compute\V1\Secrets\SecretGetGroupResponse\Key;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Compute\V1\Secrets\SecretGetGroupResponse\Group;
+use CaseDev\Compute\V1\Secrets\SecretGetGroupResponse\Key;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type GroupShape from \Casedev\Compute\V1\Secrets\SecretGetGroupResponse\Group
- * @phpstan-import-type KeyShape from \Casedev\Compute\V1\Secrets\SecretGetGroupResponse\Key
+ * @phpstan-import-type GroupShape from \CaseDev\Compute\V1\Secrets\SecretGetGroupResponse\Group
+ * @phpstan-import-type KeyShape from \CaseDev\Compute\V1\Secrets\SecretGetGroupResponse\Key
  *
  * @phpstan-type SecretGetGroupResponseShape = array{
  *   group?: null|Group|GroupShape, keys?: list<Key|KeyShape>|null

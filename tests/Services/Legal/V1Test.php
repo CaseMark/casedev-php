@@ -2,20 +2,21 @@
 
 namespace Tests\Services\Legal;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -38,10 +39,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testFind(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->find(query: 'xxx');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -51,10 +48,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testFindWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->find(
             query: 'xxx',
             jurisdiction: 'jurisdiction',
@@ -68,10 +61,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetCitations(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getCitations(text: 'text');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -81,10 +70,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetCitationsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getCitations(text: 'text');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -94,10 +79,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetCitationsFromURL(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getCitationsFromURL(
             url: 'https://example.com'
         );
@@ -109,10 +90,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetCitationsFromURLWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getCitationsFromURL(
             url: 'https://example.com'
         );
@@ -124,10 +101,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetFullText(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getFullText(url: 'https://example.com');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -137,10 +110,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testGetFullTextWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->getFullText(
             url: 'https://example.com',
             highlightQuery: 'highlightQuery',
@@ -155,10 +124,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testListJurisdictions(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->listJurisdictions(name: 'xx');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -168,10 +133,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testListJurisdictionsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->listJurisdictions(name: 'xx');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -179,12 +140,40 @@ final class V1Test extends TestCase
     }
 
     #[Test]
+    public function testPatentSearch(): void
+    {
+        $result = $this->client->legal->v1->patentSearch(query: 'x');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1PatentSearchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testPatentSearchWithOptionalParams(): void
+    {
+        $result = $this->client->legal->v1->patentSearch(
+            query: 'x',
+            applicationStatus: 'applicationStatus',
+            applicationType: 'Utility',
+            assignee: 'assignee',
+            filingDateFrom: '2019-12-27',
+            filingDateTo: '2019-12-27',
+            grantDateFrom: '2019-12-27',
+            grantDateTo: '2019-12-27',
+            inventor: 'inventor',
+            limit: 1,
+            offset: 0,
+            sortBy: 'filingDate',
+            sortOrder: 'asc',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1PatentSearchResponse::class, $result);
+    }
+
+    #[Test]
     public function testResearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->research(query: 'xxx');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -194,10 +183,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testResearchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->research(
             query: 'xxx',
             additionalQueries: ['string'],
@@ -212,10 +197,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSimilar(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->similar(url: 'https://example.com');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -225,10 +206,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSimilarWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->similar(
             url: 'https://example.com',
             jurisdiction: 'jurisdiction',
@@ -241,12 +218,17 @@ final class V1Test extends TestCase
     }
 
     #[Test]
+    public function testTrademarkSearch(): void
+    {
+        $result = $this->client->legal->v1->trademarkSearch();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1TrademarkSearchResponse::class, $result);
+    }
+
+    #[Test]
     public function testVerify(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->verify(text: 'text');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -256,10 +238,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testVerifyWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->legal->v1->verify(text: 'text');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

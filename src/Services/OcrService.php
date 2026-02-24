@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\OcrContract;
-use Casedev\Services\Ocr\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\OcrContract;
+use CaseDev\Services\Ocr\V1Service;
 
 final class OcrService implements OcrContract
 {

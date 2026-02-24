@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1\V1ListVoicesParams;
+namespace CaseDev\Voice\V1\V1ListVoicesParams;
 
 /**
  * Sort direction.

@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Superdoc\V1;
+namespace CaseDev\Superdoc\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Superdoc\V1\V1AnnotateParams\Document;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field;
-use Casedev\Superdoc\V1\V1AnnotateParams\OutputFormat;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Superdoc\V1\V1AnnotateParams\Document;
+use CaseDev\Superdoc\V1\V1AnnotateParams\Field;
+use CaseDev\Superdoc\V1\V1AnnotateParams\OutputFormat;
 
 /**
  * Populate fields inside a DOCX template using SuperDoc annotations. Supports text, images, dates, and numbers. Can target individual fields by ID or multiple fields by group.
  *
- * @see Casedev\Services\Superdoc\V1Service::annotate()
+ * @see CaseDev\Services\Superdoc\V1Service::annotate()
  *
- * @phpstan-import-type DocumentShape from \Casedev\Superdoc\V1\V1AnnotateParams\Document
- * @phpstan-import-type FieldShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field
+ * @phpstan-import-type DocumentShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Document
+ * @phpstan-import-type FieldShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Field
  *
  * @phpstan-type V1AnnotateParamsShape = array{
  *   document: Document|DocumentShape,

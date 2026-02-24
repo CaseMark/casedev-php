@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Delete a web application project.
  *
- * @see Casedev\Services\Applications\V1\ProjectsService::delete()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::delete()
  *
  * @phpstan-type ProjectDeleteParamsShape = array{deleteFromHosting?: bool|null}
  */

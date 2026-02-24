@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Conversion;
+namespace CaseDev\Core\Conversion;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * @internal

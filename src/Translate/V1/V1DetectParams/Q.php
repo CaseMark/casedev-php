@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1\V1DetectParams;
+namespace CaseDev\Translate\V1\V1DetectParams;
 
-use Casedev\Core\Concerns\SdkUnion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Conversion\ListOf;
+use CaseDev\Core\Concerns\SdkUnion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\ListOf;
 
 /**
  * Text to detect language for. Can be a single string or an array for batch detection.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1\Speak\SpeakCreateParams;
+namespace CaseDev\Voice\V1\Speak\SpeakCreateParams;
 
 /**
  * ElevenLabs model ID.

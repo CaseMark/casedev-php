@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace CaseDev\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
+ * Generate a presigned URL for uploading files directly to a vault's S3 storage. After uploading to S3, confirm the upload result via POST /vault/:vaultId/upload/:objectId/confirm before triggering ingestion.
  *
- * @see Casedev\Services\VaultService::upload()
+ * @see CaseDev\Services\VaultService::upload()
  *
  * @phpstan-type VaultUploadParamsShape = array{
  *   contentType: string,

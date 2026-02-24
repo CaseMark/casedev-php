@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Legal\V1\V1GetCitationsResponse\Citation;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Legal\V1\V1GetCitationsResponse\Citation;
 
 /**
- * @phpstan-import-type CitationShape from \Casedev\Legal\V1\V1GetCitationsResponse\Citation
+ * @phpstan-import-type CitationShape from \CaseDev\Legal\V1\V1GetCitationsResponse\Citation
  *
  * @phpstan-type V1GetCitationsResponseShape = array{
  *   citations?: list<Citation|CitationShape>|null

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Environments\EnvironmentNewResponse;
+namespace CaseDev\Compute\V1\Environments\EnvironmentNewResponse;
 
 /**
  * Environment status.

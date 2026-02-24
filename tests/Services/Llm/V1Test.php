@@ -2,14 +2,13 @@
 
 namespace Tests\Services\Llm;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Llm\V1\V1ListModelsResponse;
-use Casedev\Llm\V1\V1NewEmbeddingResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Llm\V1\V1ListModelsResponse;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -32,10 +31,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreateEmbedding(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->v1->createEmbedding(
             input: 'string',
             model: 'model'
@@ -48,10 +43,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreateEmbeddingWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->v1->createEmbedding(
             input: 'string',
             model: 'model',
@@ -67,10 +58,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testListModels(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->v1->listModels();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Superdoc\V1\V1AnnotateParams\Field;
+namespace CaseDev\Superdoc\V1\V1AnnotateParams\Field;
 
-use Casedev\Core\Concerns\SdkUnion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Concerns\SdkUnion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * Value to populate.

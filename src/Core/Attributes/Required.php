@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Attributes;
+namespace CaseDev\Core\Attributes;
 
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Conversion\EnumOf;
-use Casedev\Core\Conversion\ListOf;
-use Casedev\Core\Conversion\MapOf;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\EnumOf;
+use CaseDev\Core\Conversion\ListOf;
+use CaseDev\Core\Conversion\MapOf;
 
 /**
  * @internal

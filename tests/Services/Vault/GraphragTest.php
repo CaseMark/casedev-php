@@ -2,15 +2,14 @@
 
 namespace Tests\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
-use Casedev\Vault\Graphrag\GraphragInitResponse;
-use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Vault\Graphrag\GraphragGetStatsResponse;
+use CaseDev\Vault\Graphrag\GraphragInitResponse;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -33,10 +32,6 @@ final class GraphragTest extends TestCase
     #[Test]
     public function testGetStats(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->graphrag->getStats('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -46,10 +41,6 @@ final class GraphragTest extends TestCase
     #[Test]
     public function testInit(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->graphrag->init('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -59,10 +50,6 @@ final class GraphragTest extends TestCase
     #[Test]
     public function testProcessObject(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->graphrag->processObject(
             'objectId',
             id: 'id'
@@ -75,10 +62,6 @@ final class GraphragTest extends TestCase
     #[Test]
     public function testProcessObjectWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->graphrag->processObject(
             'objectId',
             id: 'id'

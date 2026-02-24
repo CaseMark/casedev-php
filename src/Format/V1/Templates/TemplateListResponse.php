@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1\Templates;
+namespace CaseDev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Format\V1\Templates\TemplateListResponse\Template;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Format\V1\Templates\TemplateListResponse\Template;
 
 /**
- * @phpstan-import-type TemplateShape from \Casedev\Format\V1\Templates\TemplateListResponse\Template
+ * @phpstan-import-type TemplateShape from \CaseDev\Format\V1\Templates\TemplateListResponse\Template
  *
  * @phpstan-type TemplateListResponseShape = array{
  *   templates?: list<Template|TemplateShape>|null

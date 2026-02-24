@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the keys (names) of secrets in a specified group within a compute environment. For security reasons, actual secret values are not returned - only the keys and metadata.
  *
- * @see Casedev\Services\Compute\V1\SecretsService::retrieveGroup()
+ * @see CaseDev\Services\Compute\V1\SecretsService::retrieveGroup()
  *
  * @phpstan-type SecretRetrieveGroupParamsShape = array{env?: string|null}
  */

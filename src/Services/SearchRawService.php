@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\SearchRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\SearchRawContract;
 
 final class SearchRawService implements SearchRawContract
 {

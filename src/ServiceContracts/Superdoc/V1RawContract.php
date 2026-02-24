@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Superdoc;
+namespace CaseDev\ServiceContracts\Superdoc;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Superdoc\V1\V1AnnotateParams;
-use Casedev\Superdoc\V1\V1ConvertParams;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Superdoc\V1\V1AnnotateParams;
+use CaseDev\Superdoc\V1\V1ConvertParams;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

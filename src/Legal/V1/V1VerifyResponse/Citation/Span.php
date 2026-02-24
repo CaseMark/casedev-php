@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1VerifyResponse\Citation;
+namespace CaseDev\Legal\V1\V1VerifyResponse\Citation;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SpanShape = array{end?: int|null, start?: int|null}

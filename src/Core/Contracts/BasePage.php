@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Contracts;
+namespace CaseDev\Core\Contracts;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \CaseDev\Core\BaseClient
  *
  * @internal
  *

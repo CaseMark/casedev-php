@@ -2,28 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts;
+namespace CaseDev\ServiceContracts;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Vault\VaultCreateParams;
-use Casedev\Vault\VaultDeleteParams;
-use Casedev\Vault\VaultDeleteResponse;
-use Casedev\Vault\VaultGetResponse;
-use Casedev\Vault\VaultIngestParams;
-use Casedev\Vault\VaultIngestResponse;
-use Casedev\Vault\VaultListResponse;
-use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams;
-use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUpdateParams;
-use Casedev\Vault\VaultUpdateResponse;
-use Casedev\Vault\VaultUploadParams;
-use Casedev\Vault\VaultUploadResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Vault\VaultConfirmUploadParams;
+use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultCreateParams;
+use CaseDev\Vault\VaultDeleteParams;
+use CaseDev\Vault\VaultDeleteResponse;
+use CaseDev\Vault\VaultGetResponse;
+use CaseDev\Vault\VaultIngestParams;
+use CaseDev\Vault\VaultIngestResponse;
+use CaseDev\Vault\VaultListResponse;
+use CaseDev\Vault\VaultNewResponse;
+use CaseDev\Vault\VaultSearchParams;
+use CaseDev\Vault\VaultSearchResponse;
+use CaseDev\Vault\VaultUpdateParams;
+use CaseDev\Vault\VaultUpdateResponse;
+use CaseDev\Vault\VaultUploadParams;
+use CaseDev\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface VaultRawContract
 {
@@ -101,6 +103,23 @@ interface VaultRawContract
     public function delete(
         string $id,
         array|VaultDeleteParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param array<string,mixed>|VaultConfirmUploadParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<VaultConfirmUploadResponse>
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        array|VaultConfirmUploadParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

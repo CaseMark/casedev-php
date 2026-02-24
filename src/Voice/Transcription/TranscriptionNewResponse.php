@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\Transcription;
+namespace CaseDev\Voice\Transcription;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Voice\Transcription\TranscriptionNewResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse\Status;
 
 /**
  * @phpstan-type TranscriptionNewResponseShape = array{

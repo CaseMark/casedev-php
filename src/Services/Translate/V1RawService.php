@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Translate;
+namespace CaseDev\Services\Translate;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Translate\V1RawContract;
-use Casedev\Translate\V1\V1DetectParams;
-use Casedev\Translate\V1\V1DetectResponse;
-use Casedev\Translate\V1\V1ListLanguagesParams;
-use Casedev\Translate\V1\V1ListLanguagesParams\Model;
-use Casedev\Translate\V1\V1ListLanguagesResponse;
-use Casedev\Translate\V1\V1TranslateParams;
-use Casedev\Translate\V1\V1TranslateParams\Format;
-use Casedev\Translate\V1\V1TranslateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Translate\V1RawContract;
+use CaseDev\Translate\V1\V1DetectParams;
+use CaseDev\Translate\V1\V1DetectResponse;
+use CaseDev\Translate\V1\V1ListLanguagesParams;
+use CaseDev\Translate\V1\V1ListLanguagesParams\Model;
+use CaseDev\Translate\V1\V1ListLanguagesResponse;
+use CaseDev\Translate\V1\V1TranslateParams;
+use CaseDev\Translate\V1\V1TranslateParams\Format;
+use CaseDev\Translate\V1\V1TranslateResponse;
 
 /**
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1DetectParams\Q
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1TranslateParams\Q as QShape1
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type QShape from \CaseDev\Translate\V1\V1DetectParams\Q
+ * @phpstan-import-type QShape from \CaseDev\Translate\V1\V1TranslateParams\Q as QShape1
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\SearchContract;
-use Casedev\Services\Search\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\SearchContract;
+use CaseDev\Services\Search\V1Service;
 
 final class SearchService implements SearchContract
 {

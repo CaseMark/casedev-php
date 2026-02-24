@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\ApplicationsContract;
-use Casedev\Services\Applications\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\ApplicationsContract;
+use CaseDev\Services\Applications\V1Service;
 
 final class ApplicationsService implements ApplicationsContract
 {

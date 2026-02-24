@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace CaseDev\Services\Applications\V1;
 
-use Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams;
-use Casedev\Applications\V1\Projects\ProjectCreateDomainParams;
-use Casedev\Applications\V1\Projects\ProjectCreateEnvParams;
-use Casedev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
-use Casedev\Applications\V1\Projects\ProjectCreateParams;
-use Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
-use Casedev\Applications\V1\Projects\ProjectDeleteDomainParams;
-use Casedev\Applications\V1\Projects\ProjectDeleteEnvParams;
-use Casedev\Applications\V1\Projects\ProjectDeleteParams;
-use Casedev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
-use Casedev\Applications\V1\Projects\ProjectListDeploymentsParams;
-use Casedev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
-use Casedev\Applications\V1\Projects\ProjectListEnvParams;
-use Casedev\Applications\V1\Projects\ProjectListResponse;
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\ProjectsRawContract;
+use CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateDomainParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
+use CaseDev\Applications\V1\Projects\ProjectDeleteDomainParams;
+use CaseDev\Applications\V1\Projects\ProjectDeleteEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectDeleteParams;
+use CaseDev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
+use CaseDev\Applications\V1\Projects\ProjectListEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectListResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Applications\V1\ProjectsRawContract;
 
 /**
- * @phpstan-import-type EnvironmentVariableShape from \Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
- * @phpstan-import-type EnvironmentVariableShape from \Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ProjectsRawService implements ProjectsRawContract
 {

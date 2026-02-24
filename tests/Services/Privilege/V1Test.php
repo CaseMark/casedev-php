@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Privilege;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Privilege\V1\V1DetectResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Privilege\V1\V1DetectResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDetect(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->privilege->v1->detect();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

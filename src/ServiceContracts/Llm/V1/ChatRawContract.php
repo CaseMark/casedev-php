@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Llm\V1;
+namespace CaseDev\ServiceContracts\Llm\V1;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
-use Casedev\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams;
+use CaseDev\Llm\V1\Chat\ChatNewCompletionResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface ChatRawContract
 {

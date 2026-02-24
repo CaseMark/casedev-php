@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Llm;
+namespace CaseDev\ServiceContracts\Llm;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
-use Casedev\Llm\V1\V1ListModelsResponse;
-use Casedev\Llm\V1\V1NewEmbeddingResponse;
-use Casedev\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\V1\V1CreateEmbeddingParams\EncodingFormat;
+use CaseDev\Llm\V1\V1ListModelsResponse;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type InputShape from \Casedev\Llm\V1\V1CreateEmbeddingParams\Input
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type InputShape from \CaseDev\Llm\V1\V1CreateEmbeddingParams\Input
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

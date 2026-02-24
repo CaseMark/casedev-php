@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1;
+namespace CaseDev\Llm\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\V1NewEmbeddingResponse\Data;
-use Casedev\Llm\V1\V1NewEmbeddingResponse\Usage;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse\Data;
+use CaseDev\Llm\V1\V1NewEmbeddingResponse\Usage;
 
 /**
- * @phpstan-import-type DataShape from \Casedev\Llm\V1\V1NewEmbeddingResponse\Data
- * @phpstan-import-type UsageShape from \Casedev\Llm\V1\V1NewEmbeddingResponse\Usage
+ * @phpstan-import-type DataShape from \CaseDev\Llm\V1\V1NewEmbeddingResponse\Data
+ * @phpstan-import-type UsageShape from \CaseDev\Llm\V1\V1NewEmbeddingResponse\Usage
  *
  * @phpstan-type V1NewEmbeddingResponseShape = array{
  *   data?: list<Data|DataShape>|null,

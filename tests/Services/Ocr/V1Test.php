@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Ocr;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Ocr\V1\V1GetResponse;
-use Casedev\Ocr\V1\V1ProcessResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Ocr\V1\V1GetResponse;
+use CaseDev\Ocr\V1\V1ProcessResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -32,10 +32,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->ocr->v1->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -46,7 +42,7 @@ final class V1Test extends TestCase
     public function testDownload(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->ocr->v1->download('text', id: 'id');
@@ -59,7 +55,7 @@ final class V1Test extends TestCase
     public function testDownloadWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->ocr->v1->download('text', id: 'id');
@@ -71,10 +67,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testProcess(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->ocr->v1->process(
             documentURL: 'https://example.com/contract.pdf'
         );
@@ -86,10 +78,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testProcessWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->ocr->v1->process(
             documentURL: 'https://example.com/contract.pdf',
             callbackURL: 'https://your-app.com/webhooks/ocr-complete',

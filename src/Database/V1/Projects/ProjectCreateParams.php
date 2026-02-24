@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Database\V1\Projects\ProjectCreateParams\Region;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectCreateParams\Region;
 
 /**
  * Creates a new serverless Postgres database project powered by Neon. Includes automatic scaling, connection pooling, and a default 'main' branch with 'neondb' database. Supports branching for isolated dev/staging environments. Perfect for case management applications, document workflows, and litigation support systems.
  *
- * @see Casedev\Services\Database\V1\ProjectsService::create()
+ * @see CaseDev\Services\Database\V1\ProjectsService::create()
  *
  * @phpstan-type ProjectCreateParamsShape = array{
  *   name: string, description?: string|null, region?: null|Region|value-of<Region>

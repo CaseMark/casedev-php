@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectListDeploymentsParams;
+namespace CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
 
 /**
  * Filter by deployment target.

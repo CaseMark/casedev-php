@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Multipart\MultipartGetPartURLsParams;
+namespace CaseDev\Vault\Multipart\MultipartGetPartURLsParams;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PartShape = array{partNumber: int, sizeBytes: int}
@@ -19,6 +19,9 @@ final class Part implements BaseModel
     #[Required]
     public int $partNumber;
 
+    /**
+     * Part size in bytes (min 5MB except final part, max 5GB).
+     */
     #[Required]
     public int $sizeBytes;
 
@@ -64,6 +67,9 @@ final class Part implements BaseModel
         return $self;
     }
 
+    /**
+     * Part size in bytes (min 5MB except final part, max 5GB).
+     */
     public function withSizeBytes(int $sizeBytes): self
     {
         $self = clone $this;

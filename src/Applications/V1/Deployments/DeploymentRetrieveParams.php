@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Deployments;
+namespace CaseDev\Applications\V1\Deployments;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Get details of a specific deployment including build logs.
  *
- * @see Casedev\Services\Applications\V1\DeploymentsService::retrieve()
+ * @see CaseDev\Services\Applications\V1\DeploymentsService::retrieve()
  *
  * @phpstan-type DeploymentRetrieveParamsShape = array{
  *   projectID: string, includeLogs?: bool|null

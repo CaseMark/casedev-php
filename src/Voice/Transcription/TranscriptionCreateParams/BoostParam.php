@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\Transcription\TranscriptionCreateParams;
+namespace CaseDev\Voice\Transcription\TranscriptionCreateParams;
 
 /**
  * How much to boost custom vocabulary.

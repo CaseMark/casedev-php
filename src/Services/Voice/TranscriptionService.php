@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace CaseDev\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\TranscriptionContract;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\TranscriptionContract;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class TranscriptionService implements TranscriptionContract
 {
@@ -53,6 +53,7 @@ final class TranscriptionService implements TranscriptionContract
      * @param bool $punctuate Add punctuation to the transcript
      * @param bool $speakerLabels Enable speaker identification and labeling
      * @param int $speakersExpected Expected number of speakers (improves accuracy when known)
+     * @param list<string> $speechModels Priority-ordered speech models to use
      * @param string $vaultID Vault ID containing the audio file (use with object_id)
      * @param list<string> $wordBoost Custom vocabulary words to boost (e.g., legal terms)
      * @param RequestOpts|null $requestOptions
@@ -72,6 +73,7 @@ final class TranscriptionService implements TranscriptionContract
         bool $punctuate = true,
         bool $speakerLabels = false,
         ?int $speakersExpected = null,
+        array $speechModels = ['universal-3-pro', 'universal-2'],
         ?string $vaultID = null,
         ?array $wordBoost = null,
         RequestOptions|array|null $requestOptions = null,
@@ -90,6 +92,7 @@ final class TranscriptionService implements TranscriptionContract
                 'punctuate' => $punctuate,
                 'speakerLabels' => $speakerLabels,
                 'speakersExpected' => $speakersExpected,
+                'speechModels' => $speechModels,
                 'vaultID' => $vaultID,
                 'wordBoost' => $wordBoost,
             ],
@@ -117,6 +120,26 @@ final class TranscriptionService implements TranscriptionContract
     ): TranscriptionGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Deletes a transcription job. For managed vault jobs (tr_*), also removes local job records and managed transcript result objects. Idempotent: returns success if already deleted.
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($id, requestOptions: $requestOptions);
 
         return $response->parse();
     }

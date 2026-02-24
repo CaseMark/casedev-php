@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\Chat;
+namespace CaseDev\Llm\V1\Chat;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
+use CaseDev\Llm\V1\Chat\ChatNewCompletionResponse\Usage;
 
 /**
- * @phpstan-import-type ChoiceShape from \Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice
- * @phpstan-import-type UsageShape from \Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Usage
+ * @phpstan-import-type ChoiceShape from \CaseDev\Llm\V1\Chat\ChatNewCompletionResponse\Choice
+ * @phpstan-import-type UsageShape from \CaseDev\Llm\V1\Chat\ChatNewCompletionResponse\Usage
  *
  * @phpstan-type ChatNewCompletionResponseShape = array{
  *   id?: string|null,

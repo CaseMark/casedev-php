@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1\V1ListVoicesResponse;
+namespace CaseDev\Voice\V1\V1ListVoicesResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type VoiceShape = array{

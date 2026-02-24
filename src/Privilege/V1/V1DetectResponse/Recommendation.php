@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Privilege\V1\V1DetectResponse;
+namespace CaseDev\Privilege\V1\V1DetectResponse;
 
 /**
  * Recommended action for discovery.

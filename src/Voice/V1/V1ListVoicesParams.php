@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1;
+namespace CaseDev\Voice\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Voice\V1\V1ListVoicesParams\Sort;
-use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
-use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\V1\V1ListVoicesParams\Sort;
+use CaseDev\Voice\V1\V1ListVoicesParams\SortDirection;
+use CaseDev\Voice\V1\V1ListVoicesParams\VoiceType;
 
 /**
  * Retrieve a list of available voices for text-to-speech synthesis. This endpoint provides access to a comprehensive catalog of voices with various characteristics, languages, and styles suitable for legal document narration, client presentations, and accessibility purposes.
  *
- * @see Casedev\Services\Voice\V1Service::listVoices()
+ * @see CaseDev\Services\Voice\V1Service::listVoices()
  *
  * @phpstan-type V1ListVoicesParamsShape = array{
  *   category?: string|null,

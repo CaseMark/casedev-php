@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1\V1ListLanguagesResponse;
+namespace CaseDev\Translate\V1\V1ListLanguagesResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1ListLanguagesResponse\Data\Language;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Translate\V1\V1ListLanguagesResponse\Data\Language;
 
 /**
- * @phpstan-import-type LanguageShape from \Casedev\Translate\V1\V1ListLanguagesResponse\Data\Language
+ * @phpstan-import-type LanguageShape from \CaseDev\Translate\V1\V1ListLanguagesResponse\Data\Language
  *
  * @phpstan-type DataShape = array{languages?: list<Language|LanguageShape>|null}
  */

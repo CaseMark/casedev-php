@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the full text content of a legal document. Use after verifying the source with legal.verify(). Returns complete text with optional highlights and AI summary.
  *
- * @see Casedev\Services\Legal\V1Service::getFullText()
+ * @see CaseDev\Services\Legal\V1Service::getFullText()
  *
  * @phpstan-type V1GetFullTextParamsShape = array{
  *   url: string,

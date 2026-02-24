@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Ocr\V1;
+namespace CaseDev\Ocr\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Ocr\V1\V1ProcessParams\Engine;
-use Casedev\Ocr\V1\V1ProcessParams\Features;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1ProcessParams\Engine;
+use CaseDev\Ocr\V1\V1ProcessParams\Features;
 
 /**
  * Submit a document for OCR processing to extract text, detect tables, forms, and other features. Supports PDFs, images, and scanned documents. Returns a job ID that can be used to track processing status.
  *
- * @see Casedev\Services\Ocr\V1Service::process()
+ * @see CaseDev\Services\Ocr\V1Service::process()
  *
- * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
+ * @phpstan-import-type FeaturesShape from \CaseDev\Ocr\V1\V1ProcessParams\Features
  *
  * @phpstan-type V1ProcessParamsShape = array{
  *   documentURL: string,

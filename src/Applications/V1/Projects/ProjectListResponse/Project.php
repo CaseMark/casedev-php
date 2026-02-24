@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectListResponse;
+namespace CaseDev\Applications\V1\Projects\ProjectListResponse;
 
-use Casedev\Applications\V1\Projects\ProjectListResponse\Project\Domain;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Projects\ProjectListResponse\Project\Domain;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type DomainShape from \Casedev\Applications\V1\Projects\ProjectListResponse\Project\Domain
+ * @phpstan-import-type DomainShape from \CaseDev\Applications\V1\Projects\ProjectListResponse\Project\Domain
  *
  * @phpstan-type ProjectShape = array{
  *   id?: string|null,

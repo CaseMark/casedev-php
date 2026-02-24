@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Search\V1\V1SearchResponse\Result;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1SearchResponse\Result;
 
 /**
- * @phpstan-import-type ResultShape from \Casedev\Search\V1\V1SearchResponse\Result
+ * @phpstan-import-type ResultShape from \CaseDev\Search\V1\V1SearchResponse\Result
  *
  * @phpstan-type V1SearchResponseShape = array{
  *   query?: string|null,

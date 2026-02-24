@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core;
+namespace CaseDev\Core;
 
-use Casedev\Core\Conversion\CoerceState;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Conversion\DumpState;
+use CaseDev\Core\Conversion\CoerceState;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\DumpState;
 
 /**
  * @internal

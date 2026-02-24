@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace CaseDev\Services\Applications\V1;
 
-use Casedev\Applications\V1\Deployments\DeploymentCancelParams;
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams;
-use Casedev\Applications\V1\Deployments\DeploymentCreateParams\Target;
-use Casedev\Applications\V1\Deployments\DeploymentGetLogsParams;
-use Casedev\Applications\V1\Deployments\DeploymentListParams;
-use Casedev\Applications\V1\Deployments\DeploymentRetrieveParams;
-use Casedev\Applications\V1\Deployments\DeploymentStreamParams;
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\DeploymentsRawContract;
+use CaseDev\Applications\V1\Deployments\DeploymentCancelParams;
+use CaseDev\Applications\V1\Deployments\DeploymentCreateParams;
+use CaseDev\Applications\V1\Deployments\DeploymentCreateParams\Target;
+use CaseDev\Applications\V1\Deployments\DeploymentGetLogsParams;
+use CaseDev\Applications\V1\Deployments\DeploymentListParams;
+use CaseDev\Applications\V1\Deployments\DeploymentRetrieveParams;
+use CaseDev\Applications\V1\Deployments\DeploymentStreamParams;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Applications\V1\DeploymentsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class DeploymentsRawService implements DeploymentsRawContract
 {

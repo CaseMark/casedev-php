@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Applications\V1;
 
-use Casedev\Applications\V1\Projects\ProjectListResponse;
-use Casedev\Client;
-use Casedev\Core\Util;
+use CaseDev\Applications\V1\Projects\ProjectListResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->create(
             gitRepo: 'gitRepo',
             name: 'name'
@@ -47,10 +42,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->create(
             gitRepo: 'gitRepo',
             name: 'name',
@@ -77,10 +68,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -90,10 +77,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -103,10 +86,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->delete('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -116,10 +95,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateDeployment(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->createDeployment('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -129,10 +104,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateDomain(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->createDomain(
             'id',
             domain: 'domain'
@@ -145,10 +116,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateDomainWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->createDomain(
             'id',
             domain: 'domain',
@@ -162,10 +129,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateEnv(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->createEnv(
             'id',
             key: 'key',
@@ -180,10 +143,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testCreateEnvWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->createEnv(
             'id',
             key: 'key',
@@ -200,10 +159,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDeleteDomain(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->deleteDomain(
             'domain',
             id: 'id'
@@ -216,10 +171,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDeleteDomainWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->deleteDomain(
             'domain',
             id: 'id'
@@ -232,10 +183,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDeleteEnv(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->deleteEnv(
             'envId',
             id: 'id'
@@ -248,10 +195,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testDeleteEnvWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->deleteEnv(
             'envId',
             id: 'id'
@@ -264,10 +207,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testGetRuntimeLogs(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->getRuntimeLogs('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -277,10 +216,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testListDeployments(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->listDeployments('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -290,10 +225,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testListDomains(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->listDomains('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -303,10 +234,6 @@ final class ProjectsTest extends TestCase
     #[Test]
     public function testListEnv(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->applications->v1->projects->listEnv('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

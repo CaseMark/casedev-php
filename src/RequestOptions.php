@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev;
+namespace CaseDev;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required as Property;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required as Property;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;

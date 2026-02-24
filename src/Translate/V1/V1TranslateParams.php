@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1;
+namespace CaseDev\Translate\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1TranslateParams\Format;
-use Casedev\Translate\V1\V1TranslateParams\Model;
-use Casedev\Translate\V1\V1TranslateParams\Q;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Translate\V1\V1TranslateParams\Format;
+use CaseDev\Translate\V1\V1TranslateParams\Model;
+use CaseDev\Translate\V1\V1TranslateParams\Q;
 
 /**
  * Translate text between languages using Google Cloud Translation API. Supports 100+ languages, automatic language detection, HTML preservation, and batch translation.
  *
- * @see Casedev\Services\Translate\V1Service::translate()
+ * @see CaseDev\Services\Translate\V1Service::translate()
  *
- * @phpstan-import-type QVariants from \Casedev\Translate\V1\V1TranslateParams\Q
- * @phpstan-import-type QShape from \Casedev\Translate\V1\V1TranslateParams\Q
+ * @phpstan-import-type QVariants from \CaseDev\Translate\V1\V1TranslateParams\Q
+ * @phpstan-import-type QShape from \CaseDev\Translate\V1\V1TranslateParams\Q
  *
  * @phpstan-type V1TranslateParamsShape = array{
  *   q: QShape,

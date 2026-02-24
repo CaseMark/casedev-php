@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace CaseDev\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
  *
- * @see Casedev\Services\VaultService::create()
+ * @see CaseDev\Services\VaultService::create()
  *
  * @phpstan-type VaultCreateParamsShape = array{
  *   name: string,
  *   description?: string|null,
  *   enableGraph?: bool|null,
  *   enableIndexing?: bool|null,
+ *   groupID?: string|null,
  *   metadata?: mixed,
  * }
  */
@@ -52,6 +53,12 @@ final class VaultCreateParams implements BaseModel
      */
     #[Optional]
     public ?bool $enableIndexing;
+
+    /**
+     * Assign the vault to a vault group for access control. Required when using a group-scoped API key.
+     */
+    #[Optional('groupId')]
+    public ?string $groupID;
 
     /**
      * Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking).
@@ -88,6 +95,7 @@ final class VaultCreateParams implements BaseModel
         ?string $description = null,
         ?bool $enableGraph = null,
         ?bool $enableIndexing = null,
+        ?string $groupID = null,
         mixed $metadata = null,
     ): self {
         $self = new self;
@@ -97,6 +105,7 @@ final class VaultCreateParams implements BaseModel
         null !== $description && $self['description'] = $description;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
         null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
+        null !== $groupID && $self['groupID'] = $groupID;
         null !== $metadata && $self['metadata'] = $metadata;
 
         return $self;
@@ -142,6 +151,17 @@ final class VaultCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['enableIndexing'] = $enableIndexing;
+
+        return $self;
+    }
+
+    /**
+     * Assign the vault to a vault group for access control. Required when using a group-scoped API key.
+     */
+    public function withGroupID(string $groupID): self
+    {
+        $self = clone $this;
+        $self['groupID'] = $groupID;
 
         return $self;
     }

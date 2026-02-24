@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Search\V1\V1AnswerParams\SearchType;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1AnswerParams\SearchType;
 
 /**
  * Generate comprehensive answers to questions using web search results. Supports two modes: native provider answers or custom LLM-powered answers using Case.dev's AI gateway. Perfect for legal research, fact-checking, and gathering supporting evidence for cases.
  *
- * @see Casedev\Services\Search\V1Service::answer()
+ * @see CaseDev\Services\Search\V1Service::answer()
  *
  * @phpstan-type V1AnswerParamsShape = array{
  *   query: string,

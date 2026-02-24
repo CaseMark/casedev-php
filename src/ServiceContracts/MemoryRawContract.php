@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts;
+namespace CaseDev\ServiceContracts;
 
 interface MemoryRawContract {}

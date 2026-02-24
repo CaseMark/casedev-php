@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1\Templates;
+namespace CaseDev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Format\V1\Templates\TemplateCreateParams\Type;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Format\V1\Templates\TemplateCreateParams\Type;
 
 /**
  * Create a new format template for document formatting. Templates support variables using `{{variable}}` syntax and can be used for captions, signatures, letterheads, certificates, footers, or custom formatting needs.
  *
- * @see Casedev\Services\Format\V1\TemplatesService::create()
+ * @see CaseDev\Services\Format\V1\TemplatesService::create()
  *
  * @phpstan-type TemplateCreateParamsShape = array{
  *   content: string,

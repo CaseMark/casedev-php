@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ProjectDeleteResponseShape = array{message: string, success: bool}

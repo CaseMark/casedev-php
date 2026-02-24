@@ -2,32 +2,39 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Legal;
+namespace CaseDev\Services\Legal;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Legal\V1\V1FindParams;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLParams;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsParams;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextParams;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsParams;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1ResearchParams;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarParams;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyParams;
-use Casedev\Legal\V1\V1VerifyResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Legal\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1FindParams;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsParams;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextParams;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsParams;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchParams;
+use CaseDev\Legal\V1\V1PatentSearchParams\ApplicationType;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortBy;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortOrder;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchParams;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarParams;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchParams;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyParams;
+use CaseDev\Legal\V1\V1VerifyResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Legal\V1RawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {
@@ -202,6 +209,51 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
+     * Search the USPTO Open Data Portal for US patent applications and granted patents. Supports free-text queries, field-specific search, filters by assignee/inventor/status/type, date ranges, and pagination. Covers applications filed on or after January 1, 2001. Data is refreshed daily.
+     *
+     * @param array{
+     *   query: string,
+     *   applicationStatus?: string,
+     *   applicationType?: ApplicationType|value-of<ApplicationType>,
+     *   assignee?: string,
+     *   filingDateFrom?: string,
+     *   filingDateTo?: string,
+     *   grantDateFrom?: string,
+     *   grantDateTo?: string,
+     *   inventor?: string,
+     *   limit?: int,
+     *   offset?: int,
+     *   sortBy?: SortBy|value-of<SortBy>,
+     *   sortOrder?: SortOrder|value-of<SortOrder>,
+     * }|V1PatentSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1PatentSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function patentSearch(
+        array|V1PatentSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1PatentSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/patent-search',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1PatentSearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Perform comprehensive legal research with multiple query variations. Uses advanced deep search to find relevant sources across different phrasings of the legal issue.
      *
      * @param array{
@@ -268,6 +320,39 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1SimilarResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Look up trademark status and details from the USPTO Trademark Status & Document Retrieval (TSDR) system. Supports lookup by serial number or registration number. Returns mark text, status, owner, goods/services, Nice classification, filing/registration dates, and more.
+     *
+     * @param array{
+     *   registrationNumber?: string, serialNumber?: string
+     * }|V1TrademarkSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1TrademarkSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function trademarkSearch(
+        array|V1TrademarkSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1TrademarkSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/trademark-search',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1TrademarkSearchResponse::class,
         );
     }
 

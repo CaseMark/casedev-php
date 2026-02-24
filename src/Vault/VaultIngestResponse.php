@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace CaseDev\Vault;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\VaultIngestResponse\Status;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultIngestResponse\Status;
 
 /**
  * @phpstan-type VaultIngestResponseShape = array{

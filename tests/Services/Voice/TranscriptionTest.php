@@ -2,14 +2,13 @@
 
 namespace Tests\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -32,10 +31,6 @@ final class TranscriptionTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->voice->transcription->create();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -45,13 +40,18 @@ final class TranscriptionTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->voice->transcription->retrieve('tr_abc123def456');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TranscriptionGetResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        $result = $this->client->voice->transcription->delete('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

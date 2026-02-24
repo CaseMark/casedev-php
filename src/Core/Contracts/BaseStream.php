@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Contracts;
+namespace CaseDev\Core\Contracts;
 
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

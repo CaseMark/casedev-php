@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Superdoc;
+namespace CaseDev\Services\Superdoc;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Superdoc\V1Contract;
-use Casedev\Superdoc\V1\V1AnnotateParams\Document;
-use Casedev\Superdoc\V1\V1AnnotateParams\Field;
-use Casedev\Superdoc\V1\V1AnnotateParams\OutputFormat;
-use Casedev\Superdoc\V1\V1ConvertParams\From;
-use Casedev\Superdoc\V1\V1ConvertParams\To;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Superdoc\V1Contract;
+use CaseDev\Superdoc\V1\V1AnnotateParams\Document;
+use CaseDev\Superdoc\V1\V1AnnotateParams\Field;
+use CaseDev\Superdoc\V1\V1AnnotateParams\OutputFormat;
+use CaseDev\Superdoc\V1\V1ConvertParams\From;
+use CaseDev\Superdoc\V1\V1ConvertParams\To;
 
 /**
- * @phpstan-import-type DocumentShape from \Casedev\Superdoc\V1\V1AnnotateParams\Document
- * @phpstan-import-type FieldShape from \Casedev\Superdoc\V1\V1AnnotateParams\Field
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type DocumentShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Document
+ * @phpstan-import-type FieldShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Field
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {

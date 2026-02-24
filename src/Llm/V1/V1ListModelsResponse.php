@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1;
+namespace CaseDev\Llm\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\V1ListModelsResponse\Data;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\V1ListModelsResponse\Data;
 
 /**
- * @phpstan-import-type DataShape from \Casedev\Llm\V1\V1ListModelsResponse\Data
+ * @phpstan-import-type DataShape from \CaseDev\Llm\V1\V1ListModelsResponse\Data
  *
  * @phpstan-type V1ListModelsResponseShape = array{
  *   data?: list<Data|DataShape>|null, object?: string|null

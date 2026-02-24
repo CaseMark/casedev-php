@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Ocr;
+namespace CaseDev\Services\Ocr;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Ocr\V1\V1DownloadParams;
-use Casedev\Ocr\V1\V1DownloadParams\Type;
-use Casedev\Ocr\V1\V1GetResponse;
-use Casedev\Ocr\V1\V1ProcessParams;
-use Casedev\Ocr\V1\V1ProcessParams\Engine;
-use Casedev\Ocr\V1\V1ProcessParams\Features;
-use Casedev\Ocr\V1\V1ProcessResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Ocr\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Ocr\V1\V1DownloadParams;
+use CaseDev\Ocr\V1\V1DownloadParams\Type;
+use CaseDev\Ocr\V1\V1GetResponse;
+use CaseDev\Ocr\V1\V1ProcessParams;
+use CaseDev\Ocr\V1\V1ProcessParams\Engine;
+use CaseDev\Ocr\V1\V1ProcessParams\Features;
+use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Ocr\V1RawContract;
 
 /**
- * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FeaturesShape from \CaseDev\Ocr\V1\V1ProcessParams\Features
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {
@@ -83,6 +83,7 @@ final class V1RawService implements V1RawContract
         return $this->client->request(
             method: 'get',
             path: ['ocr/v1/%1$s/download/%2$s', $id, $type],
+            headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
         );

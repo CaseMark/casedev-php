@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Database\V1;
+namespace CaseDev\Services\Database\V1;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Database\V1\Projects\ProjectCreateBranchParams;
-use Casedev\Database\V1\Projects\ProjectCreateParams;
-use Casedev\Database\V1\Projects\ProjectCreateParams\Region;
-use Casedev\Database\V1\Projects\ProjectDeleteResponse;
-use Casedev\Database\V1\Projects\ProjectGetConnectionParams;
-use Casedev\Database\V1\Projects\ProjectGetConnectionResponse;
-use Casedev\Database\V1\Projects\ProjectGetResponse;
-use Casedev\Database\V1\Projects\ProjectListBranchesResponse;
-use Casedev\Database\V1\Projects\ProjectListResponse;
-use Casedev\Database\V1\Projects\ProjectNewBranchResponse;
-use Casedev\Database\V1\Projects\ProjectNewResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Database\V1\ProjectsRawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Database\V1\Projects\ProjectCreateBranchParams;
+use CaseDev\Database\V1\Projects\ProjectCreateParams;
+use CaseDev\Database\V1\Projects\ProjectCreateParams\Region;
+use CaseDev\Database\V1\Projects\ProjectDeleteResponse;
+use CaseDev\Database\V1\Projects\ProjectGetConnectionParams;
+use CaseDev\Database\V1\Projects\ProjectGetConnectionResponse;
+use CaseDev\Database\V1\Projects\ProjectGetResponse;
+use CaseDev\Database\V1\Projects\ProjectListBranchesResponse;
+use CaseDev\Database\V1\Projects\ProjectListResponse;
+use CaseDev\Database\V1\Projects\ProjectNewBranchResponse;
+use CaseDev\Database\V1\Projects\ProjectNewResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Database\V1\ProjectsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ProjectsRawService implements ProjectsRawContract
 {

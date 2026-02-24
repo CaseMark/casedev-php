@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Voice;
+namespace CaseDev\ServiceContracts\Voice;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface TranscriptionContract
 {
@@ -31,6 +31,7 @@ interface TranscriptionContract
      * @param bool $punctuate Add punctuation to the transcript
      * @param bool $speakerLabels Enable speaker identification and labeling
      * @param int $speakersExpected Expected number of speakers (improves accuracy when known)
+     * @param list<string> $speechModels Priority-ordered speech models to use
      * @param string $vaultID Vault ID containing the audio file (use with object_id)
      * @param list<string> $wordBoost Custom vocabulary words to boost (e.g., legal terms)
      * @param RequestOpts|null $requestOptions
@@ -50,6 +51,7 @@ interface TranscriptionContract
         bool $punctuate = true,
         bool $speakerLabels = false,
         ?int $speakersExpected = null,
+        array $speechModels = ['universal-3-pro', 'universal-2'],
         ?string $vaultID = null,
         ?array $wordBoost = null,
         RequestOptions|array|null $requestOptions = null,
@@ -67,4 +69,17 @@ interface TranscriptionContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): TranscriptionGetResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
 }

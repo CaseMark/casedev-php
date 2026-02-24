@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Search;
+namespace CaseDev\Services\Search;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\Search\V1\V1AnswerParams\SearchType;
-use Casedev\Search\V1\V1AnswerResponse;
-use Casedev\Search\V1\V1ContentsResponse;
-use Casedev\Search\V1\V1GetResearchResponse;
-use Casedev\Search\V1\V1ResearchParams\Model;
-use Casedev\Search\V1\V1ResearchResponse;
-use Casedev\Search\V1\V1SearchParams\Type;
-use Casedev\Search\V1\V1SearchResponse;
-use Casedev\Search\V1\V1SimilarResponse;
-use Casedev\ServiceContracts\Search\V1Contract;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\Search\V1\V1AnswerParams\SearchType;
+use CaseDev\Search\V1\V1AnswerResponse;
+use CaseDev\Search\V1\V1ContentsResponse;
+use CaseDev\Search\V1\V1GetResearchResponse;
+use CaseDev\Search\V1\V1ResearchParams\Model;
+use CaseDev\Search\V1\V1ResearchResponse;
+use CaseDev\Search\V1\V1SearchParams\Type;
+use CaseDev\Search\V1\V1SearchResponse;
+use CaseDev\Search\V1\V1SimilarResponse;
+use CaseDev\ServiceContracts\Search\V1Contract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {

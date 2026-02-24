@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Graphrag;
+namespace CaseDev\Vault\Graphrag;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Graphrag\GraphragProcessObjectResponse\Stats;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse\Stats;
 
 /**
- * @phpstan-import-type StatsShape from \Casedev\Vault\Graphrag\GraphragProcessObjectResponse\Stats
+ * @phpstan-import-type StatsShape from \CaseDev\Vault\Graphrag\GraphragProcessObjectResponse\Stats
  *
  * @phpstan-type GraphragProcessObjectResponseShape = array{
  *   communities: int,

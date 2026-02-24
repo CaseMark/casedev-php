@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Conversion\Contracts;
+namespace CaseDev\Core\Conversion\Contracts;
 
-use Casedev\Core\Conversion\CoerceState;
-use Casedev\Core\Conversion\DumpState;
+use CaseDev\Core\Conversion\CoerceState;
+use CaseDev\Core\Conversion\DumpState;
 
 /**
  * @internal

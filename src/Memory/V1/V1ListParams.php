@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1;
+namespace CaseDev\Memory\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * List all memories with optional filtering by tags and category.
  *
- * @see Casedev\Services\Memory\V1Service::list()
+ * @see CaseDev\Services\Memory\V1Service::list()
  *
  * @phpstan-type V1ListParamsShape = array{
  *   category?: string|null,

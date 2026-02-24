@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+ * Get the status of a CaseMark summary workflow job.
  *
- * @see Casedev\Services\Vault\ObjectsService::getSummarizeJob()
+ * @see CaseDev\Services\Vault\ObjectsService::getSummarizeJob()
  *
  * @phpstan-type ObjectGetSummarizeJobParamsShape = array{
  *   id: string, objectID: string

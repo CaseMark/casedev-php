@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace CaseDev\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\TranscriptionRawContract;
-use Casedev\Voice\Transcription\TranscriptionCreateParams;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
-use Casedev\Voice\Transcription\TranscriptionCreateParams\Format;
-use Casedev\Voice\Transcription\TranscriptionGetResponse;
-use Casedev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\TranscriptionRawContract;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
+use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
+use CaseDev\Voice\Transcription\TranscriptionGetResponse;
+use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class TranscriptionRawService implements TranscriptionRawContract
 {
@@ -48,6 +48,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      *   punctuate?: bool,
      *   speakerLabels?: bool,
      *   speakersExpected?: int,
+     *   speechModels?: list<string>,
      *   vaultID?: string,
      *   wordBoost?: list<string>,
      * }|TranscriptionCreateParams $params
@@ -98,6 +99,31 @@ final class TranscriptionRawService implements TranscriptionRawContract
             path: ['voice/transcription/%1$s', $id],
             options: $requestOptions,
             convert: TranscriptionGetResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Deletes a transcription job. For managed vault jobs (tr_*), also removes local job records and managed transcript result objects. Idempotent: returns success if already deleted.
+     *
+     * @param string $id Transcription ID (managed tr_* or direct provider ID)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['voice/transcription/%1$s', $id],
+            options: $requestOptions,
+            convert: null,
         );
     }
 }

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Translate\V1;
+namespace CaseDev\Translate\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Translate\V1\V1TranslateResponse\Data;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Translate\V1\V1TranslateResponse\Data;
 
 /**
- * @phpstan-import-type DataShape from \Casedev\Translate\V1\V1TranslateResponse\Data
+ * @phpstan-import-type DataShape from \CaseDev\Translate\V1\V1TranslateResponse\Data
  *
  * @phpstan-type V1TranslateResponseShape = array{data?: null|Data|DataShape}
  */

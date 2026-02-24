@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1;
+namespace CaseDev\Compute\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Returns detailed compute usage statistics and billing information for your organization. Includes GPU and CPU hours, total runs, costs, and breakdowns by environment. Use optional query parameters to filter by specific year and month.
  *
- * @see Casedev\Services\Compute\V1Service::getUsage()
+ * @see CaseDev\Services\Compute\V1Service::getUsage()
  *
  * @phpstan-type V1GetUsageParamsShape = array{month?: int|null, year?: int|null}
  */

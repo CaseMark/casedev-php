@@ -1,9 +1,9 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class RateLimitException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Casedev Rate Limit Exception';
+    protected const DESC = 'CaseDev Rate Limit Exception';
 }

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\V1GetUsageResponse;
+namespace CaseDev\Database\V1\V1GetUsageResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Database\V1\V1GetUsageResponse\Project\Costs;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\V1GetUsageResponse\Project\Costs;
 
 /**
- * @phpstan-import-type CostsShape from \Casedev\Database\V1\V1GetUsageResponse\Project\Costs
+ * @phpstan-import-type CostsShape from \CaseDev\Database\V1\V1GetUsageResponse\Project\Costs
  *
  * @phpstan-type ProjectShape = array{
  *   id?: string|null,

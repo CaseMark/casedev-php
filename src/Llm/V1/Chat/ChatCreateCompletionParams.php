@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\Chat;
+namespace CaseDev\Llm\V1\Chat;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
 
 /**
  * Create a completion for the provided prompt and parameters. Compatible with OpenAI's chat completions API. Supports 40+ models including GPT-4, Claude, Gemini, and CaseMark legal AI models. Includes streaming support, token counting, and usage tracking.
  *
- * @see Casedev\Services\Llm\V1\ChatService::createCompletion()
+ * @see CaseDev\Services\Llm\V1\ChatService::createCompletion()
  *
- * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ * @phpstan-import-type MessageShape from \CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message
  *
  * @phpstan-type ChatCreateCompletionParamsShape = array{
  *   messages: list<Message|MessageShape>,
+ *   casemarkShowReasoning?: bool|null,
  *   frequencyPenalty?: float|null,
  *   maxTokens?: int|null,
  *   model?: string|null,
@@ -44,6 +45,12 @@ final class ChatCreateCompletionParams implements BaseModel
     public array $messages;
 
     /**
+     * CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
+     */
+    #[Optional('casemark_show_reasoning')]
+    public ?bool $casemarkShowReasoning;
+
+    /**
      * Frequency penalty parameter.
      */
     #[Optional('frequency_penalty')]
@@ -56,7 +63,7 @@ final class ChatCreateCompletionParams implements BaseModel
     public ?int $maxTokens;
 
     /**
-     * Model to use for completion. Defaults to casemark-core-1 if not specified.
+     * Model to use for completion. Defaults to casemark/casemark-core-3 if not specified.
      */
     #[Optional]
     public ?string $model;
@@ -113,6 +120,7 @@ final class ChatCreateCompletionParams implements BaseModel
      */
     public static function with(
         array $messages,
+        ?bool $casemarkShowReasoning = null,
         ?float $frequencyPenalty = null,
         ?int $maxTokens = null,
         ?string $model = null,
@@ -125,6 +133,7 @@ final class ChatCreateCompletionParams implements BaseModel
 
         $self['messages'] = $messages;
 
+        null !== $casemarkShowReasoning && $self['casemarkShowReasoning'] = $casemarkShowReasoning;
         null !== $frequencyPenalty && $self['frequencyPenalty'] = $frequencyPenalty;
         null !== $maxTokens && $self['maxTokens'] = $maxTokens;
         null !== $model && $self['model'] = $model;
@@ -145,6 +154,17 @@ final class ChatCreateCompletionParams implements BaseModel
     {
         $self = clone $this;
         $self['messages'] = $messages;
+
+        return $self;
+    }
+
+    /**
+     * CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
+     */
+    public function withCasemarkShowReasoning(bool $casemarkShowReasoning): self
+    {
+        $self = clone $this;
+        $self['casemarkShowReasoning'] = $casemarkShowReasoning;
 
         return $self;
     }
@@ -172,7 +192,7 @@ final class ChatCreateCompletionParams implements BaseModel
     }
 
     /**
-     * Model to use for completion. Defaults to casemark-core-1 if not specified.
+     * Model to use for completion. Defaults to casemark/casemark-core-3 if not specified.
      */
     public function withModel(string $model): self
     {

@@ -2,16 +2,16 @@
 
 namespace Tests\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Vault\Objects\ObjectDeleteResponse;
-use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
-use Casedev\Vault\Objects\ObjectGetResponse;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
-use Casedev\Vault\Objects\ObjectGetTextResponse;
-use Casedev\Vault\Objects\ObjectListResponse;
-use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectUpdateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetResponse;
+use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
+use CaseDev\Vault\Objects\ObjectGetTextResponse;
+use CaseDev\Vault\Objects\ObjectListResponse;
+use CaseDev\Vault\Objects\ObjectNewPresignedURLResponse;
+use CaseDev\Vault\Objects\ObjectUpdateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,10 +38,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -51,10 +47,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testRetrieveWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->retrieve('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -64,10 +56,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testUpdate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->update('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -77,10 +65,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testUpdateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->update(
             'objectId',
             id: 'id',
@@ -96,10 +80,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->list('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -109,10 +89,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->delete('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -122,10 +98,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testDeleteWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->delete(
             'objectId',
             id: 'id',
@@ -139,10 +111,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testCreatePresignedURL(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->createPresignedURL(
             'objectId',
             id: 'id'
@@ -155,10 +123,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testCreatePresignedURLWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->createPresignedURL(
             'objectId',
             id: 'id',
@@ -176,7 +140,7 @@ final class ObjectsTest extends TestCase
     public function testDownload(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->vault->objects->download('objectId', id: 'id');
@@ -189,7 +153,7 @@ final class ObjectsTest extends TestCase
     public function testDownloadWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->vault->objects->download('objectId', id: 'id');
@@ -201,10 +165,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetOcrWords(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getOcrWords('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -214,10 +174,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetOcrWordsWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getOcrWords(
             'objectId',
             id: 'id',
@@ -233,10 +189,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetSummarizeJob(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getSummarizeJob(
             'jobId',
             id: 'id',
@@ -250,10 +202,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetSummarizeJobWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getSummarizeJob(
             'jobId',
             id: 'id',
@@ -267,10 +215,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetText(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -280,10 +224,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testGetTextWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->vault->objects->getText('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

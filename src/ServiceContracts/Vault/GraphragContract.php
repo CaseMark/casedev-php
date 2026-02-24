@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Vault;
+namespace CaseDev\ServiceContracts\Vault;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Vault\Graphrag\GraphragGetStatsResponse;
-use Casedev\Vault\Graphrag\GraphragInitResponse;
-use Casedev\Vault\Graphrag\GraphragProcessObjectResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Vault\Graphrag\GraphragGetStatsResponse;
+use CaseDev\Vault\Graphrag\GraphragInitResponse;
+use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface GraphragContract
 {

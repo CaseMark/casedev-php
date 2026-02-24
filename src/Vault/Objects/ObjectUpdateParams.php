@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects;
+namespace CaseDev\Vault\Objects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Update a document's filename, path, or metadata. Use this to rename files or organize them into virtual folders. The path is stored in metadata.path and can be used to build folder hierarchies in your application.
  *
- * @see Casedev\Services\Vault\ObjectsService::update()
+ * @see CaseDev\Services\Vault\ObjectsService::update()
  *
  * @phpstan-type ObjectUpdateParamsShape = array{
  *   id: string, filename?: string|null, metadata?: mixed, path?: string|null

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the status and results of a deep research task by ID. Supports both standard JSON responses and streaming for real-time updates as the research progresses. Research tasks analyze topics comprehensively using web search and AI synthesis.
  *
- * @see Casedev\Services\Search\V1Service::retrieveResearch()
+ * @see CaseDev\Services\Search\V1Service::retrieveResearch()
  *
  * @phpstan-type V1RetrieveResearchParamsShape = array{
  *   events?: string|null, stream?: bool|null

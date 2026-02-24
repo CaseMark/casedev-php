@@ -1,9 +1,9 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class AuthenticationException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Casedev Authentication Exception';
+    protected const DESC = 'CaseDev Authentication Exception';
 }

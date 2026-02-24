@@ -2,18 +2,17 @@
 
 namespace Tests\Services\Memory;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Memory\V1\V1DeleteAllResponse;
-use Casedev\Memory\V1\V1DeleteResponse;
-use Casedev\Memory\V1\V1GetResponse;
-use Casedev\Memory\V1\V1ListResponse;
-use Casedev\Memory\V1\V1NewResponse;
-use Casedev\Memory\V1\V1SearchResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -36,10 +35,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->create(
             messages: [['content' => 'content', 'role' => 'user']]
         );
@@ -51,10 +46,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->create(
             messages: [['content' => 'content', 'role' => 'user']],
             category: 'category',
@@ -82,10 +73,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -95,10 +82,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -108,10 +91,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDelete(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->delete('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -121,10 +100,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDeleteAll(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->deleteAll();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -134,10 +109,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSearch(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->search(query: 'query');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -147,10 +118,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testSearchWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->memory->v1->search(
             query: 'query',
             category: 'category',

@@ -2,13 +2,12 @@
 
 namespace Tests\Services;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Llm\LlmGetConfigResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Llm\LlmGetConfigResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class LlmTest extends TestCase
     #[Test]
     public function testGetConfig(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->llm->getConfig();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

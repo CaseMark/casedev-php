@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Voice;
+namespace CaseDev\ServiceContracts\Voice;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Voice\Streaming\StreamingGetURLResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface StreamingContract
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects\ObjectGetOcrWordsResponse\Page;
+namespace CaseDev\Vault\Objects\ObjectGetOcrWordsResponse\Page;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type WordShape = array{

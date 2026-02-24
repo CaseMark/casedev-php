@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Scrapes and extracts text content from web pages, PDFs, and documents. Useful for legal research, evidence collection, and document analysis. Supports live crawling, subpage extraction, and content summarization.
  *
- * @see Casedev\Services\Search\V1Service::contents()
+ * @see CaseDev\Services\Search\V1Service::contents()
  *
  * @phpstan-type V1ContentsParamsShape = array{
  *   urls: list<string>,

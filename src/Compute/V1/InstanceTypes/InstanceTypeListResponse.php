@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\InstanceTypes;
+namespace CaseDev\Compute\V1\InstanceTypes;
 
-use Casedev\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type InstanceTypeShape from \Casedev\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType
+ * @phpstan-import-type InstanceTypeShape from \CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse\InstanceType
  *
  * @phpstan-type InstanceTypeListResponseShape = array{
  *   count: int, instanceTypes: list<InstanceType|InstanceTypeShape>

@@ -1,20 +1,20 @@
 <?php
 
-namespace Casedev\Core\Implementation;
+namespace CaseDev\Core\Implementation;
 
-use Casedev\Core\BaseClient;
-use Casedev\Core\Concerns\ResponseProxy;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Conversion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
+use CaseDev\Core\BaseClient;
+use CaseDev\Core\Concerns\ResponseProxy;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Conversion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \CaseDev\Core\BaseClient
  *
  * @internal
  *

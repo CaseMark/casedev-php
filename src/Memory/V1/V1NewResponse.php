@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1;
+namespace CaseDev\Memory\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Memory\V1\V1NewResponse\Result;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1NewResponse\Result;
 
 /**
- * @phpstan-import-type ResultShape from \Casedev\Memory\V1\V1NewResponse\Result
+ * @phpstan-import-type ResultShape from \CaseDev\Memory\V1\V1NewResponse\Result
  *
  * @phpstan-type V1NewResponseShape = array{
  *   results?: list<Result|ResultShape>|null

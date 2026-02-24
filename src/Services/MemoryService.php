@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\MemoryContract;
-use Casedev\Services\Memory\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\MemoryContract;
+use CaseDev\Services\Memory\V1Service;
 
 final class MemoryService implements MemoryContract
 {

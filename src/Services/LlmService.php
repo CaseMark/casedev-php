@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\LlmGetConfigResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\LlmContract;
-use Casedev\Services\Llm\V1Service;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\LlmGetConfigResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\LlmContract;
+use CaseDev\Services\Llm\V1Service;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class LlmService implements LlmContract
 {

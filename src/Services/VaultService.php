@@ -2,30 +2,33 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\VaultContract;
-use Casedev\Services\Vault\GraphragService;
-use Casedev\Services\Vault\MultipartService;
-use Casedev\Services\Vault\ObjectsService;
-use Casedev\Vault\VaultDeleteResponse;
-use Casedev\Vault\VaultGetResponse;
-use Casedev\Vault\VaultIngestResponse;
-use Casedev\Vault\VaultListResponse;
-use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams\Filters;
-use Casedev\Vault\VaultSearchParams\Method;
-use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUpdateResponse;
-use Casedev\Vault\VaultUploadResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\VaultContract;
+use CaseDev\Services\Vault\EventsService;
+use CaseDev\Services\Vault\GraphragService;
+use CaseDev\Services\Vault\GroupsService;
+use CaseDev\Services\Vault\MultipartService;
+use CaseDev\Services\Vault\ObjectsService;
+use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultDeleteResponse;
+use CaseDev\Vault\VaultGetResponse;
+use CaseDev\Vault\VaultIngestResponse;
+use CaseDev\Vault\VaultListResponse;
+use CaseDev\Vault\VaultNewResponse;
+use CaseDev\Vault\VaultSearchParams\Filters;
+use CaseDev\Vault\VaultSearchParams\Method;
+use CaseDev\Vault\VaultSearchResponse;
+use CaseDev\Vault\VaultUpdateResponse;
+use CaseDev\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type FiltersShape from \Casedev\Vault\VaultSearchParams\Filters
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FiltersShape from \CaseDev\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class VaultService implements VaultContract
 {
@@ -37,7 +40,17 @@ final class VaultService implements VaultContract
     /**
      * @api
      */
+    public EventsService $events;
+
+    /**
+     * @api
+     */
     public GraphragService $graphrag;
+
+    /**
+     * @api
+     */
+    public GroupsService $groups;
 
     /**
      * @api
@@ -55,7 +68,9 @@ final class VaultService implements VaultContract
     public function __construct(private Client $client)
     {
         $this->raw = new VaultRawService($client);
+        $this->events = new EventsService($client);
         $this->graphrag = new GraphragService($client);
+        $this->groups = new GroupsService($client);
         $this->multipart = new MultipartService($client);
         $this->objects = new ObjectsService($client);
     }
@@ -69,6 +84,7 @@ final class VaultService implements VaultContract
      * @param string $description Optional description of the vault's purpose
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
      * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      * @param RequestOpts|null $requestOptions
      *
@@ -79,6 +95,7 @@ final class VaultService implements VaultContract
         ?string $description = null,
         bool $enableGraph = true,
         bool $enableIndexing = true,
+        ?string $groupID = null,
         mixed $metadata = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultNewResponse {
@@ -88,6 +105,7 @@ final class VaultService implements VaultContract
                 'description' => $description,
                 'enableGraph' => $enableGraph,
                 'enableIndexing' => $enableIndexing,
+                'groupID' => $groupID,
                 'metadata' => $metadata,
             ],
         );
@@ -126,6 +144,7 @@ final class VaultService implements VaultContract
      * @param string $id Vault ID to update
      * @param string|null $description New description for the vault. Set to null to remove.
      * @param bool $enableGraph Whether to enable GraphRAG for future document uploads
+     * @param string|null $groupID move the vault to a different group, or set to null to remove from its current group
      * @param string $name New name for the vault
      * @param RequestOpts|null $requestOptions
      *
@@ -135,6 +154,7 @@ final class VaultService implements VaultContract
         string $id,
         ?string $description = null,
         ?bool $enableGraph = null,
+        ?string $groupID = null,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultUpdateResponse {
@@ -142,6 +162,7 @@ final class VaultService implements VaultContract
             [
                 'description' => $description,
                 'enableGraph' => $enableGraph,
+                'groupID' => $groupID,
                 'name' => $name,
             ],
         );
@@ -190,6 +211,49 @@ final class VaultService implements VaultContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Confirm whether a direct-to-S3 vault upload succeeded or failed. This endpoint emits vault.upload.completed or vault.upload.failed events and is idempotent for repeated confirmations.
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param string $id Path param: Vault ID
+     * @param int $sizeBytes Body param: Uploaded file size in bytes
+     * @param bool $success Body param: Whether the upload succeeded
+     * @param string $errorCode Body param: Client-side error code
+     * @param string $errorMessage Body param: Client-side error message
+     * @param string $etag Body param: S3 ETag for the uploaded object (optional if client cannot access ETag header)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        string $id,
+        int $sizeBytes,
+        bool $success,
+        string $errorCode,
+        string $errorMessage,
+        ?string $etag = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultConfirmUploadResponse {
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'sizeBytes' => $sizeBytes,
+                'success' => $success,
+                'etag' => $etag,
+                'errorCode' => $errorCode,
+                'errorMessage' => $errorMessage,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->confirmUpload($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -258,7 +322,7 @@ final class VaultService implements VaultContract
     /**
      * @api
      *
-     * Generate a presigned URL for uploading files directly to a vault's S3 storage. This endpoint creates a temporary upload URL that allows secure file uploads without exposing credentials. Files can be automatically indexed for semantic search or stored for manual processing.
+     * Generate a presigned URL for uploading files directly to a vault's S3 storage. After uploading to S3, confirm the upload result via POST /vault/:vaultId/upload/:objectId/confirm before triggering ingestion.
      *
      * @param string $id Vault ID to upload the file to
      * @param string $contentType MIME type of the file (e.g., application/pdf, image/jpeg)

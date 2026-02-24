@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts;
+namespace CaseDev\ServiceContracts;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\Vault\VaultDeleteResponse;
-use Casedev\Vault\VaultGetResponse;
-use Casedev\Vault\VaultIngestResponse;
-use Casedev\Vault\VaultListResponse;
-use Casedev\Vault\VaultNewResponse;
-use Casedev\Vault\VaultSearchParams\Filters;
-use Casedev\Vault\VaultSearchParams\Method;
-use Casedev\Vault\VaultSearchResponse;
-use Casedev\Vault\VaultUpdateResponse;
-use Casedev\Vault\VaultUploadResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultDeleteResponse;
+use CaseDev\Vault\VaultGetResponse;
+use CaseDev\Vault\VaultIngestResponse;
+use CaseDev\Vault\VaultListResponse;
+use CaseDev\Vault\VaultNewResponse;
+use CaseDev\Vault\VaultSearchParams\Filters;
+use CaseDev\Vault\VaultSearchParams\Method;
+use CaseDev\Vault\VaultSearchResponse;
+use CaseDev\Vault\VaultUpdateResponse;
+use CaseDev\Vault\VaultUploadResponse;
 
 /**
- * @phpstan-import-type FiltersShape from \Casedev\Vault\VaultSearchParams\Filters
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FiltersShape from \CaseDev\Vault\VaultSearchParams\Filters
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface VaultContract
 {
@@ -30,6 +31,7 @@ interface VaultContract
      * @param string $description Optional description of the vault's purpose
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
+     * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
      * @param mixed $metadata Optional metadata to attach to the vault (e.g., { containsPHI: true } for HIPAA compliance tracking)
      * @param RequestOpts|null $requestOptions
      *
@@ -40,6 +42,7 @@ interface VaultContract
         ?string $description = null,
         bool $enableGraph = true,
         bool $enableIndexing = true,
+        ?string $groupID = null,
         mixed $metadata = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultNewResponse;
@@ -63,6 +66,7 @@ interface VaultContract
      * @param string $id Vault ID to update
      * @param string|null $description New description for the vault. Set to null to remove.
      * @param bool $enableGraph Whether to enable GraphRAG for future document uploads
+     * @param string|null $groupID move the vault to a different group, or set to null to remove from its current group
      * @param string $name New name for the vault
      * @param RequestOpts|null $requestOptions
      *
@@ -72,6 +76,7 @@ interface VaultContract
         string $id,
         ?string $description = null,
         ?bool $enableGraph = null,
+        ?string $groupID = null,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
     ): VaultUpdateResponse;
@@ -101,6 +106,31 @@ interface VaultContract
         bool $async = false,
         RequestOptions|array|null $requestOptions = null,
     ): VaultDeleteResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: Vault object ID
+     * @param string $id Path param: Vault ID
+     * @param int $sizeBytes Body param: Uploaded file size in bytes
+     * @param bool $success Body param: Whether the upload succeeded
+     * @param string $errorCode Body param: Client-side error code
+     * @param string $errorMessage Body param: Client-side error message
+     * @param string $etag Body param: S3 ETag for the uploaded object (optional if client cannot access ETag header)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function confirmUpload(
+        string $objectID,
+        string $id,
+        int $sizeBytes,
+        bool $success,
+        string $errorCode,
+        string $errorMessage,
+        ?string $etag = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): VaultConfirmUploadResponse;
 
     /**
      * @api

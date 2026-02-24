@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
+namespace CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Objects\ObjectGetOcrWordsResponse\Page\Word;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse\Page\Word;
 
 /**
- * @phpstan-import-type WordShape from \Casedev\Vault\Objects\ObjectGetOcrWordsResponse\Page\Word
+ * @phpstan-import-type WordShape from \CaseDev\Vault\Objects\ObjectGetOcrWordsResponse\Page\Word
  *
  * @phpstan-type PageShape = array{
  *   page?: int|null, words?: list<Word|WordShape>|null

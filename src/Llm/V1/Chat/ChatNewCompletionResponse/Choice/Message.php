@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
+namespace CaseDev\Llm\V1\Chat\ChatNewCompletionResponse\Choice;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MessageShape = array{content?: string|null, role?: string|null}

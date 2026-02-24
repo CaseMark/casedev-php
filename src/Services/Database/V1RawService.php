@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Database;
+namespace CaseDev\Services\Database;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Database\V1\V1GetUsageResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Database\V1RawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Database\V1\V1GetUsageResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Database\V1RawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

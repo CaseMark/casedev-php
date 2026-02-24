@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1\V1CreateParams;
+namespace CaseDev\Memory\V1\V1CreateParams;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Memory\V1\V1CreateParams\Message\Role;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1CreateParams\Message\Role;
 
 /**
  * @phpstan-type MessageShape = array{content: string, role: Role|value-of<Role>}

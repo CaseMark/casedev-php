@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Graphrag;
+namespace CaseDev\Vault\Graphrag;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Graphrag\GraphragGetStatsResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Graphrag\GraphragGetStatsResponse\Status;
 
 /**
  * @phpstan-type GraphragGetStatsResponseShape = array{

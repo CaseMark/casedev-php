@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\VaultIngestResponse;
+namespace CaseDev\Vault\VaultIngestResponse;
 
 /**
  * Current ingestion status. 'stored' for file types without text extraction (no chunks/vectors created).

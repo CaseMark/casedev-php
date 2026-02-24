@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1;
+namespace CaseDev\Search\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Search\V1\V1ResearchParams\Model;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Search\V1\V1ResearchParams\Model;
 
 /**
  * Performs deep research by conducting multi-step analysis, gathering information from multiple sources, and providing comprehensive insights. Ideal for legal research, case analysis, and due diligence investigations.
  *
- * @see Casedev\Services\Search\V1Service::research()
+ * @see CaseDev\Services\Search\V1Service::research()
  *
  * @phpstan-type V1ResearchParamsShape = array{
  *   instructions: string,

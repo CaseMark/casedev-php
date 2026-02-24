@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Core\Concerns;
+namespace CaseDev\Core\Concerns;
 
-use Casedev\Core\Conversion;
-use Casedev\Core\Conversion\DumpState;
-use Casedev\RequestOptions;
+use CaseDev\Core\Conversion;
+use CaseDev\Core\Conversion\DumpState;
+use CaseDev\RequestOptions;
 
 /**
  * @internal

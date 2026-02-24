@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Ocr\V1;
+namespace CaseDev\Ocr\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Ocr\V1\V1GetResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Ocr\V1\V1GetResponse\Status;
 
 /**
  * @phpstan-type V1GetResponseShape = array{

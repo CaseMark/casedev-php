@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\PrivilegeContract;
-use Casedev\Services\Privilege\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\PrivilegeContract;
+use CaseDev\Services\Privilege\V1Service;
 
 final class PrivilegeService implements PrivilegeContract
 {

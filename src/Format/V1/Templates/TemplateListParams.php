@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1\Templates;
+namespace CaseDev\Format\V1\Templates;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all format templates for the organization. Templates define reusable document formatting patterns with customizable variables for consistent legal document generation.
  *
  * Filter by type to get specific template categories like contracts, pleadings, or correspondence.
  *
- * @see Casedev\Services\Format\V1\TemplatesService::list()
+ * @see CaseDev\Services\Format\V1\TemplatesService::list()
  *
  * @phpstan-type TemplateListParamsShape = array{type?: string|null}
  */

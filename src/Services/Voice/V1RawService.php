@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace CaseDev\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\V1RawContract;
-use Casedev\Voice\V1\V1ListVoicesParams;
-use Casedev\Voice\V1\V1ListVoicesParams\Sort;
-use Casedev\Voice\V1\V1ListVoicesParams\SortDirection;
-use Casedev\Voice\V1\V1ListVoicesParams\VoiceType;
-use Casedev\Voice\V1\V1ListVoicesResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\V1RawContract;
+use CaseDev\Voice\V1\V1ListVoicesParams;
+use CaseDev\Voice\V1\V1ListVoicesParams\Sort;
+use CaseDev\Voice\V1\V1ListVoicesParams\SortDirection;
+use CaseDev\Voice\V1\V1ListVoicesParams\VoiceType;
+use CaseDev\Voice\V1\V1ListVoicesResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
 {

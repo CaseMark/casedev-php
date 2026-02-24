@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Llm\V1;
+namespace CaseDev\Services\Llm\V1;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams;
-use Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
-use Casedev\Llm\V1\Chat\ChatNewCompletionResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Llm\V1\ChatRawContract;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams;
+use CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+use CaseDev\Llm\V1\Chat\ChatNewCompletionResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Llm\V1\ChatRawContract;
 
 /**
- * @phpstan-import-type MessageShape from \Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type MessageShape from \CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ChatRawService implements ChatRawContract
 {
@@ -32,6 +32,7 @@ final class ChatRawService implements ChatRawContract
      *
      * @param array{
      *   messages: list<Message|MessageShape>,
+     *   casemarkShowReasoning?: bool,
      *   frequencyPenalty?: float,
      *   maxTokens?: int,
      *   model?: string,

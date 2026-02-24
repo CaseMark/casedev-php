@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\V1CreateEmbeddingParams;
+namespace CaseDev\Llm\V1\V1CreateEmbeddingParams;
 
 /**
  * Format for returned embeddings.

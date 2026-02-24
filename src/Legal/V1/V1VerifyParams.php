@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1;
+namespace CaseDev\Legal\V1;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Validates legal citations against authoritative case law sources (CourtListener database of ~10M cases). Returns verification status and case metadata for each citation found in the input text. Accepts either a single citation or a full text block containing multiple citations.
  *
- * @see Casedev\Services\Legal\V1Service::verify()
+ * @see CaseDev\Services\Legal\V1Service::verify()
  *
  * @phpstan-type V1VerifyParamsShape = array{text: string}
  */

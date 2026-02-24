@@ -2,34 +2,46 @@
 
 declare(strict_types=1);
 
-namespace Casedev;
+namespace CaseDev;
 
-use Casedev\Core\BaseClient;
-use Casedev\Core\Util;
-use Casedev\Services\ApplicationsService;
-use Casedev\Services\ComputeService;
-use Casedev\Services\DatabaseService;
-use Casedev\Services\FormatService;
-use Casedev\Services\LegalService;
-use Casedev\Services\LlmService;
-use Casedev\Services\MemoryService;
-use Casedev\Services\OcrService;
-use Casedev\Services\PrivilegeService;
-use Casedev\Services\SearchService;
-use Casedev\Services\SuperdocService;
-use Casedev\Services\TranslateService;
-use Casedev\Services\VaultService;
-use Casedev\Services\VoiceService;
+use CaseDev\Core\BaseClient;
+use CaseDev\Core\Util;
+use CaseDev\Services\AgentService;
+use CaseDev\Services\ApplicationsService;
+use CaseDev\Services\ComputeService;
+use CaseDev\Services\DatabaseService;
+use CaseDev\Services\FormatService;
+use CaseDev\Services\LegalService;
+use CaseDev\Services\LlmService;
+use CaseDev\Services\MemoryService;
+use CaseDev\Services\OcrService;
+use CaseDev\Services\PrivilegeService;
+use CaseDev\Services\SearchService;
+use CaseDev\Services\SuperdocService;
+use CaseDev\Services\SystemService;
+use CaseDev\Services\TranslateService;
+use CaseDev\Services\VaultService;
+use CaseDev\Services\VoiceService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Casedev\Core\BaseClient
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type NormalizedRequest from \CaseDev\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 class Client extends BaseClient
 {
     public string $apiKey;
+
+    /**
+     * @api
+     */
+    public AgentService $agent;
+
+    /**
+     * @api
+     */
+    public SystemService $system;
 
     /**
      * @api
@@ -139,6 +151,8 @@ class Client extends BaseClient
             options: $options
         );
 
+        $this->agent = new AgentService($this);
+        $this->system = new SystemService($this);
         $this->applications = new ApplicationsService($this);
         $this->compute = new ComputeService($this);
         $this->database = new DatabaseService($this);

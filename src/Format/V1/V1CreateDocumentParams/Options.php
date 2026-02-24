@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Format\V1\V1CreateDocumentParams;
+namespace CaseDev\Format\V1\V1CreateDocumentParams;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Format\V1\V1CreateDocumentParams\Options\Component;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Format\V1\V1CreateDocumentParams\Options\Component;
 
 /**
- * @phpstan-import-type ComponentShape from \Casedev\Format\V1\V1CreateDocumentParams\Options\Component
+ * @phpstan-import-type ComponentShape from \CaseDev\Format\V1\V1CreateDocumentParams\Options\Component
  *
  * @phpstan-type OptionsShape = array{
  *   components?: list<Component|ComponentShape>|null

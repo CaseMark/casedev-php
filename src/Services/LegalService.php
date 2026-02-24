@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\LegalContract;
-use Casedev\Services\Legal\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\LegalContract;
+use CaseDev\Services\Legal\V1Service;
 
 final class LegalService implements LegalContract
 {

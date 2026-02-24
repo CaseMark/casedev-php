@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Multipart;
+namespace CaseDev\Vault\Multipart;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\Multipart\MultipartGetPartURLsParams\Part;
 
 /**
- * Generate presigned URLs for individual multipart upload parts.
+ * Generate presigned URLs for individual multipart upload parts (live).
  *
- * @see Casedev\Services\Vault\MultipartService::getPartURLs()
+ * @see CaseDev\Services\Vault\MultipartService::getPartURLs()
  *
- * @phpstan-import-type PartShape from \Casedev\Vault\Multipart\MultipartGetPartURLsParams\Part
+ * @phpstan-import-type PartShape from \CaseDev\Vault\Multipart\MultipartGetPartURLsParams\Part
  *
  * @phpstan-type MultipartGetPartURLsParamsShape = array{
  *   objectID: string, parts: list<Part|PartShape>, uploadID: string

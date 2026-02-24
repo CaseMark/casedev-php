@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Deployments;
+namespace CaseDev\Applications\V1\Deployments;
 
-use Casedev\Applications\V1\Deployments\DeploymentListParams\Target;
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Applications\V1\Deployments\DeploymentListParams\Target;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * List deployments for a project.
  *
- * @see Casedev\Services\Applications\V1\DeploymentsService::list()
+ * @see CaseDev\Services\Applications\V1\DeploymentsService::list()
  *
  * @phpstan-type DeploymentListParamsShape = array{
  *   projectID: string,

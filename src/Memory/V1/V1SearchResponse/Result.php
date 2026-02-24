@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Memory\V1\V1SearchResponse;
+namespace CaseDev\Memory\V1\V1SearchResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Memory\V1\V1SearchResponse\Result\Tags;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Memory\V1\V1SearchResponse\Result\Tags;
 
 /**
- * @phpstan-import-type TagsShape from \Casedev\Memory\V1\V1SearchResponse\Result\Tags
+ * @phpstan-import-type TagsShape from \CaseDev\Memory\V1\V1SearchResponse\Result\Tags
  *
  * @phpstan-type ResultShape = array{
  *   id?: string|null,

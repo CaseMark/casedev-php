@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects\ProjectCreateParams;
+namespace CaseDev\Database\V1\Projects\ProjectCreateParams;
 
 /**
  * AWS region for database deployment.

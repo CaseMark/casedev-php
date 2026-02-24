@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Database\V1\Projects;
+namespace CaseDev\Database\V1\Projects;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Database\V1\Projects\ProjectNewResponse\DefaultBranch;
-use Casedev\Database\V1\Projects\ProjectNewResponse\Status;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Database\V1\Projects\ProjectNewResponse\DefaultBranch;
+use CaseDev\Database\V1\Projects\ProjectNewResponse\Status;
 
 /**
- * @phpstan-import-type DefaultBranchShape from \Casedev\Database\V1\Projects\ProjectNewResponse\DefaultBranch
+ * @phpstan-import-type DefaultBranchShape from \CaseDev\Database\V1\Projects\ProjectNewResponse\DefaultBranch
  *
  * @phpstan-type ProjectNewResponseShape = array{
  *   id: string,

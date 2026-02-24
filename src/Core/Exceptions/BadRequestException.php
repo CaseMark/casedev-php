@@ -1,9 +1,9 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class BadRequestException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'Casedev Bad Request Exception';
+    protected const DESC = 'CaseDev Bad Request Exception';
 }

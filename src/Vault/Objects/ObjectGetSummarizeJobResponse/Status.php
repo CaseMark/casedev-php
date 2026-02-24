@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
+namespace CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
 
 /**
  * Current job status.

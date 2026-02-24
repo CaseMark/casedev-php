@@ -2,15 +2,14 @@
 
 namespace Tests\Services\Format\V1;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Format\V1\Templates\TemplateGetResponse;
-use Casedev\Format\V1\Templates\TemplateListResponse;
-use Casedev\Format\V1\Templates\TemplateNewResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Format\V1\Templates\TemplateGetResponse;
+use CaseDev\Format\V1\Templates\TemplateListResponse;
+use CaseDev\Format\V1\Templates\TemplateNewResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -33,10 +32,6 @@ final class TemplatesTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->format->v1->templates->create(
             content: 'content',
             name: 'name',
@@ -50,10 +45,6 @@ final class TemplatesTest extends TestCase
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->format->v1->templates->create(
             content: 'content',
             name: 'name',
@@ -71,10 +62,6 @@ final class TemplatesTest extends TestCase
     #[Test]
     public function testRetrieve(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->format->v1->templates->retrieve('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -84,10 +71,6 @@ final class TemplatesTest extends TestCase
     #[Test]
     public function testList(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->format->v1->templates->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

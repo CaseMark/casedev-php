@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Memory;
+namespace CaseDev\ServiceContracts\Memory;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Memory\V1\V1CreateParams\Message;
-use Casedev\Memory\V1\V1DeleteAllResponse;
-use Casedev\Memory\V1\V1DeleteResponse;
-use Casedev\Memory\V1\V1GetResponse;
-use Casedev\Memory\V1\V1ListResponse;
-use Casedev\Memory\V1\V1NewResponse;
-use Casedev\Memory\V1\V1SearchResponse;
-use Casedev\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Memory\V1\V1CreateParams\Message;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type MessageShape from \Casedev\Memory\V1\V1CreateParams\Message
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type MessageShape from \CaseDev\Memory\V1\V1CreateParams\Message
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

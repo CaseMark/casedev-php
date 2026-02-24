@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\ComputeContract;
-use Casedev\Services\Compute\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\ComputeContract;
+use CaseDev\Services\Compute\V1Service;
 
 final class ComputeService implements ComputeContract
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\DatabaseContract;
-use Casedev\Services\Database\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\DatabaseContract;
+use CaseDev\Services\Database\V1Service;
 
 final class DatabaseService implements DatabaseContract
 {

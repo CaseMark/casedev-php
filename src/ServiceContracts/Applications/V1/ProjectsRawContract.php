@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Applications\V1;
+namespace CaseDev\ServiceContracts\Applications\V1;
 
-use Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams;
-use Casedev\Applications\V1\Projects\ProjectCreateDomainParams;
-use Casedev\Applications\V1\Projects\ProjectCreateEnvParams;
-use Casedev\Applications\V1\Projects\ProjectCreateParams;
-use Casedev\Applications\V1\Projects\ProjectDeleteDomainParams;
-use Casedev\Applications\V1\Projects\ProjectDeleteEnvParams;
-use Casedev\Applications\V1\Projects\ProjectDeleteParams;
-use Casedev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
-use Casedev\Applications\V1\Projects\ProjectListDeploymentsParams;
-use Casedev\Applications\V1\Projects\ProjectListEnvParams;
-use Casedev\Applications\V1\Projects\ProjectListResponse;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateDomainParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams;
+use CaseDev\Applications\V1\Projects\ProjectDeleteDomainParams;
+use CaseDev\Applications\V1\Projects\ProjectDeleteEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectDeleteParams;
+use CaseDev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
+use CaseDev\Applications\V1\Projects\ProjectListEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectListResponse;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface ProjectsRawContract
 {

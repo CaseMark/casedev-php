@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\VoiceContract;
-use Casedev\Services\Voice\StreamingService;
-use Casedev\Services\Voice\TranscriptionService;
-use Casedev\Services\Voice\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\VoiceContract;
+use CaseDev\Services\Voice\StreamingService;
+use CaseDev\Services\Voice\TranscriptionService;
+use CaseDev\Services\Voice\V1Service;
 
 final class VoiceService implements VoiceContract
 {

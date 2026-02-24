@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Compute\V1;
+namespace CaseDev\ServiceContracts\Compute\V1;
 
-use Casedev\Compute\V1\Environments\EnvironmentDeleteResponse;
-use Casedev\Compute\V1\Environments\EnvironmentGetResponse;
-use Casedev\Compute\V1\Environments\EnvironmentListResponse;
-use Casedev\Compute\V1\Environments\EnvironmentNewResponse;
-use Casedev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
+use CaseDev\Compute\V1\Environments\EnvironmentDeleteResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentGetResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentListResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentNewResponse;
+use CaseDev\Compute\V1\Environments\EnvironmentSetDefaultResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface EnvironmentsContract
 {

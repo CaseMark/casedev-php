@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Compute\V1\Secrets;
+namespace CaseDev\Compute\V1\Secrets;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Creates a new secret group in a compute environment. Secret groups organize related secrets for use in serverless functions and workflows. If no environment is specified, the group is created in the default environment.
@@ -19,7 +19,7 @@ use Casedev\Core\Contracts\BaseModel;
  * - Validation of group names
  * - Conflict detection for existing groups
  *
- * @see Casedev\Services\Compute\V1\SecretsService::create()
+ * @see CaseDev\Services\Compute\V1\SecretsService::create()
  *
  * @phpstan-type SecretCreateParamsShape = array{
  *   name: string, description?: string|null, env?: string|null

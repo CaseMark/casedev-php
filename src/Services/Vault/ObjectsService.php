@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace CaseDev\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\ObjectsContract;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
-use Casedev\Vault\Objects\ObjectDeleteParams\Force;
-use Casedev\Vault\Objects\ObjectDeleteResponse;
-use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
-use Casedev\Vault\Objects\ObjectGetResponse;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
-use Casedev\Vault\Objects\ObjectGetTextResponse;
-use Casedev\Vault\Objects\ObjectListResponse;
-use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectUpdateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Vault\ObjectsContract;
+use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
+use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetResponse;
+use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
+use CaseDev\Vault\Objects\ObjectGetTextResponse;
+use CaseDev\Vault\Objects\ObjectListResponse;
+use CaseDev\Vault\Objects\ObjectNewPresignedURLResponse;
+use CaseDev\Vault\Objects\ObjectUpdateResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ObjectsService implements ObjectsContract
 {
@@ -249,7 +249,7 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      *
-     * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+     * Get the status of a CaseMark summary workflow job.
      *
      * @param string $jobID CaseMark job ID
      * @param string $id Vault ID

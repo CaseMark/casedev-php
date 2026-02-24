@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace CaseDev\Services\Applications\V1;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\WorkflowsContract;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Applications\V1\WorkflowsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class WorkflowsService implements WorkflowsContract
 {

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice\V1;
+namespace CaseDev\Services\Voice\V1;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\V1\SpeakRawContract;
-use Casedev\Voice\V1\Speak\SpeakCreateParams;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\ModelID;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
-use Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\V1\SpeakRawContract;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\ModelID;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
+use CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
 
 /**
- * @phpstan-import-type VoiceSettingsShape from \Casedev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type VoiceSettingsShape from \CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SpeakRawService implements SpeakRawContract
 {

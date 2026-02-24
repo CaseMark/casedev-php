@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\V1CreateEmbeddingParams;
+namespace CaseDev\Llm\V1\V1CreateEmbeddingParams;
 
-use Casedev\Core\Concerns\SdkUnion;
-use Casedev\Core\Conversion\Contracts\Converter;
-use Casedev\Core\Conversion\Contracts\ConverterSource;
-use Casedev\Core\Conversion\ListOf;
+use CaseDev\Core\Concerns\SdkUnion;
+use CaseDev\Core\Conversion\Contracts\Converter;
+use CaseDev\Core\Conversion\Contracts\ConverterSource;
+use CaseDev\Core\Conversion\ListOf;
 
 /**
  * Text or array of texts to create embeddings for.

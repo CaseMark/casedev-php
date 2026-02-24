@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault\Multipart\MultipartGetPartURLsResponse;
+namespace CaseDev\Vault\Multipart\MultipartGetPartURLsResponse;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type URLShape = array{partNumber?: int|null, url?: string|null}

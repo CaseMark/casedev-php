@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Applications\V1;
+namespace CaseDev\Services\Applications\V1;
 
-use Casedev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
-use Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
-use Casedev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
-use Casedev\Applications\V1\Projects\ProjectListResponse;
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Applications\V1\ProjectsContract;
+use CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Type;
+use CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
+use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
+use CaseDev\Applications\V1\Projects\ProjectListResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Applications\V1\ProjectsContract;
 
 /**
- * @phpstan-import-type EnvironmentVariableShape from \Casedev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
- * @phpstan-import-type EnvironmentVariableShape from \Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable
+ * @phpstan-import-type EnvironmentVariableShape from \CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable as EnvironmentVariableShape1
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ProjectsService implements ProjectsContract
 {
@@ -152,7 +152,7 @@ final class ProjectsService implements ProjectsContract
      * Trigger a new deployment for a project.
      *
      * @param string $id Project ID
-     * @param list<\Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable|EnvironmentVariableShape1> $environmentVariables Additional environment variables to set or update before deployment
+     * @param list<\CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable|EnvironmentVariableShape1> $environmentVariables Additional environment variables to set or update before deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -207,7 +207,7 @@ final class ProjectsService implements ProjectsContract
      *
      * @param string $id Project ID
      * @param string $key Environment variable name
-     * @param list<\Casedev\Applications\V1\Projects\ProjectCreateEnvParams\Target|value-of<\Casedev\Applications\V1\Projects\ProjectCreateEnvParams\Target>> $target Deployment targets for this variable
+     * @param list<\CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Target|value-of<\CaseDev\Applications\V1\Projects\ProjectCreateEnvParams\Target>> $target Deployment targets for this variable
      * @param string $value Environment variable value
      * @param string $gitBranch Specific git branch (for preview deployments)
      * @param Type|value-of<Type> $type Variable type

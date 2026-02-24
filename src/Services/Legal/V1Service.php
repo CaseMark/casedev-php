@@ -2,24 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Legal;
+namespace CaseDev\Services\Legal;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\Legal\V1\V1FindResponse;
-use Casedev\Legal\V1\V1GetCitationsFromURLResponse;
-use Casedev\Legal\V1\V1GetCitationsResponse;
-use Casedev\Legal\V1\V1GetFullTextResponse;
-use Casedev\Legal\V1\V1ListJurisdictionsResponse;
-use Casedev\Legal\V1\V1ResearchResponse;
-use Casedev\Legal\V1\V1SimilarResponse;
-use Casedev\Legal\V1\V1VerifyResponse;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Legal\V1Contract;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\Legal\V1\V1FindResponse;
+use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
+use CaseDev\Legal\V1\V1GetCitationsResponse;
+use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
+use CaseDev\Legal\V1\V1PatentSearchParams\ApplicationType;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortBy;
+use CaseDev\Legal\V1\V1PatentSearchParams\SortOrder;
+use CaseDev\Legal\V1\V1PatentSearchResponse;
+use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SimilarResponse;
+use CaseDev\Legal\V1\V1TrademarkSearchResponse;
+use CaseDev\Legal\V1\V1VerifyResponse;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Legal\V1Contract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {
@@ -172,6 +177,68 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
+     * Search the USPTO Open Data Portal for US patent applications and granted patents. Supports free-text queries, field-specific search, filters by assignee/inventor/status/type, date ranges, and pagination. Covers applications filed on or after January 1, 2001. Data is refreshed daily.
+     *
+     * @param string $query Free-text search across all patent fields, or field-specific query (e.g. "applicationMetaData.patentNumber:11234567"). Supports AND, OR, NOT operators.
+     * @param string $applicationStatus Filter by application status (e.g. "Patented Case", "Abandoned", "Pending")
+     * @param ApplicationType|value-of<ApplicationType> $applicationType Filter by application type
+     * @param string $assignee Filter by assignee/owner name (e.g. "Google LLC")
+     * @param string $filingDateFrom Start of filing date range (YYYY-MM-DD)
+     * @param string $filingDateTo End of filing date range (YYYY-MM-DD)
+     * @param string $grantDateFrom Start of grant date range (YYYY-MM-DD)
+     * @param string $grantDateTo End of grant date range (YYYY-MM-DD)
+     * @param string $inventor Filter by inventor name
+     * @param int $limit Number of results to return (default 25, max 100)
+     * @param int $offset Starting position for pagination
+     * @param SortBy|value-of<SortBy> $sortBy Field to sort results by
+     * @param SortOrder|value-of<SortOrder> $sortOrder Sort order (default desc, newest first)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function patentSearch(
+        string $query,
+        ?string $applicationStatus = null,
+        ApplicationType|string|null $applicationType = null,
+        ?string $assignee = null,
+        ?string $filingDateFrom = null,
+        ?string $filingDateTo = null,
+        ?string $grantDateFrom = null,
+        ?string $grantDateTo = null,
+        ?string $inventor = null,
+        int $limit = 25,
+        int $offset = 0,
+        SortBy|string $sortBy = 'filingDate',
+        SortOrder|string $sortOrder = 'desc',
+        RequestOptions|array|null $requestOptions = null,
+    ): V1PatentSearchResponse {
+        $params = Util::removeNulls(
+            [
+                'query' => $query,
+                'applicationStatus' => $applicationStatus,
+                'applicationType' => $applicationType,
+                'assignee' => $assignee,
+                'filingDateFrom' => $filingDateFrom,
+                'filingDateTo' => $filingDateTo,
+                'grantDateFrom' => $grantDateFrom,
+                'grantDateTo' => $grantDateTo,
+                'inventor' => $inventor,
+                'limit' => $limit,
+                'offset' => $offset,
+                'sortBy' => $sortBy,
+                'sortOrder' => $sortOrder,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->patentSearch(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Perform comprehensive legal research with multiple query variations. Uses advanced deep search to find relevant sources across different phrasings of the legal issue.
      *
      * @param string $query Primary search query
@@ -235,6 +302,35 @@ final class V1Service implements V1Contract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->similar(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Look up trademark status and details from the USPTO Trademark Status & Document Retrieval (TSDR) system. Supports lookup by serial number or registration number. Returns mark text, status, owner, goods/services, Nice classification, filing/registration dates, and more.
+     *
+     * @param string $registrationNumber USPTO registration number (e.g. "6123456"). Provide either serialNumber or registrationNumber.
+     * @param string $serialNumber USPTO serial number (e.g. "97123456"). Provide either serialNumber or registrationNumber.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function trademarkSearch(
+        ?string $registrationNumber = null,
+        ?string $serialNumber = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1TrademarkSearchResponse {
+        $params = Util::removeNulls(
+            [
+                'registrationNumber' => $registrationNumber,
+                'serialNumber' => $serialNumber,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->trademarkSearch(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

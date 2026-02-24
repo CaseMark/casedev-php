@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\PrivilegeRawContract;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\PrivilegeRawContract;
 
 final class PrivilegeRawService implements PrivilegeRawContract
 {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Ocr;
+namespace CaseDev\ServiceContracts\Ocr;
 
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Ocr\V1\V1DownloadParams\Type;
-use Casedev\Ocr\V1\V1GetResponse;
-use Casedev\Ocr\V1\V1ProcessParams\Engine;
-use Casedev\Ocr\V1\V1ProcessParams\Features;
-use Casedev\Ocr\V1\V1ProcessResponse;
-use Casedev\RequestOptions;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Ocr\V1\V1DownloadParams\Type;
+use CaseDev\Ocr\V1\V1GetResponse;
+use CaseDev\Ocr\V1\V1ProcessParams\Engine;
+use CaseDev\Ocr\V1\V1ProcessParams\Features;
+use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type FeaturesShape from \Casedev\Ocr\V1\V1ProcessParams\Features
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type FeaturesShape from \CaseDev\Ocr\V1\V1ProcessParams\Features
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
 {

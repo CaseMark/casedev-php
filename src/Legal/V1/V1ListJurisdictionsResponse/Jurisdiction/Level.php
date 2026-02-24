@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Legal\V1\V1ListJurisdictionsResponse\Jurisdiction;
+namespace CaseDev\Legal\V1\V1ListJurisdictionsResponse\Jurisdiction;
 
 /**
  * Jurisdiction level.

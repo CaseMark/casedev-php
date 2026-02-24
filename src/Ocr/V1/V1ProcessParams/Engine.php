@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Ocr\V1\V1ProcessParams;
+namespace CaseDev\Ocr\V1\V1ProcessParams;
 
 /**
  * OCR engine to use.

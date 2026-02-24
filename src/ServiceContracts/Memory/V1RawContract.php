@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Casedev\ServiceContracts\Memory;
+namespace CaseDev\ServiceContracts\Memory;
 
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Memory\V1\V1CreateParams;
-use Casedev\Memory\V1\V1DeleteAllParams;
-use Casedev\Memory\V1\V1DeleteAllResponse;
-use Casedev\Memory\V1\V1DeleteResponse;
-use Casedev\Memory\V1\V1GetResponse;
-use Casedev\Memory\V1\V1ListParams;
-use Casedev\Memory\V1\V1ListResponse;
-use Casedev\Memory\V1\V1NewResponse;
-use Casedev\Memory\V1\V1SearchParams;
-use Casedev\Memory\V1\V1SearchResponse;
-use Casedev\RequestOptions;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Memory\V1\V1CreateParams;
+use CaseDev\Memory\V1\V1DeleteAllParams;
+use CaseDev\Memory\V1\V1DeleteAllResponse;
+use CaseDev\Memory\V1\V1DeleteResponse;
+use CaseDev\Memory\V1\V1GetResponse;
+use CaseDev\Memory\V1\V1ListParams;
+use CaseDev\Memory\V1\V1ListResponse;
+use CaseDev\Memory\V1\V1NewResponse;
+use CaseDev\Memory\V1\V1SearchParams;
+use CaseDev\Memory\V1\V1SearchResponse;
+use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1RawContract
 {

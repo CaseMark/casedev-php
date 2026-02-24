@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Casedev\Core\Util;
+use CaseDev\Core\Util;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
@@ -26,7 +26,7 @@ class ClientTest extends TestCase
 
         $transporter->setDefaultResponse($mockRsp);
 
-        $client = new \Casedev\Client(
+        $client = new \CaseDev\Client(
             baseUrl: 'http://localhost',
             apiKey: 'My API Key',
             requestOptions: ['transporter' => $transporter],

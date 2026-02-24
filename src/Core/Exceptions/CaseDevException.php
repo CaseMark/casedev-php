@@ -1,11 +1,11 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
-class CasedevException extends \Exception
+class CaseDevException extends \Exception
 {
     /** @var string */
-    protected const DESC = 'Casedev Error';
+    protected const DESC = 'CaseDev Error';
 
     public function __construct(string $message, int $code = 0, ?\Throwable $previous = null)
     {

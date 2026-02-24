@@ -1,9 +1,9 @@
 <?php
 
-namespace Casedev\Core\Exceptions;
+namespace CaseDev\Core\Exceptions;
 
 class APIConnectionException extends APIException
 {
     /** @var string */
-    protected const DESC = 'Casedev API Connection Error';
+    protected const DESC = 'CaseDev API Connection Error';
 }

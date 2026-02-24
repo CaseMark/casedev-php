@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
+namespace CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message;
 
 /**
  * The role of the message author.

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Compute\V1;
+namespace CaseDev\Services\Compute\V1;
 
-use Casedev\Client;
-use Casedev\Compute\V1\InstanceTypes\InstanceTypeListResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Compute\V1\InstanceTypesContract;
+use CaseDev\Client;
+use CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Compute\V1\InstanceTypesContract;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class InstanceTypesService implements InstanceTypesContract
 {

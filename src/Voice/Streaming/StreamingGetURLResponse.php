@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\Streaming;
+namespace CaseDev\Voice\Streaming;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Voice\Streaming\StreamingGetURLResponse\AudioFormat;
-use Casedev\Voice\Streaming\StreamingGetURLResponse\Pricing;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\Streaming\StreamingGetURLResponse\AudioFormat;
+use CaseDev\Voice\Streaming\StreamingGetURLResponse\Pricing;
 
 /**
- * @phpstan-import-type AudioFormatShape from \Casedev\Voice\Streaming\StreamingGetURLResponse\AudioFormat
- * @phpstan-import-type PricingShape from \Casedev\Voice\Streaming\StreamingGetURLResponse\Pricing
+ * @phpstan-import-type AudioFormatShape from \CaseDev\Voice\Streaming\StreamingGetURLResponse\AudioFormat
+ * @phpstan-import-type PricingShape from \CaseDev\Voice\Streaming\StreamingGetURLResponse\Pricing
  *
  * @phpstan-type StreamingGetURLResponseShape = array{
  *   audioFormat?: null|AudioFormat|AudioFormatShape,

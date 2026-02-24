@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services;
+namespace CaseDev\Services;
 
-use Casedev\Client;
-use Casedev\ServiceContracts\TranslateContract;
-use Casedev\Services\Translate\V1Service;
+use CaseDev\Client;
+use CaseDev\ServiceContracts\TranslateContract;
+use CaseDev\Services\Translate\V1Service;
 
 final class TranslateService implements TranslateContract
 {

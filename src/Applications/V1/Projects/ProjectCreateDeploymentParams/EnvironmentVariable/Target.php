@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable;
+namespace CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable;
 
 enum Target: string
 {

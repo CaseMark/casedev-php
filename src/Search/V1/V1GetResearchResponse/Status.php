@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Search\V1\V1GetResearchResponse;
+namespace CaseDev\Search\V1\V1GetResearchResponse;
 
 /**
  * Current status of the research task.

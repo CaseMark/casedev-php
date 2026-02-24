@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Vault;
+namespace CaseDev\Services\Vault;
 
-use Casedev\Client;
-use Casedev\Core\Contracts\BaseResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Vault\ObjectsRawContract;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams;
-use Casedev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
-use Casedev\Vault\Objects\ObjectDeleteParams;
-use Casedev\Vault\Objects\ObjectDeleteParams\Force;
-use Casedev\Vault\Objects\ObjectDeleteResponse;
-use Casedev\Vault\Objects\ObjectDownloadParams;
-use Casedev\Vault\Objects\ObjectGetOcrWordsParams;
-use Casedev\Vault\Objects\ObjectGetOcrWordsResponse;
-use Casedev\Vault\Objects\ObjectGetResponse;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobParams;
-use Casedev\Vault\Objects\ObjectGetSummarizeJobResponse;
-use Casedev\Vault\Objects\ObjectGetTextParams;
-use Casedev\Vault\Objects\ObjectGetTextResponse;
-use Casedev\Vault\Objects\ObjectListResponse;
-use Casedev\Vault\Objects\ObjectNewPresignedURLResponse;
-use Casedev\Vault\Objects\ObjectRetrieveParams;
-use Casedev\Vault\Objects\ObjectUpdateParams;
-use Casedev\Vault\Objects\ObjectUpdateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Vault\ObjectsRawContract;
+use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams;
+use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
+use CaseDev\Vault\Objects\ObjectDeleteParams;
+use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
+use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectDownloadParams;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsParams;
+use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetResponse;
+use CaseDev\Vault\Objects\ObjectGetSummarizeJobParams;
+use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
+use CaseDev\Vault\Objects\ObjectGetTextParams;
+use CaseDev\Vault\Objects\ObjectGetTextResponse;
+use CaseDev\Vault\Objects\ObjectListResponse;
+use CaseDev\Vault\Objects\ObjectNewPresignedURLResponse;
+use CaseDev\Vault\Objects\ObjectRetrieveParams;
+use CaseDev\Vault\Objects\ObjectUpdateParams;
+use CaseDev\Vault\Objects\ObjectUpdateResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ObjectsRawService implements ObjectsRawContract
 {
@@ -242,6 +242,7 @@ final class ObjectsRawService implements ObjectsRawContract
         return $this->client->request(
             method: 'get',
             path: ['vault/%1$s/objects/%2$s/download', $id, $objectID],
+            headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
         );
@@ -287,7 +288,7 @@ final class ObjectsRawService implements ObjectsRawContract
     /**
      * @api
      *
-     * Get the status of a CaseMark summary workflow job. If the job has been processing for too long, this endpoint will poll CaseMark directly to recover stuck jobs.
+     * Get the status of a CaseMark summary workflow job.
      *
      * @param string $jobID CaseMark job ID
      * @param array{id: string, objectID: string}|ObjectGetSummarizeJobParams $params

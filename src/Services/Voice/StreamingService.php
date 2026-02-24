@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Voice;
+namespace CaseDev\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Voice\StreamingContract;
-use Casedev\Voice\Streaming\StreamingGetURLResponse;
+use CaseDev\Client;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Voice\StreamingContract;
+use CaseDev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class StreamingService implements StreamingContract
 {

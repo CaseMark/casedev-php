@@ -2,13 +2,12 @@
 
 namespace Tests\Services\Voice;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Voice\Streaming\StreamingGetURLResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Voice\Streaming\StreamingGetURLResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -31,10 +30,6 @@ final class StreamingTest extends TestCase
     #[Test]
     public function testGetURL(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->voice->streaming->getURL();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -2,15 +2,14 @@
 
 namespace Tests\Services\Translate;
 
-use Casedev\Client;
-use Casedev\Core\Util;
-use Casedev\Translate\V1\V1DetectResponse;
-use Casedev\Translate\V1\V1ListLanguagesResponse;
-use Casedev\Translate\V1\V1TranslateResponse;
+use CaseDev\Client;
+use CaseDev\Core\Util;
+use CaseDev\Translate\V1\V1DetectResponse;
+use CaseDev\Translate\V1\V1ListLanguagesResponse;
+use CaseDev\Translate\V1\V1TranslateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -33,10 +32,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDetect(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->translate->v1->detect(q: 'string');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -46,10 +41,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDetectWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->translate->v1->detect(q: 'string');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -59,10 +50,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testListLanguages(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->translate->v1->listLanguages();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,10 +59,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testTranslate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->translate->v1->translate(
             q: 'string',
             target: 'es'
@@ -88,10 +71,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testTranslateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
         $result = $this->client->translate->v1->translate(
             q: 'string',
             target: 'es',

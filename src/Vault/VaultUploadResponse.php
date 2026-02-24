@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Vault;
+namespace CaseDev\Vault;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Vault\VaultUploadResponse\Instructions;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultUploadResponse\Instructions;
 
 /**
- * @phpstan-import-type InstructionsShape from \Casedev\Vault\VaultUploadResponse\Instructions
+ * @phpstan-import-type InstructionsShape from \CaseDev\Vault\VaultUploadResponse\Instructions
  *
  * @phpstan-type VaultUploadResponseShape = array{
  *   autoIndex?: bool|null,

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Voice\V1;
+namespace CaseDev\Voice\V1;
 
-use Casedev\Core\Attributes\Optional;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Contracts\BaseModel;
-use Casedev\Voice\V1\V1ListVoicesResponse\Voice;
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Voice\V1\V1ListVoicesResponse\Voice;
 
 /**
- * @phpstan-import-type VoiceShape from \Casedev\Voice\V1\V1ListVoicesResponse\Voice
+ * @phpstan-import-type VoiceShape from \CaseDev\Voice\V1\V1ListVoicesResponse\Voice
  *
  * @phpstan-type V1ListVoicesResponseShape = array{
  *   nextPageToken?: string|null,

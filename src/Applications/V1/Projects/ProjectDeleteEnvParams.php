@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Applications\V1\Projects;
+namespace CaseDev\Applications\V1\Projects;
 
-use Casedev\Core\Attributes\Required;
-use Casedev\Core\Concerns\SdkModel;
-use Casedev\Core\Concerns\SdkParams;
-use Casedev\Core\Contracts\BaseModel;
+use CaseDev\Core\Attributes\Required;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
 
 /**
  * Delete an environment variable from a project.
  *
- * @see Casedev\Services\Applications\V1\ProjectsService::deleteEnv()
+ * @see CaseDev\Services\Applications\V1\ProjectsService::deleteEnv()
  *
  * @phpstan-type ProjectDeleteEnvParamsShape = array{id: string}
  */

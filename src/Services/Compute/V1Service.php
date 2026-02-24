@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Casedev\Services\Compute;
+namespace CaseDev\Services\Compute;
 
-use Casedev\Client;
-use Casedev\Compute\V1\V1GetUsageResponse;
-use Casedev\Core\Exceptions\APIException;
-use Casedev\Core\Util;
-use Casedev\RequestOptions;
-use Casedev\ServiceContracts\Compute\V1Contract;
-use Casedev\Services\Compute\V1\EnvironmentsService;
-use Casedev\Services\Compute\V1\InstancesService;
-use Casedev\Services\Compute\V1\InstanceTypesService;
-use Casedev\Services\Compute\V1\SecretsService;
+use CaseDev\Client;
+use CaseDev\Compute\V1\V1GetUsageResponse;
+use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
+use CaseDev\RequestOptions;
+use CaseDev\ServiceContracts\Compute\V1Contract;
+use CaseDev\Services\Compute\V1\EnvironmentsService;
+use CaseDev\Services\Compute\V1\InstancesService;
+use CaseDev\Services\Compute\V1\InstanceTypesService;
+use CaseDev\Services\Compute\V1\SecretsService;
 
 /**
- * @phpstan-import-type RequestOpts from \Casedev\RequestOptions
+ * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract
 {
