@@ -2,39 +2,40 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Agent\V1\Run;
+namespace CaseDev\Agent\V1\Execute;
 
-use CaseDev\Agent\V1\Run\RunNewResponse\Status;
+use CaseDev\Agent\V1\Execute\ExecuteNewResponse\Status;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type RunNewResponseShape = array{
- *   id?: string|null,
+ * @phpstan-type ExecuteNewResponseShape = array{
  *   agentID?: string|null,
- *   createdAt?: \DateTimeInterface|null,
- *   objectIDs?: list<string>|null,
+ *   message?: string|null,
+ *   runID?: string|null,
  *   status?: null|Status|value-of<Status>,
  * }
  */
-final class RunNewResponse implements BaseModel
+final class ExecuteNewResponse implements BaseModel
 {
-    /** @use SdkModel<RunNewResponseShape> */
+    /** @use SdkModel<ExecuteNewResponseShape> */
     use SdkModel;
 
-    #[Optional]
-    public ?string $id;
-
+    /**
+     * Ephemeral agent ID (auto-created).
+     */
     #[Optional('agentId')]
     public ?string $agentID;
 
     #[Optional]
-    public ?\DateTimeInterface $createdAt;
+    public ?string $message;
 
-    /** @var list<string>|null $objectIDs */
-    #[Optional('objectIds', list: 'string', nullable: true)]
-    public ?array $objectIDs;
+    /**
+     * Run ID — poll /agent/v1/run/:id/status.
+     */
+    #[Optional('runId')]
+    public ?string $runID;
 
     /** @var value-of<Status>|null $status */
     #[Optional(enum: Status::class)]
@@ -50,35 +51,27 @@ final class RunNewResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string>|null $objectIDs
      * @param Status|value-of<Status>|null $status
      */
     public static function with(
-        ?string $id = null,
         ?string $agentID = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?array $objectIDs = null,
+        ?string $message = null,
+        ?string $runID = null,
         Status|string|null $status = null,
     ): self {
         $self = new self;
 
-        null !== $id && $self['id'] = $id;
         null !== $agentID && $self['agentID'] = $agentID;
-        null !== $createdAt && $self['createdAt'] = $createdAt;
-        null !== $objectIDs && $self['objectIDs'] = $objectIDs;
+        null !== $message && $self['message'] = $message;
+        null !== $runID && $self['runID'] = $runID;
         null !== $status && $self['status'] = $status;
 
         return $self;
     }
 
-    public function withID(string $id): self
-    {
-        $self = clone $this;
-        $self['id'] = $id;
-
-        return $self;
-    }
-
+    /**
+     * Ephemeral agent ID (auto-created).
+     */
     public function withAgentID(string $agentID): self
     {
         $self = clone $this;
@@ -87,21 +80,21 @@ final class RunNewResponse implements BaseModel
         return $self;
     }
 
-    public function withCreatedAt(\DateTimeInterface $createdAt): self
+    public function withMessage(string $message): self
     {
         $self = clone $this;
-        $self['createdAt'] = $createdAt;
+        $self['message'] = $message;
 
         return $self;
     }
 
     /**
-     * @param list<string>|null $objectIDs
+     * Run ID — poll /agent/v1/run/:id/status.
      */
-    public function withObjectIDs(?array $objectIDs): self
+    public function withRunID(string $runID): self
     {
         $self = clone $this;
-        $self['objectIDs'] = $objectIDs;
+        $self['runID'] = $runID;
 
         return $self;
     }

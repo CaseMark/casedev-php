@@ -23,6 +23,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *   completedAt?: \DateTimeInterface|null,
  *   createdAt?: \DateTimeInterface|null,
  *   guidance?: string|null,
+ *   modalSandboxID?: string|null,
  *   model?: string|null,
  *   prompt?: string|null,
  *   result?: null|Result|ResultShape,
@@ -30,6 +31,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *   status?: null|Status|value-of<Status>,
  *   steps?: list<Step|StepShape>|null,
  *   usage?: null|Usage|UsageShape,
+ *   workflowID?: string|null,
  * }
  */
 final class RunGetDetailsResponse implements BaseModel
@@ -51,6 +53,12 @@ final class RunGetDetailsResponse implements BaseModel
 
     #[Optional(nullable: true)]
     public ?string $guidance;
+
+    /**
+     * Modal sandbox ID (available once sandbox is created).
+     */
+    #[Optional('modalSandboxId', nullable: true)]
+    public ?string $modalSandboxID;
 
     #[Optional(nullable: true)]
     public ?string $model;
@@ -81,6 +89,12 @@ final class RunGetDetailsResponse implements BaseModel
     #[Optional(nullable: true)]
     public ?Usage $usage;
 
+    /**
+     * Durable workflow run ID.
+     */
+    #[Optional('workflowId', nullable: true)]
+    public ?string $workflowID;
+
     public function __construct()
     {
         $this->initialize();
@@ -102,6 +116,7 @@ final class RunGetDetailsResponse implements BaseModel
         ?\DateTimeInterface $completedAt = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $guidance = null,
+        ?string $modalSandboxID = null,
         ?string $model = null,
         ?string $prompt = null,
         Result|array|null $result = null,
@@ -109,6 +124,7 @@ final class RunGetDetailsResponse implements BaseModel
         Status|string|null $status = null,
         ?array $steps = null,
         Usage|array|null $usage = null,
+        ?string $workflowID = null,
     ): self {
         $self = new self;
 
@@ -117,6 +133,7 @@ final class RunGetDetailsResponse implements BaseModel
         null !== $completedAt && $self['completedAt'] = $completedAt;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $guidance && $self['guidance'] = $guidance;
+        null !== $modalSandboxID && $self['modalSandboxID'] = $modalSandboxID;
         null !== $model && $self['model'] = $model;
         null !== $prompt && $self['prompt'] = $prompt;
         null !== $result && $self['result'] = $result;
@@ -124,6 +141,7 @@ final class RunGetDetailsResponse implements BaseModel
         null !== $status && $self['status'] = $status;
         null !== $steps && $self['steps'] = $steps;
         null !== $usage && $self['usage'] = $usage;
+        null !== $workflowID && $self['workflowID'] = $workflowID;
 
         return $self;
     }
@@ -164,6 +182,17 @@ final class RunGetDetailsResponse implements BaseModel
     {
         $self = clone $this;
         $self['guidance'] = $guidance;
+
+        return $self;
+    }
+
+    /**
+     * Modal sandbox ID (available once sandbox is created).
+     */
+    public function withModalSandboxID(?string $modalSandboxID): self
+    {
+        $self = clone $this;
+        $self['modalSandboxID'] = $modalSandboxID;
 
         return $self;
     }
@@ -236,6 +265,17 @@ final class RunGetDetailsResponse implements BaseModel
     {
         $self = clone $this;
         $self['usage'] = $usage;
+
+        return $self;
+    }
+
+    /**
+     * Durable workflow run ID.
+     */
+    public function withWorkflowID(?string $workflowID): self
+    {
+        $self = clone $this;
+        $self['workflowID'] = $workflowID;
 
         return $self;
     }

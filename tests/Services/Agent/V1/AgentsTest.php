@@ -54,6 +54,7 @@ final class AgentsTest extends TestCase
             enabledTools: ['string'],
             model: 'model',
             sandbox: ['cpu' => 0, 'memoryMiB' => 0],
+            vaultGroups: ['string'],
             vaultIDs: ['string'],
         );
 

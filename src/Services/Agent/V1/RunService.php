@@ -43,6 +43,7 @@ final class RunService implements RunContract
      * @param string $prompt Task prompt for the agent
      * @param string|null $guidance Additional guidance for this run
      * @param string|null $model Override the agent default model for this run
+     * @param list<string>|null $objectIDs Scope this run to specific vault object IDs. The agent will only be able to access these objects during execution.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -52,6 +53,7 @@ final class RunService implements RunContract
         string $prompt,
         ?string $guidance = null,
         ?string $model = null,
+        ?array $objectIDs = null,
         RequestOptions|array|null $requestOptions = null,
     ): RunNewResponse {
         $params = Util::removeNulls(
@@ -60,6 +62,7 @@ final class RunService implements RunContract
                 'prompt' => $prompt,
                 'guidance' => $guidance,
                 'model' => $model,
+                'objectIDs' => $objectIDs,
             ],
         );
 
