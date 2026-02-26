@@ -43,6 +43,7 @@ final class AgentsRawService implements AgentsRawContract
      *   enabledTools?: list<string>|null,
      *   model?: string,
      *   sandbox?: Sandbox|SandboxShape|null,
+     *   vaultGroups?: list<string>|null,
      *   vaultIDs?: list<string>|null,
      * }|AgentCreateParams $params
      * @param RequestOpts|null $requestOptions
@@ -109,6 +110,7 @@ final class AgentsRawService implements AgentsRawContract
      *   model?: string,
      *   name?: string,
      *   sandbox?: mixed,
+     *   vaultGroups?: list<string>|null,
      *   vaultIDs?: list<string>|null,
      * }|AgentUpdateParams $params
      * @param RequestOpts|null $requestOptions

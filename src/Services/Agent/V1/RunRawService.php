@@ -35,7 +35,11 @@ final class RunRawService implements RunRawContract
      * Creates a run in queued state. Call POST /agent/v1/run/:id/exec to start execution.
      *
      * @param array{
-     *   agentID: string, prompt: string, guidance?: string|null, model?: string|null
+     *   agentID: string,
+     *   prompt: string,
+     *   guidance?: string|null,
+     *   model?: string|null,
+     *   objectIDs?: list<string>|null,
      * }|RunCreateParams $params
      * @param RequestOpts|null $requestOptions
      *

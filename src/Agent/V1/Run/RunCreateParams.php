@@ -16,7 +16,11 @@ use CaseDev\Core\Contracts\BaseModel;
  * @see CaseDev\Services\Agent\V1\RunService::create()
  *
  * @phpstan-type RunCreateParamsShape = array{
- *   agentID: string, prompt: string, guidance?: string|null, model?: string|null
+ *   agentID: string,
+ *   prompt: string,
+ *   guidance?: string|null,
+ *   model?: string|null,
+ *   objectIDs?: list<string>|null,
  * }
  */
 final class RunCreateParams implements BaseModel
@@ -50,6 +54,14 @@ final class RunCreateParams implements BaseModel
     public ?string $model;
 
     /**
+     * Scope this run to specific vault object IDs. The agent will only be able to access these objects during execution.
+     *
+     * @var list<string>|null $objectIDs
+     */
+    #[Optional('objectIds', list: 'string', nullable: true)]
+    public ?array $objectIDs;
+
+    /**
      * `new RunCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
@@ -72,12 +84,15 @@ final class RunCreateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<string>|null $objectIDs
      */
     public static function with(
         string $agentID,
         string $prompt,
         ?string $guidance = null,
         ?string $model = null,
+        ?array $objectIDs = null,
     ): self {
         $self = new self;
 
@@ -86,6 +101,7 @@ final class RunCreateParams implements BaseModel
 
         null !== $guidance && $self['guidance'] = $guidance;
         null !== $model && $self['model'] = $model;
+        null !== $objectIDs && $self['objectIDs'] = $objectIDs;
 
         return $self;
     }
@@ -130,6 +146,19 @@ final class RunCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['model'] = $model;
+
+        return $self;
+    }
+
+    /**
+     * Scope this run to specific vault object IDs. The agent will only be able to access these objects during execution.
+     *
+     * @param list<string>|null $objectIDs
+     */
+    public function withObjectIDs(?array $objectIDs): self
+    {
+        $self = clone $this;
+        $self['objectIDs'] = $objectIDs;
 
         return $self;
     }

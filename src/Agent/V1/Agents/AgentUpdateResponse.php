@@ -21,6 +21,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *   name?: string|null,
  *   sandbox?: mixed,
  *   updatedAt?: \DateTimeInterface|null,
+ *   vaultGroups?: list<string>|null,
  *   vaultIDs?: list<string>|null,
  * }
  */
@@ -64,6 +65,10 @@ final class AgentUpdateResponse implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
+    /** @var list<string>|null $vaultGroups */
+    #[Optional(list: 'string', nullable: true)]
+    public ?array $vaultGroups;
+
     /** @var list<string>|null $vaultIDs */
     #[Optional('vaultIds', list: 'string', nullable: true)]
     public ?array $vaultIDs;
@@ -80,6 +85,7 @@ final class AgentUpdateResponse implements BaseModel
      *
      * @param list<string>|null $disabledTools
      * @param list<string>|null $enabledTools
+     * @param list<string>|null $vaultGroups
      * @param list<string>|null $vaultIDs
      */
     public static function with(
@@ -94,6 +100,7 @@ final class AgentUpdateResponse implements BaseModel
         ?string $name = null,
         mixed $sandbox = null,
         ?\DateTimeInterface $updatedAt = null,
+        ?array $vaultGroups = null,
         ?array $vaultIDs = null,
     ): self {
         $self = new self;
@@ -109,6 +116,7 @@ final class AgentUpdateResponse implements BaseModel
         null !== $name && $self['name'] = $name;
         null !== $sandbox && $self['sandbox'] = $sandbox;
         null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $vaultGroups && $self['vaultGroups'] = $vaultGroups;
         null !== $vaultIDs && $self['vaultIDs'] = $vaultIDs;
 
         return $self;
@@ -204,6 +212,17 @@ final class AgentUpdateResponse implements BaseModel
     {
         $self = clone $this;
         $self['updatedAt'] = $updatedAt;
+
+        return $self;
+    }
+
+    /**
+     * @param list<string>|null $vaultGroups
+     */
+    public function withVaultGroups(?array $vaultGroups): self
+    {
+        $self = clone $this;
+        $self['vaultGroups'] = $vaultGroups;
 
         return $self;
     }

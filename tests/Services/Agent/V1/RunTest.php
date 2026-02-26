@@ -51,7 +51,8 @@ final class RunTest extends TestCase
             agentID: 'agentId',
             prompt: 'prompt',
             guidance: 'guidance',
-            model: 'model'
+            model: 'model',
+            objectIDs: ['string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
