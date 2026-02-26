@@ -29,6 +29,7 @@ interface AgentsContract
      * @param list<string>|null $enabledTools Allowlist of tools the agent can use
      * @param string $model LLM model identifier (e.g. anthropic/claude-sonnet-4.6). Defaults to anthropic/claude-sonnet-4.6
      * @param Sandbox|SandboxShape|null $sandbox Custom sandbox configuration (cpu, memoryMiB)
+     * @param list<string>|null $vaultGroups Restrict agent to vaults within specific vault group IDs
      * @param list<string>|null $vaultIDs Restrict agent to specific vault IDs
      * @param RequestOpts|null $requestOptions
      *
@@ -42,6 +43,7 @@ interface AgentsContract
         ?array $enabledTools = null,
         ?string $model = null,
         Sandbox|array|null $sandbox = null,
+        ?array $vaultGroups = null,
         ?array $vaultIDs = null,
         RequestOptions|array|null $requestOptions = null,
     ): AgentNewResponse;
@@ -65,6 +67,7 @@ interface AgentsContract
      * @param string $id Agent ID
      * @param list<string>|null $disabledTools
      * @param list<string>|null $enabledTools
+     * @param list<string>|null $vaultGroups
      * @param list<string>|null $vaultIDs
      * @param RequestOpts|null $requestOptions
      *
@@ -79,6 +82,7 @@ interface AgentsContract
         ?string $model = null,
         ?string $name = null,
         mixed $sandbox = null,
+        ?array $vaultGroups = null,
         ?array $vaultIDs = null,
         RequestOptions|array|null $requestOptions = null,
     ): AgentUpdateResponse;
