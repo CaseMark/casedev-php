@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2026-02-27)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/CaseMark/casedev-php/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **internal:** upgrade phpunit ([a2bddf5](https://github.com/CaseMark/casedev-php/commit/a2bddf59f1630c6ad0d924f291a7981ff7064a31))
+
 ## 0.2.0 (2026-02-26)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/CaseMark/casedev-php/compare/v0.1.1...v0.2.0)
