@@ -4,10 +4,12 @@ namespace Tests\Services\Legal;
 
 use CaseDev\Client;
 use CaseDev\Core\Util;
+use CaseDev\Legal\V1\V1DocketResponse;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
 use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListCourtsResponse;
 use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
 use CaseDev\Legal\V1\V1PatentSearchResponse;
 use CaseDev\Legal\V1\V1ResearchResponse;
@@ -34,6 +36,35 @@ final class V1Test extends TestCase
         $client = new Client(apiKey: 'My API Key', baseUrl: $testUrl);
 
         $this->client = $client;
+    }
+
+    #[Test]
+    public function testDocket(): void
+    {
+        $result = $this->client->legal->v1->docket(type: 'search');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1DocketResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDocketWithOptionalParams(): void
+    {
+        $result = $this->client->legal->v1->docket(
+            type: 'search',
+            court: 'court',
+            dateFiledAfter: '2019-12-27',
+            dateFiledBefore: '2019-12-27',
+            docketID: 'docketId',
+            includeEntries: true,
+            limit: 1,
+            live: true,
+            offset: 0,
+            query: 'xx',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1DocketResponse::class, $result);
     }
 
     #[Test]
@@ -119,6 +150,15 @@ final class V1Test extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1GetFullTextResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListCourts(): void
+    {
+        $result = $this->client->legal->v1->listCourts();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1ListCourtsResponse::class, $result);
     }
 
     #[Test]

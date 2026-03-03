@@ -7,6 +7,9 @@ namespace CaseDev\Services\Legal;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1DocketParams;
+use CaseDev\Legal\V1\V1DocketParams\Type;
+use CaseDev\Legal\V1\V1DocketResponse;
 use CaseDev\Legal\V1\V1FindParams;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
@@ -15,6 +18,8 @@ use CaseDev\Legal\V1\V1GetCitationsParams;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
 use CaseDev\Legal\V1\V1GetFullTextParams;
 use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListCourtsParams;
+use CaseDev\Legal\V1\V1ListCourtsResponse;
 use CaseDev\Legal\V1\V1ListJurisdictionsParams;
 use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
 use CaseDev\Legal\V1\V1PatentSearchParams;
@@ -43,6 +48,48 @@ final class V1RawService implements V1RawContract
      * @internal
      */
     public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Search federal court dockets or retrieve a specific docket with optional filing entries via CourtListener RECAP data.
+     *
+     * @param array{
+     *   type: Type|value-of<Type>,
+     *   court?: string,
+     *   dateFiledAfter?: string,
+     *   dateFiledBefore?: string,
+     *   docketID?: string,
+     *   includeEntries?: bool,
+     *   limit?: int,
+     *   live?: bool,
+     *   offset?: int,
+     *   query?: string,
+     * }|V1DocketParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1DocketResponse>
+     *
+     * @throws APIException
+     */
+    public function docket(
+        array|V1DocketParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1DocketParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/docket',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1DocketResponse::class,
+        );
+    }
 
     /**
      * @api
@@ -172,6 +219,43 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1GetFullTextResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Returns CourtListener court IDs and names for docket filtering. Use these IDs in legal.docket() as the court parameter.
+     *
+     * @param array{
+     *   inUseOnly?: bool,
+     *   jurisdiction?: string,
+     *   limit?: int,
+     *   offset?: int,
+     *   query?: string,
+     * }|V1ListCourtsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1ListCourtsResponse>
+     *
+     * @throws APIException
+     */
+    public function listCourts(
+        array|V1ListCourtsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1ListCourtsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/courts',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1ListCourtsResponse::class,
         );
     }
 

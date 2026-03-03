@@ -6,6 +6,8 @@ namespace CaseDev\ServiceContracts\Legal;
 
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1DocketParams;
+use CaseDev\Legal\V1\V1DocketResponse;
 use CaseDev\Legal\V1\V1FindParams;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
@@ -14,6 +16,8 @@ use CaseDev\Legal\V1\V1GetCitationsParams;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
 use CaseDev\Legal\V1\V1GetFullTextParams;
 use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListCourtsParams;
+use CaseDev\Legal\V1\V1ListCourtsResponse;
 use CaseDev\Legal\V1\V1ListJurisdictionsParams;
 use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
 use CaseDev\Legal\V1\V1PatentSearchParams;
@@ -33,6 +37,21 @@ use CaseDev\RequestOptions;
  */
 interface V1RawContract
 {
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|V1DocketParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1DocketResponse>
+     *
+     * @throws APIException
+     */
+    public function docket(
+        array|V1DocketParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
     /**
      * @api
      *
@@ -90,6 +109,21 @@ interface V1RawContract
      */
     public function getFullText(
         array|V1GetFullTextParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|V1ListCourtsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1ListCourtsResponse>
+     *
+     * @throws APIException
+     */
+    public function listCourts(
+        array|V1ListCourtsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
