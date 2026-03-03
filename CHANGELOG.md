@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2026-03-03)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/CaseMark/casedev-php/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* deduplicate CI Slack alerts at workflow level, not PR level ([#11](https://github.com/CaseMark/casedev-php/issues/11)) ([0bef866](https://github.com/CaseMark/casedev-php/commit/0bef866ed3f1dda9f6e48e93c6605f1621de7477))
+
 ## 0.3.0 (2026-03-03)
 
 Full Changelog: [v0.2.1...v0.3.0](https://github.com/CaseMark/casedev-php/compare/v0.2.1...v0.3.0)
