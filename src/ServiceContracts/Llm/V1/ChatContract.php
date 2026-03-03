@@ -22,7 +22,7 @@ interface ChatContract
      * @param bool $casemarkShowReasoning CaseMark-only: when true, allows reasoning fields in responses. Defaults to false (reasoning is suppressed).
      * @param float $frequencyPenalty Frequency penalty parameter
      * @param int $maxTokens Maximum number of tokens to generate
-     * @param string $model Model to use for completion. Defaults to casemark/casemark-core-3 if not specified
+     * @param string $model Model to use for completion. Defaults to casemark/casemark-core-6 if not specified
      * @param float $presencePenalty Presence penalty parameter
      * @param bool $stream Whether to stream back partial progress
      * @param float $temperature Sampling temperature between 0 and 2

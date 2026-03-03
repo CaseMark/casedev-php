@@ -17,6 +17,7 @@ use CaseDev\Services\MemoryService;
 use CaseDev\Services\OcrService;
 use CaseDev\Services\PrivilegeService;
 use CaseDev\Services\SearchService;
+use CaseDev\Services\SkillsService;
 use CaseDev\Services\SuperdocService;
 use CaseDev\Services\SystemService;
 use CaseDev\Services\TranslateService;
@@ -87,6 +88,11 @@ class Client extends BaseClient
      * @api
      */
     public PrivilegeService $privilege;
+
+    /**
+     * @api
+     */
+    public SkillsService $skills;
 
     /**
      * @api
@@ -162,6 +168,7 @@ class Client extends BaseClient
         $this->memory = new MemoryService($this);
         $this->ocr = new OcrService($this);
         $this->privilege = new PrivilegeService($this);
+        $this->skills = new SkillsService($this);
         $this->search = new SearchService($this);
         $this->superdoc = new SuperdocService($this);
         $this->translate = new TranslateService($this);
