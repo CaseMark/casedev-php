@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace CaseDev\ServiceContracts\Legal;
 
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Legal\V1\V1DocketParams\Type;
+use CaseDev\Legal\V1\V1DocketResponse;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
 use CaseDev\Legal\V1\V1GetFullTextResponse;
+use CaseDev\Legal\V1\V1ListCourtsResponse;
 use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
 use CaseDev\Legal\V1\V1PatentSearchParams\ApplicationType;
 use CaseDev\Legal\V1\V1PatentSearchParams\SortBy;
@@ -25,6 +28,37 @@ use CaseDev\RequestOptions;
  */
 interface V1Contract
 {
+    /**
+     * @api
+     *
+     * @param Type|value-of<Type> $type Search dockets or look up a docket by ID
+     * @param string $court Optional CourtListener court slug (e.g. "nysd", "ca9", "cafc")
+     * @param string $dateFiledAfter Optional lower bound for filing date (YYYY-MM-DD)
+     * @param string $dateFiledBefore Optional upper bound for filing date (YYYY-MM-DD)
+     * @param string $docketID CourtListener docket ID (required for lookup)
+     * @param bool $includeEntries Include docket entries/filings in lookup responses
+     * @param int $limit Page size for search results or entry list (default 25 for search, 50 for lookup)
+     * @param bool $live Reserved for future PACER live fetch support. Setting true currently returns 400.
+     * @param int $offset Offset for search results or entry list
+     * @param string $query Case name or party name search query (required for search)
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function docket(
+        Type|string $type,
+        ?string $court = null,
+        ?string $dateFiledAfter = null,
+        ?string $dateFiledBefore = null,
+        ?string $docketID = null,
+        bool $includeEntries = false,
+        int $limit = 25,
+        bool $live = false,
+        int $offset = 0,
+        ?string $query = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1DocketResponse;
+
     /**
      * @api
      *
@@ -86,6 +120,25 @@ interface V1Contract
         ?string $summaryQuery = null,
         RequestOptions|array|null $requestOptions = null,
     ): V1GetFullTextResponse;
+
+    /**
+     * @api
+     *
+     * @param bool $inUseOnly Only return courts currently in use by CourtListener
+     * @param string $jurisdiction Optional CourtListener jurisdiction code filter (e.g. FD, F, S)
+     * @param string $query Search by court name or slug (e.g. "Northern District", "nysd", "ca9")
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCourts(
+        bool $inUseOnly = true,
+        ?string $jurisdiction = null,
+        int $limit = 25,
+        int $offset = 0,
+        ?string $query = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1ListCourtsResponse;
 
     /**
      * @api
