@@ -29,6 +29,8 @@ use CaseDev\Vault\Objects\ObjectUpdateParams;
 use CaseDev\Vault\Objects\ObjectUpdateResponse;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ObjectsRawService implements ObjectsRawContract

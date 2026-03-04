@@ -39,6 +39,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Legal\V1RawContract;
 
 /**
+ * Legal research tools including citation verification.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract

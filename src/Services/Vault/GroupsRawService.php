@@ -11,6 +11,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Vault\GroupsRawContract;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class GroupsRawService implements GroupsRawContract

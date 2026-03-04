@@ -15,6 +15,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Compute\V1\InstancesContract;
 
 /**
+ * Serverless GPU and CPU infrastructure.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class InstancesService implements InstancesContract

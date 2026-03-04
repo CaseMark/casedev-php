@@ -14,6 +14,8 @@ use CaseDev\Vault\Graphrag\GraphragInitResponse;
 use CaseDev\Vault\Graphrag\GraphragProcessObjectResponse;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class GraphragService implements GraphragContract

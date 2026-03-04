@@ -12,6 +12,8 @@ use CaseDev\ServiceContracts\LlmContract;
 use CaseDev\Services\Llm\V1Service;
 
 /**
+ * Access 40+ language models through a unified API.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class LlmService implements LlmContract

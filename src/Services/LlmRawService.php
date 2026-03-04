@@ -12,6 +12,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\LlmRawContract;
 
 /**
+ * Access 40+ language models through a unified API.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class LlmRawService implements LlmRawContract

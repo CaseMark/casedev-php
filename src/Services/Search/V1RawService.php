@@ -26,6 +26,8 @@ use CaseDev\Search\V1\V1SimilarResponse;
 use CaseDev\ServiceContracts\Search\V1RawContract;
 
 /**
+ * Web search, AI answers, and deep research.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract

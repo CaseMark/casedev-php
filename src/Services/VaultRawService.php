@@ -29,6 +29,8 @@ use CaseDev\Vault\VaultUploadParams;
 use CaseDev\Vault\VaultUploadResponse;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type FiltersShape from \CaseDev\Vault\VaultSearchParams\Filters
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

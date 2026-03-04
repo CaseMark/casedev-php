@@ -12,6 +12,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Database\V1RawContract;
 
 /**
+ * Serverless PostgreSQL databases with instant branching.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract

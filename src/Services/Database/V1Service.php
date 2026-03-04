@@ -12,6 +12,8 @@ use CaseDev\ServiceContracts\Database\V1Contract;
 use CaseDev\Services\Database\V1\ProjectsService;
 
 /**
+ * Serverless PostgreSQL databases with instant branching.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract

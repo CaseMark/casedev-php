@@ -12,6 +12,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Applications\V1\DeploymentsContract;
 
 /**
+ * Web application deployment management.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class DeploymentsService implements DeploymentsContract
