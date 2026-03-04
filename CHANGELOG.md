@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2026-03-04)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/CaseMark/casedev-php/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* **internal:** codegen related update ([c0e5256](https://github.com/CaseMark/casedev-php/commit/c0e52561d57601db484847d9a130c2acaff675d1))
+
 ## 0.4.0 (2026-03-03)
 
 Full Changelog: [v0.3.1...v0.4.0](https://github.com/CaseMark/casedev-php/compare/v0.3.1...v0.4.0)
