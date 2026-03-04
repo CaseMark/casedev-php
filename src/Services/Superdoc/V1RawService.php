@@ -18,6 +18,8 @@ use CaseDev\Superdoc\V1\V1ConvertParams\From;
 use CaseDev\Superdoc\V1\V1ConvertParams\To;
 
 /**
+ * Document conversion and template automation.
+ *
  * @phpstan-import-type DocumentShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Document
  * @phpstan-import-type FieldShape from \CaseDev\Superdoc\V1\V1AnnotateParams\Field
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions

@@ -12,6 +12,8 @@ use CaseDev\ServiceContracts\SystemRawContract;
 use CaseDev\System\SystemListServicesResponse;
 
 /**
+ * Public system metadata and discovery endpoints.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SystemRawService implements SystemRawContract

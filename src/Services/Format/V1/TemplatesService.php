@@ -15,6 +15,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Format\V1\TemplatesContract;
 
 /**
+ * Document formatting and template rendering (MD/JSON to PDF/DOCX).
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class TemplatesService implements TemplatesContract

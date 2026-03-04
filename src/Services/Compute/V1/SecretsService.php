@@ -16,6 +16,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Compute\V1\SecretsContract;
 
 /**
+ * Serverless GPU and CPU infrastructure.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SecretsService implements SecretsContract

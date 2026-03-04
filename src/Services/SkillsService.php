@@ -13,6 +13,8 @@ use CaseDev\Skills\SkillReadResponse;
 use CaseDev\Skills\SkillResolveResponse;
 
 /**
+ * Search and read legal AI skills for agents.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SkillsService implements SkillsContract

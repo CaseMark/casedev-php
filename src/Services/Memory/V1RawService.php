@@ -23,6 +23,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Memory\V1RawContract;
 
 /**
+ * Persistent memory for AI agents with semantic search and 12 generic indexed tag fields.
+ *
  * @phpstan-import-type MessageShape from \CaseDev\Memory\V1\V1CreateParams\Message
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

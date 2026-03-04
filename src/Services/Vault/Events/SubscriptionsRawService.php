@@ -15,6 +15,8 @@ use CaseDev\Vault\Events\Subscriptions\SubscriptionTestParams;
 use CaseDev\Vault\Events\Subscriptions\SubscriptionUpdateParams;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SubscriptionsRawService implements SubscriptionsRawContract

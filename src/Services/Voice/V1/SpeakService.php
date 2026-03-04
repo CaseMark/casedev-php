@@ -14,6 +14,8 @@ use CaseDev\Voice\V1\Speak\SpeakCreateParams\OutputFormat;
 use CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings;
 
 /**
+ * Audio transcription and text-to-speech.
+ *
  * @phpstan-import-type VoiceSettingsShape from \CaseDev\Voice\V1\Speak\SpeakCreateParams\VoiceSettings
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

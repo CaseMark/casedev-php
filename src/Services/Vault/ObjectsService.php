@@ -21,6 +21,8 @@ use CaseDev\Vault\Objects\ObjectNewPresignedURLResponse;
 use CaseDev\Vault\Objects\ObjectUpdateResponse;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class ObjectsService implements ObjectsContract

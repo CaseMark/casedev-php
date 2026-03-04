@@ -12,6 +12,8 @@ use CaseDev\ServiceContracts\Voice\StreamingRawContract;
 use CaseDev\Voice\Streaming\StreamingGetURLResponse;
 
 /**
+ * Audio transcription and text-to-speech.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class StreamingRawService implements StreamingRawContract

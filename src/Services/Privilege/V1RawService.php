@@ -15,6 +15,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Privilege\V1RawContract;
 
 /**
+ * Privilege detection for e-discovery and litigation workflows.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract

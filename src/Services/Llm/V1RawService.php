@@ -15,6 +15,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Llm\V1RawContract;
 
 /**
+ * Access 40+ language models through a unified API.
+ *
  * @phpstan-import-type InputShape from \CaseDev\Llm\V1\V1CreateEmbeddingParams\Input
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

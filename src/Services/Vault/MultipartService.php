@@ -13,6 +13,8 @@ use CaseDev\Vault\Multipart\MultipartGetPartURLsParams\Part;
 use CaseDev\Vault\Multipart\MultipartGetPartURLsResponse;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type PartShape from \CaseDev\Vault\Multipart\MultipartGetPartURLsParams\Part
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

@@ -12,6 +12,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Compute\V1\InstanceTypesRawContract;
 
 /**
+ * Serverless GPU and CPU infrastructure.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class InstanceTypesRawService implements InstanceTypesRawContract

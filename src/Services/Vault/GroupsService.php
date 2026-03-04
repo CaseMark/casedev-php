@@ -10,6 +10,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Vault\GroupsContract;
 
 /**
+ * Secure document storage with semantic search and GraphRAG.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class GroupsService implements GroupsContract

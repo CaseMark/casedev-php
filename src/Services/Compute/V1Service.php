@@ -16,6 +16,8 @@ use CaseDev\Services\Compute\V1\InstanceTypesService;
 use CaseDev\Services\Compute\V1\SecretsService;
 
 /**
+ * Serverless GPU and CPU infrastructure.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract

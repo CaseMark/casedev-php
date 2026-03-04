@@ -17,6 +17,8 @@ use CaseDev\Voice\V1\V1ListVoicesParams\VoiceType;
 use CaseDev\Voice\V1\V1ListVoicesResponse;
 
 /**
+ * Audio transcription and text-to-speech.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
