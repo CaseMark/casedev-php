@@ -13,6 +13,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Llm\V1\ChatContract;
 
 /**
+ * Access 40+ language models through a unified API.
+ *
  * @phpstan-import-type MessageShape from \CaseDev\Llm\V1\Chat\ChatCreateCompletionParams\Message
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

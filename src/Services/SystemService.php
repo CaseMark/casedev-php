@@ -11,6 +11,8 @@ use CaseDev\ServiceContracts\SystemContract;
 use CaseDev\System\SystemListServicesResponse;
 
 /**
+ * Public system metadata and discovery endpoints.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SystemService implements SystemContract

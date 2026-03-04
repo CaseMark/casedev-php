@@ -15,6 +15,8 @@ use CaseDev\Voice\Transcription\TranscriptionGetResponse;
 use CaseDev\Voice\Transcription\TranscriptionNewResponse;
 
 /**
+ * Audio transcription and text-to-speech.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class TranscriptionService implements TranscriptionContract

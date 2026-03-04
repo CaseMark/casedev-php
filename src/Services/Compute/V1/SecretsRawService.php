@@ -21,6 +21,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Compute\V1\SecretsRawContract;
 
 /**
+ * Serverless GPU and CPU infrastructure.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SecretsRawService implements SecretsRawContract

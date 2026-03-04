@@ -14,6 +14,8 @@ use CaseDev\Skills\SkillResolveParams;
 use CaseDev\Skills\SkillResolveResponse;
 
 /**
+ * Search and read legal AI skills for agents.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class SkillsRawService implements SkillsRawContract

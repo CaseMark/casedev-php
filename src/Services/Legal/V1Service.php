@@ -27,6 +27,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Legal\V1Contract;
 
 /**
+ * Legal research tools including citation verification.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1Service implements V1Contract

@@ -16,6 +16,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Ocr\V1Contract;
 
 /**
+ * Extract text from PDFs, images, and scanned documents.
+ *
  * @phpstan-import-type FeaturesShape from \CaseDev\Ocr\V1\V1ProcessParams\Features
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */

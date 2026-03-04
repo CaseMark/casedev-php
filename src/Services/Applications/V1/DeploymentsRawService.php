@@ -19,6 +19,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Applications\V1\DeploymentsRawContract;
 
 /**
+ * Web application deployment management.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class DeploymentsRawService implements DeploymentsRawContract

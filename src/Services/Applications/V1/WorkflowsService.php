@@ -11,6 +11,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Applications\V1\WorkflowsContract;
 
 /**
+ * Web application deployment management.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class WorkflowsService implements WorkflowsContract
