@@ -10,6 +10,7 @@ use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
+use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\RequestOptions;
 
@@ -51,6 +52,38 @@ interface RunContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): RunCancelResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param int $lastEventID Replay events after this sequence number
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function events(
+        string $id,
+        ?int $lastEventID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param int $lastEventID Replay events after this sequence number
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function eventsStream(
+        string $id,
+        ?int $lastEventID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseStream;
 
     /**
      * @api

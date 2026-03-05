@@ -103,6 +103,54 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
+     * Streams a single assistant turn as normalized state events with stable turn, message, and part ids.
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function respond(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): string {
+        $params = Util::removeNulls(['body' => $body]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->respond($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function respondStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseStream {
+        $params = Util::removeNulls(['body' => $body]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->respondStream($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Proxies a message to the OpenCode session bound to this chat.
      *
      * @param string $id Chat session ID
