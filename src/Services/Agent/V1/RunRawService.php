@@ -6,6 +6,7 @@ namespace CaseDev\Services\Agent\V1;
 
 use CaseDev\Agent\V1\Run\RunCancelResponse;
 use CaseDev\Agent\V1\Run\RunCreateParams;
+use CaseDev\Agent\V1\Run\RunEventsParams;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
@@ -14,9 +15,12 @@ use CaseDev\Agent\V1\Run\RunWatchParams;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Agent\V1\RunRawContract;
+use CaseDev\SSEStream;
 
 /**
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
@@ -88,6 +92,79 @@ final class RunRawService implements RunRawContract
             path: ['agent/v1/run/%1$s/cancel', $id],
             options: $requestOptions,
             convert: RunCancelResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Streams real-time run events over SSE. Supports replay using Last-Event-ID.
+     *
+     * @param string $id Run ID
+     * @param array{lastEventID?: int}|RunEventsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function events(
+        string $id,
+        array|RunEventsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = RunEventsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['agent/v1/run/%1$s/events', $id],
+            query: Util::array_transform_keys(
+                $parsed,
+                ['lastEventID' => 'lastEventId']
+            ),
+            headers: ['Accept' => 'text/event-stream'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param array{lastEventID?: int}|RunEventsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BaseStream<string>>
+     *
+     * @throws APIException
+     */
+    public function eventsStream(
+        string $id,
+        array|RunEventsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = RunEventsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['agent/v1/run/%1$s/events', $id],
+            query: Util::array_transform_keys(
+                $parsed,
+                ['lastEventID' => 'lastEventId']
+            ),
+            headers: ['Accept' => 'text/event-stream'],
+            options: $options,
+            convert: 'string',
+            stream: SSEStream::class,
         );
     }
 

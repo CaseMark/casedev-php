@@ -13,6 +13,7 @@ use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -66,6 +67,19 @@ final class RunTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(RunCancelResponse::class, $result);
+    }
+
+    #[Test]
+    public function testEvents(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
+        }
+
+        $result = $this->client->agent->v1->run->events('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]

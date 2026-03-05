@@ -8,6 +8,7 @@ use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatCreateParams;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
+use CaseDev\Agent\V1\Chat\ChatRespondParams;
 use CaseDev\Agent\V1\Chat\ChatSendMessageParams;
 use CaseDev\Agent\V1\Chat\ChatStreamParams;
 use CaseDev\Core\Contracts\BaseResponse;
@@ -63,6 +64,40 @@ interface ChatRawContract
     public function cancel(
         string $id,
         RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param array<string,mixed>|ChatRespondParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function respond(
+        string $id,
+        array|ChatRespondParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param array<string,mixed>|ChatRespondParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BaseStream<string>>
+     *
+     * @throws APIException
+     */
+    public function respondStream(
+        string $id,
+        array|ChatRespondParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

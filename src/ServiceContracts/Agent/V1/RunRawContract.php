@@ -6,6 +6,7 @@ namespace CaseDev\ServiceContracts\Agent\V1;
 
 use CaseDev\Agent\V1\Run\RunCancelResponse;
 use CaseDev\Agent\V1\Run\RunCreateParams;
+use CaseDev\Agent\V1\Run\RunEventsParams;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
@@ -13,6 +14,7 @@ use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchParams;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
 use CaseDev\Core\Contracts\BaseResponse;
+use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\RequestOptions;
 
@@ -49,6 +51,40 @@ interface RunRawContract
     public function cancel(
         string $id,
         RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param array<string,mixed>|RunEventsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function events(
+        string $id,
+        array|RunEventsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param array<string,mixed>|RunEventsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BaseStream<string>>
+     *
+     * @throws APIException
+     */
+    public function eventsStream(
+        string $id,
+        array|RunEventsParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

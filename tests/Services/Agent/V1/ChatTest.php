@@ -58,6 +58,32 @@ final class ChatTest extends TestCase
     }
 
     #[Test]
+    public function testRespond(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
+        }
+
+        $result = $this->client->agent->v1->chat->respond('id', body: (object) []);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testRespondWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
+        }
+
+        $result = $this->client->agent->v1->chat->respond('id', body: (object) []);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
     public function testSendMessage(): void
     {
         $result = $this->client->agent->v1->chat->sendMessage(
