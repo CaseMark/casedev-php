@@ -7,15 +7,13 @@ namespace CaseDev\Legal\V1;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Legal\V1\V1DocketResponse\Docket;
-use CaseDev\Legal\V1\V1DocketResponse\Docket1;
 use CaseDev\Legal\V1\V1DocketResponse\Entry;
 use CaseDev\Legal\V1\V1DocketResponse\Pagination;
 use CaseDev\Legal\V1\V1DocketResponse\Type;
 
 /**
- * @phpstan-import-type DocketShape from \CaseDev\Legal\V1\V1DocketResponse\Docket
- * @phpstan-import-type Docket1Shape from \CaseDev\Legal\V1\V1DocketResponse\Docket1
+ * @phpstan-import-type DocketDetailShape from \CaseDev\Legal\V1\DocketDetail
+ * @phpstan-import-type DocketSearchResultShape from \CaseDev\Legal\V1\DocketSearchResult
  * @phpstan-import-type EntryShape from \CaseDev\Legal\V1\V1DocketResponse\Entry
  * @phpstan-import-type PaginationShape from \CaseDev\Legal\V1\V1DocketResponse\Pagination
  *
@@ -23,8 +21,8 @@ use CaseDev\Legal\V1\V1DocketResponse\Type;
  *   court?: string|null,
  *   dateFiledAfter?: string|null,
  *   dateFiledBefore?: string|null,
- *   docket?: null|Docket|DocketShape,
- *   dockets?: list<Docket1|Docket1Shape>|null,
+ *   docket?: null|DocketDetail|DocketDetailShape,
+ *   dockets?: list<DocketSearchResult|DocketSearchResultShape>|null,
  *   entries?: list<Entry|EntryShape>|null,
  *   found?: int|null,
  *   includeEntries?: bool|null,
@@ -60,14 +58,14 @@ final class V1DocketResponse implements BaseModel
      * Full docket record (lookup mode).
      */
     #[Optional(nullable: true)]
-    public ?Docket $docket;
+    public ?DocketDetail $docket;
 
     /**
      * Search results (search mode).
      *
-     * @var list<Docket1>|null $dockets
+     * @var list<DocketSearchResult>|null $dockets
      */
-    #[Optional(list: Docket1::class)]
+    #[Optional(list: DocketSearchResult::class)]
     public ?array $dockets;
 
     /**
@@ -113,8 +111,8 @@ final class V1DocketResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Docket|DocketShape|null $docket
-     * @param list<Docket1|Docket1Shape>|null $dockets
+     * @param DocketDetail|DocketDetailShape|null $docket
+     * @param list<DocketSearchResult|DocketSearchResultShape>|null $dockets
      * @param list<Entry|EntryShape>|null $entries
      * @param Pagination|PaginationShape|null $pagination
      * @param Type|value-of<Type>|null $type
@@ -123,7 +121,7 @@ final class V1DocketResponse implements BaseModel
         ?string $court = null,
         ?string $dateFiledAfter = null,
         ?string $dateFiledBefore = null,
-        Docket|array|null $docket = null,
+        DocketDetail|array|null $docket = null,
         ?array $dockets = null,
         ?array $entries = null,
         ?int $found = null,
@@ -185,9 +183,9 @@ final class V1DocketResponse implements BaseModel
     /**
      * Full docket record (lookup mode).
      *
-     * @param Docket|DocketShape|null $docket
+     * @param DocketDetail|DocketDetailShape|null $docket
      */
-    public function withDocket(Docket|array|null $docket): self
+    public function withDocket(DocketDetail|array|null $docket): self
     {
         $self = clone $this;
         $self['docket'] = $docket;
@@ -198,7 +196,7 @@ final class V1DocketResponse implements BaseModel
     /**
      * Search results (search mode).
      *
-     * @param list<Docket1|Docket1Shape> $dockets
+     * @param list<DocketSearchResult|DocketSearchResultShape> $dockets
      */
     public function withDockets(array $dockets): self
     {
