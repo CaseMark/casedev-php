@@ -11,6 +11,7 @@ use CaseDev\Agent\V1\Run\RunGetStatusResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
 use CaseDev\Client;
+use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
@@ -88,6 +89,54 @@ final class RunService implements RunContract
     ): RunCancelResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cancel($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Streams real-time run events over SSE. Supports replay using Last-Event-ID.
+     *
+     * @param string $id Run ID
+     * @param int $lastEventID Replay events after this sequence number
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function events(
+        string $id,
+        ?int $lastEventID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(['lastEventID' => $lastEventID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->events($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $id Run ID
+     * @param int $lastEventID Replay events after this sequence number
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function eventsStream(
+        string $id,
+        ?int $lastEventID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseStream {
+        $params = Util::removeNulls(['lastEventID' => $lastEventID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->eventsStream($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

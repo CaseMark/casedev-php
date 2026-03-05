@@ -68,6 +68,38 @@ interface ChatContract
      *
      * @throws APIException
      */
+    public function respond(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function respondStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseStream;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
     public function sendMessage(
         string $id,
         mixed $body,
