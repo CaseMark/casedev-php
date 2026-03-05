@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Legal\V1\V1DocketResponse;
+namespace CaseDev\Legal\V1;
 
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type Docket1Shape = array{
+ * @phpstan-type DocketSearchResultShape = array{
  *   id?: string|null,
  *   assignedTo?: string|null,
  *   caseName?: string|null,
@@ -25,9 +25,9 @@ use CaseDev\Core\Contracts\BaseModel;
  *   url?: string|null,
  * }
  */
-final class Docket1 implements BaseModel
+final class DocketSearchResult implements BaseModel
 {
-    /** @use SdkModel<Docket1Shape> */
+    /** @use SdkModel<DocketSearchResultShape> */
     use SdkModel;
 
     #[Optional]

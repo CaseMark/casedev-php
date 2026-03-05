@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Legal\V1\V1DocketResponse;
+namespace CaseDev\Legal\V1;
 
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
@@ -11,7 +11,7 @@ use CaseDev\Core\Contracts\BaseModel;
 /**
  * Full docket record (lookup mode).
  *
- * @phpstan-type DocketShape = array{
+ * @phpstan-type DocketDetailShape = array{
  *   id?: string|null,
  *   assignedTo?: string|null,
  *   caseName?: string|null,
@@ -27,9 +27,9 @@ use CaseDev\Core\Contracts\BaseModel;
  *   url?: string|null,
  * }
  */
-final class Docket implements BaseModel
+final class DocketDetail implements BaseModel
 {
-    /** @use SdkModel<DocketShape> */
+    /** @use SdkModel<DocketDetailShape> */
     use SdkModel;
 
     #[Optional]
