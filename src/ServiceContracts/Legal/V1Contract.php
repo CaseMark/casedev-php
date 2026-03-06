@@ -7,6 +7,9 @@ namespace CaseDev\ServiceContracts\Legal;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\Legal\V1\V1DocketParams\Type;
 use CaseDev\Legal\V1\V1DocketResponse;
+use CaseDev\Legal\V1\V1DraftParams\Length;
+use CaseDev\Legal\V1\V1DraftParams\OutputType;
+use CaseDev\Legal\V1\V1DraftResponse;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
@@ -24,6 +27,7 @@ use CaseDev\Legal\V1\V1VerifyResponse;
 use CaseDev\RequestOptions;
 
 /**
+ * @phpstan-import-type LengthShape from \CaseDev\Legal\V1\V1DraftParams\Length
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 interface V1Contract
@@ -58,6 +62,37 @@ interface V1Contract
         ?string $query = null,
         RequestOptions|array|null $requestOptions = null,
     ): V1DocketResponse;
+
+    /**
+     * @api
+     *
+     * @param string $instructions What to draft — the core task. E.g., "Motion to compel defendant to produce discovery responses"
+     * @param string $vaultID Vault ID where the final document will be uploaded
+     * @param bool $citations Research and include legal citations
+     * @param string|null $format Court or jurisdiction formatting hint. Triggers a legal-skills search. E.g., "California Superior Court", "SDNY", "federal pleading"
+     * @param Length|LengthShape|null $length Target document length
+     * @param string|null $model LLM model override. Defaults to anthropic/claude-sonnet-4.6
+     * @param list<string>|null $objectIDs Vault object IDs to use as source/reference documents
+     * @param string|null $outputName Filename for the output document. Auto-generated if omitted.
+     * @param OutputType|value-of<OutputType> $outputType Output file format
+     * @param bool $verified Verify all citations in a loop — re-run verification and repair bad citations until they pass
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function draft(
+        string $instructions,
+        string $vaultID,
+        bool $citations = false,
+        ?string $format = null,
+        Length|array|null $length = null,
+        ?string $model = null,
+        ?array $objectIDs = null,
+        ?string $outputName = null,
+        OutputType|string $outputType = 'md',
+        bool $verified = false,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1DraftResponse;
 
     /**
      * @api

@@ -5,6 +5,7 @@ namespace Tests\Services\Legal;
 use CaseDev\Client;
 use CaseDev\Core\Util;
 use CaseDev\Legal\V1\V1DocketResponse;
+use CaseDev\Legal\V1\V1DraftResponse;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLResponse;
 use CaseDev\Legal\V1\V1GetCitationsResponse;
@@ -65,6 +66,38 @@ final class V1Test extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1DocketResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDraft(): void
+    {
+        $result = $this->client->legal->v1->draft(
+            instructions: 'xxxxxxxxxx',
+            vaultID: 'vault_id'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1DraftResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDraftWithOptionalParams(): void
+    {
+        $result = $this->client->legal->v1->draft(
+            instructions: 'xxxxxxxxxx',
+            vaultID: 'vault_id',
+            citations: true,
+            format: 'format',
+            length: ['target' => 0, 'unit' => 'words'],
+            model: 'model',
+            objectIDs: ['string'],
+            outputName: 'output_name',
+            outputType: 'pdf',
+            verified: true,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1DraftResponse::class, $result);
     }
 
     #[Test]
