@@ -40,6 +40,7 @@ final class ChatService implements ChatContract
      * @param int|null $idleTimeoutMs Idle timeout before session is eligible for snapshot/termination. Defaults to 15 minutes.
      * @param string|null $model Optional model override for the OpenCode session
      * @param string $title Optional human-readable session title
+     * @param list<string>|null $vaultIDs Restrict the chat session to specific vault IDs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -48,10 +49,16 @@ final class ChatService implements ChatContract
         ?int $idleTimeoutMs = null,
         ?string $model = null,
         ?string $title = null,
+        ?array $vaultIDs = null,
         RequestOptions|array|null $requestOptions = null,
     ): ChatNewResponse {
         $params = Util::removeNulls(
-            ['idleTimeoutMs' => $idleTimeoutMs, 'model' => $model, 'title' => $title]
+            [
+                'idleTimeoutMs' => $idleTimeoutMs,
+                'model' => $model,
+                'title' => $title,
+                'vaultIDs' => $vaultIDs,
+            ],
         );
 
         // @phpstan-ignore-next-line argument.type
