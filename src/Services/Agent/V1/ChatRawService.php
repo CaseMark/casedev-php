@@ -37,7 +37,10 @@ final class ChatRawService implements ChatRawContract
      * Creates a persistent OpenCode chat session in a Modal sandbox. Session state is retained and can be resumed across requests.
      *
      * @param array{
-     *   idleTimeoutMs?: int|null, model?: string|null, title?: string
+     *   idleTimeoutMs?: int|null,
+     *   model?: string|null,
+     *   title?: string,
+     *   vaultIDs?: list<string>|null,
      * }|ChatCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
