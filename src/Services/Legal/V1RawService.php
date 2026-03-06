@@ -10,6 +10,10 @@ use CaseDev\Core\Exceptions\APIException;
 use CaseDev\Legal\V1\V1DocketParams;
 use CaseDev\Legal\V1\V1DocketParams\Type;
 use CaseDev\Legal\V1\V1DocketResponse;
+use CaseDev\Legal\V1\V1DraftParams;
+use CaseDev\Legal\V1\V1DraftParams\Length;
+use CaseDev\Legal\V1\V1DraftParams\OutputType;
+use CaseDev\Legal\V1\V1DraftResponse;
 use CaseDev\Legal\V1\V1FindParams;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
@@ -41,6 +45,7 @@ use CaseDev\ServiceContracts\Legal\V1RawContract;
 /**
  * Legal research tools including citation verification.
  *
+ * @phpstan-import-type LengthShape from \CaseDev\Legal\V1\V1DraftParams\Length
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class V1RawService implements V1RawContract
@@ -90,6 +95,48 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1DocketResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Generate a legal document with structured inputs. Powered by an agent that handles research, formatting, citation verification, and vault upload. Returns a run ID for polling.
+     *
+     * @param array{
+     *   instructions: string,
+     *   vaultID: string,
+     *   citations?: bool,
+     *   format?: string|null,
+     *   length?: Length|LengthShape|null,
+     *   model?: string|null,
+     *   objectIDs?: list<string>|null,
+     *   outputName?: string|null,
+     *   outputType?: OutputType|value-of<OutputType>,
+     *   verified?: bool,
+     * }|V1DraftParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1DraftResponse>
+     *
+     * @throws APIException
+     */
+    public function draft(
+        array|V1DraftParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1DraftParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/draft',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1DraftResponse::class,
         );
     }
 

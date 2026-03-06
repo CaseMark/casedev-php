@@ -8,6 +8,8 @@ use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\Legal\V1\V1DocketParams;
 use CaseDev\Legal\V1\V1DocketResponse;
+use CaseDev\Legal\V1\V1DraftParams;
+use CaseDev\Legal\V1\V1DraftResponse;
 use CaseDev\Legal\V1\V1FindParams;
 use CaseDev\Legal\V1\V1FindResponse;
 use CaseDev\Legal\V1\V1GetCitationsFromURLParams;
@@ -49,6 +51,21 @@ interface V1RawContract
      */
     public function docket(
         array|V1DocketParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|V1DraftParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1DraftResponse>
+     *
+     * @throws APIException
+     */
+    public function draft(
+        array|V1DraftParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
