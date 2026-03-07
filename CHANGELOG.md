@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 (2026-03-07)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/CaseMark/casedev-php/compare/v0.9.0...v0.9.1)
+
+### Chores
+
+* **test:** do not count install time for mock server timeout ([a35b7a3](https://github.com/CaseMark/casedev-php/commit/a35b7a306b1ce0735327ce2854f2dc70de9ffb84))
+
 ## 0.9.0 (2026-03-06)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/CaseMark/casedev-php/compare/v0.8.0...v0.9.0)
