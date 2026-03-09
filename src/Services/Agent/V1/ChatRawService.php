@@ -8,9 +8,11 @@ use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatCreateParams;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
+use CaseDev\Agent\V1\Chat\ChatReplyToQuestionParams;
 use CaseDev\Agent\V1\Chat\ChatRespondParams;
 use CaseDev\Agent\V1\Chat\ChatSendMessageParams;
 use CaseDev\Agent\V1\Chat\ChatStreamParams;
+use CaseDev\Agent\V1\Chat\ChatUiStreamParams;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Contracts\BaseStream;
@@ -120,7 +122,44 @@ final class ChatRawService implements ChatRawContract
     /**
      * @api
      *
-     * Streams a single assistant turn as normalized state events with stable turn, message, and part ids.
+     * Answers a pending OpenCode question for the chat session bound to this agent chat.
+     *
+     * @param string $requestID Path param: Pending question request ID
+     * @param array{
+     *   id: string, answers: list<list<string>>
+     * }|ChatReplyToQuestionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function replyToQuestion(
+        string $requestID,
+        array|ChatReplyToQuestionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ChatReplyToQuestionParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $id = $parsed['id'];
+        unset($parsed['id']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['agent/v1/chat/%1$s/question/%2$s/reply', $id, $requestID],
+            body: (object) array_diff_key($parsed, array_flip(['id'])),
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Streams a single assistant turn as normalized state events with stable turn, message, and part ids. Emits session.usage before turn.completed when token data is available.
      *
      * @param string $id Chat session ID
      * @param array{body: mixed}|ChatRespondParams $params
@@ -284,6 +323,73 @@ final class ChatRawService implements ChatRawContract
                 ['lastEventID' => 'lastEventId']
             ),
             headers: ['Accept' => 'text/event-stream'],
+            options: $options,
+            convert: 'string',
+            stream: SSEStream::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Streams a single assistant turn as AI SDK UIMessageChunk SSE events for direct client rendering.
+     *
+     * @param string $id Chat session ID
+     * @param array{body: mixed}|ChatUiStreamParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function uiStream(
+        string $id,
+        array|ChatUiStreamParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ChatUiStreamParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['agent/v1/chat/%1$s/ui-stream', $id],
+            headers: ['Accept' => 'text/event-stream'],
+            body: $parsed['body'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param array{body: mixed}|ChatUiStreamParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BaseStream<string>>
+     *
+     * @throws APIException
+     */
+    public function uiStreamStream(
+        string $id,
+        array|ChatUiStreamParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ChatUiStreamParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['agent/v1/chat/%1$s/ui-stream', $id],
+            headers: ['Accept' => 'text/event-stream'],
+            body: $parsed['body'],
             options: $options,
             convert: 'string',
             stream: SSEStream::class,

@@ -10,15 +10,15 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Streams a single assistant turn as normalized state events with stable turn, message, and part ids. Emits session.usage before turn.completed when token data is available.
+ * Streams a single assistant turn as AI SDK UIMessageChunk SSE events for direct client rendering.
  *
- * @see CaseDev\Services\Agent\V1\ChatService::respond()
+ * @see CaseDev\Services\Agent\V1\ChatService::uiStream()
  *
- * @phpstan-type ChatRespondParamsShape = array{body: mixed}
+ * @phpstan-type ChatUiStreamParamsShape = array{body: mixed}
  */
-final class ChatRespondParams implements BaseModel
+final class ChatUiStreamParams implements BaseModel
 {
-    /** @use SdkModel<ChatRespondParamsShape> */
+    /** @use SdkModel<ChatUiStreamParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -29,17 +29,17 @@ final class ChatRespondParams implements BaseModel
     public mixed $body;
 
     /**
-     * `new ChatRespondParams()` is missing required properties by the API.
+     * `new ChatUiStreamParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ChatRespondParams::with(body: ...)
+     * ChatUiStreamParams::with(body: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ChatRespondParams)->withBody(...)
+     * (new ChatUiStreamParams)->withBody(...)
      * ```
      */
     public function __construct()

@@ -8,9 +8,11 @@ use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatCreateParams;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
+use CaseDev\Agent\V1\Chat\ChatReplyToQuestionParams;
 use CaseDev\Agent\V1\Chat\ChatRespondParams;
 use CaseDev\Agent\V1\Chat\ChatSendMessageParams;
 use CaseDev\Agent\V1\Chat\ChatStreamParams;
+use CaseDev\Agent\V1\Chat\ChatUiStreamParams;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
@@ -64,6 +66,23 @@ interface ChatRawContract
     public function cancel(
         string $id,
         RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $requestID Path param: Pending question request ID
+     * @param array<string,mixed>|ChatReplyToQuestionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function replyToQuestion(
+        string $requestID,
+        array|ChatReplyToQuestionParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -148,6 +167,40 @@ interface ChatRawContract
     public function streamStream(
         string $id,
         array|ChatStreamParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param array<string,mixed>|ChatUiStreamParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function uiStream(
+        string $id,
+        array|ChatUiStreamParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param array<string,mixed>|ChatUiStreamParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BaseStream<string>>
+     *
+     * @throws APIException
+     */
+    public function uiStreamStream(
+        string $id,
+        array|ChatUiStreamParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

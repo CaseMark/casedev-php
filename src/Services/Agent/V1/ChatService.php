@@ -110,7 +110,33 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Streams a single assistant turn as normalized state events with stable turn, message, and part ids.
+     * Answers a pending OpenCode question for the chat session bound to this agent chat.
+     *
+     * @param string $requestID Path param: Pending question request ID
+     * @param string $id Path param: Chat session ID
+     * @param list<list<string>> $answers Body param
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function replyToQuestion(
+        string $requestID,
+        string $id,
+        array $answers,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed {
+        $params = Util::removeNulls(['id' => $id, 'answers' => $answers]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->replyToQuestion($requestID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Streams a single assistant turn as normalized state events with stable turn, message, and part ids. Emits session.usage before turn.completed when token data is available.
      *
      * @param string $id Chat session ID
      * @param mixed $body OpenCode message payload. Passed through 1:1.
@@ -223,6 +249,54 @@ final class ChatService implements ChatContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->streamStream($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Streams a single assistant turn as AI SDK UIMessageChunk SSE events for direct client rendering.
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function uiStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): string {
+        $params = Util::removeNulls(['body' => $body]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->uiStream($id, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function uiStreamStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseStream {
+        $params = Util::removeNulls(['body' => $body]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->uiStreamStream($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
