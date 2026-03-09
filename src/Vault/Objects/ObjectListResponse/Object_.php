@@ -18,6 +18,9 @@ use CaseDev\Core\Contracts\BaseModel;
  *   ingestionStatus: string,
  *   chunkCount?: float|null,
  *   ingestionCompletedAt?: \DateTimeInterface|null,
+ *   ingestionError?: string|null,
+ *   ingestionStartedAt?: \DateTimeInterface|null,
+ *   ingestionWorkflowID?: string|null,
  *   metadata?: mixed,
  *   pageCount?: float|null,
  *   path?: string|null,
@@ -73,6 +76,24 @@ final class Object_ implements BaseModel
      */
     #[Optional]
     public ?\DateTimeInterface $ingestionCompletedAt;
+
+    /**
+     * Failure reason when ingestion status is a failed state.
+     */
+    #[Optional(nullable: true)]
+    public ?string $ingestionError;
+
+    /**
+     * When ingestion processing began.
+     */
+    #[Optional(nullable: true)]
+    public ?\DateTimeInterface $ingestionStartedAt;
+
+    /**
+     * Durable workflow run ID for the active or last ingestion attempt.
+     */
+    #[Optional('ingestionWorkflowId', nullable: true)]
+    public ?string $ingestionWorkflowID;
 
     /**
      * Custom metadata associated with the document.
@@ -159,6 +180,9 @@ final class Object_ implements BaseModel
         string $ingestionStatus,
         ?float $chunkCount = null,
         ?\DateTimeInterface $ingestionCompletedAt = null,
+        ?string $ingestionError = null,
+        ?\DateTimeInterface $ingestionStartedAt = null,
+        ?string $ingestionWorkflowID = null,
         mixed $metadata = null,
         ?float $pageCount = null,
         ?string $path = null,
@@ -177,6 +201,9 @@ final class Object_ implements BaseModel
 
         null !== $chunkCount && $self['chunkCount'] = $chunkCount;
         null !== $ingestionCompletedAt && $self['ingestionCompletedAt'] = $ingestionCompletedAt;
+        null !== $ingestionError && $self['ingestionError'] = $ingestionError;
+        null !== $ingestionStartedAt && $self['ingestionStartedAt'] = $ingestionStartedAt;
+        null !== $ingestionWorkflowID && $self['ingestionWorkflowID'] = $ingestionWorkflowID;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $pageCount && $self['pageCount'] = $pageCount;
         null !== $path && $self['path'] = $path;
@@ -262,6 +289,40 @@ final class Object_ implements BaseModel
     ): self {
         $self = clone $this;
         $self['ingestionCompletedAt'] = $ingestionCompletedAt;
+
+        return $self;
+    }
+
+    /**
+     * Failure reason when ingestion status is a failed state.
+     */
+    public function withIngestionError(?string $ingestionError): self
+    {
+        $self = clone $this;
+        $self['ingestionError'] = $ingestionError;
+
+        return $self;
+    }
+
+    /**
+     * When ingestion processing began.
+     */
+    public function withIngestionStartedAt(
+        ?\DateTimeInterface $ingestionStartedAt
+    ): self {
+        $self = clone $this;
+        $self['ingestionStartedAt'] = $ingestionStartedAt;
+
+        return $self;
+    }
+
+    /**
+     * Durable workflow run ID for the active or last ingestion attempt.
+     */
+    public function withIngestionWorkflowID(?string $ingestionWorkflowID): self
+    {
+        $self = clone $this;
+        $self['ingestionWorkflowID'] = $ingestionWorkflowID;
 
         return $self;
     }

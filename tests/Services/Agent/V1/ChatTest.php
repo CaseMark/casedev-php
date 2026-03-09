@@ -58,6 +58,32 @@ final class ChatTest extends TestCase
     }
 
     #[Test]
+    public function testReplyToQuestion(): void
+    {
+        $result = $this->client->agent->v1->chat->replyToQuestion(
+            'requestID',
+            id: 'id',
+            answers: [['string']]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testReplyToQuestionWithOptionalParams(): void
+    {
+        $result = $this->client->agent->v1->chat->replyToQuestion(
+            'requestID',
+            id: 'id',
+            answers: [['string']]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
     public function testRespond(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -115,6 +141,32 @@ final class ChatTest extends TestCase
         }
 
         $result = $this->client->agent->v1->chat->stream('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testUiStream(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
+        }
+
+        $result = $this->client->agent->v1->chat->uiStream('id', body: (object) []);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testUiStreamWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
+        }
+
+        $result = $this->client->agent->v1->chat->uiStream('id', body: (object) []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);

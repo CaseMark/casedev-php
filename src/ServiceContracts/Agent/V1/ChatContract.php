@@ -64,6 +64,23 @@ interface ChatContract
     /**
      * @api
      *
+     * @param string $requestID Path param: Pending question request ID
+     * @param string $id Path param: Chat session ID
+     * @param list<list<string>> $answers Body param
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function replyToQuestion(
+        string $requestID,
+        string $id,
+        array $answers,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
      * @param string $id Chat session ID
      * @param mixed $body OpenCode message payload. Passed through 1:1.
      * @param RequestOpts|null $requestOptions
@@ -138,5 +155,37 @@ interface ChatContract
         string $id,
         ?int $lastEventID = null,
         RequestOptions|array|null $requestOptions = null,
+    ): BaseStream;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function uiStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $id Chat session ID
+     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseStream<string>
+     *
+     * @throws APIException
+     */
+    public function uiStreamStream(
+        string $id,
+        mixed $body,
+        RequestOptions|array|null $requestOptions = null
     ): BaseStream;
 }
