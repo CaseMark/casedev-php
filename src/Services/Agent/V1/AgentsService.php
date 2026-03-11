@@ -17,6 +17,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Agent\V1\AgentsContract;
 
 /**
+ * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
+ *
  * @phpstan-import-type SandboxShape from \CaseDev\Agent\V1\Agents\AgentCreateParams\Sandbox
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
@@ -43,8 +45,8 @@ final class AgentsService implements AgentsContract
      * @param string $instructions System instructions that define agent behavior
      * @param string $name Display name for the agent
      * @param string $description Optional description of the agent
-     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use
-     * @param list<string>|null $enabledTools Allowlist of tools the agent can use
+     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both.
+     * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both.
      * @param string $model LLM model identifier (e.g. anthropic/claude-sonnet-4.6). Defaults to anthropic/claude-sonnet-4.6
      * @param Sandbox|SandboxShape|null $sandbox Custom sandbox configuration (cpu, memoryMiB)
      * @param list<string>|null $vaultGroups Restrict agent to vaults within specific vault group IDs
@@ -111,8 +113,8 @@ final class AgentsService implements AgentsContract
      * Updates an agent definition. Only provided fields are changed.
      *
      * @param string $id Agent ID
-     * @param list<string>|null $disabledTools
-     * @param list<string>|null $enabledTools
+     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both. Pass null to clear.
+     * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both. Pass null to clear.
      * @param list<string>|null $vaultGroups
      * @param list<string>|null $vaultIDs
      * @param RequestOpts|null $requestOptions
@@ -157,15 +159,21 @@ final class AgentsService implements AgentsContract
      *
      * Lists all active agents for the authenticated organization.
      *
+     * @param string $cursor Pagination cursor (agent ID from previous page). Returns agents created before this agent.
+     * @param int $limit Maximum number of agents to return (default 50, max 250)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        ?string $cursor = null,
+        int $limit = 50,
+        RequestOptions|array|null $requestOptions = null,
     ): AgentListResponse {
+        $params = Util::removeNulls(['cursor' => $cursor, 'limit' => $limit]);
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->list(requestOptions: $requestOptions);
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

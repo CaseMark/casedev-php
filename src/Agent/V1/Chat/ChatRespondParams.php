@@ -4,17 +4,25 @@ declare(strict_types=1);
 
 namespace CaseDev\Agent\V1\Chat;
 
-use CaseDev\Core\Attributes\Required;
+use CaseDev\Agent\V1\Chat\ChatRespondParams\Part;
+use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Streams a single assistant turn as normalized state events with stable turn, message, and part ids. Emits session.usage before turn.completed when token data is available.
+ * Streams a single assistant turn as normalized SSE events with stable turn, message, and part IDs. Emits events: `turn.started`, `turn.status`, `message.created`, `message.part.updated`, `message.completed`, `session.usage`, `turn.completed`.
+ *
+ * **When to use this endpoint:** Recommended for building custom chat UIs that need real-time streaming progress. This is the primary streaming endpoint for new integrations.
+ *
+ * **Alternatives:**
+ * - `POST /chat/:id/message` — synchronous, returns complete response as JSON (best for server-to-server)
  *
  * @see CaseDev\Services\Agent\V1\ChatService::respond()
  *
- * @phpstan-type ChatRespondParamsShape = array{body: mixed}
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part
+ *
+ * @phpstan-type ChatRespondParamsShape = array{parts?: list<Part|PartShape>|null}
  */
 final class ChatRespondParams implements BaseModel
 {
@@ -23,25 +31,13 @@ final class ChatRespondParams implements BaseModel
     use SdkParams;
 
     /**
-     * OpenCode message payload. Passed through 1:1.
+     * Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     *
+     * @var list<Part>|null $parts
      */
-    #[Required]
-    public mixed $body;
+    #[Optional(list: Part::class)]
+    public ?array $parts;
 
-    /**
-     * `new ChatRespondParams()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * ChatRespondParams::with(body: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new ChatRespondParams)->withBody(...)
-     * ```
-     */
     public function __construct()
     {
         $this->initialize();
@@ -51,23 +47,27 @@ final class ChatRespondParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<Part|PartShape>|null $parts
      */
-    public static function with(mixed $body): self
+    public static function with(?array $parts = null): self
     {
         $self = new self;
 
-        $self['body'] = $body;
+        null !== $parts && $self['parts'] = $parts;
 
         return $self;
     }
 
     /**
-     * OpenCode message payload. Passed through 1:1.
+     * Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     *
+     * @param list<Part|PartShape> $parts
      */
-    public function withBody(mixed $body): self
+    public function withParts(array $parts): self
     {
         $self = clone $this;
-        $self['body'] = $body;
+        $self['parts'] = $parts;
 
         return $self;
     }
