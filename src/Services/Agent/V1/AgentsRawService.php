@@ -106,7 +106,7 @@ final class AgentsRawService implements AgentsRawContract
      *
      * @param string $id Agent ID
      * @param array{
-     *   description?: string,
+     *   description?: string|null,
      *   disabledTools?: list<string>|null,
      *   enabledTools?: list<string>|null,
      *   instructions?: string,

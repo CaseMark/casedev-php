@@ -16,8 +16,10 @@ interface SubscriptionsContract
      * @api
      *
      * @param string $id Vault ID
-     * @param list<string> $eventTypes
-     * @param list<string> $objectIDs
+     * @param string $callbackURL Webhook endpoint URL that will receive vault event deliveries
+     * @param list<string> $eventTypes Vault event types to deliver. Omit to receive the default supported set.
+     * @param list<string> $objectIDs Vault object IDs to limit notifications to. Omit to receive events for all objects in the vault.
+     * @param string $signingSecret Optional secret used to sign outbound webhook deliveries
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -36,12 +38,12 @@ interface SubscriptionsContract
      *
      * @param string $subscriptionID Path param: Subscription ID
      * @param string $id Path param: Vault ID
-     * @param string $callbackURL Body param
-     * @param bool $clearSigningSecret Body param
-     * @param list<string> $eventTypes Body param
-     * @param bool $isActive Body param
-     * @param list<string> $objectIDs Body param
-     * @param string $signingSecret Body param
+     * @param string $callbackURL Body param: Updated webhook endpoint URL for deliveries
+     * @param bool $clearSigningSecret Body param: Whether to remove the existing signing secret
+     * @param list<string> $eventTypes Body param: Updated event types to deliver for this subscription
+     * @param bool $isActive Body param: Whether the subscription should continue delivering events
+     * @param list<string> $objectIDs Body param: Updated vault object IDs to limit notifications to. Pass an empty array to remove the filter.
+     * @param string $signingSecret Body param: Replacement secret used to sign webhook deliveries
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

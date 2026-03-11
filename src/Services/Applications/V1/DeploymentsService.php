@@ -34,11 +34,11 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * Trigger a new deployment for a project
+     * Creates a deployment for an existing project by fetching repository files from GitHub and uploading them to the hosting provider. Use ref to deploy a branch, tag, or commit other than the project default branch.
      *
-     * @param string $projectID Project ID
-     * @param string $ref Git ref (branch, tag, or commit) to deploy
-     * @param Target|value-of<Target> $target Deployment target
+     * @param string $projectID Project ID to deploy
+     * @param string $ref Git branch, tag, or commit to deploy. Defaults to the project branch.
+     * @param Target|value-of<Target> $target Deployment target environment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -62,11 +62,11 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * Get details of a specific deployment including build logs
+     * Returns deployment details for one project in the authenticated organization. Set includeLogs=true to include recent build output in the response.
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
-     * @param bool $includeLogs Include build logs
+     * @param string $projectID Project ID used to verify access to the deployment
+     * @param bool $includeLogs Whether to include build logs in the response
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -90,12 +90,12 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * List deployments for a project
+     * Lists recent deployments for one project in the authenticated organization. Use the optional filters to narrow results by target or deployment state.
      *
-     * @param string $projectID Project ID
+     * @param string $projectID Project ID to list deployments for
      * @param float $limit Maximum number of deployments to return
-     * @param string $state Filter by deployment state
-     * @param \CaseDev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\CaseDev\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
+     * @param string $state Deployment state to filter by
+     * @param \CaseDev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\CaseDev\Applications\V1\Deployments\DeploymentListParams\Target> $target Deployment target to filter by
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -125,10 +125,10 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * Cancel a running deployment
+     * Cancels a running deployment after verifying that the referenced project belongs to the authenticated organization. Use this when a build is stuck, misconfigured, or no longer needed.
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
+     * @param string $projectID Project ID used to verify access to the deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -167,10 +167,10 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * Get build logs for a specific deployment
+     * Returns build and runtime log events for a deployment after verifying access to the owning project. Use this when you need detailed output for a failed or in-progress build.
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
+     * @param string $projectID Project ID used to verify access to the deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -191,7 +191,7 @@ final class DeploymentsService implements DeploymentsContract
     /**
      * @api
      *
-     * Get the current status of a deployment
+     * Returns the current status of a deployment without fetching full build logs. Use this endpoint for lightweight polling while a deployment is building or waiting to become ready.
      *
      * @param string $id Deployment ID
      * @param RequestOpts|null $requestOptions

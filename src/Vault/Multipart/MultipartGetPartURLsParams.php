@@ -27,13 +27,23 @@ final class MultipartGetPartURLsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Vault object ID associated with the multipart upload.
+     */
     #[Required('objectId')]
     public string $objectID;
 
-    /** @var list<Part> $parts */
+    /**
+     * Multipart parts that need presigned upload URLs.
+     *
+     * @var list<Part> $parts
+     */
     #[Required(list: Part::class)]
     public array $parts;
 
+    /**
+     * Multipart upload ID returned when the upload was initialized.
+     */
     #[Required('uploadId')]
     public string $uploadID;
 
@@ -80,6 +90,9 @@ final class MultipartGetPartURLsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Vault object ID associated with the multipart upload.
+     */
     public function withObjectID(string $objectID): self
     {
         $self = clone $this;
@@ -89,6 +102,8 @@ final class MultipartGetPartURLsParams implements BaseModel
     }
 
     /**
+     * Multipart parts that need presigned upload URLs.
+     *
      * @param list<Part|PartShape> $parts
      */
     public function withParts(array $parts): self
@@ -99,6 +114,9 @@ final class MultipartGetPartURLsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Multipart upload ID returned when the upload was initialized.
+     */
     public function withUploadID(string $uploadID): self
     {
         $self = clone $this;

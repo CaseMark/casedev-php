@@ -28,17 +28,31 @@ final class SubscriptionCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Webhook endpoint URL that will receive vault event deliveries.
+     */
     #[Required('callbackUrl')]
     public string $callbackURL;
 
-    /** @var list<string>|null $eventTypes */
+    /**
+     * Vault event types to deliver. Omit to receive the default supported set.
+     *
+     * @var list<string>|null $eventTypes
+     */
     #[Optional(list: 'string')]
     public ?array $eventTypes;
 
-    /** @var list<string>|null $objectIDs */
+    /**
+     * Vault object IDs to limit notifications to. Omit to receive events for all objects in the vault.
+     *
+     * @var list<string>|null $objectIDs
+     */
     #[Optional('objectIds', list: 'string')]
     public ?array $objectIDs;
 
+    /**
+     * Optional secret used to sign outbound webhook deliveries.
+     */
     #[Optional]
     public ?string $signingSecret;
 
@@ -86,6 +100,9 @@ final class SubscriptionCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Webhook endpoint URL that will receive vault event deliveries.
+     */
     public function withCallbackURL(string $callbackURL): self
     {
         $self = clone $this;
@@ -95,6 +112,8 @@ final class SubscriptionCreateParams implements BaseModel
     }
 
     /**
+     * Vault event types to deliver. Omit to receive the default supported set.
+     *
      * @param list<string> $eventTypes
      */
     public function withEventTypes(array $eventTypes): self
@@ -106,6 +125,8 @@ final class SubscriptionCreateParams implements BaseModel
     }
 
     /**
+     * Vault object IDs to limit notifications to. Omit to receive events for all objects in the vault.
+     *
      * @param list<string> $objectIDs
      */
     public function withObjectIDs(array $objectIDs): self
@@ -116,6 +137,9 @@ final class SubscriptionCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Optional secret used to sign outbound webhook deliveries.
+     */
     public function withSigningSecret(string $signingSecret): self
     {
         $self = clone $this;

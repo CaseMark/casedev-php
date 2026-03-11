@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Cancel a running deployment.
+ * Cancels a running deployment after verifying that the referenced project belongs to the authenticated organization. Use this when a build is stuck, misconfigured, or no longer needed.
  *
  * @see CaseDev\Services\Applications\V1\DeploymentsService::cancel()
  *
@@ -23,7 +23,7 @@ final class DeploymentCancelParams implements BaseModel
     use SdkParams;
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     #[Required('projectId')]
     public string $projectID;
@@ -62,7 +62,7 @@ final class DeploymentCancelParams implements BaseModel
     }
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     public function withProjectID(string $projectID): self
     {

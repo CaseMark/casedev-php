@@ -27,7 +27,11 @@ final class Length implements BaseModel
     #[Optional]
     public ?float $target;
 
-    /** @var value-of<Unit>|null $unit */
+    /**
+     * Whether the target length is measured in words or pages.
+     *
+     * @var value-of<Unit>|null $unit
+     */
     #[Optional(enum: Unit::class)]
     public ?string $unit;
 
@@ -67,6 +71,8 @@ final class Length implements BaseModel
     }
 
     /**
+     * Whether the target length is measured in words or pages.
+     *
      * @param Unit|value-of<Unit> $unit
      */
     public function withUnit(Unit|string $unit): self

@@ -19,6 +19,8 @@ interface MultipartContract
      * @api
      *
      * @param string $id Vault ID
+     * @param string $objectID Vault object ID associated with the multipart upload
+     * @param string $uploadID Multipart upload ID returned when the upload was initialized
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -34,7 +36,9 @@ interface MultipartContract
      * @api
      *
      * @param string $id Vault ID
-     * @param list<Part|PartShape> $parts
+     * @param string $objectID Vault object ID associated with the multipart upload
+     * @param list<Part|PartShape> $parts Multipart parts that need presigned upload URLs
+     * @param string $uploadID Multipart upload ID returned when the upload was initialized
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

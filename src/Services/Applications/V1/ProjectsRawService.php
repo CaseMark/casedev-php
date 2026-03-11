@@ -17,6 +17,7 @@ use CaseDev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
 use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
 use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams\Target;
 use CaseDev\Applications\V1\Projects\ProjectListEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectListParams;
 use CaseDev\Applications\V1\Projects\ProjectListResponse;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
@@ -40,7 +41,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Create a new web application project
+     * Creates a new application project, validates GitHub access, provisions a default case.dev domain, and starts the deployment workflow. The initial response returns as soon as the workflow is queued so clients can poll for progress.
      *
      * @param array{
      *   gitRepo: string,
@@ -81,7 +82,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Get details of a specific web application project
+     * Returns project details, domains, and recent deployment information for one application project or deployed Thurgood app. Use this endpoint when you need a single record with hosting metadata for a details view.
      *
      * @param string $id Project ID
      * @param RequestOpts|null $requestOptions
@@ -106,8 +107,9 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * List all web application projects
+     * Lists application projects and deployed Thurgood apps for the authenticated organization. Use enrich=true to include additional hosting metadata for projects linked to Vercel.
      *
+     * @param array{enrich?: bool, limit?: float}|ProjectListParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ProjectListResponse>
@@ -115,13 +117,20 @@ final class ProjectsRawService implements ProjectsRawContract
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        array|ProjectListParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = ProjectListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'applications/v1/projects',
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: ProjectListResponse::class,
         );
     }
@@ -129,7 +138,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Delete a web application project
+     * Soft-deletes an application project or deployed Thurgood app from Case.dev. By default it also removes the linked hosting project; set deleteFromHosting=false to keep the external hosting resources intact.
      *
      * @param string $id Project ID
      * @param array{deleteFromHosting?: bool}|ProjectDeleteParams $params
@@ -162,7 +171,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Trigger a new deployment for a project.
+     * Starts a new deployment for an existing project using its saved repository and hosting configuration. Any environment variables passed in the request are merged into the deployment workflow before the build starts.
      *
      * @param string $id Project ID
      * @param array{
@@ -372,7 +381,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * List deployments for a specific project
+     * Lists deployments for one project in the authenticated organization. If the hosting project has not been created yet, this endpoint returns an empty list with a progress message instead of failing.
      *
      * @param string $id Project ID
      * @param array{

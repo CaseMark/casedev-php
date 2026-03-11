@@ -21,15 +21,27 @@ final class Domain implements BaseModel
     /** @use SdkModel<DomainShape> */
     use SdkModel;
 
+    /**
+     * Domain record identifier.
+     */
     #[Optional]
     public ?string $id;
 
+    /**
+     * Hostname assigned to the project.
+     */
     #[Optional]
     public ?string $domain;
 
+    /**
+     * Whether this is the primary project domain.
+     */
     #[Optional]
     public ?bool $isPrimary;
 
+    /**
+     * Whether the domain has been verified by the hosting provider.
+     */
     #[Optional]
     public ?bool $isVerified;
 
@@ -59,6 +71,9 @@ final class Domain implements BaseModel
         return $self;
     }
 
+    /**
+     * Domain record identifier.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -67,6 +82,9 @@ final class Domain implements BaseModel
         return $self;
     }
 
+    /**
+     * Hostname assigned to the project.
+     */
     public function withDomain(string $domain): self
     {
         $self = clone $this;
@@ -75,6 +93,9 @@ final class Domain implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether this is the primary project domain.
+     */
     public function withIsPrimary(bool $isPrimary): self
     {
         $self = clone $this;
@@ -83,6 +104,9 @@ final class Domain implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether the domain has been verified by the hosting provider.
+     */
     public function withIsVerified(bool $isVerified): self
     {
         $self = clone $this;
