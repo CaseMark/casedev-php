@@ -25,8 +25,8 @@ interface AgentsContract
      * @param string $instructions System instructions that define agent behavior
      * @param string $name Display name for the agent
      * @param string $description Optional description of the agent
-     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use
-     * @param list<string>|null $enabledTools Allowlist of tools the agent can use
+     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both.
+     * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both.
      * @param string $model LLM model identifier (e.g. anthropic/claude-sonnet-4.6). Defaults to anthropic/claude-sonnet-4.6
      * @param Sandbox|SandboxShape|null $sandbox Custom sandbox configuration (cpu, memoryMiB)
      * @param list<string>|null $vaultGroups Restrict agent to vaults within specific vault group IDs
@@ -65,8 +65,8 @@ interface AgentsContract
      * @api
      *
      * @param string $id Agent ID
-     * @param list<string>|null $disabledTools
-     * @param list<string>|null $enabledTools
+     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both. Pass null to clear.
+     * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both. Pass null to clear.
      * @param list<string>|null $vaultGroups
      * @param list<string>|null $vaultIDs
      * @param RequestOpts|null $requestOptions
@@ -90,12 +90,16 @@ interface AgentsContract
     /**
      * @api
      *
+     * @param string $cursor Pagination cursor (agent ID from previous page). Returns agents created before this agent.
+     * @param int $limit Maximum number of agents to return (default 50, max 250)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        ?string $cursor = null,
+        int $limit = 50,
+        RequestOptions|array|null $requestOptions = null,
     ): AgentListResponse;
 
     /**

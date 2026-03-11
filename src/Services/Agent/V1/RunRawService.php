@@ -10,6 +10,9 @@ use CaseDev\Agent\V1\Run\RunEventsParams;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
+use CaseDev\Agent\V1\Run\RunListParams;
+use CaseDev\Agent\V1\Run\RunListParams\Status;
+use CaseDev\Agent\V1\Run\RunListResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchParams;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
@@ -23,6 +26,8 @@ use CaseDev\ServiceContracts\Agent\V1\RunRawContract;
 use CaseDev\SSEStream;
 
 /**
+ * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class RunRawService implements RunRawContract
@@ -41,6 +46,7 @@ final class RunRawService implements RunRawContract
      * @param array{
      *   agentID: string,
      *   prompt: string,
+     *   callbackURL?: string|null,
      *   guidance?: string|null,
      *   model?: string|null,
      *   objectIDs?: list<string>|null,
@@ -67,6 +73,42 @@ final class RunRawService implements RunRawContract
             body: (object) $parsed,
             options: $options,
             convert: RunNewResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Lists agent runs for the authenticated organization. Supports filtering by agent, status, and cursor-based pagination.
+     *
+     * @param array{
+     *   agentID?: string,
+     *   cursor?: string,
+     *   limit?: int,
+     *   status?: Status|value-of<Status>,
+     * }|RunListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<RunListResponse>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|RunListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = RunListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'agent/v1/run',
+            query: Util::array_transform_keys($parsed, ['agentID' => 'agentId']),
+            options: $options,
+            convert: RunListResponse::class,
         );
     }
 

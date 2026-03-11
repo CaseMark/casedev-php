@@ -8,6 +8,8 @@ use CaseDev\Agent\V1\Run\RunCancelResponse;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
+use CaseDev\Agent\V1\Run\RunListParams\Status;
+use CaseDev\Agent\V1\Run\RunListResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
 use CaseDev\Client;
@@ -18,6 +20,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Agent\V1\RunContract;
 
 /**
+ * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
+ *
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
 final class RunService implements RunContract
@@ -42,6 +46,7 @@ final class RunService implements RunContract
      *
      * @param string $agentID ID of the agent to run
      * @param string $prompt Task prompt for the agent
+     * @param string|null $callbackURL HTTPS callback URL to receive a notification when the run completes. Registered atomically with the run — eliminates the race condition of calling /watch after /exec. Additional watchers can still be added via POST /run/:id/watch.
      * @param string|null $guidance Additional guidance for this run
      * @param string|null $model Override the agent default model for this run
      * @param list<string>|null $objectIDs Scope this run to specific vault object IDs. The agent will only be able to access these objects during execution.
@@ -52,6 +57,7 @@ final class RunService implements RunContract
     public function create(
         string $agentID,
         string $prompt,
+        ?string $callbackURL = null,
         ?string $guidance = null,
         ?string $model = null,
         ?array $objectIDs = null,
@@ -61,6 +67,7 @@ final class RunService implements RunContract
             [
                 'agentID' => $agentID,
                 'prompt' => $prompt,
+                'callbackURL' => $callbackURL,
                 'guidance' => $guidance,
                 'model' => $model,
                 'objectIDs' => $objectIDs,
@@ -69,6 +76,41 @@ final class RunService implements RunContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Lists agent runs for the authenticated organization. Supports filtering by agent, status, and cursor-based pagination.
+     *
+     * @param string $agentID Filter by agent ID
+     * @param string $cursor Pagination cursor (run ID from previous page). Returns runs created before this run.
+     * @param int $limit Maximum number of runs to return (default 50, max 250)
+     * @param Status|value-of<Status> $status Filter by run status
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $agentID = null,
+        ?string $cursor = null,
+        int $limit = 50,
+        Status|string|null $status = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): RunListResponse {
+        $params = Util::removeNulls(
+            [
+                'agentID' => $agentID,
+                'cursor' => $cursor,
+                'limit' => $limit,
+                'status' => $status,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -10,6 +10,8 @@ use CaseDev\Agent\V1\Run\RunEventsParams;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
+use CaseDev\Agent\V1\Run\RunListParams;
+use CaseDev\Agent\V1\Run\RunListResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchParams;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
@@ -35,6 +37,21 @@ interface RunRawContract
      */
     public function create(
         array|RunCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|RunListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<RunListResponse>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|RunListParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

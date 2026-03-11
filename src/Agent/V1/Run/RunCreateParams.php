@@ -18,6 +18,7 @@ use CaseDev\Core\Contracts\BaseModel;
  * @phpstan-type RunCreateParamsShape = array{
  *   agentID: string,
  *   prompt: string,
+ *   callbackURL?: string|null,
  *   guidance?: string|null,
  *   model?: string|null,
  *   objectIDs?: list<string>|null,
@@ -40,6 +41,12 @@ final class RunCreateParams implements BaseModel
      */
     #[Required]
     public string $prompt;
+
+    /**
+     * HTTPS callback URL to receive a notification when the run completes. Registered atomically with the run — eliminates the race condition of calling /watch after /exec. Additional watchers can still be added via POST /run/:id/watch.
+     */
+    #[Optional('callbackUrl', nullable: true)]
+    public ?string $callbackURL;
 
     /**
      * Additional guidance for this run.
@@ -90,6 +97,7 @@ final class RunCreateParams implements BaseModel
     public static function with(
         string $agentID,
         string $prompt,
+        ?string $callbackURL = null,
         ?string $guidance = null,
         ?string $model = null,
         ?array $objectIDs = null,
@@ -99,6 +107,7 @@ final class RunCreateParams implements BaseModel
         $self['agentID'] = $agentID;
         $self['prompt'] = $prompt;
 
+        null !== $callbackURL && $self['callbackURL'] = $callbackURL;
         null !== $guidance && $self['guidance'] = $guidance;
         null !== $model && $self['model'] = $model;
         null !== $objectIDs && $self['objectIDs'] = $objectIDs;
@@ -124,6 +133,17 @@ final class RunCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['prompt'] = $prompt;
+
+        return $self;
+    }
+
+    /**
+     * HTTPS callback URL to receive a notification when the run completes. Registered atomically with the run — eliminates the race condition of calling /watch after /exec. Additional watchers can still be added via POST /run/:id/watch.
+     */
+    public function withCallbackURL(?string $callbackURL): self
+    {
+        $self = clone $this;
+        $self['callbackURL'] = $callbackURL;
 
         return $self;
     }

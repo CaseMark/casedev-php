@@ -35,11 +35,19 @@ final class AgentUpdateParams implements BaseModel
     #[Optional]
     public ?string $description;
 
-    /** @var list<string>|null $disabledTools */
+    /**
+     * Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both. Pass null to clear.
+     *
+     * @var list<string>|null $disabledTools
+     */
     #[Optional(list: 'string', nullable: true)]
     public ?array $disabledTools;
 
-    /** @var list<string>|null $enabledTools */
+    /**
+     * Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both. Pass null to clear.
+     *
+     * @var list<string>|null $enabledTools
+     */
     #[Optional(list: 'string', nullable: true)]
     public ?array $enabledTools;
 
@@ -113,6 +121,8 @@ final class AgentUpdateParams implements BaseModel
     }
 
     /**
+     * Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both. Pass null to clear.
+     *
      * @param list<string>|null $disabledTools
      */
     public function withDisabledTools(?array $disabledTools): self
@@ -124,6 +134,8 @@ final class AgentUpdateParams implements BaseModel
     }
 
     /**
+     * Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both. Pass null to clear.
+     *
      * @param list<string>|null $enabledTools
      */
     public function withEnabledTools(?array $enabledTools): self

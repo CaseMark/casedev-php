@@ -7,12 +7,15 @@ namespace CaseDev\ServiceContracts\Agent\V1;
 use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
+use CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part;
 use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\RequestOptions;
 
 /**
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part as PartShape1
  */
 interface ChatContract
 {
@@ -82,22 +85,22 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
-     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function respond(
         string $id,
-        mixed $body,
-        RequestOptions|array|null $requestOptions = null
+        ?array $parts = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string;
 
     /**
      * @api
      *
      * @param string $id Chat session ID
-     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseStream<string>
@@ -106,23 +109,23 @@ interface ChatContract
      */
     public function respondStream(
         string $id,
-        mixed $body,
-        RequestOptions|array|null $requestOptions = null
+        ?array $parts = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseStream;
 
     /**
      * @api
      *
      * @param string $id Chat session ID
-     * @param mixed $body OpenCode message payload. Passed through 1:1.
+     * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function sendMessage(
         string $id,
-        mixed $body,
-        RequestOptions|array|null $requestOptions = null
+        ?array $parts = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -155,37 +158,5 @@ interface ChatContract
         string $id,
         ?int $lastEventID = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseStream;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param mixed $body OpenCode message payload. Passed through 1:1.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function uiStream(
-        string $id,
-        mixed $body,
-        RequestOptions|array|null $requestOptions = null
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param mixed $body OpenCode message payload. Passed through 1:1.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseStream<string>
-     *
-     * @throws APIException
-     */
-    public function uiStreamStream(
-        string $id,
-        mixed $body,
-        RequestOptions|array|null $requestOptions = null
     ): BaseStream;
 }
