@@ -7,6 +7,7 @@ namespace CaseDev\ServiceContracts\Agent\V1;
 use CaseDev\Agent\V1\Agents\AgentCreateParams;
 use CaseDev\Agent\V1\Agents\AgentDeleteResponse;
 use CaseDev\Agent\V1\Agents\AgentGetResponse;
+use CaseDev\Agent\V1\Agents\AgentListParams;
 use CaseDev\Agent\V1\Agents\AgentListResponse;
 use CaseDev\Agent\V1\Agents\AgentNewResponse;
 use CaseDev\Agent\V1\Agents\AgentUpdateParams;
@@ -70,6 +71,7 @@ interface AgentsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|AgentListParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AgentListResponse>
@@ -77,7 +79,8 @@ interface AgentsRawContract
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        array|AgentListParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

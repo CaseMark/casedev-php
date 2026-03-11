@@ -6,6 +6,7 @@ use CaseDev\Agent\V1\Run\RunCancelResponse;
 use CaseDev\Agent\V1\Run\RunExecResponse;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse;
 use CaseDev\Agent\V1\Run\RunGetStatusResponse;
+use CaseDev\Agent\V1\Run\RunListResponse;
 use CaseDev\Agent\V1\Run\RunNewResponse;
 use CaseDev\Agent\V1\Run\RunWatchResponse;
 use CaseDev\Client;
@@ -51,6 +52,7 @@ final class RunTest extends TestCase
         $result = $this->client->agent->v1->run->create(
             agentID: 'agentId',
             prompt: 'prompt',
+            callbackURL: 'https://example.com',
             guidance: 'guidance',
             model: 'model',
             objectIDs: ['string'],
@@ -58,6 +60,15 @@ final class RunTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(RunNewResponse::class, $result);
+    }
+
+    #[Test]
+    public function testList(): void
+    {
+        $result = $this->client->agent->v1->run->list();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RunListResponse::class, $result);
     }
 
     #[Test]

@@ -19,8 +19,8 @@ interface ExecuteContract
      * @api
      *
      * @param string $prompt Task prompt for the agent
-     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use
-     * @param list<string>|null $enabledTools Allowlist of tools the agent can use
+     * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both.
+     * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both.
      * @param string|null $guidance Additional context or constraints for this run
      * @param string $instructions System instructions. Defaults to a general-purpose legal assistant prompt if not provided.
      * @param string $model LLM model identifier. Defaults to anthropic/claude-sonnet-4.6

@@ -55,7 +55,7 @@ final class AgentCreateParams implements BaseModel
     public ?string $description;
 
     /**
-     * Denylist of tools the agent cannot use.
+     * Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both.
      *
      * @var list<string>|null $disabledTools
      */
@@ -63,7 +63,7 @@ final class AgentCreateParams implements BaseModel
     public ?array $disabledTools;
 
     /**
-     * Allowlist of tools the agent can use.
+     * Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both.
      *
      * @var list<string>|null $enabledTools
      */
@@ -189,7 +189,7 @@ final class AgentCreateParams implements BaseModel
     }
 
     /**
-     * Denylist of tools the agent cannot use.
+     * Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both.
      *
      * @param list<string>|null $disabledTools
      */
@@ -202,7 +202,7 @@ final class AgentCreateParams implements BaseModel
     }
 
     /**
-     * Allowlist of tools the agent can use.
+     * Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both.
      *
      * @param list<string>|null $enabledTools
      */

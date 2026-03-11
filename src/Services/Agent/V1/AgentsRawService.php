@@ -8,6 +8,7 @@ use CaseDev\Agent\V1\Agents\AgentCreateParams;
 use CaseDev\Agent\V1\Agents\AgentCreateParams\Sandbox;
 use CaseDev\Agent\V1\Agents\AgentDeleteResponse;
 use CaseDev\Agent\V1\Agents\AgentGetResponse;
+use CaseDev\Agent\V1\Agents\AgentListParams;
 use CaseDev\Agent\V1\Agents\AgentListResponse;
 use CaseDev\Agent\V1\Agents\AgentNewResponse;
 use CaseDev\Agent\V1\Agents\AgentUpdateParams;
@@ -19,6 +20,8 @@ use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Agent\V1\AgentsRawContract;
 
 /**
+ * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
+ *
  * @phpstan-import-type SandboxShape from \CaseDev\Agent\V1\Agents\AgentCreateParams\Sandbox
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
  */
@@ -144,6 +147,7 @@ final class AgentsRawService implements AgentsRawContract
      *
      * Lists all active agents for the authenticated organization.
      *
+     * @param array{cursor?: string, limit?: int}|AgentListParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AgentListResponse>
@@ -151,13 +155,20 @@ final class AgentsRawService implements AgentsRawContract
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        array|AgentListParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = AgentListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'agent/v1/agents',
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: AgentListResponse::class,
         );
     }
