@@ -28,7 +28,11 @@ final class ChatReplyToQuestionParams implements BaseModel
     #[Required]
     public string $id;
 
-    /** @var list<list<string>> $answers */
+    /**
+     * Answer selections for each prompt element in the pending question.
+     *
+     * @var list<list<string>> $answers
+     */
     #[Required(list: new ListOf('string'))]
     public array $answers;
 
@@ -77,6 +81,8 @@ final class ChatReplyToQuestionParams implements BaseModel
     }
 
     /**
+     * Answer selections for each prompt element in the pending question.
+     *
      * @param list<list<string>> $answers
      */
     public function withAnswers(array $answers): self

@@ -55,6 +55,9 @@ final class V1CreateDocumentParams implements BaseModel
     #[Optional('input_format', enum: InputFormat::class)]
     public ?string $inputFormat;
 
+    /**
+     * Optional template composition and styling settings used during document generation.
+     */
     #[Optional]
     public ?Options $options;
 
@@ -141,6 +144,8 @@ final class V1CreateDocumentParams implements BaseModel
     }
 
     /**
+     * Optional template composition and styling settings used during document generation.
+     *
      * @param Options|OptionsShape $options
      */
     public function withOptions(Options|array $options): self

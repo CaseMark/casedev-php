@@ -21,15 +21,15 @@ interface ProjectsContract
     /**
      * @api
      *
-     * @param string $gitRepo GitHub repository URL or "owner/repo"
-     * @param string $name Project name
-     * @param string $buildCommand Custom build command
-     * @param list<EnvironmentVariable|EnvironmentVariableShape> $environmentVariables Environment variables to set on the project
-     * @param string $framework Framework (e.g., "nextjs", "remix", "astro")
-     * @param string $gitBranch Git branch to deploy
-     * @param string $installCommand Custom install command
-     * @param string $outputDirectory Build output directory
-     * @param string $rootDirectory Root directory of the project
+     * @param string $gitRepo GitHub repository URL or owner/repo identifier
+     * @param string $name Human-readable project name
+     * @param string $buildCommand Custom build command to override the framework default
+     * @param list<EnvironmentVariable|EnvironmentVariableShape> $environmentVariables Environment variables to create before the first deployment
+     * @param string $framework Framework preset for the hosting project, such as nextjs or remix
+     * @param string $gitBranch Git branch to deploy. Defaults to main.
+     * @param string $installCommand Custom install command to override the framework default
+     * @param string $outputDirectory Build output directory relative to the project root
+     * @param string $rootDirectory Repository subdirectory that contains the app to deploy
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -63,19 +63,23 @@ interface ProjectsContract
     /**
      * @api
      *
+     * @param bool $enrich Whether to include additional hosting metadata from Vercel
+     * @param float $limit Maximum number of projects to return from each backing source
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        bool $enrich = false,
+        float $limit = 20,
+        RequestOptions|array|null $requestOptions = null,
     ): ProjectListResponse;
 
     /**
      * @api
      *
      * @param string $id Project ID
-     * @param bool $deleteFromHosting Also delete the project from hosting (default: true)
+     * @param bool $deleteFromHosting Whether to also delete the linked hosting project. Defaults to true.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -191,8 +195,8 @@ interface ProjectsContract
      *
      * @param string $id Project ID
      * @param float $limit Maximum number of deployments to return
-     * @param string $state Filter by deployment state
-     * @param Target|value-of<Target> $target Filter by deployment target
+     * @param string $state Deployment state to filter by
+     * @param Target|value-of<Target> $target Deployment target to filter by
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

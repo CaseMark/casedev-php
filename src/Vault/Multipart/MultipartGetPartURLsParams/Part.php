@@ -16,6 +16,9 @@ final class Part implements BaseModel
     /** @use SdkModel<PartShape> */
     use SdkModel;
 
+    /**
+     * 1-based multipart part number.
+     */
     #[Required]
     public int $partNumber;
 
@@ -59,6 +62,9 @@ final class Part implements BaseModel
         return $self;
     }
 
+    /**
+     * 1-based multipart part number.
+     */
     public function withPartNumber(int $partNumber): self
     {
         $self = clone $this;

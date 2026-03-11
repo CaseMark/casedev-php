@@ -69,7 +69,7 @@ interface ChatContract
      *
      * @param string $requestID Path param: Pending question request ID
      * @param string $id Path param: Chat session ID
-     * @param list<list<string>> $answers Body param
+     * @param list<list<string>> $answers Body param: Answer selections for each prompt element in the pending question
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

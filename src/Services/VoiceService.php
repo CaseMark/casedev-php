@@ -6,6 +6,7 @@ namespace CaseDev\Services;
 
 use CaseDev\Client;
 use CaseDev\ServiceContracts\VoiceContract;
+use CaseDev\Services\Voice\BoostListService;
 use CaseDev\Services\Voice\StreamingService;
 use CaseDev\Services\Voice\TranscriptionService;
 use CaseDev\Services\Voice\V1Service;
@@ -25,6 +26,11 @@ final class VoiceService implements VoiceContract
     /**
      * @api
      */
+    public BoostListService $boostList;
+
+    /**
+     * @api
+     */
     public TranscriptionService $transcription;
 
     /**
@@ -39,6 +45,7 @@ final class VoiceService implements VoiceContract
     {
         $this->raw = new VoiceRawService($client);
         $this->streaming = new StreamingService($client);
+        $this->boostList = new BoostListService($client);
         $this->transcription = new TranscriptionService($client);
         $this->v1 = new V1Service($client);
     }

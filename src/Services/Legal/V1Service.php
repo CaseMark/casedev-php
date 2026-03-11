@@ -274,6 +274,8 @@ final class V1Service implements V1Contract
      *
      * @param bool $inUseOnly Only return courts currently in use by CourtListener
      * @param string $jurisdiction Optional CourtListener jurisdiction code filter (e.g. FD, F, S)
+     * @param int $limit Maximum number of courts to return
+     * @param int $offset Number of courts to skip before returning results
      * @param string $query Search by court name or slug (e.g. "Northern District", "nysd", "ca9")
      * @param RequestOpts|null $requestOptions
      *

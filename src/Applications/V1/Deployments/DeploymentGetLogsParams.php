@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Get build logs for a specific deployment.
+ * Returns build and runtime log events for a deployment after verifying access to the owning project. Use this when you need detailed output for a failed or in-progress build.
  *
  * @see CaseDev\Services\Applications\V1\DeploymentsService::getLogs()
  *
@@ -23,7 +23,7 @@ final class DeploymentGetLogsParams implements BaseModel
     use SdkParams;
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     #[Required]
     public string $projectID;
@@ -62,7 +62,7 @@ final class DeploymentGetLogsParams implements BaseModel
     }
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     public function withProjectID(string $projectID): self
     {

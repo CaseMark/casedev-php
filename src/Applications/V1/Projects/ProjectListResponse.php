@@ -21,7 +21,11 @@ final class ProjectListResponse implements BaseModel
     /** @use SdkModel<ProjectListResponseShape> */
     use SdkModel;
 
-    /** @var list<Project>|null $projects */
+    /**
+     * Projects and deployed apps visible to the organization.
+     *
+     * @var list<Project>|null $projects
+     */
     #[Optional(list: Project::class)]
     public ?array $projects;
 
@@ -47,6 +51,8 @@ final class ProjectListResponse implements BaseModel
     }
 
     /**
+     * Projects and deployed apps visible to the organization.
+     *
      * @param list<Project|ProjectShape> $projects
      */
     public function withProjects(array $projects): self

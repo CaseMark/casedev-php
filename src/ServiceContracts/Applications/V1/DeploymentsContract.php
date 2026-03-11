@@ -16,9 +16,9 @@ interface DeploymentsContract
     /**
      * @api
      *
-     * @param string $projectID Project ID
-     * @param string $ref Git ref (branch, tag, or commit) to deploy
-     * @param Target|value-of<Target> $target Deployment target
+     * @param string $projectID Project ID to deploy
+     * @param string $ref Git branch, tag, or commit to deploy. Defaults to the project branch.
+     * @param Target|value-of<Target> $target Deployment target environment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -34,8 +34,8 @@ interface DeploymentsContract
      * @api
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
-     * @param bool $includeLogs Include build logs
+     * @param string $projectID Project ID used to verify access to the deployment
+     * @param bool $includeLogs Whether to include build logs in the response
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -50,10 +50,10 @@ interface DeploymentsContract
     /**
      * @api
      *
-     * @param string $projectID Project ID
+     * @param string $projectID Project ID to list deployments for
      * @param float $limit Maximum number of deployments to return
-     * @param string $state Filter by deployment state
-     * @param \CaseDev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\CaseDev\Applications\V1\Deployments\DeploymentListParams\Target> $target Filter by deployment target
+     * @param string $state Deployment state to filter by
+     * @param \CaseDev\Applications\V1\Deployments\DeploymentListParams\Target|value-of<\CaseDev\Applications\V1\Deployments\DeploymentListParams\Target> $target Deployment target to filter by
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -70,7 +70,7 @@ interface DeploymentsContract
      * @api
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
+     * @param string $projectID Project ID used to verify access to the deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -96,7 +96,7 @@ interface DeploymentsContract
      * @api
      *
      * @param string $id Deployment ID
-     * @param string $projectID Project ID (for authorization)
+     * @param string $projectID Project ID used to verify access to the deployment
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CaseDev\Applications\V1\Projects\ProjectCreateParams\EnvironmentVariable;
 
 /**
- * Variable type.
+ * Storage mode for the environment variable value.
  */
 enum Type: string
 {

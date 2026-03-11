@@ -12,7 +12,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * List deployments for a project.
+ * Lists recent deployments for one project in the authenticated organization. Use the optional filters to narrow results by target or deployment state.
  *
  * @see CaseDev\Services\Applications\V1\DeploymentsService::list()
  *
@@ -30,7 +30,7 @@ final class DeploymentListParams implements BaseModel
     use SdkParams;
 
     /**
-     * Project ID.
+     * Project ID to list deployments for.
      */
     #[Required]
     public string $projectID;
@@ -42,13 +42,13 @@ final class DeploymentListParams implements BaseModel
     public ?float $limit;
 
     /**
-     * Filter by deployment state.
+     * Deployment state to filter by.
      */
     #[Optional]
     public ?string $state;
 
     /**
-     * Filter by deployment target.
+     * Deployment target to filter by.
      *
      * @var value-of<Target>|null $target
      */
@@ -99,7 +99,7 @@ final class DeploymentListParams implements BaseModel
     }
 
     /**
-     * Project ID.
+     * Project ID to list deployments for.
      */
     public function withProjectID(string $projectID): self
     {
@@ -121,7 +121,7 @@ final class DeploymentListParams implements BaseModel
     }
 
     /**
-     * Filter by deployment state.
+     * Deployment state to filter by.
      */
     public function withState(string $state): self
     {
@@ -132,7 +132,7 @@ final class DeploymentListParams implements BaseModel
     }
 
     /**
-     * Filter by deployment target.
+     * Deployment target to filter by.
      *
      * @param Target|value-of<Target> $target
      */

@@ -40,9 +40,15 @@ final class V1ListCourtsParams implements BaseModel
     #[Optional]
     public ?string $jurisdiction;
 
+    /**
+     * Maximum number of courts to return.
+     */
     #[Optional]
     public ?int $limit;
 
+    /**
+     * Number of courts to skip before returning results.
+     */
     #[Optional]
     public ?int $offset;
 
@@ -102,6 +108,9 @@ final class V1ListCourtsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Maximum number of courts to return.
+     */
     public function withLimit(int $limit): self
     {
         $self = clone $this;
@@ -110,6 +119,9 @@ final class V1ListCourtsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Number of courts to skip before returning results.
+     */
     public function withOffset(int $offset): self
     {
         $self = clone $this;

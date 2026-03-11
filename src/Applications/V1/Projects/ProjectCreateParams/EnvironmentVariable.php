@@ -31,7 +31,7 @@ final class EnvironmentVariable implements BaseModel
     public string $key;
 
     /**
-     * Deployment targets for this variable.
+     * Deployment targets that should receive this variable.
      *
      * @var list<value-of<Target>> $target
      */
@@ -45,7 +45,7 @@ final class EnvironmentVariable implements BaseModel
     public string $value;
 
     /**
-     * Variable type.
+     * Storage mode for the environment variable value.
      *
      * @var value-of<Type>|null $type
      */
@@ -108,7 +108,7 @@ final class EnvironmentVariable implements BaseModel
     }
 
     /**
-     * Deployment targets for this variable.
+     * Deployment targets that should receive this variable.
      *
      * @param list<Target|value-of<Target>> $target
      */
@@ -132,7 +132,7 @@ final class EnvironmentVariable implements BaseModel
     }
 
     /**
-     * Variable type.
+     * Storage mode for the environment variable value.
      *
      * @param Type|value-of<Type> $type
      */

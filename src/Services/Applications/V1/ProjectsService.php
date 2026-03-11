@@ -37,17 +37,17 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * Create a new web application project
+     * Creates a new application project, validates GitHub access, provisions a default case.dev domain, and starts the deployment workflow. The initial response returns as soon as the workflow is queued so clients can poll for progress.
      *
-     * @param string $gitRepo GitHub repository URL or "owner/repo"
-     * @param string $name Project name
-     * @param string $buildCommand Custom build command
-     * @param list<EnvironmentVariable|EnvironmentVariableShape> $environmentVariables Environment variables to set on the project
-     * @param string $framework Framework (e.g., "nextjs", "remix", "astro")
-     * @param string $gitBranch Git branch to deploy
-     * @param string $installCommand Custom install command
-     * @param string $outputDirectory Build output directory
-     * @param string $rootDirectory Root directory of the project
+     * @param string $gitRepo GitHub repository URL or owner/repo identifier
+     * @param string $name Human-readable project name
+     * @param string $buildCommand Custom build command to override the framework default
+     * @param list<EnvironmentVariable|EnvironmentVariableShape> $environmentVariables Environment variables to create before the first deployment
+     * @param string $framework Framework preset for the hosting project, such as nextjs or remix
+     * @param string $gitBranch Git branch to deploy. Defaults to main.
+     * @param string $installCommand Custom install command to override the framework default
+     * @param string $outputDirectory Build output directory relative to the project root
+     * @param string $rootDirectory Repository subdirectory that contains the app to deploy
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -87,7 +87,7 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * Get details of a specific web application project
+     * Returns project details, domains, and recent deployment information for one application project or deployed Thurgood app. Use this endpoint when you need a single record with hosting metadata for a details view.
      *
      * @param string $id Project ID
      * @param RequestOpts|null $requestOptions
@@ -107,17 +107,23 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * List all web application projects
+     * Lists application projects and deployed Thurgood apps for the authenticated organization. Use enrich=true to include additional hosting metadata for projects linked to Vercel.
      *
+     * @param bool $enrich Whether to include additional hosting metadata from Vercel
+     * @param float $limit Maximum number of projects to return from each backing source
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        bool $enrich = false,
+        float $limit = 20,
+        RequestOptions|array|null $requestOptions = null,
     ): ProjectListResponse {
+        $params = Util::removeNulls(['enrich' => $enrich, 'limit' => $limit]);
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->list(requestOptions: $requestOptions);
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -125,10 +131,10 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * Delete a web application project
+     * Soft-deletes an application project or deployed Thurgood app from Case.dev. By default it also removes the linked hosting project; set deleteFromHosting=false to keep the external hosting resources intact.
      *
      * @param string $id Project ID
-     * @param bool $deleteFromHosting Also delete the project from hosting (default: true)
+     * @param bool $deleteFromHosting Whether to also delete the linked hosting project. Defaults to true.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -149,7 +155,7 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * Trigger a new deployment for a project.
+     * Starts a new deployment for an existing project using its saved repository and hosting configuration. Any environment variables passed in the request are merged into the deployment workflow before the build starts.
      *
      * @param string $id Project ID
      * @param list<\CaseDev\Applications\V1\Projects\ProjectCreateDeploymentParams\EnvironmentVariable|EnvironmentVariableShape1> $environmentVariables Additional environment variables to set or update before deployment
@@ -315,12 +321,12 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * List deployments for a specific project
+     * Lists deployments for one project in the authenticated organization. If the hosting project has not been created yet, this endpoint returns an empty list with a progress message instead of failing.
      *
      * @param string $id Project ID
      * @param float $limit Maximum number of deployments to return
-     * @param string $state Filter by deployment state
-     * @param Target|value-of<Target> $target Filter by deployment target
+     * @param string $state Deployment state to filter by
+     * @param Target|value-of<Target> $target Deployment target to filter by
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

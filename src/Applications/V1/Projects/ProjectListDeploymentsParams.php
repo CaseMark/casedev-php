@@ -11,7 +11,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * List deployments for a specific project.
+ * Lists deployments for one project in the authenticated organization. If the hosting project has not been created yet, this endpoint returns an empty list with a progress message instead of failing.
  *
  * @see CaseDev\Services\Applications\V1\ProjectsService::listDeployments()
  *
@@ -32,13 +32,13 @@ final class ProjectListDeploymentsParams implements BaseModel
     public ?float $limit;
 
     /**
-     * Filter by deployment state.
+     * Deployment state to filter by.
      */
     #[Optional]
     public ?string $state;
 
     /**
-     * Filter by deployment target.
+     * Deployment target to filter by.
      *
      * @var value-of<Target>|null $target
      */
@@ -83,7 +83,7 @@ final class ProjectListDeploymentsParams implements BaseModel
     }
 
     /**
-     * Filter by deployment state.
+     * Deployment state to filter by.
      */
     public function withState(string $state): self
     {
@@ -94,7 +94,7 @@ final class ProjectListDeploymentsParams implements BaseModel
     }
 
     /**
-     * Filter by deployment target.
+     * Deployment target to filter by.
      *
      * @param Target|value-of<Target> $target
      */

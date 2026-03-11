@@ -11,7 +11,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Trigger a new deployment for a project.
+ * Starts a new deployment for an existing project using its saved repository and hosting configuration. Any environment variables passed in the request are merged into the deployment workflow before the build starts.
  *
  * @see CaseDev\Services\Applications\V1\ProjectsService::createDeployment()
  *

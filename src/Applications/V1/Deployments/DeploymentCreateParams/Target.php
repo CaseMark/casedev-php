@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CaseDev\Applications\V1\Deployments\DeploymentCreateParams;
 
 /**
- * Deployment target.
+ * Deployment target environment.
  */
 enum Target: string
 {

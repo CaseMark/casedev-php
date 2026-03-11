@@ -24,9 +24,15 @@ final class MultipartAbortParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Vault object ID associated with the multipart upload.
+     */
     #[Required('objectId')]
     public string $objectID;
 
+    /**
+     * Multipart upload ID returned when the upload was initialized.
+     */
     #[Required('uploadId')]
     public string $uploadID;
 
@@ -64,6 +70,9 @@ final class MultipartAbortParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Vault object ID associated with the multipart upload.
+     */
     public function withObjectID(string $objectID): self
     {
         $self = clone $this;
@@ -72,6 +81,9 @@ final class MultipartAbortParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Multipart upload ID returned when the upload was initialized.
+     */
     public function withUploadID(string $uploadID): self
     {
         $self = clone $this;

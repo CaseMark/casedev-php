@@ -113,10 +113,15 @@ final class AgentsService implements AgentsContract
      * Updates an agent definition. Only provided fields are changed.
      *
      * @param string $id Agent ID
+     * @param string|null $description Updated agent description. Pass null to clear if supported by the client.
      * @param list<string>|null $disabledTools Denylist of tools the agent cannot use. Mutually exclusive with enabledTools — set one or the other, not both. Pass null to clear.
      * @param list<string>|null $enabledTools Allowlist of tools the agent can use. Mutually exclusive with disabledTools — set one or the other, not both. Pass null to clear.
-     * @param list<string>|null $vaultGroups
-     * @param list<string>|null $vaultIDs
+     * @param string $instructions Updated system instructions that guide agent behavior
+     * @param string $model Model identifier the agent should use for future runs
+     * @param string $name Updated agent display name
+     * @param mixed $sandbox Sandbox configuration override for future agent runs. Pass null to clear.
+     * @param list<string>|null $vaultGroups Vault group IDs the agent can access. Pass null to clear.
+     * @param list<string>|null $vaultIDs Vault IDs the agent can access directly. Pass null to clear.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
