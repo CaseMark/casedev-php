@@ -30,34 +30,65 @@ final class Project implements BaseModel
     /** @use SdkModel<ProjectShape> */
     use SdkModel;
 
+    /**
+     * Project identifier.
+     */
     #[Optional]
     public ?string $id;
 
+    /**
+     * When the project record was created.
+     */
     #[Optional]
     public ?string $createdAt;
 
-    /** @var list<Domain>|null $domains */
+    /**
+     * Custom or generated domains assigned to the project.
+     *
+     * @var list<Domain>|null $domains
+     */
     #[Optional(list: Domain::class)]
     public ?array $domains;
 
+    /**
+     * Detected or configured application framework.
+     */
     #[Optional]
     public ?string $framework;
 
+    /**
+     * Default Git branch used for deployments.
+     */
     #[Optional]
     public ?string $gitBranch;
 
+    /**
+     * Connected Git repository in owner/repo format.
+     */
     #[Optional]
     public ?string $gitRepo;
 
+    /**
+     * Project display name.
+     */
     #[Optional]
     public ?string $name;
 
+    /**
+     * Current project deployment status.
+     */
     #[Optional]
     public ?string $status;
 
+    /**
+     * When the project record was last updated.
+     */
     #[Optional]
     public ?string $updatedAt;
 
+    /**
+     * Hosting provider project ID, when linked.
+     */
     #[Optional('vercelProjectId')]
     public ?string $vercelProjectID;
 
@@ -101,6 +132,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Project identifier.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -109,6 +143,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * When the project record was created.
+     */
     public function withCreatedAt(string $createdAt): self
     {
         $self = clone $this;
@@ -118,6 +155,8 @@ final class Project implements BaseModel
     }
 
     /**
+     * Custom or generated domains assigned to the project.
+     *
      * @param list<Domain|DomainShape> $domains
      */
     public function withDomains(array $domains): self
@@ -128,6 +167,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Detected or configured application framework.
+     */
     public function withFramework(string $framework): self
     {
         $self = clone $this;
@@ -136,6 +178,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Default Git branch used for deployments.
+     */
     public function withGitBranch(string $gitBranch): self
     {
         $self = clone $this;
@@ -144,6 +189,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Connected Git repository in owner/repo format.
+     */
     public function withGitRepo(string $gitRepo): self
     {
         $self = clone $this;
@@ -152,6 +200,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Project display name.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -160,6 +211,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Current project deployment status.
+     */
     public function withStatus(string $status): self
     {
         $self = clone $this;
@@ -168,6 +222,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * When the project record was last updated.
+     */
     public function withUpdatedAt(string $updatedAt): self
     {
         $self = clone $this;
@@ -176,6 +233,9 @@ final class Project implements BaseModel
         return $self;
     }
 
+    /**
+     * Hosting provider project ID, when linked.
+     */
     public function withVercelProjectID(string $vercelProjectID): self
     {
         $self = clone $this;

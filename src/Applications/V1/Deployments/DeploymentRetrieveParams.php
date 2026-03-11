@@ -11,7 +11,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Get details of a specific deployment including build logs.
+ * Returns deployment details for one project in the authenticated organization. Set includeLogs=true to include recent build output in the response.
  *
  * @see CaseDev\Services\Applications\V1\DeploymentsService::retrieve()
  *
@@ -26,13 +26,13 @@ final class DeploymentRetrieveParams implements BaseModel
     use SdkParams;
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     #[Required]
     public string $projectID;
 
     /**
-     * Include build logs.
+     * Whether to include build logs in the response.
      */
     #[Optional]
     public ?bool $includeLogs;
@@ -75,7 +75,7 @@ final class DeploymentRetrieveParams implements BaseModel
     }
 
     /**
-     * Project ID (for authorization).
+     * Project ID used to verify access to the deployment.
      */
     public function withProjectID(string $projectID): self
     {
@@ -86,7 +86,7 @@ final class DeploymentRetrieveParams implements BaseModel
     }
 
     /**
-     * Include build logs.
+     * Whether to include build logs in the response.
      */
     public function withIncludeLogs(bool $includeLogs): self
     {

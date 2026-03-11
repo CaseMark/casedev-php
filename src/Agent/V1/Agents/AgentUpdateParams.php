@@ -32,7 +32,10 @@ final class AgentUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Optional]
+    /**
+     * Updated agent description. Pass null to clear if supported by the client.
+     */
+    #[Optional(nullable: true)]
     public ?string $description;
 
     /**
@@ -51,23 +54,43 @@ final class AgentUpdateParams implements BaseModel
     #[Optional(list: 'string', nullable: true)]
     public ?array $enabledTools;
 
+    /**
+     * Updated system instructions that guide agent behavior.
+     */
     #[Optional]
     public ?string $instructions;
 
+    /**
+     * Model identifier the agent should use for future runs.
+     */
     #[Optional]
     public ?string $model;
 
+    /**
+     * Updated agent display name.
+     */
     #[Optional]
     public ?string $name;
 
+    /**
+     * Sandbox configuration override for future agent runs. Pass null to clear.
+     */
     #[Optional(nullable: true)]
     public mixed $sandbox;
 
-    /** @var list<string>|null $vaultGroups */
+    /**
+     * Vault group IDs the agent can access. Pass null to clear.
+     *
+     * @var list<string>|null $vaultGroups
+     */
     #[Optional(list: 'string', nullable: true)]
     public ?array $vaultGroups;
 
-    /** @var list<string>|null $vaultIDs */
+    /**
+     * Vault IDs the agent can access directly. Pass null to clear.
+     *
+     * @var list<string>|null $vaultIDs
+     */
     #[Optional('vaultIds', list: 'string', nullable: true)]
     public ?array $vaultIDs;
 
@@ -112,7 +135,10 @@ final class AgentUpdateParams implements BaseModel
         return $self;
     }
 
-    public function withDescription(string $description): self
+    /**
+     * Updated agent description. Pass null to clear if supported by the client.
+     */
+    public function withDescription(?string $description): self
     {
         $self = clone $this;
         $self['description'] = $description;
@@ -146,6 +172,9 @@ final class AgentUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Updated system instructions that guide agent behavior.
+     */
     public function withInstructions(string $instructions): self
     {
         $self = clone $this;
@@ -154,6 +183,9 @@ final class AgentUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Model identifier the agent should use for future runs.
+     */
     public function withModel(string $model): self
     {
         $self = clone $this;
@@ -162,6 +194,9 @@ final class AgentUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Updated agent display name.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -170,6 +205,9 @@ final class AgentUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Sandbox configuration override for future agent runs. Pass null to clear.
+     */
     public function withSandbox(mixed $sandbox): self
     {
         $self = clone $this;
@@ -179,6 +217,8 @@ final class AgentUpdateParams implements BaseModel
     }
 
     /**
+     * Vault group IDs the agent can access. Pass null to clear.
+     *
      * @param list<string>|null $vaultGroups
      */
     public function withVaultGroups(?array $vaultGroups): self
@@ -190,6 +230,8 @@ final class AgentUpdateParams implements BaseModel
     }
 
     /**
+     * Vault IDs the agent can access directly. Pass null to clear.
+     *
      * @param list<string>|null $vaultIDs
      */
     public function withVaultIDs(?array $vaultIDs): self

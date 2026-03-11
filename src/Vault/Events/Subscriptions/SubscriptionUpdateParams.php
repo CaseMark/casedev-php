@@ -34,23 +34,43 @@ final class SubscriptionUpdateParams implements BaseModel
     #[Required]
     public string $id;
 
+    /**
+     * Updated webhook endpoint URL for deliveries.
+     */
     #[Optional('callbackUrl')]
     public ?string $callbackURL;
 
+    /**
+     * Whether to remove the existing signing secret.
+     */
     #[Optional]
     public ?bool $clearSigningSecret;
 
-    /** @var list<string>|null $eventTypes */
+    /**
+     * Updated event types to deliver for this subscription.
+     *
+     * @var list<string>|null $eventTypes
+     */
     #[Optional(list: 'string')]
     public ?array $eventTypes;
 
+    /**
+     * Whether the subscription should continue delivering events.
+     */
     #[Optional]
     public ?bool $isActive;
 
-    /** @var list<string>|null $objectIDs */
+    /**
+     * Updated vault object IDs to limit notifications to. Pass an empty array to remove the filter.
+     *
+     * @var list<string>|null $objectIDs
+     */
     #[Optional('objectIds', list: 'string')]
     public ?array $objectIDs;
 
+    /**
+     * Replacement secret used to sign webhook deliveries.
+     */
     #[Optional]
     public ?string $signingSecret;
 
@@ -112,6 +132,9 @@ final class SubscriptionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Updated webhook endpoint URL for deliveries.
+     */
     public function withCallbackURL(string $callbackURL): self
     {
         $self = clone $this;
@@ -120,6 +143,9 @@ final class SubscriptionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether to remove the existing signing secret.
+     */
     public function withClearSigningSecret(bool $clearSigningSecret): self
     {
         $self = clone $this;
@@ -129,6 +155,8 @@ final class SubscriptionUpdateParams implements BaseModel
     }
 
     /**
+     * Updated event types to deliver for this subscription.
+     *
      * @param list<string> $eventTypes
      */
     public function withEventTypes(array $eventTypes): self
@@ -139,6 +167,9 @@ final class SubscriptionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether the subscription should continue delivering events.
+     */
     public function withIsActive(bool $isActive): self
     {
         $self = clone $this;
@@ -148,6 +179,8 @@ final class SubscriptionUpdateParams implements BaseModel
     }
 
     /**
+     * Updated vault object IDs to limit notifications to. Pass an empty array to remove the filter.
+     *
      * @param list<string> $objectIDs
      */
     public function withObjectIDs(array $objectIDs): self
@@ -158,6 +191,9 @@ final class SubscriptionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Replacement secret used to sign webhook deliveries.
+     */
     public function withSigningSecret(string $signingSecret): self
     {
         $self = clone $this;

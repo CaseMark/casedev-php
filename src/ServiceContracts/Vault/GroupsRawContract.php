@@ -7,6 +7,8 @@ namespace CaseDev\ServiceContracts\Vault;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\RequestOptions;
+use CaseDev\Vault\Groups\GroupCreateParams;
+use CaseDev\Vault\Groups\GroupUpdateParams;
 
 /**
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
@@ -16,6 +18,7 @@ interface GroupsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|GroupCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -23,12 +26,15 @@ interface GroupsRawContract
      * @throws APIException
      */
     public function create(
-        RequestOptions|array|null $requestOptions = null
+        array|GroupCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
+     * @param string $groupID Vault group ID
+     * @param array<string,mixed>|GroupUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -37,7 +43,8 @@ interface GroupsRawContract
      */
     public function update(
         string $groupID,
-        RequestOptions|array|null $requestOptions = null
+        array|GroupUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -56,6 +63,7 @@ interface GroupsRawContract
     /**
      * @api
      *
+     * @param string $groupID Vault group ID
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>

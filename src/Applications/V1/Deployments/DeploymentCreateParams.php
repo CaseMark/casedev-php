@@ -12,7 +12,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Trigger a new deployment for a project.
+ * Creates a deployment for an existing project by fetching repository files from GitHub and uploading them to the hosting provider. Use ref to deploy a branch, tag, or commit other than the project default branch.
  *
  * @see CaseDev\Services\Applications\V1\DeploymentsService::create()
  *
@@ -27,19 +27,19 @@ final class DeploymentCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * Project ID.
+     * Project ID to deploy.
      */
     #[Required('projectId')]
     public string $projectID;
 
     /**
-     * Git ref (branch, tag, or commit) to deploy.
+     * Git branch, tag, or commit to deploy. Defaults to the project branch.
      */
     #[Optional]
     public ?string $ref;
 
     /**
-     * Deployment target.
+     * Deployment target environment.
      *
      * @var value-of<Target>|null $target
      */
@@ -88,7 +88,7 @@ final class DeploymentCreateParams implements BaseModel
     }
 
     /**
-     * Project ID.
+     * Project ID to deploy.
      */
     public function withProjectID(string $projectID): self
     {
@@ -99,7 +99,7 @@ final class DeploymentCreateParams implements BaseModel
     }
 
     /**
-     * Git ref (branch, tag, or commit) to deploy.
+     * Git branch, tag, or commit to deploy. Defaults to the project branch.
      */
     public function withRef(string $ref): self
     {
@@ -110,7 +110,7 @@ final class DeploymentCreateParams implements BaseModel
     }
 
     /**
-     * Deployment target.
+     * Deployment target environment.
      *
      * @param Target|value-of<Target> $target
      */

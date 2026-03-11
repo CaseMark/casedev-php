@@ -14,6 +14,7 @@ use CaseDev\Applications\V1\Projects\ProjectDeleteParams;
 use CaseDev\Applications\V1\Projects\ProjectGetRuntimeLogsParams;
 use CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
 use CaseDev\Applications\V1\Projects\ProjectListEnvParams;
+use CaseDev\Applications\V1\Projects\ProjectListParams;
 use CaseDev\Applications\V1\Projects\ProjectListResponse;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
@@ -57,6 +58,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|ProjectListParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ProjectListResponse>
@@ -64,7 +66,8 @@ interface ProjectsRawContract
      * @throws APIException
      */
     public function list(
-        RequestOptions|array|null $requestOptions = null
+        array|ProjectListParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

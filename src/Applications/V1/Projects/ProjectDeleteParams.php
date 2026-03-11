@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Delete a web application project.
+ * Soft-deletes an application project or deployed Thurgood app from Case.dev. By default it also removes the linked hosting project; set deleteFromHosting=false to keep the external hosting resources intact.
  *
  * @see CaseDev\Services\Applications\V1\ProjectsService::delete()
  *
@@ -23,7 +23,7 @@ final class ProjectDeleteParams implements BaseModel
     use SdkParams;
 
     /**
-     * Also delete the project from hosting (default: true).
+     * Whether to also delete the linked hosting project. Defaults to true.
      */
     #[Optional]
     public ?bool $deleteFromHosting;
@@ -48,7 +48,7 @@ final class ProjectDeleteParams implements BaseModel
     }
 
     /**
-     * Also delete the project from hosting (default: true).
+     * Whether to also delete the linked hosting project. Defaults to true.
      */
     public function withDeleteFromHosting(bool $deleteFromHosting): self
     {

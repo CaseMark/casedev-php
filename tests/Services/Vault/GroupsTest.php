@@ -29,7 +29,19 @@ final class GroupsTest extends TestCase
     #[Test]
     public function testCreate(): void
     {
-        $result = $this->client->vault->groups->create();
+        $result = $this->client->vault->groups->create(name: 'name');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateWithOptionalParams(): void
+    {
+        $result = $this->client->vault->groups->create(
+            name: 'name',
+            description: 'description'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

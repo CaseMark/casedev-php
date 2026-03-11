@@ -6,6 +6,7 @@ namespace CaseDev\Services\Vault;
 
 use CaseDev\Client;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Vault\GroupsContract;
 
@@ -32,17 +33,25 @@ final class GroupsService implements GroupsContract
     /**
      * @api
      *
-     * Create vault group
+     * Creates a vault group for organizing vaults and applying group-scoped access controls. Group-scoped API keys cannot create or manage vault groups.
      *
+     * @param string $name Human-readable name for the vault group
+     * @param string $description Optional description of the vault group purpose
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
-        RequestOptions|array|null $requestOptions = null
+        string $name,
+        ?string $description = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
+        $params = Util::removeNulls(
+            ['name' => $name, 'description' => $description]
+        );
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create(requestOptions: $requestOptions);
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -50,18 +59,27 @@ final class GroupsService implements GroupsContract
     /**
      * @api
      *
-     * Update vault group
+     * Updates a vault group for the authenticated organization. Only provided fields are changed, and setting description to null removes the current description.
      *
+     * @param string $groupID Vault group ID
+     * @param string|null $description Updated vault group description. Pass null to remove the current description.
+     * @param string $name New human-readable name for the vault group
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         string $groupID,
-        RequestOptions|array|null $requestOptions = null
+        ?string $description = null,
+        ?string $name = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
+        $params = Util::removeNulls(
+            ['description' => $description, 'name' => $name]
+        );
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update($groupID, requestOptions: $requestOptions);
+        $response = $this->raw->update($groupID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -69,7 +87,7 @@ final class GroupsService implements GroupsContract
     /**
      * @api
      *
-     * List vault groups
+     * Lists vault groups visible to the authenticated organization. Group-scoped API keys only receive groups within their allowed scope.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -87,8 +105,9 @@ final class GroupsService implements GroupsContract
     /**
      * @api
      *
-     * Delete vault group
+     * Soft-deletes a vault group that no longer has any active vaults assigned. This operation is blocked when the group still contains vaults.
      *
+     * @param string $groupID Vault group ID
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

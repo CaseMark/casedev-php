@@ -49,7 +49,7 @@ final class V1Service implements V1Contract
      * @param string $content The source content to format
      * @param OutputFormat|value-of<OutputFormat> $outputFormat Desired output format
      * @param InputFormat|value-of<InputFormat> $inputFormat Format of the input content
-     * @param Options|OptionsShape $options
+     * @param Options|OptionsShape $options Optional template composition and styling settings used during document generation
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

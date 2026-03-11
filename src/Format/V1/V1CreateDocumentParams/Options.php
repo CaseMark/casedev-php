@@ -10,6 +10,8 @@ use CaseDev\Core\Contracts\BaseModel;
 use CaseDev\Format\V1\V1CreateDocumentParams\Options\Component;
 
 /**
+ * Optional template composition and styling settings used during document generation.
+ *
  * @phpstan-import-type ComponentShape from \CaseDev\Format\V1\V1CreateDocumentParams\Options\Component
  *
  * @phpstan-type OptionsShape = array{

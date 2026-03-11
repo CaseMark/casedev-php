@@ -12,7 +12,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Create a new web application project.
+ * Creates a new application project, validates GitHub access, provisions a default case.dev domain, and starts the deployment workflow. The initial response returns as soon as the workflow is queued so clients can poll for progress.
  *
  * @see CaseDev\Services\Applications\V1\ProjectsService::create()
  *
@@ -37,25 +37,25 @@ final class ProjectCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * GitHub repository URL or "owner/repo".
+     * GitHub repository URL or owner/repo identifier.
      */
     #[Required]
     public string $gitRepo;
 
     /**
-     * Project name.
+     * Human-readable project name.
      */
     #[Required]
     public string $name;
 
     /**
-     * Custom build command.
+     * Custom build command to override the framework default.
      */
     #[Optional]
     public ?string $buildCommand;
 
     /**
-     * Environment variables to set on the project.
+     * Environment variables to create before the first deployment.
      *
      * @var list<EnvironmentVariable>|null $environmentVariables
      */
@@ -63,31 +63,31 @@ final class ProjectCreateParams implements BaseModel
     public ?array $environmentVariables;
 
     /**
-     * Framework (e.g., "nextjs", "remix", "astro").
+     * Framework preset for the hosting project, such as nextjs or remix.
      */
     #[Optional]
     public ?string $framework;
 
     /**
-     * Git branch to deploy.
+     * Git branch to deploy. Defaults to main.
      */
     #[Optional]
     public ?string $gitBranch;
 
     /**
-     * Custom install command.
+     * Custom install command to override the framework default.
      */
     #[Optional]
     public ?string $installCommand;
 
     /**
-     * Build output directory.
+     * Build output directory relative to the project root.
      */
     #[Optional]
     public ?string $outputDirectory;
 
     /**
-     * Root directory of the project.
+     * Repository subdirectory that contains the app to deploy.
      */
     #[Optional]
     public ?string $rootDirectory;
@@ -146,7 +146,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * GitHub repository URL or "owner/repo".
+     * GitHub repository URL or owner/repo identifier.
      */
     public function withGitRepo(string $gitRepo): self
     {
@@ -157,7 +157,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Project name.
+     * Human-readable project name.
      */
     public function withName(string $name): self
     {
@@ -168,7 +168,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Custom build command.
+     * Custom build command to override the framework default.
      */
     public function withBuildCommand(string $buildCommand): self
     {
@@ -179,7 +179,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Environment variables to set on the project.
+     * Environment variables to create before the first deployment.
      *
      * @param list<EnvironmentVariable|EnvironmentVariableShape> $environmentVariables
      */
@@ -192,7 +192,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Framework (e.g., "nextjs", "remix", "astro").
+     * Framework preset for the hosting project, such as nextjs or remix.
      */
     public function withFramework(string $framework): self
     {
@@ -203,7 +203,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Git branch to deploy.
+     * Git branch to deploy. Defaults to main.
      */
     public function withGitBranch(string $gitBranch): self
     {
@@ -214,7 +214,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Custom install command.
+     * Custom install command to override the framework default.
      */
     public function withInstallCommand(string $installCommand): self
     {
@@ -225,7 +225,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Build output directory.
+     * Build output directory relative to the project root.
      */
     public function withOutputDirectory(string $outputDirectory): self
     {
@@ -236,7 +236,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * Root directory of the project.
+     * Repository subdirectory that contains the app to deploy.
      */
     public function withRootDirectory(string $rootDirectory): self
     {

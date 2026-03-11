@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CaseDev\Applications\V1\Projects\ProjectListDeploymentsParams;
 
 /**
- * Filter by deployment target.
+ * Deployment target to filter by.
  */
 enum Target: string
 {
