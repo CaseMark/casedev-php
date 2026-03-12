@@ -7,15 +7,15 @@ namespace CaseDev\ServiceContracts\Agent\V1;
 use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
-use CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part;
+use CaseDev\Agent\V1\Chat\ChatRespondParams\Part;
 use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
 use CaseDev\RequestOptions;
 
 /**
- * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part as PartShape1
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
- * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part as PartShape1
  */
 interface ChatContract
 {
@@ -85,22 +85,7 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
-     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function respond(
-        string $id,
-        ?array $parts = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseStream<string>
@@ -117,7 +102,7 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
-     * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     * @param list<\CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -127,21 +112,6 @@ interface ChatContract
         ?array $parts = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param int $lastEventID Replay events after this sequence number
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function stream(
-        string $id,
-        ?int $lastEventID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
 
     /**
      * @api
