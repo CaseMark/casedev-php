@@ -77,23 +77,6 @@ interface RunRawContract
      * @param array<string,mixed>|RunEventsParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function events(
-        string $id,
-        array|RunEventsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $id Run ID
-     * @param array<string,mixed>|RunEventsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
      * @return BaseResponse<BaseStream<string>>
      *
      * @throws APIException

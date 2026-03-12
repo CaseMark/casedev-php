@@ -91,23 +91,6 @@ interface ChatRawContract
      * @param array<string,mixed>|ChatRespondParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function respond(
-        string $id,
-        array|ChatRespondParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param array<string,mixed>|ChatRespondParams $params
-     * @param RequestOpts|null $requestOptions
-     *
      * @return BaseResponse<BaseStream<string>>
      *
      * @throws APIException
@@ -132,23 +115,6 @@ interface ChatRawContract
     public function sendMessage(
         string $id,
         array|ChatSendMessageParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param array<string,mixed>|ChatStreamParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function stream(
-        string $id,
-        array|ChatStreamParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

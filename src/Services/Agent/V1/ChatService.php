@@ -7,7 +7,7 @@ namespace CaseDev\Services\Agent\V1;
 use CaseDev\Agent\V1\Chat\ChatCancelResponse;
 use CaseDev\Agent\V1\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V1\Chat\ChatNewResponse;
-use CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part;
+use CaseDev\Agent\V1\Chat\ChatRespondParams\Part;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
@@ -18,9 +18,9 @@ use CaseDev\ServiceContracts\Agent\V1\ChatContract;
 /**
  * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
  *
- * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part
+ * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part as PartShape1
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
- * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part as PartShape1
  */
 final class ChatService implements ChatContract
 {
@@ -141,37 +141,8 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Streams a single assistant turn as normalized SSE events with stable turn, message, and part IDs. Emits events: `turn.started`, `turn.status`, `message.created`, `message.part.updated`, `message.completed`, `session.usage`, `turn.completed`.
-     *
-     * **When to use this endpoint:** Recommended for building custom chat UIs that need real-time streaming progress. This is the primary streaming endpoint for new integrations.
-     *
-     * **Alternatives:**
-     * - `POST /chat/:id/message` — synchronous, returns complete response as JSON (best for server-to-server)
-     *
      * @param string $id Chat session ID
-     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function respond(
-        string $id,
-        ?array $parts = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['parts' => $parts]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->respond($id, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param string $id Chat session ID
-     * @param list<\CaseDev\Agent\V1\Chat\ChatRespondParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseStream<string>
@@ -202,7 +173,7 @@ final class ChatService implements ChatContract
      * - `POST /chat/:id/respond` — streaming SSE with normalized events (recommended for custom chat UIs)
      *
      * @param string $id Chat session ID
-     * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
+     * @param list<\CaseDev\Agent\V1\Chat\ChatSendMessageParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -216,30 +187,6 @@ final class ChatService implements ChatContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->sendMessage($id, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Relays OpenCode SSE events for this chat. Supports replay from buffered events using Last-Event-ID.
-     *
-     * @param string $id Chat session ID
-     * @param int $lastEventID Replay events after this sequence number
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function stream(
-        string $id,
-        ?int $lastEventID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['lastEventID' => $lastEventID]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->stream($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

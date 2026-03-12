@@ -140,43 +140,6 @@ final class RunRawService implements RunRawContract
     /**
      * @api
      *
-     * Streams real-time run events over SSE. Supports replay using Last-Event-ID.
-     *
-     * @param string $id Run ID
-     * @param array{lastEventID?: int}|RunEventsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function events(
-        string $id,
-        array|RunEventsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = RunEventsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['agent/v1/run/%1$s/events', $id],
-            query: Util::array_transform_keys(
-                $parsed,
-                ['lastEventID' => 'lastEventId']
-            ),
-            headers: ['Accept' => 'text/event-stream'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
      * @param string $id Run ID
      * @param array{lastEventID?: int}|RunEventsParams $params
      * @param RequestOpts|null $requestOptions
