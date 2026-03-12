@@ -8,6 +8,7 @@ use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
 use CaseDev\Legal\V1\V1DocketResponse\Entry;
+use CaseDev\Legal\V1\V1DocketResponse\PacerFees;
 use CaseDev\Legal\V1\V1DocketResponse\Pagination;
 use CaseDev\Legal\V1\V1DocketResponse\Type;
 
@@ -15,6 +16,7 @@ use CaseDev\Legal\V1\V1DocketResponse\Type;
  * @phpstan-import-type DocketDetailShape from \CaseDev\Legal\V1\DocketDetail
  * @phpstan-import-type DocketSearchResultShape from \CaseDev\Legal\V1\DocketSearchResult
  * @phpstan-import-type EntryShape from \CaseDev\Legal\V1\V1DocketResponse\Entry
+ * @phpstan-import-type PacerFeesShape from \CaseDev\Legal\V1\V1DocketResponse\PacerFees
  * @phpstan-import-type PaginationShape from \CaseDev\Legal\V1\V1DocketResponse\Pagination
  *
  * @phpstan-type V1DocketResponseShape = array{
@@ -26,6 +28,8 @@ use CaseDev\Legal\V1\V1DocketResponse\Type;
  *   entries?: list<Entry|EntryShape>|null,
  *   found?: int|null,
  *   includeEntries?: bool|null,
+ *   live?: bool|null,
+ *   pacerFees?: null|PacerFees|PacerFeesShape,
  *   pagination?: null|Pagination|PaginationShape,
  *   query?: string|null,
  *   type?: null|Type|value-of<Type>,
@@ -86,6 +90,18 @@ final class V1DocketResponse implements BaseModel
     public ?bool $includeEntries;
 
     /**
+     * Whether this was a live PACER fetch (lookup mode only).
+     */
+    #[Optional]
+    public ?bool $live;
+
+    /**
+     * PACER fee information (present when live: true).
+     */
+    #[Optional(nullable: true)]
+    public ?PacerFees $pacerFees;
+
+    /**
      * Pagination info for entry list (lookup mode with includeEntries).
      */
     #[Optional(nullable: true)]
@@ -114,6 +130,7 @@ final class V1DocketResponse implements BaseModel
      * @param DocketDetail|DocketDetailShape|null $docket
      * @param list<DocketSearchResult|DocketSearchResultShape>|null $dockets
      * @param list<Entry|EntryShape>|null $entries
+     * @param PacerFees|PacerFeesShape|null $pacerFees
      * @param Pagination|PaginationShape|null $pagination
      * @param Type|value-of<Type>|null $type
      */
@@ -126,6 +143,8 @@ final class V1DocketResponse implements BaseModel
         ?array $entries = null,
         ?int $found = null,
         ?bool $includeEntries = null,
+        ?bool $live = null,
+        PacerFees|array|null $pacerFees = null,
         Pagination|array|null $pagination = null,
         ?string $query = null,
         Type|string|null $type = null,
@@ -140,6 +159,8 @@ final class V1DocketResponse implements BaseModel
         null !== $entries && $self['entries'] = $entries;
         null !== $found && $self['found'] = $found;
         null !== $includeEntries && $self['includeEntries'] = $includeEntries;
+        null !== $live && $self['live'] = $live;
+        null !== $pacerFees && $self['pacerFees'] = $pacerFees;
         null !== $pagination && $self['pagination'] = $pagination;
         null !== $query && $self['query'] = $query;
         null !== $type && $self['type'] = $type;
@@ -234,6 +255,30 @@ final class V1DocketResponse implements BaseModel
     {
         $self = clone $this;
         $self['includeEntries'] = $includeEntries;
+
+        return $self;
+    }
+
+    /**
+     * Whether this was a live PACER fetch (lookup mode only).
+     */
+    public function withLive(bool $live): self
+    {
+        $self = clone $this;
+        $self['live'] = $live;
+
+        return $self;
+    }
+
+    /**
+     * PACER fee information (present when live: true).
+     *
+     * @param PacerFees|PacerFeesShape|null $pacerFees
+     */
+    public function withPacerFees(PacerFees|array|null $pacerFees): self
+    {
+        $self = clone $this;
+        $self['pacerFees'] = $pacerFees;
 
         return $self;
     }

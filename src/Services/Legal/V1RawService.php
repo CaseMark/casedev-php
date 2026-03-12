@@ -59,10 +59,11 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Search federal court dockets or retrieve a specific docket with optional filing entries via CourtListener RECAP data.
+     * Search federal court dockets or retrieve a specific docket with optional filing entries. Use legal.listCourts() to resolve court slugs for filtering.
      *
      * @param array{
      *   type: Type|value-of<Type>,
+     *   acknowledgePacerFees?: bool,
      *   court?: string,
      *   dateFiledAfter?: string,
      *   dateFiledBefore?: string,
@@ -274,7 +275,7 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Returns CourtListener court IDs and names for docket filtering. Use these IDs in legal.docket() as the court parameter.
+     * Returns court IDs (slugs) and names for use with the docket search endpoint. Use the returned court ID as the `court` parameter in legal.docket().
      *
      * @param array{
      *   inUseOnly?: bool,
