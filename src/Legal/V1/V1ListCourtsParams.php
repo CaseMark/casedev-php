@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Returns CourtListener court IDs and names for docket filtering. Use these IDs in legal.docket() as the court parameter.
+ * Returns court IDs (slugs) and names for use with the docket search endpoint. Use the returned court ID as the `court` parameter in legal.docket().
  *
  * @see CaseDev\Services\Legal\V1Service::listCourts()
  *
@@ -29,13 +29,13 @@ final class V1ListCourtsParams implements BaseModel
     use SdkParams;
 
     /**
-     * Only return courts currently in use by CourtListener.
+     * Only return courts with available docket data.
      */
     #[Optional]
     public ?bool $inUseOnly;
 
     /**
-     * Optional CourtListener jurisdiction code filter (e.g. FD, F, S).
+     * Optional jurisdiction code filter (e.g. FD for Federal District, F for all Federal, S for State).
      */
     #[Optional]
     public ?string $jurisdiction;
@@ -87,7 +87,7 @@ final class V1ListCourtsParams implements BaseModel
     }
 
     /**
-     * Only return courts currently in use by CourtListener.
+     * Only return courts with available docket data.
      */
     public function withInUseOnly(bool $inUseOnly): self
     {
@@ -98,7 +98,7 @@ final class V1ListCourtsParams implements BaseModel
     }
 
     /**
-     * Optional CourtListener jurisdiction code filter (e.g. FD, F, S).
+     * Optional jurisdiction code filter (e.g. FD for Federal District, F for all Federal, S for State).
      */
     public function withJurisdiction(string $jurisdiction): self
     {

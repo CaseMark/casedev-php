@@ -53,6 +53,7 @@ final class V1Test extends TestCase
     {
         $result = $this->client->legal->v1->docket(
             type: 'search',
+            acknowledgePacerFees: true,
             court: 'court',
             dateFiledAfter: '2019-12-27',
             dateFiledBefore: '2019-12-27',
