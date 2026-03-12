@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.1 (2026-03-12)
+
+Full Changelog: [v0.12.0...v0.12.1](https://github.com/CaseMark/casedev-php/compare/v0.12.0...v0.12.1)
+
+### Bug Fixes
+
+* remove broken methods ([2920af9](https://github.com/CaseMark/casedev-php/commit/2920af9fa01f3cabf0a033bbe3d8b848dea1cf88))
+
 ## 0.12.0 (2026-03-11)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/CaseMark/casedev-php/compare/v0.11.0...v0.12.0)
