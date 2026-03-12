@@ -10,7 +10,6 @@ use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -84,37 +83,11 @@ final class ChatTest extends TestCase
     }
 
     #[Test]
-    public function testRespond(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
-        }
-
-        $result = $this->client->agent->v1->chat->respond('id');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
     public function testSendMessage(): void
     {
         $result = $this->client->agent->v1->chat->sendMessage('id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testStream(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support text/event-stream responses');
-        }
-
-        $result = $this->client->agent->v1->chat->stream('id');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 }

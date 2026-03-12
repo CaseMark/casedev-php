@@ -138,30 +138,6 @@ final class RunService implements RunContract
     /**
      * @api
      *
-     * Streams real-time run events over SSE. Supports replay using Last-Event-ID.
-     *
-     * @param string $id Run ID
-     * @param int $lastEventID Replay events after this sequence number
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function events(
-        string $id,
-        ?int $lastEventID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['lastEventID' => $lastEventID]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->events($id, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
      * @param string $id Run ID
      * @param int $lastEventID Replay events after this sequence number
      * @param RequestOpts|null $requestOptions

@@ -18,7 +18,7 @@ use CaseDev\Core\Contracts\BaseModel;
  * **Alternatives:**
  * - `POST /chat/:id/message` — synchronous, returns complete response as JSON (best for server-to-server)
  *
- * @see CaseDev\Services\Agent\V1\ChatService::respond()
+ * @see CaseDev\Services\Agent\V1\ChatService::respondStream()
  *
  * @phpstan-import-type PartShape from \CaseDev\Agent\V1\Chat\ChatRespondParams\Part
  *

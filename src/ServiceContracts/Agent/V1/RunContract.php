@@ -83,21 +83,6 @@ interface RunContract
      * @param int $lastEventID Replay events after this sequence number
      * @param RequestOpts|null $requestOptions
      *
-     * @throws APIException
-     */
-    public function events(
-        string $id,
-        ?int $lastEventID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $id Run ID
-     * @param int $lastEventID Replay events after this sequence number
-     * @param RequestOpts|null $requestOptions
-     *
      * @return BaseStream<string>
      *
      * @throws APIException

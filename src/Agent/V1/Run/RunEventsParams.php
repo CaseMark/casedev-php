@@ -12,7 +12,7 @@ use CaseDev\Core\Contracts\BaseModel;
 /**
  * Streams real-time run events over SSE. Supports replay using Last-Event-ID.
  *
- * @see CaseDev\Services\Agent\V1\RunService::events()
+ * @see CaseDev\Services\Agent\V1\RunService::eventsStream()
  *
  * @phpstan-type RunEventsParamsShape = array{lastEventID?: int|null}
  */
