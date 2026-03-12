@@ -53,16 +53,17 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Search federal court dockets or retrieve a specific docket with optional filing entries via CourtListener RECAP data.
+     * Search federal court dockets or retrieve a specific docket with optional filing entries. Use legal.listCourts() to resolve court slugs for filtering.
      *
      * @param Type|value-of<Type> $type Search dockets or look up a docket by ID
-     * @param string $court Optional CourtListener court slug (e.g. "nysd", "ca9", "cafc")
+     * @param bool $acknowledgePacerFees Required when live: true. Acknowledges that PACER fees (up to $3.00 per docket) plus a $0.05 service fee will be charged to your account.
+     * @param string $court Optional court slug for filtering (e.g. "nysd", "ca9", "cafc"). Use legal.listCourts() to find slugs.
      * @param string $dateFiledAfter Optional lower bound for filing date (YYYY-MM-DD)
      * @param string $dateFiledBefore Optional upper bound for filing date (YYYY-MM-DD)
-     * @param string $docketID CourtListener docket ID (required for lookup)
-     * @param bool $includeEntries Include docket entries/filings in lookup responses
+     * @param string $docketID Docket ID (required for lookup)
+     * @param bool $includeEntries Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
      * @param int $limit Page size for search results or entry list (default 25 for search, 50 for lookup)
-     * @param bool $live Reserved for future PACER live fetch support. Setting true currently returns 400.
+     * @param bool $live Trigger a live PACER fetch for dockets not yet in the RECAP archive. Requires acknowledgePacerFees: true. PACER charges up to $3.00 per docket sheet plus a $0.05 service fee. Only valid with type: "lookup".
      * @param int $offset Offset for search results or entry list
      * @param string $query Case name or party name search query (required for search)
      * @param RequestOpts|null $requestOptions
@@ -71,6 +72,7 @@ final class V1Service implements V1Contract
      */
     public function docket(
         Type|string $type,
+        bool $acknowledgePacerFees = false,
         ?string $court = null,
         ?string $dateFiledAfter = null,
         ?string $dateFiledBefore = null,
@@ -85,6 +87,7 @@ final class V1Service implements V1Contract
         $params = Util::removeNulls(
             [
                 'type' => $type,
+                'acknowledgePacerFees' => $acknowledgePacerFees,
                 'court' => $court,
                 'dateFiledAfter' => $dateFiledAfter,
                 'dateFiledBefore' => $dateFiledBefore,
@@ -270,10 +273,10 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Returns CourtListener court IDs and names for docket filtering. Use these IDs in legal.docket() as the court parameter.
+     * Returns court IDs (slugs) and names for use with the docket search endpoint. Use the returned court ID as the `court` parameter in legal.docket().
      *
-     * @param bool $inUseOnly Only return courts currently in use by CourtListener
-     * @param string $jurisdiction Optional CourtListener jurisdiction code filter (e.g. FD, F, S)
+     * @param bool $inUseOnly Only return courts with available docket data
+     * @param string $jurisdiction Optional jurisdiction code filter (e.g. FD for Federal District, F for all Federal, S for State)
      * @param int $limit Maximum number of courts to return
      * @param int $offset Number of courts to skip before returning results
      * @param string $query Search by court name or slug (e.g. "Northern District", "nysd", "ca9")

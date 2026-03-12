@@ -23,7 +23,7 @@ final class Court implements BaseModel
     use SdkModel;
 
     /**
-     * CourtListener court slug.
+     * Court slug (use as the court parameter in legal.docket()).
      */
     #[Optional]
     public ?string $id;
@@ -69,7 +69,7 @@ final class Court implements BaseModel
     }
 
     /**
-     * CourtListener court slug.
+     * Court slug (use as the court parameter in legal.docket()).
      */
     public function withID(string $id): self
     {

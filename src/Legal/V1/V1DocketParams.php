@@ -12,12 +12,13 @@ use CaseDev\Core\Contracts\BaseModel;
 use CaseDev\Legal\V1\V1DocketParams\Type;
 
 /**
- * Search federal court dockets or retrieve a specific docket with optional filing entries via CourtListener RECAP data.
+ * Search federal court dockets or retrieve a specific docket with optional filing entries. Use legal.listCourts() to resolve court slugs for filtering.
  *
  * @see CaseDev\Services\Legal\V1Service::docket()
  *
  * @phpstan-type V1DocketParamsShape = array{
  *   type: Type|value-of<Type>,
+ *   acknowledgePacerFees?: bool|null,
  *   court?: string|null,
  *   dateFiledAfter?: string|null,
  *   dateFiledBefore?: string|null,
@@ -44,7 +45,13 @@ final class V1DocketParams implements BaseModel
     public string $type;
 
     /**
-     * Optional CourtListener court slug (e.g. "nysd", "ca9", "cafc").
+     * Required when live: true. Acknowledges that PACER fees (up to $3.00 per docket) plus a $0.05 service fee will be charged to your account.
+     */
+    #[Optional]
+    public ?bool $acknowledgePacerFees;
+
+    /**
+     * Optional court slug for filtering (e.g. "nysd", "ca9", "cafc"). Use legal.listCourts() to find slugs.
      */
     #[Optional]
     public ?string $court;
@@ -62,13 +69,13 @@ final class V1DocketParams implements BaseModel
     public ?string $dateFiledBefore;
 
     /**
-     * CourtListener docket ID (required for lookup).
+     * Docket ID (required for lookup).
      */
     #[Optional('docketId')]
     public ?string $docketID;
 
     /**
-     * Include docket entries/filings in lookup responses.
+     * Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
      */
     #[Optional]
     public ?bool $includeEntries;
@@ -80,7 +87,7 @@ final class V1DocketParams implements BaseModel
     public ?int $limit;
 
     /**
-     * Reserved for future PACER live fetch support. Setting true currently returns 400.
+     * Trigger a live PACER fetch for dockets not yet in the RECAP archive. Requires acknowledgePacerFees: true. PACER charges up to $3.00 per docket sheet plus a $0.05 service fee. Only valid with type: "lookup".
      */
     #[Optional]
     public ?bool $live;
@@ -125,6 +132,7 @@ final class V1DocketParams implements BaseModel
      */
     public static function with(
         Type|string $type,
+        ?bool $acknowledgePacerFees = null,
         ?string $court = null,
         ?string $dateFiledAfter = null,
         ?string $dateFiledBefore = null,
@@ -139,6 +147,7 @@ final class V1DocketParams implements BaseModel
 
         $self['type'] = $type;
 
+        null !== $acknowledgePacerFees && $self['acknowledgePacerFees'] = $acknowledgePacerFees;
         null !== $court && $self['court'] = $court;
         null !== $dateFiledAfter && $self['dateFiledAfter'] = $dateFiledAfter;
         null !== $dateFiledBefore && $self['dateFiledBefore'] = $dateFiledBefore;
@@ -166,7 +175,18 @@ final class V1DocketParams implements BaseModel
     }
 
     /**
-     * Optional CourtListener court slug (e.g. "nysd", "ca9", "cafc").
+     * Required when live: true. Acknowledges that PACER fees (up to $3.00 per docket) plus a $0.05 service fee will be charged to your account.
+     */
+    public function withAcknowledgePacerFees(bool $acknowledgePacerFees): self
+    {
+        $self = clone $this;
+        $self['acknowledgePacerFees'] = $acknowledgePacerFees;
+
+        return $self;
+    }
+
+    /**
+     * Optional court slug for filtering (e.g. "nysd", "ca9", "cafc"). Use legal.listCourts() to find slugs.
      */
     public function withCourt(string $court): self
     {
@@ -199,7 +219,7 @@ final class V1DocketParams implements BaseModel
     }
 
     /**
-     * CourtListener docket ID (required for lookup).
+     * Docket ID (required for lookup).
      */
     public function withDocketID(string $docketID): self
     {
@@ -210,7 +230,7 @@ final class V1DocketParams implements BaseModel
     }
 
     /**
-     * Include docket entries/filings in lookup responses.
+     * Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
      */
     public function withIncludeEntries(bool $includeEntries): self
     {
@@ -232,7 +252,7 @@ final class V1DocketParams implements BaseModel
     }
 
     /**
-     * Reserved for future PACER live fetch support. Setting true currently returns 400.
+     * Trigger a live PACER fetch for dockets not yet in the RECAP archive. Requires acknowledgePacerFees: true. PACER charges up to $3.00 per docket sheet plus a $0.05 service fee. Only valid with type: "lookup".
      */
     public function withLive(bool $live): self
     {
