@@ -13,7 +13,7 @@ The REST API documentation can be found on [docs.case.dev](https://docs.case.dev
 <!-- x-release-please-start-version -->
 
 ```
-composer require "casemark/casedev 0.14.0"
+composer require "casemark/casedev 0.15.0"
 ```
 
 <!-- x-release-please-end -->
