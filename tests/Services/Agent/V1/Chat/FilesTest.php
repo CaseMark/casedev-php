@@ -44,7 +44,10 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
-        $result = $this->client->agent->v1->chat->files->download('path', id: 'id');
+        $result = $this->client->agent->v1->chat->files->download(
+            'filePath',
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -57,7 +60,10 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
         }
 
-        $result = $this->client->agent->v1->chat->files->download('path', id: 'id');
+        $result = $this->client->agent->v1->chat->files->download(
+            'filePath',
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);

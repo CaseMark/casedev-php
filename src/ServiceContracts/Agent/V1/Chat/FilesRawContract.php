@@ -33,7 +33,7 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $path File path relative to /workspace (e.g. "report.docx")
+     * @param string $filePath File path relative to /workspace (e.g. "report.docx")
      * @param array<string,mixed>|FileDownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -42,7 +42,7 @@ interface FilesRawContract
      * @throws APIException
      */
     public function download(
-        string $path,
+        string $filePath,
         array|FileDownloadParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
