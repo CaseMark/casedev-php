@@ -55,7 +55,7 @@ final class FilesRawService implements FilesRawContract
      *
      * Downloads a file from the sandbox workspace by path. Only available while the sandbox is running.
      *
-     * @param string $path File path relative to /workspace (e.g. "report.docx")
+     * @param string $filePath File path relative to /workspace (e.g. "report.docx")
      * @param array{id: string}|FileDownloadParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -64,7 +64,7 @@ final class FilesRawService implements FilesRawContract
      * @throws APIException
      */
     public function download(
-        string $path,
+        string $filePath,
         array|FileDownloadParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -78,7 +78,7 @@ final class FilesRawService implements FilesRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['agent/v1/chat/%1$s/files/%2$s', $id, $path],
+            path: ['agent/v1/chat/%1$s/files/%2$s', $id, $filePath],
             headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
