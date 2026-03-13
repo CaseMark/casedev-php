@@ -14,6 +14,7 @@ use CaseDev\Core\Exceptions\APIException;
 use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Agent\V1\ChatContract;
+use CaseDev\Services\Agent\V1\Chat\FilesService;
 
 /**
  * Create, manage, and execute AI agents with tool access, sandbox environments, and async run workflows.
@@ -30,11 +31,17 @@ final class ChatService implements ChatContract
     public ChatRawService $raw;
 
     /**
+     * @api
+     */
+    public FilesService $files;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new ChatRawService($client);
+        $this->files = new FilesService($client);
     }
 
     /**
