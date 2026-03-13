@@ -56,21 +56,21 @@ final class FilesService implements FilesContract
      *
      * Downloads a file from the sandbox workspace by path. Only available while the sandbox is running.
      *
-     * @param string $path File path relative to /workspace (e.g. "report.docx")
+     * @param string $filePath File path relative to /workspace (e.g. "report.docx")
      * @param string $id Chat session ID
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function download(
-        string $path,
+        string $filePath,
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->download($path, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->download($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
