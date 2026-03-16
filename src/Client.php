@@ -13,8 +13,10 @@ use CaseDev\Services\DatabaseService;
 use CaseDev\Services\FormatService;
 use CaseDev\Services\LegalService;
 use CaseDev\Services\LlmService;
+use CaseDev\Services\MailService;
 use CaseDev\Services\MemoryService;
 use CaseDev\Services\OcrService;
+use CaseDev\Services\OperatorService;
 use CaseDev\Services\PrivilegeService;
 use CaseDev\Services\SearchService;
 use CaseDev\Services\SkillsService;
@@ -88,6 +90,16 @@ class Client extends BaseClient
      * @api
      */
     public PrivilegeService $privilege;
+
+    /**
+     * @api
+     */
+    public MailService $mail;
+
+    /**
+     * @api
+     */
+    public OperatorService $operator;
 
     /**
      * @api
@@ -168,6 +180,8 @@ class Client extends BaseClient
         $this->memory = new MemoryService($this);
         $this->ocr = new OcrService($this);
         $this->privilege = new PrivilegeService($this);
+        $this->mail = new MailService($this);
+        $this->operator = new OperatorService($this);
         $this->skills = new SkillsService($this);
         $this->search = new SearchService($this);
         $this->superdoc = new SuperdocService($this);
