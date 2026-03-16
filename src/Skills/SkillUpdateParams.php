@@ -2,65 +2,52 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Skills\SkillResolveResponse;
+namespace CaseDev\Skills;
 
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Skills\SkillResolveResponse\Result\Source;
 
 /**
- * @phpstan-type ResultShape = array{
+ * Update an org-scoped custom skill by slug. Only provided fields are updated. Version is auto-incremented.
+ *
+ * @see CaseDev\Services\SkillsService::update()
+ *
+ * @phpstan-type SkillUpdateParamsShape = array{
+ *   content?: string|null,
+ *   metadata?: mixed,
  *   name?: string|null,
- *   score?: float|null,
  *   slug?: string|null,
- *   source?: null|Source|value-of<Source>,
  *   summary?: string|null,
  *   tags?: list<string>|null,
  * }
  */
-final class Result implements BaseModel
+final class SkillUpdateParams implements BaseModel
 {
-    /** @use SdkModel<ResultShape> */
+    /** @use SdkModel<SkillUpdateParamsShape> */
     use SdkModel;
+    use SdkParams;
 
-    /**
-     * Skill name.
-     */
+    #[Optional]
+    public ?string $content;
+
+    #[Optional]
+    public mixed $metadata;
+
     #[Optional]
     public ?string $name;
 
     /**
-     * Relevance score.
-     */
-    #[Optional]
-    public ?float $score;
-
-    /**
-     * Unique skill identifier.
+     * New slug (renames the skill).
      */
     #[Optional]
     public ?string $slug;
 
-    /**
-     * Whether the skill is curated or org-custom.
-     *
-     * @var value-of<Source>|null $source
-     */
-    #[Optional(enum: Source::class)]
-    public ?string $source;
-
-    /**
-     * Brief skill description.
-     */
-    #[Optional]
+    #[Optional(nullable: true)]
     public ?string $summary;
 
-    /**
-     * Skill tags.
-     *
-     * @var list<string>|null $tags
-     */
+    /** @var list<string>|null $tags */
     #[Optional(list: 'string')]
     public ?array $tags;
 
@@ -74,32 +61,44 @@ final class Result implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Source|value-of<Source>|null $source
      * @param list<string>|null $tags
      */
     public static function with(
+        ?string $content = null,
+        mixed $metadata = null,
         ?string $name = null,
-        ?float $score = null,
         ?string $slug = null,
-        Source|string|null $source = null,
         ?string $summary = null,
         ?array $tags = null,
     ): self {
         $self = new self;
 
+        null !== $content && $self['content'] = $content;
+        null !== $metadata && $self['metadata'] = $metadata;
         null !== $name && $self['name'] = $name;
-        null !== $score && $self['score'] = $score;
         null !== $slug && $self['slug'] = $slug;
-        null !== $source && $self['source'] = $source;
         null !== $summary && $self['summary'] = $summary;
         null !== $tags && $self['tags'] = $tags;
 
         return $self;
     }
 
-    /**
-     * Skill name.
-     */
+    public function withContent(string $content): self
+    {
+        $self = clone $this;
+        $self['content'] = $content;
+
+        return $self;
+    }
+
+    public function withMetadata(mixed $metadata): self
+    {
+        $self = clone $this;
+        $self['metadata'] = $metadata;
+
+        return $self;
+    }
+
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -109,18 +108,7 @@ final class Result implements BaseModel
     }
 
     /**
-     * Relevance score.
-     */
-    public function withScore(float $score): self
-    {
-        $self = clone $this;
-        $self['score'] = $score;
-
-        return $self;
-    }
-
-    /**
-     * Unique skill identifier.
+     * New slug (renames the skill).
      */
     public function withSlug(string $slug): self
     {
@@ -130,23 +118,7 @@ final class Result implements BaseModel
         return $self;
     }
 
-    /**
-     * Whether the skill is curated or org-custom.
-     *
-     * @param Source|value-of<Source> $source
-     */
-    public function withSource(Source|string $source): self
-    {
-        $self = clone $this;
-        $self['source'] = $source;
-
-        return $self;
-    }
-
-    /**
-     * Brief skill description.
-     */
-    public function withSummary(string $summary): self
+    public function withSummary(?string $summary): self
     {
         $self = clone $this;
         $self['summary'] = $summary;
@@ -155,8 +127,6 @@ final class Result implements BaseModel
     }
 
     /**
-     * Skill tags.
-     *
      * @param list<string> $tags
      */
     public function withTags(array $tags): self
