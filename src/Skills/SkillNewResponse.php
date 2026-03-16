@@ -7,90 +7,48 @@ namespace CaseDev\Skills;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Skills\SkillReadResponse\Source;
 
 /**
- * @phpstan-type SkillReadResponseShape = array{
- *   authorName?: string|null,
+ * @phpstan-type SkillNewResponseShape = array{
  *   content?: string|null,
- *   license?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
  *   metadata?: mixed,
  *   name?: string|null,
  *   slug?: string|null,
- *   source?: null|Source|value-of<Source>,
  *   summary?: string|null,
  *   tags?: list<string>|null,
- *   version?: string|null,
+ *   version?: int|null,
  * }
  */
-final class SkillReadResponse implements BaseModel
+final class SkillNewResponse implements BaseModel
 {
-    /** @use SdkModel<SkillReadResponseShape> */
+    /** @use SdkModel<SkillNewResponseShape> */
     use SdkModel;
 
-    /**
-     * Skill author.
-     */
-    #[Optional('author_name')]
-    public ?string $authorName;
-
-    /**
-     * Full skill content in markdown.
-     */
     #[Optional]
     public ?string $content;
 
-    /**
-     * Skill license.
-     */
-    #[Optional]
-    public ?string $license;
+    #[Optional('created_at')]
+    public ?\DateTimeInterface $createdAt;
 
-    /**
-     * Custom metadata (custom skills only).
-     */
     #[Optional]
     public mixed $metadata;
 
-    /**
-     * Skill name.
-     */
     #[Optional]
     public ?string $name;
 
-    /**
-     * Unique skill identifier.
-     */
     #[Optional]
     public ?string $slug;
 
-    /**
-     * Skill source (authenticated requests only).
-     *
-     * @var value-of<Source>|null $source
-     */
-    #[Optional(enum: Source::class)]
-    public ?string $source;
-
-    /**
-     * Brief skill description.
-     */
-    #[Optional]
+    #[Optional(nullable: true)]
     public ?string $summary;
 
-    /**
-     * Skill tags.
-     *
-     * @var list<string>|null $tags
-     */
+    /** @var list<string>|null $tags */
     #[Optional(list: 'string')]
     public ?array $tags;
 
-    /**
-     * Skill version.
-     */
     #[Optional]
-    public ?string $version;
+    public ?int $version;
 
     public function __construct()
     {
@@ -102,30 +60,25 @@ final class SkillReadResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Source|value-of<Source>|null $source
      * @param list<string>|null $tags
      */
     public static function with(
-        ?string $authorName = null,
         ?string $content = null,
-        ?string $license = null,
+        ?\DateTimeInterface $createdAt = null,
         mixed $metadata = null,
         ?string $name = null,
         ?string $slug = null,
-        Source|string|null $source = null,
         ?string $summary = null,
         ?array $tags = null,
-        ?string $version = null,
+        ?int $version = null,
     ): self {
         $self = new self;
 
-        null !== $authorName && $self['authorName'] = $authorName;
         null !== $content && $self['content'] = $content;
-        null !== $license && $self['license'] = $license;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $name && $self['name'] = $name;
         null !== $slug && $self['slug'] = $slug;
-        null !== $source && $self['source'] = $source;
         null !== $summary && $self['summary'] = $summary;
         null !== $tags && $self['tags'] = $tags;
         null !== $version && $self['version'] = $version;
@@ -133,20 +86,6 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Skill author.
-     */
-    public function withAuthorName(string $authorName): self
-    {
-        $self = clone $this;
-        $self['authorName'] = $authorName;
-
-        return $self;
-    }
-
-    /**
-     * Full skill content in markdown.
-     */
     public function withContent(string $content): self
     {
         $self = clone $this;
@@ -155,20 +94,14 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Skill license.
-     */
-    public function withLicense(string $license): self
+    public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
-        $self['license'] = $license;
+        $self['createdAt'] = $createdAt;
 
         return $self;
     }
 
-    /**
-     * Custom metadata (custom skills only).
-     */
     public function withMetadata(mixed $metadata): self
     {
         $self = clone $this;
@@ -177,9 +110,6 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Skill name.
-     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -188,9 +118,6 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Unique skill identifier.
-     */
     public function withSlug(string $slug): self
     {
         $self = clone $this;
@@ -199,23 +126,7 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Skill source (authenticated requests only).
-     *
-     * @param Source|value-of<Source> $source
-     */
-    public function withSource(Source|string $source): self
-    {
-        $self = clone $this;
-        $self['source'] = $source;
-
-        return $self;
-    }
-
-    /**
-     * Brief skill description.
-     */
-    public function withSummary(string $summary): self
+    public function withSummary(?string $summary): self
     {
         $self = clone $this;
         $self['summary'] = $summary;
@@ -224,8 +135,6 @@ final class SkillReadResponse implements BaseModel
     }
 
     /**
-     * Skill tags.
-     *
      * @param list<string> $tags
      */
     public function withTags(array $tags): self
@@ -236,10 +145,7 @@ final class SkillReadResponse implements BaseModel
         return $self;
     }
 
-    /**
-     * Skill version.
-     */
-    public function withVersion(string $version): self
+    public function withVersion(int $version): self
     {
         $self = clone $this;
         $self['version'] = $version;
