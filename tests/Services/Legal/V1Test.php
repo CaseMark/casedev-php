@@ -14,6 +14,7 @@ use CaseDev\Legal\V1\V1ListCourtsResponse;
 use CaseDev\Legal\V1\V1ListJurisdictionsResponse;
 use CaseDev\Legal\V1\V1PatentSearchResponse;
 use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SecFilingResponse;
 use CaseDev\Legal\V1\V1SimilarResponse;
 use CaseDev\Legal\V1\V1TrademarkSearchResponse;
 use CaseDev\Legal\V1\V1VerifyResponse;
@@ -266,6 +267,35 @@ final class V1Test extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(V1ResearchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testSecFiling(): void
+    {
+        $result = $this->client->legal->v1->secFiling(type: 'search');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1SecFilingResponse::class, $result);
+    }
+
+    #[Test]
+    public function testSecFilingWithOptionalParams(): void
+    {
+        $result = $this->client->legal->v1->secFiling(
+            type: 'search',
+            cik: 'cik',
+            dateAfter: '2019-12-27',
+            dateBefore: '2019-12-27',
+            entity: 'entity',
+            formTypes: ['string'],
+            limit: 1,
+            offset: 0,
+            query: 'xx',
+            ticker: 'ticker',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(V1SecFilingResponse::class, $result);
     }
 
     #[Test]

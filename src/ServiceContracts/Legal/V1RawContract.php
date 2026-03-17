@@ -26,6 +26,8 @@ use CaseDev\Legal\V1\V1PatentSearchParams;
 use CaseDev\Legal\V1\V1PatentSearchResponse;
 use CaseDev\Legal\V1\V1ResearchParams;
 use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SecFilingParams;
+use CaseDev\Legal\V1\V1SecFilingResponse;
 use CaseDev\Legal\V1\V1SimilarParams;
 use CaseDev\Legal\V1\V1SimilarResponse;
 use CaseDev\Legal\V1\V1TrademarkSearchParams;
@@ -186,6 +188,21 @@ interface V1RawContract
      */
     public function research(
         array|V1ResearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|V1SecFilingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1SecFilingResponse>
+     *
+     * @throws APIException
+     */
+    public function secFiling(
+        array|V1SecFilingParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
