@@ -21,6 +21,7 @@ use CaseDev\Legal\V1\V1PatentSearchParams\SortBy;
 use CaseDev\Legal\V1\V1PatentSearchParams\SortOrder;
 use CaseDev\Legal\V1\V1PatentSearchResponse;
 use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SecFilingResponse;
 use CaseDev\Legal\V1\V1SimilarResponse;
 use CaseDev\Legal\V1\V1TrademarkSearchResponse;
 use CaseDev\Legal\V1\V1VerifyResponse;
@@ -247,6 +248,37 @@ interface V1Contract
         int $numResults = 10,
         RequestOptions|array|null $requestOptions = null,
     ): V1ResearchResponse;
+
+    /**
+     * @api
+     *
+     * @param \CaseDev\Legal\V1\V1SecFilingParams\Type|value-of<\CaseDev\Legal\V1\V1SecFilingParams\Type> $type Run a full-text search or fetch a single entity filing history
+     * @param string $cik CIK for entity lookups. Accepts padded or unpadded digits.
+     * @param string $dateAfter Optional lower filing date bound (YYYY-MM-DD)
+     * @param string $dateBefore Optional upper filing date bound (YYYY-MM-DD)
+     * @param string $entity Optional entity filter passed through to EDGAR full-text search
+     * @param list<string> $formTypes Optional SEC form type filter such as 10-K, 10-Q, 8-K, or 4
+     * @param int $limit Maximum filings to return
+     * @param int $offset Result offset for pagination
+     * @param string $query Full-text SEC search query (required for type: search)
+     * @param string $ticker Optional company ticker. Valid for both search and entity lookups.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function secFiling(
+        \CaseDev\Legal\V1\V1SecFilingParams\Type|string $type,
+        ?string $cik = null,
+        ?string $dateAfter = null,
+        ?string $dateBefore = null,
+        ?string $entity = null,
+        ?array $formTypes = null,
+        int $limit = 25,
+        int $offset = 0,
+        ?string $query = null,
+        ?string $ticker = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): V1SecFilingResponse;
 
     /**
      * @api

@@ -33,6 +33,8 @@ use CaseDev\Legal\V1\V1PatentSearchParams\SortOrder;
 use CaseDev\Legal\V1\V1PatentSearchResponse;
 use CaseDev\Legal\V1\V1ResearchParams;
 use CaseDev\Legal\V1\V1ResearchResponse;
+use CaseDev\Legal\V1\V1SecFilingParams;
+use CaseDev\Legal\V1\V1SecFilingResponse;
 use CaseDev\Legal\V1\V1SimilarParams;
 use CaseDev\Legal\V1\V1SimilarResponse;
 use CaseDev\Legal\V1\V1TrademarkSearchParams;
@@ -418,6 +420,48 @@ final class V1RawService implements V1RawContract
             body: (object) $parsed,
             options: $options,
             convert: V1ResearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Search SEC EDGAR full-text filings via efts.sec.gov or fetch a filer's structured filing history via data.sec.gov. Returns direct SEC archive URLs with filing metadata and match snippets when available.
+     *
+     * @param array{
+     *   type: V1SecFilingParams\Type|value-of<V1SecFilingParams\Type>,
+     *   cik?: string,
+     *   dateAfter?: string,
+     *   dateBefore?: string,
+     *   entity?: string,
+     *   formTypes?: list<string>,
+     *   limit?: int,
+     *   offset?: int,
+     *   query?: string,
+     *   ticker?: string,
+     * }|V1SecFilingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<V1SecFilingResponse>
+     *
+     * @throws APIException
+     */
+    public function secFiling(
+        array|V1SecFilingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = V1SecFilingParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'legal/v1/sec-filing',
+            body: (object) $parsed,
+            options: $options,
+            convert: V1SecFilingResponse::class,
         );
     }
 
