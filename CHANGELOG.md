@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.16.1 (2026-03-17)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/CaseMark/casedev-php/compare/v0.16.0...v0.16.1)
+
+### Chores
+
+* **internal:** tweak CI branches ([6ed2b03](https://github.com/CaseMark/casedev-php/commit/6ed2b034336822a1e4e89a3daf0f55c860ac194b))
+
 ## 0.16.0 (2026-03-16)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/CaseMark/casedev-php/compare/v0.15.0...v0.16.0)
