@@ -10,6 +10,7 @@ use CaseDev\Mail\V1\Inboxes\InboxCreateParams;
 use CaseDev\Mail\V1\Inboxes\InboxGetAttachmentParams;
 use CaseDev\Mail\V1\Inboxes\InboxGetMessageParams;
 use CaseDev\Mail\V1\Inboxes\InboxReplyParams;
+use CaseDev\Mail\V1\Inboxes\InboxSetPolicyParams;
 use CaseDev\RequestOptions;
 
 /**
@@ -114,6 +115,20 @@ interface InboxesRawContract
      *
      * @throws APIException
      */
+    public function getPolicy(
+        string $inboxID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
     public function listMessages(
         string $inboxID,
         RequestOptions|array|null $requestOptions = null
@@ -147,5 +162,21 @@ interface InboxesRawContract
     public function send(
         string $inboxID,
         RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|InboxSetPolicyParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function setPolicy(
+        string $inboxID,
+        array|InboxSetPolicyParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

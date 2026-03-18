@@ -94,6 +94,18 @@ interface InboxesContract
      *
      * @throws APIException
      */
+    public function getPolicy(
+        string $inboxID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
     public function listMessages(
         string $inboxID,
         RequestOptions|array|null $requestOptions = null
@@ -122,5 +134,26 @@ interface InboxesContract
     public function send(
         string $inboxID,
         RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param list<string> $allowedSenderPatterns Exact emails, @domain rules, or *
+     * @param list<string> $readAccessRules Rules like organization, operator, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param list<string> $replyAccessRules Rules like organization, operator, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param list<string> $sendAccessRules Rules like organization, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function setPolicy(
+        string $inboxID,
+        ?array $allowedSenderPatterns = null,
+        ?bool $enforceSenderAllowlist = null,
+        ?array $readAccessRules = null,
+        ?array $replyAccessRules = null,
+        ?array $sendAccessRules = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 }

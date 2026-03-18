@@ -11,6 +11,7 @@ use CaseDev\Mail\V1\Inboxes\InboxCreateParams;
 use CaseDev\Mail\V1\Inboxes\InboxGetAttachmentParams;
 use CaseDev\Mail\V1\Inboxes\InboxGetMessageParams;
 use CaseDev\Mail\V1\Inboxes\InboxReplyParams;
+use CaseDev\Mail\V1\Inboxes\InboxSetPolicyParams;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Mail\V1\InboxesRawContract;
 
@@ -207,6 +208,30 @@ final class InboxesRawService implements InboxesRawContract
     /**
      * @api
      *
+     * Get the sender allowlist and send/reply/read access rules for an inbox owned by the authenticated organization.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function getPolicy(
+        string $inboxID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['mail/v1/inboxes/%1$s/policy', $inboxID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
      * List messages for an inbox owned by the authenticated organization.
      *
      * @param RequestOpts|null $requestOptions
@@ -281,6 +306,44 @@ final class InboxesRawService implements InboxesRawContract
             method: 'post',
             path: ['mail/v1/inboxes/%1$s/messages/send', $inboxID],
             options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Set the sender allowlist and send/reply/read access rules for an inbox owned by the authenticated organization.
+     *
+     * @param array{
+     *   allowedSenderPatterns?: list<string>,
+     *   enforceSenderAllowlist?: bool,
+     *   readAccessRules?: list<string>,
+     *   replyAccessRules?: list<string>,
+     *   sendAccessRules?: list<string>,
+     * }|InboxSetPolicyParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function setPolicy(
+        string $inboxID,
+        array|InboxSetPolicyParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = InboxSetPolicyParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['mail/v1/inboxes/%1$s/policy', $inboxID],
+            body: (object) $parsed,
+            options: $options,
             convert: null,
         );
     }
