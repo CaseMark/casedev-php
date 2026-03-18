@@ -113,6 +113,15 @@ final class InboxesTest extends TestCase
     }
 
     #[Test]
+    public function testGetPolicy(): void
+    {
+        $result = $this->client->mail->v1->inboxes->getPolicy('inboxId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
     public function testListMessages(): void
     {
         $result = $this->client->mail->v1->inboxes->listMessages('inboxId');
@@ -149,6 +158,15 @@ final class InboxesTest extends TestCase
     public function testSend(): void
     {
         $result = $this->client->mail->v1->inboxes->send('inboxId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testSetPolicy(): void
+    {
+        $result = $this->client->mail->v1->inboxes->setPolicy('inboxId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

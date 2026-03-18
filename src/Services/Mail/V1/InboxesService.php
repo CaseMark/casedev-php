@@ -160,6 +160,25 @@ final class InboxesService implements InboxesContract
     /**
      * @api
      *
+     * Get the sender allowlist and send/reply/read access rules for an inbox owned by the authenticated organization.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getPolicy(
+        string $inboxID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getPolicy($inboxID, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * List messages for an inbox owned by the authenticated organization.
      *
      * @param RequestOpts|null $requestOptions
@@ -213,6 +232,44 @@ final class InboxesService implements InboxesContract
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->send($inboxID, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Set the sender allowlist and send/reply/read access rules for an inbox owned by the authenticated organization.
+     *
+     * @param list<string> $allowedSenderPatterns Exact emails, @domain rules, or *
+     * @param list<string> $readAccessRules Rules like organization, operator, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param list<string> $replyAccessRules Rules like organization, operator, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param list<string> $sendAccessRules Rules like organization, user:<id>, api_key, api_key:<id>, clerk_session, or *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function setPolicy(
+        string $inboxID,
+        ?array $allowedSenderPatterns = null,
+        ?bool $enforceSenderAllowlist = null,
+        ?array $readAccessRules = null,
+        ?array $replyAccessRules = null,
+        ?array $sendAccessRules = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed {
+        $params = Util::removeNulls(
+            [
+                'allowedSenderPatterns' => $allowedSenderPatterns,
+                'enforceSenderAllowlist' => $enforceSenderAllowlist,
+                'readAccessRules' => $readAccessRules,
+                'replyAccessRules' => $replyAccessRules,
+                'sendAccessRules' => $sendAccessRules,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->setPolicy($inboxID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
