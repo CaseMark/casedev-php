@@ -7,7 +7,6 @@ use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testAnnotate(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->superdoc->v1->annotate(
             document: [],
             fields: [['type' => 'text', 'value' => 'string']]
@@ -46,10 +41,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testAnnotateWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->superdoc->v1->annotate(
             document: ['base64' => 'base64', 'url' => 'url'],
             fields: [
@@ -71,10 +62,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testConvert(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->superdoc->v1->convert(from: 'docx');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -84,10 +71,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testConvertWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->superdoc->v1->convert(
             from: 'docx',
             documentBase64: 'document_base64',

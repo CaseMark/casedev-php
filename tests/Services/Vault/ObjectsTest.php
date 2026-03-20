@@ -15,7 +15,6 @@ use CaseDev\Vault\Objects\ObjectUpdateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -139,10 +138,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testDownload(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
-        }
-
         $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -152,10 +147,6 @@ final class ObjectsTest extends TestCase
     #[Test]
     public function testDownloadWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
-        }
-
         $result = $this->client->vault->objects->download('objectId', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
