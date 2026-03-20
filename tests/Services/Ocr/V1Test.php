@@ -9,7 +9,6 @@ use CaseDev\Ocr\V1\V1ProcessResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -41,10 +40,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDownload(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
-        }
-
         $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -54,10 +49,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testDownloadWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/octet-stream responses');
-        }
-
         $result = $this->client->ocr->v1->download('text', id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

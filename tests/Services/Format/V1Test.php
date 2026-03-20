@@ -7,7 +7,6 @@ use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Tests\UnsupportedMockTests;
 
 /**
  * @internal
@@ -30,10 +29,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreateDocument(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->format->v1->createDocument(
             content: 'content',
             outputFormat: 'pdf'
@@ -46,10 +41,6 @@ final class V1Test extends TestCase
     #[Test]
     public function testCreateDocumentWithOptionalParams(): void
     {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server doesn\'t support application/pdf responses');
-        }
-
         $result = $this->client->format->v1->createDocument(
             content: 'content',
             outputFormat: 'pdf',
