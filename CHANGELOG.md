@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.1 (2026-03-20)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/CaseMark/casedev-php/compare/v0.18.0...v0.18.1)
+
+### Refactors
+
+* **tests:** switch from prism to steady ([f9f4148](https://github.com/CaseMark/casedev-php/commit/f9f4148261bbf982824c9e050892bd7229652e57))
+
 ## 0.18.0 (2026-03-18)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/CaseMark/casedev-php/compare/v0.17.0...v0.18.0)
