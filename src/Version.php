@@ -5,5 +5,5 @@ declare(strict_types=1);
 namespace CaseDev;
 
 // x-release-please-start-version
-const VERSION = '0.18.1';
+const VERSION = '0.18.2';
 // x-release-please-end
