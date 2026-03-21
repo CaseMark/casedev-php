@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.18.2 (2026-03-21)
+
+Full Changelog: [v0.18.1...v0.18.2](https://github.com/CaseMark/casedev-php/compare/v0.18.1...v0.18.2)
+
+### Chores
+
+* **tests:** bump steady to v0.19.4 ([7a8c213](https://github.com/CaseMark/casedev-php/commit/7a8c21348ad03b57568952b9e753c6565036e70a))
+* **tests:** bump steady to v0.19.5 ([8cbb2db](https://github.com/CaseMark/casedev-php/commit/8cbb2db7549b037678ef9b944320deb4a3331fcc))
+
 ## 0.18.1 (2026-03-20)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/CaseMark/casedev-php/compare/v0.18.0...v0.18.1)
