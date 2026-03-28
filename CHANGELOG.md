@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.19.0 (2026-03-28)
+
+Full Changelog: [v0.18.1...v0.19.0](https://github.com/CaseMark/casedev-php/compare/v0.18.1...v0.19.0)
+
+### Features
+
+* **api:** api update ([b52ee47](https://github.com/CaseMark/casedev-php/commit/b52ee47537d5b7686a9d2a58531669048eaf9cad))
+* **api:** api update ([4d1bbaf](https://github.com/CaseMark/casedev-php/commit/4d1bbaf0922ce436d4c3a1aef9bc30e3d5c907fa))
+
+
+### Chores
+
+* **internal:** update multipart form array serialization ([73a282c](https://github.com/CaseMark/casedev-php/commit/73a282c83ffc4475f9157c90d8124fdd41869a24))
+* **tests:** bump steady to v0.19.4 ([7a8c213](https://github.com/CaseMark/casedev-php/commit/7a8c21348ad03b57568952b9e753c6565036e70a))
+* **tests:** bump steady to v0.19.5 ([8cbb2db](https://github.com/CaseMark/casedev-php/commit/8cbb2db7549b037678ef9b944320deb4a3331fcc))
+* **tests:** bump steady to v0.19.6 ([c70097c](https://github.com/CaseMark/casedev-php/commit/c70097c6181bce1d4c11194b4d204ffd28f4f93d))
+* **tests:** bump steady to v0.19.7 ([fea08ab](https://github.com/CaseMark/casedev-php/commit/fea08abb88d621930082ad813fcd88a409c4fd95))
+
 ## 0.18.1 (2026-03-20)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/CaseMark/casedev-php/compare/v0.18.0...v0.18.1)
