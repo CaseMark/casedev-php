@@ -14,6 +14,7 @@ use CaseDev\Services\FormatService;
 use CaseDev\Services\LegalService;
 use CaseDev\Services\LlmService;
 use CaseDev\Services\MailService;
+use CaseDev\Services\MattersService;
 use CaseDev\Services\MemoryService;
 use CaseDev\Services\OcrService;
 use CaseDev\Services\PrivilegeService;
@@ -69,6 +70,11 @@ class Client extends BaseClient
      * @api
      */
     public LegalService $legal;
+
+    /**
+     * @api
+     */
+    public MattersService $matters;
 
     /**
      * @api
@@ -170,6 +176,7 @@ class Client extends BaseClient
         $this->database = new DatabaseService($this);
         $this->format = new FormatService($this);
         $this->legal = new LegalService($this);
+        $this->matters = new MattersService($this);
         $this->llm = new LlmService($this);
         $this->memory = new MemoryService($this);
         $this->ocr = new OcrService($this);
