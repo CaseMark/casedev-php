@@ -20,6 +20,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *   ingestionStatus: string,
  *   vaultID: string,
  *   chunkCount?: int|null,
+ *   ingestionError?: string|null,
  *   metadata?: mixed,
  *   pageCount?: int|null,
  *   path?: string|null,
@@ -86,6 +87,12 @@ final class ObjectGetResponse implements BaseModel
      */
     #[Optional]
     public ?int $chunkCount;
+
+    /**
+     * Error details when ingestion fails.
+     */
+    #[Optional(nullable: true)]
+    public ?string $ingestionError;
 
     /**
      * Additional metadata.
@@ -174,6 +181,7 @@ final class ObjectGetResponse implements BaseModel
         string $ingestionStatus,
         string $vaultID,
         ?int $chunkCount = null,
+        ?string $ingestionError = null,
         mixed $metadata = null,
         ?int $pageCount = null,
         ?string $path = null,
@@ -193,6 +201,7 @@ final class ObjectGetResponse implements BaseModel
         $self['vaultID'] = $vaultID;
 
         null !== $chunkCount && $self['chunkCount'] = $chunkCount;
+        null !== $ingestionError && $self['ingestionError'] = $ingestionError;
         null !== $metadata && $self['metadata'] = $metadata;
         null !== $pageCount && $self['pageCount'] = $pageCount;
         null !== $path && $self['path'] = $path;
@@ -298,6 +307,17 @@ final class ObjectGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['chunkCount'] = $chunkCount;
+
+        return $self;
+    }
+
+    /**
+     * Error details when ingestion fails.
+     */
+    public function withIngestionError(?string $ingestionError): self
+    {
+        $self = clone $this;
+        $self['ingestionError'] = $ingestionError;
 
         return $self;
     }
