@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace CaseDev\Matters\V1\Types;
+
+use CaseDev\Core\Attributes\Optional;
+use CaseDev\Core\Concerns\SdkModel;
+use CaseDev\Core\Concerns\SdkParams;
+use CaseDev\Core\Contracts\BaseModel;
+
+/**
+ * List matter types for the authenticated organization.
+ *
+ * @see CaseDev\Services\Matters\V1\TypesService::list()
+ *
+ * @phpstan-type TypeListParamsShape = array{active?: bool|null}
+ */
+final class TypeListParams implements BaseModel
+{
+    /** @use SdkModel<TypeListParamsShape> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Optional]
+    public ?bool $active;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(?bool $active = null): self
+    {
+        $self = new self;
+
+        null !== $active && $self['active'] = $active;
+
+        return $self;
+    }
+
+    public function withActive(bool $active): self
+    {
+        $self = clone $this;
+        $self['active'] = $active;
+
+        return $self;
+    }
+}
