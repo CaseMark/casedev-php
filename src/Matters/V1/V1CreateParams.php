@@ -13,7 +13,7 @@ use CaseDev\Matters\V1\V1CreateParams\Status;
 use CaseDev\Matters\V1\V1CreateParams\Vault;
 
 /**
- * Create a new legal matter and provision its primary vault.
+ * Create a new legal matter and optionally link an existing primary vault.
  *
  * @see CaseDev\Services\Matters\V1Service::create()
  *
@@ -36,6 +36,7 @@ use CaseDev\Matters\V1\V1CreateParams\Vault;
  *   status?: null|Status|value-of<Status>,
  *   subtype?: string|null,
  *   vault?: null|Vault|VaultShape,
+ *   vaultID?: string|null,
  * }
  */
 final class V1CreateParams implements BaseModel
@@ -98,6 +99,9 @@ final class V1CreateParams implements BaseModel
     #[Optional]
     public ?Vault $vault;
 
+    #[Optional('vault_id')]
+    public ?string $vaultID;
+
     /**
      * `new V1CreateParams()` is missing required properties by the API.
      *
@@ -147,6 +151,7 @@ final class V1CreateParams implements BaseModel
         Status|string|null $status = null,
         ?string $subtype = null,
         Vault|array|null $vault = null,
+        ?string $vaultID = null,
     ): self {
         $self = new self;
 
@@ -167,6 +172,7 @@ final class V1CreateParams implements BaseModel
         null !== $status && $self['status'] = $status;
         null !== $subtype && $self['subtype'] = $subtype;
         null !== $vault && $self['vault'] = $vault;
+        null !== $vaultID && $self['vaultID'] = $vaultID;
 
         return $self;
     }
@@ -317,6 +323,14 @@ final class V1CreateParams implements BaseModel
     {
         $self = clone $this;
         $self['vault'] = $vault;
+
+        return $self;
+    }
+
+    public function withVaultID(string $vaultID): self
+    {
+        $self = clone $this;
+        $self['vaultID'] = $vaultID;
 
         return $self;
     }

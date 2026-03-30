@@ -60,6 +60,7 @@ final class V1Test extends TestCase
                 'enableIndexing' => true,
                 'metadata' => ['foo' => 'bar'],
             ],
+            vaultID: 'vault_id',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -92,7 +92,7 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Create a new legal matter and provision its primary vault.
+     * Create a new legal matter and optionally link an existing primary vault.
      *
      * @param array<string,mixed> $billing
      * @param array<string,mixed> $customFields
@@ -122,6 +122,7 @@ final class V1Service implements V1Contract
         Status|string|null $status = null,
         ?string $subtype = null,
         Vault|array|null $vault = null,
+        ?string $vaultID = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
@@ -142,6 +143,7 @@ final class V1Service implements V1Contract
                 'status' => $status,
                 'subtype' => $subtype,
                 'vault' => $vault,
+                'vaultID' => $vaultID,
             ],
         );
 

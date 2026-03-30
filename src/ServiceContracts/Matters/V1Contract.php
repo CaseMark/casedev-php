@@ -46,6 +46,7 @@ interface V1Contract
         Status|string|null $status = null,
         ?string $subtype = null,
         Vault|array|null $vault = null,
+        ?string $vaultID = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
 

@@ -33,7 +33,7 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Create a new legal matter and provision its primary vault.
+     * Create a new legal matter and optionally link an existing primary vault.
      *
      * @param array{
      *   title: string,
@@ -52,6 +52,7 @@ final class V1RawService implements V1RawContract
      *   status?: Status|value-of<Status>,
      *   subtype?: string,
      *   vault?: Vault|VaultShape,
+     *   vaultID?: string,
      * }|V1CreateParams $params
      * @param RequestOpts|null $requestOptions
      *
