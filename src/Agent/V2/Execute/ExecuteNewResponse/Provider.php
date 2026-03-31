@@ -7,4 +7,6 @@ namespace CaseDev\Agent\V2\Execute\ExecuteNewResponse;
 enum Provider: string
 {
     case DAYTONA = 'daytona';
+
+    case VERCEL = 'vercel';
 }

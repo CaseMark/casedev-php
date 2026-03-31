@@ -41,6 +41,7 @@ final class ExecuteTest extends TestCase
     {
         $result = $this->client->agent->v2->execute->create(
             prompt: 'prompt',
+            agentRuntime: true,
             disabledTools: ['string'],
             enabledTools: ['string'],
             guidance: 'guidance',
