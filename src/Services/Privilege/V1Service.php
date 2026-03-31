@@ -36,9 +36,9 @@ final class V1Service implements V1Contract
     /**
      * @api
      *
-     * Analyzes text or vault documents for legal privilege. Detects attorney-client privilege, work product doctrine, common interest privilege, and litigation hold materials.
+     * Analyzes text or vault documents for legal privilege review. Detects attorney-client privilege, work product doctrine, and common interest privilege.
      *
-     * Returns structured privilege flags with confidence scores and policy-friendly rationale suitable for discovery workflows and privilege logs.
+     * Returns structured review flags with confidence scores and policy-friendly rationale suitable for discovery workflows and privilege logs. This endpoint is an AI-assisted triage tool and does not replace attorney judgment.
      *
      * **Size Limit:** Maximum 200,000 characters (larger documents rejected).
      *
@@ -46,7 +46,7 @@ final class V1Service implements V1Contract
      *
      * **Note:** When analyzing vault documents, results are automatically stored in the document's `privilege_analysis` metadata field.
      *
-     * @param list<Category|value-of<Category>> $categories Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest, litigation_hold
+     * @param list<Category|value-of<Category>> $categories Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest
      * @param string $content Text content to analyze (required if document_id not provided)
      * @param string $documentID Vault object ID to analyze (required if content not provided)
      * @param bool $includeRationale Include detailed rationale for each category

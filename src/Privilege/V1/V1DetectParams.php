@@ -12,9 +12,9 @@ use CaseDev\Privilege\V1\V1DetectParams\Category;
 use CaseDev\Privilege\V1\V1DetectParams\Jurisdiction;
 
 /**
- * Analyzes text or vault documents for legal privilege. Detects attorney-client privilege, work product doctrine, common interest privilege, and litigation hold materials.
+ * Analyzes text or vault documents for legal privilege review. Detects attorney-client privilege, work product doctrine, and common interest privilege.
  *
- * Returns structured privilege flags with confidence scores and policy-friendly rationale suitable for discovery workflows and privilege logs.
+ * Returns structured review flags with confidence scores and policy-friendly rationale suitable for discovery workflows and privilege logs. This endpoint is an AI-assisted triage tool and does not replace attorney judgment.
  *
  * **Size Limit:** Maximum 200,000 characters (larger documents rejected).
  *
@@ -41,7 +41,7 @@ final class V1DetectParams implements BaseModel
     use SdkParams;
 
     /**
-     * Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest, litigation_hold.
+     * Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest.
      *
      * @var list<value-of<Category>>|null $categories
      */
@@ -122,7 +122,7 @@ final class V1DetectParams implements BaseModel
     }
 
     /**
-     * Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest, litigation_hold.
+     * Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest.
      *
      * @param list<Category|value-of<Category>> $categories
      */
