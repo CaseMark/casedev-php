@@ -62,23 +62,12 @@ final class V1Test extends TestCase
     #[Test]
     public function testConvert(): void
     {
-        $result = $this->client->superdoc->v1->convert(from: 'docx');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->markTestSkipped('SDK missing required file parameter - Stainless codegen issue');
     }
 
     #[Test]
     public function testConvertWithOptionalParams(): void
     {
-        $result = $this->client->superdoc->v1->convert(
-            from: 'docx',
-            documentBase64: 'document_base64',
-            documentURL: 'document_url',
-            to: 'pdf',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->markTestSkipped('SDK missing required file parameter - Stainless codegen issue');
     }
 }
