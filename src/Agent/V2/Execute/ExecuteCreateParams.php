@@ -12,7 +12,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Creates an ephemeral agent and immediately executes a v2 run on the Daytona runtime.
+ * Creates an ephemeral agent and executes it immediately. By default this uses the lightweight synchronous linc runtime on Vercel Sandbox. Set `agentRuntime: true` to opt into the legacy Daytona-backed agent runtime.
  *
  * @see CaseDev\Services\Agent\V2\ExecuteService::create()
  *
@@ -20,6 +20,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *
  * @phpstan-type ExecuteCreateParamsShape = array{
  *   prompt: string,
+ *   agentRuntime?: bool|null,
  *   disabledTools?: list<string>|null,
  *   enabledTools?: list<string>|null,
  *   guidance?: string|null,
@@ -38,6 +39,12 @@ final class ExecuteCreateParams implements BaseModel
 
     #[Required]
     public string $prompt;
+
+    /**
+     * Set to true to opt into the legacy Daytona-backed agent runtime.
+     */
+    #[Optional(nullable: true)]
+    public ?bool $agentRuntime;
 
     /** @var list<string>|null $disabledTools */
     #[Optional(list: 'string', nullable: true)]
@@ -99,6 +106,7 @@ final class ExecuteCreateParams implements BaseModel
      */
     public static function with(
         string $prompt,
+        ?bool $agentRuntime = null,
         ?array $disabledTools = null,
         ?array $enabledTools = null,
         ?string $guidance = null,
@@ -112,6 +120,7 @@ final class ExecuteCreateParams implements BaseModel
 
         $self['prompt'] = $prompt;
 
+        null !== $agentRuntime && $self['agentRuntime'] = $agentRuntime;
         null !== $disabledTools && $self['disabledTools'] = $disabledTools;
         null !== $enabledTools && $self['enabledTools'] = $enabledTools;
         null !== $guidance && $self['guidance'] = $guidance;
@@ -128,6 +137,17 @@ final class ExecuteCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['prompt'] = $prompt;
+
+        return $self;
+    }
+
+    /**
+     * Set to true to opt into the legacy Daytona-backed agent runtime.
+     */
+    public function withAgentRuntime(?bool $agentRuntime): self
+    {
+        $self = clone $this;
+        $self['agentRuntime'] = $agentRuntime;
 
         return $self;
     }

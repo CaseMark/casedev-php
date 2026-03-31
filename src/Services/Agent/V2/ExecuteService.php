@@ -36,8 +36,9 @@ final class ExecuteService implements ExecuteContract
     /**
      * @api
      *
-     * Creates an ephemeral agent and immediately executes a v2 run on the Daytona runtime.
+     * Creates an ephemeral agent and executes it immediately. By default this uses the lightweight synchronous linc runtime on Vercel Sandbox. Set `agentRuntime: true` to opt into the legacy Daytona-backed agent runtime.
      *
+     * @param bool|null $agentRuntime set to true to opt into the legacy Daytona-backed agent runtime
      * @param list<string>|null $disabledTools
      * @param list<string>|null $enabledTools
      * @param list<string>|null $objectIDs
@@ -49,6 +50,7 @@ final class ExecuteService implements ExecuteContract
      */
     public function create(
         string $prompt,
+        ?bool $agentRuntime = null,
         ?array $disabledTools = null,
         ?array $enabledTools = null,
         ?string $guidance = null,
@@ -62,6 +64,7 @@ final class ExecuteService implements ExecuteContract
         $params = Util::removeNulls(
             [
                 'prompt' => $prompt,
+                'agentRuntime' => $agentRuntime,
                 'disabledTools' => $disabledTools,
                 'enabledTools' => $enabledTools,
                 'guidance' => $guidance,
