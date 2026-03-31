@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.0 (2026-03-31)
+
+Full Changelog: [v0.19.0...v0.20.0](https://github.com/CaseMark/casedev-php/compare/v0.19.0...v0.20.0)
+
+### Features
+
+* **api:** api update ([0d7fa80](https://github.com/CaseMark/casedev-php/commit/0d7fa80a365e780f1e0d240c94507e3b5b6b958b))
+
 ## 0.19.0 (2026-03-30)
 
 Full Changelog: [v0.18.1...v0.19.0](https://github.com/CaseMark/casedev-php/compare/v0.18.1...v0.19.0)

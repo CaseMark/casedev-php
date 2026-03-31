@@ -11,6 +11,4 @@ enum Category: string
     case WORK_PRODUCT = 'work_product';
 
     case COMMON_INTEREST = 'common_interest';
-
-    case LITIGATION_HOLD = 'litigation_hold';
 }

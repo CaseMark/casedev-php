@@ -18,7 +18,7 @@ interface V1Contract
     /**
      * @api
      *
-     * @param list<Category|value-of<Category>> $categories Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest, litigation_hold
+     * @param list<Category|value-of<Category>> $categories Privilege categories to check. Defaults to all: attorney_client, work_product, common_interest
      * @param string $content Text content to analyze (required if document_id not provided)
      * @param string $documentID Vault object ID to analyze (required if content not provided)
      * @param bool $includeRationale Include detailed rationale for each category
