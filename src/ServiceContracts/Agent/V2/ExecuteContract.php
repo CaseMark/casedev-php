@@ -18,6 +18,7 @@ interface ExecuteContract
     /**
      * @api
      *
+     * @param bool|null $agentRuntime set to true to opt into the legacy Daytona-backed agent runtime
      * @param list<string>|null $disabledTools
      * @param list<string>|null $enabledTools
      * @param list<string>|null $objectIDs
@@ -29,6 +30,7 @@ interface ExecuteContract
      */
     public function create(
         string $prompt,
+        ?bool $agentRuntime = null,
         ?array $disabledTools = null,
         ?array $enabledTools = null,
         ?string $guidance = null,

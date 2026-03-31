@@ -7,4 +7,8 @@ namespace CaseDev\Agent\V2\Execute\ExecuteNewResponse;
 enum RuntimeState: string
 {
     case RUNNING = 'running';
+
+    case ENDED = 'ended';
+
+    case ERROR = 'error';
 }
