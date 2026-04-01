@@ -196,7 +196,7 @@ final class WorkItemsRawService implements WorkItemsRawContract
     /**
      * @api
      *
-     * Allow a human to act as the orchestrator for a work item.
+     * Approve, revise, block, or reassign a work item. Used by humans or agents to move work items through their lifecycle.
      *
      * @param string $workItemID Path param
      * @param array{
