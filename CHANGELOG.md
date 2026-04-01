@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.0 (2026-04-01)
+
+Full Changelog: [v0.21.2...v0.22.0](https://github.com/CaseMark/casedev-php/compare/v0.21.2...v0.22.0)
+
+### Features
+
+* **api:** api update ([f775f06](https://github.com/CaseMark/casedev-php/commit/f775f067732c549038d43bd19961dea026795b8d))
+
 ## 0.21.2 (2026-04-01)
 
 Full Changelog: [v0.21.1...v0.21.2](https://github.com/CaseMark/casedev-php/compare/v0.21.1...v0.21.2)

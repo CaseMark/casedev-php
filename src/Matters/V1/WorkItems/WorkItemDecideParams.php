@@ -12,7 +12,7 @@ use CaseDev\Core\Contracts\BaseModel;
 use CaseDev\Matters\V1\WorkItems\WorkItemDecideParams\Decision;
 
 /**
- * Allow a human to act as the orchestrator for a work item.
+ * Approve, revise, block, or reassign a work item. Used by humans or agents to move work items through their lifecycle.
  *
  * @see CaseDev\Services\Matters\V1\WorkItemsService::decide()
  *
