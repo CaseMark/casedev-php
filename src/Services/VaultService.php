@@ -12,6 +12,7 @@ use CaseDev\ServiceContracts\VaultContract;
 use CaseDev\Services\Vault\EventsService;
 use CaseDev\Services\Vault\GraphragService;
 use CaseDev\Services\Vault\GroupsService;
+use CaseDev\Services\Vault\MemoryService;
 use CaseDev\Services\Vault\MultipartService;
 use CaseDev\Services\Vault\ObjectsService;
 use CaseDev\Vault\VaultConfirmUploadResponse;
@@ -65,6 +66,11 @@ final class VaultService implements VaultContract
     public ObjectsService $objects;
 
     /**
+     * @api
+     */
+    public MemoryService $memory;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -75,6 +81,7 @@ final class VaultService implements VaultContract
         $this->groups = new GroupsService($client);
         $this->multipart = new MultipartService($client);
         $this->objects = new ObjectsService($client);
+        $this->memory = new MemoryService($client);
     }
 
     /**
