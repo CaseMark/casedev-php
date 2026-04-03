@@ -164,7 +164,9 @@ final class ChatRawService implements ChatRawContract
      * @api
      *
      * @param string $id Chat session ID
-     * @param array{parts?: list<Part|PartShape>}|ChatRespondParams $params
+     * @param array{
+     *   model?: string|null, parts?: list<Part|PartShape>
+     * }|ChatRespondParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BaseStream<string>>
@@ -205,7 +207,8 @@ final class ChatRawService implements ChatRawContract
      *
      * @param string $id Chat session ID
      * @param array{
-     *   parts?: list<ChatSendMessageParams\Part|PartShape1>
+     *   model?: string|null,
+     *   parts?: list<ChatSendMessageParams\Part|PartShape1>,
      * }|ChatSendMessageParams $params
      * @param RequestOpts|null $requestOptions
      *

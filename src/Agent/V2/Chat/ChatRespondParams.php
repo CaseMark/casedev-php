@@ -22,13 +22,21 @@ use CaseDev\Core\Contracts\BaseModel;
  *
  * @phpstan-import-type PartShape from \CaseDev\Agent\V2\Chat\ChatRespondParams\Part
  *
- * @phpstan-type ChatRespondParamsShape = array{parts?: list<Part|PartShape>|null}
+ * @phpstan-type ChatRespondParamsShape = array{
+ *   model?: string|null, parts?: list<Part|PartShape>|null
+ * }
  */
 final class ChatRespondParams implements BaseModel
 {
     /** @use SdkModel<ChatRespondParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    /**
+     * Optional model override. When provided, the runtime bootstrap config is updated so subsequent turns use this model. Conversation history is preserved.
+     */
+    #[Optional(nullable: true)]
+    public ?string $model;
 
     /**
      * Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
@@ -50,11 +58,25 @@ final class ChatRespondParams implements BaseModel
      *
      * @param list<Part|PartShape>|null $parts
      */
-    public static function with(?array $parts = null): self
-    {
+    public static function with(
+        ?string $model = null,
+        ?array $parts = null
+    ): self {
         $self = new self;
 
+        null !== $model && $self['model'] = $model;
         null !== $parts && $self['parts'] = $parts;
+
+        return $self;
+    }
+
+    /**
+     * Optional model override. When provided, the runtime bootstrap config is updated so subsequent turns use this model. Conversation history is preserved.
+     */
+    public function withModel(?string $model): self
+    {
+        $self = clone $this;
+        $self['model'] = $model;
 
         return $self;
     }
