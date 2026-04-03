@@ -85,6 +85,7 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
+     * @param string|null $model Optional model override. When provided, the runtime bootstrap config is updated so subsequent turns use this model. Conversation history is preserved.
      * @param list<Part|PartShape> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
@@ -94,6 +95,7 @@ interface ChatContract
      */
     public function respondStream(
         string $id,
+        ?string $model = null,
         ?array $parts = null,
         RequestOptions|array|null $requestOptions = null,
     ): BaseStream;
@@ -102,6 +104,7 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
+     * @param string|null $model Optional model override. When provided, the runtime bootstrap config is updated so subsequent turns use this model. Conversation history is preserved.
      * @param list<\CaseDev\Agent\V2\Chat\ChatSendMessageParams\Part|PartShape1> $parts Message content parts. Currently only "text" type is supported. Additional types (e.g. file, image) may be added in future versions.
      * @param RequestOpts|null $requestOptions
      *
@@ -109,6 +112,7 @@ interface ChatContract
      */
     public function sendMessage(
         string $id,
+        ?string $model = null,
         ?array $parts = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
