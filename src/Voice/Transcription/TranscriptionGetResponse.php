@@ -75,7 +75,7 @@ final class TranscriptionGetResponse implements BaseModel
     public ?string $sourceObjectID;
 
     /**
-     * Full transcription text (legacy direct URL jobs only).
+     * Full transcription text (only included when include_text=true for vault-based jobs, or for legacy direct URL jobs).
      */
     #[Optional]
     public ?string $text;
@@ -238,7 +238,7 @@ final class TranscriptionGetResponse implements BaseModel
     }
 
     /**
-     * Full transcription text (legacy direct URL jobs only).
+     * Full transcription text (only included when include_text=true for vault-based jobs, or for legacy direct URL jobs).
      */
     public function withText(string $text): self
     {

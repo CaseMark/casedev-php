@@ -10,6 +10,7 @@ use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
 use CaseDev\Voice\Transcription\TranscriptionGetResponse;
 use CaseDev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Voice\Transcription\TranscriptionRetrieveParams\IncludeText;
 
 /**
  * @phpstan-import-type RequestOpts from \CaseDev\RequestOptions
@@ -61,13 +62,15 @@ interface TranscriptionContract
      * @api
      *
      * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
+     * @param IncludeText|value-of<IncludeText> $includeText Include full transcript text in response for vault-based jobs (default: false)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        IncludeText|string|null $includeText = null,
+        RequestOptions|array|null $requestOptions = null,
     ): TranscriptionGetResponse;
 
     /**

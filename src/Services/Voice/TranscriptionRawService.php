@@ -7,6 +7,7 @@ namespace CaseDev\Services\Voice;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Voice\TranscriptionRawContract;
 use CaseDev\Voice\Transcription\TranscriptionCreateParams;
@@ -14,6 +15,8 @@ use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
 use CaseDev\Voice\Transcription\TranscriptionGetResponse;
 use CaseDev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Voice\Transcription\TranscriptionRetrieveParams;
+use CaseDev\Voice\Transcription\TranscriptionRetrieveParams\IncludeText;
 
 /**
  * Audio transcription and text-to-speech.
@@ -85,6 +88,9 @@ final class TranscriptionRawService implements TranscriptionRawContract
      * Retrieve the status and result of an audio transcription job. For vault-based jobs, returns status and result_object_id when complete. For legacy direct URL jobs, returns the full transcription data.
      *
      * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
+     * @param array{
+     *   includeText?: IncludeText|value-of<IncludeText>
+     * }|TranscriptionRetrieveParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptionGetResponse>
@@ -93,13 +99,23 @@ final class TranscriptionRawService implements TranscriptionRawContract
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        array|TranscriptionRetrieveParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = TranscriptionRetrieveParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['voice/transcription/%1$s', $id],
-            options: $requestOptions,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeText' => 'include_text']
+            ),
+            options: $options,
             convert: TranscriptionGetResponse::class,
         );
     }
