@@ -13,6 +13,7 @@ use CaseDev\Voice\Transcription\TranscriptionCreateParams\BoostParam;
 use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
 use CaseDev\Voice\Transcription\TranscriptionGetResponse;
 use CaseDev\Voice\Transcription\TranscriptionNewResponse;
+use CaseDev\Voice\Transcription\TranscriptionRetrieveParams\IncludeText;
 
 /**
  * Audio transcription and text-to-speech.
@@ -112,16 +113,20 @@ final class TranscriptionService implements TranscriptionContract
      * Retrieve the status and result of an audio transcription job. For vault-based jobs, returns status and result_object_id when complete. For legacy direct URL jobs, returns the full transcription data.
      *
      * @param string $id The transcription job ID (tr_xxx for vault-based, or AssemblyAI ID for legacy)
+     * @param IncludeText|value-of<IncludeText> $includeText Include full transcript text in response for vault-based jobs (default: false)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        IncludeText|string|null $includeText = null,
+        RequestOptions|array|null $requestOptions = null,
     ): TranscriptionGetResponse {
+        $params = Util::removeNulls(['includeText' => $includeText]);
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
+        $response = $this->raw->retrieve($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
