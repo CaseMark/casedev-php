@@ -47,7 +47,7 @@ final class TranscriptionService implements TranscriptionContract
      * @param string $audioURL URL of the audio file to transcribe (legacy mode, no auto-storage)
      * @param bool $autoHighlights Automatically extract key phrases and topics
      * @param BoostParam|value-of<BoostParam> $boostParam How much to boost custom vocabulary
-     * @param bool $contentSafetyLabels Enable content moderation and safety labeling
+     * @param bool $contentSafety Enable content moderation and safety labeling
      * @param Format|value-of<Format> $format Output format for the transcript when using vault mode
      * @param bool $formatText Format text with proper capitalization
      * @param string $languageCode Language code (e.g., 'en_us', 'es', 'fr'). If not specified, language will be auto-detected
@@ -67,7 +67,7 @@ final class TranscriptionService implements TranscriptionContract
         ?string $audioURL = null,
         bool $autoHighlights = false,
         BoostParam|string|null $boostParam = null,
-        bool $contentSafetyLabels = false,
+        bool $contentSafety = false,
         Format|string $format = 'json',
         bool $formatText = true,
         ?string $languageCode = null,
@@ -86,7 +86,7 @@ final class TranscriptionService implements TranscriptionContract
                 'audioURL' => $audioURL,
                 'autoHighlights' => $autoHighlights,
                 'boostParam' => $boostParam,
-                'contentSafetyLabels' => $contentSafetyLabels,
+                'contentSafety' => $contentSafety,
                 'format' => $format,
                 'formatText' => $formatText,
                 'languageCode' => $languageCode,
