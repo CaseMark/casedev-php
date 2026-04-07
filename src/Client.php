@@ -23,6 +23,7 @@ use CaseDev\Services\SkillsService;
 use CaseDev\Services\SuperdocService;
 use CaseDev\Services\SystemService;
 use CaseDev\Services\TranslateService;
+use CaseDev\Services\UsageService;
 use CaseDev\Services\VaultService;
 use CaseDev\Services\VoiceService;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -124,6 +125,11 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public UsageService $usage;
+
+    /**
+     * @api
+     */
     public VaultService $vault;
 
     /**
@@ -186,6 +192,7 @@ class Client extends BaseClient
         $this->search = new SearchService($this);
         $this->superdoc = new SuperdocService($this);
         $this->translate = new TranslateService($this);
+        $this->usage = new UsageService($this);
         $this->vault = new VaultService($this);
         $this->voice = new VoiceService($this);
     }
