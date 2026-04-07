@@ -26,6 +26,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *   path?: string|null,
  *   sizeBytes?: int|null,
  *   textLength?: int|null,
+ *   transcriptObjectID?: string|null,
  *   vectorCount?: int|null,
  * }
  */
@@ -125,6 +126,12 @@ final class ObjectGetResponse implements BaseModel
     public ?int $textLength;
 
     /**
+     * Object ID of the completed transcript (if available).
+     */
+    #[Optional('transcript_object_id', nullable: true)]
+    public ?string $transcriptObjectID;
+
+    /**
      * Number of embedding vectors generated.
      */
     #[Optional]
@@ -187,6 +194,7 @@ final class ObjectGetResponse implements BaseModel
         ?string $path = null,
         ?int $sizeBytes = null,
         ?int $textLength = null,
+        ?string $transcriptObjectID = null,
         ?int $vectorCount = null,
     ): self {
         $self = new self;
@@ -207,6 +215,7 @@ final class ObjectGetResponse implements BaseModel
         null !== $path && $self['path'] = $path;
         null !== $sizeBytes && $self['sizeBytes'] = $sizeBytes;
         null !== $textLength && $self['textLength'] = $textLength;
+        null !== $transcriptObjectID && $self['transcriptObjectID'] = $transcriptObjectID;
         null !== $vectorCount && $self['vectorCount'] = $vectorCount;
 
         return $self;
@@ -373,6 +382,17 @@ final class ObjectGetResponse implements BaseModel
     {
         $self = clone $this;
         $self['textLength'] = $textLength;
+
+        return $self;
+    }
+
+    /**
+     * Object ID of the completed transcript (if available).
+     */
+    public function withTranscriptObjectID(?string $transcriptObjectID): self
+    {
+        $self = clone $this;
+        $self['transcriptObjectID'] = $transcriptObjectID;
 
         return $self;
     }
