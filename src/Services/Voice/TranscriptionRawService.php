@@ -44,7 +44,7 @@ final class TranscriptionRawService implements TranscriptionRawContract
      *   audioURL?: string,
      *   autoHighlights?: bool,
      *   boostParam?: BoostParam|value-of<BoostParam>,
-     *   contentSafetyLabels?: bool,
+     *   contentSafety?: bool,
      *   format?: Format|value-of<Format>,
      *   formatText?: bool,
      *   languageCode?: string,
