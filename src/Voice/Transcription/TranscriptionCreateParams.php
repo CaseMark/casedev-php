@@ -24,7 +24,7 @@ use CaseDev\Voice\Transcription\TranscriptionCreateParams\Format;
  *   audioURL?: string|null,
  *   autoHighlights?: bool|null,
  *   boostParam?: null|BoostParam|value-of<BoostParam>,
- *   contentSafetyLabels?: bool|null,
+ *   contentSafety?: bool|null,
  *   format?: null|Format|value-of<Format>,
  *   formatText?: bool|null,
  *   languageCode?: string|null,
@@ -67,8 +67,8 @@ final class TranscriptionCreateParams implements BaseModel
     /**
      * Enable content moderation and safety labeling.
      */
-    #[Optional('content_safety_labels')]
-    public ?bool $contentSafetyLabels;
+    #[Optional('content_safety')]
+    public ?bool $contentSafety;
 
     /**
      * Output format for the transcript when using vault mode.
@@ -161,7 +161,7 @@ final class TranscriptionCreateParams implements BaseModel
         ?string $audioURL = null,
         ?bool $autoHighlights = null,
         BoostParam|string|null $boostParam = null,
-        ?bool $contentSafetyLabels = null,
+        ?bool $contentSafety = null,
         Format|string|null $format = null,
         ?bool $formatText = null,
         ?string $languageCode = null,
@@ -179,7 +179,7 @@ final class TranscriptionCreateParams implements BaseModel
         null !== $audioURL && $self['audioURL'] = $audioURL;
         null !== $autoHighlights && $self['autoHighlights'] = $autoHighlights;
         null !== $boostParam && $self['boostParam'] = $boostParam;
-        null !== $contentSafetyLabels && $self['contentSafetyLabels'] = $contentSafetyLabels;
+        null !== $contentSafety && $self['contentSafety'] = $contentSafety;
         null !== $format && $self['format'] = $format;
         null !== $formatText && $self['formatText'] = $formatText;
         null !== $languageCode && $self['languageCode'] = $languageCode;
@@ -233,10 +233,10 @@ final class TranscriptionCreateParams implements BaseModel
     /**
      * Enable content moderation and safety labeling.
      */
-    public function withContentSafetyLabels(bool $contentSafetyLabels): self
+    public function withContentSafety(bool $contentSafety): self
     {
         $self = clone $this;
-        $self['contentSafetyLabels'] = $contentSafetyLabels;
+        $self['contentSafety'] = $contentSafety;
 
         return $self;
     }
