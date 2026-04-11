@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.28.1 (2026-04-11)
+
+Full Changelog: [v0.28.0...v0.28.1](https://github.com/CaseMark/casedev-php/compare/v0.28.0...v0.28.1)
+
+### Bug Fixes
+
+* **client:** properly generate file params ([5fd23a9](https://github.com/CaseMark/casedev-php/commit/5fd23a9328a84df3b59d7c548133487e8240a3c1))
+
 ## 0.28.0 (2026-04-07)
 
 Full Changelog: [v0.27.0...v0.28.0](https://github.com/CaseMark/casedev-php/compare/v0.27.0...v0.28.0)
