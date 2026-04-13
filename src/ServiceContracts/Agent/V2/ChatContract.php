@@ -7,6 +7,7 @@ namespace CaseDev\ServiceContracts\Agent\V2;
 use CaseDev\Agent\V2\Chat\ChatCancelResponse;
 use CaseDev\Agent\V2\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V2\Chat\ChatNewResponse;
+use CaseDev\Agent\V2\Chat\ChatNewStreamTokenResponse;
 use CaseDev\Agent\V2\Chat\ChatRespondParams\Part;
 use CaseDev\Core\Contracts\BaseStream;
 use CaseDev\Core\Exceptions\APIException;
@@ -67,6 +68,19 @@ interface ChatContract
     /**
      * @api
      *
+     * @param string $id Chat session ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createStreamToken(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): ChatNewStreamTokenResponse;
+
+    /**
+     * @api
+     *
      * @param string $requestID Path param: Pending question request ID
      * @param string $id Path param: Chat session ID
      * @param list<list<string>> $answers Body param: Answer selections for each prompt element in the pending question
@@ -121,6 +135,7 @@ interface ChatContract
      * @api
      *
      * @param string $id Chat session ID
+     * @param string $token Short-lived stream token from POST /agent/v2/chat/:id/stream-token. If provided, Bearer auth is not required.
      * @param int $lastEventID Replay events after this sequence number
      * @param RequestOpts|null $requestOptions
      *
@@ -130,6 +145,7 @@ interface ChatContract
      */
     public function streamStream(
         string $id,
+        ?string $token = null,
         ?int $lastEventID = null,
         RequestOptions|array|null $requestOptions = null,
     ): BaseStream;

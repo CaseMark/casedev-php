@@ -7,6 +7,7 @@ namespace CaseDev\Services\Agent\V2;
 use CaseDev\Agent\V2\Chat\ChatCancelResponse;
 use CaseDev\Agent\V2\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V2\Chat\ChatNewResponse;
+use CaseDev\Agent\V2\Chat\ChatNewStreamTokenResponse;
 use CaseDev\Agent\V2\Chat\ChatRespondParams\Part;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseStream;
@@ -122,6 +123,26 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
+     * Returns a short-lived token that allows browser clients to connect directly to the agent chat SSE stream without exposing the underlying org API key.
+     *
+     * @param string $id Chat session ID
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createStreamToken(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): ChatNewStreamTokenResponse {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createStreamToken($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Answers a pending OpenCode question for the Daytona-backed chat session and resumes or recovers the runtime if needed.
      *
      * @param string $requestID Path param: Pending question request ID
@@ -206,6 +227,7 @@ final class ChatService implements ChatContract
      * @api
      *
      * @param string $id Chat session ID
+     * @param string $token Short-lived stream token from POST /agent/v2/chat/:id/stream-token. If provided, Bearer auth is not required.
      * @param int $lastEventID Replay events after this sequence number
      * @param RequestOpts|null $requestOptions
      *
@@ -215,10 +237,13 @@ final class ChatService implements ChatContract
      */
     public function streamStream(
         string $id,
+        ?string $token = null,
         ?int $lastEventID = null,
         RequestOptions|array|null $requestOptions = null,
     ): BaseStream {
-        $params = Util::removeNulls(['lastEventID' => $lastEventID]);
+        $params = Util::removeNulls(
+            ['token' => $token, 'lastEventID' => $lastEventID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->streamStream($id, params: $params, requestOptions: $requestOptions);
