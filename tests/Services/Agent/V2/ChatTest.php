@@ -5,6 +5,7 @@ namespace Tests\Services\Agent\V2;
 use CaseDev\Agent\V2\Chat\ChatCancelResponse;
 use CaseDev\Agent\V2\Chat\ChatDeleteResponse;
 use CaseDev\Agent\V2\Chat\ChatNewResponse;
+use CaseDev\Agent\V2\Chat\ChatNewStreamTokenResponse;
 use CaseDev\Client;
 use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -54,6 +55,15 @@ final class ChatTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ChatCancelResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateStreamToken(): void
+    {
+        $result = $this->client->agent->v2->chat->createStreamToken('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChatNewStreamTokenResponse::class, $result);
     }
 
     #[Test]
