@@ -51,6 +51,7 @@ final class ChatService implements ChatContract
      * Creates a persistent OpenCode chat session backed by a Daytona runtime. Session state is retained and can be resumed or recovered across requests.
      *
      * @param int|null $idleTimeoutMs Idle timeout before the runtime is eligible to stop. Defaults to 15 minutes.
+     * @param string|null $instructions Optional hidden app instructions merged into the chat runtime bootstrap and never exposed as a user message. Only accepted for privileged C3 system keys.
      * @param string|null $model Optional model override for the OpenCode session
      * @param string $title Optional human-readable session title
      * @param list<string>|null $vaultIDs Restrict the chat session to specific vault IDs
@@ -60,6 +61,7 @@ final class ChatService implements ChatContract
      */
     public function create(
         ?int $idleTimeoutMs = null,
+        ?string $instructions = null,
         ?string $model = null,
         ?string $title = null,
         ?array $vaultIDs = null,
@@ -68,6 +70,7 @@ final class ChatService implements ChatContract
         $params = Util::removeNulls(
             [
                 'idleTimeoutMs' => $idleTimeoutMs,
+                'instructions' => $instructions,
                 'model' => $model,
                 'title' => $title,
                 'vaultIDs' => $vaultIDs,

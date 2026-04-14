@@ -16,6 +16,7 @@ use CaseDev\Core\Contracts\BaseModel;
  *
  * @phpstan-type ChatCreateParamsShape = array{
  *   idleTimeoutMs?: int|null,
+ *   instructions?: string|null,
  *   model?: string|null,
  *   title?: string|null,
  *   vaultIDs?: list<string>|null,
@@ -32,6 +33,12 @@ final class ChatCreateParams implements BaseModel
      */
     #[Optional(nullable: true)]
     public ?int $idleTimeoutMs;
+
+    /**
+     * Optional hidden app instructions merged into the chat runtime bootstrap and never exposed as a user message. Only accepted for privileged C3 system keys.
+     */
+    #[Optional(nullable: true)]
+    public ?string $instructions;
 
     /**
      * Optional model override for the OpenCode session.
@@ -67,6 +74,7 @@ final class ChatCreateParams implements BaseModel
      */
     public static function with(
         ?int $idleTimeoutMs = null,
+        ?string $instructions = null,
         ?string $model = null,
         ?string $title = null,
         ?array $vaultIDs = null,
@@ -74,6 +82,7 @@ final class ChatCreateParams implements BaseModel
         $self = new self;
 
         null !== $idleTimeoutMs && $self['idleTimeoutMs'] = $idleTimeoutMs;
+        null !== $instructions && $self['instructions'] = $instructions;
         null !== $model && $self['model'] = $model;
         null !== $title && $self['title'] = $title;
         null !== $vaultIDs && $self['vaultIDs'] = $vaultIDs;
@@ -88,6 +97,17 @@ final class ChatCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['idleTimeoutMs'] = $idleTimeoutMs;
+
+        return $self;
+    }
+
+    /**
+     * Optional hidden app instructions merged into the chat runtime bootstrap and never exposed as a user message. Only accepted for privileged C3 system keys.
+     */
+    public function withInstructions(?string $instructions): self
+    {
+        $self = clone $this;
+        $self['instructions'] = $instructions;
 
         return $self;
     }
