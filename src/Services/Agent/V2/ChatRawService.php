@@ -45,6 +45,7 @@ final class ChatRawService implements ChatRawContract
      *
      * @param array{
      *   idleTimeoutMs?: int|null,
+     *   instructions?: string|null,
      *   model?: string|null,
      *   title?: string,
      *   vaultIDs?: list<string>|null,
