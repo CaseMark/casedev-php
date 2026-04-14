@@ -89,7 +89,7 @@ final class ProjectsService implements ProjectsContract
     /**
      * @api
      *
-     * Retrieves all serverless Postgres database projects for the authenticated organization. Includes storage and compute metrics, plus linked deployments from Thurgood apps and Compute instances.
+     * Retrieves all serverless Postgres database projects for the authenticated organization. Includes storage and compute metrics, plus linked application deployments and Compute instances.
      *
      * @param RequestOpts|null $requestOptions
      *
