@@ -43,7 +43,7 @@ final class LinkedDeployment implements BaseModel
     public ?string $type;
 
     /**
-     * Deployment URL (for Thurgood apps).
+     * Deployment URL.
      */
     #[Optional]
     public ?string $url;
@@ -112,7 +112,7 @@ final class LinkedDeployment implements BaseModel
     }
 
     /**
-     * Deployment URL (for Thurgood apps).
+     * Deployment URL.
      */
     public function withURL(string $url): self
     {

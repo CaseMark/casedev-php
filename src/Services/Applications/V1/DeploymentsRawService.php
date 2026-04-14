@@ -171,7 +171,7 @@ final class DeploymentsRawService implements DeploymentsRawContract
     /**
      * @api
      *
-     * Create a deployment from raw file contents (for Thurgood sandbox deployments)
+     * Create a deployment from raw file contents for application deployments
      *
      * @param RequestOpts|null $requestOptions
      *

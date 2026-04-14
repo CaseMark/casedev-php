@@ -9,7 +9,5 @@ namespace CaseDev\Database\V1\Projects\ProjectListResponse\Project\LinkedDeploym
  */
 enum Type: string
 {
-    case THURGOOD = 'thurgood';
-
     case COMPUTE = 'compute';
 }
