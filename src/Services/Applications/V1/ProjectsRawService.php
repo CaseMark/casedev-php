@@ -82,7 +82,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Returns project details, domains, and recent deployment information for one application project or deployed Thurgood app. Use this endpoint when you need a single record with hosting metadata for a details view.
+     * Returns project details, domains, and recent deployment information for one application project. Use this endpoint when you need a single record with hosting metadata for a details view.
      *
      * @param string $id Project ID
      * @param RequestOpts|null $requestOptions
@@ -107,7 +107,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Lists application projects and deployed Thurgood apps for the authenticated organization. Use enrich=true to include additional hosting metadata for projects linked to Vercel.
+     * Lists application projects for the authenticated organization. Use enrich=true to include additional hosting metadata for projects linked to Vercel.
      *
      * @param array{enrich?: bool, limit?: float}|ProjectListParams $params
      * @param RequestOpts|null $requestOptions
@@ -138,7 +138,7 @@ final class ProjectsRawService implements ProjectsRawContract
     /**
      * @api
      *
-     * Soft-deletes an application project or deployed Thurgood app from Case.dev. By default it also removes the linked hosting project; set deleteFromHosting=false to keep the external hosting resources intact.
+     * Soft-deletes an application project from Case.dev. By default it also removes the linked hosting project; set deleteFromHosting=false to keep the external hosting resources intact.
      *
      * @param string $id Project ID
      * @param array{deleteFromHosting?: bool}|ProjectDeleteParams $params
