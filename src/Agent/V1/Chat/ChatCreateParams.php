@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Creates a persistent OpenCode chat session in a Modal sandbox. Session state is retained and can be resumed across requests.
+ * Creates a persistent OpenCode chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
  *
  * @see CaseDev\Services\Agent\V1\ChatService::create()
  *
