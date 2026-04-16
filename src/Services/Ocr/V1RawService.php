@@ -7,6 +7,7 @@ namespace CaseDev\Services\Ocr;
 use CaseDev\Client;
 use CaseDev\Core\Contracts\BaseResponse;
 use CaseDev\Core\Exceptions\APIException;
+use CaseDev\Core\Util;
 use CaseDev\Ocr\V1\V1DownloadParams;
 use CaseDev\Ocr\V1\V1DownloadParams\Type;
 use CaseDev\Ocr\V1\V1GetResponse;
@@ -14,6 +15,8 @@ use CaseDev\Ocr\V1\V1ProcessParams;
 use CaseDev\Ocr\V1\V1ProcessParams\Engine;
 use CaseDev\Ocr\V1\V1ProcessParams\Features;
 use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\Ocr\V1\V1RetrieveParams;
+use CaseDev\Ocr\V1\V1RetrieveParams\IncludeText;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Ocr\V1RawContract;
 
@@ -37,6 +40,9 @@ final class V1RawService implements V1RawContract
      * Retrieve the status and results of an OCR job. Returns job progress, extracted text, and metadata when processing is complete.
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param array{
+     *   includeText?: IncludeText|value-of<IncludeText>
+     * }|V1RetrieveParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetResponse>
@@ -45,13 +51,23 @@ final class V1RawService implements V1RawContract
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        array|V1RetrieveParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = V1RetrieveParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['ocr/v1/%1$s', $id],
-            options: $requestOptions,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeText' => 'include_text']
+            ),
+            options: $options,
             convert: V1GetResponse::class,
         );
     }

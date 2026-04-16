@@ -47,7 +47,7 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Creates a persistent OpenCode chat session in a Modal sandbox. Session state is retained and can be resumed across requests.
+     * Creates a persistent OpenCode chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
      *
      * @param int|null $idleTimeoutMs Idle timeout before session is eligible for snapshot/termination. Defaults to 15 minutes.
      * @param string|null $model Optional model override for the OpenCode session

@@ -11,6 +11,7 @@ use CaseDev\Ocr\V1\V1DownloadParams\Type;
 use CaseDev\Ocr\V1\V1GetResponse;
 use CaseDev\Ocr\V1\V1ProcessParams;
 use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\Ocr\V1\V1RetrieveParams;
 use CaseDev\RequestOptions;
 
 /**
@@ -22,6 +23,7 @@ interface V1RawContract
      * @api
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param array<string,mixed>|V1RetrieveParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<V1GetResponse>
@@ -30,7 +32,8 @@ interface V1RawContract
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        array|V1RetrieveParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

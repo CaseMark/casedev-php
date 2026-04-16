@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace CaseDev\Agent\V1\Run;
 
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Provider;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Result;
+use CaseDev\Agent\V1\Run\RunGetDetailsResponse\RuntimeState;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Status;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Step;
 use CaseDev\Agent\V1\Run\RunGetDetailsResponse\Usage;
@@ -26,7 +28,10 @@ use CaseDev\Core\Contracts\BaseModel;
  *   modalSandboxID?: string|null,
  *   model?: string|null,
  *   prompt?: string|null,
+ *   provider?: null|Provider|value-of<Provider>,
  *   result?: null|Result|ResultShape,
+ *   runtimeID?: string|null,
+ *   runtimeState?: null|RuntimeState|value-of<RuntimeState>,
  *   startedAt?: \DateTimeInterface|null,
  *   status?: null|Status|value-of<Status>,
  *   steps?: list<Step|StepShape>|null,
@@ -55,7 +60,9 @@ final class RunGetDetailsResponse implements BaseModel
     public ?string $guidance;
 
     /**
-     * Modal sandbox ID (available once sandbox is created).
+     * @deprecated
+     *
+     * Deprecated legacy Modal sandbox ID. Prefer `provider` and `runtimeId`.
      */
     #[Optional('modalSandboxId', nullable: true)]
     public ?string $modalSandboxID;
@@ -67,10 +74,32 @@ final class RunGetDetailsResponse implements BaseModel
     public ?string $prompt;
 
     /**
+     * Runtime provider for this run.
+     *
+     * @var value-of<Provider>|null $provider
+     */
+    #[Optional(enum: Provider::class, nullable: true)]
+    public ?string $provider;
+
+    /**
      * Final output from the agent.
      */
     #[Optional(nullable: true)]
     public ?Result $result;
+
+    /**
+     * Provider-specific runtime identifier.
+     */
+    #[Optional('runtimeId', nullable: true)]
+    public ?string $runtimeID;
+
+    /**
+     * Current runtime state, when available.
+     *
+     * @var value-of<RuntimeState>|null $runtimeState
+     */
+    #[Optional(enum: RuntimeState::class, nullable: true)]
+    public ?string $runtimeState;
 
     #[Optional(nullable: true)]
     public ?\DateTimeInterface $startedAt;
@@ -105,7 +134,9 @@ final class RunGetDetailsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param Provider|value-of<Provider>|null $provider
      * @param Result|ResultShape|null $result
+     * @param RuntimeState|value-of<RuntimeState>|null $runtimeState
      * @param Status|value-of<Status>|null $status
      * @param list<Step|StepShape>|null $steps
      * @param Usage|UsageShape|null $usage
@@ -119,7 +150,10 @@ final class RunGetDetailsResponse implements BaseModel
         ?string $modalSandboxID = null,
         ?string $model = null,
         ?string $prompt = null,
+        Provider|string|null $provider = null,
         Result|array|null $result = null,
+        ?string $runtimeID = null,
+        RuntimeState|string|null $runtimeState = null,
         ?\DateTimeInterface $startedAt = null,
         Status|string|null $status = null,
         ?array $steps = null,
@@ -136,7 +170,10 @@ final class RunGetDetailsResponse implements BaseModel
         null !== $modalSandboxID && $self['modalSandboxID'] = $modalSandboxID;
         null !== $model && $self['model'] = $model;
         null !== $prompt && $self['prompt'] = $prompt;
+        null !== $provider && $self['provider'] = $provider;
         null !== $result && $self['result'] = $result;
+        null !== $runtimeID && $self['runtimeID'] = $runtimeID;
+        null !== $runtimeState && $self['runtimeState'] = $runtimeState;
         null !== $startedAt && $self['startedAt'] = $startedAt;
         null !== $status && $self['status'] = $status;
         null !== $steps && $self['steps'] = $steps;
@@ -187,7 +224,7 @@ final class RunGetDetailsResponse implements BaseModel
     }
 
     /**
-     * Modal sandbox ID (available once sandbox is created).
+     * Deprecated legacy Modal sandbox ID. Prefer `provider` and `runtimeId`.
      */
     public function withModalSandboxID(?string $modalSandboxID): self
     {
@@ -214,6 +251,19 @@ final class RunGetDetailsResponse implements BaseModel
     }
 
     /**
+     * Runtime provider for this run.
+     *
+     * @param Provider|value-of<Provider>|null $provider
+     */
+    public function withProvider(Provider|string|null $provider): self
+    {
+        $self = clone $this;
+        $self['provider'] = $provider;
+
+        return $self;
+    }
+
+    /**
      * Final output from the agent.
      *
      * @param Result|ResultShape|null $result
@@ -222,6 +272,31 @@ final class RunGetDetailsResponse implements BaseModel
     {
         $self = clone $this;
         $self['result'] = $result;
+
+        return $self;
+    }
+
+    /**
+     * Provider-specific runtime identifier.
+     */
+    public function withRuntimeID(?string $runtimeID): self
+    {
+        $self = clone $this;
+        $self['runtimeID'] = $runtimeID;
+
+        return $self;
+    }
+
+    /**
+     * Current runtime state, when available.
+     *
+     * @param RuntimeState|value-of<RuntimeState>|null $runtimeState
+     */
+    public function withRuntimeState(
+        RuntimeState|string|null $runtimeState
+    ): self {
+        $self = clone $this;
+        $self['runtimeState'] = $runtimeState;
 
         return $self;
     }
