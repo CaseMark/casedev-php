@@ -12,6 +12,7 @@ use CaseDev\Ocr\V1\V1GetResponse;
 use CaseDev\Ocr\V1\V1ProcessParams\Engine;
 use CaseDev\Ocr\V1\V1ProcessParams\Features;
 use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\Ocr\V1\V1RetrieveParams\IncludeText;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Ocr\V1Contract;
 
@@ -42,16 +43,20 @@ final class V1Service implements V1Contract
      * Retrieve the status and results of an OCR job. Returns job progress, extracted text, and metadata when processing is complete.
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param IncludeText|value-of<IncludeText> $includeText Include full OCR text in completed responses (default: true)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        IncludeText|string|null $includeText = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1GetResponse {
+        $params = Util::removeNulls(['includeText' => $includeText]);
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->retrieve($id, requestOptions: $requestOptions);
+        $response = $this->raw->retrieve($id, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

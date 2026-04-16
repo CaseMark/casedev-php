@@ -10,6 +10,7 @@ use CaseDev\Ocr\V1\V1GetResponse;
 use CaseDev\Ocr\V1\V1ProcessParams\Engine;
 use CaseDev\Ocr\V1\V1ProcessParams\Features;
 use CaseDev\Ocr\V1\V1ProcessResponse;
+use CaseDev\Ocr\V1\V1RetrieveParams\IncludeText;
 use CaseDev\RequestOptions;
 
 /**
@@ -22,13 +23,15 @@ interface V1Contract
      * @api
      *
      * @param string $id The OCR job ID returned from the create OCR endpoint
+     * @param IncludeText|value-of<IncludeText> $includeText Include full OCR text in completed responses (default: true)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $id,
-        RequestOptions|array|null $requestOptions = null
+        IncludeText|string|null $includeText = null,
+        RequestOptions|array|null $requestOptions = null,
     ): V1GetResponse;
 
     /**
