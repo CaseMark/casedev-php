@@ -11,6 +11,8 @@ use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams;
 use CaseDev\Vault\Objects\ObjectDeleteParams;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
 use CaseDev\Vault\Objects\ObjectDownloadParams;
+use CaseDev\Vault\Objects\ObjectGetChunksParams;
+use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsParams;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
@@ -126,6 +128,23 @@ interface ObjectsRawContract
     public function download(
         string $objectID,
         array|ObjectDownloadParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID path param: The processed object ID whose chunk text should be retrieved
+     * @param array<string,mixed>|ObjectGetChunksParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ObjectGetChunksResponse>
+     *
+     * @throws APIException
+     */
+    public function getChunks(
+        string $objectID,
+        array|ObjectGetChunksParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

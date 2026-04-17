@@ -15,6 +15,8 @@ use CaseDev\Vault\Objects\ObjectDeleteParams;
 use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
 use CaseDev\Vault\Objects\ObjectDownloadParams;
+use CaseDev\Vault\Objects\ObjectGetChunksParams;
+use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsParams;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
@@ -247,6 +249,41 @@ final class ObjectsRawService implements ObjectsRawContract
             headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves full extracted chunk text for a processed vault object. Use this after search when a truncated preview is not enough and you need the exact chunk text or adjacent chunks for surrounding context such as tables, exhibit lists, or multi-part passages.
+     *
+     * @param string $objectID path param: The processed object ID whose chunk text should be retrieved
+     * @param array{id: string, end?: int, start?: int}|ObjectGetChunksParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ObjectGetChunksResponse>
+     *
+     * @throws APIException
+     */
+    public function getChunks(
+        string $objectID,
+        array|ObjectGetChunksParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ObjectGetChunksParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $id = $parsed['id'];
+        unset($parsed['id']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['vault/%1$s/objects/%2$s/chunks', $id, $objectID],
+            query: $parsed,
+            options: $options,
+            convert: ObjectGetChunksResponse::class,
         );
     }
 
