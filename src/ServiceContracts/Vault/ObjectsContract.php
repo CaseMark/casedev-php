@@ -9,6 +9,7 @@ use CaseDev\RequestOptions;
 use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
@@ -125,6 +126,25 @@ interface ObjectsContract
         string $id,
         RequestOptions|array|null $requestOptions = null,
     ): string;
+
+    /**
+     * @api
+     *
+     * @param string $objectID path param: The processed object ID whose chunk text should be retrieved
+     * @param string $id path param: The vault ID containing the document
+     * @param int $end Query param: The last chunk index to return (inclusive). If omitted, only the `start` chunk is returned. Ranges are limited to 10 chunks.
+     * @param int $start Query param: The first chunk index to return (0-based). Defaults to 0.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getChunks(
+        string $objectID,
+        string $id,
+        ?int $end = null,
+        int $start = 0,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetChunksResponse;
 
     /**
      * @api

@@ -5,6 +5,7 @@ namespace Tests\Services\Vault;
 use CaseDev\Client;
 use CaseDev\Core\Util;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
@@ -151,6 +152,29 @@ final class ObjectsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testGetChunks(): void
+    {
+        $result = $this->client->vault->objects->getChunks('objectId', id: 'id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetChunksResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetChunksWithOptionalParams(): void
+    {
+        $result = $this->client->vault->objects->getChunks(
+            'objectId',
+            id: 'id',
+            end: 0,
+            start: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetChunksResponse::class, $result);
     }
 
     #[Test]
