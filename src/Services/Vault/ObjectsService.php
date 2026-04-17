@@ -12,6 +12,7 @@ use CaseDev\ServiceContracts\Vault\ObjectsContract;
 use CaseDev\Vault\Objects\ObjectCreatePresignedURLParams\Operation;
 use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
+use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
@@ -207,6 +208,36 @@ final class ObjectsService implements ObjectsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->download($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves full extracted chunk text for a processed vault object. Use this after search when a truncated preview is not enough and you need the exact chunk text or adjacent chunks for surrounding context such as tables, exhibit lists, or multi-part passages.
+     *
+     * @param string $objectID path param: The processed object ID whose chunk text should be retrieved
+     * @param string $id path param: The vault ID containing the document
+     * @param int $end Query param: The last chunk index to return (inclusive). If omitted, only the `start` chunk is returned. Ranges are limited to 10 chunks.
+     * @param int $start Query param: The first chunk index to return (0-based). Defaults to 0.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getChunks(
+        string $objectID,
+        string $id,
+        ?int $end = null,
+        int $start = 0,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetChunksResponse {
+        $params = Util::removeNulls(
+            ['id' => $id, 'end' => $end, 'start' => $start]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getChunks($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
