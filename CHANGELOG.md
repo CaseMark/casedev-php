@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.33.2 (2026-04-18)
+
+Full Changelog: [v0.33.1...v0.33.2](https://github.com/CaseMark/casedev-php/compare/v0.33.1...v0.33.2)
+
+### Bug Fixes
+
+* populate enum-typed properties with enum instances ([87ac441](https://github.com/CaseMark/casedev-php/commit/87ac44125e6e9e7ac1059b9080e576b82cd10962))
+
 ## 0.33.1 (2026-04-18)
 
 Full Changelog: [v0.33.0...v0.33.1](https://github.com/CaseMark/casedev-php/compare/v0.33.0...v0.33.1)
