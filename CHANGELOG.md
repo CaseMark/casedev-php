@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.33.1 (2026-04-18)
+
+Full Changelog: [v0.33.0...v0.33.1](https://github.com/CaseMark/casedev-php/compare/v0.33.0...v0.33.1)
+
+### Bug Fixes
+
+* **client:** resolve serialization issue with unions and enums ([2bde948](https://github.com/CaseMark/casedev-php/commit/2bde948ed8a5a22b49f5b9ea6b2b808507e78d96))
+
 ## 0.33.0 (2026-04-17)
 
 Full Changelog: [v0.32.0...v0.33.0](https://github.com/CaseMark/casedev-php/compare/v0.32.0...v0.33.0)
