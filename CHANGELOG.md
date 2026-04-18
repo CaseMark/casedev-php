@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.33.3 (2026-04-18)
+
+Full Changelog: [v0.33.2...v0.33.3](https://github.com/CaseMark/casedev-php/compare/v0.33.2...v0.33.3)
+
+### Chores
+
+* **tests:** bump steady to v0.22.1 ([8f5b5b1](https://github.com/CaseMark/casedev-php/commit/8f5b5b1967f4ca0b587843ca595bdde7e428a567))
+
 ## 0.33.2 (2026-04-18)
 
 Full Changelog: [v0.33.1...v0.33.2](https://github.com/CaseMark/casedev-php/compare/v0.33.1...v0.33.2)
