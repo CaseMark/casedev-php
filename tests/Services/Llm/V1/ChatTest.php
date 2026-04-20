@@ -44,7 +44,7 @@ final class ChatTest extends TestCase
             casemarkShowReasoning: false,
             frequencyPenalty: 0,
             maxTokens: 1000,
-            model: 'casemark/casemark-core-6',
+            model: 'casemark/core-large',
             presencePenalty: 0,
             stream: false,
             temperature: 0.7,

@@ -63,7 +63,7 @@ final class V1Service implements V1Contract
         ?string $documentID = null,
         bool $includeRationale = true,
         Jurisdiction|string $jurisdiction = 'US-Federal',
-        string $model = 'casemark/casemark-core-1',
+        string $model = 'casemark/core-large',
         ?string $vaultID = null,
         RequestOptions|array|null $requestOptions = null,
     ): V1DetectResponse {
