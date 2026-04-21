@@ -7,12 +7,16 @@ namespace CaseDev\Vault;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultNewResponse\EmbeddingProfile;
 
 /**
+ * @phpstan-import-type EmbeddingProfileShape from \CaseDev\Vault\VaultNewResponse\EmbeddingProfile
+ *
  * @phpstan-type VaultNewResponseShape = array{
  *   id?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   description?: string|null,
+ *   embeddingProfile?: null|EmbeddingProfile|EmbeddingProfileShape,
  *   enableIndexing?: bool|null,
  *   filesBucket?: string|null,
  *   indexName?: string|null,
@@ -43,6 +47,12 @@ final class VaultNewResponse implements BaseModel
      */
     #[Optional]
     public ?string $description;
+
+    /**
+     * The resolved embedding profile for this vault. Null for storage-only vaults.
+     */
+    #[Optional(nullable: true)]
+    public ?EmbeddingProfile $embeddingProfile;
 
     /**
      * Whether vector indexing is enabled for this vault.
@@ -89,11 +99,14 @@ final class VaultNewResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param EmbeddingProfile|EmbeddingProfileShape|null $embeddingProfile
      */
     public static function with(
         ?string $id = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
+        EmbeddingProfile|array|null $embeddingProfile = null,
         ?bool $enableIndexing = null,
         ?string $filesBucket = null,
         ?string $indexName = null,
@@ -106,6 +119,7 @@ final class VaultNewResponse implements BaseModel
         null !== $id && $self['id'] = $id;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $description && $self['description'] = $description;
+        null !== $embeddingProfile && $self['embeddingProfile'] = $embeddingProfile;
         null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
         null !== $filesBucket && $self['filesBucket'] = $filesBucket;
         null !== $indexName && $self['indexName'] = $indexName;
@@ -145,6 +159,20 @@ final class VaultNewResponse implements BaseModel
     {
         $self = clone $this;
         $self['description'] = $description;
+
+        return $self;
+    }
+
+    /**
+     * The resolved embedding profile for this vault. Null for storage-only vaults.
+     *
+     * @param EmbeddingProfile|EmbeddingProfileShape|null $embeddingProfile
+     */
+    public function withEmbeddingProfile(
+        EmbeddingProfile|array|null $embeddingProfile
+    ): self {
+        $self = clone $this;
+        $self['embeddingProfile'] = $embeddingProfile;
 
         return $self;
     }

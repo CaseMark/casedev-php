@@ -18,19 +18,6 @@ interface V1RawContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function getPricing(
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param array<string,mixed>|V1GetUsageParams $params
      * @param RequestOpts|null $requestOptions
      *

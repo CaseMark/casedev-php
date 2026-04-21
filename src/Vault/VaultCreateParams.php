@@ -9,6 +9,7 @@ use CaseDev\Core\Attributes\Required;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Vault\VaultCreateParams\EmbeddingModel;
 
 /**
  * Creates a new secure vault with dedicated S3 storage and vector search capabilities. Each vault provides isolated document storage with semantic search, OCR processing, and optional GraphRAG knowledge graph features for legal document analysis and discovery.
@@ -18,6 +19,7 @@ use CaseDev\Core\Contracts\BaseModel;
  * @phpstan-type VaultCreateParamsShape = array{
  *   name: string,
  *   description?: string|null,
+ *   embeddingModel?: null|EmbeddingModel|value-of<EmbeddingModel>,
  *   enableGraph?: bool|null,
  *   enableIndexing?: bool|null,
  *   groupID?: string|null,
@@ -41,6 +43,14 @@ final class VaultCreateParams implements BaseModel
      */
     #[Optional]
     public ?string $description;
+
+    /**
+     * Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false.
+     *
+     * @var value-of<EmbeddingModel>|null $embeddingModel
+     */
+    #[Optional(enum: EmbeddingModel::class)]
+    public ?string $embeddingModel;
 
     /**
      * Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
@@ -89,10 +99,13 @@ final class VaultCreateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param EmbeddingModel|value-of<EmbeddingModel>|null $embeddingModel
      */
     public static function with(
         string $name,
         ?string $description = null,
+        EmbeddingModel|string|null $embeddingModel = null,
         ?bool $enableGraph = null,
         ?bool $enableIndexing = null,
         ?string $groupID = null,
@@ -103,6 +116,7 @@ final class VaultCreateParams implements BaseModel
         $self['name'] = $name;
 
         null !== $description && $self['description'] = $description;
+        null !== $embeddingModel && $self['embeddingModel'] = $embeddingModel;
         null !== $enableGraph && $self['enableGraph'] = $enableGraph;
         null !== $enableIndexing && $self['enableIndexing'] = $enableIndexing;
         null !== $groupID && $self['groupID'] = $groupID;
@@ -129,6 +143,20 @@ final class VaultCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['description'] = $description;
+
+        return $self;
+    }
+
+    /**
+     * Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false.
+     *
+     * @param EmbeddingModel|value-of<EmbeddingModel> $embeddingModel
+     */
+    public function withEmbeddingModel(
+        EmbeddingModel|string $embeddingModel
+    ): self {
+        $self = clone $this;
+        $self['embeddingModel'] = $embeddingModel;
 
         return $self;
     }

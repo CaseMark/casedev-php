@@ -16,17 +16,6 @@ interface V1Contract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getPricing(
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param int $month Month to filter usage data (1-12, defaults to current month)
      * @param int $year Year to filter usage data (defaults to current year)
      * @param RequestOpts|null $requestOptions
