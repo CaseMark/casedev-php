@@ -28,29 +28,6 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
-     * Returns current pricing for GPU instances. Prices are fetched in real-time and include a 20% platform fee. For detailed instance types and availability, use GET /compute/v1/instance-types.
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function getPricing(
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'compute/v1/pricing',
-            options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Returns detailed compute usage statistics and billing information for your organization. Includes GPU and CPU hours, total runs, costs, and breakdowns by environment. Use optional query parameters to filter by specific year and month.
      *
      * @param array{month?: int, year?: int}|V1GetUsageParams $params

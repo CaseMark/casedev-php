@@ -28,15 +28,6 @@ final class V1Test extends TestCase
     }
 
     #[Test]
-    public function testGetPricing(): void
-    {
-        $result = $this->client->compute->v1->getPricing();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
     public function testGetUsage(): void
     {
         $result = $this->client->compute->v1->getUsage();

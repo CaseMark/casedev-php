@@ -50,6 +50,7 @@ final class VaultTest extends TestCase
         $result = $this->client->vault->create(
             name: 'Contract Review Archive',
             description: 'Repository for all client contract reviews and analysis',
+            embeddingModel: 'casemark/llama-nemotron-embed-vl-1b-v2',
             enableGraph: true,
             enableIndexing: true,
             groupID: 'grp_abc123',

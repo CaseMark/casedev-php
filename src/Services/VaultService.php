@@ -16,6 +16,7 @@ use CaseDev\Services\Vault\MemoryService;
 use CaseDev\Services\Vault\MultipartService;
 use CaseDev\Services\Vault\ObjectsService;
 use CaseDev\Vault\VaultConfirmUploadResponse;
+use CaseDev\Vault\VaultCreateParams\EmbeddingModel;
 use CaseDev\Vault\VaultDeleteResponse;
 use CaseDev\Vault\VaultGetResponse;
 use CaseDev\Vault\VaultIngestResponse;
@@ -91,6 +92,7 @@ final class VaultService implements VaultContract
      *
      * @param string $name Display name for the vault
      * @param string $description Optional description of the vault's purpose
+     * @param EmbeddingModel|value-of<EmbeddingModel> $embeddingModel Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false.
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
      * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
@@ -102,6 +104,7 @@ final class VaultService implements VaultContract
     public function create(
         string $name,
         ?string $description = null,
+        EmbeddingModel|string $embeddingModel = 'openai/text-embedding-3-small',
         bool $enableGraph = true,
         bool $enableIndexing = true,
         ?string $groupID = null,
@@ -112,6 +115,7 @@ final class VaultService implements VaultContract
             [
                 'name' => $name,
                 'description' => $description,
+                'embeddingModel' => $embeddingModel,
                 'enableGraph' => $enableGraph,
                 'enableIndexing' => $enableIndexing,
                 'groupID' => $groupID,
