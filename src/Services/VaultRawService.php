@@ -12,6 +12,7 @@ use CaseDev\ServiceContracts\VaultRawContract;
 use CaseDev\Vault\VaultConfirmUploadParams;
 use CaseDev\Vault\VaultConfirmUploadResponse;
 use CaseDev\Vault\VaultCreateParams;
+use CaseDev\Vault\VaultCreateParams\EmbeddingModel;
 use CaseDev\Vault\VaultDeleteParams;
 use CaseDev\Vault\VaultDeleteResponse;
 use CaseDev\Vault\VaultGetResponse;
@@ -50,6 +51,7 @@ final class VaultRawService implements VaultRawContract
      * @param array{
      *   name: string,
      *   description?: string,
+     *   embeddingModel?: value-of<EmbeddingModel>,
      *   enableGraph?: bool,
      *   enableIndexing?: bool,
      *   groupID?: string,
