@@ -30,7 +30,7 @@ interface VaultContract
      *
      * @param string $name Display name for the vault
      * @param string $description Optional description of the vault's purpose
-     * @param EmbeddingModel|value-of<EmbeddingModel> $embeddingModel Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false.
+     * @param EmbeddingModel|value-of<EmbeddingModel> $embeddingModel Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false. Note: `casemark/llama-nemotron-embed-vl-1b-v2` is a deprecated alias for `casemark/embed-v1` (retained for SDK backward compatibility); new integrations should use `casemark/embed-v1` directly.
      * @param bool $enableGraph Enable knowledge graph for entity relationship mapping. Only applies when enableIndexing is true.
      * @param bool $enableIndexing Enable vector indexing and search capabilities. Set to false for storage-only vaults.
      * @param string $groupID Assign the vault to a vault group for access control. Required when using a group-scoped API key.
