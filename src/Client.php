@@ -7,7 +7,6 @@ namespace CaseDev;
 use CaseDev\Core\BaseClient;
 use CaseDev\Core\Util;
 use CaseDev\Services\AgentService;
-use CaseDev\Services\ApplicationsService;
 use CaseDev\Services\ComputeService;
 use CaseDev\Services\DatabaseService;
 use CaseDev\Services\FormatService;
@@ -46,11 +45,6 @@ class Client extends BaseClient
      * @api
      */
     public SystemService $system;
-
-    /**
-     * @api
-     */
-    public ApplicationsService $applications;
 
     /**
      * @api
@@ -177,7 +171,6 @@ class Client extends BaseClient
 
         $this->agent = new AgentService($this);
         $this->system = new SystemService($this);
-        $this->applications = new ApplicationsService($this);
         $this->compute = new ComputeService($this);
         $this->database = new DatabaseService($this);
         $this->format = new FormatService($this);
