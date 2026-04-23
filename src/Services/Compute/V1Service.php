@@ -11,6 +11,8 @@ use CaseDev\Core\Util;
 use CaseDev\RequestOptions;
 use CaseDev\ServiceContracts\Compute\V1Contract;
 use CaseDev\Services\Compute\V1\EnvironmentsService;
+use CaseDev\Services\Compute\V1\InstancesService;
+use CaseDev\Services\Compute\V1\InstanceTypesService;
 use CaseDev\Services\Compute\V1\SecretsService;
 
 /**
@@ -33,6 +35,16 @@ final class V1Service implements V1Contract
     /**
      * @api
      */
+    public InstanceTypesService $instanceTypes;
+
+    /**
+     * @api
+     */
+    public InstancesService $instances;
+
+    /**
+     * @api
+     */
     public SecretsService $secrets;
 
     /**
@@ -42,7 +54,27 @@ final class V1Service implements V1Contract
     {
         $this->raw = new V1RawService($client);
         $this->environments = new EnvironmentsService($client);
+        $this->instanceTypes = new InstanceTypesService($client);
+        $this->instances = new InstancesService($client);
         $this->secrets = new SecretsService($client);
+    }
+
+    /**
+     * @api
+     *
+     * Returns current pricing for GPU instances. Prices are fetched in real-time and include a 20% platform fee. For detailed instance types and availability, use GET /compute/v1/instance-types.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getPricing(
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getPricing(requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**

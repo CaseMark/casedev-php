@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Services\Compute;
+namespace Tests\Services\Compute\V1;
 
 use CaseDev\Client;
-use CaseDev\Compute\V1\V1GetUsageResponse;
+use CaseDev\Compute\V1\InstanceTypes\InstanceTypeListResponse;
 use CaseDev\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversNothing]
-final class V1Test extends TestCase
+final class InstanceTypesTest extends TestCase
 {
     protected Client $client;
 
@@ -28,20 +28,11 @@ final class V1Test extends TestCase
     }
 
     #[Test]
-    public function testGetPricing(): void
+    public function testList(): void
     {
-        $result = $this->client->compute->v1->getPricing();
+        $result = $this->client->compute->v1->instanceTypes->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testGetUsage(): void
-    {
-        $result = $this->client->compute->v1->getUsage();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(V1GetUsageResponse::class, $result);
+        $this->assertInstanceOf(InstanceTypeListResponse::class, $result);
     }
 }
