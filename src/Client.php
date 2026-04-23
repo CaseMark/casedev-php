@@ -25,6 +25,7 @@ use CaseDev\Services\TranslateService;
 use CaseDev\Services\UsageService;
 use CaseDev\Services\VaultService;
 use CaseDev\Services\VoiceService;
+use CaseDev\Services\WebhooksService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 
@@ -132,6 +133,11 @@ class Client extends BaseClient
     public VoiceService $voice;
 
     /**
+     * @api
+     */
+    public WebhooksService $webhooks;
+
+    /**
      * @param RequestOpts|null $requestOptions
      */
     public function __construct(
@@ -188,6 +194,7 @@ class Client extends BaseClient
         $this->usage = new UsageService($this);
         $this->vault = new VaultService($this);
         $this->voice = new VoiceService($this);
+        $this->webhooks = new WebhooksService($this);
     }
 
     /** @return array<string,string> */
