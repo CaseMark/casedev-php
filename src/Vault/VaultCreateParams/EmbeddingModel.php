@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CaseDev\Vault\VaultCreateParams;
 
 /**
- * Optional embedding model for this vault. Defaults to openai/text-embedding-3-small. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false. Note: `casemark/llama-nemotron-embed-vl-1b-v2` is a deprecated alias for `casemark/embed-v1` (retained for SDK backward compatibility); new integrations should use `casemark/embed-v1` directly.
+ * Optional embedding model for this vault. Defaults to casemark/embed-v1. Determines the S3 Vectors index dimension and which model is used at both ingest and search time. The vault is locked to this model after creation — use a re-embed flow to change later. Ignored when enableIndexing is false. Note: `casemark/llama-nemotron-embed-vl-1b-v2` is a deprecated alias for `casemark/embed-v1` (retained for SDK backward compatibility); new integrations should use `casemark/embed-v1` directly.
  */
 enum EmbeddingModel: string
 {
