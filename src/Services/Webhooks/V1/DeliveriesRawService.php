@@ -90,7 +90,7 @@ final class DeliveriesRawService implements DeliveriesRawContract
     /**
      * @api
      *
-     * Re-sends the original event to its endpoint. The payload is reconstructed from the delivery record (same eventId, eventType, and occurred_at). The signature header includes `svix-delivery-attempt: replay` so receivers can distinguish replays from first-time deliveries. Uses the endpoint's current signing secret — not the one in force at the original delivery time.
+     * Re-sends the original event to its endpoint. The payload is reconstructed from the delivery record (same eventId, eventType, and occurred_at). Replay deliveries include a Case.dev replay marker header so receivers can distinguish replays from first-time deliveries. Uses the endpoint's current signing secret — not the one in force at the original delivery time.
      *
      * @param array{payload?: mixed}|DeliveryReplayParams $params
      * @param RequestOpts|null $requestOptions
