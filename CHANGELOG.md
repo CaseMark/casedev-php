@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.42.0 (2026-04-28)
+
+Full Changelog: [v0.41.0...v0.42.0](https://github.com/CaseMark/casedev-php/compare/v0.41.0...v0.42.0)
+
+### Features
+
+* support setting headers via env ([b136652](https://github.com/CaseMark/casedev-php/commit/b13665216120350d0b655d7c7b6d0199dbed9564))
+
+
+### Bug Fixes
+
+* revert enum parsing change that lead to unconditional failure ([bcc78e7](https://github.com/CaseMark/casedev-php/commit/bcc78e7c9768fff345e7f50eebdb5eab5f0f4149))
+
 ## 0.41.0 (2026-04-24)
 
 Full Changelog: [v0.40.0...v0.41.0](https://github.com/CaseMark/casedev-php/compare/v0.40.0...v0.41.0)
