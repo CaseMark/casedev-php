@@ -54,6 +54,15 @@ final class V1Test extends TestCase
     }
 
     #[Test]
+    public function testBoot(): void
+    {
+        $result = $this->client->worker->v1->boot('id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
     public function testProxyDelete(): void
     {
         $result = $this->client->worker->v1->proxyDelete('workerPath', id: 'id');

@@ -100,6 +100,30 @@ final class V1RawService implements V1RawContract
     /**
      * @api
      *
+     * Starts or resumes the worker sandbox and OpenCode server. Native /worker/v1/:id/* proxy routes require this lifecycle primitive to have completed first.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function boot(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['worker/v1/%1$s/boot', $id],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Forwards a DELETE request to the worker runtime without translating response shapes.
      *
      * @param array{id: string}|V1ProxyDeleteParams $params

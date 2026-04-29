@@ -62,6 +62,20 @@ interface V1RawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function boot(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param array<string,mixed>|V1ProxyDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
