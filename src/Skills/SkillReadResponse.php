@@ -7,11 +7,17 @@ namespace CaseDev\Skills;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
+use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0;
+use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1;
 use CaseDev\Skills\SkillReadResponse\Source;
 
 /**
+ * @phpstan-import-type BundleVariants from \CaseDev\Skills\SkillReadResponse\Bundle
+ * @phpstan-import-type BundleShape from \CaseDev\Skills\SkillReadResponse\Bundle
+ *
  * @phpstan-type SkillReadResponseShape = array{
  *   authorName?: string|null,
+ *   bundle?: BundleShape|null,
  *   content?: string|null,
  *   license?: string|null,
  *   metadata?: mixed,
@@ -33,6 +39,14 @@ final class SkillReadResponse implements BaseModel
      */
     #[Optional('author_name')]
     public ?string $authorName;
+
+    /**
+     * Skill bundle metadata for root skills and companion file rows.
+     *
+     * @var BundleVariants|null $bundle
+     */
+    #[Optional(nullable: true)]
+    public UnionMember0|UnionMember1|null $bundle;
 
     /**
      * Full skill content in markdown.
@@ -102,11 +116,13 @@ final class SkillReadResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param BundleShape|null $bundle
      * @param Source|value-of<Source>|null $source
      * @param list<string>|null $tags
      */
     public static function with(
         ?string $authorName = null,
+        UnionMember0|array|UnionMember1|null $bundle = null,
         ?string $content = null,
         ?string $license = null,
         mixed $metadata = null,
@@ -120,6 +136,7 @@ final class SkillReadResponse implements BaseModel
         $self = new self;
 
         null !== $authorName && $self['authorName'] = $authorName;
+        null !== $bundle && $self['bundle'] = $bundle;
         null !== $content && $self['content'] = $content;
         null !== $license && $self['license'] = $license;
         null !== $metadata && $self['metadata'] = $metadata;
@@ -140,6 +157,20 @@ final class SkillReadResponse implements BaseModel
     {
         $self = clone $this;
         $self['authorName'] = $authorName;
+
+        return $self;
+    }
+
+    /**
+     * Skill bundle metadata for root skills and companion file rows.
+     *
+     * @param BundleShape|null $bundle
+     */
+    public function withBundle(
+        UnionMember0|array|UnionMember1|null $bundle
+    ): self {
+        $self = clone $this;
+        $self['bundle'] = $bundle;
 
         return $self;
     }
