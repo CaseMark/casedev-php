@@ -35,7 +35,7 @@ final class Result implements BaseModel
     public ?FinalResponse $finalResponse;
 
     /**
-     * Sandbox execution logs (OpenCode server + runner script).
+     * Sandbox execution logs (runtime server + runner script).
      */
     #[Optional(nullable: true)]
     public ?Logs $logs;
@@ -92,7 +92,7 @@ final class Result implements BaseModel
     }
 
     /**
-     * Sandbox execution logs (OpenCode server + runner script).
+     * Sandbox execution logs (runtime server + runner script).
      *
      * @param Logs|LogsShape|null $logs
      */

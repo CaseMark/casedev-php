@@ -47,10 +47,10 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Creates a persistent OpenCode chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
+     * Creates a persistent chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
      *
      * @param int|null $idleTimeoutMs Idle timeout before session is eligible for snapshot/termination. Defaults to 15 minutes.
-     * @param string|null $model Optional model override for the OpenCode session
+     * @param string|null $model Optional model override for the chat runtime session
      * @param string $title Optional human-readable session title
      * @param list<string>|null $vaultIDs Restrict the chat session to specific vault IDs
      * @param RequestOpts|null $requestOptions
@@ -102,7 +102,7 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Aborts the active OpenCode generation for this chat session.
+     * Aborts the active generation for this chat session.
      *
      * @param string $id Chat session ID
      * @param RequestOpts|null $requestOptions
@@ -122,7 +122,7 @@ final class ChatService implements ChatContract
     /**
      * @api
      *
-     * Answers a pending OpenCode question for the chat session bound to this agent chat.
+     * Answers a pending runtime question for the chat session bound to this agent chat.
      *
      * @param string $requestID Path param: Pending question request ID
      * @param string $id Path param: Chat session ID

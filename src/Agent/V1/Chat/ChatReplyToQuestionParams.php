@@ -11,7 +11,7 @@ use CaseDev\Core\Contracts\BaseModel;
 use CaseDev\Core\Conversion\ListOf;
 
 /**
- * Answers a pending OpenCode question for the chat session bound to this agent chat.
+ * Answers a pending runtime question for the chat session bound to this agent chat.
  *
  * @see CaseDev\Services\Agent\V1\ChatService::replyToQuestion()
  *
