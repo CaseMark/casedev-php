@@ -9,9 +9,11 @@ use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Sandbox execution logs (OpenCode server + runner script).
+ * Sandbox execution logs (runtime server + runner script).
  *
- * @phpstan-type LogsShape = array{opencode?: string|null, runner?: string|null}
+ * @phpstan-type LogsShape = array{
+ *   opencode?: string|null, runner?: string|null, runtime?: string|null
+ * }
  */
 final class Logs implements BaseModel
 {
@@ -19,7 +21,7 @@ final class Logs implements BaseModel
     use SdkModel;
 
     /**
-     * OpenCode server stdout/stderr.
+     * Legacy runtime server stdout/stderr.
      */
     #[Optional]
     public ?string $opencode;
@@ -29,6 +31,12 @@ final class Logs implements BaseModel
      */
     #[Optional]
     public ?string $runner;
+
+    /**
+     * Runtime server stdout/stderr.
+     */
+    #[Optional]
+    public ?string $runtime;
 
     public function __construct()
     {
@@ -42,18 +50,20 @@ final class Logs implements BaseModel
      */
     public static function with(
         ?string $opencode = null,
-        ?string $runner = null
+        ?string $runner = null,
+        ?string $runtime = null
     ): self {
         $self = new self;
 
         null !== $opencode && $self['opencode'] = $opencode;
         null !== $runner && $self['runner'] = $runner;
+        null !== $runtime && $self['runtime'] = $runtime;
 
         return $self;
     }
 
     /**
-     * OpenCode server stdout/stderr.
+     * Legacy runtime server stdout/stderr.
      */
     public function withOpencode(string $opencode): self
     {
@@ -70,6 +80,17 @@ final class Logs implements BaseModel
     {
         $self = clone $this;
         $self['runner'] = $runner;
+
+        return $self;
+    }
+
+    /**
+     * Runtime server stdout/stderr.
+     */
+    public function withRuntime(string $runtime): self
+    {
+        $self = clone $this;
+        $self['runtime'] = $runtime;
 
         return $self;
     }

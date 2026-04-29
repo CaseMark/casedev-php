@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Relays OpenCode SSE events for this chat. Supports replay from buffered events using Last-Event-ID.
+ * Relays runtime SSE events for this chat. Supports replay from buffered events using Last-Event-ID.
  *
  * @see CaseDev\Services\Agent\V1\ChatService::streamStream()
  *

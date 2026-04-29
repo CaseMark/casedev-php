@@ -26,6 +26,7 @@ use CaseDev\Services\UsageService;
 use CaseDev\Services\VaultService;
 use CaseDev\Services\VoiceService;
 use CaseDev\Services\WebhooksService;
+use CaseDev\Services\WorkerService;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 
@@ -46,6 +47,11 @@ class Client extends BaseClient
      * @api
      */
     public SystemService $system;
+
+    /**
+     * @api
+     */
+    public WorkerService $worker;
 
     /**
      * @api
@@ -190,6 +196,7 @@ class Client extends BaseClient
 
         $this->agent = new AgentService($this);
         $this->system = new SystemService($this);
+        $this->worker = new WorkerService($this);
         $this->compute = new ComputeService($this);
         $this->database = new DatabaseService($this);
         $this->format = new FormatService($this);

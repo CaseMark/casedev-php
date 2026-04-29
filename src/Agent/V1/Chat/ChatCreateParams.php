@@ -10,7 +10,7 @@ use CaseDev\Core\Concerns\SdkParams;
 use CaseDev\Core\Contracts\BaseModel;
 
 /**
- * Creates a persistent OpenCode chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
+ * Creates a persistent chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
  *
  * @see CaseDev\Services\Agent\V1\ChatService::create()
  *
@@ -34,7 +34,7 @@ final class ChatCreateParams implements BaseModel
     public ?int $idleTimeoutMs;
 
     /**
-     * Optional model override for the OpenCode session.
+     * Optional model override for the chat runtime session.
      */
     #[Optional(nullable: true)]
     public ?string $model;
@@ -93,7 +93,7 @@ final class ChatCreateParams implements BaseModel
     }
 
     /**
-     * Optional model override for the OpenCode session.
+     * Optional model override for the chat runtime session.
      */
     public function withModel(?string $model): self
     {

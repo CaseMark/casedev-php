@@ -40,7 +40,7 @@ final class ChatRawService implements ChatRawContract
     /**
      * @api
      *
-     * Creates a persistent OpenCode chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
+     * Creates a persistent chat session backed by a Daytona or Vercel runtime. Session state is retained and can be resumed or recovered across requests.
      *
      * @param array{
      *   idleTimeoutMs?: int|null,
@@ -101,7 +101,7 @@ final class ChatRawService implements ChatRawContract
     /**
      * @api
      *
-     * Aborts the active OpenCode generation for this chat session.
+     * Aborts the active generation for this chat session.
      *
      * @param string $id Chat session ID
      * @param RequestOpts|null $requestOptions
@@ -126,7 +126,7 @@ final class ChatRawService implements ChatRawContract
     /**
      * @api
      *
-     * Answers a pending OpenCode question for the chat session bound to this agent chat.
+     * Answers a pending runtime question for the chat session bound to this agent chat.
      *
      * @param string $requestID Path param: Pending question request ID
      * @param array{
