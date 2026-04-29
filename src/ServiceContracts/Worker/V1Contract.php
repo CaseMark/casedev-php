@@ -54,6 +54,18 @@ interface V1Contract
      *
      * @throws APIException
      */
+    public function boot(
+        string $id,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
     public function proxyDelete(
         string $workerPath,
         string $id,
