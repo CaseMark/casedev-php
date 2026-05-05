@@ -19,6 +19,8 @@ use CaseDev\Vault\Objects\ObjectGetChunksParams;
 use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsParams;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetPagesParams;
+use CaseDev\Vault\Objects\ObjectGetPagesResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobParams;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
@@ -321,6 +323,41 @@ final class ObjectsRawService implements ObjectsRawContract
             query: $parsed,
             options: $options,
             convert: ObjectGetOcrWordsResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves the raw text of a processed vault object split by page. The object must have completed ingestion before pages can be retrieved — for PDFs this requires the OCR pipeline to have finished writing the per-page sidecar, so freshly uploaded PDFs return 400 with the current `ingestionStatus` until processing completes. For PDFs this returns the per-page OCR text. For plain text files (txt, md, source code, court reporter transcripts) the text is split using right-aligned page-number markers when present (preserving the original document numbering, including continuations like Volume 2 starting at page 234), falling back to form-feed (\f) page-break characters, and finally a single page if neither signal is present. Use the optional `start` and `end` query parameters to fetch a specific inclusive page range. Pages with no text are omitted.
+     *
+     * @param string $objectID Path param: The object ID
+     * @param array{id: string, end?: int, start?: int}|ObjectGetPagesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ObjectGetPagesResponse>
+     *
+     * @throws APIException
+     */
+    public function getPages(
+        string $objectID,
+        array|ObjectGetPagesParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ObjectGetPagesParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $id = $parsed['id'];
+        unset($parsed['id']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['vault/%1$s/objects/%2$s/pages', $id, $objectID],
+            query: $parsed,
+            options: $options,
+            convert: ObjectGetPagesResponse::class,
         );
     }
 

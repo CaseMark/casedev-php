@@ -11,6 +11,7 @@ use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
 use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetPagesResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use CaseDev\Vault\Objects\ObjectGetTextResponse;
@@ -166,6 +167,25 @@ interface ObjectsContract
         ?int $wordStart = null,
         RequestOptions|array|null $requestOptions = null,
     ): ObjectGetOcrWordsResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: The object ID
+     * @param string $id Path param: The vault ID
+     * @param int $end Query param: Last page to return (inclusive, 1-indexed). If omitted, returns through the last page with text.
+     * @param int $start Query param: First page to return (inclusive, 1-indexed). If omitted, starts at the first page with text.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getPages(
+        string $objectID,
+        string $id,
+        ?int $end = null,
+        ?int $start = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetPagesResponse;
 
     /**
      * @api

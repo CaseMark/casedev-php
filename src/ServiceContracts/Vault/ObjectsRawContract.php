@@ -15,6 +15,8 @@ use CaseDev\Vault\Objects\ObjectGetChunksParams;
 use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsParams;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetPagesParams;
+use CaseDev\Vault\Objects\ObjectGetPagesResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobParams;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
@@ -162,6 +164,23 @@ interface ObjectsRawContract
     public function getOcrWords(
         string $objectID,
         array|ObjectGetOcrWordsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectID Path param: The object ID
+     * @param array<string,mixed>|ObjectGetPagesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ObjectGetPagesResponse>
+     *
+     * @throws APIException
+     */
+    public function getPages(
+        string $objectID,
+        array|ObjectGetPagesParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
