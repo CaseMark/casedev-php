@@ -7,6 +7,7 @@ use CaseDev\Core\Util;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
 use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetPagesResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use CaseDev\Vault\Objects\ObjectGetTextResponse;
@@ -199,6 +200,29 @@ final class ObjectsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ObjectGetOcrWordsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetPages(): void
+    {
+        $result = $this->client->vault->objects->getPages('objectId', id: 'id');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetPagesResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetPagesWithOptionalParams(): void
+    {
+        $result = $this->client->vault->objects->getPages(
+            'objectId',
+            id: 'id',
+            end: 0,
+            start: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectGetPagesResponse::class, $result);
     }
 
     #[Test]

@@ -14,6 +14,7 @@ use CaseDev\Vault\Objects\ObjectDeleteParams\Force;
 use CaseDev\Vault\Objects\ObjectDeleteResponse;
 use CaseDev\Vault\Objects\ObjectGetChunksResponse;
 use CaseDev\Vault\Objects\ObjectGetOcrWordsResponse;
+use CaseDev\Vault\Objects\ObjectGetPagesResponse;
 use CaseDev\Vault\Objects\ObjectGetResponse;
 use CaseDev\Vault\Objects\ObjectGetSummarizeJobResponse;
 use CaseDev\Vault\Objects\ObjectGetTextResponse;
@@ -275,6 +276,36 @@ final class ObjectsService implements ObjectsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getOcrWords($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves the raw text of a processed vault object split by page. The object must have completed ingestion before pages can be retrieved — for PDFs this requires the OCR pipeline to have finished writing the per-page sidecar, so freshly uploaded PDFs return 400 with the current `ingestionStatus` until processing completes. For PDFs this returns the per-page OCR text. For plain text files (txt, md, source code, court reporter transcripts) the text is split using right-aligned page-number markers when present (preserving the original document numbering, including continuations like Volume 2 starting at page 234), falling back to form-feed (\f) page-break characters, and finally a single page if neither signal is present. Use the optional `start` and `end` query parameters to fetch a specific inclusive page range. Pages with no text are omitted.
+     *
+     * @param string $objectID Path param: The object ID
+     * @param string $id Path param: The vault ID
+     * @param int $end Query param: Last page to return (inclusive, 1-indexed). If omitted, returns through the last page with text.
+     * @param int $start Query param: First page to return (inclusive, 1-indexed). If omitted, starts at the first page with text.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getPages(
+        string $objectID,
+        string $id,
+        ?int $end = null,
+        ?int $start = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ObjectGetPagesResponse {
+        $params = Util::removeNulls(
+            ['id' => $id, 'end' => $end, 'start' => $start]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getPages($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
