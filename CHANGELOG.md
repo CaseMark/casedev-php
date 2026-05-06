@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.46.1 (2026-05-06)
+
+Full Changelog: [v0.46.0...v0.46.1](https://github.com/CaseMark/casedev-php/compare/v0.46.0...v0.46.1)
+
+### Bug Fixes
+
+* **release:** use canonical GitHub URL in Packagist publish script ([0dc2ab5](https://github.com/CaseMark/casedev-php/commit/0dc2ab52cd518dacf8c153f933af8d1f81bf6be0))
+
 ## 0.46.0 (2026-05-05)
 
 Full Changelog: [v0.45.0...v0.46.0](https://github.com/CaseMark/casedev-php/compare/v0.45.0...v0.46.0)
