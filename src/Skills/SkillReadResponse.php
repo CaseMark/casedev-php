@@ -7,8 +7,6 @@ namespace CaseDev\Skills;
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0;
-use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1;
 use CaseDev\Skills\SkillReadResponse\Source;
 
 /**
@@ -46,7 +44,7 @@ final class SkillReadResponse implements BaseModel
      * @var BundleVariants|null $bundle
      */
     #[Optional(nullable: true)]
-    public UnionMember0|UnionMember1|null $bundle;
+    public ReadResponseRootBundle|ReadResponseFileBundle|null $bundle;
 
     /**
      * Full skill content in markdown.
@@ -122,7 +120,7 @@ final class SkillReadResponse implements BaseModel
      */
     public static function with(
         ?string $authorName = null,
-        UnionMember0|array|UnionMember1|null $bundle = null,
+        ReadResponseRootBundle|array|ReadResponseFileBundle|null $bundle = null,
         ?string $content = null,
         ?string $license = null,
         mixed $metadata = null,
@@ -167,7 +165,7 @@ final class SkillReadResponse implements BaseModel
      * @param BundleShape|null $bundle
      */
     public function withBundle(
-        UnionMember0|array|UnionMember1|null $bundle
+        ReadResponseRootBundle|array|ReadResponseFileBundle|null $bundle
     ): self {
         $self = clone $this;
         $self['bundle'] = $bundle;
