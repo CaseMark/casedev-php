@@ -7,17 +7,17 @@ namespace CaseDev\Skills\SkillReadResponse;
 use CaseDev\Core\Concerns\SdkUnion;
 use CaseDev\Core\Conversion\Contracts\Converter;
 use CaseDev\Core\Conversion\Contracts\ConverterSource;
-use CaseDev\Skills\ReadResponseFileBundle;
-use CaseDev\Skills\ReadResponseRootBundle;
+use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0;
+use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1;
 
 /**
  * Skill bundle metadata for root skills and companion file rows.
  *
- * @phpstan-import-type ReadResponseRootBundleShape from \CaseDev\Skills\ReadResponseRootBundle
- * @phpstan-import-type ReadResponseFileBundleShape from \CaseDev\Skills\ReadResponseFileBundle
+ * @phpstan-import-type UnionMember0Shape from \CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0
+ * @phpstan-import-type UnionMember1Shape from \CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1
  *
- * @phpstan-type BundleVariants = ReadResponseRootBundle|ReadResponseFileBundle
- * @phpstan-type BundleShape = BundleVariants|ReadResponseRootBundleShape|ReadResponseFileBundleShape
+ * @phpstan-type BundleVariants = UnionMember0|UnionMember1
+ * @phpstan-type BundleShape = BundleVariants|UnionMember0Shape|UnionMember1Shape
  */
 final class Bundle implements ConverterSource
 {
@@ -28,6 +28,6 @@ final class Bundle implements ConverterSource
      */
     public static function variants(): array
     {
-        return [ReadResponseRootBundle::class, ReadResponseFileBundle::class];
+        return [UnionMember0::class, UnionMember1::class];
     }
 }
