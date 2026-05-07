@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1;
+namespace CaseDev\Skills\ReadResponseFileBundle;
 
 enum Role: string
 {
