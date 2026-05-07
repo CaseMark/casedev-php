@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Skills\SkillReadResponse\Bundle;
+namespace CaseDev\Skills;
 
 use CaseDev\Core\Attributes\Required;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0\File;
-use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0\Role;
+use CaseDev\Skills\ReadResponseRootBundle\File;
+use CaseDev\Skills\ReadResponseRootBundle\Role;
 
 /**
- * @phpstan-import-type FileShape from \CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0\File
+ * @phpstan-import-type FileShape from \CaseDev\Skills\ReadResponseRootBundle\File
  *
- * @phpstan-type UnionMember0Shape = array{
+ * @phpstan-type ReadResponseRootBundleShape = array{
  *   files: list<File|FileShape>, role: Role|value-of<Role>
  * }
  */
-final class UnionMember0 implements BaseModel
+final class ReadResponseRootBundle implements BaseModel
 {
-    /** @use SdkModel<UnionMember0Shape> */
+    /** @use SdkModel<ReadResponseRootBundleShape> */
     use SdkModel;
 
     /** @var list<File> $files */
@@ -31,17 +31,17 @@ final class UnionMember0 implements BaseModel
     public string $role;
 
     /**
-     * `new UnionMember0()` is missing required properties by the API.
+     * `new ReadResponseRootBundle()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * UnionMember0::with(files: ..., role: ...)
+     * ReadResponseRootBundle::with(files: ..., role: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new UnionMember0)->withFiles(...)->withRole(...)
+     * (new ReadResponseRootBundle)->withFiles(...)->withRole(...)
      * ```
      */
     public function __construct()

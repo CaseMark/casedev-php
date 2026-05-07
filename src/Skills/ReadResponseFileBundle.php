@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Skills\SkillReadResponse\Bundle;
+namespace CaseDev\Skills;
 
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Attributes\Required;
 use CaseDev\Core\Concerns\SdkModel;
 use CaseDev\Core\Contracts\BaseModel;
-use CaseDev\Skills\SkillReadResponse\Bundle\UnionMember1\Role;
+use CaseDev\Skills\ReadResponseFileBundle\Role;
 
 /**
- * @phpstan-type UnionMember1Shape = array{
+ * @phpstan-type ReadResponseFileBundleShape = array{
  *   path: string,
  *   role: Role|value-of<Role>,
  *   rootSlug: string,
  *   contentType?: string|null,
  * }
  */
-final class UnionMember1 implements BaseModel
+final class ReadResponseFileBundle implements BaseModel
 {
-    /** @use SdkModel<UnionMember1Shape> */
+    /** @use SdkModel<ReadResponseFileBundleShape> */
     use SdkModel;
 
     #[Required]
@@ -37,17 +37,17 @@ final class UnionMember1 implements BaseModel
     public ?string $contentType;
 
     /**
-     * `new UnionMember1()` is missing required properties by the API.
+     * `new ReadResponseFileBundle()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * UnionMember1::with(path: ..., role: ..., rootSlug: ...)
+     * ReadResponseFileBundle::with(path: ..., role: ..., rootSlug: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new UnionMember1)->withPath(...)->withRole(...)->withRootSlug(...)
+     * (new ReadResponseFileBundle)->withPath(...)->withRole(...)->withRootSlug(...)
      * ```
      */
     public function __construct()
