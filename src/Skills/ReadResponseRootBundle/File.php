@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CaseDev\Skills\SkillReadResponse\Bundle\UnionMember0;
+namespace CaseDev\Skills\ReadResponseRootBundle;
 
 use CaseDev\Core\Attributes\Optional;
 use CaseDev\Core\Attributes\Required;
