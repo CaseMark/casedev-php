@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.49.1 (2026-05-12)
+
+Full Changelog: [v0.49.0...v0.49.1](https://github.com/CaseMark/casedev-php/compare/v0.49.0...v0.49.1)
+
+### Bug Fixes
+
+* guzzle requires special handling to enable streaming ([37428a0](https://github.com/CaseMark/casedev-php/commit/37428a0c923a84045cac3abc9134c5ba4bfb75c6))
+
 ## 0.49.0 (2026-05-07)
 
 Full Changelog: [v0.48.0...v0.49.0](https://github.com/CaseMark/casedev-php/compare/v0.48.0...v0.49.0)
