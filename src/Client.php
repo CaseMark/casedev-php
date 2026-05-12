@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CaseDev;
 
 use CaseDev\Core\BaseClient;
+use CaseDev\Core\Implementation\StreamingHttpClient;
 use CaseDev\Core\Util;
 use CaseDev\Services\AgentService;
 use CaseDev\Services\ComputeService;
@@ -164,6 +165,11 @@ class Client extends BaseClient
             ),
             $requestOptions,
         );
+
+        if (is_null($options->streamingTransporter)) {
+            assert(!is_null($options->transporter));
+            $options->streamingTransporter = new StreamingHttpClient($options->transporter);
+        }
 
         /** @var array<string, string|null> $headers */
         $headers = [
