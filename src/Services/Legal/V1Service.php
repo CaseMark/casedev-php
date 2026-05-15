@@ -62,7 +62,7 @@ final class V1Service implements V1Contract
      * @param string $dateFiledAfter Optional lower bound for filing date (YYYY-MM-DD)
      * @param string $dateFiledBefore Optional upper bound for filing date (YYYY-MM-DD)
      * @param string $docketID Docket ID (required for lookup)
-     * @param bool $includeEntries Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
+     * @param bool $includeEntries include docket entries/filings in lookup responses
      * @param int $limit Page size for search results or entry list (default 25 for search, 50 for lookup)
      * @param bool $live Trigger a live PACER fetch for dockets not yet in the RECAP archive. Requires acknowledgePacerFees: true. PACER charges up to $3.00 per docket sheet plus a $0.05 service fee. Only valid with type: "lookup".
      * @param int $offset Offset for search results or entry list
