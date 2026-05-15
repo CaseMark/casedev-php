@@ -75,7 +75,7 @@ final class V1DocketParams implements BaseModel
     public ?string $docketID;
 
     /**
-     * Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
+     * Include docket entries/filings in lookup responses.
      */
     #[Optional]
     public ?bool $includeEntries;
@@ -230,7 +230,7 @@ final class V1DocketParams implements BaseModel
     }
 
     /**
-     * Include docket entries/filings in lookup responses. Coming soon — currently returns 501. The parameter is accepted for forward compatibility.
+     * Include docket entries/filings in lookup responses.
      */
     public function withIncludeEntries(bool $includeEntries): self
     {
